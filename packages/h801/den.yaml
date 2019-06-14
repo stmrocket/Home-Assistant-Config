@@ -1,0 +1,51 @@
+light:
+  - platform: mqtt
+    name: "Den LED RGB"
+    state_topic: "h801/den_1/tele/current"
+    command_topic: "h801/den_1/command/set/rgb/power"
+    brightness_state_topic: "h801/den_1/tele/current"
+    brightness_command_topic: "h801/den_1/command/set/rgb/brightness"
+    rgb_state_topic: "h801/den_1/tele/current"
+    rgb_command_topic: "h801/den_1/command/set/rgb/color"
+    state_value_template: "{{value_json['rgb_power']}}"
+    brightness_value_template: "{{value_json['rgb_brightness']}}"
+    rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
+    qos: 0
+    retain: true
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+sensor:
+  #Driver Status Messages
+  - platform: mqtt
+    name: "Den LED Status"
+    state_topic: "h801/den_1/tele/status"
+    value_template: "{{value_json['status']}}"
+  - platform: mqtt
+    name: "Den LED Version"
+    state_topic: "h801/den_1/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+  - platform: mqtt
+    name: "Den LED Uptime"
+    state_topic: "h801/den_1/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+  - platform: mqtt
+    name: "Den LED RSSI"
+    state_topic: "h801/den_1/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+  - platform: mqtt
+    name: "Den LED IP"
+    state_topic: "h801/den_1/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+  - platform: mqtt
+    name: "Den LED Free Heap"
+    state_topic: "h801/den_1/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+  - platform: mqtt
+    name: "Den LED Heap Fragmentation"
+    state_topic: "h801/den_1/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+  - platform: mqtt
+    name: "Den LED Core Version"
+    state_topic: "h801/den_1/tele/status"
+    value_template: "{{value_json['espCore']}}" 

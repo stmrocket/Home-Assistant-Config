@@ -1,0 +1,61 @@
+light:
+  - platform: mqtt
+    name: "Kitchen Toekick LEDs RGB"
+    state_topic: "h801/k_toekick/ha/state"
+    command_topic: "h801/k_toekick/command/set/rgb/power"
+    brightness_state_topic: "h801/k_toekick/tele/current"
+    brightness_command_topic: "h801/k_toekick/command/set/rgb/brightness"
+    rgb_state_topic: "h801/k_toekick/tele/current"
+    rgb_command_topic: "h801/k_toekick/command/set/rgb/color"
+    state_value_template: "{{value_json['rgb_power']}}"
+    brightness_value_template: "{{value_json['rgb_brightness']}}"
+    rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
+    qos: 0
+    retain: true
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+automation:
+  - alias: k_toekick_gr report on
+    trigger:
+    - platform: state
+      entity_id: light.kitchen_led_1_rgb
+      to: 'on'
+    - platform: state
+      entity_id: light.kitchen_led_2_rgb
+      to: 'on'
+    - platform: state
+      entity_id: light.kitchen_led_3_rgb
+      to: 'on'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: h801/k_toekick/ha/state
+        payload_template: "ON"
+  - alias: k_toekick_gr report off
+    trigger:
+    - platform: state
+      entity_id: light.kitchen_led_1_rgb
+      to: 'off'
+    - platform: state
+      entity_id: light.kitchen_led_2_rgb
+      to: 'off'
+    - platform: state
+      entity_id: light.kitchen_led_3_rgb
+      to: 'off'
+    condition:
+    - condition: state
+      entity_id: light.kitchen_led_1_rgb
+      state: 'off'
+    - condition: state
+      entity_id: light.kitchen_led_2_rgb
+      state: 'off'
+    - condition: state
+      entity_id: light.kitchen_led_3_rgb
+      state: 'off'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: h801/k_toekick/ha/state
+        payload_template: "OFF"
+
