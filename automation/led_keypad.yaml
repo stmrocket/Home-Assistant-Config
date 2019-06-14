@@ -1,0 +1,120 @@
+- alias: Master Bedroom LEDs On
+  trigger:
+  - entity_id: switch.master_leds_power
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: light.master_bedroom_leds_rgb
+    service: light.turn_on
+- alias: Master Bedroom LEDs Off
+  trigger:
+  - entity_id: switch.master_leds_power
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.master_bedroom_leds_rgb
+    service: light.turn_off
+- alias: Master Bathroom LEDs On
+  trigger:
+  - entity_id: switch.master_bathroom_leds_power
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: light.master_bathroom_led_rgb
+    service: light.turn_on
+- alias: Master Bathroom LEDs Off
+  trigger:
+  - entity_id: switch.master_bathroom_leds_power
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.master_bathroom_led_rgb
+    service: light.turn_off
+- alias: Kitchen LEDs On
+  trigger:
+  - entity_id: switch.kitchen_leds_power
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: light.kitchen_leds_rgb
+    service: light.turn_on
+- alias: Kitchen LEDs Off
+  trigger:
+  - entity_id: switch.kitchen_leds_power
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.kitchen_leds_rgb
+    service: light.turn_off
+- alias: Den LEDs On
+  trigger:
+  - entity_id: switch.den_leds_power
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: light.den_led_rgb
+    service: light.turn_on
+- alias: Den LEDs Off
+  trigger:
+  - entity_id: switch.den_leds_power
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.den_led_rgb
+    service: light.turn_off
+- alias: Guest Bathroom LEDs On
+  trigger:
+  - entity_id: switch.guest_bathroom_leds_power
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: light.guest_bathroom_led_rgb
+    service: light.turn_on
+- alias: Guest Bathroom LEDs Off
+  trigger:
+  - entity_id: switch.guest_bathroom_leds_power
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.guest_bathroom_led_rgb
+    service: light.turn_off
+- alias: Counter LEDs On
+  trigger:
+  - entity_id: switch.kitchen_undercabinet_lights
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: light.kitchen_counter_leds_white
+    service: light.turn_on
+- alias: Counter LEDs Off
+  trigger:
+  - entity_id: switch.kitchen_undercabinet_lights
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.kitchen_counter_leds_white
+    service: light.turn_off

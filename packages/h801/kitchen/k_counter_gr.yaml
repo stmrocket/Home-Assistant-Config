@@ -1,0 +1,115 @@
+light:
+  - platform: mqtt
+    name: "Kitchen Counter LEDs RGB"
+    state_topic: "h801/k_counter/ha/state"
+    command_topic: "h801/k_counter/command/set/rgb/power"
+    brightness_state_topic: "h801/k_counter/tele/current"
+    brightness_command_topic: "h801/k_counter/command/set/rgb/brightness"
+    rgb_state_topic: "h801/k_counter/tele/current"
+    rgb_command_topic: "h801/k_counter/command/set/rgb/color"
+    state_value_template: "{{value_json['rgb_power']}}"
+    brightness_value_template: "{{value_json['rgb_brightness']}}"
+    rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
+    qos: 0
+    retain: true
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+  - platform: mqtt
+    name: "Kitchen Counter LEDs White"
+    state_topic: "h801/k_counter/ha/wstate"
+    command_topic: "h801/k_counter/command/set/w2/power"
+    brightness_state_topic: "h801/k_counter/tele/current"
+    brightness_command_topic: "h801/k_counter/command/set/w2/brightness"
+    state_value_template: "{{value_json['w2_power']}}"
+    brightness_value_template: "{{value_json['w2_brightness']}}"
+    qos: 0
+    retain: true
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+automation:
+  - alias: k_counter_gr report on
+    trigger:
+    - platform: state
+      entity_id: light.kitchen_led_4_rgb
+      to: 'on'
+    - platform: state
+      entity_id: light.kitchen_led_5_rgb
+      to: 'on'
+    - platform: state
+      entity_id: light.kitchen_led_6_rgb
+      to: 'on'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: h801/k_counter/ha/state
+        payload_template: "ON"
+  - alias: k_counter_gr report off
+    trigger:
+    - platform: state
+      entity_id: light.kitchen_led_4_rgb
+      to: 'off'
+    - platform: state
+      entity_id: light.kitchen_led_5_rgb
+      to: 'off'
+    - platform: state
+      entity_id: light.kitchen_led_6_rgb
+      to: 'off'
+    condition:
+    - condition: state
+      entity_id: light.kitchen_led_4_rgb
+      state: 'off'
+    - condition: state
+      entity_id: light.kitchen_led_5_rgb
+      state: 'off'
+    - condition: state
+      entity_id: light.kitchen_led_6_rgb
+      state: 'off'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: h801/k_counter/ha/state
+        payload_template: "OFF"
+  - alias: k_counter_gr white report on
+    trigger:
+    - platform: state
+      entity_id: light.kitchen_led_4_w2
+      to: 'on'
+    - platform: state
+      entity_id: light.kitchen_led_5_w2
+      to: 'on'
+    - platform: state
+      entity_id: light.kitchen_led_6_w2
+      to: 'on'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: h801/k_counter/ha/wstate
+        payload_template: "ON"
+  - alias: k_counter_gr white report off
+    trigger:
+    - platform: state
+      entity_id: light.kitchen_led_4_w2
+      to: 'off'
+    - platform: state
+      entity_id: light.kitchen_led_5_w2
+      to: 'off'
+    - platform: state
+      entity_id: light.kitchen_led_6_w2
+      to: 'off'
+    condition:
+    - condition: state
+      entity_id: light.kitchen_led_4_w2
+      state: 'off'
+    - condition: state
+      entity_id: light.kitchen_led_5_w2
+      state: 'off'
+    - condition: state
+      entity_id: light.kitchen_led_6_w2
+      state: 'off'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: h801/k_counter/ha/wstate
+        payload_template: "OFF"
