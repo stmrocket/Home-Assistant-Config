@@ -1,0 +1,261 @@
+# Handle All Off message
+- alias: Nuvo Zone 1 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_1_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/1
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 2 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_2_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/2
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 3 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_3_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/3
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 4 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_4_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/4
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 5 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_5_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/5
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 6 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_6_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/6
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 7 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_7_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/7
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 8 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_8_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/8
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 9 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_9_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/9
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 10 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_10_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/10
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 11 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_11_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/11
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 12 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_12_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/12
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 13 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_13_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/13
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 14 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_14_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/14
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 15 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_15_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/15
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 16 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_16_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/16
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 17 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_17_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/17
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 18 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_18_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/18
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 19 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_19_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/19
+      payload: '{"power":"OFF"}'
+- alias: Nuvo Zone 20 All Off
+  trigger:
+  - platform: mqtt
+    topic: nuvo/tele/system/alloff
+  condition:
+  - condition: state
+    entity_id: switch.nuvo_zone_20_power
+    state: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/tele/zone/20
+      payload: '{"power":"OFF"}'

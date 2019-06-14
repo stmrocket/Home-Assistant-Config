@@ -1,0 +1,48 @@
+- alias: Lock Front Door When Leaving or Going to Bed
+  trigger:
+  - entity_id: alarm_control_panel.area_001
+    from: arming
+    platform: state
+    to: armed_night
+  - entity_id: alarm_control_panel.area_001
+    from: arming
+    platform: state
+    to: armed_away
+  condition:
+  - condition: state
+    entity_id: lock.front_door
+    state: unlocked
+  action:
+  - data:
+      entity_id: lock.front_door
+    service: lock.lock
+- alias: Front Door Lock Timer Trigger
+  trigger:
+  - entity_id: sensor.zone_001
+    from: Normal
+    to: Violated
+    platform: state
+  - entity_id: lock.front_door
+    from: locked
+    platform: state
+    to: unlocked
+  action:
+    service: timer.start
+    entity_id: timer.front_door
+- alias: Front Door Left Unlocked
+  trigger:
+  - event_data:
+      entity_id: timer.front_door
+    event_type: timer.finished
+    platform: event
+  condition:
+  - condition: state
+    entity_id: sensor.zone_001
+    state: Normal
+  - condition: state
+    entity_id: lock.front_door
+    state: unlocked
+  action:
+  - data:
+      entity_id: lock.front_door
+    service: lock.lock

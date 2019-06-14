@@ -1,0 +1,687 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Chicago
+  # Customization file
+  customize: !include customize.yaml
+  packages: !include_dir_named packages
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Show the introduction message on startup.
+#introduction:
+
+# Discover some devices automatically
+discovery:
+
+#Blinds
+cover:
+  #House Blinds
+  - platform: mqtt
+    name: "House Blinds"
+    command_topic: "habc/all/command/set/state"
+    set_position_topic: "habc/all/command/set/positionpct"
+    position_topic: "habc/all/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+  #Office Blinds
+  - platform: mqtt
+    name: "Office Blinds"
+    command_topic: "habc/office/command/set/state"
+    set_position_topic: "habc/office/command/set/positionpct"
+    position_topic: "habc/office/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+  #Center Office Blind
+  - platform: mqtt
+    name: "Center Office Blind"
+    command_topic: "habc/office_c/command/set/state"
+    set_position_topic: "habc/office_c/command/set/positionpct"
+    position_topic: "habc/office_c/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+  #Right Office Blind
+  - platform: mqtt
+    name: "Right Office Blind"
+    command_topic: "habc/office_r/command/set/state"
+    set_position_topic: "habc/office_r/command/set/positionpct"
+    position_topic: "habc/office_r/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+  #Left Office Blind
+  - platform: mqtt
+    name: "Left Office Blind"
+    command_topic: "habc/office_l/command/set/state"
+    set_position_topic: "habc/office_l/command/set/positionpct"
+    position_topic: "habc/office_l/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+# Sensors
+sensor:
+  # Blinds
+  - platform: mqtt
+    name: "Center Office Blind Position"
+    state_topic: "habc/office_c/tele/current"
+  - platform: mqtt
+    name: "Right Office Blind Position"
+    state_topic: "habc/office_r/tele/current"
+  - platform: mqtt
+    name: "Left Office Blind Position"
+    state_topic: "habc/office_l/tele/current"
+  # Weather prediction
+  - platform: yr
+  #Elk Speech FPP Status
+  - platform: mqtt
+    name: "FPP Repeat Status"
+    state_topic: "ElkSpeak/falcon/player/ElkSpeak/playlist/repeat/status"
+  - platform: mqtt
+    name: "FPP Status"
+    state_topic: "ElkSpeak/falcon/player/ElkSpeak/status"
+  - platform: mqtt
+    name: "FPP Version"
+    state_topic: "ElkSpeak/falcon/player/ElkSpeak/version"
+  #Lock Battery Ststus
+  - platform: template
+    sensors:
+      lock_front_door_battery:
+        friendly_name: 'Front Door Lock Battery'
+        value_template: '{{ states.zwave.front_door_lock.attributes.battery_level }}'
+        unit_of_measurement: '%'
+        entity_id: zwave.front_door_lock
+      lock_back_door_battery:
+        friendly_name: 'Back Door Lock Battery'
+        value_template: '{{ states.zwave.back_door_lock.attributes.battery_level }}'
+        unit_of_measurement: '%'
+        entity_id: zwave.back_door_lock
+      lock_garage_entry_battery:
+        friendly_name: 'Garage Entry Lock Battery'
+        value_template: '{{ states.zwave.garage_entry_lock.attributes.battery_level }}'
+        unit_of_measurement: '%'
+        entity_id: zwave.garage_entry_lock
+#Sonoff Washer Monitor
+  - platform: mqtt
+    name: "Washer State"
+    state_topic: "hass/state/washer"
+    icon: mdi:washing-machine
+  - platform: mqtt
+    name: "Washer Watts"
+    state_topic: "tele/SNF-Washer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Power }}"
+    qos: 2
+    unit_of_measurement : "W"
+    icon: mdi:flash-circle
+    availability_topic: "tele/SNF-Washer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Washer Voltage"
+    state_topic: "tele/SNF-Washer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Voltage }}"
+    qos: 2
+    unit_of_measurement : "V"
+    icon: mdi:flash-circle
+    availability_topic: "tele/SNF-Washer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Washer Amps"
+    state_topic: "tele/SNF-Washer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Current }}"
+    qos: 2
+    unit_of_measurement : "A"
+    icon: mdi:flash-circle
+    availability_topic: "tele/SNF-Washer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Washer Energy Today"
+    state_topic: "tele/SNF-Washer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Today }}"
+    qos: 2
+    unit_of_measurement : "kWh"
+    availability_topic: "tele/SNF-Washer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Washer Energy Yesterday"
+    state_topic: "tele/SNF-Washer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Yesterday }}"
+    qos: 2
+    unit_of_measurement : "kWh"
+    availability_topic: "tele/SNF-Washer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    state_topic: "tele/SNF-Washer/STATE"
+    name: "Washer Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/SNF-Washer/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
+#Sonoff Dryer Monitor
+  - platform: mqtt
+    name: "Dryer State"
+    state_topic: "hass/state/dryer"
+    icon: mdi:tumble-dryer
+  - platform: mqtt
+    name: "Dryer Watts"
+    state_topic: "tele/SNF-Dryer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Power }}"
+    qos: 2
+    unit_of_measurement : "W"
+    icon: mdi:flash-circle
+    availability_topic: "tele/SNF-Dryer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Dryer Voltage"
+    state_topic: "tele/SNF-Dryer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Voltage }}"
+    qos: 2
+    unit_of_measurement : "V"
+    icon: mdi:flash-circle
+    availability_topic: "tele/SNF-Dryer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Dryer Amps"
+    state_topic: "tele/SNF-Dryer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Current }}"
+    qos: 2
+    unit_of_measurement : "A"
+    icon: mdi:flash-circle
+    availability_topic: "tele/SNF-Dryer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Dryer Energy Today"
+    state_topic: "tele/SNF-Dryer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Today }}"
+    qos: 2
+    unit_of_measurement : "kWh"
+    availability_topic: "tele/SNF-Dryer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Dryer Energy Yesterday"
+    state_topic: "tele/SNF-Dryer/SENSOR"
+    value_template: "{{value_json['ENERGY'].Yesterday }}"
+    qos: 2
+    unit_of_measurement : "kWh"
+    availability_topic: "tele/SNF-Dryer/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    state_topic: "tele/SNF-Dryer/STATE"
+    name: "Dryer Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/SNF-Dryer/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
+#Roomba Sensors
+  - platform: template
+    sensors:
+      roomba_status:
+        friendly_name: 'Roomba Status'
+        value_template: "{{ states.vacuum.roomba.attributes.status }}"
+        entity_id: vacuum.roomba
+      roomba_battery:
+        friendly_name: 'Roomba Battery Level'
+        value_template: "{{ states.vacuum.roomba.attributes.battery_level }}"
+        unit_of_measurement: '%'
+        icon_template: "{{ states.vacuum.roomba.attributes.battery_icon }}"
+        entity_id: vacuum.roomba
+# EmonCMS Sensors
+  - platform: emoncms
+    api_key: !secret emon_api
+    url: https://ibnerd.net/emoncms
+    scan_interval: 30
+    id: 1
+    unit_of_measurement: "°F"
+    include_only_feed_id:
+      - 13
+      - 15
+      - 17
+      - 19
+      - 119
+      - 120
+      - 121
+      - 122
+      - 123
+      - 124
+      - 128
+      - 129
+      - 172
+      - 173
+      - 174
+      - 175
+      - 176
+      - 177
+      - 178
+      - 179
+      - 180
+      - 181
+      - 182
+      - 183
+      - 184
+      - 186
+      - 187
+      - 188
+      - 189
+      - 190
+  - platform: emoncms
+    api_key: !secret emon_api
+    url: https://ibnerd.net/emoncms
+    scan_interval: 30
+    id: 1
+    unit_of_measurement: "%"
+    include_only_feed_id:
+      - 14
+      - 16
+      - 18
+      - 20
+  - platform: emoncms
+    api_key: !secret emon_api
+    url: https://ibnerd.net/emoncms
+    scan_interval: 30
+    id: 1
+    unit_of_measurement: "Minutes"
+    include_only_feed_id:
+      - 97
+      - 98
+      - 99
+      - 100
+      - 101
+      - 102
+      - 103
+      - 104
+      - 105
+      - 106
+      - 107
+      - 108
+      - 109
+      - 110
+      - 111
+      - 112
+  - platform: emoncms
+    api_key: !secret emon_api
+    url: https://ibnerd.net/emoncms
+    scan_interval: 5
+    id: 1
+    unit_of_measurement: "W"
+    include_only_feed_id:
+      - 21
+  - platform: emoncms
+    api_key: !secret emon_api
+    url: https://ibnerd.net/emoncms
+    scan_interval: 30
+    id: 1
+    unit_of_measurement: "kWh"
+    include_only_feed_id:
+      - 56
+  - platform: emoncms
+    api_key: !secret emon_api
+    url: https://ibnerd.net/emoncms
+    scan_interval: 30
+    id: 1
+    unit_of_measurement: "in"
+    include_only_feed_id:
+      - 53
+      - 54
+      - 55
+  - platform: emoncms
+    api_key: !secret emon_api
+    url: https://ibnerd.net/emoncms
+    scan_interval: 30
+    id: 1
+    unit_of_measurement: "in/hr"
+    include_only_feed_id:
+      - 51
+  - platform: emoncms
+    api_key: !secret emon_api
+    url: https://ibnerd.net/emoncms
+    scan_interval: 5
+    id: 1
+    unit_of_measurement: ""
+    include_only_feed_id:
+      - 50
+      - 113
+      - 114
+      - 115
+      - 117
+      - 118
+      - 127
+# Darksky
+  - platform: darksky
+    api_key: !secret ds_key
+    forecast:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    monitored_conditions:
+      - icon
+      - summary
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - humidity
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - wind_speed
+      - wind_bearing
+      - precip_type
+      - precip_probability
+      - precip_accumulation
+      - precip_intensity
+      - precip_intensity_max
+      - uv_index
+      - daily_summary
+      - pressure
+      - visibility
+    #update_interval:
+    #  minutes: 5
+    #- platform: fitbit
+  #  clock_format: 12H
+  #  monitored_resources:
+  #    - "activities/calories"
+  #    - "activities/steps"
+  #    - "body/weight"
+
+binary_sensor:
+  - platform: template
+    sensors:
+      is_raining:
+        friendly_name: "Currently Raining"
+        device_class: moisture
+        value_template:  "{{ states('sensor.emoncms_is_raining')|float == 1 }}"
+      hvac_heat:
+        friendly_name: "HVAC Heat Call"
+        device_class: heat
+        value_template:  "{{ states('sensor.emoncms_hvac_heat_call')|float == 1 }}"
+      hvac_cool:
+        friendly_name: "HVAC Heat Call"
+        device_class: cold
+        value_template:  "{{ states('sensor.emoncms_hvac_cool_call')|float == 1 }}"
+      hvac_fan:
+        friendly_name: "HVAC Fan Call"
+        value_template:  "{{ states('sensor.emoncms_hvac_fan_call')|float == 1 }}"
+      hvac_zone_1:
+        friendly_name: "HVAC Zone 1 Call"
+        device_class: door
+        value_template:  "{{ states('sensor.emoncms_hvac_zone_1_call')|float == 1 }}"
+      hvac_zone_2:
+        friendly_name: "HVAC Zone 2 Call"
+        device_class: door
+        value_template:  "{{ states('sensor.emoncms_hvac_zone_2_call')|float == 1 }}"
+      hvac_zone_3:
+        friendly_name: "HVAC Zone 3 Call"
+        device_class: door
+        value_template:  "{{ states('sensor.emoncms_hvac_zone_3_call')|float == 1 }}"
+switch:
+#Roomba Switch
+  - platform: template
+    switches:
+      roomba:
+        friendly_name: "Roomba Power"
+        value_template: "{{ states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'User Docking' or states.vacuum.roomba.attributes.status | string == 'Docking' }}"
+        turn_on:
+          service: vacuum.turn_on
+          data:
+            entity_id: vacuum.roomba
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.roomba_off
+input_boolean:
+  roomba_auto:
+    name: Schedule Enabled
+    initial: off
+    icon: mdi:timer
+  washer_end:
+    name: Washer Finished
+    initial: off
+    icon: mdi:stop-circle
+  dryer_end:
+    name: Dryer Finished
+    initial: off
+    icon: mdi:stop-circle
+  office_blinds_open:
+    name: Blinds Office Open
+    initial: off
+    icon: mdi:blinds
+  office_blinds_close:
+    name: Blinds Office Close
+    initial: off
+    icon: mdi:blinds
+  right_office_blind_open:
+    name: Blind Right Office Open
+    initial: off
+    icon: mdi:blinds
+  right_office_blind_close:
+    name: Blind Right Office Close
+    initial: off
+    icon: mdi:blinds3
+  center_office_blind_open:
+    name: Blind Center Office Open
+    initial: off
+    icon: mdi:blinds
+  center_office_blind_close:
+    name: Blind Center Office Close
+    initial: off
+    icon: mdi:blinds
+  house_blinds_open:
+    name: Blinds House Open
+    initial: off
+    icon: mdi:blinds
+  house_blinds_close:
+    name: Blinds House Close
+    initial: off
+    icon: mdi:blinds
+light:
+  - platform: mqtt
+    schema: json
+    name: "Front Yard ESPixelStick"
+    state_topic: "esps/front"
+    command_topic: "esps/front/set"
+    brightness: true
+    rgb: true
+    effect: true
+    effect_list:
+      - Solid
+      - Blink
+      - Flash
+      - Rainbow
+      - Chase
+      - Fire flicker
+      - Lightning
+      - Breathe
+# Timers
+timer:
+  washer_alert:
+    name: Washer Announcement Timer
+    duration: '00:05:00'
+  dryer_alert:
+    name: Dryer Announcement Timer
+    duration: '00:05:00'
+  garage:
+    name: Garage Light Timer
+    duration: '00:10:00'
+  front_door:
+    name: Front Door Lock Timer
+    duration: '00:05:00'
+  back_door:
+    name: Back Door Lock Timer
+    duration: '00:05:00'
+  laundry_room:
+    name: Laundry Room Light Timer
+    duration: '00:02:00'
+  master_closet:
+    name: Master Closet Light Timer
+    duration: '00:02:00'
+  garage_entry:
+    name: Garage Entry Lock Timer
+    duration: '00:05:00'
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+group: !include groups.yaml
+automation: !include_dir_merge_list automation
+script: !include scripts.yaml
+zone: !include zones.yaml
+
+# ISY 994 Integration 
+isy994:
+  host: !secret isy_host
+  username: !secret isy_user
+  password: !secret isy_pass
+  enable_climate: false
+#Elk M1 Integration
+elkm1:
+  host: !secret elk_host
+  username: !secret elk_user
+  password: !secret elk_pass
+  area:
+    exclude: [3-8]
+  counter:
+    enabled: false
+  keypad:
+    exclude: [7-16]
+  output:
+    include: [3, 7, 9-16, 177-179, 197]
+  task:
+    enabled: false
+  thermostat:
+    enabled: false
+  plc:
+    enabled: false
+  zone:
+    exclude: [16, 53-64, 73-196, 198-207]
+#climate:
+#  - platform: honeywell
+#    username: !secret tcc_user
+#    password: !secret tcc_pass
+#    region: us
+#    scan_interval: 600
+api:
+alexa: !include alexa.yaml
+
+# Zoneminder
+zoneminder:
+  host: !secret zm_host
+  ssl: true
+  verify_ssl: false
+  username: !secret zm_user
+  password: !secret zm_pass
+
+# IP Cameras
+camera:
+  - platform: zoneminder
+
+#Device Tracking
+
+device_tracker:
+  - platform: unifi
+    host: !secret unifi_host
+    port: !secret unifi_port
+    verify_ssl: false
+    username: !secret ubnt_user
+    password: !secret ubnt_pass
+    consider_home: 60
+    ssid_filter:
+      - 'Hogwarts'
+      - 'Hogsmeade'
+#Notification Services
+notify:
+  - name: Elk_Pushover
+    platform: pushover
+    api_key: !secret push_elk
+    user_key: !secret push_usr
+  - name: System_Pushover
+    platform: pushover
+    api_key: !secret push_sys
+    user_key: !secret push_usr
+  - name: den_kodi
+    platform: kodi
+    host: !secret den_kodi_host
+#Counters
+counter:
+  dryer_alert:
+    initial: 0
+    step: 1
+  washer_alert:
+    initial: 0
+    step: 1
+# Kodi Media Player
+media_player:
+  - name: den_kodi
+    platform: kodi
+    host: !secret den_kodi_host
+#Recorder Management
+recorder:
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+      - sensor
+      - switch
+      - light
+      - media_player
+    entities:
+      - sun.sun
+  include:
+    entities:
+      - sensor.roomba_battery
+#Pooper
+litter_robot:
+  username: !secret pooper_user
+  password: !secret pooper_pass
+  api_key: !secret pooper_key
+#Roomba
+# Example configuration.yaml entry
+vacuum:
+  - platform: roomba
+    host: !secret roomba_host
+    username: !secret roomba_blid
+    password: !secret roomba_pass

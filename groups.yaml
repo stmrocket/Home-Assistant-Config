@@ -1,0 +1,10 @@
+dryerpanel:
+    name: Dryer
+    entities:
+      - sensor.dryer_state
+      - sensor.dryer_voltage
+      - sensor.dryer_watts
+      - sensor.dryer_amps
+      - sensor.dryer_energy_today
+      - sensor.dryer_energy_yesterday
+      - sensor.dryer_signal

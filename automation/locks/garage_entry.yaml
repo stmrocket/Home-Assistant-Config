@@ -1,0 +1,55 @@
+- alias: Lock Garage Entry When Leaving or Going to Bed
+  trigger:
+  - entity_id: alarm_control_panel.area_001
+    from: arming
+    platform: state
+    to: armed_night
+  - entity_id: alarm_control_panel.area_001
+    from: arming
+    platform: state
+    to: armed_away
+  condition:
+  - condition: state
+    entity_id: lock.garage_entry
+    state: unlocked
+  action:
+  - data:
+      entity_id: lock.garage_entry
+    service: lock.lock
+- alias: Garage Entry Lock Timer Trigger
+  trigger:
+  - entity_id: sensor.zone_002
+    from: Normal
+    to: Violated
+    platform: state
+  - entity_id: lock.garage_entry
+    from: locked
+    platform: state
+    to: unlocked
+  - entity_id: sensor.zone_032
+    from: Normal
+    to: Violated
+    platform: state
+  action:
+    service: timer.start
+    entity_id: timer.garage_entry
+- alias: Garage Entry Left Unlocked
+  trigger:
+  - event_data:
+      entity_id: timer.garage_entry
+    event_type: timer.finished
+    platform: event
+  condition:
+  - condition: state
+    entity_id: sensor.zone_002
+    state: Normal
+  - condition: state
+    entity_id: sensor.zone_031
+    state: Violated
+  - condition: state
+    entity_id: lock.front_door
+    state: unlocked
+  action:
+  - data:
+      entity_id: lock.garage_entry
+    service: lock.lock

@@ -1,0 +1,24 @@
+smart_home:
+  filter:
+    exclude_domains:
+      - automation
+      - script
+      - alert
+      - fan
+      - group
+      - light
+      - scene
+      - sensor
+      - switch
+      - cover
+
+  entity_config:
+    lock.front_door:
+      name: Front Door
+      description: Front Door Deadbolt
+    lock.garage_entry:
+      name: Garage Entry
+      description: Garage Entry Deadbolt
+    lock.back_door:
+      name: Back Door
+      description: Back Door Deadbolt

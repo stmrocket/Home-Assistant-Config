@@ -1,0 +1,29 @@
+- alias: Start Roomba from Schedule
+  trigger:
+  - platform: mqtt
+    topic: roomba/command
+    payload: 'start'
+  condition:    
+  - condition: state
+    entity_id: sensor.roomba_status
+    state: Charging
+  action:
+  - data:
+      entity_id: vacuum.roomba
+    service: vacuum.turn_on
+- alias: Roomba Return if House Disarmed
+  trigger:
+  - entity_id: alarm_control_panel.area_001
+    platform: state
+    to: disarmed
+  condition:
+  - condition: state
+    entity_id: sensor.roomba_status
+    state: Running
+  - condition: state
+    entity_id: input_boolean.roomba_auto
+    state: 'on'
+  action:
+  - data:
+      entity_id: script.roomba_off
+    service: script.turn_on

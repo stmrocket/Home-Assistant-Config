@@ -1,0 +1,10 @@
+roomba_off:
+  sequence:
+  - data:
+      entity_id: vacuum.roomba
+    service: vacuum.stop
+  - delay: 
+      milliseconds: 500
+  - data:
+      entity_id: vacuum.roomba
+    service: vacuum.return_to_base

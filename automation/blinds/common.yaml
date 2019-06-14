@@ -1,0 +1,68 @@
+- alias: Close Blinds When Away or Going to Bed
+  trigger:
+  - entity_id: alarm_control_panel.area_001
+    from: arming
+    platform: state
+    to: armed_night
+  - entity_id: alarm_control_panel.area_001
+    from: arming
+    platform: state
+    to: armed_away
+  action:
+  - data:
+      payload: CLOSE
+      topic: habc/all/command/set/state
+    service: mqtt.publish
+- alias: 'Close blind at dusk'
+  trigger:
+    platform: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    below: -2.5
+  action:
+    service: cover.close_cover
+    entity_id: cover.house_blinds
+- alias: Open Blinds When Awake and Sun Up
+  trigger:
+  - entity_id: alarm_control_panel.area_001
+    platform: state
+    to: disarmed
+  - entity_id: alarm_control_panel.area_001
+    platform: state
+    to: armed_home
+  condition:
+  - condition: numeric_state
+    entity_id: sun.sun
+    value_template: '{{ state.attributes.elevation }}'
+    above: 0
+  action:
+  - data:
+      payload: OPEN
+      topic: habc/all/command/set/state
+    service: mqtt.publish
+- alias: All Windows Same Position
+  trigger:
+  - entity_id: cover.office_blinds
+    platform: state
+  condition:
+  - condition: template
+    value_template: '{{ states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position }}'
+  action:
+  - data:
+      payload_template: '{{ states.cover.center_office_blind.attributes.current_position }}'
+      topic: habc/all/tele/currentpct
+      retain: 'true'
+    service: mqtt.publish
+- alias: All Windows Various Positions
+  trigger:
+  - entity_id: cover.office_blinds
+    platform: state
+  condition:
+  - condition: template
+    value_template: '{{not states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position }}'
+  action:
+  - data:
+      payload: 95
+      topic: habc/all/tele/currentpct
+      retain: 'true'
+    service: mqtt.publish
