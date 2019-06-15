@@ -1,0 +1,44 @@
+- alias: Travis Build Created
+  trigger:
+  - platform: state
+    entity_id: sensor.stmrocket_home_assistant_config_state
+    to: 'created'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.build_light
+      brightness: 255
+      rgb_color: [0,0,255]
+- alias: Travis Build Started
+  trigger:
+  - platform: state
+    entity_id: sensor.stmrocket_home_assistant_config_state
+    to: 'started'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.build_light
+      brightness: 255
+      rgb_color: [255,255,0]
+- alias: Travis Build Failed
+  trigger:
+  - platform: state
+    entity_id: sensor.stmrocket_home_assistant_config_state
+    to: 'failed'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.build_light
+      brightness: 255
+      rgb_color: [255,0,0]
+- alias: Travis Build Passed
+  trigger:
+  - platform: state
+    entity_id: sensor.stmrocket_home_assistant_config_state
+    to: 'passed'
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.build_light
+      brightness: 255
+      rgb_color: [0,255,0]
