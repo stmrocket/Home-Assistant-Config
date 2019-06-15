@@ -7,7 +7,7 @@
   - platform: template
     value_template: "{{ states.media_player.whole_house_audio.attributes.media_position }}"
   - platform: state
-    entity_id: media_player.gmusic_player
+    entity_id: media_player.whole_house_audio
   condition:
   - condition: state
     entity_id: media_player.gmusic_player
@@ -20,7 +20,7 @@
 - alias: Update Keypad Dispinfo when pausing
   trigger:
   - platform: state
-    entity_id: media_player.gmusic_player
+    entity_id: media_player.whole_house_audio
     to: paused
   action:
   - service: mqtt.publish
@@ -128,9 +128,6 @@
   - condition: state
     entity_id: media_player.gmusic_player
     state: paused
-  - condition: state
-    entity_id: media_player.gmusic_player
-    state: 'off'
   - condition: state
     entity_id: input_boolean.nuvo_in_menu
     state: 'off'
