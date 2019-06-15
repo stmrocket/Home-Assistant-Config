@@ -1,2 +1,2 @@
 # Home-Assistant-Config
-My current Home Assistant Configuration
+This is my current Home Assistant configuration.  It is very much a work in process!
