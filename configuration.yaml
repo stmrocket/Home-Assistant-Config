@@ -635,6 +635,12 @@ device_tracker:
     ssid_filter:
       - 'Hogwarts'
       - 'Hogsmeade'
+  - platform: edgeos
+    host: !secret edge_os_host
+    username: !secret edge_os_username
+    password: !secret edge_os_password
+    interval_seconds: 60
+    track_new_devices:  False
 #Notification Services
 notify:
   - name: Elk_Pushover
