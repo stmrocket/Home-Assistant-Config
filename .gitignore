@@ -2,6 +2,7 @@
 .cloud/
 .storage/
 .vscode/
+.google.token
 appdaemon/
 deps/
 node-red/
@@ -18,6 +19,7 @@ home-assistant_v2.db*
 known_devices.yaml
 secrets.yaml
 zones.yaml
+google_calendars.yaml
 *.xml
 *.sqlite
 *.txt
