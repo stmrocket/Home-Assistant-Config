@@ -44,7 +44,7 @@
   - condition: template
     value_template: '{% if states.media_player.gmusic_player.attributes.media_artist is not defined %}False{% else %}True{% endif %}'
   - condition: template
-    value_template: '{% if states.media_player.gmusic_player.media_album_name is not defined %}False{% else %}True{% endif %}'
+    value_template: '{% if states.media_player.gmusic_player.attributes.media_album_name is not defined %}False{% else %}True{% endif %}'
   - condition: state
     entity_id: input_select.gmusic_player_source
     state: 'Station'
