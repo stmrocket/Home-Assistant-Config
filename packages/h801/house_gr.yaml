@@ -1,6 +1,6 @@
 light:
   - platform: mqtt
-    name: "Kitchen Toekick LEDs RGB"
+    name: "House LEDs RGB"
     state_topic: "h801/all/ha/state"
     command_topic: "h801/all/command/set/rgb/power"
     brightness_state_topic: "h801/all/tele/current"
