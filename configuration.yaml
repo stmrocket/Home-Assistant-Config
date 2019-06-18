@@ -22,18 +22,6 @@ default_config:
 # Discover some devices automatically
 discovery:
 
-#MQTT Configuration for Discovery
-mqtt:
-  discovery: true
-  discovery_prefix: homeassistant
-  broker: 127.0.0.1
-  birth_message:
-    topic: 'hass/status'
-    payload: 'online'
-  will_message:
-    topic: 'hass/status'
-    payload: 'offline'
-
 #Blinds
 cover:
   #House Blinds
