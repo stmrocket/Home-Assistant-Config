@@ -129,6 +129,9 @@
     entity_id: media_player.gmusic_player
     state: paused
   - condition: state
+    entity_id: media_player.gmusic_player
+    state: 'off'
+  - condition: state
     entity_id: input_boolean.nuvo_in_menu
     state: 'off'
   action:
