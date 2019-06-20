@@ -904,3 +904,21 @@
   - service: media_player.media_pause
     data:
       entity_id: media_player.gmusic_player
+#When Hass Reboots
+- alias: GM After Reboot
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.gmusic_player_source
+      option: "{{ states.input_text.gm_current_mode.state }}"
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.gmusic_player_station
+      option: "{{ states.input_text.gm_current_station.state }}"
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.gmusic_player_playlist
+      option: "{{ states.input_text.gm_current_playlist.state }}"
