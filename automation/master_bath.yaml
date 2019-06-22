@@ -17,7 +17,7 @@
   - service: mqtt.publish
     data:
       topic: nuvo/command/set/vol
-      payload_template: '5,60'
+      payload_template: '5,40'
 - alias: Master Shower Fan Timer
   trigger:
   - platform: state
