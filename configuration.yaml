@@ -696,3 +696,29 @@ vacuum:
 google:
   client_id: !secret gcal_client_id
   client_secret: !secret gcal_client_secret
+#InfluxDB
+influxdb:
+  host: !secret influx_host
+  include:
+    entities:
+      - sensor.attic_temperature_owfs
+      - sensor.back_hvac_return_temperature_owfs
+      - sensor.den_temperature_owfs
+      - sensor.dining_room_temperature_owfs
+      - sensor.dryer_vent_temperature_owfs
+      - sensor.front_hall_temperature_owfs
+      - sensor.front_hvac_return_temperature_owfs
+      - sensor.garage_temperature_owfs
+      - sensor.guest_bedroom_temperature_owfs
+      - sensor.hvac_supply_temperature_owfs
+      - sensor.master_bedroom_temperature_owfs
+      - sensor.office_temperature_owfs
+      - sensor.outside_temperature_owfs
+      - sensor.plenum_hvac_return_temperature_owfs
+      - sensor.server_room_hvac_return_temperature_owfs
+      - sensor.server_room_temperature_owfs
+      - sensor.shed_temperature_owfs
+      - sensor.work_room_temperature_owfs
+      - sensor.aquara_outside_temperature
+      - sensor.aquara_outside_humidity
+      - sensor.aquara_outside_pressure
