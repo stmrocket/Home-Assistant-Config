@@ -6,7 +6,7 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/command/set/vol
+      topic: nuvo/command/set/zone/vol
       payload_template: '5,40'
 - alias: Master Shower Decrease Volume
   trigger:
@@ -16,7 +16,7 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/command/set/vol
+      topic: nuvo/command/set/zone/vol
       payload_template: '5,40'
 - alias: Master Shower Fan Timer
   trigger:
@@ -30,7 +30,7 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/command/set/vol
+      topic: nuvo/command/set/zone/vol
       payload_template: '5,60'
   - delay: 00:10:00
   - service: switch.turn_off
