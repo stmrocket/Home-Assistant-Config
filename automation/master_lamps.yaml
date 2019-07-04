@@ -1,0 +1,45 @@
+- alias: Master Lamps On from Keypad
+  trigger:
+  - platform: event
+    event_type: isy994_control
+    event_data:
+      entity_id: switch.master_bedroom_light_b
+      control: DON
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.master_bedroom_lamps
+      brightness: 128
+- alias: Master Lamps Off from Keypad
+  trigger:
+  - platform: event
+    event_type: isy994_control
+    event_data:
+      entity_id: switch.master_bedroom_light_b
+      control: DOF
+  condition: []
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.master_bedroom_lamps
+- alias: Master Lamps Keypad On
+  trigger:
+  - entity_id: light.master_bedroom_lamps
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.master_bedroom_lamps_led
+- alias: Master Lamps Keypad Off
+  trigger:
+  - entity_id: light.master_bedroom_lamps
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bedroom_lamps_led
