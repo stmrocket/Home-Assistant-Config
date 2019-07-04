@@ -7,9 +7,10 @@
       control: DON
   condition: []
   action:
-  - data:
+  - service: light.turn_on
+    data:
       entity_id: light.entry_lamp
-    service: light.turn_on
+      brightness: 128
 - alias: Entry Lamp Off from Keypad
   trigger:
   - platform: event
@@ -19,9 +20,9 @@
       control: DOF
   condition: []
   action:
-  - data:
+  - service: light.turn_off
+    data:
       entity_id: light.entry_lamp
-    service: light.turn_off
 - alias: Entry Lamp Keypad On
   trigger:
   - entity_id: light.entry_lamp
