@@ -516,6 +516,10 @@ input_boolean:
     name: Blinds House Close
     initial: off
     icon: mdi:blinds
+  guest_mode:
+    name: Guest Mode
+    initial: off
+    icon: mdi:timer
 light:
   - platform: mqtt
     schema: json
