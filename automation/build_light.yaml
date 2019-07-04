@@ -11,7 +11,7 @@
     data:
       entity_id: light.build_light
       brightness: 255
-      rgb_color: [0,0,255]
+      white_value: 255
 - alias: Travis Build Started
   trigger:
   - platform: state
@@ -25,7 +25,7 @@
     data:
       entity_id: light.build_light
       brightness: 255
-      rgb_color: [255,63,0]
+      rgb_color: [0,255,0]
 - alias: Travis Build Failed
   trigger:
   - platform: state
@@ -53,4 +53,4 @@
     data:
       entity_id: light.build_light
       brightness: 255
-      rgb_color: [0,255,0]
+      rgb_color: [0,0,255]
