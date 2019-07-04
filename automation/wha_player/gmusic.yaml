@@ -910,6 +910,8 @@
     - platform: homeassistant
       event: start
   action:
+  - delay:
+      seconds: 20
   - service: input_select.select_option
     data_template:
       entity_id: input_select.gmusic_player_source
