@@ -624,14 +624,14 @@ camera:
 
 #Device Tracking
 
-device_tracker:
-  - platform: unifi
-    host: !secret unifi_host
-    port: !secret unifi_port
-    verify_ssl: false
-    username: !secret ubnt_user
-    password: !secret ubnt_pass
-    consider_home: 60
+#device_tracker:
+#  - platform: unifi
+#    host: !secret unifi_host
+#    port: !secret unifi_port
+#    verify_ssl: false
+#    username: !secret ubnt_user
+#    password: !secret ubnt_pass
+#    consider_home: 60
 #Notification Services
 notify:
   - name: Elk_Pushover
