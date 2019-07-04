@@ -55,30 +55,7 @@
       title: House Secure
     service: notify.elk_pushover
 
-- alias: Entry Lamp On from Keypad
-  trigger:
-  - platform: event
-    event_type: isy994_control
-    event_data:
-      entity_id: switch.entry_light_a
-      control: DON
-  condition: []
-  action:
-  - data:
-      entity_id: light.entry_lamp
-    service: light.turn_on
-- alias: Entry Lamp Off from Keypad
-  trigger:
-  - platform: event
-    event_type: isy994_control
-    event_data:
-      entity_id: switch.entry_light_a
-      control: DOF
-  condition: []
-  action:
-  - data:
-      entity_id: light.entry_lamp
-    service: light.turn_off
+
 - alias: Auto Guest Mode On
   trigger:
   - entity_id: device_tracker.karen
