@@ -54,28 +54,3 @@
       message: The alarm is fully armed in away mode and all doors are secure.
       title: House Secure
     service: notify.elk_pushover
-
-
-- alias: Auto Guest Mode On
-  trigger:
-  - entity_id: device_tracker.karen
-    platform: state
-    to: home
-  condition: []
-  action:
-  - service: switch.turn_on
-    data:
-      entity_id: switch.guest_mode_led
-- alias: Auto Guest Mode Off
-  trigger:
-  - entity_id: device_tracker.karen
-    platform: state
-    to: not_home
-  condition:
-  - condition: state
-    entity_id: switch.guest_mode_led
-    state: 'on'
-  action:
-  - data:
-      entity_id: switch.guest_mode_led
-    service: switch.turn_off
