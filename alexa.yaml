@@ -1,13 +1,13 @@
 smart_home:
   filter:
     include_entities:
-      light.kitchen_leds_rgb
-      light.kitchen_counter_leds_white
-      light.master_suite_leds_rgb
-      light.master_bedroom_leds_rgb
-      light.master_bathroom_led_rgb
-      light.den_led_rgb
-      light.guest_bathroom_led_rgb
+      - light.kitchen_leds_rgb
+      - light.kitchen_counter_leds_white
+      - light.master_suite_leds_rgb
+      - light.master_bedroom_leds_rgb
+      - light.master_bathroom_led_rgb
+      - light.den_led_rgb
+      - light.guest_bathroom_led_rgb
 
     exclude_domains:
       - automation
