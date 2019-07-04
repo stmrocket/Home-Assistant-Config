@@ -520,6 +520,10 @@ input_boolean:
     name: Guest Mode
     initial: off
     icon: mdi:timer
+  timer_lights:
+    name: Timer Lights
+    initial: off
+    icon: mdi:lightbulb
 light:
   - platform: mqtt
     schema: json
