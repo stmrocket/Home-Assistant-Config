@@ -8,6 +8,7 @@ smart_home:
       - light.master_bathroom_led_rgb
       - light.den_led_rgb
       - light.guest_bathroom_led_rgb
+      - light.house_leds_rgb
 
     exclude_domains:
       - automation
@@ -51,3 +52,5 @@ smart_home:
     light.guest_bathroom_led_rgb:
       name: Guest LEDs
       description: Guest Bathroom LEDs
+    light.house_leds_rgb:
+      name: House LEDs
