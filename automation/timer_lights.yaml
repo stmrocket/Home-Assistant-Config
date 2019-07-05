@@ -246,6 +246,9 @@
   trigger:
   - platform: state
     entity_id: alarm_control_panel.area_001
+  - platform: state
+    entity_id: input_boolean.timer_lights
+    to: 'on'
   - platform: event
     event_type: automation_triggered
     event_data:
@@ -299,6 +302,9 @@
   trigger:
   - platform: state
     entity_id: alarm_control_panel.area_001
+  - platform: state
+    entity_id: input_boolean.timer_lights
+    to: 'off'
   - platform: event
     event_type: automation_triggered
     event_data:
