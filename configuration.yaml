@@ -688,6 +688,8 @@ recorder:
   include:
     entities:
       - sensor.roomba_battery
+      - sensor.wan_in_mbps
+      - sensor.wan_out_mbps
 #Pooper
 litter_robot:
   username: !secret pooper_user
@@ -730,3 +732,5 @@ influxdb:
       - sensor.aquara_outside_temperature
       - sensor.aquara_outside_humidity
       - sensor.aquara_outside_pressure
+      - sensor.wan_in_mbps
+      - sensor.wan_out_mbps
