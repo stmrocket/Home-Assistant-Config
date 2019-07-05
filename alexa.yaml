@@ -1,5 +1,15 @@
 smart_home:
   filter:
+    include_entities:
+      - light.kitchen_leds_rgb
+      - light.kitchen_counter_leds_white
+      - light.master_suite_leds_rgb
+      - light.master_bedroom_leds_rgb
+      - light.master_bathroom_led_rgb
+      - light.den_led_rgb
+      - light.guest_bathroom_led_rgb
+      - light.house_leds_rgb
+
     exclude_domains:
       - automation
       - script
@@ -22,3 +32,25 @@ smart_home:
     lock.back_door:
       name: Back Door
       description: Back Door Deadbolt
+    light.kitchen_leds_rgb:
+      name: Kitchen LEDs
+      description: Kitchen Accent LEDs
+    light.kitchen_counter_leds_white:
+      name: Counter LEDs
+      description: Kitchen Counter Work LEDs
+    light.master_suite_leds_rgb:
+      name: Master LEDs
+      description: Master Suite LEDs
+    light.master_bedroom_leds_rgb:
+      name: Bedroom LEDs
+      description: Master Bedroom LEDs
+    light.master_bathroom_led_rgb:
+      name: Bathroom LEDs
+      description: Master Bathroom LEDs
+    light.den_led_rgb:
+      name: Den LEDs
+    light.guest_bathroom_led_rgb:
+      name: Guest LEDs
+      description: Guest Bathroom LEDs
+    light.house_leds_rgb:
+      name: House LEDs

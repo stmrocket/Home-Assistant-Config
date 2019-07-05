@@ -1,5 +1,4 @@
-- id: '1555552521835'
-  alias: Doorbell Alert
+- alias: Doorbell Alert
   trigger:
   - entity_id: switch.doorbell_pressed
     platform: state
@@ -16,8 +15,7 @@
   - data:
       entity_id: switch.doorbell_pressed
     service: switch.turn_off
-- id: '1555552705124'
-  alias: Timer Alert
+- alias: Timer Alert
   trigger:
   - event_data:
       action: echotimer
@@ -35,8 +33,7 @@
   - data:
       entity_id: switch.alexa_timer_end
     service: switch.turn_off
-- id: '1555989598929'
-  alias: House Armed and Secure
+- alias: House Armed and Secure
   trigger:
   - entity_id: alarm_control_panel.area_001
     from: arming
@@ -57,51 +54,3 @@
       message: The alarm is fully armed in away mode and all doors are secure.
       title: House Secure
     service: notify.elk_pushover
-- id: '1556060938584'
-  alias: Entry Light On
-  trigger:
-  - entity_id: switch.entry_lamp
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      brightness: 95
-      entity_id: light.entry_lamp
-    service: light.turn_on
-- id: '1556060938585'
-  alias: Entry Light Off
-  trigger:
-  - entity_id: switch.entry_lamp
-    platform: state
-    to: 'off'
-  condition: []
-  action:
-  - data:
-      entity_id: light.entry_lamp
-    service: light.turn_off
-- id: '1556580060976'
-  alias: Auto Guest Mode On
-  trigger:
-  - entity_id: device_tracker.karen
-    platform: state
-    to: home
-  condition: []
-  action:
-  - service: switch.turn_on
-    data:
-      entity_id: switch.guest_mode_led
-- id: '1556580060998'
-  alias: Auto Guest Mode Off
-  trigger:
-  - entity_id: device_tracker.karen
-    platform: state
-    to: not_home
-  condition:
-  - condition: state
-    entity_id: switch.guest_mode_led
-    state: 'on'
-  action:
-  - data:
-      entity_id: switch.guest_mode_led
-    service: switch.turn_off

@@ -1,0 +1,53 @@
+- alias: Auto Guest Mode On
+  trigger:
+  - entity_id: device_tracker.karen
+    platform: state
+    to: home
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.guest_mode
+  - service: switch.turn_on
+    data:
+      entity_id: switch.guest_mode_led
+- alias: Auto Guest Mode Off
+  trigger:
+  - entity_id: device_tracker.karen
+    platform: state
+    to: not_home
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'on'
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.guest_mode
+  - data:
+      entity_id: switch.guest_mode_led
+    service: switch.turn_off
+- alias: Guest Mode On from Keypad
+  trigger:
+  - platform: event
+    event_type: isy994_control
+    event_data:
+      entity_id: switch.guest_bedroom_fan_d
+      control: DON
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.guest_mode
+- alias: Guest Mode Off from Keypad
+  trigger:
+  - platform: event
+    event_type: isy994_control
+    event_data:
+      entity_id: switch.guest_bedroom_fan_d
+      control: DOF
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.guest_mode
