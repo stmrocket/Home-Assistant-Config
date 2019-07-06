@@ -225,3 +225,35 @@
   - service: switch.turn_off
     data:
       entity_id: switch.nuvo_zone_2_power
+- alias: All Off NuVo Night
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: disarmed
+    to: armed_night
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_home
+    to: armed_night
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_1_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_3_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_6_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_7_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_19_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_10_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_11_power
