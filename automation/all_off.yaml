@@ -250,10 +250,13 @@
       entity_id: switch.nuvo_zone_7_power
   - service: switch.turn_off
     data:
-      entity_id: switch.nuvo_zone_19_power
+      entity_id: switch.nuvo_zone_9_power
   - service: switch.turn_off
     data:
       entity_id: switch.nuvo_zone_10_power
   - service: switch.turn_off
     data:
       entity_id: switch.nuvo_zone_11_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_12_power
