@@ -82,3 +82,6 @@
     data:
       topic: nuvo/command/set/zone/vol
       payload: 4,40
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_5_power
