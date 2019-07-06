@@ -193,12 +193,10 @@
   trigger:
   - platform: state
     entity_id: alarm_control_panel.area_001
-    from: disarmed
-    to: armed_night
-  - platform: state
+  condition:
+  - condition: state
     entity_id: alarm_control_panel.area_001
-    from: armed_stay
-    to: armed_night
+    state: armed_night
   action:
   - service: switch.turn_off
     data:
