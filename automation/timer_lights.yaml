@@ -307,6 +307,9 @@
       data:
         entity_id: light.master_bedroom_lamps
         brightness: 128
+    - service: switch.turn_on
+      data:
+        entity_id: switch.master_bedroom_lamps_led
 - alias: Timer Lights Off Master
   trigger:
   - platform: event
@@ -334,9 +337,12 @@
         entity_id: alarm_control_panel.area_001
         state: armed_home
   action:
-    - service: light.turn_off
-      data:
-        entity_id: light.master_bedroom_lamps
+  - service: light.turn_off
+    data:
+      entity_id: light.master_bedroom_lamps
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bedroom_lamps_led
 - alias: Timer Lights On Outside
   trigger:
   - platform: sun
@@ -399,6 +405,21 @@
   - service: light.turn_on
     data:
       entity_id: light.house_leds_rgb
+  - service: switch.turn_on
+    data:
+      entity_id: switch.guest_bathroom_leds_power
+  - service: switch.turn_on
+    data:
+      entity_id: switch.den_leds_power
+  - service: switch.turn_on
+    data:
+      entity_id: switch.kitchen_leds_power
+  - service: switch.turn_on
+    data:
+      entity_id: switch.master_bathroom_leds_power
+  - service: switch.turn_on
+    data:
+      entity_id: switch.master_bathroom_leds_power
 - alias: Timer LEDs Off House Away
   trigger:
   - platform: state
@@ -409,6 +430,21 @@
   - service: light.turn_off
     data:
       entity_id: light.house_leds_rgb
+  - service: switch.turn_off
+    data:
+      entity_id: switch.guest_bathroom_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.den_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.kitchen_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bathroom_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bathroom_leds_power
 - alias: Timer LEDs Off House
   trigger:
   - platform: event
@@ -433,6 +469,15 @@
   - service: light.turn_off
     data:
       entity_id: light.guest_bathroom_led_rgb
+  - service: switch.turn_off
+    data:
+      entity_id: switch.guest_bathroom_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.den_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.kitchen_leds_power
 - alias: Timer LEDs Off Master
   trigger:
   - platform: state
@@ -466,6 +511,12 @@
   - service: light.turn_off
     data:
       entity_id: light.master_suite_leds_rgb
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bathroom_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bathroom_leds_power
 - alias: Master Suite Off if Sleeping
   trigger:
   - platform: state
@@ -489,3 +540,12 @@
   - service: light.turn_off
     data:
       entity_id: light.master_suite_leds_rgb
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bathroom_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bathroom_leds_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bedroom_lamps_led
