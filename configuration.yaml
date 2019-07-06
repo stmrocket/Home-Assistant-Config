@@ -524,6 +524,10 @@ input_boolean:
     name: Timer Lights
     initial: off
     icon: mdi:lightbulb
+  goodnight_trigger:
+    name: Alexa Good Night Trigger
+    initial: off
+    icon: mdi:amazon-alexa
 light:
   - platform: mqtt
     schema: json
