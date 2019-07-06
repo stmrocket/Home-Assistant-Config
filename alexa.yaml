@@ -9,6 +9,17 @@ smart_home:
       - light.den_led_rgb
       - light.guest_bathroom_led_rgb
       - light.house_leds_rgb
+      - switch.nuvo_zone_1_power
+      - switch.nuvo_zone_2_power
+      - switch.nuvo_zone_3_power
+      - switch.nuvo_zone_4_power
+      - switch.nuvo_zone_5_power
+      - switch.nuvo_zone_6_power
+      - switch.nuvo_zone_7_power
+      - switch.nuvo_zone_9_power
+      - switch.nuvo_zone_10_power
+      - switch.nuvo_zone_11_power
+      - switch.nuvo_zone_12_power
 
     exclude_domains:
       - automation
@@ -54,3 +65,25 @@ smart_home:
       description: Guest Bathroom LEDs
     light.house_leds_rgb:
       name: House LEDs
+    switch.nuvo_zone_1_power:
+      name: Office Stereo
+    switch.nuvo_zone_2_power:
+      name: Guest Stereo
+    switch.nuvo_zone_3_power:
+      name: Server Room Stereo
+    switch.nuvo_zone_4_power:
+      name: Bedroom Stereo
+    switch.nuvo_zone_5_power:
+      name: Bathroom Stereo
+    switch.nuvo_zone_6_power:
+      name: Garage Stereo
+    switch.nuvo_zone_7_power:
+      name: Den Stereo
+    switch.nuvo_zone_9_power:
+      name: Ham Shack Stereo
+    switch.nuvo_zone_10_power:
+      name: Kitchen Stereo
+    switch.nuvo_zone_11_power:
+      name: Back Porch Stereo
+    switch.nuvo_zone_12_power:
+      name: Guest Bathroom Stereo

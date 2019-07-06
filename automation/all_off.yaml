@@ -1,0 +1,262 @@
+- alias: All Off NuVo Away
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: arming
+    to: armed_away
+  action:
+  - service: mqtt.publish
+    data:
+      topic: nuvo/command/set/system/alloff
+- alias: All Off Main
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: arming
+    to: armed_away
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_home
+    to: armed_night
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: disarmed
+    to: armed_night
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.breakfast_room_light
+  - service: swtich.turn_off
+    data:
+      entity_id: switch.den_fan_1
+  - service: switch.turn_off
+    data:
+      entity_id: switch.den_fireplace
+  - service: light.turn_off
+    data:
+      entity_id: light.entry_light
+  - service: light.turn_off
+    data:
+      entity_id: light.foyer_light
+  - service: light.turn_off
+    data:
+      entity_id: light.attic_lights
+  - service: light.turn_off
+    data:
+      entity_id: light.kitchen_sink_light
+  - service: light.turn_off
+    data:
+      entity_id: light.kitchen_light_1
+  - service: light.turn_off
+    data:
+      entity_id: light.pantry_light
+  - service: light.turn_off
+    data:
+      entity_id: light.office_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.office_fan_1
+  - service: switch.turn_off
+    data:
+      entity_id: switch.server_room_fan
+  - service: light.turn_off
+    data:
+      entity_id: light.server_room_light
+  - service: light.turn_off
+    data:
+      entity_id: light.utility_room_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.back_porch_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.back_porch_fan_high
+  - service: light.turn_off
+    data:
+      entity_id: light.den_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.garage_lighting
+  - service: switch.turn_off
+    data:
+      entity_id: switch.garage_fan
+  - service: switch.turn_off
+    data:
+      entity_id: switch.guest_closet_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.server_closet_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_closet_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.shed_inside_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.lava_lamp
+  - service: switch.turn_off
+    data:
+      entity_id: switch.dining_room_light
+  - service: switch.turn_on
+    data:
+      entity_id: switch.dining_room_fan_off
+- alias: All Off Away
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: arming
+    to: armed_away
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.guest_bedroom_light
+  - service: light.turn_off
+    data:
+      entity_id: light.guest_bathroom_light
+  - service: light.turn_off
+    data:
+      entity_id: light.master_bedroom_light
+  - service: light.turn_off
+    data:
+      entity_id: light.master_shower_light_1
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bath_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bath_fan
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_toilet_fan
+  - service: switch.turn_off
+    data:
+      entity_id: switch.guest_bathroom_fan
+  - service: light.turn_off
+    data:
+      entity_id: light.master_bedroom_lamps
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bedroom_lamps_led
+  - service: light.turn_off
+    data:
+      entity_id: light.hallway_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.guest_bedroom_fan
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bedroom_fan_1
+- alias: All Off Timer Lights
+  trigger:
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.all_off_main
+  condition:
+  - condition: state
+    entity_id: input_boolean.timer_lights
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.breakfast_room_lamp
+  - service: switch.turn_off
+    data:
+      entity_id: switch.server_room_lamp
+  - service: switch.turn_off
+    data:
+      entity_id: switch.office_lamp
+  - service: switch.turn_off
+    data:
+      entity_id: switch.den_lamps
+  - service: switch.turn_off
+    data:
+      entity_id: switch.den_table_lamp
+  - service: switch.turn_off
+    data:
+      entity_id: switch.dining_room_lamp
+  - service: light.turn_off
+    data:
+      entity_id: light.entry_lamp
+  - service: switch.turn_off
+    data:
+      entity_id: switch.outside_lights
+  - service: switch.turn_off
+    data:
+      entity_id: switch.shed_porch_light
+- alias: All Off Guest Lights
+  trigger:
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.all_off_main
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.guest_bedroom_light
+  - service: light.turn_off
+    data:
+      entity_id: light.guest_bathroom_light
+  - service: light.turn_off
+    data:
+      entity_id: light.hallway_light
+  - service: switch.turn_off
+    data:
+      entity_id: switch.guest_bedroom_fan
+  - service: switch.turn_off
+    data:
+      entity_id: switch.guest_bathroom_fan
+- alias: All Off Guest NuVo
+  trigger:
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.all_off_main
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_2_power
+- alias: All Off NuVo Night
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: disarmed
+    to: armed_night
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_home
+    to: armed_night
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_1_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_3_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_6_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_7_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_9_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_10_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_11_power
+  - service: switch.turn_off
+    data:
+      entity_id: switch.nuvo_zone_12_power
