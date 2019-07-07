@@ -528,6 +528,10 @@ input_boolean:
     name: Alexa Good Night Trigger
     initial: off
     icon: mdi:amazon-alexa
+  bedtime_trigger:
+    name: Alexa Bedtime Trigger
+    initial: off
+    icon: mdi:amazon-alexa
 light:
   - platform: mqtt
     schema: json
