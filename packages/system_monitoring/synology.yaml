@@ -1,0 +1,14 @@
+sensor:
+- platform: synologydsm
+  host: !secret nas_host
+  username: !secret nas_user
+  password: !secret nas_pass
+  scan_interval: 10
+  monitored_conditions:
+      - cpu_total_load
+      - memory_real_usage
+      - network_up
+      - network_down
+      - volume_status
+      - volume_percentage_used
+      - volume_disk_temp_avg
