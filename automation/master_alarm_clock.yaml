@@ -10,10 +10,10 @@
         state: armed_night
       - condition: state
         entity_id: switch.master_bedroom_fan_c
-        state: on
+        state: 'on'
       - condition: state
         entity_id: calendar.work_holidays
-        state: off
+        state: 'off'
       - condition: time
         weekday:
           - mon
@@ -38,10 +38,10 @@
         state: armed_night
       - condition: state
         entity_id: switch.master_bedroom_fan_c
-        state: on
+        state: 'on'
       - condition: state
         entity_id: calendar.work_holidays
-        state: off
+        state: 'off'
       - condition: time
         weekday:
           - mon
@@ -91,10 +91,10 @@
         state: armed_night
       - condition: state
         entity_id: switch.master_bedroom_fan_c
-        state: on
+        state: 'on'
       - condition: state
         entity_id: calendar.work_holidays
-        state: off
+        state: 'off'
       - condition: time
         weekday:
           - mon
