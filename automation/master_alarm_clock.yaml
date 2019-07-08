@@ -1,0 +1,103 @@
+- alias: Master Wake 0450
+  trigger:
+  - platform: time
+    at: '04:50:00'
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.area_001
+    state: armed_night
+  - condition: state
+    entity_id: switch.master_bedroom_fan_c
+    state: on
+  - condition: state
+    entity_id: calendar.work_holidays
+    state: off
+  - condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.master_bedroom_lamps
+      brightness: 26
+- alias: Master Wake 0459
+  trigger:
+  - platform: time
+    at: '04:59:00'
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.area_001
+    state: armed_night
+  - condition: state
+    entity_id: switch.master_bedroom_fan_c
+    state: on
+  - condition: state
+    entity_id: calendar.work_holidays
+    state: off
+  - condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.master_bedroom_lamps
+      brightness: 128
+  - service: mqtt.publish
+    data:
+      topic: nuvo/command/set/zone/vol
+      payload: 4,60
+  - service: mqtt.publish
+    data:
+      topic: nuvo/command/set/zone/src
+      payload: 4,5
+  - service: mqtt.publish
+    data:
+      topic: nuvo/command/set/zone/src
+      payload: 5,5
+  - service: mqtt.publish
+    data:
+      topic: nuvo/command/set/zone/src
+      payload: 10,5
+  - service: switch.turn_on
+    data:
+      entity_id: switch.nuvo_zone_4_power
+  - service: switch.turn_on
+    data:
+      entity_id: switch.nuvo_zone_5_power
+  - service: switch.turn_on
+    data:
+      entity_id: switch.nuvo_zone_10_power
+- alias: Master Wake 0508
+  trigger:
+  - platform: time
+    at: '05:08:00'
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.area_001
+    state: armed_night
+  - condition: state
+    entity_id: switch.master_bedroom_fan_c
+    state: on
+  - condition: state
+    entity_id: calendar.work_holidays
+    state: off
+  - condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.master_bedroom_light
+      brightness: 255
