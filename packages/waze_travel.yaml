@@ -1,13 +1,18 @@
 sensor:
 - platform: waze_travel_time
   name: "To Work"
-  origin: device_tracker.shawn_n6
+  origin: sensor.shawn_position
   destination: zone.work
-  excl_filter: "sam"
+  excl_filter: 'sam'
   region: 'US'
 - platform: waze_travel_time
   name: "To Home"
-  origin: device_tracker.shawn_n6
+  origin: sensor.shawn_position
   destination: zone.home
-  excl_filter: "sam"
+  excl_filter: 'sam'
   region: 'US'
+- platform: template
+  sensors:
+    shawn_position:
+      friendly_name: 'Shawn Positioin'
+      value_template: '{{ states.device_tracker.shawn_n6.attributes.longitude,states.device_tracker.shawn_n6.attributes.latitude }}'
