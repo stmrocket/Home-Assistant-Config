@@ -58,6 +58,8 @@
     data:
       topic: nuvo/command/set/zone/vol
       payload: 4,60
+  - delay:
+      milliseconds: 500
   - service: mqtt.publish
     data:
       topic: nuvo/command/set/zone/src
@@ -65,9 +67,13 @@
   - service: switch.turn_on
     data:
       entity_id: switch.nuvo_zone_4_power
+  - delay:
+      milliseconds: 500
   - service: switch.turn_on
     data:
       entity_id: switch.nuvo_zone_5_power
+  - delay:
+      milliseconds: 500
   - service: switch.turn_on
     data:
       entity_id: switch.nuvo_zone_10_power
