@@ -642,7 +642,11 @@ camera:
 
 #Device Tracking
 
-#device_tracker:
+device_tracker:
+  - platform: aprs
+    username: !secret my_callsign
+    callsigns:
+      - !secret truck_callsign
 #  - platform: unifi
 #    host: !secret unifi_host
 #    port: !secret unifi_port
