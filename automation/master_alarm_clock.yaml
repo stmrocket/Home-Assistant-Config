@@ -71,14 +71,6 @@
   - service: switch.turn_on
     data:
       entity_id: switch.nuvo_zone_10_power
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/zone/src
-      payload: 5,5
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/zone/src
-      payload: 10,5
 - alias: Master Wake 0508
   trigger:
   - platform: time
