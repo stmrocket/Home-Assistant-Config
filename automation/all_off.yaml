@@ -179,12 +179,6 @@
   - service: light.turn_off
     data:
       entity_id: light.entry_lamp
-  - service: switch.turn_off
-    data:
-      entity_id: switch.outside_lights
-  - service: switch.turn_off
-    data:
-      entity_id: switch.shed_porch_light
 - alias: All Off Guest Lights
   trigger:
   - platform: event
@@ -260,3 +254,20 @@
   - service: switch.turn_off
     data:
       entity_id: switch.nuvo_zone_12_power
+- alias: All Off Outside Lights
+  trigger:
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.all_off_main
+  condition:
+  - condition: state
+    entity_id: input_boolean.outside_timer_lights
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.outside_lights
+  - service: switch.turn_off
+    data:
+      entity_id: switch.shed_porch_light

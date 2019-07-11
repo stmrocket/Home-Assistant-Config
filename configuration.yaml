@@ -518,11 +518,9 @@ input_boolean:
     icon: mdi:blinds
   guest_mode:
     name: Guest Mode
-    initial: off
     icon: mdi:timer
   timer_lights:
     name: Timer Lights
-    initial: off
     icon: mdi:lightbulb
   goodnight_trigger:
     name: Alexa Good Night Trigger
@@ -532,6 +530,10 @@ input_boolean:
     name: Alexa Bedtime Trigger
     initial: off
     icon: mdi:amazon-alexa
+  outside_timer_lights:
+    name: Outside Timer Lights
+    icon: mdi:timer
+    
 light:
   - platform: mqtt
     schema: json
