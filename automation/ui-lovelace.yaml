@@ -1,0 +1,418 @@
+title: ''
+
+resources:
+  - type: module
+    url: /local/custom_ui/dark-sky-weather-card.js
+  - type: js
+    url: /local/plugins/card-tools.js
+  - type: js
+    url: /local/plugins/layout-card.js
+  - type: module
+    url: >-
+      /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1
+title: Home
+views:
+  - badges: []
+    cards:
+      - cards:
+          - cards:
+              - entities:
+                  - entity: sensor.dark_sky_summary
+                    name: Current Conditions
+                  - entity: sensor.outside_temperature_owfs
+                    name: Temperature
+                  - entity: sensor.emoncms_tcc_outside_humidity
+                    icon: 'mdi:water-percent'
+                    name: Humidity
+                  - entity: sensor.emoncms_daily_rainfall
+                    icon: 'mdi:weather-rainy'
+                    name: Today's Rain
+                  - entity: sensor.emoncms_rain_rate
+                    icon: 'mdi:weather-pouring'
+                    name: Rain Rate
+                  - entity: sensor.dark_sky_visibility
+                    name: Visibility
+                  - entity: sensor.dark_sky_wind_speed
+                    name: Wind Speed
+                  - entity: sensor.dark_sky_wind_bearing
+                    name: Wind Direction
+                  - entity: sensor.dark_sky_pressure
+                    name: pressure
+                  - entity: sensor.dark_sky_uv_index
+                    name: UV Index
+                show_header_toggle: false
+                title: Weather
+                type: entities
+              - entities:
+                  - entity: sensor.litter_robot_april_s_carnival_status
+                    name: Current Status
+                  - entity: sensor.litter_robot_april_s_carnival_waste
+                    name: Drawer Level
+                show_header_toggle: false
+                title: April's Carnival
+                type: entities
+              - break
+              - entities:
+                  - entity: sensor.emoncms_power
+                    icon: 'mdi:flash'
+                    name: Current Power Usage
+                  - entity: sensor.emoncms_power_kwhd
+                    icon: 'mdi:gauge'
+                    name: Today's Energy Consumption
+                show_header_toggle: false
+                title: Energy
+                type: entities
+              - entities:
+                  - entity: lock.front_door
+                  - entity: sensor.lock_front_door_battery
+                    icon: 'mdi:battery-80'
+                  - entity: lock.garage_entry
+                  - entity: sensor.lock_garage_entry_battery
+                    icon: 'mdi:battery-80'
+                  - entity: lock.back_door
+                  - entity: sensor.lock_back_door_battery
+                    icon: 'mdi:battery-80'
+                show_header_toggle: false
+                title: Lock
+                type: entities
+              - entities:
+                  - entity: sensor.to_work
+                  - entity: sensor.to_home
+                show_header_toggle: false
+                title: Drive Time
+                type: entities
+              - break
+              - entities:
+                  - entity: switch.roomba
+                  - entity: sensor.roomba_battery
+                  - entity: sensor.roomba_status
+                  - entity: input_boolean.roomba_auto
+                show_header_toggle: false
+                title: Roomba
+                type: entities
+              - columns: 4
+                entities:
+                  - entity: camera.front_porch
+                  - entity: camera.east_front
+                  - entity: camera.west_front
+                  - entity: camera.east_side
+                  - entity: camera.west_side
+                  - entity: camera.back_yard
+                  - entity: camera.back_porch
+                  - entity: camera.garage
+                  - entity: camera.den
+                  - entity: camera.kitchen_fisheye
+                  - entity: camera.office
+                  - entity: camera.master_bedroom
+                show_name: true
+                show_state: false
+                type: glance
+              - entities:
+                  - entity: binary_sensor.git_update_ready
+                  - entity: script.update_config_restart
+                    icon: 'mdi:github-circle'
+                    name: Pull/Restart
+                  - entity: script.update_config_resload_automations
+                    icon: 'mdi:github-circle'
+                    name: Pull/Reload
+                show_state: false
+                type: glance
+              - break
+              - entities:
+                  - entity: sensor.washer_state
+                  - entity: sensor.dryer_state
+                show_header_toggle: false
+                title: Laundry Status
+                type: entities
+              - entity: alarm_control_panel.area_001
+                name: House Alarm
+                states:
+                  - arm_home
+                  - arm_away
+                  - arm_night
+                type: alarm-panel
+            layout: vertical
+            type: 'custom:layout-card'
+          - exceptions:
+              - conditions:
+                  user_agent: Android
+                config:
+                  hide_tabs: 4
+            options: clock
+            type: 'custom:compact-custom-header'
+        type: vertical-stack
+    icon: 'mdi:home'
+    panel: true
+    path: default_view
+    title: Home
+  - badges: []
+    cards:
+      - exceptions:
+          - conditions:
+              user_agent: Android
+            config:
+              hide_tabs: 4
+        options: clock
+        type: 'custom:compact-custom-header'
+      - columns: 3
+        entities:
+          - entity: binary_sensor.hvac_heat
+            name: Heat
+          - entity: binary_sensor.hvac_cool
+            name: Cool
+          - entity: binary_sensor.hvac_fan
+            name: Fan
+          - entity: binary_sensor.hvac_zone_1
+            name: Living Area
+          - entity: binary_sensor.hvac_zone_2
+            name: Front Rooms
+          - entity: binary_sensor.hvac_zone_3
+            name: Master Suite
+        show_state: false
+        type: glance
+      - entities:
+          - entity: sensor.hvac_supply_temperature_owfs
+            name: Supply Temperature
+          - entity: sensor.plenum_hvac_return_temperature_owfs
+            name: Return Plenum Temperature
+          - entity: sensor.front_hvac_return_temperature_owfs
+            name: Front Hallway Return Temperature
+          - entity: sensor.back_hvac_return_temperature_owfs
+            name: Master Suite Return Temperature
+          - entity: sensor.server_room_hvac_return_temperature_owfs
+            name: Server Closet Return Temperature
+          - entity: sensor.emoncms_hvac_daily_system_runtime
+            icon: 'mdi:timer'
+            name: Total Runtime
+          - entity: sensor.emoncms_hvac_daily_heat_runtime
+            icon: 'mdi:fire'
+            name: Heat Runtime
+          - entity: sensor.emoncms_hvac_daily_cool_runtime
+            icon: 'mdi:snowflake'
+            name: Cool Runtime
+          - entity: sensor.emoncms_hvac_daily_fan_runtime
+            icon: 'mdi:fan'
+            name: Fan Runtime
+        show_header_toggle: false
+        title: System
+        type: entities
+      - entities:
+          - entity: sensor.emoncms_tcc_front_rooms_temperature
+            name: Temperature
+          - entity: sensor.emoncms_tcc_front_rooms_humidity
+            icon: 'mdi:water-percent'
+            name: Humidity
+          - entity: sensor.emoncms_hvac_zone_2_heat_setpoint
+            icon: 'mdi:fire'
+            name: Heat Setpoint
+          - entity: sensor.emoncms_hvac_zone_2_cool_setpoint
+            icon: 'mdi:snowflake'
+            name: Cool Setpoint
+          - entity: sensor.emoncms_hvac_daily_zone_2_runtime
+            icon: 'mdi:timer'
+            name: Total Runtime
+          - entity: sensor.emoncms_hvac_daily_zone_2_heat_runtime
+            icon: 'mdi:fire'
+            name: Heat Runtime
+          - entity: sensor.emoncms_hvac_zone_2_daily_cool_runtime
+            icon: 'mdi:snowflake'
+            name: Cool Runtime
+          - entity: sensor.emoncms_hvac_daily_zone_2_fan_runtime
+            icon: 'mdi:fan'
+            name: Fan Runtime
+        show_header_toggle: false
+        title: Front Rooms
+        type: entities
+      - entities:
+          - entity: sensor.emoncms_tcc_living_area_temperature
+            name: Temperature
+          - entity: sensor.emoncms_tcc_living_area_humidity
+            icon: 'mdi:water-percent'
+            name: Humidity
+          - entity: sensor.emoncms_hvac_zone_1_heat_setpoint
+            icon: 'mdi:fire'
+            name: Heat Setpoint
+          - entity: sensor.emoncms_hvac_zone_1_cool_setpoint
+            icon: 'mdi:snowflake'
+            name: Cool Setpoint
+          - entity: sensor.emoncms_hvac_daily_zone_1_runtime
+            icon: 'mdi:timer'
+            name: Total Runtime
+          - entity: sensor.emoncms_hvac_daily_zone_1_heat_runtime
+            icon: 'mdi:fire'
+            name: Heat Runtime
+          - entity: sensor.emoncms_hvac_daily_zone_1_cool_runtime
+            icon: 'mdi:snowflake'
+            name: Cool Runtime
+          - entity: sensor.emoncms_hvac_daily_zone_1_fan_runtime
+            icon: 'mdi:fan'
+            name: Fan Runtime
+        show_header_toggle: false
+        title: Living Areas
+        type: entities
+      - entities:
+          - entity: sensor.emoncms_tcc_master_suite_temperature
+            name: Temperature
+          - entity: sensor.emoncms_tcc_master_suite_humidity
+            icon: 'mdi:water-percent'
+            name: Humidity
+          - entity: sensor.emoncms_hvac_zone_3_heat_setpoint
+            icon: 'mdi:fire'
+            name: Heat Setpoint
+          - entity: sensor.emoncms_hvac_zone_3_cool_setpoint
+            icon: 'mdi:snowflake'
+            name: Cool Setpoint
+          - entity: sensor.emoncms_hvac_daily_zone_3_runtime
+            icon: 'mdi:timer'
+            name: Total Runtime
+          - entity: sensor.emoncms_hvac_daily_zone_3_heat_runtime
+            icon: 'mdi:fire'
+            name: Heat Runtime
+          - entity: sensor.emoncms_hvac_daily_zone_3_cool_runtime
+            icon: 'mdi:snowflake'
+            name: Cool Runtime
+          - entity: sensor.emoncms_hvac_daily_zone_3_fan_runtime
+            icon: 'mdi:fan'
+            name: Fan Runtime
+        show_header_toggle: false
+        title: Master Suite
+        type: entities
+      - columns: 4
+        entities:
+          - entity: sensor.attic_temperature_owfs
+            name: Attic
+          - entity: sensor.den_temperature_owfs
+            name: Den
+          - entity: sensor.dining_room_temperature_owfs
+            name: Dining
+          - entity: sensor.front_hall_temperature_owfs
+            name: Hall
+          - entity: sensor.garage_temperature_owfs
+            name: Garage
+          - entity: sensor.guest_bedroom_temperature_owfs
+            name: Guest
+          - entity: sensor.master_bedroom_temperature_owfs
+            name: Master
+          - entity: sensor.office_temperature_owfs
+            name: Office
+          - entity: sensor.server_room_temperature_owfs
+            name: Server
+          - entity: sensor.outside_temperature_owfs
+            name: Outside
+          - entity: sensor.shed_temperature_owfs
+            name: Shed
+          - entity: sensor.work_room_temperature_owfs
+            name: Work
+        show_icon: false
+        type: glance
+    icon: 'mdi:thermostat'
+    title: HVAC
+  - badges: []
+    cards:
+      - exceptions:
+          - conditions:
+              user_agent: Android
+            config:
+              hide_tabs: 4
+        options: clock
+        type: 'custom:compact-custom-header'
+      - entities:
+          - entity: light.utility_room_light
+          - entity: switch.utility_room_vent_fan
+          - entity: lock.garage_entry
+          - entity: binary_sensor.utility_leak_dry
+            name: Leak Detector
+          - entity: sensor.emoncms_dryer_vent_temperature
+            name: Vent Temperature
+        show_header_toggle: false
+        title: Laundry Room
+        type: entities
+      - entities:
+          - entity: sensor.washer_state
+          - entity: sensor.washer_voltage
+          - entity: sensor.washer_watts
+          - entity: sensor.washer_amps
+          - entity: sensor.washer_energy_today
+            icon: 'mdi:gauge'
+          - entity: sensor.washer_energy_yesterday
+            icon: 'mdi:gauge'
+          - entity: sensor.washer_signal
+            icon: 'mdi:wifi'
+        show_header_toggle: false
+        title: Washer
+        type: entities
+      - entities:
+          - entity: sensor.dryer_state
+          - entity: sensor.dryer_voltage
+          - entity: sensor.dryer_watts
+          - entity: sensor.dryer_amps
+          - entity: sensor.dryer_energy_today
+            icon: 'mdi:gauge'
+          - entity: sensor.dryer_energy_yesterday
+            icon: 'mdi:gauge'
+          - entity: sensor.dryer_signal
+            icon: 'mdi:wifi'
+        show_header_toggle: false
+        title: Dryer
+        type: entities
+    icon: 'mdi:washing-machine'
+    title: Laundry
+  - badges: []
+    cards:
+      - exceptions:
+          - conditions:
+              user_agent: Android
+            config:
+              hide_tabs: 4
+        options: clock
+        type: 'custom:compact-custom-header'
+      - entities:
+          - entity: cover.house_blinds
+          - entity: cover.office_blinds
+          - entity: cover.left_office_blind
+          - entity: cover.center_office_blind
+          - entity: cover.right_office_blind
+        show_header_toggle: false
+        title: Office
+        type: entities
+    icon: 'mdi:blinds'
+    title: Blinds
+  - cards:
+      - exceptions:
+          - conditions:
+              user_agent: Android
+            config:
+              hide_tabs: 4
+        options: clock
+        type: 'custom:compact-custom-header'
+      - entities:
+          - entity: input_select.gmusic_player_speakers
+          - entity: input_select.gmusic_player_source
+          - entity: input_select.gmusic_player_playlist
+          - entity: input_select.gmusic_player_station
+        show_header_toggle: false
+        title: Google Music
+        type: entities
+      - entity: media_player.gmusic_player
+        type: media-control
+      - entity: media_player.whole_house_audio
+        type: media-control
+    icon: 'mdi:music'
+  - badges: []
+    cards:
+      - exceptions:
+          - conditions:
+              user_agent: Android
+            config:
+              hide_tabs: 4
+        options: clock
+        type: 'custom:compact-custom-header'
+      - entities:
+          - entity: input_boolean.zigbee_permit_join
+          - entity: timer.zigbee_permit_join
+          - entity: sensor.bridge_state
+        show_header_toggle: false
+        title: Zigbee
+        type: entities
+    icon: 'mdi:settings'
+    title: ''
