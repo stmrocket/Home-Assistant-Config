@@ -351,7 +351,7 @@
   action:
   - service: input_boolean.turn_on
     data:
-      entity_id: input.boolean.outside_timer_lights
+      entity_id: input_boolean.outside_timer_lights
   - service: switch.turn_on
     data:
       entity_id: switch.outside_lights
@@ -366,7 +366,7 @@
   action:
   - service: input_boolean.turn_off
     data:
-      entity_id: input.boolean.outside_timer_lights
+      entity_id: input_boolean.outside_timer_lights
   - service: switch.turn_off
     data:
       entity_id: switch.outside_lights
