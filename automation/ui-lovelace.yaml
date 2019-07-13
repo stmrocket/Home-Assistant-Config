@@ -1,15 +1,54 @@
 title: ''
 
 resources:
-  - type: module
-    url: /local/custom_ui/dark-sky-weather-card.js
-  - type: js
-    url: /local/plugins/card-tools.js
-  - type: js
-    url: /local/plugins/layout-card.js
-  - type: module
-    url: >-
-      /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.0.1
+  - url: /local/custom_ui/aftership-card.js
+    type: module
+  - url: /local/custom_ui/bar-card.js?v=1.0.0
+    type: js
+  - url: /local/custom_ui/bignumber-card.js?v=1
+    type: js
+  - url: /local/custom_ui/button-card.js
+    type: module
+  - url: /local/custom_ui/card-modder.js?
+    type: module
+  - url: /local/custom_ui/card-tools.js
+    type: js
+  - url: /local/custom_ui/circle-sensor-card.js
+    type: module
+  - url: /local/custom_ui/clock-card.js
+    type: js
+  - url: /local/custom_ui/custom-fan-card.js
+    type: module
+  - url: /local/custom_ui/compact-custom-header/compact-custom-header.js
+    type: module
+  - url: /local/custom_ui/dark-sky-weather-card.js?
+    type: module
+  - url: /local/custom_ui/fold-entity-row.js?track=true
+    type: js
+  - url: /local/custom_ui/gap-card.js?track=true
+    type: js
+  - url: /local/custom_ui/mini-graph-card-bundle.js
+    type: module
+  - url: /local/custom_ui/mini-media-player-bundle.js
+    type: module
+  - url: /local/custom_ui/moment.js
+    type: js
+  - url: /local/custom_ui/monster-card.js
+    type: js
+  - url: /local/custom_ui/slider-entity-row.js
+    type: js
+  - url: /local/custom_ui/surveillance-card.js
+    type: module
+  - url: /local/custom_ui/text-divider-row.js
+    type: module
+  - url: /local/custom_ui/tracker-card.js
+    type: js
+  - url: /local/custom_ui/upcoming-media-card.js?v=0.1.2
+    type: js
+  - url: /local/custom_ui/vertical-stack-in-card.js?v=0.1.2
+    type: js
+  - url: /local/custom_ui/waze-card.js
+    type: js
 title: Home
 views:
   - badges: []

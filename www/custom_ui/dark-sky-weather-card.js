@@ -457,7 +457,6 @@ style() {
         .clear {
         clear: both;
       }
-
       .card {
         margin: auto;
         padding-top: 2em;
@@ -466,13 +465,11 @@ style() {
         padding-right: 1em;
         position: relative;
       }
-
       .ha-icon {
         height: 18px;
         margin-right: 5px;
         color: var(--paper-item-icon-color);
       }
-
       .line {
         margin-top: ${separatorTopMargin};
         margin-left: 1em;
@@ -487,7 +484,6 @@ style() {
         right: ${tempRightPos};
         margin-top: ${tempTopMargin};
       }
-
       .tempc {
         font-weight: ${tempFontWeight};
         font-size: 1.5em;
@@ -498,7 +494,6 @@ style() {
         margin-top: ${tempUOMTopMargin};
         margin-right: ${tempUOMRightMargin};
       }
-
       .apparent {
         color: var(--primary-text-color);
         position: absolute;
@@ -506,7 +501,6 @@ style() {
         margin-top: ${apparentTopMargin};
         margin-right: ${apparentRightMargin};
       }
-
       .currentText {
         font-size: ${currentTextFontSize};
         color: var(--secondary-text-color);
@@ -519,7 +513,6 @@ style() {
         font-weight: 400;
         color: var(--primary-text-color);
       }
-
       .variations {
         display: flex;
         flex-flow: row wrap;
@@ -530,17 +523,14 @@ style() {
         padding: 0.2em;
         margin-top: ${currentDataTopMargin};
       }
-
       .unit {
         font-size: 0.8em;
       }
-
       .forecast {
         width: 100%;
         margin: 0 auto;
         height: 9em;
       }
-
       .day {
         display: block;
         width: 20%;
@@ -552,28 +542,22 @@ style() {
         box-sizing: border-box;
         margin-top: 1em;
       }
-
       .dayname {
         text-transform: uppercase;
       }
-
       .forecast .day:first-child {
         margin-left: 20;
       }
-
       .forecast .day:nth-last-child(1) {
         border-right: none;
         margin-right: 0;
       }
-
       .highTemp {
         font-weight: bold;
       }
-
       .lowTemp {
         color: var(--secondary-text-color);
       }
-
       .icon.bigger {
         width: 10em;
         height: 10em;
@@ -581,7 +565,6 @@ style() {
         position: absolute;
         left: ${largeIconLeftPos};
       }
-
       .icon {
         width: 50px;
         height: 50px;
@@ -593,7 +576,6 @@ style() {
         background-repeat: no-repeat;
         text-indent: -9999px;
       }
-
       .weather {
         font-weight: 300;
         font-size: 1.5em;
@@ -610,7 +592,6 @@ style() {
         position: relative;
         display: inline-block;
       }
-
       .fcasttooltip .fcasttooltiptext {
         visibility: hidden;
         width: ${tooltipWidth}px;
@@ -622,7 +603,6 @@ style() {
         border-color: ${tooltipBorderColor};
         border-width: ${tooltipBorderWidth}px;
         padding: 5px 0;
-
         /* Position the tooltip */
         position: absolute;
         z-index: 1;
@@ -630,7 +610,6 @@ style() {
         left: 0%; 
         margin-left: ${tooltipLeftOffset}px;
       }
-
       .fcasttooltip .fcasttooltiptext:after {
         content: "";
         position: absolute;
@@ -641,7 +620,6 @@ style() {
         border-style: solid;
         border-color: ${tooltipBorderColor} transparent transparent transparent;
       }
-
       .fcasttooltip:hover .fcasttooltiptext {
         visibility: ${tooltipVisible};
       }
