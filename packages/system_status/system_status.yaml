@@ -72,6 +72,22 @@ device_tracker:
       master_roku: !secret master_roku_ip
       server_ups: !secret server_ups_ip
 
+####################################################
+#                                                  #
+#               Device Track - Ping                #
+#                                                  #
+####################################################
+
+  - platform: nmap_tracker
+    hosts:
+      - !secret alexa_den_ip
+      - !secret alexa_master_ip
+      - !secret alexa_office_ip
+      - !secret alexa_guest_ip
+      - !secret alexa_server_ip
+
+
+
 #################################################################
 #                                                               #
 #                           Group                               #
