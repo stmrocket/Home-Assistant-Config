@@ -798,6 +798,13 @@ sensor:
         unit_of_measurement: 'MBps'
         entity_id: sensor.erl_wan_out_stats_mean
       
+      wan_ping:
+          friendly_name: 'WAN Ping'
+          entity_id:
+            - binary_sensor.wan_ping
+          value_template: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2) }}"
+          unit_of_measurement: "ms"
+
       core_router_state:
         friendly_name: Core Router
         entity_id: device_tracker.core_router
