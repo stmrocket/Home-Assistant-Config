@@ -547,18 +547,7 @@ sensor:
 
   - platform: dnsip
     name: My IP
-    resolver: 8.8.8.8
-    
-####################################################
-#                                                  #
-#                Sensor - File Size                #
-#                                                  #
-####################################################
-
-  - platform: filesize
-    file_paths:
-      - /config/home-assistant_v2.db
-      - /config/home-assistant.log    
+    resolver: 8.8.8.8 
 
 ####################################################
 #                                                  #
