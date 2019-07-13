@@ -72,6 +72,22 @@ device_tracker:
       master_roku: !secret master_roku_ip
       server_ups: !secret server_ups_ip
 
+####################################################
+#                                                  #
+#               Device Track - Ping                #
+#                                                  #
+####################################################
+
+  - platform: nmap_tracker
+    hosts:
+      - !secret alexa_den_ip
+      - !secret alexa_master_ip
+      - !secret alexa_office_ip
+      - !secret alexa_guest_ip
+      - !secret alexa_server_ip
+
+
+
 #################################################################
 #                                                               #
 #                           Group                               #
@@ -107,6 +123,7 @@ group:
       - binary_sensor.office_printer
       - binary_sensor.shack_printer
       - binary_sensor.server_ups
+      - binary_sensor.redlink
       
   ha devices:
     name: HA Devices
@@ -252,7 +269,7 @@ binary_sensor:
           {% else %}
             mdi:web
           {% endif %}
-      redlink_gateway:
+      redlink:
         friendly_name: Honeywell Redlink Gateway
         device_class: connectivity
         entity_id: device_tracker.redlink
@@ -366,9 +383,9 @@ binary_sensor:
         friendly_name: Server Room UPS
         device_class: connectivity
         entity_id: device_tracker.server_ups
-        value_template: "{{ is_state('server_ups.rpi', 'home') }}"
+        value_template: "{{ is_state('server_ups', 'home') }}"
         icon_template: >-
-          {% if is_state('server_ups.rpi', 'home') %}
+          {% if is_state('server_ups', 'home') %}
             mdi:car-battery
           {% else %}
             mdi:car-battery
@@ -797,6 +814,13 @@ sensor:
         unit_of_measurement: 'MBps'
         entity_id: sensor.erl_wan_out_stats_mean
       
+      wan_ping:
+          friendly_name: 'WAN Ping'
+          entity_id:
+            - binary_sensor.wan_ping
+          value_template: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2) }}"
+          unit_of_measurement: "ms"
+
       core_router_state:
         friendly_name: Core Router
         entity_id: device_tracker.core_router
