@@ -390,6 +390,7 @@ sensor:
   - platform: darksky
     api_key: !secret ds_key
     forecast:
+      - 0
       - 1
       - 2
       - 3
@@ -418,14 +419,6 @@ sensor:
       - daily_summary
       - pressure
       - visibility
-    #update_interval:
-    #  minutes: 5
-    #- platform: fitbit
-  #  clock_format: 12H
-  #  monitored_resources:
-  #    - "activities/calories"
-  #    - "activities/steps"
-  #    - "body/weight"
 
 binary_sensor:
   - platform: template
