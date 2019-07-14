@@ -383,9 +383,9 @@ binary_sensor:
         friendly_name: Server Room UPS
         device_class: connectivity
         entity_id: device_tracker.server_ups
-        value_template: "{{ is_state('server_ups', 'home') }}"
+        value_template: "{{ is_state('device_tracker.server_ups', 'home') }}"
         icon_template: >-
-          {% if is_state('server_ups', 'home') %}
+          {% if is_state('device_tracker.server_ups', 'home') %}
             mdi:car-battery
           {% else %}
             mdi:car-battery
@@ -883,11 +883,11 @@ sensor:
 
       owfs_state:
         friendly_name: OWFS Server
-        entity_id: device_tracker.owfs
+        entity_id: device_tracker.owfs_pi
         value_template: >-
-          {% if is_state('device_tracker.owfs', 'home') %}
+          {% if is_state('device_tracker.owfs_pi', 'home') %}
             100
-          {% elif is_state('device_tracker.owfs', 'not_home') %}
+          {% elif is_state('device_tracker.owfs_pi', 'not_home') %}
             0
           {% endif %}
 
