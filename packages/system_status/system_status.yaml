@@ -46,7 +46,7 @@ device_tracker:
       webserver: !secret webserver_ip
       hdhomerun: !secret hdhr_ip
       musicport: !secret musicport_ip
-      owfs_pi_ip: !secret owfs_pi_ip
+      owfs_pi: !secret owfs_pi_ip
       den_kodi: !secret den_kodi_ip
       master_kodi: !secret master_kodi_ip
       core_switch: !secret core_switch_ip
