@@ -687,24 +687,20 @@ media_player:
   - name: master_kodi
     platform: kodi
     host: !secret master_kodi_host
+
 #Recorder Management
 recorder:
-  exclude:
-    domains:
-      - automation
-      - weblink
-      - updater
-      - sensor
-      - switch
-      - light
-      - media_player
-    entities:
-      - sun.sun
+  db_url: !secret db_url
   include:
     entities:
-      - sensor.roomba_battery
-      - sensor.wan_in_mbps
-      - sensor.wan_out_mbps
+    - sensor.roomba_battery
+    - sensor.wan_in_mbps
+    - sensor.wan_out_mbps
+    - sensor.wan_ping
+    - sensor.aquara_outside_humidity
+    - sensor.aquara_outside_pressure
+    - sensor.aquara_outside_temperature
+      
 #Pooper
 litter_robot:
   username: !secret pooper_user
