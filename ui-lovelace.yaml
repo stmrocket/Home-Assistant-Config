@@ -695,12 +695,109 @@ views:
 
 #############################################################################################################################################
 #                                                                                                                                           # 
-#                                                              VIEW 5 - Configuration                                                       #
+#                                                          VIEW 5 - SYSTEM STATUS                                                          #
+#                                                                                                                                           #
+#############################################################################################################################################
+
+  - id: 5  
+    icon: mdi:settings
+    name: System Status
+    cards:
+
+#################################################################
+#                                                               #
+#                    Compact Header Config                      #
+#                                                               #
+################################################################# 
+
+      - type: "custom:compact-custom-header"   
+        main_config: true
+        background: 'rgba(150, 150, 150, 0.2)'
+        menu: show
+        options: show
+        voice: show
+        notifications: clock
+        clock_format: '24'
+        clock_date: true
+        date_locale: en-us
+        disable: false 
+        
+#################################################################
+#                                                               #
+#                  System Status - Internet Card                #
+#                                                               #
+#################################################################
+
+      - type: vertical-stack
+        cards:
+
+          - type: custom:mini-graph-card
+            entities: 
+              - sensor.wan_ping
+            height: 20
+            line_width: 2
+            font_size: 70
+            hours_to_show: 24
+            points_per_hour: 6
+            icon: mdi:pulse
+            show:
+              #extrema: true
+              fill: true
+              graph: bar
+            color_thresholds:
+              - value: 25
+                color: "#FFFF00"
+              - value: 0
+                color: "#3498db"
+            
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities: 
+                  - sensor.wan_in_mbps
+                height: 50
+                line_width: 2
+                font_size: 70
+                hours_to_show: 24
+                points_per_hour: 60
+                icon: mdi:pulse
+                name: WAN In
+                show:
+                  extrema: true
+                  fill: true
+                color_thresholds:
+                  - value: 0
+                    color: "#FFFF00"
+                  - value: 40
+                    color: "#3498db"
+                    
+              - type: custom:mini-graph-card
+                entities: 
+                  - sensor.wan_out_mbps
+                height: 50
+                line_width: 2
+                font_size: 70
+                hours_to_show: 24
+                points_per_hour: 60
+                icon: mdi:pulse
+                name: WAN Out
+                show:
+                  extrema: true
+                  fill: true
+                color_thresholds:
+                  - value: 0
+                    color: "#FFFF00"
+                  - value: 13
+                    color: "#3498db"            
+
+#############################################################################################################################################
+#                                                                                                                                           # 
+#                                                           VIEW 6 - Device Configuration                                                   #
 #                                                                                                                                           #
 ############################################################################################################################################# 
 
-  - id: 5
-    icon: mdi:settings
+  - id: 6
+    icon: mdi:wifi
     name: Google Music
     cards:
  
