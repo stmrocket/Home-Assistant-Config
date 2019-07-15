@@ -139,7 +139,7 @@ views:
             - type: custom:waze-card
               title: Travel
               entities:
-                - entity: sensor.to_home
+                - entity: sensor.shawn_to_home
                   zone: zone.home
                   name: Shawn
                 - entity: sensor.home_to_work
@@ -147,7 +147,7 @@ views:
                   name: Work       
                 - entity: sensor.work_to_home
                   zone: zone.work
-                  name: Work             
+                  name: Home             
 
 #################################################################
 #                                                               #
