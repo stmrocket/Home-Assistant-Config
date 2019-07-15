@@ -42,12 +42,14 @@ class DarkSkyWeatherCard extends LitElement {
               ${this.getSlot().l2}
               ${this.getSlot().l3}
               ${this.getSlot().l4}
+              ${this.getSlot().l5}
             </li>
             <li>
               ${this.getSlot().r1}
               ${this.getSlot().r2}
               ${this.getSlot().r3}
               ${this.getSlot().r4}
+              ${this.getSlot().r5}
             </li>
           </ul>
         </span>
@@ -79,10 +81,12 @@ class DarkSkyWeatherCard extends LitElement {
       'r2' : this.slotValue('r2',this.config.slot_r2),
       'r3' : this.slotValue('r3',this.config.slot_r3),
       'r4' : this.slotValue('r4',this.config.slot_r4),
+      'r5' : this.slotValue('r5',this.config.slot_r5),
       'l1' : this.slotValue('l1',this.config.slot_l1),
       'l2' : this.slotValue('l2',this.config.slot_l2),
       'l3' : this.slotValue('l3',this.config.slot_l3),
       'l4' : this.slotValue('l4',this.config.slot_l4),
+      'l5' : this.slotValue('l5',this.config.slot_l5),
     }
   }
 
@@ -100,7 +104,8 @@ class DarkSkyWeatherCard extends LitElement {
     var wind = this.config.alt_wind ? html`<li><span class="ha-icon"><ha-icon icon="mdi:weather-windy"></ha-icon></span><span id="alt-wind">${this._hass.states[this.config.alt_wind].state}</span></li>` : this.config.entity_wind_bearing && this.config.entity_wind_speed ? html`<li><span class="ha-icon"><ha-icon icon="mdi:weather-windy"></ha-icon></span><span id="beaufort-text">${this.current.beaufort}</span><span id="wind-bearing-text">${this.current.windBearing}</span><span id="wind-speed-text"> ${this.current.windSpeed}</span><span class="unit"> ${this.getUOM('length')}/h</span></li>` : ``;
     var humidity = this.config.alt_humidity ? html`<li><span class="ha-icon"><ha-icon icon="mdi:water-percent"></ha-icon></span><span id="alt-humidity">${this._hass.states[this.config.alt_humidity].state}</span></li>` : this.config.entity_humidity ? html`<li><span class="ha-icon"><ha-icon icon="mdi:water-percent"></ha-icon></span><span id="humidity-text">${this.current.humidity}</span><span class="unit"> %</span></li>` : ``;
     var pressure = this.config.alt_pressure ? html`<li><span class="ha-icon"><ha-icon icon="mdi:gauge"></ha-icon></span><span id="alt-pressure">${this._hass.states[this.config.alt_pressure].state}</span></li>` : this.config.entity_pressure ? html`<li><span class="ha-icon"><ha-icon icon="mdi:gauge"></ha-icon></span><span id="pressure-text">${this.current.pressure}</span><span class="unit"> ${this.getUOM('air_pressure')}</span></li>` : ``;
-
+    var precipIntensityCurrent = this.config.entity_precip_intensity_current ? html`<li><span class="ha-icon"><ha-icon icon="mdi:weather-pouring"></ha-icon></span><span id="intensity_current-text">${this._hass.states[this.config.entity_precip_intensity_current].state}</span><span class="unit"> ${this.getUOM('intensity')}</span>` : ``;
+    var precipCurrent = this.config.entity_precip_current ? html`<li><span class="ha-icon"><ha-icon icon="mdi:weather-rainy"></ha-icon></span><span id="precip_current-text">${this._hass.states[this.config.entity_precip_current].state}</span><span class="unit"> ${this.getUOM('precipitation')}</span>` : ``;
     
     switch (value){
       case 'pop': return pop;
@@ -111,6 +116,8 @@ class DarkSkyWeatherCard extends LitElement {
       case 'wind': return wind;
       case 'visibility': return visibility;
       case 'sun_next': return sunNext;
+      case 'precip_rate_current': return precipIntensityCurrent;
+      case 'precip_current': return precipCurrent;
       case 'empty': return html`&nbsp;`;
       case 'remove': return ``;
     }
@@ -121,10 +128,12 @@ class DarkSkyWeatherCard extends LitElement {
       case 'l2': return wind;
       case 'l3': return visibility;
       case 'l4': return sunNext;
+      case 'l5': return precipCurrent;
       case 'r1': return pop;
       case 'r2': return humidity;
       case 'r3': return pressure;
       case 'r4': return sunFollowing;
+      case 'r5': return precipIntensityCurrent;
     }
   }
   
@@ -457,6 +466,7 @@ style() {
         .clear {
         clear: both;
       }
+
       .card {
         margin: auto;
         padding-top: 2em;
@@ -465,11 +475,13 @@ style() {
         padding-right: 1em;
         position: relative;
       }
+
       .ha-icon {
         height: 18px;
         margin-right: 5px;
         color: var(--paper-item-icon-color);
       }
+
       .line {
         margin-top: ${separatorTopMargin};
         margin-left: 1em;
@@ -484,6 +496,7 @@ style() {
         right: ${tempRightPos};
         margin-top: ${tempTopMargin};
       }
+
       .tempc {
         font-weight: ${tempFontWeight};
         font-size: 1.5em;
@@ -494,6 +507,7 @@ style() {
         margin-top: ${tempUOMTopMargin};
         margin-right: ${tempUOMRightMargin};
       }
+
       .apparent {
         color: var(--primary-text-color);
         position: absolute;
@@ -501,6 +515,7 @@ style() {
         margin-top: ${apparentTopMargin};
         margin-right: ${apparentRightMargin};
       }
+
       .currentText {
         font-size: ${currentTextFontSize};
         color: var(--secondary-text-color);
@@ -513,6 +528,7 @@ style() {
         font-weight: 400;
         color: var(--primary-text-color);
       }
+
       .variations {
         display: flex;
         flex-flow: row wrap;
@@ -523,14 +539,17 @@ style() {
         padding: 0.2em;
         margin-top: ${currentDataTopMargin};
       }
+
       .unit {
         font-size: 0.8em;
       }
+
       .forecast {
         width: 100%;
         margin: 0 auto;
         height: 9em;
       }
+
       .day {
         display: block;
         width: 20%;
@@ -542,22 +561,28 @@ style() {
         box-sizing: border-box;
         margin-top: 1em;
       }
+
       .dayname {
         text-transform: uppercase;
       }
+
       .forecast .day:first-child {
         margin-left: 20;
       }
+
       .forecast .day:nth-last-child(1) {
         border-right: none;
         margin-right: 0;
       }
+
       .highTemp {
         font-weight: bold;
       }
+
       .lowTemp {
         color: var(--secondary-text-color);
       }
+
       .icon.bigger {
         width: 10em;
         height: 10em;
@@ -565,6 +590,7 @@ style() {
         position: absolute;
         left: ${largeIconLeftPos};
       }
+
       .icon {
         width: 50px;
         height: 50px;
@@ -576,6 +602,7 @@ style() {
         background-repeat: no-repeat;
         text-indent: -9999px;
       }
+
       .weather {
         font-weight: 300;
         font-size: 1.5em;
@@ -592,6 +619,7 @@ style() {
         position: relative;
         display: inline-block;
       }
+
       .fcasttooltip .fcasttooltiptext {
         visibility: hidden;
         width: ${tooltipWidth}px;
@@ -603,6 +631,7 @@ style() {
         border-color: ${tooltipBorderColor};
         border-width: ${tooltipBorderWidth}px;
         padding: 5px 0;
+
         /* Position the tooltip */
         position: absolute;
         z-index: 1;
@@ -610,6 +639,7 @@ style() {
         left: 0%; 
         margin-left: ${tooltipLeftOffset}px;
       }
+
       .fcasttooltip .fcasttooltiptext:after {
         content: "";
         position: absolute;
@@ -620,6 +650,7 @@ style() {
         border-style: solid;
         border-color: ${tooltipBorderColor} transparent transparent transparent;
       }
+
       .fcasttooltip:hover .fcasttooltiptext {
         visibility: ${tooltipVisible};
       }
@@ -716,6 +747,9 @@ style() {
       if (this.config.entity_sun && !this.config.alt_sun_next) { root.getElementById("sun-next-text").textContent = `${this.sunSet.nextText}` }
       if (this.config.entity_sun && !this.config.alt_sun_following) { root.getElementById("sun-following-text").textContent = `${this.sunSet.followingText}` }
       if (this.config.entity_daily_summary) { root.getElementById("daily-summary-text").textContent = `${this._hass.states[this.config.entity_daily_summary].state}` }
+      if (this.config.entity_precip_intensity_current) { root.getElementById("intensity_current-text").textContent = `${this._hass.states[this.config.entity_precip_intensity_current].state}` }
+      if (this.config.entity_precip_current) { root.getElementById("precip_current-text").textContent = `${this._hass.states[this.config.entity_precip_current].state} ` }
+
       
 // Alt Text
       if (this.config.alt_sun_next) { root.getElementById("alt-sun-next").textContent = `${this._hass.states[this.config.alt_sun_next].state}` }
@@ -750,3 +784,4 @@ style() {
 // ##### Register the card as a customElement
 // #####
 customElements.define('dark-sky-weather-card', DarkSkyWeatherCard);
+
