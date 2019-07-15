@@ -1,15 +1,18 @@
 sensor:
 - platform: waze_travel_time
-  name: "To Work"
-  origin: sensor.shawn_position
+  name: "Home to Work"
+  origin: zone.home
   destination: zone.work
-  excl_filter: 'sam'
   region: 'US'
 - platform: waze_travel_time
-  name: "To Home"
+  name: "Work to Home"
+  origin: zone.work
+  destination: zone.home
+  region: 'US'
+- platform: waze_travel_time
+  name: "Work to Home"
   origin: sensor.shawn_position
   destination: zone.home
-  excl_filter: 'sam'
   region: 'US'
 - platform: template
   sensors:

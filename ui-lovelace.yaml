@@ -83,51 +83,72 @@ views:
 
 #################################################################
 #                                                               #
-#                     Home - Weather Card                       #
+#                      Home - Weather Card                      #
 #                                                               #
-################################################################# 
+#################################################################
+
         - type: vertical-stack
-          cards:  
-            - type: entities
-              show_header_toggle: false
-              title: Weather
-              entities:
-                  - entity: sensor.dark_sky_summary
-                    name: Current Conditions
-                  - entity: sensor.outside_temperature_owfs
-                    name: Temperature
-                  - entity: sensor.emoncms_tcc_outside_humidity
-                    icon: 'mdi:water-percent'
-                    name: Humidity
-                  - entity: sensor.emoncms_daily_rainfall
-                    icon: 'mdi:weather-rainy'
-                    name: Today's Rain
-                  - entity: sensor.emoncms_rain_rate
-                    icon: 'mdi:weather-pouring'
-                    name: Rain Rate
-                  - entity: sensor.dark_sky_visibility
-                    name: Visibility
-                  - entity: sensor.dark_sky_wind_speed
-                    name: Wind Speed
-                  - entity: sensor.dark_sky_wind_bearing
-                    name: Wind Direction
-                  - entity: sensor.dark_sky_pressure
-                    name: pressure
-                  - entity: sensor.dark_sky_uv_index
-                    name: UV Index
+          cards:
+            - type: 'custom:dark-sky-weather-card'
+              entity_current_conditions: sensor.dark_sky_icon
+              entity_temperature: sensor.aquara_outside_temperature
+              entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
+              entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2d
+              entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3d
+              entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4d
+              entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5d
+              entity_forecast_icon_1: sensor.dark_sky_icon_1d
+              entity_forecast_icon_2: sensor.dark_sky_icon_2d
+              entity_forecast_icon_3: sensor.dark_sky_icon_3d
+              entity_forecast_icon_4: sensor.dark_sky_icon_4d
+              entity_forecast_icon_5: sensor.dark_sky_icon_5d
+              entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_1d
+              entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_2d
+              entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_3d
+              entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_4d
+              entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_5d
+              entity_summary_1: sensor.dark_sky_summary_1d
+              entity_summary_2: sensor.dark_sky_summary_2d
+              entity_summary_3: sensor.dark_sky_summary_3d
+              entity_summary_4: sensor.dark_sky_summary_4d
+              entity_summary_5: sensor.dark_sky_summary_5d
+              ## Optional Parameters ##
+              entity_sun: sun.sun
+              entity_visibility: sensor.dark_sky_visibility
+              entity_wind_bearing: sensor.dark_sky_wind_bearing
+              entity_wind_speed: sensor.dark_sky_wind_speed
+              entity_humidity: sensor.aquara_outside_humidity
+              entity_pressure: sensor.aquara_outside_pressure
+              entity_daily_summary: sensor.dark_sky_daily_summary
+              entity_pop_intensity: sensor.dark_sky_precip_intensity
+              entity_pop_1: sensor.dark_sky_precip_probability_1d
+              entity_pop_2: sensor.dark_sky_precip_probability_2d
+              entity_pop_3: sensor.dark_sky_precip_probability_3d
+              entity_pop_4: sensor.dark_sky_precip_probability_4d
+              entity_pop_5: sensor.dark_sky_precip_probability_5d
+              entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
+              entity_pop: sensor.dark_sky_precip_probability_0d
+              entity_precip_current: sensor.emoncms_daily_rainfall
+              entity_precip_intensity_current: sensor.emoncms_rain_rate
+
 #################################################################
 #                                                               #
-#                     Home - Pooper                             #
+#                        Home - Waze                            #
 #                                                               #
 ################################################################# 
-            - type: entities
-              show_header_toggle: false
-              title: April's Carnival
+            - type: custom:waze-card
+              title: Travel
               entities:
-                  - entity: sensor.litter_robot_april_s_carnival_status
-                    name: Current Status
-                  - entity: sensor.litter_robot_april_s_carnival_waste
-                    name: Drawer Level
+                - entity: sensor.to_home
+                  zone: zone.home
+                  name: Shawn
+                - entity: sensor.home_to_work
+                  zone: zone.work
+                  name: Work       
+                - entity: sensor.work_to_home
+                  zone: zone.work
+                  name: Work             
+
 #################################################################
 #                                                               #
 #                     Home - Power Usage                        #
@@ -145,6 +166,7 @@ views:
                   - entity: sensor.emoncms_power_kwhd
                     icon: 'mdi:gauge'
                     name: Today's Energy Consumption
+
 #################################################################
 #                                                               #
 #                       Home - Locks                            #
@@ -163,20 +185,7 @@ views:
                   - entity: lock.back_door
                   - entity: sensor.lock_back_door_battery
                     icon: 'mdi:battery-80'
-#################################################################
-#                                                               #
-#                        Home - Waze                            #
-#                                                               #
-################################################################# 
-            - type: custom:waze-card
-              title: Travel
-              entities:
-                - entity: sensor.to_home
-                  zone: zone.home
-                  name: Home
-                - entity: sensor.to_work
-                  zone: zone.work
-                  name: Work
+
 #################################################################
 #                                                               #
 #                          Home - Roomba                        #
@@ -237,13 +246,28 @@ views:
 #                                                               #
 ################################################################# 
         - type: vertical-stack
-          cards:  
-            - type: entities
-              show_header_toggle: false
-              title: Laundry Status
-              entities:
-                  - entity: sensor.washer_state
-                  - entity: sensor.dryer_state
+          cards: 
+            - type: horizontal-stack
+              cards: 
+              - type: entities
+                show_header_toggle: false
+                title: Laundry Status
+                entities:
+                    - entity: sensor.washer_state
+                    - entity: sensor.dryer_state
+#################################################################
+#                                                               #
+#                     Home - Pooper                             #
+#                                                               #
+################################################################# 
+              - type: entities
+                show_header_toggle: false
+                title: April's Carnival
+                entities:
+                    - entity: sensor.litter_robot_april_s_carnival_status
+                      name: Status
+                    - entity: sensor.litter_robot_april_s_carnival_waste
+                      name: Drawer Level                    
 #################################################################
 #                                                               #
 #                      Home - Alarm                             #
@@ -256,6 +280,7 @@ views:
                 - arm_away
                 - arm_night
               entity: alarm_control_panel.area_001
+
 #############################################################################################################################################
 #                                                                                                                                           # 
 #                                                                 VIEW 1 - HVAC                                                             #
@@ -730,65 +755,239 @@ views:
 
       - type: vertical-stack
         cards:
-
-          - type: custom:mini-graph-card
-            entities: 
-              - sensor.wan_ping
-            height: 20
-            line_width: 2
-            font_size: 70
-            hours_to_show: 24
-            points_per_hour: 6
-            icon: mdi:pulse
-            show:
-              #extrema: true
-              fill: true
-              graph: bar
-            color_thresholds:
-              - value: 25
-                color: "#FFFF00"
-              - value: 0
-                color: "#3498db"
-            
-          - type: horizontal-stack
+          - type: custom:vertical-stack-in-card
             cards:
-              - type: custom:mini-graph-card
-                entities: 
-                  - sensor.wan_in_mbps
-                height: 50
-                line_width: 2
-                font_size: 70
-                hours_to_show: 24
-                points_per_hour: 60
-                icon: mdi:pulse
-                name: WAN In
-                show:
-                  extrema: true
-                  fill: true
-                color_thresholds:
-                  - value: 0
-                    color: "#FFFF00"
-                  - value: 40
-                    color: "#3498db"
+            - type: custom:mini-graph-card
+              entities: 
+                - sensor.wan_ping
+              height: 20
+              line_width: 2
+              font_size: 70
+              hours_to_show: 24
+              points_per_hour: 6
+              icon: mdi:pulse
+              show:
+                #extrema: true
+                fill: true
+                graph: bar
+              color_thresholds:
+                - value: 25
+                  color: "#FF0000"
+                - value: 0
+                  color: "#3498db"
+              
+            - type: horizontal-stack
+              cards:          
+                - type: custom:bar-card
+                  title: WAN IN
+                  entity: sensor.wan_in_mbps
+                  title_position: inside
+                  align: center
+                  padding: 4px
+                  card_style: 
+                    border-radius: 5px
+                  max: 1000
+                  severity:
+                  - value: 99
+                    color: '#00ff00'
+                  - value: 499
+                    color: '#ffff00'
+                  - value: 1000
+                    color: '#ff0000'
+
+                - type: custom:bar-card
+                  title: WAN OUT
+                  entity: sensor.wan_out_mbps
+                  title_position: inside
+                  align: center
+                  padding: 4px
+                  card_style: 
+                    border-radius: 5px
+                  max: 1000
+                  severity:
+                  - value: 99
+                    color: '#00ff00'
+                  - value: 499
+                    color: '#ffff00'
+                  - value: 1000
+                    color: '#ff0000'
+
+#################################################################
+#                                                               #
+#                System Status - Statistics Card                #
+#                                                               #
+#################################################################
+       
+          - type: entities
+            show_header_toggle: off
+            entities:
+              - type: section
+                label: HOME ASSISTANT STATISTICS
+              - type: custom:vertical-stack-in-card
+                cards:
+                  #- type: 'custom:text-divider-row'
+                  #  text: Statistics
+               
+                  - type: horizontal-stack
+                    cards:          
+                      - type: custom:bar-card
+                        title: Automations
+                        entity: sensor.automation_count
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 205
+                        severity:
+                        - value: 190
+                          color: '#bf4040'
+                        - value: 205
+                          color: '#1db954'
+                        - value: 206
+                          color: '#bf9540'
                     
-              - type: custom:mini-graph-card
-                entities: 
-                  - sensor.wan_out_mbps
-                height: 50
-                line_width: 2
-                font_size: 70
-                hours_to_show: 24
-                points_per_hour: 60
-                icon: mdi:pulse
-                name: WAN Out
-                show:
-                  extrema: true
-                  fill: true
-                color_thresholds:
-                  - value: 0
-                    color: "#FFFF00"
-                  - value: 13
-                    color: "#3498db"            
+                      - type: custom:bar-card
+                        title: Binary Sensors
+                        entity: sensor.binary_sensor_count
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 59
+                        severity:
+                        - value: 58
+                          color: '#bf4040'
+                        - value: 59
+                          color: '#1db954'
+                        - value: 60
+                          color: '#bf9540'
+                
+                      - type: custom:bar-card
+                        title: Switches
+                        entity: sensor.switch_count
+                        title_position: inside
+                        align: center 
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 266
+                        severity:
+                        - value: 265
+                          color: '#bf4040'
+                        - value: 266
+                          color: '#1db954'
+                        - value: 267
+                          color: '#bf9540'
+                
+                  - type: horizontal-stack
+                    cards:          
+                      - type: custom:bar-card
+                        title: Fans
+                        entity: sensor.fan_count
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 3
+                        severity:
+                        - value: 2
+                          color: '#bf4040'
+                        - value: 3
+                          color: '#1db954'
+                        - value: 4
+                          color: '#bf9540'
+                    
+                      - type: custom:bar-card
+                        title: Lights
+                        entity: sensor.lights_count
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 79
+                        severity:
+                        - value: 78
+                          color: '#bf4040'
+                        - value: 79
+                          color: '#1db954'
+                        - value: 80
+                          color: '#bf9540'
+                
+                      - type: custom:bar-card
+                        title: Tracked Devices
+                        entity: sensor.tracker_count
+                        title_position: inside
+                        align: center 
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 38
+                        severity:
+                        - value: 37
+                          color: '#bf4040'
+                        - value: 38
+                          color: '#1db954'
+                        - value: 39
+                          color: '#bf9540'
+                 
+                  - type: horizontal-stack
+                    cards:          
+                      - type: custom:bar-card
+                        title: Media Players
+                        entity: sensor.media_player_count
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 6
+                        severity:
+                        - value: 5
+                          color: '#bf4040'
+                        - value: 6
+                          color: '#1db954'
+                        - value: 7
+                          color: '#bf9540'
+                
+                      - type: custom:bar-card
+                        title: Scripts
+                        entity: sensor.script_count
+                        title_position: inside
+                        align: center 
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 2
+                        severity:
+                        - value: 1
+                          color: '#bf4040'
+                        - value: 2
+                          color: '#1db954'
+                        - value: 3
+                          color: '#bf9540'
+
+                      - type: custom:bar-card
+                        title: Sensors
+                        entity: sensor.sensor_count
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 563
+                        severity:
+                        - value: 562
+                          color: '#bf4040'
+                        - value: 563
+                          color: '#1db954'
+                        - value: 564
+                          color: '#bf9540'
+                      
+                                                 
 
 #############################################################################################################################################
 #                                                                                                                                           # 
