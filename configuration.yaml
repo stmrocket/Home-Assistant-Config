@@ -419,6 +419,9 @@ sensor:
       - daily_summary
       - pressure
       - visibility
+      
+  - platform: rpi_power
+    text_state: true
 
 binary_sensor:
   - platform: template
