@@ -420,6 +420,9 @@ sensor:
       - pressure
       - visibility
 
+  - platform: rpi_power
+    text_state: true
+
 binary_sensor:
   - platform: template
     sensors:
@@ -641,13 +644,14 @@ device_tracker:
     username: !secret my_callsign
     callsigns:
       - !secret truck_callsign
-#  - platform: unifi
-#    host: !secret unifi_host
-#    port: !secret unifi_port
-#    verify_ssl: false
-#    username: !secret ubnt_user
-#    password: !secret ubnt_pass
-#    consider_home: 60
+  - platform: unifi
+    host: !secret unifi_host
+    port: !secret unifi_port
+    verify_ssl: false
+    username: !secret ubnt_user
+    password: !secret ubnt_pass
+    consider_home: 60
+
 #Notification Services
 notify:
   - name: Elk_Pushover
@@ -664,6 +668,7 @@ notify:
   - name: master_kodi
     platform: kodi
     host: !secret master_kodi_host
+    
 #Counters
 counter:
   dryer_alert:
@@ -716,6 +721,10 @@ hacs:
   appdaemon: true
   python_script: true
   theme: true
+
+#Breaking Changes
+breaking_changes:
+
 #InfluxDB
 influxdb:
   host: !secret influx_host
