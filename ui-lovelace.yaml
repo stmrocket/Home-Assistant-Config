@@ -139,15 +139,12 @@ views:
             - type: custom:waze-card
               title: Travel
               entities:
-                - entity: sensor.to_home
+                - entity: sensor.shawn_to_home
                   zone: zone.home
-                  name: Shawn
-                - entity: sensor.home_to_work
+                  name: Home
+                - entity: sensor.shawn_to_work
                   zone: zone.work
-                  name: Work       
-                - entity: sensor.work_to_home
-                  zone: zone.work
-                  name: Work             
+                  name: Work                
 
 #################################################################
 #                                                               #
@@ -725,7 +722,7 @@ views:
 #############################################################################################################################################
 
   - id: 5  
-    icon: mdi:settings
+    icon: mdi:server-network
     name: System Status
     cards:
 
@@ -986,8 +983,6 @@ views:
                           color: '#1db954'
                         - value: 564
                           color: '#bf9540'
-                      
-                                                 
 
 #############################################################################################################################################
 #                                                                                                                                           # 
