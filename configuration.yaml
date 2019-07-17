@@ -710,6 +710,12 @@ vacuum:
 google:
   client_id: !secret gcal_client_id
   client_secret: !secret gcal_client_secret
+#HACS
+hacs:
+  token: !secret hacs_git
+  appdaemon: true
+  python_script: true
+  theme: true
 #InfluxDB
 influxdb:
   host: !secret influx_host
