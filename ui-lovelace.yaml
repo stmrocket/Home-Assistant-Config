@@ -141,13 +141,10 @@ views:
               entities:
                 - entity: sensor.shawn_to_home
                   zone: zone.home
-                  name: Shawn
-                - entity: sensor.home_to_work
+                  name: Home
+                - entity: sensor.shawn_to_work
                   zone: zone.work
-                  name: Work       
-                - entity: sensor.work_to_home
-                  zone: zone.work
-                  name: Home             
+                  name: Work                
 
 #################################################################
 #                                                               #
