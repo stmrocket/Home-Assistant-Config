@@ -47,21 +47,10 @@ resources:
     type: js
   - url: /local/community/vertical-stack-in-card/vertical-stack-in-card.js
     type: js
-  - url: /local//community/waze-card/waze-card.js
+  - url: /local/community/waze-card/waze-card.js
     type: js
-    
-#############################################################################################################################################
-#                                                                                                                                           # 
-#                                                               VIEW 0 - HOME                                                               #
-#                                                                                                                                           #
-#############################################################################################################################################  
-
-background: center / cover no-repeat url("/local/lovelace/background_19.png") fixed
-views:
-  - id: 0
-    icon: mdi:castle
-    name: Home
-    cards:
+  - url: /local/community/config-template-card/config-template-card.js
+    type: module  
 
 #################################################################
 #                                                               #
@@ -69,17 +58,37 @@ views:
 #                                                               #
 ################################################################# 
 
-        - type: "custom:compact-custom-header"
-          main_config: true
-          background: 'rgba(150, 150, 150, 0.2)'
-          menu: show
-          options: show
-          voice: show
-          notifications: clock
-          clock_format: '24'
-          clock_date: true
-          date_locale: en-us
-          disable: false
+cch:
+  main_config: true
+  background: 'rgba(150, 150, 150, 0.2)'
+  menu: show
+  options: show
+  voice: show
+  notifications: clock
+  clock_format: '24'
+  clock_date: true
+  date_locale: en-us
+  disable: false
+
+#############################################################################################################################################
+#                                                                                                                                           # 
+#                                                                BEGIN VIEWS                                                                #
+#                                                                                                                                           #
+#############################################################################################################################################  
+ 
+background: center / cover no-repeat url("/local/lovelace/background_19.png") fixed
+views: 
+  
+#############################################################################################################################################
+#                                                                                                                                           # 
+#                                                               VIEW 0 - HOME                                                               #
+#                                                                                                                                           #
+#############################################################################################################################################  
+
+  - id: 0
+    icon: mdi:castle
+    name: Home
+    cards:
 
 #################################################################
 #                                                               #
@@ -288,24 +297,6 @@ views:
     icon: mdi:thermostat
     name: HVAC
     cards:
- 
-#################################################################
-#                                                               #
-#                    Compact Header Config                      #
-#                                                               #
-################################################################# 
-
-      - type: "custom:compact-custom-header"   
-        main_config: true
-        background: 'rgba(150, 150, 150, 0.2)'
-        menu: show
-        options: show
-        voice: show
-        notifications: clock
-        clock_format: '24'
-        clock_date: true
-        date_locale: en-us
-        disable: false 
 
 #################################################################
 #                                                               #
@@ -517,24 +508,6 @@ views:
     icon: mdi:washing-machine
     name: Laundry
     cards:
- 
-#################################################################
-#                                                               #
-#                    Compact Header Config                      #
-#                                                               #
-################################################################# 
-
-      - type: "custom:compact-custom-header"   
-        main_config: true
-        background: 'rgba(150, 150, 150, 0.2)'
-        menu: show
-        options: show
-        voice: show
-        notifications: clock
-        clock_format: '24'
-        clock_date: true
-        date_locale: en-us
-        disable: false 
 
 #################################################################
 #                                                               #
@@ -612,24 +585,6 @@ views:
     icon: mdi:blinds
     name: Blinds
     cards:
- 
-#################################################################
-#                                                               #
-#                    Compact Header Config                      #
-#                                                               #
-################################################################# 
-
-      - type: "custom:compact-custom-header"   
-        main_config: true
-        background: 'rgba(150, 150, 150, 0.2)'
-        menu: show
-        options: show
-        voice: show
-        notifications: clock
-        clock_format: '24'
-        clock_date: true
-        date_locale: en-us
-        disable: false 
 
 #################################################################
 #                                                               #
@@ -659,24 +614,6 @@ views:
     icon: mdi:music
     name: Google Music
     cards:
- 
-#################################################################
-#                                                               #
-#                    Compact Header Config                      #
-#                                                               #
-################################################################# 
-
-      - type: "custom:compact-custom-header"   
-        main_config: true
-        background: 'rgba(150, 150, 150, 0.2)'
-        menu: show
-        options: show
-        voice: show
-        notifications: clock
-        clock_format: '24'
-        clock_date: true
-        date_locale: en-us
-        disable: false 
 
 #################################################################
 #                                                               #
@@ -725,25 +662,7 @@ views:
     icon: mdi:server-network
     name: System Status
     cards:
-
-#################################################################
-#                                                               #
-#                    Compact Header Config                      #
-#                                                               #
-################################################################# 
-
-      - type: "custom:compact-custom-header"   
-        main_config: true
-        background: 'rgba(150, 150, 150, 0.2)'
-        menu: show
-        options: show
-        voice: show
-        notifications: clock
-        clock_format: '24'
-        clock_date: true
-        date_locale: en-us
-        disable: false 
-        
+       
 #################################################################
 #                                                               #
 #                  System Status - Internet Card                #
@@ -811,6 +730,168 @@ views:
 
 #################################################################
 #                                                               #
+#                    System Status - NAS Card                   #
+#                                                               #
+#################################################################
+ 
+          - type: horizontal-stack
+            cards:
+              - type: custom:vertical-stack-in-card
+                cards:
+                - type: entities
+                  show_header_toggle: off
+                  entities:
+                    - type: section
+                      label: NAS - GRIPHOOK
+                    - type: custom:bar-card
+                      title_position: inside
+                      #show_icon: true
+                      align: center
+                      padding: 4px
+                      card_style: 
+                        border-radius: 5px
+                      columns: 1
+                      entities:
+                        - entity: sensor.nas_uptime
+                          title: Uptime
+                          icon: mdi:clock 
+                - type: horizontal-stack
+                  cards:
+                  
+                  
+                  - type: horizontal-stack
+                    cards:  
+                    - type: custom:circle-sensor-card
+                      entity: sensor.synology_dsm_volume_used_volume_1
+                      max: 100
+                      min: 0
+                      stroke_width: 15
+                      gradient: true
+                      fill: '#383C45'
+                      name: Used
+                      units: '%'
+                      color_stops:
+                        80: '#00ff00'
+                        100: '#ff0000'
+                      font_style: {font-size: 1.1em, font-color: white, text-shadow: '2px 2px black'}
+                      style: {top: 5%, left: 80%, width: 6em, height: 6em, transform: none}
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                      - type: custom:bar-card
+                        title_position: top
+                        title: Recordings
+                        show_icon: true
+                        align: center
+                        padding: 1.5px
+                        height: 40
+                        card_style: 
+                          border-radius: 5px
+                        columns: 1
+                        max: 200
+                        entities:
+                          - entity: sensor.synology_dsm_average_disk_temp_volume_1
+                            icon: mdi:thermometer
+                            unit_of_measurement: '°F'
+                            
+                            severity:
+                            - value: 130
+                              color: '#1db954'
+                            - value: 140
+                              color: '#bf9540'
+                            - value: 150
+                              color: '#bf4040'
+                      - type: custom:bar-card
+                        title_position: top
+                        title: CPU
+                        show_icon: true
+                        align: center
+                        padding: 1.5px
+                        height: 40
+                        card_style: 
+                          border-radius: 5px
+                        columns: 1
+                        max: 100
+                        entities:
+                          - entity: sensor.synology_dsm_cpu_load_total
+                            icon: mdi:flash
+                            unit_of_measurement: '%'
+                            
+                            severity:
+                            - value: 50
+                              color: '#0000ff'
+                            - value: 75
+                              color: '#ffff00'
+                            - value: 100
+                              color: '#ff0000'                      
+                      
+                    
+                              
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                      - type: custom:bar-card
+                        title_position: top
+                        title: Files
+                        show_icon: true
+                        align: center
+                        padding: 1.5px
+                        height: 40
+                        card_style: 
+                          border-radius: 5px
+                        columns: 1
+                        max: 200
+                        entities:
+                          - entity: sensor.synology_dsm_average_disk_temp_volume_2
+                            icon: mdi:thermometer
+                            unit_of_measurement: '°F'
+                            
+                            severity:
+                            - value: 130
+                              color: '#1db954'
+                            - value: 140
+                              color: '#bf9540'
+                            - value: 150
+                              color: '#bf4040'
+                      - type: custom:bar-card
+                        title_position: top
+                        title: RAM
+                        show_icon: true
+                        align: center
+                        padding: 1.5px
+                        height: 40
+                        card_style: 
+                          border-radius: 5px
+                        columns: 1
+                        max: 100
+                        entities:
+                          - entity: sensor.synology_dsm_memory_usage_real
+                            icon: mdi:chip
+                            unit_of_measurement: '%'
+                            
+                            severity:
+                            - value: 50
+                              color: '#0000ff'
+                            - value: 75
+                              color: '#ffff00'
+                            - value: 100
+                              color: '#ff0000'                      
+                      
+                    - type: custom:circle-sensor-card
+                      entity: sensor.synology_dsm_volume_used_volume_2
+                      max: 100
+                      min: 0
+                      stroke_width: 15
+                      gradient: true
+                      fill: '#383C45'
+                      name: Used
+                      units: '%'
+                      color_stops:
+                        80: '#00ff00'
+                        100: '#ff0000'
+                      font_style: {font-size: 1.1em, font-color: white, text-shadow: '2px 2px black'}
+                      style: {top: 5%, left: 80%, width: 6em, height: 6em, transform: none}
+
+#################################################################
+#                                                               #
 #                System Status - Statistics Card                #
 #                                                               #
 #################################################################
@@ -835,13 +916,13 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 205
+                        max: sensor.automation_count
                         severity:
                         - value: 190
                           color: '#bf4040'
                         - value: 205
                           color: '#1db954'
-                        - value: 206
+                        - value: 300
                           color: '#bf9540'
                     
                       - type: custom:bar-card
@@ -852,13 +933,13 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 59
+                        max: sensor.binary_sensor_count
                         severity:
-                        - value: 58
+                        - value: 67
                           color: '#bf4040'
-                        - value: 59
+                        - value: 68
                           color: '#1db954'
-                        - value: 60
+                        - value: 150
                           color: '#bf9540'
                 
                       - type: custom:bar-card
@@ -869,13 +950,13 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 266
+                        max: sensor.switch_count
                         severity:
-                        - value: 265
+                        - value: 282
                           color: '#bf4040'
-                        - value: 266
+                        - value: 283
                           color: '#1db954'
-                        - value: 267
+                        - value: 350
                           color: '#bf9540'
                 
                   - type: horizontal-stack
@@ -888,13 +969,13 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 3
+                        max: sensor.fan_count
                         severity:
                         - value: 2
                           color: '#bf4040'
                         - value: 3
                           color: '#1db954'
-                        - value: 4
+                        - value: 10
                           color: '#bf9540'
                     
                       - type: custom:bar-card
@@ -905,13 +986,13 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 79
+                        max: sensor.lights_count
                         severity:
                         - value: 78
                           color: '#bf4040'
                         - value: 79
                           color: '#1db954'
-                        - value: 80
+                        - value: 120
                           color: '#bf9540'
                 
                       - type: custom:bar-card
@@ -922,13 +1003,13 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 38
+                        max: sensor.tracker_count
                         severity:
-                        - value: 37
+                        - value: 61
                           color: '#bf4040'
-                        - value: 38
+                        - value: 62
                           color: '#1db954'
-                        - value: 39
+                        - value: 150
                           color: '#bf9540'
                  
                   - type: horizontal-stack
@@ -941,13 +1022,13 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 6
+                        max: sensor.media_player_count
                         severity:
                         - value: 5
                           color: '#bf4040'
                         - value: 6
                           color: '#1db954'
-                        - value: 7
+                        - value: 10
                           color: '#bf9540'
                 
                       - type: custom:bar-card
@@ -958,15 +1039,15 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 2
+                        max: sensor.script_count
                         severity:
                         - value: 1
                           color: '#bf4040'
                         - value: 2
                           color: '#1db954'
-                        - value: 3
+                        - value: 10
                           color: '#bf9540'
-
+                      
                       - type: custom:bar-card
                         title: Sensors
                         entity: sensor.sensor_count
@@ -975,13 +1056,13 @@ views:
                         padding: 4px
                         card_style: 
                           border-radius: 5px
-                        max: 563
+                        max: sensor.sensor_count
                         severity:
-                        - value: 562
+                        - value: 570
                           color: '#bf4040'
-                        - value: 563
+                        - value: 571
                           color: '#1db954'
-                        - value: 564
+                        - value: 671
                           color: '#bf9540'
 
 #############################################################################################################################################
@@ -995,24 +1076,6 @@ views:
     name: Google Music
     cards:
  
-#################################################################
-#                                                               #
-#                    Compact Header Config                      #
-#                                                               #
-################################################################# 
-
-      - type: "custom:compact-custom-header"   
-        main_config: true
-        background: 'rgba(150, 150, 150, 0.2)'
-        menu: show
-        options: show
-        voice: show
-        notifications: clock
-        clock_format: '24'
-        clock_date: true
-        date_locale: en-us
-        disable: false 
-
 #################################################################
 #                                                               #
 #                       Config - Zigbee2MQTT                    #
