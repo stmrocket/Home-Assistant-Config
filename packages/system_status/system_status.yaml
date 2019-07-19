@@ -1250,6 +1250,78 @@ sensor:
             {%- endfor -%}
           {%- endfor -%}
 
+      automation_count_high:
+        friendly_name: 'Automation Count High Limit'
+        value_template: '{{ states.input_number.automation_count_expected |int + 150}}'
+
+      automation_count_low:
+        friendly_name: 'Automation Count Low Limit'
+        value_template: '{{ states.input_number.automation_count_expected |int - 1}}'
+
+      binary_sensor_count_high:
+        friendly_name: 'Binary Sensor Count High Limit'
+        value_template: '{{ states.input_number.binary_sensor_count_expected |int + 150}}'
+
+      binary_sensor_count_low:
+        friendly_name: 'Binary Sensor Count Low Limit'
+        value_template: '{{ states.input_number.binary_sensor_count_expected |int - 1}}'
+
+      switch_count_high:
+        friendly_name: 'Switch Count High Limit'
+        value_template: '{{ states.input_number.switch_count_expected |int + 150}}'
+
+      switch_count_low:
+        friendly_name: 'Switch Count Low Limit'
+        value_template: '{{ states.input_number.switch_count_expected |int - 1}}'
+
+      fan_count_high:
+        friendly_name: 'Fan Count High Limit'
+        value_template: '{{ states.input_number.fan_count_expected |int + 150}}'
+
+      fan_count_low:
+        friendly_name: 'Fan Count Low Limit'
+        value_template: '{{ states.input_number.fan_count_expected |int - 1}}'
+
+      light_count_high:
+        friendly_name: 'Light Count High Limit'
+        value_template: '{{ states.input_number.light_count_expected |int + 150}}'
+
+      light_count_low:
+        friendly_name: 'Light Count Low Limit'
+        value_template: '{{ states.input_number.light_count_expected |int - 1}}'
+
+      tracked_device_count_high:
+        friendly_name: 'Tracked Device Count High Limit'
+        value_template: '{{ states.input_number.tracked_device_count_expected |int + 150}}'
+
+      tracked_device_count_low:
+        friendly_name: 'Tracked Device Count Low Limit'
+        value_template: '{{ states.input_number.tracked_device_count_expected |int - 1}}'
+
+      media_player_count_high:
+        friendly_name: 'Media Player Count High Limit'
+        value_template: '{{ states.input_number.media_player_count_expected |int + 150}}'
+
+      media_player_count_low:
+        friendly_name: 'Media Player Count Low Limit'
+        value_template: '{{ states.input_number.media_player_count_expected |int - 1}}'
+
+      script_count_high:
+        friendly_name: 'Script Count High Limit'
+        value_template: '{{ states.input_number.script_count_expected |int + 150}}'
+
+      script_count_low:
+        friendly_name: 'Script Count Low Limit'
+        value_template: '{{ states.input_number.script_count_expected |int - 1}}'
+
+      sensor_count_high:
+        friendly_name: 'Sensor Count High Limit'
+        value_template: '{{ states.input_number.sensor_count_expected |int + 150}}'
+
+      sensor_count_low:
+        friendly_name: 'Sensor Count Low Limit'
+        value_template: '{{ states.input_number.sensor_count_expected |int - 1}}'
+
 ####################################################
 #                                                  #
 #                 Sensor - Uptime                  #
@@ -1259,6 +1331,58 @@ sensor:
   - platform: uptime
     name: Time Online
     unit_of_measurement: hours
+
+####################################################
+#                                                  #
+#                  NUMERIC INPUT                   #
+#                                                  #
+####################################################
+input_number:
+  automation_count_expected:
+    name: Expected Automations
+    min: 0
+    max: 5000
+    mode: box
+  binary_sensor_count_expected:
+    name: Expected Binary Sensors
+    min: 0
+    max: 5000
+    mode: box
+  switch_count_expected:
+    name: Expected Switches
+    min: 0
+    max: 5000
+    mode: box
+  fan_count_expected:
+    name: Expected Fans
+    min: 0
+    max: 5000
+    mode: box
+  light_count_expected:
+    name: Expected Lights
+    min: 0
+    max: 5000
+    mode: box
+  tracked_device_count_expected:
+    name: Expected Tracked Devices
+    min: 0
+    max: 5000
+    mode: box
+  media_player_count_expected:
+    name: Expected Media Players
+    min: 0
+    max: 5000
+    mode: box
+  script_count_expected:
+    name: Expected Scripts
+    min: 0
+    max: 5000
+    mode: box
+  sensor_count_expected:
+    name: Expected Sensors
+    min: 0
+    max: 5000
+    mode: box
 
 #################################################################
 #                                                               #
