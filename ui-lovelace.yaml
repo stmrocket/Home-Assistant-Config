@@ -50,7 +50,11 @@ resources:
   - url: /local/community/waze-card/waze-card.js
     type: js
   - url: /local/community/config-template-card/config-template-card.js
-    type: module  
+    type: module 
+  - url: /local/custom_ui/thermostat-card/thermostat-card.js?v=1
+    type: module
+  - url: /local/community/simple-thermostat/simple-thermostat.js
+    type: module
 
 #################################################################
 #                                                               #
@@ -364,33 +368,31 @@ views:
         
       - type: vertical-stack
         cards:
-          - type: entities
-            show_header_toggle: false
-            title: Front Rooms
-            entities:
-            - entity: sensor.emoncms_tcc_front_rooms_temperature
-              name: Temperature
-            - entity: sensor.emoncms_tcc_front_rooms_humidity
-              icon: 'mdi:water-percent'
-              name: Humidity
-            - entity: sensor.emoncms_hvac_zone_2_heat_setpoint
-              icon: 'mdi:fire'
-              name: Heat Setpoint
-            - entity: sensor.emoncms_hvac_zone_2_cool_setpoint
-              icon: 'mdi:snowflake'
-              name: Cool Setpoint
-            - entity: sensor.emoncms_hvac_daily_zone_2_runtime
-              icon: 'mdi:timer'
-              name: Total Runtime
-            - entity: sensor.emoncms_hvac_daily_zone_2_heat_runtime
-              icon: 'mdi:fire'
-              name: Heat Runtime
-            - entity: sensor.emoncms_hvac_zone_2_daily_cool_runtime
-              icon: 'mdi:snowflake'
-              name: Cool Runtime
-            - entity: sensor.emoncms_hvac_daily_zone_2_fan_runtime
-              icon: 'mdi:fan'
-              name: Fan Runtime
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:simple-thermostat
+                entity: climate.front_rooms
+                sensors:
+                - attribute: current_humidity
+                  name: Humidity
+                  unit: "%"
+                hide:
+                  state: true
+              - type: entities
+                show_header_toggle: false
+                entities:
+                - entity: sensor.emoncms_hvac_daily_zone_2_runtime
+                  icon: 'mdi:timer'
+                  name: Total Runtime
+                - entity: sensor.emoncms_hvac_daily_zone_2_heat_runtime
+                  icon: 'mdi:fire'
+                  name: Heat Runtime
+                - entity: sensor.emoncms_hvac_zone_2_daily_cool_runtime
+                  icon: 'mdi:snowflake'
+                  name: Cool Runtime
+                - entity: sensor.emoncms_hvac_daily_zone_2_fan_runtime
+                  icon: 'mdi:fan'
+                  name: Fan Runtime
 
 #################################################################
 #                                                               #
@@ -435,33 +437,31 @@ views:
         
       - type: vertical-stack
         cards:
-          - type: entities
-            show_header_toggle: false
-            title: Living Areas
-            entities:
-            - entity: sensor.emoncms_tcc_living_area_temperature
-              name: Temperature
-            - entity: sensor.emoncms_tcc_living_area_humidity
-              icon: 'mdi:water-percent'
-              name: Humidity
-            - entity: sensor.emoncms_hvac_zone_1_heat_setpoint
-              icon: 'mdi:fire'
-              name: Heat Setpoint
-            - entity: sensor.emoncms_hvac_zone_1_cool_setpoint
-              icon: 'mdi:snowflake'
-              name: Cool Setpoint
-            - entity: sensor.emoncms_hvac_daily_zone_1_runtime
-              icon: 'mdi:timer'
-              name: Total Runtime
-            - entity: sensor.emoncms_hvac_daily_zone_1_heat_runtime
-              icon: 'mdi:fire'
-              name: Heat Runtime
-            - entity: sensor.emoncms_hvac_daily_zone_1_cool_runtime
-              icon: 'mdi:snowflake'
-              name: Cool Runtime
-            - entity: sensor.emoncms_hvac_daily_zone_1_fan_runtime
-              icon: 'mdi:fan'
-              name: Fan Runtime
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:simple-thermostat
+                entity: climate.living_areas
+                sensors:
+                - attribute: current_humidity
+                  name: Humidity
+                  unit: "%"
+                hide:
+                  state: true
+              - type: entities
+                show_header_toggle: false
+                entities:            
+                - entity: sensor.emoncms_hvac_daily_zone_1_runtime
+                  icon: 'mdi:timer'
+                  name: Total Runtime
+                - entity: sensor.emoncms_hvac_daily_zone_1_heat_runtime
+                  icon: 'mdi:fire'
+                  name: Heat Runtime
+                - entity: sensor.emoncms_hvac_daily_zone_1_cool_runtime
+                  icon: 'mdi:snowflake'
+                  name: Cool Runtime
+                - entity: sensor.emoncms_hvac_daily_zone_1_fan_runtime
+                  icon: 'mdi:fan'
+                  name: Fan Runtime
 
 #################################################################
 #                                                               #
@@ -471,33 +471,31 @@ views:
         
       - type: vertical-stack
         cards:
-          - type: entities
-            show_header_toggle: false
-            title: Master Suite
-            entities:
-            - entity: sensor.emoncms_tcc_master_suite_temperature
-              name: Temperature
-            - entity: sensor.emoncms_tcc_master_suite_humidity
-              icon: 'mdi:water-percent'
-              name: Humidity
-            - entity: sensor.emoncms_hvac_zone_3_heat_setpoint
-              icon: 'mdi:fire'
-              name: Heat Setpoint
-            - entity: sensor.emoncms_hvac_zone_3_cool_setpoint
-              icon: 'mdi:snowflake'
-              name: Cool Setpoint
-            - entity: sensor.emoncms_hvac_daily_zone_3_runtime
-              icon: 'mdi:timer'
-              name: Total Runtime
-            - entity: sensor.emoncms_hvac_daily_zone_3_heat_runtime
-              icon: 'mdi:fire'
-              name: Heat Runtime
-            - entity: sensor.emoncms_hvac_daily_zone_3_cool_runtime
-              icon: 'mdi:snowflake'
-              name: Cool Runtime
-            - entity: sensor.emoncms_hvac_daily_zone_3_fan_runtime
-              icon: 'mdi:fan'
-              name: Fan Runtime
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:simple-thermostat
+                entity: climate.master_suite
+                sensors:
+                - attribute: current_humidity
+                  name: Humidity
+                  unit: "%"
+                hide:
+                  state: true
+              - type: entities
+                show_header_toggle: false
+                entities:
+                - entity: sensor.emoncms_hvac_daily_zone_3_runtime
+                  icon: 'mdi:timer'
+                  name: Total Runtime
+                - entity: sensor.emoncms_hvac_daily_zone_3_heat_runtime
+                  icon: 'mdi:fire'
+                  name: Heat Runtime
+                - entity: sensor.emoncms_hvac_daily_zone_3_cool_runtime
+                  icon: 'mdi:snowflake'
+                  name: Cool Runtime
+                - entity: sensor.emoncms_hvac_daily_zone_3_fan_runtime
+                  icon: 'mdi:fan'
+                  name: Fan Runtime
 #############################################################################################################################################
 #                                                                                                                                           # 
 #                                                                VIEW 2 - Laundry                                                           #
@@ -924,23 +922,24 @@ views:
                           color: '#1db954'
                         - value: 300
                           color: '#bf9540'
-                    
-                      - type: custom:bar-card
-                        title: Binary Sensors
-                        entity: sensor.binary_sensor_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.binary_sensor_count
-                        severity:
-                        - value: 67
-                          color: '#bf4040'
-                        - value: 68
-                          color: '#1db954'
-                        - value: 150
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Binary Sensors
+                          entity: sensor.binary_sensor_count
+                          title_position: inside
+                          align: center
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.binary_sensor_count
+                          severity:
+                          - value: 67
+                            color: '#bf4040'
+                          - value: 68 #${states['sensor.emoncms_hvac_daily_zone_2_runtime'].state}     ###68
+                            color: '#1db954'
+                          - value: 150
+                            color: '#bf9540'
                 
                       - type: custom:bar-card
                         title: Switches
