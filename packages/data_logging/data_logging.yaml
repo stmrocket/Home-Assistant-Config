@@ -45,6 +45,10 @@ recorder:
     - sensor.hvac_zone_3_fan_runtime
     - sensor.hvac_zone_3_heat_runtime
     - sensor.hvac_zone_3_cool_runtime
+    - sensor.hvac_system_runtime
+    - sensor.hvac_zone_1_runtime
+    - sensor.hvac_zone_2_runtime
+    - sensor.hvac_zone_3_runtime
 
 #################################################################
 #                                                               #
@@ -91,6 +95,10 @@ influxdb:
       - sensor.hvac_zone_3_fan_runtime
       - sensor.hvac_zone_3_heat_runtime
       - sensor.hvac_zone_3_cool_runtime
+      - sensor.hvac_system_runtime
+      - sensor.hvac_zone_1_runtime
+      - sensor.hvac_zone_2_runtime
+      - sensor.hvac_zone_3_runtime
 
 #################################################################
 #                                                               #
