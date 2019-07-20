@@ -266,126 +266,7 @@ sensor:
         unit_of_measurement: '%'
         icon_template: "{{ states.vacuum.roomba.attributes.battery_icon }}"
         entity_id: vacuum.roomba
-# EmonCMS Sensors
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "°F"
-    include_only_feed_id:
-      - 13
-      - 15
-      - 17
-      - 19
-      - 119
-      - 120
-      - 121
-      - 122
-      - 123
-      - 124
-      - 128
-      - 129
-      - 172
-      - 173
-      - 174
-      - 175
-      - 176
-      - 177
-      - 178
-      - 179
-      - 180
-      - 181
-      - 182
-      - 183
-      - 184
-      - 186
-      - 187
-      - 188
-      - 189
-      - 190
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "%"
-    include_only_feed_id:
-      - 14
-      - 16
-      - 18
-      - 20
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "Minutes"
-    include_only_feed_id:
-      - 97
-      - 98
-      - 99
-      - 100
-      - 101
-      - 102
-      - 103
-      - 104
-      - 105
-      - 106
-      - 107
-      - 108
-      - 109
-      - 110
-      - 111
-      - 112
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 5
-    id: 1
-    unit_of_measurement: "W"
-    include_only_feed_id:
-      - 21
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "kWh"
-    include_only_feed_id:
-      - 56
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "in"
-    include_only_feed_id:
-      - 53
-      - 54
-      - 55
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "in/hr"
-    include_only_feed_id:
-      - 51
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 5
-    id: 1
-    unit_of_measurement: ""
-    include_only_feed_id:
-      - 50
-      - 113
-      - 114
-      - 115
-      - 117
-      - 118
-      - 127
+
 # Darksky
   - platform: darksky
     api_key: !secret ds_key
@@ -430,29 +311,6 @@ binary_sensor:
         friendly_name: "Currently Raining"
         device_class: moisture
         value_template:  "{{ states('sensor.emoncms_is_raining')|float == 1 }}"
-      hvac_heat:
-        friendly_name: "HVAC Heat Call"
-        device_class: heat
-        value_template:  "{{ states('sensor.emoncms_hvac_heat_call')|float == 1 }}"
-      hvac_cool:
-        friendly_name: "HVAC Heat Call"
-        device_class: cold
-        value_template:  "{{ states('sensor.emoncms_hvac_cool_call')|float == 1 }}"
-      hvac_fan:
-        friendly_name: "HVAC Fan Call"
-        value_template:  "{{ states('sensor.emoncms_hvac_fan_call')|float == 1 }}"
-      hvac_zone_1:
-        friendly_name: "HVAC Zone 1 Call"
-        device_class: door
-        value_template:  "{{ states('sensor.emoncms_hvac_zone_1_call')|float == 1 }}"
-      hvac_zone_2:
-        friendly_name: "HVAC Zone 2 Call"
-        device_class: door
-        value_template:  "{{ states('sensor.emoncms_hvac_zone_2_call')|float == 1 }}"
-      hvac_zone_3:
-        friendly_name: "HVAC Zone 3 Call"
-        device_class: door
-        value_template:  "{{ states('sensor.emoncms_hvac_zone_3_call')|float == 1 }}"
 switch:
 #Roomba Switch
   - platform: template
@@ -530,6 +388,7 @@ input_boolean:
   outside_timer_lights:
     name: Outside Timer Lights
     icon: mdi:timer
+  
     
 light:
   - platform: mqtt
@@ -617,11 +476,7 @@ elkm1:
   zone:
     exclude: [16, 53-64, 73-196, 198-207]
 
-climate:
-  - platform: honeywell
-    username: !secret tcc_user
-    password: !secret tcc_pass
-    region: us
+
 
 proximity:
   home:
@@ -695,36 +550,25 @@ media_player:
   - name: master_kodi
     platform: kodi
     host: !secret master_kodi_host
-
-#Recorder Management
-recorder:
-  db_url: !secret db_url
-  include:
-    entities:
-    - sensor.roomba_battery
-    - sensor.wan_in_mbps
-    - sensor.wan_out_mbps
-    - sensor.wan_ping
-    - sensor.aquara_outside_humidity
-    - sensor.aquara_outside_pressure
-    - sensor.aquara_outside_temperature
       
 #Pooper
 litter_robot:
   username: !secret pooper_user
   password: !secret pooper_pass
   api_key: !secret pooper_key
+
 #Roomba
-# Example configuration.yaml entry
 vacuum:
   - platform: roomba
     host: !secret roomba_host
     username: !secret roomba_blid
     password: !secret roomba_pass
+
 #Google Calendar
 google:
   client_id: !secret gcal_client_id
   client_secret: !secret gcal_client_secret
+
 #HACS
 hacs:
   token: !secret hacs_git
@@ -733,33 +577,4 @@ hacs:
   theme: true
 
 #Breaking Changes
-breaking_changes:
-
-#InfluxDB
-influxdb:
-  host: !secret influx_host
-  include:
-    entities:
-      - sensor.attic_temperature_owfs
-      - sensor.back_hvac_return_temperature_owfs
-      - sensor.den_temperature_owfs
-      - sensor.dining_room_temperature_owfs
-      - sensor.dryer_vent_temperature_owfs
-      - sensor.front_hall_temperature_owfs
-      - sensor.front_hvac_return_temperature_owfs
-      - sensor.garage_temperature_owfs
-      - sensor.guest_bedroom_temperature_owfs
-      - sensor.hvac_supply_temperature_owfs
-      - sensor.master_bedroom_temperature_owfs
-      - sensor.office_temperature_owfs
-      - sensor.outside_temperature_owfs
-      - sensor.plenum_hvac_return_temperature_owfs
-      - sensor.server_room_hvac_return_temperature_owfs
-      - sensor.server_room_temperature_owfs
-      - sensor.shed_temperature_owfs
-      - sensor.work_room_temperature_owfs
-      - sensor.aquara_outside_temperature
-      - sensor.aquara_outside_humidity
-      - sensor.aquara_outside_pressure
-      - sensor.wan_in_mbps
-      - sensor.wan_out_mbps
+#breaking_changes:
