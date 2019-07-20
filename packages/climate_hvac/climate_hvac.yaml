@@ -35,7 +35,7 @@ binary_sensor:
 
       hvac_system_fan:
         friendly_name: "HVAC System Fan Call"
-        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' }}'
+        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_066.state | string == ''Normal'' and states.sensor.zone_067.state | string == ''Normal'' }}'
 
       hvac_system_heat:
         friendly_name: "HVAC System Heat Call"
@@ -47,7 +47,7 @@ binary_sensor:
 
       hvac_zone_1_fan:
         friendly_name: "HVAC Zone 1 Fan Call"
-        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_068.state | string == ''Normal''}}'
+        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_066.state | string == ''Normal'' and states.sensor.zone_067.state | string == ''Normal'' and states.sensor.zone_068.state | string == ''Normal''}}'
       
       hvac_zone_1_heat:
         friendly_name: "HVAC Zone 1 Heat Call"
@@ -59,7 +59,7 @@ binary_sensor:
 
       hvac_zone_2_fan:
         friendly_name: "HVAC Zone 2 Fan Call"
-        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_069.state | string == ''Normal''}}'
+        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_066.state | string == ''Normal'' and states.sensor.zone_067.state | string == ''Normal'' and states.sensor.zone_069.state | string == ''Normal''}}'
       
       hvac_zone_2_heat:
         friendly_name: "HVAC Zone 2 Heat Call"
@@ -71,7 +71,7 @@ binary_sensor:
       
       hvac_zone_3_fan:
         friendly_name: "HVAC Zone 3 Fan Call"
-        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_070.state | string == ''Normal''}}'
+        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_066.state | string == ''Normal'' and states.sensor.zone_067.state | string == ''Normal'' and states.sensor.zone_070.state | string == ''Normal''}}'
       
       hvac_zone_3_heat:
         friendly_name: "HVAC Zone 3 Heat Call"
