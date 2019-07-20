@@ -1,0 +1,264 @@
+#################################################################
+#                                                               #
+#                    Packages/climate_hvac                      #
+#                                                               #
+#################################################################
+
+#################################################################
+#                                                               #
+#                            Climate                            #
+#                                                               #
+#################################################################
+
+climate:
+  - platform: honeywell
+    username: !secret tcc_user
+    password: !secret tcc_pass
+    region: us
+
+#################################################################
+#                                                               #
+#                       Binary Sensors                          #
+#                                                               #
+#################################################################
+
+binary_sensor:
+
+####################################################
+#                                                  #
+#            Binary Sensor - Template              #
+#                                                  #
+####################################################
+
+  - platform: template
+    sensors:
+
+      hvac_system_fan:
+        friendly_name: "HVAC System Fan Call"
+        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' }}'
+
+      hvac_system_heat:
+        friendly_name: "HVAC System Heat Call"
+        value_template: '{{ states.sensor.zone_066.state | string == ''Violated'' }}'
+
+      hvac_system_cool:
+        friendly_name: "HVAC System Cool Call"
+        value_template: '{{ states.sensor.zone_067.state | string == ''Violated'' }}'
+
+      hvac_zone_1_fan:
+        friendly_name: "HVAC Zone 1 Fan Call"
+        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_068.state | string == ''Normal''}}'
+      
+      hvac_zone_1_heat:
+        friendly_name: "HVAC Zone 1 Heat Call"
+        value_template: '{{ states.sensor.zone_066.state | string == ''Violated'' and states.sensor.zone_068.state | string == ''Normal''}}'
+
+      hvac_zone_1_cool:
+        friendly_name: "HVAC Zone 1 Cool Call"
+        value_template: '{{ states.sensor.zone_067.state | string == ''Violated'' and states.sensor.zone_068.state | string == ''Normal''}}'
+
+      hvac_zone_2_fan:
+        friendly_name: "HVAC Zone 2 Fan Call"
+        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_069.state | string == ''Normal''}}'
+      
+      hvac_zone_2_heat:
+        friendly_name: "HVAC Zone 2 Heat Call"
+        value_template: '{{ states.sensor.zone_066.state | string == ''Violated'' and states.sensor.zone_069.state | string == ''Normal''}}'
+
+      hvac_zone_2_cool:
+        friendly_name: "HVAC Zone 2 Cool Call"
+        value_template: '{{ states.sensor.zone_067.state | string == ''Violated'' and states.sensor.zone_069.state | string == ''Normal''}}'
+      
+      hvac_zone_3_fan:
+        friendly_name: "HVAC Zone 3 Fan Call"
+        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_070.state | string == ''Normal''}}'
+      
+      hvac_zone_3_heat:
+        friendly_name: "HVAC Zone 3 Heat Call"
+        value_template: '{{ states.sensor.zone_066.state | string == ''Violated'' and states.sensor.zone_070.state | string == ''Normal''}}'
+
+      hvac_zone_3_cool:
+        friendly_name: "HVAC Zone 3 Cool Call"
+        value_template: '{{ states.sensor.zone_067.state | string == ''Violated'' and states.sensor.zone_070.state | string == ''Normal''}}'
+
+#################################################################
+#                                                               #
+#                            Sensors                            #
+#                                                               #
+#################################################################
+
+sensor:
+
+####################################################
+#                                                  #
+#                Sensor - Template                 #
+#                                                  #
+####################################################
+
+  - platform: template
+    sensors:
+
+      hvac_system_state:
+        friendly_name: "HVAC System Current State"
+        value_template: >-
+          {% if is_state("binary_sensor.hvac_system_cool", 'on') -%}
+            Cool
+          {% elif is_state("binary_sensor.hvac_system_heat", 'on') -%}
+            Heat
+          {% elif is_state("binary_sensor.hvac_system_fan", 'on') -%}
+            Fan
+          {%- else -%}
+            Idle
+          {%- endif %}
+
+      hvac_zone_1_state:
+        friendly_name: "HVAC Zone 1 Current State"
+        value_template: >-
+          {% if is_state("binary_sensor.hvac_zone_1_cool", 'on') -%}
+            Cool
+          {% elif is_state("binary_sensor.hvac_zone_1_heat", 'on') -%}
+            Heat
+          {% elif is_state("binary_sensor.hvac_zone_1_fan", 'on') -%}
+            Fan
+          {%- else -%}
+            Idle
+          {%- endif %}
+
+      hvac_zone_2_state:
+        friendly_name: "HVAC Zone 2 Current State"
+        value_template: >-
+          {% if is_state("binary_sensor.hvac_zone_2_cool", 'on') -%}
+            Cool
+          {% elif is_state("binary_sensor.hvac_zone_2_heat", 'on') -%}
+            Heat
+          {% elif is_state("binary_sensor.hvac_zone_2_fan", 'on') -%}
+            Fan
+          {%- else -%}
+            Idle
+          {%- endif %}
+      
+      hvac_zone_3_state:
+        friendly_name: "HVAC Zone 3 Current State"
+        value_template: >-
+          {% if is_state("binary_sensor.hvac_zone_3_cool", 'on') -%}
+            Cool
+          {% elif is_state("binary_sensor.hvac_zone_3_heat", 'on') -%}
+            Heat
+          {% elif is_state("binary_sensor.hvac_zone_3_fan", 'on') -%}
+            Fan
+          {%- else -%}
+            Idle
+          {%- endif %}
+
+####################################################
+#                                                  #
+#                Sensor - History                  #
+#                                                  #
+####################################################
+
+  - platform: history_stats
+    name: HVAC System Fan Runtime
+    entity_id: binary_sensor.hvac_system_fan
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC System Heat Runtime
+    entity_id: binary_sensor.hvac_system_heat
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC System Cool Runtime
+    entity_id: binary_sensor.hvac_system_cool
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 1 Fan Runtime
+    entity_id: binary_sensor.hvac_zone_1_fan
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 1 Heat Runtime
+    entity_id: binary_sensor.hvac_zone_1_heat
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 1 Cool Runtime
+    entity_id: binary_sensor.hvac_zone_1_cool
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 2 Fan Runtime
+    entity_id: binary_sensor.hvac_zone_2_fan
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 2 Heat Runtime
+    entity_id: binary_sensor.hvac_zone_2_heat
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 2 Cool Runtime
+    entity_id: binary_sensor.hvac_zone_2_cool
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 3 Fan Runtime
+    entity_id: binary_sensor.hvac_zone_3_fan
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 3 Heat Runtime
+    entity_id: binary_sensor.hvac_zone_3_heat
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: HVAC Zone 3 Cool Runtime
+    entity_id: binary_sensor.hvac_zone_3_cool
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+#################################################################
+#                                                               #
+#                         Input_Boolean                         #
+#                                                               #
+#################################################################
+
+input_boolean:
+  hvac_geofence:
+    name: In HVAC Geofence
+    icon: mdi:crosshairs-gps
