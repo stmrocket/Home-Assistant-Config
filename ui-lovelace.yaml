@@ -55,6 +55,8 @@ resources:
     type: module
   - url: /local/community/simple-thermostat/simple-thermostat.js
     type: module
+  - url: /local/community/lovelace-popup-card/popup-card.js
+    type: js
 
 #################################################################
 #                                                               #
@@ -304,95 +306,75 @@ views:
 
 #################################################################
 #                                                               #
-#                         HVAC - Status                         #
-#                                                               #
-#################################################################
-        
-      - type: vertical-stack
-        cards:
-          - type: glance
-            columns: 3
-            show_state: false
-            entities:
-            - entity: binary_sensor.hvac_heat
-              name: Heat
-            - entity: binary_sensor.hvac_cool
-              name: Cool
-            - entity: binary_sensor.hvac_fan
-              name: Fan
-            - entity: binary_sensor.hvac_zone_1
-              name: Living Area
-            - entity: binary_sensor.hvac_zone_2
-              name: Front Rooms
-            - entity: binary_sensor.hvac_zone_3
-              name: Master Suite
-
-#################################################################
-#                                                               #
 #                       HVAC - System                           #
 #                                                               #
 ################################################################# 
-
-          - type: entities
-            show_header_toggle: false
-            title: System
-            entities:
-            - entity: sensor.hvac_supply_temperature_owfs
-              name: Supply Temperature
-            - entity: sensor.plenum_hvac_return_temperature_owfs
-              name: Return Plenum Temperature
-            - entity: sensor.front_hvac_return_temperature_owfs
-              name: Front Hallway Return Temperature
-            - entity: sensor.back_hvac_return_temperature_owfs
-              name: Master Suite Return Temperature
-            - entity: sensor.server_room_hvac_return_temperature_owfs
-              name: Server Closet Return Temperature
-            - entity: sensor.emoncms_hvac_daily_system_runtime
-              icon: 'mdi:timer'
-              name: Total Runtime
-            - entity: sensor.emoncms_hvac_daily_heat_runtime
-              icon: 'mdi:fire'
-              name: Heat Runtime
-            - entity: sensor.emoncms_hvac_daily_cool_runtime
-              icon: 'mdi:snowflake'
-              name: Cool Runtime
-            - entity: sensor.emoncms_hvac_daily_fan_runtime
-              icon: 'mdi:fan'
-              name: Fan Runtime
-
-#################################################################
-#                                                               #
-#                       HVAC - Front Rooms                      #
-#                                                               #
-#################################################################
-        
       - type: vertical-stack
         cards:
           - type: custom:vertical-stack-in-card
             cards:
-              - type: custom:simple-thermostat
-                entity: climate.front_rooms
-                sensors:
-                - attribute: current_humidity
-                  name: Humidity
-                  unit: "%"
-                hide:
-                  state: true
-              - type: entities
-                show_header_toggle: false
-                entities:
-                - entity: sensor.emoncms_hvac_daily_zone_2_runtime
-                  icon: 'mdi:timer'
-                  name: Total Runtime
-                - entity: sensor.emoncms_hvac_daily_zone_2_heat_runtime
-                  icon: 'mdi:fire'
-                  name: Heat Runtime
-                - entity: sensor.emoncms_hvac_zone_2_daily_cool_runtime
-                  icon: 'mdi:snowflake'
-                  name: Cool Runtime
-                - entity: sensor.emoncms_hvac_daily_zone_2_fan_runtime
-                  icon: 'mdi:fan'
-                  name: Fan Runtime
+            - type: entities
+              show_header_toggle: false
+              title: System
+              entities:
+              - entity: sensor.hvac_supply_temperature_owfs
+                name: Supply Temperature
+              - entity: sensor.plenum_hvac_return_temperature_owfs
+                name: Return Plenum Temperature
+              - entity: sensor.front_hvac_return_temperature_owfs
+                name: Front Hallway Return Temperature
+              - entity: sensor.back_hvac_return_temperature_owfs
+                name: Master Suite Return Temperature
+              - entity: sensor.server_room_hvac_return_temperature_owfs
+                name: Server Closet Return Temperature
+            - type: horizontal-stack
+              cards:          
+              
+                - type: custom:bar-card
+                  title: 'Heat:'
+                  entity: sensor.hvac_system_heat_runtime
+                  title_position: inside
+                  align: center
+                  padding: 4px
+                  card_style: 
+                    border-radius: 5px
+                  max: 24
+                  color: red
+                  
+                - type: custom:bar-card
+                  title: 'Cool:'
+                  entity: sensor.hvac_system_cool_runtime
+                  title_position: inside
+                  align: center
+                  padding: 4px
+                  card_style: 
+                    border-radius: 5px
+                  max: 24
+                  color: blue
+
+            - type: horizontal-stack
+              cards:          
+
+                - type: custom:bar-card
+                  title: 'Fan:'
+                  entity: sensor.hvac_system_fan_runtime
+                  title_position: inside
+                  align: center
+                  padding: 4px
+                  card_style: 
+                    border-radius: 5px
+                  max: 24
+                  color: green
+                  
+                - type: custom:bar-card
+                  title: 'Total:'
+                  entity: sensor.hvac_system_runtime
+                  title_position: inside
+                  align: center
+                  padding: 4px
+                  card_style: 
+                    border-radius: 5px
+                  max: 24
 
 #################################################################
 #                                                               #
@@ -427,7 +409,80 @@ views:
             - entity: sensor.shed_temperature_owfs
               name: Shed
             - entity: sensor.work_room_temperature_owfs
-              name: Work
+              name: Work              
+
+#################################################################
+#                                                               #
+#                       HVAC - Front Rooms                      #
+#                                                               #
+#################################################################
+        
+      - type: vertical-stack
+        cards:
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: custom:simple-thermostat
+                entity: climate.front_rooms
+                step_size: 1
+                sensors:
+                - attribute: current_humidity
+                  name: Humidity
+                  unit: "%"
+                - entity: sensor.hvac_zone_2_state
+                  name: state
+                hide:
+                  state: true
+                
+
+              - type: horizontal-stack
+                cards:    
+
+                  - type: custom:bar-card
+                    title: 'Heat:'
+                    entity: sensor.hvac_zone_2_heat_runtime
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: 24
+                    color: red
+                    
+                  - type: custom:bar-card
+                    title: 'Cool:'
+                    entity: sensor.hvac_zone_2_cool_runtime
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: 24
+                    color: blue
+              - type: horizontal-stack
+                cards:      
+
+                  - type: custom:bar-card
+                    title: 'Fan:'
+                    entity: sensor.hvac_zone_2_fan_runtime
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: 24
+                    color: green
+                    
+                  - type: custom:bar-card
+                    title: 'Total:'
+                    entity: sensor.hvac_zone_2_runtime
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: 24
+
+
 
 #################################################################
 #                                                               #
@@ -437,31 +492,71 @@ views:
         
       - type: vertical-stack
         cards:
-          - type: custom:vertical-stack-in-card
-            cards:
-              - type: custom:simple-thermostat
-                entity: climate.living_areas
-                sensors:
-                - attribute: current_humidity
-                  name: Humidity
-                  unit: "%"
-                hide:
-                  state: true
-              - type: entities
-                show_header_toggle: false
-                entities:            
-                - entity: sensor.emoncms_hvac_daily_zone_1_runtime
-                  icon: 'mdi:timer'
-                  name: Total Runtime
-                - entity: sensor.emoncms_hvac_daily_zone_1_heat_runtime
-                  icon: 'mdi:fire'
-                  name: Heat Runtime
-                - entity: sensor.emoncms_hvac_daily_zone_1_cool_runtime
-                  icon: 'mdi:snowflake'
-                  name: Cool Runtime
-                - entity: sensor.emoncms_hvac_daily_zone_1_fan_runtime
-                  icon: 'mdi:fan'
-                  name: Fan Runtime
+        - type: custom:vertical-stack-in-card
+          cards:
+          - type: custom:simple-thermostat
+            entity: climate.living_areas
+            step_size: 1
+            sensors:
+            - attribute: current_humidity
+              name: Humidity
+              unit: "%"
+            - entity: sensor.hvac_zone_1_state
+              name: state
+            hide:
+              state: true
+
+          - type: horizontal-stack
+            cards:     
+
+              - type: custom:bar-card
+                title: 'Heat:'
+                entity: sensor.hvac_zone_1_heat_runtime
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 24
+                color: red
+                
+              - type: custom:bar-card
+                title: 'Cool:'
+                entity: sensor.hvac_zone_1_cool_runtime
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 24
+                color: blue
+
+          - type: horizontal-stack
+            cards: 
+
+              - type: custom:bar-card
+                title: 'Fan:'
+                entity: sensor.hvac_zone_1_fan_runtime
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 24
+                color: green
+                
+              - type:  custom:bar-card
+                title: 'Total:'
+                entity: sensor.hvac_zone_1_runtime
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 24
+            
+                      
+
 
 #################################################################
 #                                                               #
@@ -475,27 +570,64 @@ views:
             cards:
               - type: custom:simple-thermostat
                 entity: climate.master_suite
+                step_size: 1
                 sensors:
                 - attribute: current_humidity
                   name: Humidity
                   unit: "%"
+                - entity: sensor.hvac_zone_3_state
+                  name: state
                 hide:
                   state: true
-              - type: entities
-                show_header_toggle: false
-                entities:
-                - entity: sensor.emoncms_hvac_daily_zone_3_runtime
-                  icon: 'mdi:timer'
-                  name: Total Runtime
-                - entity: sensor.emoncms_hvac_daily_zone_3_heat_runtime
-                  icon: 'mdi:fire'
-                  name: Heat Runtime
-                - entity: sensor.emoncms_hvac_daily_zone_3_cool_runtime
-                  icon: 'mdi:snowflake'
-                  name: Cool Runtime
-                - entity: sensor.emoncms_hvac_daily_zone_3_fan_runtime
-                  icon: 'mdi:fan'
-                  name: Fan Runtime
+              - type: horizontal-stack
+                cards:          
+
+                  - type: custom:bar-card
+                    title: 'Heat:'
+                    entity: sensor.hvac_zone_3_heat_runtime
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: 24
+                    color: red
+                    
+                  - type: custom:bar-card
+                    title: 'Cool:'
+                    entity: sensor.hvac_zone_3_cool_runtime
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: 24
+                    color: blue
+
+              - type: horizontal-stack
+                cards:          
+
+                  - type: custom:bar-card
+                    title: 'Fan:'
+                    entity: sensor.hvac_zone_3_fan_runtime
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: 24
+                    color: green
+                    
+                  - type: custom:bar-card
+                    title: 'Total:'
+                    entity: sensor.hvac_zone_3_runtime
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: 24
+
 #############################################################################################################################################
 #                                                                                                                                           # 
 #                                                                VIEW 2 - Laundry                                                           #
@@ -659,6 +791,89 @@ views:
   - id: 5  
     icon: mdi:server-network
     name: System Status
+    popup_cards:
+    
+      sensor.automation_count:
+        title: Automation Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.automation_count
+              name: Current Automations
+            - input_number.automation_count_expected
+
+      sensor.binary_sensor_count:
+        title: Binary Sensor Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.binary_sensor_count
+              name: Current Binary Sensors
+            - input_number.binary_sensor_count_expected
+      
+      sensor.switch_count:
+        title: Switch Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.switch_count
+              name: Current Switches
+            - input_number.switch_count_expected
+
+      sensor.fan_count:
+        title: Fan Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.fan_count
+              name: Current Fans
+            - input_number.fan_count_expected
+
+      sensor.lights_count:
+        title: Light Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.lights_count
+              name: Current Lights
+            - input_number.light_count_expected
+
+      sensor.tracker_count:
+        title: Device Tracker Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.tracker_count
+              name: Current Device Trackers
+            - input_number.tracked_device_count_expected
+      
+      sensor.media_player_count:
+        title: Media Player Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.media_player_count
+              name: Current Media Players
+            - input_number.media_player_count_expected
+      
+      sensor.script_count:
+        title: Script Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.script_count
+              name: Current Scripts
+            - input_number.script_count_expected
+
+      sensor.sensor_count:
+        title: Sensor Count Settings
+        card:
+          type: entities
+          entities:
+            - entity: sensor.sensor_count
+              name: Current Sensors
+            - input_number.sensor_count_expected
+
     cards:
        
 #################################################################
@@ -906,22 +1121,24 @@ views:
                
                   - type: horizontal-stack
                     cards:          
-                      - type: custom:bar-card
-                        title: Automations
-                        entity: sensor.automation_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.automation_count
-                        severity:
-                        - value: 190
-                          color: '#bf4040'
-                        - value: 205
-                          color: '#1db954'
-                        - value: 300
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Automations
+                          entity: sensor.automation_count
+                          title_position: inside
+                          align: center
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.automation_count
+                          severity:
+                            - value: ${states['sensor.automation_count_low'].state}
+                              color: '#bf4040'
+                            - value: ${states['input_number.automation_count_expected'].state}
+                              color: '#1db954'
+                            - value: ${states['sensor.automation_count_high'].state}
+                              color: '#bf9540'
                       - type: 'custom:config-template-card'
                         card:
                           type: custom:bar-card
@@ -934,135 +1151,149 @@ views:
                             border-radius: 5px
                           max: sensor.binary_sensor_count
                           severity:
-                          - value: 67
+                          - value: ${states['sensor.binary_sensor_count_low'].state}
                             color: '#bf4040'
-                          - value: 68 #${states['sensor.emoncms_hvac_daily_zone_2_runtime'].state}     ###68
+                          - value: ${states['input_number.binary_sensor_count_expected'].state}
                             color: '#1db954'
-                          - value: 150
+                          - value: ${states['sensor.binary_sensor_count_high'].state}
                             color: '#bf9540'
                 
-                      - type: custom:bar-card
-                        title: Switches
-                        entity: sensor.switch_count
-                        title_position: inside
-                        align: center 
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.switch_count
-                        severity:
-                        - value: 282
-                          color: '#bf4040'
-                        - value: 283
-                          color: '#1db954'
-                        - value: 350
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Switches
+                          entity: sensor.switch_count
+                          title_position: inside
+                          align: center 
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.switch_count
+                          severity:
+                            - value: ${states['sensor.switch_count_low'].state}
+                              color: '#bf4040'
+                            - value: ${states['input_number.switch_count_expected'].state}
+                              color: '#1db954'
+                            - value: ${states['sensor.switch_count_high'].state}
+                              color: '#bf9540'
                 
                   - type: horizontal-stack
                     cards:          
-                      - type: custom:bar-card
-                        title: Fans
-                        entity: sensor.fan_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.fan_count
-                        severity:
-                        - value: 2
-                          color: '#bf4040'
-                        - value: 3
-                          color: '#1db954'
-                        - value: 10
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Fans
+                          entity: sensor.fan_count
+                          title_position: inside
+                          align: center
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.fan_count
+                          severity:
+                            - value: ${states['sensor.fan_count_low'].state}
+                              color: '#bf4040'
+                            - value: ${states['input_number.fan_count_expected'].state}
+                              color: '#1db954'
+                            - value: ${states['sensor.fan_count_high'].state}
+                              color: '#bf9540'
                     
-                      - type: custom:bar-card
-                        title: Lights
-                        entity: sensor.lights_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.lights_count
-                        severity:
-                        - value: 78
-                          color: '#bf4040'
-                        - value: 79
-                          color: '#1db954'
-                        - value: 120
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Lights
+                          entity: sensor.lights_count
+                          title_position: inside
+                          align: center
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.lights_count
+                          severity:
+                            - value: ${states['sensor.light_count_low'].state}
+                              color: '#bf4040'
+                            - value: ${states['input_number.light_count_expected'].state}
+                              color: '#1db954'
+                            - value: ${states['sensor.light_count_high'].state}
+                              color: '#bf9540'
                 
-                      - type: custom:bar-card
-                        title: Tracked Devices
-                        entity: sensor.tracker_count
-                        title_position: inside
-                        align: center 
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.tracker_count
-                        severity:
-                        - value: 61
-                          color: '#bf4040'
-                        - value: 62
-                          color: '#1db954'
-                        - value: 150
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Tracked Devices
+                          entity: sensor.tracker_count
+                          title_position: inside
+                          align: center 
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.tracker_count
+                          severity:
+                            - value: ${states['sensor.tracked_device_count_low'].state}
+                              color: '#bf4040'
+                            - value: ${states['input_number.tracked_device_count_expected'].state}
+                              color: '#1db954'
+                            - value: ${states['sensor.tracked_device_count_high'].state}
+                              color: '#bf9540'
                  
                   - type: horizontal-stack
                     cards:          
-                      - type: custom:bar-card
-                        title: Media Players
-                        entity: sensor.media_player_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.media_player_count
-                        severity:
-                        - value: 5
-                          color: '#bf4040'
-                        - value: 6
-                          color: '#1db954'
-                        - value: 10
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Media Players
+                          entity: sensor.media_player_count
+                          title_position: inside
+                          align: center
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.media_player_count
+                          severity:
+                            - value: ${states['sensor.media_player_count_low'].state}
+                              color: '#bf4040'
+                            - value: ${states['input_number.media_player_count_expected'].state}
+                              color: '#1db954'
+                            - value: ${states['sensor.media_player_count_high'].state}
+                              color: '#bf9540'
                 
-                      - type: custom:bar-card
-                        title: Scripts
-                        entity: sensor.script_count
-                        title_position: inside
-                        align: center 
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.script_count
-                        severity:
-                        - value: 1
-                          color: '#bf4040'
-                        - value: 2
-                          color: '#1db954'
-                        - value: 10
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Scripts
+                          entity: sensor.script_count
+                          title_position: inside
+                          align: center 
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.script_count
+                          severity:
+                            - value: ${states['sensor.script_count_low'].state}
+                              color: '#bf4040'
+                            - value: ${states['input_number.script_count_expected'].state}
+                              color: '#1db954'
+                            - value: ${states['sensor.script_count_high'].state}
+                              color: '#bf9540'
                       
-                      - type: custom:bar-card
-                        title: Sensors
-                        entity: sensor.sensor_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.sensor_count
-                        severity:
-                        - value: 570
-                          color: '#bf4040'
-                        - value: 571
-                          color: '#1db954'
-                        - value: 671
-                          color: '#bf9540'
+                      - type: 'custom:config-template-card'
+                        card:
+                          type: custom:bar-card
+                          title: Sensors
+                          entity: sensor.sensor_count
+                          title_position: inside
+                          align: center
+                          padding: 4px
+                          card_style: 
+                            border-radius: 5px
+                          max: sensor.sensor_count
+                          severity:
+                            - value: ${states['sensor.sensor_count_low'].state}
+                              color: '#bf4040'
+                            - value: ${states['input_number.sensor_count_expected'].state}
+                              color: '#1db954'
+                            - value: ${states['sensor.sensor_count_high'].state}
+                              color: '#bf9540'
 
 #############################################################################################################################################
 #                                                                                                                                           # 

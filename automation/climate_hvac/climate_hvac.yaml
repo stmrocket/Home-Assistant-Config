@@ -1,0 +1,201 @@
+- alias: HVAC Geofence Entered
+  trigger:
+  - platform: state
+    entity_id: input_boolean.hvac_geofence
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.area_001
+    state: armed_away   
+  action:
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living_areas
+      target_temp_high: 78
+      target_temp_low: 68
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.front_rooms
+      target_temp_high: 78
+      target_temp_low: 68
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.master_suite
+      target_temp_high: 79
+      target_temp_low: 68
+
+- alias: HVAC Geofence Timeout
+  trigger:
+  - platform: state
+    entity_id: input_boolean.hvac_geofence
+    to: 'on'
+    for: 00:20:00
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.area_001
+    state: armed_away   
+  action:
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living_areas
+      target_temp_high: 82
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.front_rooms
+      target_temp_high: 82
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.master_suite
+      target_temp_high: 82
+      target_temp_low: 62
+
+- alias: HVAC Night No Guest
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: disarmed
+    to: armed_night
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_home
+    to: armed_night
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'   
+  action:
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living_areas
+      target_temp_high: 82
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.front_rooms
+      target_temp_high: 82
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.master_suite
+      target_temp_high: 75
+      target_temp_low: 62
+
+- alias: HVAC Night Guest Mode
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: disarmed
+    to: armed_night
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_home
+    to: armed_night
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'on'   
+  action:
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living_areas
+      target_temp_high: 82
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.front_rooms
+      target_temp_high: 75
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.master_suite
+      target_temp_high: 75
+      target_temp_low: 62
+
+- alias: HVAC When Home
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_night
+    to: disarmed
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_night
+    to: armed_home
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_away
+    to: disarmed
+  action:
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living_areas
+      target_temp_high: 78
+      target_temp_low: 68
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.front_rooms
+      target_temp_high: 78
+      target_temp_low: 68
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.master_suite
+      target_temp_high: 78
+      target_temp_low: 68     
+
+- alias: HVAC When Away
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    to: armed_away
+  action:
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living_areas
+      target_temp_high: 82
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.front_rooms
+      target_temp_high: 82
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.master_suite
+      target_temp_high: 82
+      target_temp_low: 62
+
+- alias: HVAC Weekday AM
+  trigger:
+  - platform: time
+    at: '04:50:00'
+  condition:
+  - condition: and #Weekdays at 4:50am Not On Holiday
+    conditions:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: calendar.work_holidays
+      state: 'off'
+  action:
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.living_areas
+      target_temp_high: 78
+      target_temp_low: 68
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.front_rooms
+      target_temp_high: 78
+      target_temp_low: 68
+  - service: climate.set_temperature
+    data:
+      entity_id: climate.master_suite
+      target_temp_high: 79
+      target_temp_low: 68
