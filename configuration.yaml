@@ -533,6 +533,11 @@ notify:
   - name: master_kodi
     platform: kodi
     host: !secret master_kodi_host
+  - platform: html5
+    name: browser
+    vapid_pub_key: !secret vapid_public
+    vapid_prv_key: !secret vapid_private
+    vapid_email: !secret vapid_email
 
 #Counters
 counter:
@@ -577,4 +582,18 @@ hacs:
   theme: true
 
 #Breaking Changes
-#breaking_changes:
+breaking_changes:
+
+#Alexa Media Player
+alexa_media:
+  accounts:
+    - email: !secret amazon_user
+      password: !secret amazon_password
+      url: amazon.com
+
+#Fully Kiosk Display
+display:
+  - platform: fully_kiosk
+    name: Kitchen Tablet
+    host: !secret kitchen_tablet_host
+    password: !secret kitchen_tablet_pin
