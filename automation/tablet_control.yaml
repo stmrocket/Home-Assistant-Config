@@ -1,0 +1,44 @@
+- alias: Tablet Night
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: disarmed
+    to: armed_night
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_home
+    to: armed_night
+  action:
+  - service: display.turn_off
+    data:
+      entity_id: display.kitchen_tablet
+
+- alias: Tablet When Home
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_night
+    to: disarmed
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_night
+    to: armed_home
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: armed_away
+    to: disarmed
+  action:
+  - service: display.turn_on
+    data:
+      entity_id: display.kitchen_tablet
+      
+- alias: Tablet when Away
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    to: armed_away
+  action:
+  action:
+  - service: display.turn_off
+    data:
+      entity_id: display.kitchen_tablet
