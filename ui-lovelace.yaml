@@ -75,6 +75,12 @@ cch:
   clock_date: true
   date_locale: en-us
   disable: false
+  hide_tabs: 7,8
+  exceptions:
+    - conditions:
+        user_agent: fully-kitchen
+      config:
+        hide_tabs: 0 to 6
 
 #############################################################################################################################################
 #                                                                                                                                           # 
@@ -1321,3 +1327,260 @@ views:
             - entity: input_boolean.zigbee_permit_join
             - entity: timer.zigbee_permit_join
             - entity: sensor.bridge_state
+
+  - id: 7
+    icon: mdi:castle
+    name: Home
+    cards:
+
+  #################################################################
+  #                                                               #
+  #                      Home - Weather Card                      #
+  #                                                               #
+  #################################################################
+
+          - type: vertical-stack
+            cards:
+              - type: 'custom:dark-sky-weather-card'
+                entity_current_conditions: sensor.dark_sky_icon
+                entity_temperature: sensor.aquara_outside_temperature
+                entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
+                entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2d
+                entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3d
+                entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4d
+                entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5d
+                entity_forecast_icon_1: sensor.dark_sky_icon_1d
+                entity_forecast_icon_2: sensor.dark_sky_icon_2d
+                entity_forecast_icon_3: sensor.dark_sky_icon_3d
+                entity_forecast_icon_4: sensor.dark_sky_icon_4d
+                entity_forecast_icon_5: sensor.dark_sky_icon_5d
+                entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_1d
+                entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_2d
+                entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_3d
+                entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_4d
+                entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_5d
+                entity_summary_1: sensor.dark_sky_summary_1d
+                entity_summary_2: sensor.dark_sky_summary_2d
+                entity_summary_3: sensor.dark_sky_summary_3d
+                entity_summary_4: sensor.dark_sky_summary_4d
+                entity_summary_5: sensor.dark_sky_summary_5d
+                ## Optional Parameters ##
+                entity_sun: sun.sun
+                entity_visibility: sensor.dark_sky_visibility
+                entity_wind_bearing: sensor.dark_sky_wind_bearing
+                entity_wind_speed: sensor.dark_sky_wind_speed
+                entity_humidity: sensor.aquara_outside_humidity
+                entity_pressure: sensor.aquara_outside_pressure
+                entity_daily_summary: sensor.dark_sky_daily_summary
+                entity_pop_intensity: sensor.dark_sky_precip_intensity
+                entity_pop_1: sensor.dark_sky_precip_probability_1d
+                entity_pop_2: sensor.dark_sky_precip_probability_2d
+                entity_pop_3: sensor.dark_sky_precip_probability_3d
+                entity_pop_4: sensor.dark_sky_precip_probability_4d
+                entity_pop_5: sensor.dark_sky_precip_probability_5d
+                entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
+                entity_pop: sensor.dark_sky_precip_probability_0d
+                entity_precip_current: sensor.emoncms_daily_rainfall
+                entity_precip_intensity_current: sensor.emoncms_rain_rate
+
+  #################################################################
+  #                                                               #
+  #                        Home - Waze                            #
+  #                                                               #
+  ################################################################# 
+              - type: custom:waze-card
+                title: Travel
+                entities:
+                  - entity: sensor.shawn_to_work
+                    zone: zone.work
+                    name: Work                
+
+  #################################################################
+  #                                                               #
+  #                         Home - Media                          #
+  #                                                               #
+  ################################################################# 
+          - type: vertical-stack
+            cards:  
+              - type: custom:mini-media-player
+                entity: media_player.kitchen_stereo
+                icon: mdi:google-play
+                artwork: cover
+                volume_stateless: true
+                hide:
+                  source: true
+                
+                  
+
+  #################################################################
+  #                                                               #
+  #                       Home - HVAC                             #
+  #                                                               #
+  ################################################################# 
+              - type: vertical-stack
+                cards:
+                - type: custom:vertical-stack-in-card
+                  cards:
+                  - type: custom:simple-thermostat
+                    entity: climate.living_areas
+                    step_size: 1
+                    sensors:
+                    - attribute: current_humidity
+                      name: Humidity
+                      unit: "%"
+                    - entity: sensor.hvac_zone_1_state
+                      name: state
+                    hide:
+                      state: true
+
+                  - type: horizontal-stack
+                    cards:     
+
+                      - type: custom:bar-card
+                        title: 'Heat:'
+                        entity: sensor.hvac_zone_1_heat_runtime
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 24
+                        color: red
+                        
+                      - type: custom:bar-card
+                        title: 'Cool:'
+                        entity: sensor.hvac_zone_1_cool_runtime
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 24
+                        color: blue
+
+                  - type: horizontal-stack
+                    cards: 
+
+                      - type: custom:bar-card
+                        title: 'Fan:'
+                        entity: sensor.hvac_zone_1_fan_runtime
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 24
+                        color: green
+                        
+                      - type:  custom:bar-card
+                        title: 'Total:'
+                        entity: sensor.hvac_zone_1_runtime
+                        title_position: inside
+                        align: center
+                        padding: 4px
+                        card_style: 
+                          border-radius: 5px
+                        max: 24
+              - type: glance
+                columns: 4
+                show_name: true
+                show_state: false
+                entities:
+                    - entity: camera.front_porch
+                    - entity: camera.east_front
+                    - entity: camera.west_front
+                    - entity: camera.back_yard
+
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: light.kitchen_light_1
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Lights
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: light.kitchen_sink_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Sink Light
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: light.breakfast_room_light
+                    color_type: card
+                    color: rgb(66, 134, 244)
+                    icon: mdi:lightbulb-outline
+                    name: Table
+                    hold_action: 
+                      action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: light.kitchen_leds_rgb
+                    color_type: icon
+                    color: auto
+                    icon: mdi:lightbulb-outline
+                    name: Cabinets
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: light.kitchen_counter_leds_white
+                    color_type: icon
+                    color: rgb(255, 200,0)
+                    icon: mdi:lightbulb-outline
+                    name: Counter
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: switch.popcorn_popper_2
+                    color_type: icon
+                    color: rgb(255, 0, 0)
+                    icon: mdi:popcorn
+                    name: Popper
+                    hold_action: 
+                      action: more-info
+
+  #################################################################
+  #                                                               #
+  #                          Home - Laundry                       #
+  #                                                               #
+  ################################################################# 
+          - type: vertical-stack
+            cards: 
+              - type: horizontal-stack
+                cards: 
+                - type: entities
+                  show_header_toggle: false
+                  title: Laundry Status
+                  entities:
+                      - entity: sensor.washer_state
+                      - entity: sensor.dryer_state
+  #################################################################
+  #                                                               #
+  #                     Home - Locks                              #
+  #                                                               #
+  ################################################################# 
+                - type: entities
+                  show_header_toggle: false
+                  title: Locks
+                  entities:
+                    - entity: lock.front_door
+                      name: Front
+                    - entity: lock.back_door    
+                      name: Back        
+  #################################################################
+  #                                                               #
+  #                      Home - Alarm                             #
+  #                                                               #
+  ################################################################# 
+              - type: alarm-panel
+                name: House Alarm
+                states:
+                  - arm_home
+                  - arm_away
+                  - arm_night
+                entity: alarm_control_panel.area_001            
