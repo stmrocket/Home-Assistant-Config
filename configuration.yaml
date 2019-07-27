@@ -86,6 +86,12 @@ cover:
     position_open: 100
     position_closed: 0
 
+  #MyQ
+  - platform: myq
+    username: !secret myq_user
+    password: !secret myq_pass
+    type: chamberlain
+
 # Sensors
 sensor:
   # Blinds
@@ -597,3 +603,4 @@ display:
     name: Kitchen Tablet
     host: !secret kitchen_tablet_host
     password: !secret kitchen_tablet_pin
+
