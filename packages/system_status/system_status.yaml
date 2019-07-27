@@ -61,11 +61,6 @@ device_tracker:
       shack_printer: !secret shack_printer_ip
       ha_dev: !secret ha_dev_ip
       elk_fpp: !secret elk_fpp_ip
-      alexa_den: !secret alexa_den_ip
-      alexa_master: !secret alexa_master_ip
-      alexa_office: !secret alexa_office_ip
-      alexa_guest: !secret alexa_guest_ip
-      alexa_server: !secret alexa_server_ip
       redlink: !secret redlink_ip
       desktop: !secret desktop_ip
       den_roku: !secret den_roku_ip
@@ -74,7 +69,7 @@ device_tracker:
 
 ####################################################
 #                                                  #
-#               Device Track - Ping                #
+#               Device Track - Nmap                #
 #                                                  #
 ####################################################
 
@@ -85,6 +80,7 @@ device_tracker:
       - !secret alexa_office_ip
       - !secret alexa_guest_ip
       - !secret alexa_server_ip
+      - !secret alexa_elk_ip
 
 
 
@@ -119,6 +115,7 @@ group:
       - binary_sensor.alexa_office
       - binary_sensor.alexa_guest
       - binary_sensor.alexa_server
+      - binary_sensor.alexa_elk
       - binary_sensor.desktop
       - binary_sensor.office_printer
       - binary_sensor.shack_printer
@@ -364,6 +361,17 @@ binary_sensor:
         value_template: "{{ is_state('device_tracker.alexa_server', 'home') }}"
         icon_template: >-
           {% if is_state('device_tracker.alexa_server', 'home') %}
+            mdi:amazon-alexa
+          {% else %}
+            mdi:amazon-alexa
+          {% endif %}
+      alexa_elk:
+        friendly_name: Elk Alexa
+        device_class: connectivity
+        entity_id: device_tracker.alexa_elk
+        value_template: "{{ is_state('device_tracker.alexa_elk', 'home') }}"
+        icon_template: >-
+          {% if is_state('device_tracker.alexa_elk', 'home') %}
             mdi:amazon-alexa
           {% else %}
             mdi:amazon-alexa
@@ -769,6 +777,7 @@ sensor:
     sampling_size: 4
     max_age:
       hours: 24
+
   - platform: statistics
     name: 'ERL WAN Out Stats'
     entity_id: sensor.erl_wan_out
@@ -1077,6 +1086,16 @@ sensor:
           {% if is_state('device_tracker.alexa_server', 'home') %}
             100
           {% elif is_state('device_tracker.alexa_server', 'not_home') %}
+            0
+          {% endif %}
+
+      alexa_elk_state:
+        friendly_name: Elk Alexa
+        entity_id: device_tracker.alexa_elk
+        value_template: >-
+          {% if is_state('device_tracker.alexa_elk', 'home') %}
+            100
+          {% elif is_state('device_tracker.alexa_elk', 'not_home') %}
             0
           {% endif %}
       
@@ -1391,3 +1410,18 @@ input_number:
 ################################################################# 
 
 system_health:              
+
+#################################################################
+#                                                               #
+#                          Speed Test                           #
+#                                                               #
+################################################################# 
+  
+speedtestdotnet:
+  server_id: 5032
+  scan_interval:
+    hours: 1
+  monitored_conditions:
+    - ping
+    - download
+    - upload

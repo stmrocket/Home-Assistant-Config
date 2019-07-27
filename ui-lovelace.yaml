@@ -76,11 +76,13 @@ cch:
   date_locale: en-us
   disable: false
   hide_tabs: 7,8
+  default_tap: 0
   exceptions:
     - conditions:
         user_agent: fully-kitchen
       config:
         hide_tabs: 0 to 6
+        default_tab: 7
 
 #############################################################################################################################################
 #                                                                                                                                           # 
@@ -1393,7 +1395,22 @@ views:
                 entities:
                   - entity: sensor.shawn_to_work
                     zone: zone.work
-                    name: Work                
+                    name: Work     
+
+  #################################################################
+  #                                                               #
+  #                        Home - CCTV                            #
+  #                                                               #
+  ################################################################# 
+              - type: glance
+                columns: 4
+                show_name: true
+                show_state: false
+                entities:
+                    - entity: camera.front_porch
+                    - entity: camera.east_front
+                    - entity: camera.west_front
+                    - entity: camera.back_yard           
 
   #################################################################
   #                                                               #
@@ -1481,15 +1498,7 @@ views:
                         card_style: 
                           border-radius: 5px
                         max: 24
-              - type: glance
-                columns: 4
-                show_name: true
-                show_state: false
-                entities:
-                    - entity: camera.front_porch
-                    - entity: camera.east_front
-                    - entity: camera.west_front
-                    - entity: camera.back_yard
+              
 
               - type: horizontal-stack
                 cards:
@@ -1549,6 +1558,7 @@ views:
   #                          Home - Laundry                       #
   #                                                               #
   ################################################################# 
+
           - type: vertical-stack
             cards: 
               - type: horizontal-stack
@@ -1558,7 +1568,10 @@ views:
                   title: Laundry Status
                   entities:
                       - entity: sensor.washer_state
+                        name: Washer
                       - entity: sensor.dryer_state
+                        name: Dryer
+
   #################################################################
   #                                                               #
   #                     Home - Locks                              #
