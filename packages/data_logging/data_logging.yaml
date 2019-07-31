@@ -49,9 +49,6 @@ recorder:
     - sensor.hvac_zone_1_runtime
     - sensor.hvac_zone_2_runtime
     - sensor.hvac_zone_3_runtime
-    - sensor.speedtest_ping
-    - sensor.speedtest_download
-    - sensor.speedtest_upload
 
 #################################################################
 #                                                               #
@@ -102,9 +99,6 @@ influxdb:
       - sensor.hvac_zone_1_runtime
       - sensor.hvac_zone_2_runtime
       - sensor.hvac_zone_3_runtime
-      - sensor.speedtest_ping
-      - sensor.speedtest_download
-      - sensor.speedtest_upload
 
 #################################################################
 #                                                               #

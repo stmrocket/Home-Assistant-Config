@@ -1411,17 +1411,3 @@ input_number:
 
 system_health:              
 
-#################################################################
-#                                                               #
-#                          Speed Test                           #
-#                                                               #
-################################################################# 
-  
-speedtestdotnet:
-  server_id: 5032
-  scan_interval:
-    hours: 1
-  monitored_conditions:
-    - ping
-    - download
-    - upload
