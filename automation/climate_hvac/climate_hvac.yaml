@@ -127,6 +127,10 @@
     entity_id: alarm_control_panel.area_001
     from: armed_away
     to: disarmed
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    from: pending
+    to: disarmed
   action:
   - service: climate.set_temperature
     data:
