@@ -145,7 +145,7 @@
   - service: climate.set_temperature
     data:
       entity_id: climate.master_suite
-      target_temp_high: 78
+      target_temp_high: 79
       target_temp_low: 68     
 
 - alias: HVAC When Away
