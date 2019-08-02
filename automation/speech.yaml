@@ -1,262 +1,191 @@
-- id: '1555462197255'
-  alias: Elk Speak Front Door
+- alias: Elk Speak Front Door
   trigger:
   - entity_id: sensor.zone_001
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: FrontDoor
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555462898743'
-  alias: Elk Speak Back Door
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,7
+    
+- alias: Elk Speak Back Door
   trigger:
   - entity_id: sensor.zone_003
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: BackDoor
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555462981053'
-  alias: Elk Speak Center Master Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,2
+
+- alias: Elk Speak Center Master Window
   trigger:
   - entity_id: sensor.zone_005
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: CenterMasterWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465016255'
-  alias: Elk Speak Center Office Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,3
+
+- alias: Elk Speak Center Office Window
   trigger:
   - entity_id: sensor.zone_005
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: CenterOfficeWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465119616'
-  alias: Elk Speak East Breakfast Room Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,4
+
+- alias: Elk Speak East Breakfast Room Window
   trigger:
   - entity_id: sensor.zone_015
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - alias: 'East Breakfase Window'
+  - service: mqtt.publish
     data:
-      payload: EastBreakfastWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465363531'
-  alias: Elk Speak Garage Door
+      topic: parrot/command/set/play
+      payload: 1,6
+
+- alias: Elk Speak Garage Door
   trigger:
   - entity_id: sensor.zone_031
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: GarageDoor
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465447911'
-  alias: Elk Speak Garage Entry
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,9
+
+- alias: Elk Speak Garage Entry
   trigger:
   - entity_id: sensor.zone_002
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: GarageEntry
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465498639'
-  alias: Elk Speak Guest Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,10
+
+- alias: Elk Speak Guest Window
   trigger:
   - entity_id: sensor.zone_007
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - alias: 'Guest Bedroom Window'
+  - service: mqtt.publish
     data:
-      payload: GuestWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465601081'
-  alias: Elk Speak Left Breakfast Room Window
+      topic: parrot/command/set/play
+      payload: 1,12
+
+- alias: Elk Speak Left Breakfast Room Window
   trigger:
   - entity_id: sensor.zone_013
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: LeftBreakfastWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465652420'
-  alias: Elk Speak Right Breakfast Room Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,16
+
+- alias: Elk Speak Right Breakfast Room Window
   trigger:
   - entity_id: sensor.zone_014
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: RightBreakfastWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465790970'
-  alias: Elk Speak Left Master Bedroom Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,19
+
+- alias: Elk Speak Left Master Bedroom Window
   trigger:
   - entity_id: sensor.zone_010
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: LeftMasterWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465859133'
-  alias: Elk Speak Left Office Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,17
+
+- alias: Elk Speak Left Office Window
   trigger:
   - entity_id: sensor.zone_006
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: LeftOfficeWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465924936'
-  alias: Elk Speak Right Office Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,18
+
+- alias: Elk Speak Right Office Window
   trigger:
   - entity_id: sensor.zone_006
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: RightOfficeWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555465986577'
-  alias: Elk Speak Right Master Bedroom Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,21
+
+- alias: Elk Speak Right Master Bedroom Window
   trigger:
   - entity_id: sensor.zone_012
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: RightMasterWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555466041114'
-  alias: Elk Speak Server Room Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,20
+
+- alias: Elk Speak Server Room Window
   trigger:
   - entity_id: sensor.zone_020
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: ServerWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555466098508'
-  alias: Elk Speak West Master Bedroom Window
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,22
+
+- alias: Elk Speak West Master Bedroom Window
   trigger:
   - entity_id: sensor.zone_009
     platform: state
     to: Violated
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: WestMasterWindow
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555466349558'
-  alias: Elk Speak Air Handler Disabled
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 1,26
+
+- alias: Elk Speak Air Handler Disabled
   trigger:
   - entity_id: switch.output_013
     platform: state
     to: 'on'
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: AHUDisabled
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555466721609'
-  alias: Elk Speak Armed Stay
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 2,1
+
+- alias: Elk Speak Armed Stay
   trigger:
   - entity_id: alarm_control_panel.area_001
     from: disarmed
@@ -266,33 +195,25 @@
     from: armed_night
     platform: state
     to: armed_home
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: StayMode
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555466836798'
-  alias: Elk Speak Armed Away
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 2,12
+
+- alias: Elk Speak Armed Away
   trigger:
   - entity_id: alarm_control_panel.area_001
     from: disarmed
     platform: state
     to: armed_away
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: AwayMode
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555466968742'
-  alias: Elk Speak Armed Night
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 2,5
+
+- alias: Elk Speak Armed Night
   trigger:
   - entity_id: alarm_control_panel.area_001
     from: disarmed
@@ -302,27 +223,50 @@
     from: armed_home
     platform: state
     to: armed_night
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: NightMode
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
-- id: '1555467030576'
-  alias: Elk Speak Disarmed
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 2,8
+
+- alias: Elk Speak Disarmed
   trigger:
   - entity_id: alarm_control_panel.area_001
     platform: state
     to: disarmed
-  condition:
-  - condition: state
-    entity_id: sensor.fpp_status
-    state: idle
   action:
-  - data:
-      payload: AlarmDisarmed
-      topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
-    service: mqtt.publish
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 2,2
+
+- alias: Doorbell Alert
+  trigger:
+  - platform: state
+    entity_id: switch.doorbell_pressed
+    to: 'on'
+  action:
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 4,3
+  - service: switch.turn_off
+    data:
+      entity_id: switch.doorbell_pressed
+    
+
+- alias: Timer Alert
+  trigger:
+  - platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: echotimer
+  action:
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 3,2
+  - service: switch.turn_off
+    data:
+      entity_id: switch.alexa_timer_end
+          

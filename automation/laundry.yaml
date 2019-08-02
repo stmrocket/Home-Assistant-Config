@@ -123,8 +123,8 @@
   action:
     - service: mqtt.publish
       data:
-        payload: DryerEnd
-        topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
+        topic: parrot/command/set/play
+        payload: 3,1
     - service: timer.start
       entity_id: timer.dryer_alert
     - service: notify.browser
@@ -146,9 +146,6 @@
     event_type: timer.finished
     platform: event
   condition:
-  #- condition: state
-  #  entity_id: sensor.fpp_status
-  #  state: 'idle'
   - condition: numeric_state
     entity_id: counter.dryer_alert
     below: 7
@@ -163,21 +160,19 @@
   action:
     - service: mqtt.publish
       data:
-        payload: DryerEnd
-        topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
+        topic: parrot/command/set/play
+        payload: 3,1
     - service: timer.start
       entity_id: timer.dryer_alert
     - service: counter.increment
       entity_id: counter.dryer_alert
+
 - alias: 'Announce Washer Finished'
   trigger:
     platform: state
     entity_id: input_boolean.washer_end
     to: 'on'
   condition:
-  #- condition: state
-  #  entity_id: sensor.fpp_status
-  #  state: 'idle'
   - condition: or
     conditions:
       - condition: state
@@ -189,8 +184,8 @@
   action:
     - service: mqtt.publish
       data:
-        payload: WasherEnd
-        topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
+        topic: parrot/command/set/play
+        payload: 3,3
     - service: timer.start
       entity_id: timer.washer_alert
     - service: notify.browser
@@ -214,9 +209,6 @@
   - condition: numeric_state
     entity_id: counter.washer_alert
     below: 7
-#  - condition: state
-#    entity_id: sensor.fpp_status
-#    state: 'idle'
   - condition: or
     conditions:
       - condition: state
@@ -228,8 +220,8 @@
   action:
     - service: mqtt.publish
       data:
-        payload: WasherEnd
-        topic: ElkSpeak/falcon/player/ElkSpeak/playlist/name/set
+        topic: parrot/command/set/play
+        payload: 3,3
     - service: timer.start
       entity_id: timer.washer_alert
     - service: counter.increment
