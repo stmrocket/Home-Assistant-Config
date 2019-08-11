@@ -741,6 +741,8 @@ views:
             - entity: cover.left_office_blind
             - entity: cover.center_office_blind
             - entity: cover.right_office_blind          
+            - entity: cover.guest_blind 
+            - entity: cover.server_blind 
 
 #############################################################################################################################################
 #                                                                                                                                           # 
