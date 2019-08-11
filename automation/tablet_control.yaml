@@ -38,7 +38,6 @@
     entity_id: alarm_control_panel.area_001
     to: armed_away
   action:
-  action:
   - service: display.turn_off
     data:
       entity_id: display.kitchen_tablet
