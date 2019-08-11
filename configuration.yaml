@@ -85,6 +85,30 @@ cover:
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
+#Guest Room Blind
+  - platform: mqtt
+    name: "Guest Blind"
+    command_topic: "habc/guest/command/set/state"
+    set_position_topic: "habc/guest/command/set/positionpct"
+    position_topic: "habc/guest/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+#Server Room Blind
+  - platform: mqtt
+    name: "Server Room Blind"
+    command_topic: "habc/server/command/set/state"
+    set_position_topic: "habc/server/command/set/positionpct"
+    position_topic: "habc/server/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
 
   #MyQ
   - platform: myq
@@ -460,6 +484,18 @@ isy994:
   username: !secret isy_user
   password: !secret isy_pass
   enable_climate: false
+  isy_variables:
+    sensors:
+      - id: 10
+        type: 2
+        unit_of_measurement: 'W'
+      - id: 47
+        type: 1
+        unit_of_measurement: 'in/hr'
+      - id: 122
+        type: 2
+        unit_of_measurement: 'in'
+
 #Elk M1 Integration
 elkm1:
   host: !secret elk_host
