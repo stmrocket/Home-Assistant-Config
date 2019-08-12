@@ -243,6 +243,8 @@ views:
                   - entity: camera.kitchen_fisheye
                   - entity: camera.office
                   - entity: camera.master_bedroom
+                  - entity: camera.server_room
+                  - entity: camera.kitten
 #################################################################
 #                                                               #
 #                      Home - GitHub                            #
