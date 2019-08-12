@@ -46,7 +46,7 @@
     platform: state
   condition:
   - condition: template
-    value_template: '{{ states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_blind.attributes.current_position }}'
+    value_template: '{{ states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position }}'
   action:
   - data:
       payload_template: '{{ states.cover.center_office_blind.attributes.current_position }}'
@@ -59,7 +59,7 @@
     platform: state
   condition:
   - condition: template
-    value_template: '{{not states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_blind.attributes.current_position }}'
+    value_template: '{{not states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position }}'
   action:
   - data:
       payload: 95
