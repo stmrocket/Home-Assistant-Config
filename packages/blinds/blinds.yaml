@@ -1,0 +1,113 @@
+cover:
+  #House Blinds
+  - platform: mqtt
+    name: "House Blinds"
+    command_topic: "habc/all/command/set/state"
+    set_position_topic: "habc/all/command/set/positionpct"
+    position_topic: "habc/all/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+  #Office Blinds
+  - platform: mqtt
+    name: "Office Blinds"
+    command_topic: "habc/office/command/set/state"
+    set_position_topic: "habc/office/command/set/positionpct"
+    position_topic: "habc/office/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+  #Center Office Blind
+  - platform: mqtt
+    name: "Center Office Blind"
+    command_topic: "habc/office_c/command/set/state"
+    set_position_topic: "habc/office_c/command/set/positionpct"
+    position_topic: "habc/office_c/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+  #Right Office Blind
+  - platform: mqtt
+    name: "Right Office Blind"
+    command_topic: "habc/office_r/command/set/state"
+    set_position_topic: "habc/office_r/command/set/positionpct"
+    position_topic: "habc/office_r/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+  #Left Office Blind
+  - platform: mqtt
+    name: "Left Office Blind"
+    command_topic: "habc/office_l/command/set/state"
+    set_position_topic: "habc/office_l/command/set/positionpct"
+    position_topic: "habc/office_l/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+#Guest Room Blind
+  - platform: mqtt
+    name: "Guest Blind"
+    command_topic: "habc/guest/command/set/state"
+    set_position_topic: "habc/guest/command/set/positionpct"
+    position_topic: "habc/guest/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+    
+#Server Room Blind
+  - platform: mqtt
+    name: "Server Room Blind"
+    command_topic: "habc/server/command/set/state"
+    set_position_topic: "habc/server/command/set/positionpct"
+    position_topic: "habc/server/tele/currentpct"
+    #retain: true
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+input_boolean:
+
+  office_blinds_open:
+    name: Blinds Office Open
+    initial: off
+    icon: mdi:blinds
+
+  office_blinds_close:
+    name: Blinds Office Close
+    initial: off
+    icon: mdi:blinds
+
+  house_blinds_open:
+    name: Blinds House Open
+    initial: off
+    icon: mdi:blinds
+
+  house_blinds_close:
+    name: Blinds House Close
+    initial: off
+    icon: mdi:blinds
