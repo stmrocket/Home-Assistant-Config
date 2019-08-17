@@ -76,7 +76,7 @@ cover:
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
-    
+
 #Server Room Blind
   - platform: mqtt
     name: "Server Room Blind"
@@ -99,6 +99,26 @@ input_boolean:
 
   office_blinds_close:
     name: Blinds Office Close
+    initial: off
+    icon: mdi:blinds
+
+  guest_blinds_open:
+    name: Blinds Guest Open
+    initial: off
+    icon: mdi:blinds
+
+  guest_blinds_close:
+    name: Blinds Guest Close
+    initial: off
+    icon: mdi:blinds
+
+  server_blinds_open:
+    name: Blinds Server Open
+    initial: off
+    icon: mdi:blinds
+
+  server_blinds_close:
+    name: Blinds Server Close
     initial: off
     icon: mdi:blinds
 
