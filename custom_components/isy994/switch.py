@@ -4,8 +4,13 @@ from typing import Callable
 
 from homeassistant.components.switch import DOMAIN, SwitchDevice
 from homeassistant.const import (
-    CONF_ICON, CONF_ID, CONF_NAME, CONF_PAYLOAD_OFF, CONF_PAYLOAD_ON,
-    CONF_TYPE)
+    CONF_ICON,
+    CONF_ID,
+    CONF_NAME,
+    CONF_PAYLOAD_OFF,
+    CONF_PAYLOAD_ON,
+    CONF_TYPE,
+)
 from homeassistant.helpers.typing import ConfigType, Dict
 
 from . import ISYDevice
@@ -14,9 +19,12 @@ from .const import ISY994_NODES, ISY994_PROGRAMS, ISY994_VARIABLES
 _LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_platform(hass, config: ConfigType,
-                               async_add_entities: Callable[[list], None],
-                               discovery_info=None):
+async def async_setup_platform(
+    hass,
+    config: ConfigType,
+    async_add_entities: Callable[[list], None],
+    discovery_info=None,
+):
     """Set up the ISY994 switch platform."""
     devices = []
     for node in hass.data[ISY994_NODES][DOMAIN]:
@@ -42,12 +50,12 @@ class ISYSwitchDevice(ISYDevice, SwitchDevice):
     def turn_off(self, **kwargs) -> None:
         """Send the turn off command to the ISY994 switch."""
         if not self._node.off():
-            _LOGGER.debug('Unable to turn off switch.')
+            _LOGGER.debug("Unable to turn off switch.")
 
     def turn_on(self, **kwargs) -> None:
         """Send the turn oon command to the ISY994 switch."""
         if not self._node.on():
-            _LOGGER.debug('Unable to turn on switch.')
+            _LOGGER.debug("Unable to turn on switch.")
 
 
 class ISYSwitchProgram(ISYSwitchDevice):
@@ -67,12 +75,12 @@ class ISYSwitchProgram(ISYSwitchDevice):
     def turn_on(self, **kwargs) -> None:
         """Send the turn on command to the ISY994 switch program."""
         if not self._actions.runThen():
-            _LOGGER.error('Unable to turn on switch')
+            _LOGGER.error("Unable to turn on switch")
 
     def turn_off(self, **kwargs) -> None:
         """Send the turn off command to the ISY994 switch program."""
         if not self._actions.runElse():
-            _LOGGER.error('Unable to turn off switch')
+            _LOGGER.error("Unable to turn off switch")
 
 
 class ISYSwitchVariableDevice(ISYDevice, SwitchDevice):
@@ -92,10 +100,8 @@ class ISYSwitchVariableDevice(ISYDevice, SwitchDevice):
 
     async def async_added_to_hass(self) -> None:
         """Subscribe to the node change events."""
-        self._change_handler = self._node.val.subscribe(
-            'changed', self.on_update)
-        self._init_change_handler = self._node.init.subscribe(
-            'changed', self.on_update)
+        self._change_handler = self._node.val.subscribe("changed", self.on_update)
+        self._init_change_handler = self._node.init.subscribe("changed", self.on_update)
 
     @property
     def value(self) -> int:
@@ -106,7 +112,7 @@ class ISYSwitchVariableDevice(ISYDevice, SwitchDevice):
     def device_state_attributes(self) -> Dict:
         """Get the state attributes for the device."""
         attr = {}
-        attr['init_value'] = int(self._node.init)
+        attr["init_value"] = int(self._node.init)
         return attr
 
     @property

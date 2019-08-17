@@ -25,91 +25,6 @@ discovery:
 
 #Blinds
 cover:
-  #House Blinds
-  - platform: mqtt
-    name: "House Blinds"
-    command_topic: "habc/all/command/set/state"
-    set_position_topic: "habc/all/command/set/positionpct"
-    position_topic: "habc/all/tele/currentpct"
-    #retain: true
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
-  #Office Blinds
-  - platform: mqtt
-    name: "Office Blinds"
-    command_topic: "habc/office/command/set/state"
-    set_position_topic: "habc/office/command/set/positionpct"
-    position_topic: "habc/office/tele/currentpct"
-    #retain: true
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
-  #Center Office Blind
-  - platform: mqtt
-    name: "Center Office Blind"
-    command_topic: "habc/office_c/command/set/state"
-    set_position_topic: "habc/office_c/command/set/positionpct"
-    position_topic: "habc/office_c/tele/currentpct"
-    #retain: true
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
-  #Right Office Blind
-  - platform: mqtt
-    name: "Right Office Blind"
-    command_topic: "habc/office_r/command/set/state"
-    set_position_topic: "habc/office_r/command/set/positionpct"
-    position_topic: "habc/office_r/tele/currentpct"
-    #retain: true
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
-  #Left Office Blind
-  - platform: mqtt
-    name: "Left Office Blind"
-    command_topic: "habc/office_l/command/set/state"
-    set_position_topic: "habc/office_l/command/set/positionpct"
-    position_topic: "habc/office_l/tele/currentpct"
-    #retain: true
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
-#Guest Room Blind
-  - platform: mqtt
-    name: "Guest Blind"
-    command_topic: "habc/guest/command/set/state"
-    set_position_topic: "habc/guest/command/set/positionpct"
-    position_topic: "habc/guest/tele/currentpct"
-    #retain: true
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
-#Server Room Blind
-  - platform: mqtt
-    name: "Server Room Blind"
-    command_topic: "habc/server/command/set/state"
-    set_position_topic: "habc/server/command/set/positionpct"
-    position_topic: "habc/server/tele/currentpct"
-    #retain: true
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
-
   #MyQ
   - platform: myq
     username: !secret myq_user
@@ -118,28 +33,8 @@ cover:
 
 # Sensors
 sensor:
-  # Blinds
-  - platform: mqtt
-    name: "Center Office Blind Position"
-    state_topic: "habc/office_c/tele/current"
-  - platform: mqtt
-    name: "Right Office Blind Position"
-    state_topic: "habc/office_r/tele/current"
-  - platform: mqtt
-    name: "Left Office Blind Position"
-    state_topic: "habc/office_l/tele/current"
   # Weather prediction
   - platform: yr
-  #Elk Speech FPP Status
-  - platform: mqtt
-    name: "FPP Repeat Status"
-    state_topic: "ElkSpeak/falcon/player/ElkSpeak/playlist/repeat/status"
-  - platform: mqtt
-    name: "FPP Status"
-    state_topic: "ElkSpeak/falcon/player/ElkSpeak/status"
-  - platform: mqtt
-    name: "FPP Version"
-    state_topic: "ElkSpeak/falcon/player/ElkSpeak/version"
   #Lock Battery Ststus
   - platform: template
     sensors:
@@ -221,11 +116,13 @@ sensor:
     qos: 1
     payload_available: "Online"
     payload_not_available: "Offline"
+
 #Sonoff Dryer Monitor
   - platform: mqtt
     name: "Dryer State"
     state_topic: "hass/state/dryer"
     icon: mdi:tumble-dryer
+
   - platform: mqtt
     name: "Dryer Watts"
     state_topic: "tele/SNF-Dryer/SENSOR"
@@ -236,6 +133,7 @@ sensor:
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Dryer Voltage"
     state_topic: "tele/SNF-Dryer/SENSOR"
@@ -246,6 +144,7 @@ sensor:
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Dryer Amps"
     state_topic: "tele/SNF-Dryer/SENSOR"
@@ -256,6 +155,7 @@ sensor:
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Dryer Energy Today"
     state_topic: "tele/SNF-Dryer/SENSOR"
@@ -265,6 +165,7 @@ sensor:
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Dryer Energy Yesterday"
     state_topic: "tele/SNF-Dryer/SENSOR"
@@ -274,6 +175,7 @@ sensor:
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
   - platform: mqtt
     state_topic: "tele/SNF-Dryer/STATE"
     name: "Dryer Signal"
@@ -283,13 +185,16 @@ sensor:
     qos: 1
     payload_available: "Online"
     payload_not_available: "Offline"
+
 #Roomba Sensors
   - platform: template
     sensors:
+
       roomba_status:
         friendly_name: 'Roomba Status'
         value_template: "{{ states.vacuum.roomba.attributes.status }}"
         entity_id: vacuum.roomba
+        
       roomba_battery:
         friendly_name: 'Roomba Battery Level'
         value_template: "{{ states.vacuum.roomba.attributes.battery_level }}"
@@ -331,17 +236,17 @@ sensor:
       - pressure
       - visibility
 
-  - platform: rpi_power
-    text_state: true
-
 binary_sensor:
+
   - platform: template
     sensors:
       is_raining:
         friendly_name: "Currently Raining"
         device_class: moisture
         value_template:  "{{ states('sensor.emoncms_is_raining')|float == 1 }}"
+
 switch:
+
 #Roomba Switch
   - platform: template
     switches:
@@ -356,71 +261,49 @@ switch:
           service: script.turn_on
           data:
             entity_id: script.roomba_off
+
 input_boolean:
+
   roomba_auto:
     name: Schedule Enabled
     initial: off
     icon: mdi:timer
+
   washer_end:
     name: Washer Finished
     initial: off
     icon: mdi:stop-circle
+
   dryer_end:
     name: Dryer Finished
     initial: off
     icon: mdi:stop-circle
-  office_blinds_open:
-    name: Blinds Office Open
-    initial: off
-    icon: mdi:blinds
-  office_blinds_close:
-    name: Blinds Office Close
-    initial: off
-    icon: mdi:blinds
-  right_office_blind_open:
-    name: Blind Right Office Open
-    initial: off
-    icon: mdi:blinds
-  right_office_blind_close:
-    name: Blind Right Office Close
-    initial: off
-    icon: mdi:blinds3
-  center_office_blind_open:
-    name: Blind Center Office Open
-    initial: off
-    icon: mdi:blinds
-  center_office_blind_close:
-    name: Blind Center Office Close
-    initial: off
-    icon: mdi:blinds
-  house_blinds_open:
-    name: Blinds House Open
-    initial: off
-    icon: mdi:blinds
-  house_blinds_close:
-    name: Blinds House Close
-    initial: off
-    icon: mdi:blinds
+
   guest_mode:
     name: Guest Mode
     icon: mdi:timer
+
   timer_lights:
     name: Timer Lights
     icon: mdi:lightbulb
+
   goodnight_trigger:
     name: Alexa Good Night Trigger
     initial: off
     icon: mdi:amazon-alexa
+
   bedtime_trigger:
     name: Alexa Bedtime Trigger
     initial: off
     icon: mdi:amazon-alexa
+
   outside_timer_lights:
     name: Outside Timer Lights
     icon: mdi:timer
   
     
 light:
+
   - platform: mqtt
     schema: json
     name: "Front Yard ESPixelStick"
@@ -438,44 +321,58 @@ light:
       - Fire flicker
       - Lightning
       - Breathe
+
   - platform: flux_led
     devices:
       192.168.6.3:
         name: build_light
 # Timers
 timer:
+
   washer_alert:
     name: Washer Announcement Timer
     duration: '00:05:00'
+
   dryer_alert:
     name: Dryer Announcement Timer
     duration: '00:05:00'
+
   garage:
     name: Garage Light Timer
     duration: '00:10:00'
+
   front_door:
     name: Front Door Lock Timer
     duration: '00:05:00'
+
   back_door:
     name: Back Door Lock Timer
     duration: '00:05:00'
+
   laundry_room:
     name: Laundry Room Light Timer
     duration: '00:02:00'
+
   master_closet:
     name: Master Closet Light Timer
     duration: '00:02:00'
+
   garage_entry:
     name: Garage Entry Lock Timer
     duration: '00:05:00'
+
 # Text to speech
 tts:
+
   - platform: google_translate
     service_name: google_say
 
 group: !include groups.yaml
+
 automation: !include_dir_merge_list automation
+
 script: !include_dir_merge_list scripts
+
 zone: !include zones.yaml
 
 # ISY 994 Integration 

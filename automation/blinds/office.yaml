@@ -5,48 +5,30 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: cover.center_office_blind
-    state: closed
-  - condition: state
-    entity_id: cover.right_office_blind
-    state: closed
-  - condition: state
-    entity_id: cover.left_office_blind
-    state: closed
+    entity_id: cover.office_blinds
+    state: 'closed'
   action:
   - data:
       entity_id: cover.office_blinds
     service: cover.open_cover
+
 - alias: Close Office Blinds
   trigger:
   - entity_id: switch.office_blinds
     platform: state
     to: 'off'
   condition:
-  - condition: or
-    conditions:
-    - condition: state
-      entity_id: cover.center_office_blind
-      state: 'open'
-    - condition: state
-      entity_id: cover.right_office_blind
-      state: 'open'
-    - condition: state
-      entity_id: cover.left_office_blind
-      state: 'open'
+  - condition: state
+    entity_id: cover.office_blinds
+    state: 'open'
   action:
   - data:
       entity_id: cover.office_blinds
     service: cover.close_cover
+
 - alias: Office Blind Keypad on if any Open
   trigger:
-  - entity_id: cover.center_office_blind
-    platform: state
-    to: 'open'
-  - entity_id: cover.right_office_blind
-    platform: state
-    to: 'open'
-  - entity_id: cover.left_office_blind
+  - entity_id: cover.office_blinds
     platform: state
     to: 'open'
   condition:
@@ -57,34 +39,21 @@
   - data:
       entity_id: switch.office_blinds
     service: switch.turn_on
+
 - alias: Office Blind Keypad off if all Closed
   trigger:
-  - entity_id: cover.center_office_blind
-    platform: state
-    to: 'closed'
-  - entity_id: cover.right_office_blind
-    platform: state
-    to: 'closed'
-  - entity_id: cover.left_office_blind
+  - entity_id: cover.office_blinds
     platform: state
     to: 'closed'
   condition:
   - condition: state
     entity_id: switch.office_blinds
     state: 'on'
-  - condition: state
-    entity_id: cover.center_office_blind
-    state: closed
-  - condition: state
-    entity_id: cover.right_office_blind
-    state: closed
-  - condition: state
-    entity_id: cover.left_office_blind
-    state: closed
   action:
   - data:
       entity_id: switch.office_blinds
     service: switch.turn_off
+
 - alias: Alexa Open Office Blinds
   trigger:
   - entity_id: input_boolean.office_blinds_open
@@ -97,6 +66,7 @@
   - data:
       entity_id: input_boolean.office_blinds_open
     service: input_boolean.turn_off
+
 - alias: Alexa Close Office Blinds
   trigger:
   - entity_id: input_boolean.office_blinds_close
@@ -109,6 +79,7 @@
   - data:
       entity_id: input_boolean.office_blinds_close
     service: input_boolean.turn_off
+
 - alias: Office Windows Same Position
   trigger:
   - entity_id: cover.center_office_blind
@@ -126,6 +97,7 @@
       topic: habc/office/tele/currentpct
       retain: 'true'
     service: mqtt.publish
+
 - alias: Office Windows Various Positions
   trigger:
   - entity_id: cover.center_office_blind

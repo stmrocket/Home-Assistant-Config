@@ -13,6 +13,7 @@
       payload: CLOSE
       topic: habc/all/command/set/state
     service: mqtt.publish
+
 - alias: 'Close blind at dusk'
   trigger:
     platform: numeric_state
@@ -22,6 +23,7 @@
   action:
     service: cover.close_cover
     entity_id: cover.house_blinds
+
 - alias: Open Blinds When Awake and Sun Up
   trigger:
   - entity_id: alarm_control_panel.area_001
@@ -40,6 +42,7 @@
       payload: OPEN
       topic: habc/all/command/set/state
     service: mqtt.publish
+
 - alias: All Windows Same Position
   trigger:
   - entity_id: cover.office_blinds
@@ -53,6 +56,7 @@
       topic: habc/all/tele/currentpct
       retain: 'true'
     service: mqtt.publish
+
 - alias: All Windows Various Positions
   trigger:
   - entity_id: cover.office_blinds
@@ -66,3 +70,85 @@
       topic: habc/all/tele/currentpct
       retain: 'true'
     service: mqtt.publish
+
+- alias: Open House Blinds
+  trigger:
+  - entity_id: switch.house_blinds
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: cover.house_blinds
+    state: 'closed'
+  action:
+  - data:
+      entity_id: cover.house_blinds
+    service: cover.open_cover
+
+- alias: Close House Blinds
+  trigger:
+  - entity_id: switch.house_blinds
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: cover.house_blinds
+    state: 'open'
+  action:
+  - data:
+      entity_id: cover.house_blinds
+    service: cover.close_cover
+
+- alias: House Blinds Keypad on if any Open
+  trigger:
+  - entity_id: cover.house_blinds
+    platform: state
+    to: 'open'
+  condition:
+  - condition: state
+    entity_id: switch.house_blinds
+    state: 'off'
+  action:
+  - data:
+      entity_id: switch.house_blinds
+    service: switch.turn_on
+
+- alias: House Blinds Keypad off if all Closed
+  trigger:
+  - entity_id: cover.house_blinds
+    platform: state
+    to: 'closed'
+  condition:
+  - condition: state
+    entity_id: switch.house_blinds
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.house_blinds
+    service: switch.turn_off
+
+- alias: Alexa Open House Blinds
+  trigger:
+  - entity_id: input_boolean.house_blinds_open
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: cover.house_blinds
+    service: cover.open_cover
+  - data:
+      entity_id: input_boolean.house_blinds_open
+    service: input_boolean.turn_off
+
+- alias: Alexa Close House Blinds
+  trigger:
+  - entity_id: input_boolean.house_blinds_close
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      entity_id: cover.house_blinds
+    service: cover.close_cover
+  - data:
+      entity_id: input_boolean.house_blinds_close
+    service: input_boolean.turn_off

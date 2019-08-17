@@ -5,8 +5,16 @@ from typing import Callable, Optional
 
 from homeassistant.components.binary_sensor import DOMAIN, BinarySensorDevice
 from homeassistant.const import (
-    CONF_DEVICE_CLASS, CONF_ICON, CONF_ID, CONF_NAME, CONF_PAYLOAD_OFF,
-    CONF_PAYLOAD_ON, CONF_TYPE, STATE_OFF, STATE_ON)
+    CONF_DEVICE_CLASS,
+    CONF_ICON,
+    CONF_ID,
+    CONF_NAME,
+    CONF_PAYLOAD_OFF,
+    CONF_PAYLOAD_ON,
+    CONF_TYPE,
+    STATE_OFF,
+    STATE_ON,
+)
 from homeassistant.core import callback
 from homeassistant.helpers.event import async_track_point_in_utc_time
 from homeassistant.helpers.typing import ConfigType, Dict
@@ -14,15 +22,22 @@ from homeassistant.util import dt as dt_util
 
 from . import ISYDevice
 from .const import (
-    ISY994_NODES, ISY994_PROGRAMS, ISY994_VARIABLES, ISY_BIN_SENS_DEVICE_TYPES,
-    ZWAVE_BIN_SENS_DEVICE_TYPES)
+    ISY994_NODES,
+    ISY994_PROGRAMS,
+    ISY994_VARIABLES,
+    ISY_BIN_SENS_DEVICE_TYPES,
+    ZWAVE_BIN_SENS_DEVICE_TYPES,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_platform(hass, config: ConfigType,
-                               async_add_entities: Callable[[list], None],
-                               discovery_info=None):
+async def async_setup_platform(
+    hass,
+    config: ConfigType,
+    async_add_entities: Callable[[list], None],
+    discovery_info=None,
+):
     """Set up the ISY994 binary sensor platform."""
     devices = []
     devices_by_nid = {}
@@ -30,7 +45,7 @@ async def async_setup_platform(hass, config: ConfigType,
 
     for node in hass.data[ISY994_NODES][DOMAIN]:
         device_class, device_type = _detect_device_type(node)
-        if node.parent_node is None or node.nid[0] in ['Z', 'n']:
+        if node.parent_node is None or node.nid[0] in ["Z", "n"]:
             device = ISYBinarySensorDevice(node, device_class)
             devices.append(device)
             devices_by_nid[node.nid] = device
@@ -42,15 +57,18 @@ async def async_setup_platform(hass, config: ConfigType,
     # Handle some special child node cases for Insteon Devices
     for (node, device_class, device_type) in child_nodes:
         subnode_id = int(node.nid[-1], 16)
-        if device_class != 'climate':
+        if device_class != "climate":
             try:
                 parent_device = devices_by_nid[node.parent_node.nid]
             except KeyError:
-                _LOGGER.error("Node %s has a parent node %s, but no device "
-                              "was created for the parent. Skipping.",
-                              node.nid, node.parent_nid)
+                _LOGGER.error(
+                    "Node %s has a parent node %s, but no device "
+                    "was created for the parent. Skipping.",
+                    node.nid,
+                    node.parent_nid,
+                )
             else:
-                if device_class in ('opening', 'moisture'):
+                if device_class in ("opening", "moisture"):
 
                     # These sensors use an optional "negative" subnode 2 to
                     # snag all state changes
@@ -62,27 +80,30 @@ async def async_setup_platform(hass, config: ConfigType,
                         device = ISYBinarySensorHeartbeat(node, parent_device)
                         parent_device.add_heartbeat_device(device)
                         devices.append(device)
-                elif device_class == 'motion' and device_type is not None and \
-                        (device_type.startswith('16.1.') or
-                         device_type.startswith('16.22.')):
+                elif (
+                    device_class == "motion"
+                    and device_type is not None
+                    and (
+                        device_type.startswith("16.1.")
+                        or device_type.startswith("16.22.")
+                    )
+                ):
                     # Special case for Insteon Motion Sensors I & II:
                     if subnode_id == 2:
                         # Subnode 2 is the Dusk/Dawn sensor
-                        device = ISYBinarySensorDevice(node, 'light')
+                        device = ISYBinarySensorDevice(node, "light")
                         devices.append(device)
                     elif subnode_id == 3:
                         # Subnode 3 is the low battery node
                         # Node never reports status until battery is low so
                         # the intial state is forced "OFF"/"NORMAL" if the
                         # parent device has a valid state.
-                        inital_state = None if parent_device.is_unknown() \
-                                             else False
-                        device = ISYBinarySensorDevice(node, 'battery',
-                                                       inital_state)
+                        inital_state = None if parent_device.is_unknown() else False
+                        device = ISYBinarySensorDevice(node, "battery", inital_state)
                         devices.append(device)
                     elif subnode_id == 13:
                         # Motion Disabled Sub-node for MS II.
-                        device = ISYBinarySensorDevice(node, 'None')
+                        device = ISYBinarySensorDevice(node, "None")
                         devices.append(device)
                 else:
                     # We don't yet have any special logic for other sensor
@@ -96,11 +117,11 @@ async def async_setup_platform(hass, config: ConfigType,
                 # detected after an ISY Restart, so we assume it's off.
                 # As soon as the ISY Event Stream connects if it has a
                 # valid state, it will be set.
-                device = ISYBinarySensorDevice(node, 'cold', False)
+                device = ISYBinarySensorDevice(node, "cold", False)
                 devices.append(device)
             elif subnode_id == 3:
                 # Subnode 3 is the "Heat Control" sensor
-                device = ISYBinarySensorDevice(node, 'heat', False)
+                device = ISYBinarySensorDevice(node, "heat", False)
                 devices.append(device)
 
     for name, status, _ in hass.data[ISY994_PROGRAMS][DOMAIN]:
@@ -120,15 +141,19 @@ def _detect_device_type(node) -> (str, str):
         return (None, None)
 
     # Z-Wave Devices:
-    if device_type[0] == '4':
-        device_type = 'Z{}'.format(node.devtype_cat)
+    if device_type[0] == "4":
+        device_type = "Z{}".format(node.devtype_cat)
         for device_class in [*ZWAVE_BIN_SENS_DEVICE_TYPES]:
             if node.devtype_cat in ZWAVE_BIN_SENS_DEVICE_TYPES[device_class]:
                 return device_class, device_type
     else:  # Other devices (incl Insteon.)
         for device_class in [*ISY_BIN_SENS_DEVICE_TYPES]:
-            if any([device_type.startswith(t) for t in
-                    set(ISY_BIN_SENS_DEVICE_TYPES[device_class])]):
+            if any(
+                [
+                    device_type.startswith(t)
+                    for t in set(ISY_BIN_SENS_DEVICE_TYPES[device_class])
+                ]
+            ):
                 return device_class, device_type
 
     return (None, device_type)
@@ -136,7 +161,7 @@ def _detect_device_type(node) -> (str, str):
 
 def _is_val_unknown(val):
     """Determine if a number value represents UNKNOWN from PyISY."""
-    return val == -1*float('inf')
+    return val == -1 * float("inf")
 
 
 class ISYBinarySensorDevice(ISYDevice, BinarySensorDevice):
@@ -148,8 +173,7 @@ class ISYBinarySensorDevice(ISYDevice, BinarySensorDevice):
     entity and handles both ways that ISY binary sensors can work.
     """
 
-    def __init__(self, node, force_device_class=None,
-                 unknown_state=None) -> None:
+    def __init__(self, node, force_device_class=None, unknown_state=None) -> None:
         """Initialize the ISY994 binary sensor device."""
         super().__init__(node)
         self._negative_node = None
@@ -171,7 +195,8 @@ class ISYBinarySensorDevice(ISYDevice, BinarySensorDevice):
 
         if self._negative_node is not None:
             self._negative_node.controlEvents.subscribe(
-                self._negative_node_control_handler)
+                self._negative_node_control_handler
+            )
 
     def add_heartbeat_device(self, device) -> None:
         """Register a heartbeat device for this sensor.
@@ -208,9 +233,11 @@ class ISYBinarySensorDevice(ISYDevice, BinarySensorDevice):
 
     def _negative_node_control_handler(self, event: object) -> None:
         """Handle an "On" control event from the "negative" node."""
-        if event.event == 'DON':
-            _LOGGER.debug("Sensor %s turning Off via the Negative node "
-                          "sending a DON command", self.name)
+        if event.event == "DON":
+            _LOGGER.debug(
+                "Sensor %s turning Off via the Negative node " "sending a DON command",
+                self.name,
+            )
             self._computed_state = False
             self.schedule_update_ha_state()
             self._heartbeat()
@@ -222,15 +249,19 @@ class ISYBinarySensorDevice(ISYDevice, BinarySensorDevice):
         will come to this node, with the negative node representing Off
         events
         """
-        if event.event == 'DON':
-            _LOGGER.debug("Sensor %s turning On via the Primary node "
-                          "sending a DON command", self.name)
+        if event.event == "DON":
+            _LOGGER.debug(
+                "Sensor %s turning On via the Primary node " "sending a DON command",
+                self.name,
+            )
             self._computed_state = True
             self.schedule_update_ha_state()
             self._heartbeat()
-        if event.event == 'DOF':
-            _LOGGER.debug("Sensor %s turning Off via the Primary node "
-                          "sending a DOF command", self.name)
+        if event.event == "DOF":
+            _LOGGER.debug(
+                "Sensor %s turning Off via the Primary node " "sending a DOF command",
+                self.name,
+            )
             self._computed_state = False
             self.schedule_update_ha_state()
             self._heartbeat()
@@ -263,7 +294,7 @@ class ISYBinarySensorDevice(ISYDevice, BinarySensorDevice):
             # Do this first so we don't invert None on moisture sensors
             return None
 
-        if self.device_class == 'moisture':
+        if self.device_class == "moisture":
             return not self._computed_state
 
         return self._computed_state
@@ -315,8 +346,7 @@ class ISYBinarySensorHeartbeat(ISYDevice, BinarySensorDevice):
         """Subscribe to the node and subnode event emitters."""
         await super().async_added_to_hass()
 
-        self._node.controlEvents.subscribe(
-            self._heartbeat_node_control_handler)
+        self._node.controlEvents.subscribe(self._heartbeat_node_control_handler)
 
         # Start the timer on bootup, so we can change from UNKNOWN to OFF
         self._restart_timer()
@@ -326,7 +356,7 @@ class ISYBinarySensorHeartbeat(ISYDevice, BinarySensorDevice):
 
         The ISY uses both DON and DOF commands (alternating) for a heartbeat.
         """
-        if event.event in ['DON', 'DOF']:
+        if event.event in ["DON", "DOF"]:
             self.heartbeat()
 
     def heartbeat(self):
@@ -358,11 +388,15 @@ class ISYBinarySensorHeartbeat(ISYDevice, BinarySensorDevice):
             self.schedule_update_ha_state()
 
         point_in_time = dt_util.utcnow() + timedelta(hours=25)
-        _LOGGER.debug("Heartbeat timer starting. Now: %s Then: %s",
-                      dt_util.utcnow(), point_in_time)
+        _LOGGER.debug(
+            "Heartbeat timer starting. Now: %s Then: %s",
+            dt_util.utcnow(),
+            point_in_time,
+        )
 
         self._heartbeat_timer = async_track_point_in_utc_time(
-            self.hass, timer_elapsed, point_in_time)
+            self.hass, timer_elapsed, point_in_time
+        )
 
     def on_update(self, event: object) -> None:
         """Ignore node status updates.
@@ -394,13 +428,13 @@ class ISYBinarySensorHeartbeat(ISYDevice, BinarySensorDevice):
     @property
     def device_class(self) -> str:
         """Get the class of this device."""
-        return 'battery'
+        return "battery"
 
     @property
     def device_state_attributes(self):
         """Get the state attributes for the device."""
         attr = super().device_state_attributes
-        attr['parent_entity_id'] = self._parent_device.entity_id
+        attr["parent_entity_id"] = self._parent_device.entity_id
         return attr
 
 
@@ -439,10 +473,8 @@ class ISYBinarySensorVariableDevice(ISYDevice, BinarySensorDevice):
 
     async def async_added_to_hass(self) -> None:
         """Subscribe to the node change events."""
-        self._change_handler = self._node.val.subscribe(
-            'changed', self.on_update)
-        self._init_change_handler = self._node.init.subscribe(
-            'changed', self.on_update)
+        self._change_handler = self._node.val.subscribe("changed", self.on_update)
+        self._init_change_handler = self._node.init.subscribe("changed", self.on_update)
 
     @property
     def value(self) -> int:
@@ -453,7 +485,7 @@ class ISYBinarySensorVariableDevice(ISYDevice, BinarySensorDevice):
     def device_state_attributes(self) -> Dict:
         """Get the state attributes for the device."""
         attr = {}
-        attr['init_value'] = int(self._node.init)
+        attr["init_value"] = int(self._node.init)
         return attr
 
     @property

@@ -4,21 +4,35 @@ from typing import Callable, Optional
 
 from homeassistant.components.sensor import DOMAIN
 from homeassistant.const import (
-    CONF_DEVICE_CLASS, CONF_ICON, CONF_ID, CONF_NAME, CONF_TYPE,
-    CONF_UNIT_OF_MEASUREMENT, TEMP_CELSIUS, TEMP_FAHRENHEIT)
+    CONF_DEVICE_CLASS,
+    CONF_ICON,
+    CONF_ID,
+    CONF_NAME,
+    CONF_TYPE,
+    CONF_UNIT_OF_MEASUREMENT,
+    TEMP_CELSIUS,
+    TEMP_FAHRENHEIT,
+)
 from homeassistant.helpers.typing import ConfigType, Dict
 
 from . import ISYDevice
 from .const import (
-    ISY994_NODES, ISY994_VARIABLES, ISY994_WEATHER, UOM_FRIENDLY_NAME,
-    UOM_TO_STATES)
+    ISY994_NODES,
+    ISY994_VARIABLES,
+    ISY994_WEATHER,
+    UOM_FRIENDLY_NAME,
+    UOM_TO_STATES,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_platform(hass, config: ConfigType,
-                               async_add_entities: Callable[[list], None],
-                               discovery_info=None):
+async def async_setup_platform(
+    hass,
+    config: ConfigType,
+    async_add_entities: Callable[[list], None],
+    discovery_info=None,
+):
     """Set up the ISY994 sensor platform."""
     devices = []
 
@@ -69,11 +83,10 @@ class ISYSensorDevice(ISYDevice):
             str_val = str(self.value)
             int_prec = int(self._node.prec)
             decimal_part = str_val[-int_prec:]
-            whole_part = str_val[:len(str_val) - int_prec]
-            val = float('{}.{}'.format(whole_part, decimal_part))
+            whole_part = str_val[: len(str_val) - int_prec]
+            val = float("{}.{}".format(whole_part, decimal_part))
             raw_units = self.raw_unit_of_measurement
-            if raw_units in (
-                    TEMP_CELSIUS, TEMP_FAHRENHEIT):
+            if raw_units in (TEMP_CELSIUS, TEMP_FAHRENHEIT):
                 val = self.hass.config.units.temperature(val, raw_units)
             return str(val)
         return self.value
@@ -102,10 +115,8 @@ class ISYSensorVariableDevice(ISYDevice):
 
     async def async_added_to_hass(self) -> None:
         """Subscribe to the node change events."""
-        self._change_handler = self._node.val.subscribe(
-            'changed', self.on_update)
-        self._init_change_handler = self._node.init.subscribe(
-            'changed', self.on_update)
+        self._change_handler = self._node.val.subscribe("changed", self.on_update)
+        self._init_change_handler = self._node.init.subscribe("changed", self.on_update)
 
     @property
     def state(self) -> str:
@@ -123,7 +134,7 @@ class ISYSensorVariableDevice(ISYDevice):
     def device_state_attributes(self) -> Dict:
         """Get the state attributes for the device."""
         attr = {}
-        attr['init_value'] = int(self._node.init)
+        attr["init_value"] = int(self._node.init)
         return attr
 
     @property
@@ -148,9 +159,9 @@ class ISYWeatherDevice(ISYDevice):
     @property
     def raw_units(self) -> str:
         """Return the raw unit of measurement."""
-        if self._node.uom in ['F', '17']:
+        if self._node.uom in ["F", "17"]:
             return TEMP_FAHRENHEIT
-        if self._node.uom in ['C', '4']:
+        if self._node.uom in ["C", "4"]:
             return TEMP_CELSIUS
         return self._node.uom
 
