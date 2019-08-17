@@ -5,11 +5,11 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: cover.server_blind
+    entity_id: cover.server_room_blind
     state: 'closed'
   action:
   - data:
-      entity_id: cover.server_blind
+      entity_id: cover.server_room_blind
     service: cover.open_cover
 
 - alias: Close Server Blinds
@@ -19,16 +19,16 @@
     to: 'off'
   condition:
   - condition: state
-    entity_id: cover.server_blind
+    entity_id: cover.server_room_blind
     state: 'open'
   action:
   - data:
-      entity_id: cover.server_blind
+      entity_id: cover.server_room_blind
     service: cover.close_cover
 
 - alias: Server Blind Keypad on if any Open
   trigger:
-  - entity_id: cover.server_blind
+  - entity_id: cover.server_room_blind
     platform: state
     to: 'open'
   condition:
@@ -42,7 +42,7 @@
 
 - alias: Server Blind Keypad off if all Closed
   trigger:
-  - entity_id: cover.server_blind
+  - entity_id: cover.server_room_blind
     platform: state
     to: 'closed'
   condition:
@@ -61,7 +61,7 @@
     to: 'on'
   action:
   - data:
-      entity_id: cover.server_blind
+      entity_id: cover.server_room_blind
     service: cover.open_cover
   - data:
       entity_id: input_boolean.server_blinds_open
@@ -74,7 +74,7 @@
     to: 'on'
   action:
   - data:
-      entity_id: cover.server_blind
+      entity_id: cover.server_room_blind
     service: cover.close_cover
   - data:
       entity_id: input_boolean.server_blinds_close
