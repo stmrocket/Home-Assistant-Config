@@ -12,9 +12,12 @@ from .const import ISY994_NODES, ISY994_PROGRAMS, UOM_TO_STATES
 _LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_platform(hass, config: ConfigType,
-                               async_add_entities: Callable[[list], None],
-                               discovery_info=None):
+async def async_setup_platform(
+    hass,
+    config: ConfigType,
+    async_add_entities: Callable[[list], None],
+    discovery_info=None,
+):
     """Set up the ISY994 cover platform."""
     devices = []
     for node in hass.data[ISY994_NODES][DOMAIN]:
@@ -46,7 +49,7 @@ class ISYCoverDevice(ISYDevice, CoverDevice):
         """Get the state of the ISY994 cover device."""
         if self.is_unknown():
             return None
-        return UOM_TO_STATES['97'].get(str(self.value), STATE_OPEN)
+        return UOM_TO_STATES["97"].get(str(self.value), STATE_OPEN)
 
     def open_cover(self, **kwargs) -> None:
         """Send the open cover command to the ISY994 cover device."""

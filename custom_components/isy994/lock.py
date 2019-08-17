@@ -11,15 +11,15 @@ from .const import ISY994_NODES, ISY994_PROGRAMS
 
 _LOGGER = logging.getLogger(__name__)
 
-VALUE_TO_STATE = {
-    0: STATE_UNLOCKED,
-    100: STATE_LOCKED,
-}
+VALUE_TO_STATE = {0: STATE_UNLOCKED, 100: STATE_LOCKED}
 
 
-async def async_setup_platform(hass, config: ConfigType,
-                               async_add_entities: Callable[[list], None],
-                               discovery_info=None):
+async def async_setup_platform(
+    hass,
+    config: ConfigType,
+    async_add_entities: Callable[[list], None],
+    discovery_info=None,
+):
     """Set up the ISY994 lock platform."""
     devices = []
     for node in hass.data[ISY994_NODES][DOMAIN]:
@@ -49,14 +49,14 @@ class ISYLockDevice(ISYDevice, LockDevice):
     def lock(self, **kwargs) -> None:
         """Send the lock command to the ISY994 device."""
         if not self._node.secure_lock():
-            _LOGGER.error('Unable to lock device')
+            _LOGGER.error("Unable to lock device")
 
         self._node.update(0.5)
 
     def unlock(self, **kwargs) -> None:
         """Send the unlock command to the ISY994 device."""
         if not self._node.secure_unlock():
-            _LOGGER.error('Unable to lock device')
+            _LOGGER.error("Unable to lock device")
 
         self._node.update(0.5)
 

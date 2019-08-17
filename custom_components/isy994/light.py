@@ -11,9 +11,12 @@ from .const import ISY994_NODES
 _LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_platform(hass, config: ConfigType,
-                               async_add_entities: Callable[[list], None],
-                               discovery_info=None):
+async def async_setup_platform(
+    hass,
+    config: ConfigType,
+    async_add_entities: Callable[[list], None],
+    discovery_info=None,
+):
     """Set up the ISY994 light platform."""
     devices = []
     for node in hass.data[ISY994_NODES][DOMAIN]:

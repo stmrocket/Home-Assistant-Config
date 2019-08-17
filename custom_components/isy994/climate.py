@@ -4,32 +4,53 @@ from typing import List, Optional
 
 from homeassistant.components.climate import ClimateDevice
 from homeassistant.components.climate.const import (
-    ATTR_TARGET_TEMP_HIGH, ATTR_TARGET_TEMP_LOW, DOMAIN, FAN_AUTO, FAN_ON,
-    HVAC_MODE_COOL, HVAC_MODE_HEAT, SUPPORT_FAN_MODE,
-    SUPPORT_TARGET_TEMPERATURE, SUPPORT_TARGET_TEMPERATURE_RANGE)
+    ATTR_TARGET_TEMP_HIGH,
+    ATTR_TARGET_TEMP_LOW,
+    DOMAIN,
+    FAN_AUTO,
+    FAN_ON,
+    HVAC_MODE_COOL,
+    HVAC_MODE_HEAT,
+    SUPPORT_FAN_MODE,
+    SUPPORT_TARGET_TEMPERATURE,
+    SUPPORT_TARGET_TEMPERATURE_RANGE,
+)
 from homeassistant.const import (
-    ATTR_TEMPERATURE, PRECISION_TENTHS, TEMP_CELSIUS, TEMP_FAHRENHEIT)
+    ATTR_TEMPERATURE,
+    PRECISION_TENTHS,
+    TEMP_CELSIUS,
+    TEMP_FAHRENHEIT,
+)
 
 from . import ISYDevice
 from .const import (
-    HA_FAN_TO_ISY, HA_HVAC_TO_ISY, ISY994_NODES, ISY_CURRENT_HUMIDITY,
-    ISY_FAN_MODE, ISY_HVAC_MODE, ISY_HVAC_MODES, ISY_HVAC_STATE,
-    ISY_TARGET_TEMP_HIGH, ISY_TARGET_TEMP_LOW, ISY_UOM, UOM_TO_STATES)
+    HA_FAN_TO_ISY,
+    HA_HVAC_TO_ISY,
+    ISY994_NODES,
+    ISY_CURRENT_HUMIDITY,
+    ISY_FAN_MODE,
+    ISY_HVAC_MODE,
+    ISY_HVAC_MODES,
+    ISY_HVAC_STATE,
+    ISY_TARGET_TEMP_HIGH,
+    ISY_TARGET_TEMP_LOW,
+    ISY_UOM,
+    UOM_TO_STATES,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
-ISY_SUPPORTED_FEATURES = (SUPPORT_FAN_MODE |
-                          SUPPORT_TARGET_TEMPERATURE |
-                          SUPPORT_TARGET_TEMPERATURE_RANGE)
+ISY_SUPPORTED_FEATURES = (
+    SUPPORT_FAN_MODE | SUPPORT_TARGET_TEMPERATURE | SUPPORT_TARGET_TEMPERATURE_RANGE
+)
 
 
-async def async_setup_platform(hass, config, async_add_entities,
-                               discovery_info=None):
+async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Set up the ISY994 thermostat platform."""
     devices = []
 
     for node in hass.data[ISY994_NODES][DOMAIN]:
-        _LOGGER.debug('Adding ISY node %s to Climate platform', node)
+        _LOGGER.debug("Adding ISY node %s to Climate platform", node)
         devices.append(ISYThermostatDevice(node))
 
     async_add_entities(devices)
@@ -55,25 +76,21 @@ class ISYThermostatDevice(ISYDevice, ClimateDevice):
 
     async def async_added_to_hass(self):
         """Delayed completion of initialization."""
-        current_humidity = self._node.aux_properties.get(
-            ISY_CURRENT_HUMIDITY)
+        current_humidity = self._node.aux_properties.get(ISY_CURRENT_HUMIDITY)
         if current_humidity:
-            self._current_humidity = int(current_humidity.get('value', 0))
+            self._current_humidity = int(current_humidity.get("value", 0))
 
         target_temp_high = self._node.aux_properties.get(ISY_TARGET_TEMP_HIGH)
         if target_temp_high:
-            self._target_temp_high = \
-                self.fix_temp(target_temp_high.get('value'))
+            self._target_temp_high = self.fix_temp(target_temp_high.get("value"))
 
         target_temp_low = self._node.aux_properties.get(ISY_TARGET_TEMP_LOW)
         if target_temp_low:
-            self._target_temp_low = \
-                self.fix_temp(target_temp_low.get('value'))
+            self._target_temp_low = self.fix_temp(target_temp_low.get("value"))
 
         hvac_mode = self._node.aux_properties.get(ISY_HVAC_MODE)
         if hvac_mode:
-            self._hvac_mode = UOM_TO_STATES['98']. \
-                get(str(hvac_mode.get('value')))
+            self._hvac_mode = UOM_TO_STATES["98"].get(str(hvac_mode.get("value")))
 
         self._node.controlEvents.subscribe(self._node_control_handler)
         await super().async_added_to_hass()
@@ -91,11 +108,11 @@ class ISYThermostatDevice(ISYDevice, ClimateDevice):
             need to listen for it here.
         """
         if event.event == ISY_FAN_MODE:
-            self._fan_mode = UOM_TO_STATES['99'].get(str(event.nval))
+            self._fan_mode = UOM_TO_STATES["99"].get(str(event.nval))
         elif event.event == ISY_HVAC_STATE:
-            self._hvac_action = UOM_TO_STATES['66'].get(str(event.nval))
+            self._hvac_action = UOM_TO_STATES["66"].get(str(event.nval))
         elif event.event == ISY_HVAC_MODE:
-            self._hvac_mode = UOM_TO_STATES['98'].get(str(event.nval))
+            self._hvac_mode = UOM_TO_STATES["98"].get(str(event.nval))
         elif event.event == ISY_UOM:
             if int(event.nval) == 1:
                 self._temp_unit = TEMP_CELSIUS
@@ -215,7 +232,7 @@ class ISYThermostatDevice(ISYDevice, ClimateDevice):
 
     def set_fan_mode(self, fan_mode):
         """Set new target fan mode."""
-        _LOGGER.debug('Requested fan mode %s', fan_mode)
+        _LOGGER.debug("Requested fan mode %s", fan_mode)
         self._node.fan_state(HA_FAN_TO_ISY.get(fan_mode))
         # Presumptive setting--event stream will correct if cmd fails:
         self._fan_mode = fan_mode
@@ -223,7 +240,7 @@ class ISYThermostatDevice(ISYDevice, ClimateDevice):
 
     def set_hvac_mode(self, hvac_mode: str) -> None:
         """Set new target hvac mode."""
-        _LOGGER.debug('Requested operation mode %s', hvac_mode)
+        _LOGGER.debug("Requested operation mode %s", hvac_mode)
         self._node.climate_mode(HA_HVAC_TO_ISY.get(hvac_mode))
         # Presumptive setting--event stream will correct if cmd fails:
         self._hvac_mode = hvac_mode
@@ -235,11 +252,12 @@ class ISYThermostatDevice(ISYDevice, ClimateDevice):
         Insteon Thermostats report temperature in 0.5-deg precision as an int
         by sending a value of 2 times the Temp. Correct by dividing by 2 here.
         """
-        if temp is None or temp == -1 * float('inf'):
+        if temp is None or temp == -1 * float("inf"):
             return None
-        if self._uom == '101' or self._uom == 'degrees':
+        if self._uom == "101" or self._uom == "degrees":
             return round(int(temp) / 2.0, 1)
-        if self._node.prec is not None and self._node.prec != '0':
-            return round(float(temp) * pow(10, -int(self._node.prec)),
-                         int(self._node.prec))
+        if self._node.prec is not None and self._node.prec != "0":
+            return round(
+                float(temp) * pow(10, -int(self._node.prec)), int(self._node.prec)
+            )
         return int(temp)
