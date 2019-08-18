@@ -5,7 +5,7 @@ sensor:
     unit_prefix: k
     round: 2
 utility_meter:
-  energy_day:
+  energy_daily:
     source: sensor.energy_used
     cycle: daily
   energy_month:
