@@ -6,11 +6,11 @@ sensor:
     round: 2
 utility_meter:
   energy_day:
-    source: sensor.eagle_current_power
+    source: sensor.energy_used
     cycle: daily
   energy_month:
-    source: sensor.eagle_current_power
+    source: sensor.energy_used
     cycle: monthly
   energy_year:
-    source: sensor.eagle_current_power
+    source: sensor.energy_used
     cycle: yearly
