@@ -245,23 +245,7 @@ views:
                   - entity: camera.master_bedroom
                   - entity: camera.server_room
                   - entity: camera.kitten
-#################################################################
-#                                                               #
-#                      Home - GitHub                            #
-#                                                               #
-################################################################# 
-            - type: glance
-              columns: 3
-              show_name: true
-              show_state: false
-              entities:
-                - entity: binary_sensor.git_update_ready
-                - entity: script.update_config_restart
-                  icon: 'mdi:github-circle'
-                  name: Pull/Restart
-                - entity: script.update_config_resload_automations
-                  icon: 'mdi:github-circle'
-                  name: Pull/Reload
+
 #################################################################
 #                                                               #
 #                          Home - Laundry                       #
@@ -1307,32 +1291,44 @@ views:
                             - value: ${states['sensor.sensor_count_high'].state}
                               color: '#bf9540'
 
-#############################################################################################################################################
-#                                                                                                                                           # 
-#                                                           VIEW 6 - Device Configuration                                                   #
-#                                                                                                                                           #
-############################################################################################################################################# 
-
-  - id: 6
-    icon: mdi:wifi
-    name: Google Music
-    cards:
- 
+#################################################################
+#                                                               #
+#                      Home - GitHub                            #
+#                                                               #
+################################################################# 
+      - type: vertical-stack
+        cards:            
+            - type: glance
+              columns: 3
+              show_name: true
+              show_state: false
+              entities:
+                - entity: binary_sensor.git_update_ready
+                - entity: script.update_config_restart
+                  icon: 'mdi:github-circle'
+                  name: Pull/Restart
+                - entity: script.update_config_resload_automations
+                  icon: 'mdi:github-circle'
+                  name: Pull/Reload
 #################################################################
 #                                                               #
 #                       Config - Zigbee2MQTT                    #
 #                                                               #
 #################################################################
         
-      - type: vertical-stack
-        cards:
-          - type: entities
-            show_header_toggle: false
-            title: Zigbee2MQTT
-            entities:
-            - entity: input_boolean.zigbee_permit_join
-            - entity: timer.zigbee_permit_join
-            - entity: sensor.bridge_state
+            - type: entities
+              show_header_toggle: false
+              title: Zigbee2MQTT
+              entities:
+              - entity: input_boolean.zigbee_permit_join
+              - entity: timer.zigbee_permit_join
+              - entity: sensor.bridge_state            
+
+#############################################################################################################################################
+#                                                                                                                                           # 
+#                                                              VIEW 7 - Kitchen Tablet                                                      #
+#                                                                                                                                           #
+############################################################################################################################################# 
 
   - id: 7
     icon: mdi:castle
