@@ -1,0 +1,16 @@
+sensor:
+  - platform: integration
+    source: sensor.eagle_current_power
+    name: energy_used
+    unit_prefix: k
+    round: 2
+utility_meter:
+  energy_day:
+    source: sensor.eagle_current_power
+    cycle: daily
+  energy_month:
+    source: sensor.eagle_current_power
+    cycle: monthly
+  energy_year:
+    source: sensor.eagle_current_power
+    cycle: yearly

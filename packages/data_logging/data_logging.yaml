@@ -49,6 +49,10 @@ recorder:
     - sensor.hvac_zone_1_runtime
     - sensor.hvac_zone_2_runtime
     - sensor.hvac_zone_3_runtime
+    - sensor.eagle_current_power
+    - utility_meter.energy_day
+    - utility_meter.energy_month
+    - utility_meter.energy_year
 
 #################################################################
 #                                                               #
@@ -99,6 +103,10 @@ influxdb:
       - sensor.hvac_zone_1_runtime
       - sensor.hvac_zone_2_runtime
       - sensor.hvac_zone_3_runtime
+      - sensor.eagle_current_power
+      - utility_meter.energy_day
+      - utility_meter.energy_month
+      - utility_meter.energy_year
 
 #################################################################
 #                                                               #
@@ -113,44 +121,6 @@ sensor:
 #                Sensor - EmonCMS                  #
 #                                                  #
 ####################################################
-
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 5
-    id: 1
-    unit_of_measurement: "W"
-    include_only_feed_id:
-      - 21
-
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "kWh"
-    include_only_feed_id:
-      - 56
-
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "in"
-    include_only_feed_id:
-      - 53
-      - 54
-      - 55
-
-  - platform: emoncms
-    api_key: !secret emon_api
-    url: https://ibnerd.net/emoncms
-    scan_interval: 30
-    id: 1
-    unit_of_measurement: "in/hr"
-    include_only_feed_id:
-      - 51
 
   - platform: emoncms
     api_key: !secret emon_api
