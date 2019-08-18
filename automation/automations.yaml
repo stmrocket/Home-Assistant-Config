@@ -51,3 +51,10 @@
   - service: switch.turn_off
     data:
       entity_id: switch.nuvo_zone_5_power
+
+- alias: Update Wunderground
+  trigger:
+  - platform: time_pattern
+    minutes: "*"
+  action:
+  - service: rest_command.update_wunderground
