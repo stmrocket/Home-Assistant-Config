@@ -50,7 +50,7 @@ recorder:
     - sensor.hvac_zone_2_runtime
     - sensor.hvac_zone_3_runtime
     - sensor.eagle_current_power
-    - utility_meter.energy_day
+    - utility_meter.energy_daily
     - utility_meter.energy_month
     - utility_meter.energy_year
 
@@ -104,7 +104,7 @@ influxdb:
       - sensor.hvac_zone_2_runtime
       - sensor.hvac_zone_3_runtime
       - sensor.eagle_current_power
-      - utility_meter.energy_day
+      - utility_meter.energy_daily
       - utility_meter.energy_month
       - utility_meter.energy_year
 
