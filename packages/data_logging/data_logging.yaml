@@ -51,8 +51,8 @@ recorder:
     - sensor.hvac_zone_3_runtime
     - sensor.eagle_current_power
     - utility_meter.energy_daily
-    - utility_meter.energy_month
-    - utility_meter.energy_year
+    - utility_meter.energy_monthly
+    - utility_meter.energy_yearly
 
 #################################################################
 #                                                               #
@@ -105,8 +105,8 @@ influxdb:
       - sensor.hvac_zone_3_runtime
       - sensor.eagle_current_power
       - utility_meter.energy_daily
-      - utility_meter.energy_month
-      - utility_meter.energy_year
+      - utility_meter.energy_monthly
+      - utility_meter.energy_yearly
 
 #################################################################
 #                                                               #

@@ -183,7 +183,7 @@ views:
                   - entity: sensor.eagle_current_power
                     icon: 'mdi:flash'
                     name: Current Power Usage
-                  - entity: sensor.energy_day
+                  - entity: sensor.energy_daily
                     icon: 'mdi:gauge'
                     name: Today's Energy Consumption
 
