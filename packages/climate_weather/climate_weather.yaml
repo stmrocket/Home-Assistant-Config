@@ -1,0 +1,14 @@
+sensor:
+  - platform: dewpoint
+    sensors:
+      dewpoint_outside:
+        temperature: sensor.aquara_outside_temperature
+        rel_hum: sensor.aquara_outside_humidity
+  - platform: template
+    sensors:
+      rain_today:
+        unit_of_measurement: 'in'
+        value_template: "{{ states.sensor.current_daily_rain.state | float / 100 | round(2) }}"
+      rain_rate_in:
+        unit_of_measurement: 'in/hr'
+        value_template: "{{ states.sensor.rain_rate.state | float / 100 | round(2) }}"
