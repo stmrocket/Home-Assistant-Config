@@ -20,4 +20,4 @@ sensor:
 
 rest_command:
   update_wunderground:
-    url: "{{ states.sensor.pws_url.state }}&tempf={{ states.sensor.aquara_outside_temperature.state }}&humidity={{ states.sensor.aquara_outside_humidity.state }}&dewptf={{ states.sensor.dewpoint_outside.state }}&baromin={{ states.sensor.press_in.state }}&rainin={{ states.sensor.rain_rate_in.state }}&dailyrainin={{ states.sensor.rain_today.state }}"
+    url: "{{ states.sensor.pws_url.state }}tempf={{ states.sensor.aquara_outside_temperature.state }}&humidity={{ states.sensor.aquara_outside_humidity.state }}&dewptf={{ states.sensor.dewpoint_outside.state }}&baromin={{ states.sensor.press_in.state }}&rainin={{ states.sensor.rain_rate_in.state }}&dailyrainin={{ states.sensor.rain_today.state }}"
