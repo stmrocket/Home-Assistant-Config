@@ -8,9 +8,9 @@ utility_meter:
   energy_daily:
     source: sensor.energy_used
     cycle: daily
-  energy_month:
+  energy_monthly:
     source: sensor.energy_used
     cycle: monthly
-  energy_year:
+  energy_yearly:
     source: sensor.energy_used
     cycle: yearly
