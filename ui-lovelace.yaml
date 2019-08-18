@@ -180,10 +180,10 @@ views:
               show_header_toggle: false
               title: Power Consumption
               entities:
-                  - entity: sensor.emoncms_power
+                  - entity: sensor.eagle_current_power
                     icon: 'mdi:flash'
                     name: Current Power Usage
-                  - entity: sensor.emoncms_power_kwhd
+                  - entity: utility_meter.energy_day
                     icon: 'mdi:gauge'
                     name: Today's Energy Consumption
 
