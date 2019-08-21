@@ -245,6 +245,9 @@ binary_sensor:
         device_class: moisture
         value_template:  "{{ states('sensor.emoncms_is_raining')|float == 1 }}"
 
+  - platform: wyzesense
+    device: "/dev/hidraw0"        
+
 switch:
 
 #Roomba Switch
@@ -540,4 +543,3 @@ display:
     name: Kitchen Tablet
     host: !secret kitchen_tablet_host
     password: !secret kitchen_tablet_pin
-
