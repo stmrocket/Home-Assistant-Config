@@ -244,7 +244,9 @@ views:
                   - entity: camera.office
                   - entity: camera.master_bedroom
                   - entity: camera.server_room
+                  - entity: camera.guest_room
                   - entity: camera.kitten
+                  - entity: camera.wyze
 
 #################################################################
 #                                                               #
@@ -1382,8 +1384,9 @@ views:
                 entity_pop_5: sensor.dark_sky_precip_probability_5d
                 entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
                 entity_pop: sensor.dark_sky_precip_probability_0d
-                entity_precip_current: sensor.emoncms_daily_rainfall
-                entity_precip_intensity_current: sensor.emoncms_rain_rate
+                entity_precip_current: sensor.rain_today
+                entity_precip_intensity_current: sensor.rain_rate_in
+
 
   #################################################################
   #                                                               #

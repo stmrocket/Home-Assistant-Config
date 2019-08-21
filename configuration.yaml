@@ -443,10 +443,6 @@ zoneminder:
 # IP Cameras
 camera:
   - platform: zoneminder
-  - platform: generic
-    name: Kitten
-    still_image_url: !secret kitten_still 
-    stream_source: !secret kitten_live 
 
 #Device Tracking
 
