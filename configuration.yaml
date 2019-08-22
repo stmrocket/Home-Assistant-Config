@@ -264,6 +264,29 @@ switch:
           service: script.turn_on
           data:
             entity_id: script.roomba_off
+      irrigation_program:
+        friendly_name: "Irrigation Program Enabled"
+        value_template: '{{ states.switch.every_3_days.state | string != "unavailable" }}'
+        turn_on:
+          service: rainmachine.enable_program
+          data:
+            program_id: 1
+        turn_off:
+          service: rainmachine.disable_program
+          data:
+            program_id: 1
+
+      irrigation_run_program:
+        friendly_name: "Run Irrigation Program"
+        value_template: '{{ states.switch.every_3_days.state | string == "on" }}'
+        turn_on:
+          service: rainmachine.start_program
+          data:
+            program_id: 1
+        turn_off:
+          service: rainmachine.stop_program
+          data:
+            program_id: 1
 
 input_boolean:
 
