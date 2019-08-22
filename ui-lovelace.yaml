@@ -835,7 +835,7 @@ views:
                         color_type: icon
                         color: rgb(0, 145, 255)
                         icon: mdi:numeric-1-box
-                        name: R Front
+                        name: E Front
                         hold_action: 
                           action: more-info
                       - type: "custom:button-card"
@@ -843,7 +843,7 @@ views:
                         color_type: icon
                         color: rgb(0, 145, 255)
                         icon: mdi:numeric-2-box
-                        name: L Front
+                        name: E Side
                         hold_action: 
                           action: more-info
                       - type: "custom:button-card"
@@ -851,7 +851,7 @@ views:
                         color_type: icon
                         color: rgb(0, 145, 255)
                         icon: mdi:numeric-3-box
-                        name: Flowerbed
+                        name: Back
                         hold_action: 
                           action: more-info
                       - type: "custom:button-card"
@@ -859,7 +859,7 @@ views:
                         color_type: icon
                         color: rgb(0, 145, 255)
                         icon: mdi:numeric-4-box
-                        name: Back
+                        name: W Side
                         hold_action: 
                           action: more-info
                       - type: "custom:button-card"
@@ -867,7 +867,7 @@ views:
                         color_type: icon
                         color: rgb(0, 145, 255)
                         icon: mdi:numeric-5-box
-                        name: Back
+                        name: W Front
                         hold_action: 
                           action: more-info
 
