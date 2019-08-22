@@ -75,14 +75,14 @@ cch:
   clock_date: true
   date_locale: en-us
   disable: false
-  hide_tabs: 6
+  hide_tabs: 7
   default_tap: 0
   exceptions:
     - conditions:
         user_agent: fully-kitchen
       config:
-        hide_tabs: 0 to 5
-        default_tab: 6
+        hide_tabs: 0 to 6
+        default_tab: 7
 
 #############################################################################################################################################
 #                                                                                                                                           # 
@@ -782,11 +782,102 @@ views:
 
 #############################################################################################################################################
 #                                                                                                                                           # 
+#                                                                VIEW 4 - Irrigatio   n                                                     #
+#                                                                                                                                           #
+############################################################################################################################################# 
+
+  - id: 5
+    icon: mdi:water
+    name: Laundry
+    cards:
+
+#################################################################
+#                                                               #
+#                        Irrigation                             #
+#                                                               #
+#################################################################
+        
+      - type: vertical-stack
+        cards:
+          - type: entities
+            show_header_toggle: off
+            entities:
+              - type: section
+                label: RainMachine Irrigation Controller
+              - type: custom:vertical-stack-in-card
+                cards:
+                  #- type: 'custom:text-divider-row'
+                  #  text: Statistics
+               
+                  - type: horizontal-stack
+                    cards:
+                      - type: "custom:button-card"
+                        entity: switch.irrigation_program
+                        color_type: icon
+                        color: rgb(0, 145, 255)
+                        icon: mdi:alarm-check
+                        name: Program Enable
+                        hold_action: 
+                          action: more-info
+                      - type: "custom:button-card"
+                        entity: switch.irrigation_run_program
+                        color_type: icon
+                        color: rgb(0, 145, 255)
+                        icon: mdi:weather-pouring
+                        name: Run Program
+                        hold_action: 
+                          action: more-info
+            
+                  - type: horizontal-stack
+                    cards:
+                      - type: "custom:button-card"
+                        entity: switch.east_front
+                        color_type: icon
+                        color: rgb(0, 145, 255)
+                        icon: mdi:numeric-1-box
+                        name: R Front
+                        hold_action: 
+                          action: more-info
+                      - type: "custom:button-card"
+                        entity: switch.east_side
+                        color_type: icon
+                        color: rgb(0, 145, 255)
+                        icon: mdi:numeric-2-box
+                        name: L Front
+                        hold_action: 
+                          action: more-info
+                      - type: "custom:button-card"
+                        entity: switch.back_yard
+                        color_type: icon
+                        color: rgb(0, 145, 255)
+                        icon: mdi:numeric-3-box
+                        name: Flowerbed
+                        hold_action: 
+                          action: more-info
+                      - type: "custom:button-card"
+                        entity: switch.west_side
+                        color_type: icon
+                        color: rgb(0, 145, 255)
+                        icon: mdi:numeric-4-box
+                        name: Back
+                        hold_action: 
+                          action: more-info
+                      - type: "custom:button-card"
+                        entity: switch.west_front
+                        color_type: icon
+                        color: rgb(0, 145, 255)
+                        icon: mdi:numeric-5-box
+                        name: Back
+                        hold_action: 
+                          action: more-info
+
+#############################################################################################################################################
+#                                                                                                                                           # 
 #                                                          VIEW 5 - SYSTEM STATUS                                                          #
 #                                                                                                                                           #
 #############################################################################################################################################
 
-  - id: 5  
+  - id: 6  
     icon: mdi:server-network
     name: System Status
     popup_cards:
@@ -1332,7 +1423,7 @@ views:
 #                                                                                                                                           #
 ############################################################################################################################################# 
 
-  - id: 6
+  - id: 7
     icon: mdi:castle
     name: Home
     cards:
