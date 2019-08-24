@@ -1,7 +1,7 @@
 - alias: Master Shower Increase Volume
   trigger:
   - platform: state
-    entity_id: switch.master_shower_light_a
+    entity_id: light.master_shower_light_a
     to: 'on'
   action:
   - service: mqtt.publish
@@ -11,7 +11,7 @@
 - alias: Master Shower Decrease Volume
   trigger:
   - platform: state
-    entity_id: switch.master_shower_light_a
+    entity_id: light.master_shower_light_a
     to: 'off'
   action:
   - service: mqtt.publish
@@ -25,7 +25,7 @@
     to: 'off'
   condition:
   - condition: state
-    entity_id: switch.master_shower_light_a
+    entity_id: light.master_shower_light_a
     state: 'on'
   action:
   - service: mqtt.publish
