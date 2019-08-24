@@ -3,7 +3,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.master_bedroom_light_d
+      entity_id: ligjt.master_bedroom_light_d
       control: DON
   condition: []
   action:
@@ -15,7 +15,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.master_bedroom_light_d
+      entity_id: light.master_bedroom_light_d
       control: DOF
   condition: []
   action:
@@ -27,7 +27,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.master_shower_light_c
+      entity_id: light.master_shower_light_c
       control: DON
   condition: []
   action:
@@ -39,7 +39,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.master_shower_light_c
+      entity_id: light.master_shower_light_c
       control: DOF
   condition: []
   action:
@@ -51,7 +51,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.kitchen_light_a
+      entity_id: light.kitchen_light_a
       control: DON
   condition: []
   action:
@@ -63,7 +63,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.kitchen_light_a
+      entity_id: light.kitchen_light_a
       control: DOF
   condition: []
   action:
@@ -75,7 +75,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.den_light_c
+      entity_id: light.den_light_c
       control: DON
   condition: []
   action:
@@ -87,7 +87,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.den_light_c
+      entity_id: light.den_light_c
       control: DOF
   condition: []
   action:
@@ -99,7 +99,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.guest_bedroom_fan_c
+      entity_id: light.hallway_light_d
       control: DON
   condition: []
   action:
@@ -111,7 +111,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.guest_bedroom_fan_c
+      entity_id: light.hallway_light_d
       control: DOF
   condition: []
   action:
@@ -123,7 +123,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.kitchen_light_b
+      entity_id: light.kitchen_light_b
       control: DON
   condition: []
   action:
@@ -135,7 +135,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: switch.kitchen_light_b
+      entity_id: light.kitchen_light_b
       control: DOF
   condition: []
   action:
