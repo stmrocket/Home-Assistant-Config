@@ -201,6 +201,11 @@ sensor:
         unit_of_measurement: '%'
         icon_template: "{{ states.vacuum.roomba.attributes.battery_icon }}"
         entity_id: vacuum.roomba
+      
+      #Blank
+      blank:
+        value_template: ''
+        friendly_name: ''
 
 # Darksky
   - platform: darksky

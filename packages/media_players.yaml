@@ -23,9 +23,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 1
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_1_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 1
     attributes:
       state: switch.nuvo_zone_1_power
       is_volume_muted: switch.nuvo_zone_1_mute
@@ -54,9 +55,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 2
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_2_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 2
     attributes:
       state: switch.nuvo_zone_2_power
       is_volume_muted: switch.nuvo_zone_2_mute
@@ -85,9 +87,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 3
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_3_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 3
     attributes:
       state: switch.nuvo_zone_3_power
       is_volume_muted: switch.nuvo_zone_3_mute
@@ -116,9 +119,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 4
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_4_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 4
     attributes:
       state: switch.nuvo_zone_4_power
       is_volume_muted: switch.nuvo_zone_4_mute
@@ -147,9 +151,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 5
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_5_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 5
     attributes:
       state: switch.nuvo_zone_5_power
       is_volume_muted: switch.nuvo_zone_5_mute
@@ -178,8 +183,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 6
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
+          topic: nuvo/command/set/zone/mute
+          payload: 6
           entity_id: switch.nuvo_zone_6_mute
     attributes:
       state: switch.nuvo_zone_6_power
@@ -209,9 +216,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 7
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_7_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 7
     attributes:
       state: switch.nuvo_zone_7_power
       is_volume_muted: switch.nuvo_zone_7_mute
@@ -240,9 +248,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 9
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_9_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 9
     attributes:
       state: switch.nuvo_zone_9_power
       is_volume_muted: switch.nuvo_zone_9_mute
@@ -271,9 +280,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 10
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_10_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 10
     attributes:
       state: switch.nuvo_zone_10_power
       is_volume_muted: switch.nuvo_zone_10_mute
@@ -302,9 +312,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 11
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_11_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 11
     attributes:
       state: switch.nuvo_zone_11_power
       is_volume_muted: switch.nuvo_zone_11_mute
@@ -333,9 +344,10 @@ media_player:
           topic: nuvo/command/set/zone/voldn
           payload: 12
       volume_mute:
-        service: switch.turn_on
+        service: mqtt.publish
         data:
-          entity_id: switch.nuvo_zone_12_mute
+          topic: nuvo/command/set/zone/mute
+          payload: 12
     attributes:
       state: switch.nuvo_zone_12_power
       is_volume_muted: switch.nuvo_zone_12_mute
