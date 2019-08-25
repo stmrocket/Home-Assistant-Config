@@ -1,0 +1,31 @@
+media_player:
+  - platform: universal
+    name: Kitchen Stereo
+    children:
+      - media_player.gmusic_player
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_10_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_10_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 10
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 10
+      volume_mute:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_10_mute
+    attributes:
+      state: switch.nuvo_zone_10_power
+      is_volume_muted: switch.nuvo_zone_10_mute
