@@ -533,11 +533,11 @@ litter_robot:
   api_key: !secret pooper_key
 
 #Roomba
-vacuum:
-  - platform: roomba
-    host: !secret roomba_host
-    username: !secret roomba_blid
-    password: !secret roomba_pass
+# vacuum:
+#   - platform: roomba
+#     host: !secret roomba_host
+#     username: !secret roomba_blid
+#     password: !secret roomba_pass
 
 #Google Calendar
 google:
