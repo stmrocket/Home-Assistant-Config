@@ -1,0 +1,10 @@
+sensor:
+  - platform: template
+    sensors:
+      den_harmony_activity:
+        friendly_name: Den Harmony Activity
+        value_template: "{{ states.remote.living_room_2.attributes.current_activity }}"
+
+      master_harmony_activity:
+        friendly_name: Master Bedroom Harmony Activity
+        value_template: "{{ states.remote.master_bedroom_2.attributes.current_activity }}"
