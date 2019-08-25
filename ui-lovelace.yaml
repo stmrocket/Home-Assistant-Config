@@ -2207,20 +2207,282 @@ views:
               - type: picture-elements
                 image: /local/lovelace/room.png
                 elements:
-                  - entity: sensor.zone_002
+                  - entity: sensor.aquara_outside_temperature
                     style:
                       bottom: 20%
-                      front-weight: bold
-                      right: 24%
+                      right: 5%
                       transform: initial
-                    type: state-icon
-                  - entity: sensor.zone_003
+                    type: state-label
+                  - entity: sensor.blank
+                    hold-action: none
+                    prefix: Outside
+                    style:
+                      bottom: 20%
+                      font-size: 150%
+                      left: 5%
+                      transform: initial
+                    tap-action: none
+                    type: state-label
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: light.front_sconces
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Driveway
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: light.front_porch_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Front Porch
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: switch.shed_porch_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Shed Outside
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: switch.shed_inside_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Shed Inside
+                    hold_action: 
+                      action: more-info
+              - type: horizontal-stack
+                cards:
+                  # - type: "custom:button-card"
+                  #   entity: switch
+                  #   color_type: icon
+                  #   color: rgb(255, 200, 0)
+                  #   icon: mdi:lightbulb-outline
+                  #   name: Driveway
+                  #   hold_action: 
+                  #     action: more-info
+                  - type: "custom:gap-card"
+                  - type: "custom:button-card"
+                    entity: switch.back_porch_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Back Porch
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: switch.back_porch_fan_high
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:fan
+                    name: Back Porch
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:gap-card"
+              - type: custom:mini-media-player
+                entity: media_player.back_porch_stereo
+                name: Back Porch
+                icon: mdi:speaker
+                group: true
+                artwork: none
+                volume_stateless: true
+                hide:
+                  source: true
+                  controls: true
+                  info: true
+          
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: picture-elements
+                image: /local/lovelace/room.png
+                elements:
+                  - entity: cover.18606_tanglerose
                     style:
                       bottom: 20%
                       font-weight: bold
                       right: 17%
                       transform: initial
                     type: state-icon
+                  - entity: sensor.garage_temperature_owfs
+                    style:
+                      bottom: 20%
+                      right: 5%
+                      transform: initial
+                    type: state-label
+                  - entity: sensor.blank
+                    hold-action: none
+                    prefix: Garage
+                    style:
+                      bottom: 20%
+                      font-size: 150%
+                      left: 5%
+                      transform: initial
+                    tap-action: none
+                    type: state-label
+              - type: horizontal-stack
+                cards:                  
+                  - type: "custom:gap-card"
+                  - type: "custom:button-card"
+                    entity: switch.garage_lighting
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Lights
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:button-card"
+                    entity: switch.garage_fan
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:fan
+                    name: Fan
+                    hold_action: 
+                      action: more-info
+                  - type: "custom:gap-card"
+              - type: custom:mini-media-player
+                entity: media_player.garage_stereo
+                name: Garage
+                icon: mdi:speaker
+                group: true
+                artwork: none
+                volume_stateless: true
+                hide:
+                  source: true
+                  controls: true
+                  info: true
+
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: picture-elements
+                image: /local/lovelace/room.png
+                elements:
+                  - entity: lock.front_door
+                    style:
+                      bottom: 20%
+                      font-weight: bold
+                      right: 5%
+                      transform: initial
+                    type: state-icon
+                  - entity: sensor.blank
+                    hold-action: none
+                    prefix: Entry
+                    style:
+                      bottom: 20%
+                      font-size: 150%
+                      left: 5%
+                      transform: initial
+                    tap-action: none
+                    type: state-label
+              - type: horizontal-stack
+                cards:                  
+
+                  - type: "custom:button-card"
+                    entity: light.entry_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Entry
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: light.hallway_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Hall
+                    hold_action: 
+                      action: more-info
+                  
+                  - type: "custom:button-card"
+                    entity: light.foyer_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Foyer
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: switch.entry_lamp
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lamp
+                    name: Lamp
+                    hold_action: 
+                      action: more-info
+
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: picture-elements
+                image: /local/lovelace/room.png
+                elements:
+                  - entity: binary_sensor.utility_leak_dry
+                    style:
+                      bottom: 20%
+                      front-weight: bold
+                      right: 24%
+                      transform: initial
+                    type: state-icon
+                  - entity: lock.garage_entry
+                    style:
+                      bottom: 20%
+                      font-weight: bold
+                      right: 17%
+                      transform: initial
+                    type: state-icon
+                  - entity: sensor.dryer_vent_temperature_owfs
+                    style:
+                      bottom: 20%
+                      right: 5%
+                      transform: initial
+                    type: state-label
+                  - entity: sensor.blank
+                    hold-action: none
+                    prefix: Laundry
+                    style:
+                      bottom: 20%
+                      font-size: 150%
+                      left: 5%
+                      transform: initial
+                    tap-action: none
+                    type: state-label
+              - type: horizontal-stack
+                cards:                  
+
+                  - type: "custom:gap-card"
+
+                  - type: "custom:button-card"
+                    entity: light.utility_room_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Light
+                    hold_action: 
+                      action: more-info
+                  
+                  - type: "custom:button-card"
+                    entity: switch.utility_room_vent_fan
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:fan
+                    name: Fan
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:gap-card"
+              
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: picture-elements
+                image: /local/lovelace/room.png
+                elements:
                   - entity: sensor.den_temperature_owfs
                     style:
                       bottom: 20%
@@ -2229,7 +2491,7 @@ views:
                     type: state-label
                   - entity: sensor.blank
                     hold-action: none
-                    prefix: Kitchen and Dining Room
+                    prefix: Den
                     style:
                       bottom: 20%
                       font-size: 150%
@@ -2237,6 +2499,72 @@ views:
                       transform: initial
                     tap-action: none
                     type: state-label
+              - type: horizontal-stack
+                cards:                  
+
+                  - type: "custom:button-card"
+                    entity: light.den_light
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lightbulb-outline
+                    name: Light
+                    hold_action: 
+                      action: more-info
+                  
+                  - type: "custom:button-card"
+                    entity: switch.den_fan_1
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:fan
+                    name: Fan
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: switch.den_lamps
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lamp
+                    name: TV
+                    hold_action: 
+                      action: more-info   
+
+                  - type: "custom:button-card"
+                    entity: switch.den_table_lamp
+                    color_type: icon
+                    color: rgb(255, 200, 0)
+                    icon: mdi:lamp
+                    name: Piano
+                    hold_action: 
+                      action: more-info        
+
+              - type: horizontal-stack
+                cards:                  
+                  - type: "custom:gap-card"
+
+                  - type: "custom:button-card"
+                    entity: light.den_led_rgb
+                    color_type: icon
+                    color: auto
+                    icon: mdi:led-on
+                    name: Light
+                    hold_action: 
+                      action: more-info
+                  
+                  - type: "custom:button-card"
+                    entity: switch.den_fireplace
+                    color_type: icon
+                    color: rgb(255, 0, 0)
+                    icon: mdi:fire
+                    name: Fire
+                    hold_action: 
+                      action: more-info
+                  
+                  - type: "custom:gap-card"
+
+
+
+              
 #############################################################################################################################################
 #                                                                                                                                           # 
 #                                                                 VIEW 2 - HVAC                                                             #
