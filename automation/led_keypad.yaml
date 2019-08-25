@@ -3,7 +3,7 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: ligjt.master_bedroom_light_d
+      entity_id: light.master_bedroom_light_d
       control: DON
   condition: []
   action:
