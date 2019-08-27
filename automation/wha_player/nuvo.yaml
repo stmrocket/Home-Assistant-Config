@@ -10,8 +10,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/1
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/1/power
+      payload: "OFF"
 - alias: Nuvo Zone 2 All Off
   trigger:
   - platform: mqtt
@@ -23,8 +23,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/2
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/2/power
+      payload: "OFF"
 - alias: Nuvo Zone 3 All Off
   trigger:
   - platform: mqtt
@@ -36,8 +36,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/3
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/3/power
+      payload: "OFF"
 - alias: Nuvo Zone 4 All Off
   trigger:
   - platform: mqtt
@@ -49,8 +49,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/4
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/4/power
+      payload: "OFF"
 - alias: Nuvo Zone 5 All Off
   trigger:
   - platform: mqtt
@@ -62,8 +62,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/5
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/5/power
+      payload: "OFF"
 - alias: Nuvo Zone 6 All Off
   trigger:
   - platform: mqtt
@@ -75,8 +75,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/6
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/6/power
+      payload: "OFF"
 - alias: Nuvo Zone 7 All Off
   trigger:
   - platform: mqtt
@@ -88,8 +88,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/7
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/7/power
+      payload: "OFF"
 - alias: Nuvo Zone 8 All Off
   trigger:
   - platform: mqtt
@@ -101,8 +101,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/8
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/8/power
+      payload: "OFF"
 - alias: Nuvo Zone 9 All Off
   trigger:
   - platform: mqtt
@@ -114,8 +114,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/9
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/9/power
+      payload: "OFF"
 - alias: Nuvo Zone 10 All Off
   trigger:
   - platform: mqtt
@@ -127,8 +127,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/10
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/10/power
+      payload: "OFF"
 - alias: Nuvo Zone 11 All Off
   trigger:
   - platform: mqtt
@@ -140,8 +140,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/11
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/11/power
+      payload: "OFF"
 - alias: Nuvo Zone 12 All Off
   trigger:
   - platform: mqtt
@@ -153,8 +153,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/12
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/12/power
+      payload: "OFF"
 - alias: Nuvo Zone 13 All Off
   trigger:
   - platform: mqtt
@@ -166,8 +166,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/13
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/13/power
+      payload: "OFF"
 - alias: Nuvo Zone 14 All Off
   trigger:
   - platform: mqtt
@@ -179,8 +179,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/14
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/14/power
+      payload: "OFF"
 - alias: Nuvo Zone 15 All Off
   trigger:
   - platform: mqtt
@@ -192,8 +192,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/15
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/15/power
+      payload: "OFF"
 - alias: Nuvo Zone 16 All Off
   trigger:
   - platform: mqtt
@@ -205,8 +205,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/16
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/16/power
+      payload: "OFF"
 - alias: Nuvo Zone 17 All Off
   trigger:
   - platform: mqtt
@@ -218,8 +218,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/17
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/17/power
+      payload: "OFF"
 - alias: Nuvo Zone 18 All Off
   trigger:
   - platform: mqtt
@@ -231,8 +231,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/18
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/18/power
+      payload: "OFF"
 - alias: Nuvo Zone 19 All Off
   trigger:
   - platform: mqtt
@@ -244,8 +244,8 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/19
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/19/power
+      payload: "OFF"
 - alias: Nuvo Zone 20 All Off
   trigger:
   - platform: mqtt
@@ -257,5 +257,5 @@
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/20
-      payload: '{"power":"OFF"}'
+      topic: nuvo/tele/zone/20/power
+      payload: "OFF"
