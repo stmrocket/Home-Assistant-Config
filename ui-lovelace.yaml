@@ -2204,11 +2204,12 @@ views:
                   entity: cover.left_office_blind
                   color_type: icon
                   state:
-                    - value: "open"
-                      color: rgb(255, 200, 0)
-                    - value: "closed"
-                      color: rgb(255, 255, 255)
-                  icon: mdi:blinds
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
                   name: Left
                   hold_action: 
                     action: more-info
@@ -2217,11 +2218,12 @@ views:
                   entity: cover.center_office_blind
                   color_type: icon
                   state:
-                    - value: "open"
-                      color: rgb(255, 200, 0)
-                    - value: "closed"
-                      color: rgb(255, 255, 255)
-                  icon: mdi:blinds
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
                   name: Center
                   hold_action: 
                     action: more-info
@@ -2230,11 +2232,12 @@ views:
                   entity: cover.right_office_blind
                   color_type: icon
                   state:
-                    - value: "open"
-                      color: rgb(255, 200, 0)
-                    - value: "closed"
-                      color: rgb(255, 255, 255)
-                  icon: mdi:blinds
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
                   name: Right
                   hold_action: 
                     action: more-info
@@ -2276,32 +2279,48 @@ views:
                   - type: "custom:button-card"
                     entity: light.front_sconces
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Driveway
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: light.front_porch_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Front Porch
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.shed_porch_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Shed Outside
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.shed_inside_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Shed Inside
                     hold_action: 
                       action: more-info
@@ -2310,7 +2329,7 @@ views:
                   # - type: "custom:button-card"
                   #   entity: switch
                   #   color_type: icon
-                  #   color: rgb(255, 200, 0)
+                  #   color: rgb(228, 94, 101)
                   #   icon: mdi:lightbulb-outline
                   #   name: Driveway
                   #   hold_action: 
@@ -2319,16 +2338,24 @@ views:
                   - type: "custom:button-card"
                     entity: switch.back_porch_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Back Porch
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.back_porch_fan_high
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Back Porch
                     hold_action: 
                       action: more-info
@@ -2380,16 +2407,24 @@ views:
                   - type: "custom:button-card"
                     entity: switch.garage_lighting
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Lights
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.garage_fan
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Fan
                     hold_action: 
                       action: more-info
@@ -2435,8 +2470,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.entry_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Entry
                     hold_action: 
                       action: more-info
@@ -2444,8 +2483,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.hallway_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Hall
                     hold_action: 
                       action: more-info
@@ -2453,8 +2496,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.foyer_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Foyer
                     hold_action: 
                       action: more-info
@@ -2462,7 +2509,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.entry_lamp
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: Lamp
                     hold_action: 
@@ -2512,8 +2559,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.utility_room_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Light
                     hold_action: 
                       action: more-info
@@ -2521,8 +2572,12 @@ views:
                   - type: "custom:button-card"
                     entity: switch.utility_room_vent_fan
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Fan
                     hold_action: 
                       action: more-info
@@ -2558,8 +2613,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.den_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Light
                     hold_action: 
                       action: more-info
@@ -2567,8 +2626,12 @@ views:
                   - type: "custom:button-card"
                     entity: switch.den_fan_1
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Fan
                     hold_action: 
                       action: more-info
@@ -2576,7 +2639,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.den_lamps
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: TV
                     hold_action: 
@@ -2585,7 +2648,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.den_table_lamp
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: Piano
                     hold_action: 
@@ -2598,8 +2661,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.den_led_rgb
                     color_type: icon
-                    color: auto
-                    icon: mdi:led-on
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:led-on
+                      - value: "off"
+                        icon: mdi:led-off
                     name: LEDs
                     hold_action: 
                       action: more-info
@@ -2607,7 +2674,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.den_fireplace
                     color_type: icon
-                    color: rgb(255, 0, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:fire
                     name: Fire
                     hold_action: 
@@ -2629,7 +2696,7 @@ views:
                     color_type: icon
                     state:
                       - value: "PowerOff"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "PowerOff"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -2646,7 +2713,7 @@ views:
                     color_type: icon
                     state:
                       - value: "Watch PVR"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "Watch PVR"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -2664,7 +2731,7 @@ views:
                     color_type: icon
                     state:
                       - value: "Watch Roku"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "Watch Roku"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -2682,7 +2749,7 @@ views:
                     color_type: icon
                     state:
                       - value: "ChromeCast"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "ChromeCast"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -2700,7 +2767,7 @@ views:
                     color_type: icon
                     state:
                       - value: "Listen to WHA"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "Listen to WHA"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -2713,13 +2780,25 @@ views:
                         entity_id: remote.living_room_2     
                         activity: "Listen to WHA"      
 
+              - type: custom:mini-media-player
+                entity: media_player.den_stereo
+                name: Den
+                icon: mdi:speaker
+                group: true
+                artwork: none
+                volume_stateless: true
+                hide:
+                  source: true
+                  controls: true
+                  info: true                               
+
 # Shack
           - type: custom:vertical-stack-in-card
             cards:
               - type: picture-elements
                 image: /local/lovelace/room.png
                 elements:
-                  - entity: sensor.garage_temperature_owfs
+                  - entity: sensor.dining_room_temperature_owfs
                     style:
                       bottom: 20%
                       right: 5%
@@ -2742,8 +2821,12 @@ views:
                   - type: "custom:button-card"
                     entity: switch.dining_room_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Light
                     hold_action: 
                       action: more-info
@@ -2751,13 +2834,86 @@ views:
                   - type: "custom:button-card"
                     entity: switch.dining_room_lamp
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: Lamp
                     hold_action: 
                       action: more-info
                   
                   - type: "custom:gap-card"
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: light.dining_room_keypad_c
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                    icon: mdi:fan-off
+                    name: "Off"
+                    tap_action: 
+                      action: call-service
+                      service: switch.turn_on
+                      service_data:
+                        entity_id: switch.dining_room_fan_off
+                    hold_action: 
+                      action: more-info
+                  
+                  - type: "custom:button-card"
+                    entity: light.dining_room_keypad_d
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                    icon: mdi:fan
+                    name: "Low"
+                    tap_action: 
+                      action: call-service
+                      service: switch.turn_on
+                      service_data:
+                        entity_id: switch.dining_room_fan_low
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: light.dining_room_keypad_e
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                    icon: mdi:fan
+                    name: "Medium"
+                    tap_action: 
+                      action: call-service
+                      service: switch.turn_on
+                      service_data:
+                        entity_id: switch.dining_room_fan_medium
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: light.dining_room_keypad_f
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                    icon: mdi:fan
+                    name: "High"
+                    tap_action: 
+                      action: call-service
+                      service: switch.turn_on
+                      service_data:
+                        entity_id: switch.dining_room_fan_high
+                    hold_action: 
+                      action: more-info
 
               - type: custom:mini-media-player
                 entity: media_player.dining_room_stereo
@@ -2800,8 +2956,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_light_1
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Lights
                     hold_action: 
                       action: more-info
@@ -2809,8 +2969,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_sink_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Sink Light
                     hold_action: 
                       action: more-info
@@ -2818,8 +2982,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.breakfast_room_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Table Light
                     hold_action: 
                       action: more-info
@@ -2827,7 +2995,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.breakfast_room_lamp
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: Lamp
                     hold_action: 
@@ -2839,8 +3007,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_leds_rgb
                     color_type: icon
-                    color: auto
-                    icon: mdi:led-on
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:led-on
+                      - value: "off"
+                        icon: mdi:led-off
                     name: LEDs
                     hold_action: 
                       action: more-info
@@ -2848,8 +3020,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_counter_leds_white
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:led-on
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:led-on
+                      - value: "off"
+                        icon: mdi:led-off
                     name: Counter
                     hold_action: 
                       action: more-info
@@ -2857,16 +3033,16 @@ views:
                   - type: "custom:button-card"
                     entity: light.pantry_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
-                    name: Pantry
+                    color: rgb(228, 94, 101)
+                    icon: mdi:door
+                    name: Pantry Light
                     hold_action: 
                       action: more-info
                   
                   - type: "custom:button-card"
                     entity: switch.popcorn_popper_2
                     color_type: icon
-                    color: rgb(255, 0, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:popcorn
                     name: Popper
                     hold_action: 
@@ -2913,33 +3089,42 @@ views:
                     color_type: icon
                     state:
                       - value: "open"
-                        color: rgb(255, 200, 0)
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
                       - value: "closed"
                         color: rgb(255, 255, 255)
-                    icon: mdi:blinds
+                        icon: mdi:blinds
                     name: Blinds
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: light.office_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.office_fan_1
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Fan
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.office_lamp
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: Lamp
                     hold_action: 
@@ -2949,7 +3134,7 @@ views:
                   # - type: "custom:button-card"
                   #   entity: switch
                   #   color_type: icon
-                  #   color: rgb(255, 200, 0)
+                  #   color: rgb(228, 94, 101)
                   #   icon: mdi:lightbulb-outline
                   #   name: Driveway
                   #   hold_action: 
@@ -2958,7 +3143,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.office_peripherals
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:desktop-tower-monitor
                     name: Desk
                     hold_action: 
@@ -2966,7 +3151,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.lava_lamp
                     color_type: icon
-                    color: rgb(255, 0, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lava-lamp
                     name: Lava Lamp
                     hold_action: 
@@ -3013,33 +3198,42 @@ views:
                     color_type: icon
                     state:
                       - value: "open"
-                        color: rgb(255, 200, 0)
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
                       - value: "closed"
                         color: rgb(255, 255, 255)
-                    icon: mdi:blinds
+                        icon: mdi:blinds
                     name: Blinds
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: light.guest_bedroom_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.guest_bedroom_fan
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Fan
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.guest_room_lamp
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: Lamp
                     hold_action: 
@@ -3049,7 +3243,7 @@ views:
                   # - type: "custom:button-card"
                   #   entity: switch
                   #   color_type: icon
-                  #   color: rgb(255, 200, 0)
+                  #   color: rgb(228, 94, 101)
                   #   icon: mdi:lightbulb-outline
                   #   name: Driveway
                   #   hold_action: 
@@ -3058,15 +3252,15 @@ views:
                   - type: "custom:button-card"
                     entity: switch.guest_closet_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:door
-                    name: Closet
+                    name: Closet Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: input_boolean.guest_mode
                     color_type: icon
-                    color: rgb(255, 0, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:airplane
                     name: Guest Mode
                     hold_action: 
@@ -3113,33 +3307,42 @@ views:
                     color_type: icon
                     state:
                       - value: "open"
-                        color: rgb(255, 200, 0)
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
                       - value: "closed"
                         color: rgb(255, 255, 255)
-                    icon: mdi:blinds
+                        icon: mdi:blinds
                     name: Blinds
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: light.server_room_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.server_room_fan
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Fan
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.server_room_lamp
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: Lamp
                     hold_action: 
@@ -3149,7 +3352,7 @@ views:
                   # - type: "custom:button-card"
                   #   entity: switch
                   #   color_type: icon
-                  #   color: rgb(255, 200, 0)
+                  #   color: rgb(228, 94, 101)
                   #   icon: mdi:lightbulb-outline
                   #   name: Driveway
                   #   hold_action: 
@@ -3158,16 +3361,20 @@ views:
                   - type: "custom:button-card"
                     entity: switch.server_closet_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:door
-                    name: Closet
+                    name: Closet Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.server_closet_fan
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Vent Fan
                     hold_action: 
                       action: more-info
@@ -3205,24 +3412,36 @@ views:
                   - type: "custom:button-card"
                     entity: light.guest_bathroom_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.guest_bathroom_fan
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Fan
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: light.guest_bathroom_led_rgb
                     color_type: icon
-                    color: auto
-                    icon: mdi:led-on
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:led-on
+                      - value: "off"
+                        icon: mdi:led-off
                     name: LEDs
                     hold_action: 
                       action: more-info
@@ -3266,23 +3485,31 @@ views:
                   - type: "custom:button-card"
                     entity: light.master_bedroom_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.master_bedroom_fan_1
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan-on
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Fan
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: switch.master_bedroom_lamps_led
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lamp
                     name: Lamp
                     hold_action: 
@@ -3290,8 +3517,12 @@ views:
                   - type: "custom:button-card"
                     entity: light.master_bedroom_leds_rgb
                     color_type: icon
-                    color: auto
-                    icon: mdi:led-on
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:led-on
+                      - value: "off"
+                        icon: mdi:led-off
                     name: LEDs
                     hold_action: 
                       action: more-info
@@ -3310,7 +3541,7 @@ views:
                     color_type: icon
                     state:
                       - value: "PowerOff"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "PowerOff"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -3327,7 +3558,7 @@ views:
                     color_type: icon
                     state:
                       - value: "Watch PVR"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "Watch PVR"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -3345,7 +3576,7 @@ views:
                     color_type: icon
                     state:
                       - value: "Watch Roku"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "Watch Roku"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -3363,7 +3594,7 @@ views:
                     color_type: icon
                     state:
                       - value: "ChromeCast"
-                        color: rgb(0, 145, 255)
+                        color: rgb(228, 94, 101)
                       - value: "ChromeCast"
                         operator: '!='
                         color: rgb(255, 255, 255)
@@ -3428,8 +3659,12 @@ views:
                   - type: "custom:button-card"
                     entity: switch.master_bath_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:lightbulb-outline
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
                     name: Sink Light
                     hold_action: 
                       action: more-info
@@ -3437,7 +3672,7 @@ views:
                   - type: "custom:button-card"
                     entity: light.master_shower_light_1
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:shower
                     name: Shower Light
                     hold_action: 
@@ -3446,18 +3681,27 @@ views:
                   - type: "custom:button-card"
                     entity: light.master_bathroom_led_rgb
                     color_type: icon
-                    color: auto
-                    icon: mdi:led-on
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:led-on
+                      - value: "off"
+                        icon: mdi:led-off
                     name: LEDs
                     hold_action: 
                       action: more-info
 
                   - type: "custom:button-card"
-                    entity: switch.shower_light_and_fan
+                    entity: light.master_shower_light_a
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:shower-head
                     name: Take Shower
+                    tap_action: 
+                      action: call-service
+                      service: switch.toggle
+                      service_data:
+                        entity_id: switch.shower_light_and_fan
                     hold_action: 
                       action: more-info
               
@@ -3467,26 +3711,30 @@ views:
                   - type: "custom:button-card"
                     entity: light.master_toilet_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icom: mdi:toilet
-                    name: Toilet
+                    color: rgb(228, 94, 101)
+                    icon: mdi:toilet
+                    name: Toilet Light
                     hold_action: 
-                      action: more-info          
+                      action: more-info      
                   
                   - type: "custom:button-card"
                     entity: switch.master_closet_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:door
-                    name: Closet
+                    name: Closet Light
                     hold_action: 
                       action: more-info
 
                   - type: "custom:button-card"
                     entity: switch.master_bath_fan
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Shower Fan
                     hold_action: 
                       action: more-info
@@ -3494,8 +3742,12 @@ views:
                   - type: "custom:button-card"
                     entity: switch.master_toilet_fan
                     color_type: icon
-                    color: rgb(255, 200, 0)
-                    icon: mdi:fan
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:fan
+                      - value: "off"
+                        icon: mdi:fan-off
                     name: Toilet Fan
                     hold_action: 
                       action: more-info
