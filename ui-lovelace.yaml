@@ -3692,7 +3692,7 @@ views:
                       action: more-info
 
                   - type: "custom:button-card"
-                    entity: light.master_shower_light_a
+                    entity: switch.master_shower_light_a
                     color_type: icon
                     color: rgb(228, 94, 101)
                     icon: mdi:shower-head
