@@ -412,17 +412,17 @@ isy994:
   username: !secret isy_user
   password: !secret isy_pass
   enable_climate: false
-  isy_variables:
-    sensors:
-      - id: 10
-        type: 2
-        unit_of_measurement: 'W'
-      - id: 47
-        type: 1
-        unit_of_measurement: 'in/hr'
-      - id: 122
-        type: 2
-        unit_of_measurement: 'in'
+  # isy_variables:
+  #   sensors:
+  #     - id: 10
+  #       type: 2
+  #       unit_of_measurement: 'W'
+  #     - id: 47
+  #       type: 1
+  #       unit_of_measurement: 'in/hr'
+  #     - id: 122
+  #       type: 2
+  #       unit_of_measurement: 'in'
 
 #Elk M1 Integration
 elkm1:

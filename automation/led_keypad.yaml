@@ -3,145 +3,157 @@
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.master_bedroom_light_d
+      entity_id: switch.master_bedroom_light_d
       control: DON
   condition: []
   action:
   - data:
       entity_id: light.master_bedroom_leds_rgb
     service: light.turn_on
+
 - alias: Master Bedroom LEDs Off from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.master_bedroom_light_d
+      entity_id: switch.master_bedroom_light_d
       control: DOF
   condition: []
   action:
   - data:
       entity_id: light.master_bedroom_leds_rgb
     service: light.turn_off
+
 - alias: Master Bathroom LEDs On from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.master_shower_light_c
+      entity_id: switch.master_shower_light_c
       control: DON
   condition: []
   action:
   - data:
       entity_id: light.master_bathroom_led_rgb
     service: light.turn_on
+
 - alias: Master Bathroom LEDs Off from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.master_shower_light_c
+      entity_id: switch.master_shower_light_c
       control: DOF
   condition: []
   action:
   - data:
       entity_id: light.master_bathroom_led_rgb
     service: light.turn_off
+
 - alias: Kitchen LEDs On from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.kitchen_light_a
+      entity_id: switch.kitchen_light_a
       control: DON
   condition: []
   action:
   - data:
       entity_id: light.kitchen_leds_rgb
     service: light.turn_on
+
 - alias: Kitchen LEDs Off from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.kitchen_light_a
+      entity_id: switch.kitchen_light_a
       control: DOF
   condition: []
   action:
   - data:
       entity_id: light.kitchen_leds_rgb
     service: light.turn_off
+
 - alias: Den LEDs On from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.den_light_c
+      entity_id: switch.den_light_c
       control: DON
   condition: []
   action:
   - data:
       entity_id: light.den_led_rgb
     service: light.turn_on
+
 - alias: Den LEDs Off from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.den_light_c
+      entity_id: switch.den_light_c
       control: DOF
   condition: []
   action:
   - data:
       entity_id: light.den_led_rgb
     service: light.turn_off
+
 - alias: Guest Bathroom LEDs On from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.hallway_light_d
+      entity_id: switch.hallway_light_d
       control: DON
   condition: []
   action:
   - data:
       entity_id: light.guest_bathroom_led_rgb
     service: light.turn_on
+
 - alias: Guest Bathroom LEDs Off from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.hallway_light_d
+      entity_id: switch.hallway_light_d
       control: DOF
   condition: []
   action:
   - data:
       entity_id: light.guest_bathroom_led_rgb
     service: light.turn_off
+
 - alias: Counter LEDs On from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.kitchen_light_b
+      entity_id: switch.kitchen_light_b
       control: DON
   condition: []
   action:
   - data:
       entity_id: light.kitchen_counter_leds_white
     service: light.turn_on
+
 - alias: Counter LEDs Off from Keypad
   trigger:
   - platform: event
     event_type: isy994_control
     event_data:
-      entity_id: light.kitchen_light_b
+      entity_id: switch.kitchen_light_b
       control: DOF
   condition: []
   action:
   - data:
       entity_id: light.kitchen_counter_leds_white
     service: light.turn_off
+
 - alias: Master Bedroom LEDs Keypad On
   trigger:
   - entity_id: light.master_bedroom_leds_rgb
@@ -152,6 +164,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.master_bedroom_leds
+
 - alias: Master Bedroom LEDs Keypad Off
   trigger:
   - entity_id: light.master_bedroom_leds_rgb
@@ -162,6 +175,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.master_bedroom_leds
+
 - alias: Master Bathroom LEDs Keypad On
   trigger:
   - entity_id: light.master_bathroom_led_rgb
@@ -172,6 +186,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.master_bathroom_leds_power
+
 - alias: Master Bathroom LEDs Keypad Off
   trigger:
   - entity_id: light.master_bathroom_led_rgb
@@ -182,6 +197,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.master_bathroom_leds_power
+
 - alias: Kitchen LEDs Keypad On
   trigger:
   - entity_id: light.kitchen_leds_rgb
@@ -192,6 +208,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.kitchen_leds_power
+
 - alias: Kitchen LEDs Keypad Off
   trigger:
   - entity_id: light.kitchen_leds_rgb
@@ -202,6 +219,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.kitchen_leds_power
+
 - alias: Den LEDs Keypad On
   trigger:
   - entity_id: light.den_led_rgb
@@ -212,6 +230,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.den_leds_power
+
 - alias: Den LEDs Keypad Off
   trigger:
   - entity_id: light.den_led_rgb
@@ -222,6 +241,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.den_leds_power
+
 - alias: Guest Bathroom LEDs Keypad On
   trigger:
   - entity_id: light.guest_bathroom_led_rgb
@@ -232,6 +252,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.guest_bathroom_leds_power
+
 - alias: Guest Bathroom LEDs Keypad Off
   trigger:
   - entity_id: light.guest_bathroom_led_rgb
@@ -242,6 +263,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.guest_bathroom_leds_power
+
 - alias: White Counter LEDs Keypad On
   trigger:
   - entity_id: light.kitchen_counter_leds_white
@@ -252,6 +274,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.kitchen_undercabinet_lights
+
 - alias: White Counter LEDs Keypad Off
   trigger:
   - entity_id: light.kitchen_counter_leds_white

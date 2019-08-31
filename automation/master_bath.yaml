@@ -1,23 +1,25 @@
 - alias: Master Shower Increase Volume
   trigger:
   - platform: state
-    entity_id: light.master_shower_light_a
+    entity_id: switch.master_shower_light_a
     to: 'on'
   action:
   - service: mqtt.publish
     data:
       topic: nuvo/command/set/zone/vol
       payload_template: '5,40'
+
 - alias: Master Shower Decrease Volume
   trigger:
   - platform: state
-    entity_id: light.master_shower_light_a
+    entity_id: switch.master_shower_light_a
     to: 'off'
   action:
   - service: mqtt.publish
     data:
       topic: nuvo/command/set/zone/vol
       payload_template: '5,60'
+      
 - alias: Master Shower Fan Timer
   trigger:
   - platform: state
