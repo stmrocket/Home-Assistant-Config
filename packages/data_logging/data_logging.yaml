@@ -18,9 +18,39 @@ recorder:
     - sensor.wan_in_mbps
     - sensor.wan_out_mbps
     - sensor.wan_ping
+    - sensor.attic_temperature_owfs
+    - sensor.back_hvac_return_temperature_owfs
+    - sensor.den_temperature_owfs
+    - sensor.dining_room_temperature_owfs
+    - sensor.dryer_vent_temperature_owfs
+    - sensor.front_hall_temperature_owfs
+    - sensor.front_hvac_return_temperature_owfs
+    - sensor.garage_temperature_owfs
+    - sensor.guest_bedroom_temperature_owfs
+    - sensor.hvac_supply_temperature_owfs
+    - sensor.master_bedroom_temperature_owfs
+    - sensor.office_temperature_owfs
+    - sensor.outside_temperature_owfs
+    - sensor.plenum_hvac_return_temperature_owfs
+    - sensor.server_room_hvac_return_temperature_owfs
+    - sensor.server_room_temperature_owfs
+    - sensor.shed_temperature_owfs
+    - sensor.work_room_temperature_owfs
     - sensor.aquara_outside_humidity
     - sensor.aquara_outside_pressure
     - sensor.aquara_outside_temperature
+    - sensor.aquara_server_closet_humidity
+    - sensor.aquara_server_closet_pressure
+    - sensor.aquara_server_closet_temperature
+    - sensor.aquara_office_humidity
+    - sensor.aquara_office_pressure
+    - sensor.aquara_office_temperature
+    - sensor.aquara_den_humidity
+    - sensor.aquara_den_pressure
+    - sensor.aquara_den_temperature
+    - sensor.aquara_master_bedroom_humidity
+    - sensor.aquara_master_bedroom_pressure
+    - sensor.aquara_master_bedroom_temperature
     - binary_sensor.hvac_system_fan
     - binary_sensor.hvac_system_heat
     - binary_sensor.hvac_system_cool
@@ -82,9 +112,21 @@ influxdb:
       - sensor.server_room_temperature_owfs
       - sensor.shed_temperature_owfs
       - sensor.work_room_temperature_owfs
-      - sensor.aquara_outside_temperature
       - sensor.aquara_outside_humidity
       - sensor.aquara_outside_pressure
+      - sensor.aquara_outside_temperature
+      - sensor.aquara_server_closet_humidity
+      - sensor.aquara_server_closet_pressure
+      - sensor.aquara_server_closet_temperature
+      - sensor.aquara_office_humidity
+      - sensor.aquara_office_pressure
+      - sensor.aquara_office_temperature
+      - sensor.aquara_den_humidity
+      - sensor.aquara_den_pressure
+      - sensor.aquara_den_temperature
+      - sensor.aquara_master_bedroom_humidity
+      - sensor.aquara_master_bedroom_pressure
+      - sensor.aquara_master_bedroom_temperature
       - sensor.wan_in_mbps
       - sensor.wan_out_mbps
       - sensor.hvac_system_fan_runtime
