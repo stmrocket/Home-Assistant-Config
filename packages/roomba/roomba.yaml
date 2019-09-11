@@ -52,7 +52,7 @@ switch:
     switches:
       roomba:
         friendly_name: "Roomba Power"
-        #value_template: "{{ states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'User Docking' or states.vacuum.roomba.attributes.status | string == 'Docking' }}"
+        value_template: "{{ states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'User Docking' or states.vacuum.roomba.attributes.status | string == 'Docking' }}"
         turn_on:
           service: vacuum.turn_on
           data:
