@@ -152,7 +152,7 @@ views:
               entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
               entity_pop: sensor.dark_sky_precip_probability_0d
               entity_precip_current: sensor.rain_today
-              entity_precip_intensity_current: sensor.rain_rate_in
+              entity_precip_intensity_current: sensor.rain_rate
 
 #################################################################
 #                                                               #
@@ -6991,7 +6991,7 @@ views:
                 entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
                 entity_pop: sensor.dark_sky_precip_probability_0d
                 entity_precip_current: sensor.rain_today
-                entity_precip_intensity_current: sensor.rain_rate_in
+                entity_precip_intensity_current: sensor.rain_rate
 
 
   #################################################################
