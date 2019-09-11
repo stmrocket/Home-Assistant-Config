@@ -43,7 +43,7 @@ sensor:
 
       roomba_status:
         friendly_name: 'Roomba Status'
-        value_template: "{{ states.vacuum.roomba.attributes.status }}"
+        value_template: "{{ states.vacuum.roomba.state }}"
         entity_id: vacuum.roomba
         
 #Roomba Switch
@@ -52,9 +52,9 @@ switch:
     switches:
       roomba:
         friendly_name: "Roomba Power"
-        value_template: "{{ states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'User Docking' or states.vacuum.roomba.attributes.status | string == 'Docking' }}"
+        value_template: "{{ states.vacuum.roomba.state | string == 'cleaning' or states.vacuum.roomba.state | string == 'returning' }}"
         turn_on:
-          service: vacuum.turn_on
+          service: vacuum.start
           data:
             entity_id: vacuum.roomba
         turn_off:
