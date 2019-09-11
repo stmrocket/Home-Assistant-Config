@@ -186,21 +186,9 @@ sensor:
     payload_available: "Online"
     payload_not_available: "Offline"
 
-#Roomba Sensors
+#Template Sensors
   - platform: template
     sensors:
-
-      roomba_status:
-        friendly_name: 'Roomba Status'
-        value_template: "{{ states.vacuum.roomba.attributes.status }}"
-        entity_id: vacuum.roomba
-        
-      roomba_battery:
-        friendly_name: 'Roomba Battery Level'
-        value_template: "{{ states.vacuum.roomba.attributes.battery_level }}"
-        unit_of_measurement: '%'
-        icon_template: "{{ states.vacuum.roomba.attributes.battery_icon }}"
-        entity_id: vacuum.roomba
       
       #Blank
       blank:
@@ -255,20 +243,9 @@ binary_sensor:
 
 switch:
 
-#Roomba Switch
+
   - platform: template
     switches:
-      roomba:
-        friendly_name: "Roomba Power"
-        value_template: "{{ states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'User Docking' or states.vacuum.roomba.attributes.status | string == 'Docking' }}"
-        turn_on:
-          service: vacuum.turn_on
-          data:
-            entity_id: vacuum.roomba
-        turn_off:
-          service: script.turn_on
-          data:
-            entity_id: script.roomba_off
       irrigation_program:
         friendly_name: "Irrigation Program Enabled"
         value_template: '{{ states.switch.every_3_days.state | string != "unavailable" }}'
@@ -531,13 +508,6 @@ litter_robot:
   username: !secret pooper_user
   password: !secret pooper_pass
   api_key: !secret pooper_key
-
-#Roomba
-vacuum:
-  - platform: roomba
-    host: !secret roomba_host
-    username: !secret roomba_blid
-    password: !secret roomba_pass
 
 #Google Calendar
 google:
