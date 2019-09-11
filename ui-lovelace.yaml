@@ -218,7 +218,7 @@ views:
               title: Roomba
               entities:
                   - entity: switch.roomba
-                  - entity: sensor.roomba_battery
+                  - entity: sensor.roomba_battery_level
                   - entity: sensor.roomba_status
                   - entity: input_boolean.roomba_auto
 #################################################################

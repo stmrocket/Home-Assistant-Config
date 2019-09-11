@@ -1,10 +1,12 @@
 roomba_dock:
   sequence:
-  - data:
-      entity_id: vacuum.roomba
-    service: vacuum.stop
+  - service: mqtt.publish
+    data:
+      topic: roomba/command/set
+      payload: stop
   - delay: 
       milliseconds: 500
-  - data:
-      entity_id: vacuum.roomba
-    service: vacuum.return_to_base
+  - service: mqtt.publish
+    data:
+      topic: roomba/command/set
+      payload: dock
