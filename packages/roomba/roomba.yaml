@@ -1,0 +1,63 @@
+#Roomba
+vacuum:
+  - platform: template
+    vacuums:
+      roomba:
+        value_template: "{{ states.sensor.roomba_state.state }}"
+        battery_level_template: "{{ states.sensor.roomba_battery_level.state | int }}"
+        start:
+          service: mqtt.publish
+          data:
+            topic: roomba/command/set
+            payload: start
+        pause:
+          service: mqtt.publish
+          data:
+            topic: roomba/command/set
+            payload: pause
+        stop:
+          service: mqtt.publish
+          data:
+            topic: roomba/command/set
+            payload: stop
+        return_to_base:
+          service: script.turn_on
+          data:
+            entity_id: script.roomba_dock   
+
+#Roomba Sensors
+sensor:
+
+  - platform: "mqtt"
+    name: "Roomba Battery Level"
+    state_topic: "roomba/tele/battery"
+    unit_of_measurement: "%"
+    device_class: "battery"
+
+  - platform: "mqtt"
+    name: "Roomba State"
+    state_topic: "roomba/tele/status"
+
+  - platform: template
+    sensors:
+
+      roomba_status:
+        friendly_name: 'Roomba Status'
+        value_template: "{{ states.vacuum.roomba.attributes.status }}"
+        entity_id: vacuum.roomba
+        
+#Roomba Switch
+switch:
+  - platform: template
+    switches:
+      roomba:
+        friendly_name: "Roomba Power"
+        #value_template: "{{ states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'Running' or states.vacuum.roomba.attributes.status | string == 'User Docking' or states.vacuum.roomba.attributes.status | string == 'Docking' }}"
+        turn_on:
+          service: vacuum.turn_on
+          data:
+            entity_id: vacuum.roomba
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.roomba_dock   

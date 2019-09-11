@@ -1,4 +1,4 @@
-roomba_off:
+roomba_dock:
   sequence:
   - data:
       entity_id: vacuum.roomba

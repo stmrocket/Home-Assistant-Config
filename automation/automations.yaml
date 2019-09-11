@@ -58,3 +58,13 @@
     minutes: "*"
   action:
   - service: rest_command.update_wunderground
+
+#When Hass Reboots
+- alias: Initialize ISY Variables
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+  - delay:
+      seconds: 10
+  - service: rest_command.initialize_isy
