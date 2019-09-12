@@ -1,12 +1,1 @@
-roomba_dock:
-  sequence:
-  - service: mqtt.publish
-    data:
-      topic: roomba/command/set
-      payload: stop
-  - delay: 
-      milliseconds: 500
-  - service: mqtt.publish
-    data:
-      topic: roomba/command/set
-      payload: dock
+
