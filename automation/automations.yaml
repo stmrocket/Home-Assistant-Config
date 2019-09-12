@@ -66,5 +66,5 @@
       event: start
   action:
   - delay:
-      minutes: 1
+      minutes: 5
   - service: rest_command.initialize_isy
