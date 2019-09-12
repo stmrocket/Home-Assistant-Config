@@ -6,4 +6,4 @@ sensor:
 
 rest_command:
   initialize_isy:
-    url: "{{ states.sensor.isy_url.state }}/rest/programs/00AB/runThen"
+    url: "{{ states.sensor.isy_url.state }}"
