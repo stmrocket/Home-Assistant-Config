@@ -10,8 +10,8 @@ sensor:
         unit_of_measurement: 'in'
         value_template: "{{ (states.sensor.current_daily_rain.state | float / 100) | round(2) }}"
       rain_rate_hr:
-        unit_of_measurement: 'in'
-        value_template: "{{ states.sensor.rain_rate | float }}"
+        unit_of_measurement: 'in/hr'
+        value_template: "{{ states.sensor.rain_rate.state | float }}"
       pws_url:
         value_template: !secret pws_url
       press_in:
