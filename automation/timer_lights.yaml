@@ -40,6 +40,7 @@
   - service: input_boolean.turn_on
     data:
       entity_id: input_boolean.timer_lights
+
 - alias: Timer Lights On Main Evenings
   trigger:
   - platform: sun
@@ -70,6 +71,7 @@
   - service: input_boolean.turn_on
     data:
       entity_id: input_boolean.timer_lights
+
 - alias: Timer Lights On Main Weekend Holiday AM
   trigger:
   - platform: state
@@ -126,6 +128,7 @@
   - service: input_boolean.turn_on
     data:
       entity_id: input_boolean.timer_lights
+
 - alias: Timer Lights Off Main Night Away
   trigger:
   - platform: time
@@ -159,6 +162,7 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.timer_lights
+
 - alias: Timer Lights Off Main Mornings
   trigger:
   - platform: sun
@@ -189,6 +193,7 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.timer_lights
+
 - alias: Timer Lights Off Main Night Mode
   trigger:
   - platform: state
@@ -222,6 +227,7 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.timer_lights
+
 - alias: Timer Lights On Guest
   trigger:
   - platform: event
@@ -249,6 +255,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.guest_room_lamp
+
 - alias: Timer Lights Off Guest
   trigger:
   - platform: event
@@ -276,6 +283,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.guest_room_lamp
+
 - alias: Timer Lights On Master
   trigger:
   - platform: event
@@ -310,6 +318,10 @@
     - service: switch.turn_on
       data:
         entity_id: switch.master_bedroom_lamps_led
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.master_lamp_timer
+
 - alias: Timer Lights Off Master
   trigger:
   - platform: event
@@ -343,6 +355,10 @@
   - service: switch.turn_off
     data:
       entity_id: switch.master_bedroom_lamps_led
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.master_lamp_timer
+
 - alias: Timer Lights On Outside
   trigger:
   - platform: sun
@@ -373,6 +389,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.shed_porch_light
+
 - alias: Timer LEDs On House
   trigger:
   - platform: state
@@ -426,6 +443,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.master_bathroom_leds_power
+
 - alias: Timer LEDs Off House Away
   trigger:
   - platform: state
@@ -451,6 +469,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.master_bathroom_leds_power
+
 - alias: Timer LEDs Off House
   trigger:
   - platform: event
@@ -523,6 +542,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.master_bathroom_leds_power
+
 - alias: Master Suite Off if Sleeping
   trigger:
   - platform: state
@@ -555,3 +575,6 @@
   - service: switch.turn_off
     data:
       entity_id: switch.master_bedroom_lamps_led
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.master_lamp_timer
