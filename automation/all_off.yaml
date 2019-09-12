@@ -8,6 +8,7 @@
   - service: mqtt.publish
     data:
       topic: nuvo/command/set/system/alloff
+
 - alias: All Off Main
   trigger:
   - platform: state
@@ -101,6 +102,7 @@
   - service: switch.turn_on
     data:
       entity_id: switch.dining_room_fan_off
+
 - alias: All Off Away
   trigger:
   - platform: state
@@ -134,12 +136,6 @@
       entity_id: switch.guest_bathroom_fan
   - service: light.turn_off
     data:
-      entity_id: light.master_bedroom_lamps
-  - service: switch.turn_off
-    data:
-      entity_id: switch.master_bedroom_lamps_led
-  - service: light.turn_off
-    data:
       entity_id: light.hallway_light
   - service: switch.turn_off
     data:
@@ -147,6 +143,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.master_bedroom_fan_1
+
 - alias: All Off Timer Lights
   trigger:
   - platform: event
@@ -179,6 +176,7 @@
   - service: light.turn_off
     data:
       entity_id: light.entry_lamp
+
 - alias: All Off Guest Lights
   trigger:
   - platform: event
@@ -205,6 +203,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.guest_bathroom_fan
+
 - alias: All Off Guest NuVo
   trigger:
   - platform: event
@@ -219,6 +218,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.nuvo_zone_2_power
+
 - alias: All Off NuVo Night
   trigger:
   - platform: state
@@ -254,6 +254,7 @@
   - service: switch.turn_off
     data:
       entity_id: switch.nuvo_zone_12_power
+
 - alias: All Off Outside Lights
   trigger:
   - platform: event
@@ -271,3 +272,21 @@
   - service: switch.turn_off
     data:
       entity_id: switch.shed_porch_light
+
+- alias: All Off Timer Lights
+  trigger:
+  - platform: event
+    event_type: automation_triggered
+    event_data:
+      entity_id: automation.all_off_main
+  condition:
+  - condition: state
+    entity_id: input_boolean.master_lamp_timer
+    state: 'off'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.master_bedroom_lamps
+  - service: switch.turn_off
+    data:
+      entity_id: switch.master_bedroom_lamps_led

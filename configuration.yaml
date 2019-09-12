@@ -303,6 +303,9 @@ input_boolean:
     name: Outside Timer Lights
     icon: mdi:timer
   
+  master_lamp_timer:
+    name: Master Lamp Timer
+    icon: mdi:timer
     
 light:
 

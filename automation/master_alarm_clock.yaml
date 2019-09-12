@@ -26,6 +26,10 @@
     data:
       entity_id: light.master_bedroom_lamps
       brightness: 26
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.master_lamp_timer
+
 - alias: Master Wake 0459
   trigger:
   - platform: time
@@ -77,6 +81,10 @@
   - service: switch.turn_on
     data:
       entity_id: switch.nuvo_zone_10_power
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.master_lamp_timer
+      
 - alias: Master Wake 0508
   trigger:
   - platform: time
