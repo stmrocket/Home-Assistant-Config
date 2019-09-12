@@ -243,7 +243,6 @@ binary_sensor:
 
 switch:
 
-
   - platform: template
     switches:
       irrigation_program:
@@ -271,11 +270,6 @@ switch:
             program_id: 1
 
 input_boolean:
-
-  roomba_auto:
-    name: Schedule Enabled
-    initial: off
-    icon: mdi:timer
 
   washer_end:
     name: Washer Finished
