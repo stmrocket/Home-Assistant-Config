@@ -29,7 +29,7 @@
       entity_id: light.breakfast_room_light
   - service: swtich.turn_off
     data:
-      entity_id: switch.den_fan_1
+      entity_id: switch.den_fan
   - service: switch.turn_off
     data:
       entity_id: switch.den_fireplace

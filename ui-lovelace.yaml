@@ -2624,7 +2624,7 @@ views:
                       action: more-info
                   
                   - type: "custom:button-card"
-                    entity: switch.den_fan_1
+                    entity: switch.den_fan
                     color_type: icon
                     color: rgb(228, 94, 101)
                     state:
