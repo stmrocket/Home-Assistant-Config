@@ -212,6 +212,26 @@
     data:
       topic: parrot/command/set/play
       payload: 2,5
+  - delay: '00:00:50'
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 2,13
+
+- alias: Elk Speak Armed Vacation
+  trigger:
+  - platform: template
+    value_template: "{{ is_state_attr('alarm_control_panel.area_001', 'armed_status', 'armed_to_vacation') }}"
+  action:
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 2,14
+  - delay: '00:00:50'
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 2,13      
 
 - alias: Elk Speak Armed Night
   trigger:
