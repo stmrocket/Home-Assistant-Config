@@ -306,6 +306,10 @@ input_boolean:
   master_lamp_timer:
     name: Master Lamp Timer
     icon: mdi:timer
+
+  vacation_mode:
+    name: Vacation Mode
+    icon: mdi:airplane
     
 light:
 

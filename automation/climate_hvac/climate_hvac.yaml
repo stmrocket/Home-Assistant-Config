@@ -68,6 +68,11 @@
   action:
   - service: climate.set_temperature
     data:
+      entity_id: climate.master_suite
+      target_temp_high: 75
+      target_temp_low: 62
+  - service: climate.set_temperature
+    data:
       entity_id: climate.living_areas
       target_temp_high: 82
       target_temp_low: 62
@@ -75,11 +80,6 @@
     data:
       entity_id: climate.front_rooms
       target_temp_high: 82
-      target_temp_low: 62
-  - service: climate.set_temperature
-    data:
-      entity_id: climate.master_suite
-      target_temp_high: 75
       target_temp_low: 62
 
 - alias: HVAC Night Guest Mode
@@ -99,8 +99,8 @@
   action:
   - service: climate.set_temperature
     data:
-      entity_id: climate.living_areas
-      target_temp_high: 82
+      entity_id: climate.master_suite
+      target_temp_high: 75
       target_temp_low: 62
   - service: climate.set_temperature
     data:
@@ -109,8 +109,8 @@
       target_temp_low: 62
   - service: climate.set_temperature
     data:
-      entity_id: climate.master_suite
-      target_temp_high: 75
+      entity_id: climate.living_areas
+      target_temp_high: 82
       target_temp_low: 62
 
 - alias: HVAC When Home
@@ -131,6 +131,10 @@
     entity_id: alarm_control_panel.area_001
     from: pending
     to: disarmed
+  condition:
+  - condition: state
+    entity_id: input_boolean.vacation_mode
+    state: 'off'
   action:
   - service: climate.set_temperature
     data:
