@@ -47,7 +47,7 @@
     entity_id: sensor.zone_031
     state: Violated
   - condition: state
-    entity_id: lock.front_door
+    entity_id: lock.garage_entry
     state: unlocked
   action:
   - data:
