@@ -2,7 +2,7 @@
   trigger:
 
   - platform: template
-    value_template: "{{ states.sensor.zone_002.attributes.physical_status | string == 'open' }}"
+    value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
 
   - platform: state
     entity_id: sensor.zone_032
@@ -31,7 +31,7 @@
   trigger:
 
   - platform: template
-    value_template: "{{ states.sensor.zone_002.attributes.physical_status | string == 'open' }}"
+    value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
 
   - platform: state
     entity_id: sensor.zone_032
