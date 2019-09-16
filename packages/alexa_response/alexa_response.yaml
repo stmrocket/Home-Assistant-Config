@@ -1,0 +1,93 @@
+# Alexa Voice Response Using 3po Labs
+
+rest_command:
+  update_alexa_outside_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}OUTSIDETEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current outside temperature is {{ states.sensor.aquara_outside_temperature.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Temperature",      "content": "{{ states.sensor.aquara_outside_temperature.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_outside_humidity:
+    url: "{{ states.sensor.alexa_speech_url.state }}OUTSIDEHUM"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current outside humidity is {{ states.sensor.aquara_outside_humidity.state }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Humidity",      "content": "{{ states.sensor.aquara_outside_humidity.state }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_attic_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}ATTICTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current attic temperature is {{ states.sensor.attic_temperature_owfs.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Attic Temperature",      "content": "{{ states.sensor.attic_temperature_owfs.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+    
+  update_alexa_den_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}DENTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current den temperature is {{ states.sensor.aquara_den_temperature.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Den Temperature",      "content": "{{ states.sensor.aquara_den_temperature.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_den_humidity:
+    url: "{{ states.sensor.alexa_speech_url.state }}DENHUM"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current den humidity is {{ states.sensor.aquara_den_humidity.state }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Den Humidity",      "content": "{{ states.sensor.aquara_den_humidity.state }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_dining_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}DININGTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current dining room temperature is {{ states.sensor.dining_room_temperature_owfs.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Dining Room Temperature",      "content": "{{ states.sensor.dining_room_temperature_owfs.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_garage_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}GARAGETEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current garage temperature is {{ states.sensor.garage_temperature_owfs.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Garage Temperature",      "content": "{{ states.sensor.garage_temperature_owfs.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_guest_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}GUESTTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current guest room temperature is {{ states.sensor.guest_bedroom_temperature_owfs.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Guest Room Temperature",      "content": "{{ states.sensor.guest_bedroom_temperature_owfs.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_master_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}MASTERTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current master bedroom temperature is {{ states.sensor.aquara_master_bedroom_temperature.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Temperature",      "content": "{{ states.sensor.aquara_outside_temperature.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_master_humidity:
+    url: "{{ states.sensor.alexa_speech_url.state }}MASTERHUM"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current master bedroom humidity is {{ states.sensor.aquara_master_bedroom_humidity.state }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Humidity",      "content": "{{ states.sensor.aquara_outside_humidity.state }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_office_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}OFFICETEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current office temperature is {{ states.sensor.aquara_office_temperature.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Office Temperature",      "content": "{{ states.sensor.aquara_office_temperature.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_office_humidity:
+    url: "{{ states.sensor.alexa_speech_url.state }}OFFICETEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current office humidity is {{ states.sensor.aquara_office_humidity.state }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Office Humidity",      "content": "{{ states.sensor.aquara_office_humidity.state }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_server_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}SERVERTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current server closet temperature is {{ states.sensor.aquara_server_closet_temperature.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Server Closet Temperature",      "content": "{{ states.sensor.aquara_server_closet_temperature.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_server_humidity:
+    url: "{{ states.sensor.alexa_speech_url.state }}SERVERTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current server closet humidity is {{ states.sensor.aquara_server_closet_humidity.state }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Server Closet Humidity",      "content": "{{ states.sensor.aquara_server_closet_humidity.state }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_workroom_temp:
+    url: "{{ states.sensor.alexa_speech_url.state }}WORKTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current work room temperature is {{ states.sensor.work_room_temperature_owfs.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Work Room Temperature",      "content": "{{ states.sensor.work_room_temperature_owfs.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  

@@ -306,6 +306,10 @@ input_boolean:
   master_lamp_timer:
     name: Master Lamp Timer
     icon: mdi:timer
+
+  vacation_mode:
+    name: Vacation Mode
+    icon: mdi:airplane
     
 light:
 
@@ -368,7 +372,7 @@ timer:
 
   garage_light:
     name: Garage Lighting Timer
-    duration: '00:05:00'
+    duration: '00:10:00'
 
 # Text to speech
 tts:

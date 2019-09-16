@@ -1,0 +1,104 @@
+- alias: Update Alexa Outside Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_outside_temperature
+  action:
+  - service: rest_command.update_alexa_outside_temp
+
+- alias: Update Alexa Outside Humidity
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_outside_humidity
+  action:
+  - service: rest_command.update_alexa_outside_humidity
+
+- alias: Update Alexa Attic Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.attic_temperature_owfs
+  action:
+  - service: rest_command.update_alexa_attic_temp
+
+- alias: Update Alexa Den Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_den_temperature
+  action:
+  - service: rest_command.update_alexa_den_temp
+
+- alias: Update Alexa Den Humidity
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_den_humidity
+  action:
+  - service: rest_command.update_alexa_den_humidity
+
+- alias: Update Alexa Dining Room Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.dining_room_temperature_owfs
+  action:
+  - service: rest_command.update_alexa_dining_temp
+
+- alias: Update Alexa Garage Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.garage_temperature_owfs
+  action:
+  - service: rest_command.update_alexa_garage_temp
+
+- alias: Update Alexa Guest Room Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.guest_bedroom_temperature_owfs
+  action:
+  - service: rest_command.update_alexa_guest_temp
+
+- alias: Update Alexa Master Bedroom Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_master_bedroom_temperature
+  action:
+  - service: rest_command.update_alexa_master_temp
+
+- alias: Update Alexa Master Bedroom Humidity
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_master_bedroom_humidity
+  action:
+  - service: rest_command.update_alexa_master_humidity
+
+- alias: Update Alexa Office Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_office_temperature
+  action:
+  - service: rest_command.update_alexa_office_temp
+
+- alias: Update Alexa Office Humidity
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_office_humidity
+  action:
+  - service: rest_command.update_alexa_office_humidity
+
+- alias: Update Alexa Server Closet Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_server_closet_temperature
+  action:
+  - service: rest_command.update_alexa_server_temp
+
+- alias: Update Alexa Server Closet Humidity
+  trigger:
+  - platform: state
+    entity_id: sensor.aquara_server_closet_humidity
+  action:
+  - service: rest_command.update_alexa_server_humidity
+
+- alias: Update Alexa Work Room Temperature
+  trigger:
+  - platform: state
+    entity_id: sensor.work_room_temperature_owfs
+  action:
+  - service: rest_command.update_alexa_workroom_temp

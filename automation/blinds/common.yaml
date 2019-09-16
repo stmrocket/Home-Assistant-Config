@@ -37,6 +37,9 @@
     entity_id: sun.sun
     value_template: '{{ state.attributes.elevation }}'
     above: 0
+  - condition: state
+    entity_id: input_boolean.vacation_mode
+    state: 'off'
   action:
   - data:
       payload: OPEN
