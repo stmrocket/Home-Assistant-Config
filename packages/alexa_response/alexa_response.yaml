@@ -1,4 +1,9 @@
 # Alexa Voice Response Using 3po Labs
+sensor:
+  - platform: template
+    sensors:
+      alexa_speech_url:
+        value_template: !secret alexa_speech_url
 
 rest_command:
   update_alexa_outside_temp:
