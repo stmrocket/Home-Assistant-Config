@@ -73,7 +73,7 @@ rest_command:
     payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current office temperature is {{ states.sensor.aquara_office_temperature.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Office Temperature",      "content": "{{ states.sensor.aquara_office_temperature.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
   
   update_alexa_office_humidity:
-    url: "{{ states.sensor.alexa_speech_url.state }}OFFICETEMP"
+    url: "{{ states.sensor.alexa_speech_url.state }}OFFICEHUM"
     content_type: 'application/json'
     method: post
     payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current office humidity is {{ states.sensor.aquara_office_humidity.state }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Office Humidity",      "content": "{{ states.sensor.aquara_office_humidity.state }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
