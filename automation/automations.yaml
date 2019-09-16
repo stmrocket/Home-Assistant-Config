@@ -75,8 +75,8 @@
       value_template: "{{ is_state_attr('alarm_control_panel.area_001', 'armed_status', 'armed_to_vacation') }}"
   action:
   - service: input_boolean.turn_on
-  data:
-    entity_id: input_boolean.vacation_mode
+    data:
+      entity_id: input_boolean.vacation_mode
 
 - alias: Vacation Mode Off
   trigger:
