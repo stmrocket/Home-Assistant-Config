@@ -527,7 +527,7 @@ hacs:
   theme: true
 
 #Breaking Changes
-breaking_changes:
+#breaking_changes:
 
 #Alexa Media Player
 alexa_media:

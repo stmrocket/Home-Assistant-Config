@@ -212,7 +212,7 @@
     data:
       topic: parrot/command/set/play
       payload: 2,5
-  - delay: '00:00:50'
+  - delay: '00:00:48'
   - service: mqtt.publish
     data:
       topic: parrot/command/set/play
@@ -227,7 +227,7 @@
     data:
       topic: parrot/command/set/play
       payload: 2,14
-  - delay: '00:00:50'
+  - delay: '00:00:48'
   - service: mqtt.publish
     data:
       topic: parrot/command/set/play
