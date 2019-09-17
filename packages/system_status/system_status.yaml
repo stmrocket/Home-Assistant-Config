@@ -814,14 +814,14 @@ sensor:
   - platform: template
     sensors:
       wan_in_mbps:
-        value_template: "{{ (state_attr('sensor.erl_wan_in_stats_mean','change_rate')|float*8*(state_attr('sensor.erl_wan_in_stats_mean', 'sampling_size')-1)/1000000)|round(2) }}"
+        value_template: "{{ (state_attr('sensor.erl_wan_in_stats','change_rate')|float*8*(state_attr('sensor.erl_wan_in_stats', 'sampling_size')-1)/1000000)|round(2) }}"
         unit_of_measurement: 'MBps'
-        entity_id: sensor.erl_wan_in_stats_mean
+        entity_id: sensor.erl_wan_in_stats
 
       wan_out_mbps:
-        value_template: "{{ (state_attr('sensor.erl_wan_out_stats_mean','change_rate')|float*8*(state_attr('sensor.erl_wan_out_stats_mean', 'sampling_size')-1)/1000000)|round(2) }}"
+        value_template: "{{ (state_attr('sensor.erl_wan_out_stats','change_rate')|float*8*(state_attr('sensor.erl_wan_out_stats', 'sampling_size')-1)/1000000)|round(2) }}"
         unit_of_measurement: 'MBps'
-        entity_id: sensor.erl_wan_out_stats_mean
+        entity_id: sensor.erl_wan_out_stats
       
       wan_ping:
           friendly_name: 'WAN Ping'
