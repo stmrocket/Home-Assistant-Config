@@ -6547,6 +6547,133 @@ views:
 
 #################################################################
 #                                                               #
+#                    System Status - HA Card                    #
+#                                                               #
+#################################################################
+ 
+          - type: horizontal-stack
+            cards:
+              - type: custom:vertical-stack-in-card
+                cards:
+                - type: entities
+                  show_header_toggle: off
+                  entities:
+                    - type: section
+                      label: Home Assistant Host
+                    
+                - type: horizontal-stack
+                  cards:
+                  
+                  
+                  - type: horizontal-stack
+                    cards:  
+                    
+                    - type: custom:vertical-stack-in-card
+                      cards:
+                      - type: custom:bar-card
+                        title_position: top
+                        title: CPU
+                        show_icon: true
+                        align: center
+                        padding: 1.5px
+                        height: 40
+                        card_style: 
+                          border-radius: 5px
+                        columns: 1
+                        max: 100
+                        entities:
+                          - entity: sensor.processor_use
+                            icon: mdi:flash
+                            unit_of_measurement: '%'
+                            
+                            severity:
+                            - value: 50
+                              color: '#0000ff'
+                            - value: 75
+                              color: '#ffff00'
+                            - value: 100
+                              color: '#ff0000'            
+
+                      - type: custom:bar-card
+                        title_position: top
+                        title: Temperature
+                        show_icon: true
+                        align: center
+                        padding: 1.5px
+                        height: 40
+                        card_style: 
+                          border-radius: 5px
+                        columns: 1
+                        max: 200
+                        entities:
+                          - entity: sensor.cpu_temperature
+                            icon: mdi:thermometer
+                            unit_of_measurement: '°F'
+                            
+                            severity:
+                            - value: 130
+                              color: '#1db954'
+                            - value: 140
+                              color: '#bf9540'
+                            - value: 150
+                              color: '#bf4040'
+                                
+                      
+                    
+                              
+                    - type: custom:vertical-stack-in-card
+                      cards:
+
+                      - type: custom:bar-card
+                        title_position: top
+                        title: RAM
+                        show_icon: true
+                        align: center
+                        padding: 1.5px
+                        height: 40
+                        card_style: 
+                          border-radius: 5px
+                        columns: 1
+                        max: 100
+                        entities:
+                          - entity: sensor.memory_use_percent
+                            icon: mdi:chip
+                            unit_of_measurement: '%'
+                            
+                            severity:
+                            - value: 50
+                              color: '#0000ff'
+                            - value: 75
+                              color: '#ffff00'
+                            - value: 100
+                              color: '#ff0000'           
+                              
+                      - type: custom:bar-card
+                        title_position: top
+                        title: Disk
+                        show_icon: true
+                        align: center
+                        padding: 1.5px
+                        height: 40
+                        card_style: 
+                          border-radius: 5px
+                        columns: 1
+                        max: 200
+                        entities:
+                          - entity: sensor.disk_use_percent
+                            icon: mdi:thermometer
+                            unit_of_measurement: '%'
+                            
+                            severity:
+                            - value: 130
+                              color: '#1db954'
+                            - value: 140
+                              color: '#bf9540'
+                            - value: 150
+                              color: '#bf4040'         
+
+#################################################################
+#                                                               #
 #                    System Status - NAS Card                   #
 #                                                               #
 #################################################################
