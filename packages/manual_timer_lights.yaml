@@ -21,8 +21,9 @@ script:
   timer_lights_manual_on:
     sequence:    
       - condition:
-        entity_id: input_boolean.timer_lights
-        state:  'off'
+          condition: state
+          entity_id: input_boolean.timer_lights
+          state:  'off'
       - service: switch.turn_on
         data:
           entity_id: switch.breakfast_room_lamp
@@ -79,8 +80,9 @@ script:
   timer_lights_manual_off:
     sequence:    
       - condition:
-        entity_id: input_boolean.timer_lights
-        state:  'off'
+          condition: state
+          entity_id: input_boolean.timer_lights
+          state:  'off'
       - service: switch.turn_off
         data:
           entity_id: switch.breakfast_room_lamp
