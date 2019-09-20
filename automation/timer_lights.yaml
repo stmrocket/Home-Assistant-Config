@@ -162,6 +162,9 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.timer_lights
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.manual_timer_lights
 
 - alias: Timer Lights Off Main Mornings
   trigger:
@@ -193,6 +196,9 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.timer_lights
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.manual_timer_lights
 
 - alias: Timer Lights Off Main Night Mode
   trigger:
@@ -227,6 +233,9 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.timer_lights
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.manual_timer_lights
 
 - alias: Timer Lights On Guest
   trigger:

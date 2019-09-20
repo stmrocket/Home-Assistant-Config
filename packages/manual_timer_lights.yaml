@@ -1,0 +1,134 @@
+switch:
+
+  - platform: template
+    switches:
+      
+      manual_timer_lights:
+        friendly_name: "Manual Timer Lights"
+        value_template: "{{ states.input_boolean.timer_lights.state | string == 'on' or states.input_boolean.manual_timer_lights.state | string == 'on' }}"
+        turn_on:
+          service: script.timer_lights_manual_on
+        turn_off:
+          service: script.timer_lights_manual_off
+
+input_boolean:
+
+  manual_timer_lights:
+    name: Manual Timer Lights
+    icon: mdi:lamp
+
+script:
+  timer_lights_manual_on:
+    sequence:    
+      - condition: state
+        entity_id: input_boolean.timer_lights
+        state:  'off'
+      - service: switch.turn_on
+        data:
+          entity_id: switch.breakfast_room_lamp
+      - service: switch.turn_on
+        data:
+          entity_id: switch.server_room_lamp
+      - service: switch.turn_on
+        data:
+          entity_id: switch.office_lamp
+      - service: switch.turn_on
+        data:
+          entity_id: switch.den_lamps
+      - service: switch.turn_on
+        data:
+          entity_id: switch.den_table_lamp
+      - service: switch.turn_on
+        data:
+          entity_id: switch.dining_room_lamp
+      - service: light.turn_on
+        data:
+          entity_id: light.entry_lamp 
+      - service: switch.turn_on
+        data:
+          entity_id: switch.guest_room_lamp
+      - service: light.turn_on
+        data:
+          entity_id: light.master_bedroom_lamps
+          brightness: 128
+      - service: switch.turn_on
+        data:
+          entity_id: switch.master_bedroom_lamps_led
+      - service: light.turn_on
+        data:
+          entity_id: light.house_leds_rgb
+      - service: switch.turn_on
+        data:
+          entity_id: switch.guest_bathroom_leds_power
+      - service: switch.turn_on
+        data:
+          entity_id: switch.den_leds_power
+      - service: switch.turn_on
+        data:
+          entity_id: switch.kitchen_leds_power
+      - service: switch.turn_on
+        data:
+          entity_id: switch.master_bathroom_leds_power
+      - service: switch.turn_on
+        data:
+          entity_id: switch.master_bathroom_leds_power
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.manual_timer_lights          
+      
+  timer_lights_manual_off:
+    sequence:    
+      - condition: state
+        entity_id: input_boolean.timer_lights
+        state:  'off'
+      - service: switch.turn_off
+        data:
+          entity_id: switch.breakfast_room_lamp
+      - service: switch.turn_off
+        data:
+          entity_id: switch.server_room_lamp
+      - service: switch.turn_off
+        data:
+          entity_id: switch.office_lamp
+      - service: switch.turn_off
+        data:
+          entity_id: switch.den_lamps
+      - service: switch.turn_off
+        data:
+          entity_id: switch.den_table_lamp
+      - service: switch.turn_off
+        data:
+          entity_id: switch.dining_room_lamp
+      - service: light.turn_off
+        data:
+          entity_id: light.entry_lamp
+      - service: switch.turn_off
+        data:
+          entity_id: switch.guest_room_lamp
+      - service: light.turn_off
+        data:
+          entity_id: light.master_bedroom_lamps
+      - service: switch.turn_off
+        data:
+          entity_id: switch.master_bedroom_lamps_led
+      - service: light.turn_off
+        data:
+          entity_id: light.house_leds_rgb
+      - service: switch.turn_off
+        data:
+          entity_id: switch.guest_bathroom_leds_power
+      - service: switch.turn_off
+        data:
+          entity_id: switch.den_leds_power
+      - service: switch.turn_off
+        data:
+          entity_id: switch.kitchen_leds_power
+      - service: switch.turn_off
+        data:
+          entity_id: switch.master_bathroom_leds_power
+      - service: switch.turn_off
+        data:
+          entity_id: switch.master_bathroom_leds_power
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.manual_timer_lights

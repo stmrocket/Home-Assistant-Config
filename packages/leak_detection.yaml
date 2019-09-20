@@ -1,0 +1,33 @@
+group:
+  kitchen_leak_detectors:
+    name: Kitchen Leak Detectors
+    entities:
+      - binary_sensor.dishwasher_leak_dry
+      - binary_sensor.refrigerator_leak_dry
+      - binary_sensor.kitchen_sink_leak_dry
+  
+  master_bathroom_leak_detectors:
+    name: Master Bathroom Leak Detectors
+    entities:
+      - binary_sensor.left_master_sink_leak_dry
+      - binary_sensor.right_master_sink_leak_dry
+      - binary_sensor.master_toilet_leak_dry
+
+  guest_bathroom_leak_detectors:
+    name: Guest Bathroom Leak Detectors
+    entities:
+      - binary_sensor.guest_sink_leak_dry
+      - binary_sensor.guest_toilet_leak_dry
+
+  all_leak_detectors:
+    name: All Leak Detectors
+    entities:
+      - binary_sensor.dishwasher_leak_dry
+      - binary_sensor.refrigerator_leak_dry
+      - binary_sensor.kitchen_sink_leak_dry
+      - binary_sensor.left_master_sink_leak_dry
+      - binary_sensor.right_master_sink_leak_dry
+      - binary_sensor.master_toilet_leak_dry
+      - binary_sensor.guest_sink_leak_dry
+      - binary_sensor.guest_toilet_leak_dry
+      - binary_sensor.utility_leak_dry
