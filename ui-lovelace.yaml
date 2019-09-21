@@ -57,6 +57,8 @@ resources:
     type: module
   - url: /local/community/lovelace-popup-card/popup-card.js
     type: js
+  - url: /local/community/flex-horseshoe-card/flex-horseshoe-card.js
+    type: module
 
 #################################################################
 #                                                               #
@@ -176,16 +178,104 @@ views:
 ################################################################# 
         - type: vertical-stack
           cards:  
-            - type: entities
-              show_header_toggle: false
-              title: Power Consumption
-              entities:
-                  - entity: sensor.eagle_current_power
-                    icon: 'mdi:flash'
-                    name: Current Power Usage
-                  - entity: sensor.energy_daily
-                    icon: 'mdi:gauge'
-                    name: Today's Energy Consumption
+            - type: horizontal-stack
+              cards:  
+                - type: "custom:gap-card"
+                - type: 'custom:flex-horseshoe-card'
+                  entities:
+                    - entity: sensor.eagle_current_power
+                      attribute: state
+                      decimals: 0
+                      name: 'Power'
+                      unit: 'W'
+                    - entity: sensor.energy_daily
+                      attribute: state
+                      decimals: 1
+                      unit: 'KWh'
+                      icon: mdi:power-plug
+                    #  - entity: weather.dark_sky
+                    #    attribute: pressure
+                    #    decimals: 0
+                    #    unit: 'hPa'
+                    #    icon: mdi:gauge
+                  show:
+                    horseshoe_style: 'lineargradient'
+                  layout:
+                    hlines:
+                      # A horizontal line. Not connected to an entity
+                      - id: 0
+                        xpos: 50
+                        ypos: 52
+                        length: 40
+                        styles:
+                          - stroke: var(--primary-text-color);
+                          - stroke-width: 5;
+                          - stroke-linecap: round;
+                          - opacity: 0.7;
+                    states:
+                      # States 0 refers to the first entity in the list, ie index 0
+                      - id: 0
+                        entity_index: 0
+                        xpos: 50
+                        ypos: 44
+                        styles:
+                          - font-size: 3em;
+                      # States 1 refers to the second entity in the list, ie index 1
+                      - id: 1
+                        entity_index: 1
+                        xpos: 40
+                        ypos: 70
+                        styles:
+                          - text-anchor: start;
+                          - font-size: 2.0em;
+                      # # States 2 refers to the third entity in the list, ie index 2
+                      # - id: 2
+                      #   entity_index: 2
+                      #   xpos: 40
+                      #   ypos: 72
+                      #   styles:
+                      #     - text-anchor: start;
+                      #     - font-size: 1.5em;
+                    icons:
+                      # Icons 0 refers to the second entity in the list, ie index 1
+                      - id: 0
+                        entity_index: 1
+                        xpos: 37
+                        ypos: 70
+                        align: end
+                        size: 1.3
+                      # # Icons 1 refers to the third entity in the list, ie index 2
+                      # - id: 1
+                      #   entity_index: 2
+                      #   xpos: 37
+                      #   ypos: 72
+                      #   align: end
+                      #   size: 1.3
+                    names:
+                      # Names 0 refers to the first entity in the list, ie index 0
+                      - id: 0
+                        entity_index: 0
+                        xpos: 50
+                        ypos: 95
+                    
+                  # Scale set to -10 to +40 degrees celcius
+                  horseshoe_scale:
+                    min: 0
+                    max: 10000
+                  # color stop list with 10 colors defined in the theme. With the `lineargradient` fill style, only the
+                  # first (16:) and last (25:) colors are used. The thresholds are ignored with this setting.
+                  color_stops:
+                    0: '#FFF6E3'
+                    1000: '#FFE9B9'
+                    2000: '#FFDA8A'
+                    3000: '#FFCB5B'
+                    4000: '#FFBF37'
+                    5000: '#ffb414'
+                    6000: '#FFAD12'
+                    7000: '#FFA40E'
+                    8000: '#FF9C0B' 
+                    9000: '#FF8C06' 
+                - type: "custom:gap-card"
 
 #################################################################
 #                                                               #
@@ -7057,8 +7147,8 @@ views:
               entities:
               - entity: input_boolean.zigbee_permit_join
               - entity: timer.zigbee_permit_join
-              - entity: sensor.bridge_state            
-
+              - entity: sensor.bridge_state          
+            
 #############################################################################################################################################
 #                                                                                                                                           # 
 #                                                              VIEW 8 - Kitchen Tablet                                                      #
