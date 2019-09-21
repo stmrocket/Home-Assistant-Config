@@ -519,7 +519,7 @@ class GmusicComponent(MediaPlayerDevice):
         """ Get the stream URL and play on media_player """
         try:
             #_url = self._api.get_stream_url(uid)
-            _url = "http://127.0.0.1:9999/get_song?id=" + uid
+            _url = "http://192.168.1.27:9999/get_song?id=" + uid
         except Exception as err:
             _LOGGER.error("Failed to get URL for track: (%s)", uid)
             if retry < 1:
