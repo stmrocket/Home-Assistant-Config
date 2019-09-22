@@ -38,6 +38,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     devices = []
     for robot in hass.data[LITTER_ROBOT_DOMAIN][LITTER_ROBOTS]:
         devices.append(StatusSensor(robot, controller))
+        devices.append(StatusSensorShort(robot, controller))
         devices.append(WasteGaugeSensor(robot, controller))
         devices.append(NightLightStatusSensor(robot, controller))
 
@@ -63,6 +64,13 @@ class StatusSensor(Entity):
         return self._name
 
     @property
+    def device_state_attributes(self):
+        """Return information about the device."""
+        return {
+            "litter_robot_id": self._robot['litterRobotId']
+        }
+
+    @property
     def state(self):
         """Return the state of the sensor."""
         sleep_mode_active = self._robot['sleepModeActive']
@@ -83,7 +91,72 @@ class StatusSensor(Entity):
         """Update the state from the sensor."""
         robots = self._controller.update_robots()
         if robots is not None:
-            self._robot = robots[0]
+            self._robot = [x for x in robots if x['litterRobotId'] == self._robot['litterRobotId']][0]
+
+class StatusSensorShort(Entity):
+    """Representation of the status sensor as a single word."""
+
+    def __init__(self, robot, controller):
+        """Initialize of the sensor."""
+        self._robot = robot
+        self._controller = controller
+        self._name = SENSOR_PREFIX + robot['litterRobotNickname'] + ' status short'
+
+    @property
+    def icon(self):
+        return 'mdi:flash'
+
+    @property
+    def name(self):
+        """Return the state of the sensor."""
+        return self._name
+
+    @property
+    def device_state_attributes(self):
+        """Return information about the device."""
+        return {
+            "litter_robot_id": self._robot['litterRobotId']
+        }
+
+    @property
+    def state(self):
+        """Return the state of the sensor as a single word."""
+        sleep_mode_active = self._robot['sleepModeActive']
+        unit_status = self._robot['unitStatus']
+        if sleep_mode_active != '0' and unit_status == 'RDY':
+            # over 8 hours since last sleep 
+            if int(sleep_mode_active[1:].split(':')[0]) < 8:
+                return 'Sleep'
+        elif unit_status == 'RDY' or unit_status == 'CCC':
+            return 'Ready'
+        elif unit_status == 'CCP':
+            return 'Clean'
+        elif unit_status == 'DF1' or unit_status == 'DF2':
+            return 'Drawer'
+        elif unit_status == 'CSO' or unit_status == 'BR':
+            return 'Error'
+        elif unit_status == 'CST':
+            return 'Timing'
+        elif unit_status == 'OFF':
+            return 'Off'
+        elif unit_status == 'P':
+            return 'Paused'
+        elif unit_status == 'SDF' or unit_status == 'DFS':
+            return 'Full'
+
+        
+        return LITTER_ROBOT_UNIT_STATUS[unit_status]
+
+    @property
+    def unit_of_measurement(self):
+        """Return the unit_of_measurement of the device."""
+        return None
+
+    def update(self):
+        """Update the state from the sensor."""
+        robots = self._controller.update_robots()
+        if robots is not None:
+            self._robot = [x for x in robots if x['litterRobotId'] == self._robot['litterRobotId']][0]            
 
 
 class WasteGaugeSensor(Entity):
@@ -118,7 +191,7 @@ class WasteGaugeSensor(Entity):
         """Update the state from the sensor."""
         robots = self._controller.update_robots()
         if robots is not None:
-            self._robot = robots[0]
+            self._robot = [x for x in robots if x['litterRobotId'] == self._robot['litterRobotId']][0]
 
 class NightLightStatusSensor(Entity):
     """Representation of the night light status sensor."""
@@ -152,4 +225,4 @@ class NightLightStatusSensor(Entity):
         """Update the state from the sensor."""
         robots = self._controller.update_robots()
         if robots is not None:
-            self._robot = robots[0]
+            self._robot = [x for x in robots if x['litterRobotId'] == self._robot['litterRobotId']][0]
