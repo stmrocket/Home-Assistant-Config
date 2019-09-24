@@ -33,7 +33,35 @@ sensor:
       elapsed_print_time:
         value_template: >-
           {% set time = states.sensor.prusa_mk3_time_elapsed.state | int %}
-            {% set minutes = (time / 60) | int%}
+            {% set minutes = ((time / 60) % 60) | int%}
+            {% set hours = (time / 3600) | int %}
+            {%- if time < 60-%}
+              00:00
+            {%- else -%}
+            {%- if hours == 0 -%}
+              00
+            {%- endif -%}
+            {%- if hours > 0 -%}
+          
+              {%- if hours < 10 -%}
+                0{{ hours }}
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if minutes < 10 -%}
+                :0{{ minutes }}
+              {%- else -%}
+                :{{ minutes }}
+              {%- endif -%}
+            {%- endif -%}
+            {%- endif -%}
+
+      remaining_print_time:
+        value_template: >-
+          {% set time = states.sensor.prusa_mk3_time_remaining.state | int %}
+            {% set minutes = ((time / 60) % 60) | int%}
             {% set hours = (time / 3600) | int %}
             {%- if time < 60-%}
               00:00
