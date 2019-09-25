@@ -41,43 +41,41 @@ SUPPORT_GMUSIC_PLAYER = SUPPORT_TURN_ON | SUPPORT_TURN_OFF | SUPPORT_PLAY_MEDIA 
     SUPPORT_VOLUME_SET | SUPPORT_VOLUME_STEP | SUPPORT_VOLUME_MUTE | \
     SUPPORT_PREVIOUS_TRACK | SUPPORT_NEXT_TRACK | SUPPORT_SHUFFLE_SET
 
-CONF_USERNAME = 'user'
+CONF_USERNAME = 'username'
 CONF_DEVICE_ID = 'device_id'
-CONF_LOGIN_TYPE = 'login_type'
 CONF_PASSWORD = 'password'
 CONF_TOKEN_PATH = 'token_path'
-CONF_OAUTH_CRED = 'oauth_cred'
 CONF_SPEAKERS = 'media_player'
 CONF_SOURCE = 'source'
 CONF_PLAYLISTS = 'playlist'
 CONF_STATIONS = 'station'
 CONF_SHUFFLE = 'shuffle'
 CONF_SHUFFLE_MODE = 'shuffle_mode'
+CONF_GMPROXY = 'gmusicproxy'
 
-DEFAULT_DEVICE_ID = 'not_set'
-DEFAULT_LOGIN_TYPE = 'not_set'
-DEFAULT_PASSWORD = 'not_set'
+DEFAULT_DEVICE_ID = "00"
 DEFAULT_TOKEN_PATH = "./."
-DEFAULT_OAUTH_CRED = 'not_set'
-DEFAULT_SPEAKERS = 'not_set'
-DEFAULT_SOURCE = 'not_set'
-DEFAULT_PLAYLISTS = 'not_set'
-DEFAULT_STATIONS = 'not_set'
+DEFAULT_SPEAKERS = 'gmusic_player_speakers'
+DEFAULT_SOURCE = 'gmusic_player_source'
+DEFAULT_PLAYLISTS = 'gmusic_player_playlist'
+DEFAULT_STATIONS = 'gmusic_player_station'
 DEFAULT_SHUFFLE = True
 DEFAULT_SHUFFLE_MODE = 1
+DEFAULT_GMPROXY = "NA"
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Required(CONF_USERNAME): cv.string,
-        vol.Required(CONF_DEVICE_ID): cv.string,
-        vol.Required(CONF_LOGIN_TYPE): cv.string,
-        vol.Optional(CONF_PASSWORD, default=DEFAULT_PASSWORD): cv.string,
+        vol.Required(CONF_PASSWORD): cv.string,
+        vol.Optional(CONF_DEVICE_ID, default=DEFAULT_DEVICE_ID): cv.string,
         vol.Optional(CONF_TOKEN_PATH, default=DEFAULT_TOKEN_PATH): cv.string,
-        vol.Optional(CONF_OAUTH_CRED, default=DEFAULT_OAUTH_CRED): cv.string,
         vol.Optional(CONF_SPEAKERS, default=DEFAULT_SPEAKERS): cv.string,
         vol.Optional(CONF_SOURCE, default=DEFAULT_SOURCE): cv.string,
         vol.Optional(CONF_PLAYLISTS, default=DEFAULT_PLAYLISTS): cv.string,
         vol.Optional(CONF_STATIONS, default=DEFAULT_STATIONS): cv.string,
+        vol.Optional(CONF_SHUFFLE, default=DEFAULT_SHUFFLE): cv.string,
+        vol.Optional(CONF_SHUFFLE_MODE, default=DEFAULT_SHUFFLE_MODE): cv.string,
+        vol.Optional(CONF_GMPROXY, default=DEFAULT_GMPROXY): cv.string,
     })
 }, extra=vol.ALLOW_EXTRA)
 
@@ -113,30 +111,13 @@ class GmusicComponent(MediaPlayerDevice):
                 raise Exception("Legacy login failed! Please check logs for any gmusicapi related WARNING")
 
         self.hass = hass
-        #self._api = GMusic()
         self._api = Mobileclient()
 
-        _login_type = config.get(CONF_LOGIN_TYPE, DEFAULT_LOGIN_TYPE)
-        _device_id = config.get(CONF_DEVICE_ID)
-
-        if _login_type == 'legacy':
-            _authtoken = config.get(CONF_TOKEN_PATH, DEFAULT_TOKEN_PATH) + "gmusic_authtoken"
-            if os.path.isfile(_authtoken):
-                with open(_authtoken, 'rb') as handle:
-                    authtoken = pickle.load(handle)
-            else:
-                authtoken = None
-            _username = config.get(CONF_USERNAME)
-            _password = config.get(CONF_PASSWORD, DEFAULT_PASSWORD)
-            logged_in = self._api.login(_username, _password, _device_id, authtoken)
-            if not logged_in:
-                _LOGGER.error("Failed legacy log in, check http://unofficial-google-music-api.readthedocs.io/en/latest/reference/mobileclient.html#gmusicapi.clients.Mobileclient.login")
-                return False
-            with open(_authtoken, 'wb') as f:
-                pickle.dump(self._api.session._authtoken, f)
-
-        elif _login_type == 'oauth':
-            _oauth_cred = config.get(CONF_OAUTH_CRED, DEFAULT_OAUTH_CRED)
+        _username = config.get(CONF_USERNAME)
+        _password = config.get(CONF_PASSWORD)
+        _device_id = config.get(CONF_DEVICE_ID, DEFAULT_DEVICE_ID)
+        if _username == 'oauth':
+            _oauth_cred = _password
             if os.path.isfile(_oauth_cred):
                 try:
                     logged_in = self._api.oauth_login(_device_id, _oauth_cred)
@@ -146,15 +127,26 @@ class GmusicComponent(MediaPlayerDevice):
                     raise Exception("Failed oauth login, check https://unofficial-google-music-api.readthedocs.io/en/latest/reference/mobileclient.html#gmusicapi.clients.Mobileclient.perform_oauth")
             else:
                 raise Exception("Invalid - Not a file! oauth_cred: ", _oauth_cred)
-
         else:
-            raise Exception("Invalid! login_type: ", _login_type)
+            _authtoken = config.get(CONF_TOKEN_PATH, DEFAULT_TOKEN_PATH) + "gmusic_authtoken"
+            if os.path.isfile(_authtoken):
+                with open(_authtoken, 'rb') as handle:
+                    authtoken = pickle.load(handle)
+            else:
+                authtoken = None
+            logged_in = self._api.login(_username, _password, _device_id, authtoken)
+            if not logged_in:
+                _LOGGER.error("Failed legacy log in, check http://unofficial-google-music-api.readthedocs.io/en/latest/reference/mobileclient.html#gmusicapi.clients.Mobileclient.login")
+                return False
+            with open(_authtoken, 'wb') as f:
+                pickle.dump(self._api.session._authtoken, f)
 
         self._name = "gmusic_player"
         self._playlist = "input_select." + config.get(CONF_PLAYLISTS, DEFAULT_PLAYLISTS)
         self._media_player = "input_select." + config.get(CONF_SPEAKERS, DEFAULT_SPEAKERS)
         self._station = "input_select." + config.get(CONF_STATIONS, DEFAULT_STATIONS)
         self._source = "input_select." + config.get(CONF_SOURCE, DEFAULT_SOURCE)
+        self._gmusicproxy = config.get(CONF_GMPROXY, DEFAULT_GMPROXY)
 
         self._entity_ids = []  ## media_players - aka speakers
         self._playlists = []
@@ -165,9 +157,8 @@ class GmusicComponent(MediaPlayerDevice):
         self._track = []
         self._attributes = {}
         self._next_track_no = 0
-
-        hass.bus.listen_once(EVENT_HOMEASSISTANT_START, self._update_playlists)
-        hass.bus.listen_once(EVENT_HOMEASSISTANT_START, self._update_stations)
+        
+        hass.bus.listen_once(EVENT_HOMEASSISTANT_START, self._update_sources)
 
         self._shuffle = config.get(CONF_SHUFFLE, DEFAULT_SHUFFLE)
         self._shuffle_mode = config.get(CONF_SHUFFLE_MODE, DEFAULT_SHUFFLE_MODE)
@@ -359,6 +350,14 @@ class GmusicComponent(MediaPlayerDevice):
         self.schedule_update_ha_state()
 
 
+    def _update_sources(self, now=None):
+        _LOGGER.debug("Load source lists")
+        self._update_playlists()
+        self._update_stations()
+        #self._update_library()
+        #self._update_songs()
+
+
     def _update_playlists(self, now=None):
         """ Sync playlists from Google Music library """
         self._playlist_to_index = {}
@@ -518,8 +517,10 @@ class GmusicComponent(MediaPlayerDevice):
             self._track_artist_cover = None
         """ Get the stream URL and play on media_player """
         try:
-            #_url = self._api.get_stream_url(uid)
-            _url = "http://192.168.1.27:9999/get_song?id=" + uid
+            if self._gmusicproxy == "NA":
+                _url = self._api.get_stream_url(uid)
+            else:
+                _url = self._gmusicproxy + "/get_song?id=" + uid
         except Exception as err:
             _LOGGER.error("Failed to get URL for track: (%s)", uid)
             if retry < 1:
