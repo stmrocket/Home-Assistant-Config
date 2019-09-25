@@ -7623,6 +7623,12 @@ views:
                     tap-action: none
                     type: state-label
 
+#################################################################
+#                                                               #
+#                          System - Prusa                       #
+#                                                               #
+#################################################################
+
             - type: conditional
               conditions:
                 - entity: sensor.prusa_mk3_current_state
