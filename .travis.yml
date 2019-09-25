@@ -6,10 +6,8 @@ before_install:
   - mv travis_zones.yaml zones.yaml
   - mv travis_home-assistant_v2.db home-assistant_v2.db
   - mv travis_home-assistant.log home-assistant.log
-  - mv travis_hacs_plugins www/community/
   - rm -rf custom_components
   - mv travis_hacs_components/ custom_components/
-  - ls custom_components
   - sudo apt-get install -y libudev-dev
 install:
   - pip3 install homeassistant
