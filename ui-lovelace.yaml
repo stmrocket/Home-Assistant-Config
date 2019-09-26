@@ -7079,13 +7079,13 @@ views:
         sensor.hacs:
           title: HACS
           card:
-            type: "custom: list-card"
-            columns:
-            - {field: name, title: 'Name'}
-            - {field: installed version, title: 'Installed'}
-            - {field: available version, title: 'Latest'}
+            type: "custom:list-card"
             entity: sensor.hacs            
             feed_attribute: repositories
+            columns:
+              - {field: name, title: 'Name'}
+              - {field: installed version, title: 'Installed'}
+              - {field: available version, title: 'Latest'}
 
             
 
@@ -7667,14 +7667,14 @@ views:
                         - type: "custom:button-card"
                           entity: sensor.hacs
                           color_type: icon
-                          icon: mdi:github-circle
+                          icon: mdi:package
                           state:
                             - value: 0
+                              operator: '>'
                               color: rgb(228, 94, 101)
-                            - value: 1
-                              operator: '>='
+                            - value: 0
                               color: rgb(255, 255, 255)
-                          name: GitHub
+                          name: HACS
                           tap_action:
                             action: more-info
                           hold_action: 
