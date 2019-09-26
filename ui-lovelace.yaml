@@ -7076,16 +7076,16 @@ views:
                     action: call-service
                     service: script.clear_config_update_flag
 
-        sensor.hacs:
-          title: HACS
-          card:
-            type: "custom:list-card"
-            entity: sensor.hacs            
-            feed_attribute: repositories
-            columns:
-              - {field: name, title: 'Name'}
-              - {field: installed version, title: 'Installed'}
-              - {field: available version, title: 'Latest'}
+      sensor.hacs:
+        title: HACS
+        card:
+          type: "custom:list-card"
+          entity: sensor.hacs            
+          feed_attribute: repositories
+          columns:
+            - {field: name, title: 'Name'}
+            - {field: installed version, title: 'Installed'}
+            - {field: available version, title: 'Latest'}
 
             
 
