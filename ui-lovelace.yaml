@@ -59,6 +59,8 @@ resources:
     type: js
   - url: /local/community/flex-horseshoe-card/flex-horseshoe-card.js
     type: module
+  - url: /local/community/list-card/list-card.js
+    type: js
 
 #################################################################
 #                                                               #
@@ -7023,6 +7025,70 @@ views:
               name: Current Sensors
             - input_number.sensor_count_expected
 
+      binary_sensor.git_update_ready:
+        title: GitHub Updater
+        card:
+          type: vertical-stack
+          cards:
+            
+            - type: horizontal-stack
+              cards:
+
+                - type: "custom:button-card"
+                  entity: binary_sensor.git_update_ready
+                  color_type: icon
+                  state:
+                    - value: 'on'
+                      color: rgb(228, 94, 101)
+                    - value: 'off'
+                      color: rgb(255, 255, 255)
+                  icon: mdi:github-circle
+                  name: Restart
+                  tap_action: 
+                    action: call-service
+                    service: script.update_config_restart
+                
+                - type: "custom:button-card"
+                  entity: binary_sensor.git_update_ready
+                  color_type: icon
+                  state:
+                    - value: 'on'
+                      color: rgb(228, 94, 101)
+                    - value: 'off'
+                      color: rgb(255, 255, 255)
+                  icon: mdi:github-circle
+                  name: Reload
+                  tap_action: 
+                    action: call-service
+                    service: script.update_config_reload_automations
+
+                - type: "custom:button-card"
+                  entity: binary_sensor.git_update_ready
+                  color_type: icon
+                  state:
+                    - value: 'on'
+                      color: rgb(228, 94, 101)
+                    - value: 'off'
+                      color: rgb(255, 255, 255)
+                  icon: mdi:equal
+                  name: Clear
+                  tap_action: 
+                    action: call-service
+                    service: script.clear_config_update_flag
+
+        sensor.hacs:
+          title: HACS
+          card:
+            type: "custom: list-card"
+            columns:
+            - {field: name, title: 'Name'}
+            - {field: installed version, title: 'Installed'}
+            - {field: available version, title: 'Latest'}
+            entity: sensor.hacs            
+            feed_attribute: repositories
+
+            
+
     cards:
        
 #################################################################
@@ -7578,18 +7644,55 @@ views:
 ################################################################# 
       - type: vertical-stack
         cards:            
-            - type: glance
-              columns: 3
-              show_name: true
-              show_state: false
-              entities:
-                - entity: binary_sensor.git_update_ready
-                - entity: script.update_config_restart
-                  icon: 'mdi:github-circle'
-                  name: Pull/Restart
-                - entity: script.update_config_resload_automations
-                  icon: 'mdi:github-circle'
-                  name: Pull/Reload
+            - type: vertical-stack
+              cards:            
+                - type: custom:vertical-stack-in-card
+                  cards:
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:button-card"
+                          entity: binary_sensor.git_update_ready
+                          color_type: icon
+                          icon: mdi:github-circle
+                          state:
+                            - value: "on"
+                              color: rgb(228, 94, 101)
+                            - value: "off"
+                              color: rgb(255, 255, 255)
+                          name: GitHub
+                          tap_action:
+                            action: more-info
+                          hold_action: 
+                            action: more-info
+                        - type: "custom:button-card"
+                          entity: sensor.hacs
+                          color_type: icon
+                          icon: mdi:github-circle
+                          state:
+                            - value: 0
+                              color: rgb(228, 94, 101)
+                            - value: 1
+                              operator: '>='
+                              color: rgb(255, 255, 255)
+                          name: GitHub
+                          tap_action:
+                            action: more-info
+                          hold_action: 
+                            action: more-info
+                        - type: "custom:button-card"
+                          entity: binary_sensor.updater
+                          color_type: icon
+                          icon: mdi:home-assistant
+                          state:
+                            - value: "on"
+                              color: rgb(228, 94, 101)
+                            - value: "off"
+                              color: rgb(255, 255, 255)
+                          name: Hass.io
+                          tap_action:
+                            action: more-info
+                          hold_action: 
+                            action: more-info
 #################################################################
 #                                                               #
 #                       Config - Zigbee2MQTT                    #
