@@ -61,6 +61,8 @@ resources:
     type: module
   - url: /local/community/list-card/list-card.js
     type: js
+  - url: /local/community/text-element/text-element.js
+    type: js
 
 #################################################################
 #                                                               #
