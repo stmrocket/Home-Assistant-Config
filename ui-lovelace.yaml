@@ -120,13 +120,13 @@ views:
               cards:
                 
                 - type: "custom:button-card"
-                  entity: cover.office_blinds
+                  entity: switch.office_blinds
                   color_type: icon
                   state:
-                      - value: "open"
+                      - value: "on"
                         color: rgb(228, 94, 101)
                         icon: mdi:blinds-open
-                      - value: "closed"
+                      - value: "off"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                   name: Office
@@ -134,13 +134,13 @@ views:
                     action: more-info
                 
                 - type: "custom:button-card"
-                  entity: cover.guest_blind
+                  entity: switch.guest_blinds
                   color_type: icon
                   state:
-                      - value: "open"
+                      - value: "on"
                         color: rgb(228, 94, 101)
                         icon: mdi:blinds-open
-                      - value: "closed"
+                      - value: "off"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                   name: Guest
@@ -148,13 +148,13 @@ views:
                     action: more-info
 
                 - type: "custom:button-card"
-                  entity: cover.server_room_blind
+                  entity: switch.server_blinds
                   color_type: icon
                   state:
-                      - value: "open"
+                      - value: "on"
                         color: rgb(228, 94, 101)
                         icon: mdi:blinds-open
-                      - value: "closed"
+                      - value: "off"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                   name: Server
@@ -631,13 +631,13 @@ views:
             - type: horizontal-stack
               cards:
                   - type: "custom:button-card"
-                    entity: cover.house_blinds
+                    entity: switch.house_blinds
                     color_type: icon
                     state:
-                      - value: "open"
+                      - value: "on"
                         color: rgb(228, 94, 101)
                         icon: mdi:blinds-open
-                      - value: "closed"
+                      - value: "off"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                     name: Blinds
@@ -3222,7 +3222,7 @@ views:
                       action: more-info
                   
                   - type: "custom:button-card"
-                    entity: switch.den_fireplace
+                    entity: switch.fireplace
                     color_type: icon
                     color: rgb(228, 94, 101)
                     icon: mdi:fire
@@ -7168,11 +7168,27 @@ views:
             cards:
               - type: custom:vertical-stack-in-card
                 cards:
-                - type: entities
-                  show_header_toggle: off
-                  entities:
-                    - type: section
-                      label: Home Assistant Host
+                - type: picture-elements
+                  image: /local/lovelace/room.png
+                  elements:
+                    - entity: sensor.blank
+                      hold-action: none
+                      prefix: "Hass.io"
+                      style:
+                        bottom: 20%
+                        font-size: 150%
+                        left: 5%
+                        transform: initial
+                      tap-action: none
+                      type: state-label
+                    - entity: sensor.hass_uptime
+                      prefix: "Up: "
+                      style:
+                        bottom: 23%
+                        font-size: 110%
+                        right: 5%
+                        transform: initial
+                      type: state-label
                     
                 - type: horizontal-stack
                   cards:
@@ -7295,23 +7311,27 @@ views:
             cards:
               - type: custom:vertical-stack-in-card
                 cards:
-                - type: entities
-                  show_header_toggle: off
-                  entities:
-                    - type: section
-                      label: NAS - GRIPHOOK
-                    - type: custom:bar-card
-                      title_position: inside
-                      #show_icon: true
-                      align: center
-                      padding: 4px
-                      card_style: 
-                        border-radius: 5px
-                      columns: 1
-                      entities:
-                        - entity: sensor.nas_uptime
-                          title: Uptime
-                          icon: mdi:clock 
+                - type: picture-elements
+                  image: /local/lovelace/room.png
+                  elements:
+                    - entity: sensor.blank
+                      hold-action: none
+                      prefix: "MAS "
+                      style:
+                        bottom: 20%
+                        font-size: 150%
+                        left: 5%
+                        transform: initial
+                      tap-action: none
+                      type: state-label
+                    - entity: sensor.nas_uptime
+                      prefix: "Up: "
+                      style:
+                        bottom: 23%
+                        font-size: 110%
+                        right: 5%
+                        transform: initial
+                      type: state-label
                 - type: horizontal-stack
                   cards:
                   

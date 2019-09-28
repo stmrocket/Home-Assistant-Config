@@ -32,7 +32,7 @@
       entity_id: switch.den_fan
   - service: switch.turn_off
     data:
-      entity_id: switch.den_fireplace
+      entity_id: switch.fireplace
   - service: light.turn_off
     data:
       entity_id: light.entry_light

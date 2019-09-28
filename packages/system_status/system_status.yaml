@@ -702,25 +702,40 @@ sensor:
       {% set minutes = ((time % 360000) / 6000) | int%}
       {% set hours = ((time % 8640000) / 360000) | int %}
       {% set days = (time / 8640000) | int %}
-        {%- if time < 60 -%}
-          Less then 1 min
-          {%- else -%}
-          {%- if days > 0 -%}
-            {{ days }}d
+        {%- if time < 60-%}
+          00:00:00
+        {%- else -%}
+          {%- if days == 0 -%}
+            00
           {%- endif -%}
-          {%- if hours > 0 -%}
-            {%- if days > 0 -%}
-              {{ ' ' }}
+          {%- if days > 0 -%}        
+            {%- if days < 10 -%}
+              0{{ days }}
+            {%- else -%}
+              {{ days }}
             {%- endif -%}
-            {{ hours }}hr
+          {%- endif -%}
+          {%- if hours == 0 -%}
+            :00
+          {%- endif -%}
+          {%- if hours > 0 -%}        
+            {%- if hours < 10 -%}
+              :0{{ hours }}
+            {%- else -%}
+              :{{ hours }}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if minutes == 0 -%}
+            :00
           {%- endif -%}
           {%- if minutes > 0 -%}
-            {%- if days > 0 or hours > 0 -%}
-              {{ ' ' }}
+            {%- if minutes < 10 -%}
+              :0{{ minutes }}
+            {%- else -%}
+              :{{ minutes }}
             {%- endif -%}
-            {{ minutes }}min
           {%- endif -%}
-        {%- endif -%}  
+        {%- endif -%}
 
   - platform: snmp
     host: !secret core_router_ip
@@ -731,23 +746,38 @@ sensor:
       {% set minutes = ((time % 360000) / 6000) | int%}
       {% set hours = ((time % 8640000) / 360000) | int %}
       {% set days = (time / 8640000) | int %}
-        {%- if time < 60 -%}
-          Less then 1 min
-          {%- else -%}
-          {%- if days > 0 -%}
-            {{ days }}d
+        {%- if time < 60-%}
+          00:00:00
+        {%- else -%}
+          {%- if days == 0 -%}
+            00
           {%- endif -%}
-          {%- if hours > 0 -%}
-            {%- if days > 0 -%}
-              {{ ' ' }}
+          {%- if days > 0 -%}        
+            {%- if days < 10 -%}
+              0{{ days }}
+            {%- else -%}
+              {{ days }}
             {%- endif -%}
-            {{ hours }}hr
+          {%- endif -%}
+          {%- if hours == 0 -%}
+            :00
+          {%- endif -%}
+          {%- if hours > 0 -%}        
+            {%- if hours < 10 -%}
+              :0{{ hours }}
+            {%- else -%}
+              :{{ hours }}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if minutes == 0 -%}
+            :00
           {%- endif -%}
           {%- if minutes > 0 -%}
-            {%- if days > 0 or hours > 0 -%}
-              {{ ' ' }}
+            {%- if minutes < 10 -%}
+              :0{{ minutes }}
+            {%- else -%}
+              :{{ minutes }}
             {%- endif -%}
-            {{ minutes }}min
           {%- endif -%}
         {%- endif -%}
 
@@ -1341,6 +1371,50 @@ sensor:
         friendly_name: 'Sensor Count Low Limit'
         value_template: '{{ states.input_number.sensor_count_expected.state |int - 1}}'
 
+      hass_uptime:
+        friendly_name: Home Assistant Uptime
+        value_template: >-
+          {% set time = states.sensor.time_online.state | int %}
+            {% set minutes = ((time % 60) ) | int%}
+            {% set hours = ((time % 1440) / 60) | int %}
+            {% set days = (time / 1440) | int %}
+              {%- if time < 60-%}
+                00:00:00
+              {%- else -%}
+                {%- if days == 0 -%}
+                  00
+                {%- endif -%}
+                {%- if days > 0 -%}        
+                  {%- if days < 10 -%}
+                    0{{ days }}
+                  {%- else -%}
+                    {{ days }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if hours == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if hours > 0 -%}        
+                  {%- if hours < 10 -%}
+                    :0{{ hours }}
+                  {%- else -%}
+                    :{{ hours }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if minutes == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if minutes > 0 -%}
+                  {%- if minutes < 10 -%}
+                    :0{{ minutes }}
+                  {%- else -%}
+                    :{{ minutes }}
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endif -%}
+
+
+
 ####################################################
 #                                                  #
 #                 Sensor - Uptime                  #
@@ -1349,7 +1423,7 @@ sensor:
 
   - platform: uptime
     name: Time Online
-    unit_of_measurement: hours
+    unit_of_measurement: minutes
 
 ####################################################
 #                                                  #
