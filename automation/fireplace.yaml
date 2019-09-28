@@ -1,0 +1,74 @@
+- alias: Turn On Foreplace
+  trigger:
+  - entity_id: switch.den_fireplace
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.fireplace
+    state: 'off'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.fireplace
+
+- alias: Turn Off Fireplace
+  trigger:
+  - entity_id: switch.den_fireplace
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: switch.fireplace
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.fireplace
+
+- alias: Fireplace Keypad On if Fire On
+  trigger:
+  - entity_id: switch.fireplace
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.den_fireplace
+    state: 'off'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.den_fireplace
+
+- alias: Fireplace Keypad Off if Fire Off
+  trigger:
+  - entity_id: switch.fireplace
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: switch.den_fireplace
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.den_fireplace
+
+- alias: Keep Fireplace Off When Away
+  trigger:
+  - platform: state
+    entity_id: switch.fireplace
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: alarm_control_panel.area_001
+        state: armed_night
+      - condition: state
+        entity_id: alarm_control_panel.area_001
+        state: armed_away
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.fireplace

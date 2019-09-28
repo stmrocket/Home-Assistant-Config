@@ -186,6 +186,18 @@ sensor:
     payload_available: "Online"
     payload_not_available: "Offline"
 
+  #Fireplace
+
+  - platform: mqtt
+    state_topic: "tele/fireplace/STATE"
+    name: "Fireplace Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/fireplace/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
 #Template Sensors
   - platform: template
     sensors:
@@ -268,6 +280,17 @@ switch:
           service: rainmachine.stop_program
           data:
             program_id: 1
+
+  - platform: mqtt
+    name: "Fireplace"
+    state_topic: "stat/fireplace/POWER"
+    command_topic: "cmnd/fireplace/POWER"
+    availability_topic: "tele/fireplace/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
 input_boolean:
 

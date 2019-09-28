@@ -20,6 +20,7 @@ smart_home:
       - switch.nuvo_zone_10_power
       - switch.nuvo_zone_11_power
       - switch.nuvo_zone_12_power
+      - switch.fireplace
 
     exclude_domains:
       - automation

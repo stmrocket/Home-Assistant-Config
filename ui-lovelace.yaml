@@ -120,13 +120,13 @@ views:
               cards:
                 
                 - type: "custom:button-card"
-                  entity: cover.office_blinds
+                  entity: switch.office_blinds
                   color_type: icon
                   state:
-                      - value: "open"
+                      - value: "on"
                         color: rgb(228, 94, 101)
                         icon: mdi:blinds-open
-                      - value: "closed"
+                      - value: "off"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                   name: Office
@@ -134,13 +134,13 @@ views:
                     action: more-info
                 
                 - type: "custom:button-card"
-                  entity: cover.guest_blind
+                  entity: switch.guest_blinds
                   color_type: icon
                   state:
-                      - value: "open"
+                      - value: "on"
                         color: rgb(228, 94, 101)
                         icon: mdi:blinds-open
-                      - value: "closed"
+                      - value: "off"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                   name: Guest
@@ -148,13 +148,13 @@ views:
                     action: more-info
 
                 - type: "custom:button-card"
-                  entity: cover.server_room_blind
+                  entity: switch.server_blinds
                   color_type: icon
                   state:
-                      - value: "open"
+                      - value: "on"
                         color: rgb(228, 94, 101)
                         icon: mdi:blinds-open
-                      - value: "closed"
+                      - value: "off"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                   name: Server
@@ -631,13 +631,13 @@ views:
             - type: horizontal-stack
               cards:
                   - type: "custom:button-card"
-                    entity: cover.house_blinds
+                    entity: switch.house_blinds
                     color_type: icon
                     state:
-                      - value: "open"
+                      - value: "on"
                         color: rgb(228, 94, 101)
                         icon: mdi:blinds-open
-                      - value: "closed"
+                      - value: "off"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                     name: Blinds
@@ -3222,7 +3222,7 @@ views:
                       action: more-info
                   
                   - type: "custom:button-card"
-                    entity: switch.den_fireplace
+                    entity: switch.fireplace
                     color_type: icon
                     color: rgb(228, 94, 101)
                     icon: mdi:fire
