@@ -19,7 +19,7 @@ binary_sensor:
 shell_command:
   get_latest_config: bash /config/bin/update_config_from_github.sh
 
-  restart_homeasssitant: bash /config/bin/restart_homeassistant.sh
+  restart_homeassistant: bash /config/bin/restart_homeassistant.sh
 script:
   update_config_restart:
     sequence:
