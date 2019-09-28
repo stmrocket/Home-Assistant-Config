@@ -18,6 +18,8 @@ binary_sensor:
         value_template: "{{ not states.input_text.prev_git_version.state == states.sensor.home_assistant_config.state }}"
 shell_command:
   get_latest_config: bash /config/bin/update_config_from_github.sh
+
+  restart_homeasssitant: bash /config/bin/restart_homeassistant.sh
 script:
   update_config_restart:
     sequence:

@@ -7182,7 +7182,7 @@ views:
                       tap-action: none
                       type: state-label
                     - entity: sensor.hass_uptime
-                      prefix: "Up: "
+                      prefix: "Uptime: "
                       style:
                         bottom: 23%
                         font-size: 110%
@@ -7316,7 +7316,7 @@ views:
                   elements:
                     - entity: sensor.blank
                       hold-action: none
-                      prefix: "MAS "
+                      prefix: "NAS "
                       style:
                         bottom: 20%
                         font-size: 150%
@@ -7325,7 +7325,7 @@ views:
                       tap-action: none
                       type: state-label
                     - entity: sensor.nas_uptime
-                      prefix: "Up: "
+                      prefix: "Uptime: "
                       style:
                         bottom: 23%
                         font-size: 110%
