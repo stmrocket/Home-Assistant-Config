@@ -1378,7 +1378,7 @@ sensor:
             {% set minutes = ((time % 60) ) | int%}
             {% set hours = ((time % 1440) / 60) | int %}
             {% set days = (time / 1440) | int %}
-              {%- if time < 60-%}
+              {%- if time == 0 -%}
                 00:00:00
               {%- else -%}
                 {%- if days == 0 -%}
