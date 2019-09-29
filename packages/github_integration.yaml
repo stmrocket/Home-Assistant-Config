@@ -7,19 +7,21 @@ sensor:
   - platform: travisci
     api_key: !secret travis_access_token
     branch: dev
+
 input_text:
   prev_git_version:
     name: Previous Git Version
+    
 binary_sensor:
   - platform: template
     sensors:
       git_update_ready:
         friendly_name: "Update Ready"
         value_template: "{{ not states.input_text.prev_git_version.state == states.sensor.home_assistant_config.state }}"
+
 shell_command:
   get_latest_config: bash /config/bin/update_config_from_github.sh
 
-  restart_homeassistant: bash /config/bin/restart_homeassistant.sh
 script:
   update_config_restart:
     sequence:
@@ -28,7 +30,7 @@ script:
           entity_id: input_text.prev_git_version
           value: "{{ states.sensor.home_assistant_config.state | string }}"
       - service: shell_command.get_latest_config
-      - service: shell_command.restart_homeassistant
+      - service: homeassistant.restart
 
   update_config_reload_automations:
     sequence:
