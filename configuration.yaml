@@ -565,3 +565,6 @@ display:
     name: Kitchen Tablet
     host: !secret kitchen_tablet_host
     password: !secret kitchen_tablet_pin
+
+#Browser Mod
+browser_mod:

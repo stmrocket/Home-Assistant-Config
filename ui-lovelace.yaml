@@ -7165,166 +7165,164 @@ views:
 #                    System Status - NAS Card                   #
 #                                                               #
 #################################################################
- 
-          - type: horizontal-stack
+           
+          - type: custom:vertical-stack-in-card
             cards:
-              - type: custom:vertical-stack-in-card
-                cards:
-                - type: picture-elements
-                  image: /local/lovelace/room.png
-                  elements:
-                    - entity: sensor.blank
-                      hold-action: none
-                      prefix: "NAS "
-                      style:
-                        bottom: 20%
-                        font-size: 150%
-                        left: 5%
-                        transform: initial
-                      tap-action: none
-                      type: state-label
-                    - entity: sensor.nas_uptime
-                      prefix: "Uptime: "
-                      style:
-                        bottom: 23%
-                        font-size: 110%
-                        right: 5%
-                        transform: initial
-                      type: state-label
-                - type: horizontal-stack
+            - type: picture-elements
+              image: /local/lovelace/room.png
+              elements:
+                - entity: sensor.blank
+                  hold-action: none
+                  prefix: "NAS "
+                  style:
+                    bottom: 20%
+                    font-size: 150%
+                    left: 5%
+                    transform: initial
+                  tap-action: none
+                  type: state-label
+                - entity: sensor.nas_uptime
+                  prefix: "Uptime: "
+                  style:
+                    bottom: 23%
+                    font-size: 110%
+                    right: 5%
+                    transform: initial
+                  type: state-label
+            - type: horizontal-stack
+              cards:
+              
+              
+              - type: horizontal-stack
+                cards:  
+                - type: custom:circle-sensor-card
+                  entity: sensor.synology_dsm_volume_used_volume_1
+                  max: 100
+                  min: 0
+                  stroke_width: 15
+                  gradient: true
+                  fill: '#383C45'
+                  name: Used
+                  units: '%'
+                  color_stops:
+                    80: '#00ff00'
+                    100: '#ff0000'
+                  font_style: {font-size: 1.1em, font-color: white, text-shadow: '2px 2px black'}
+                  style: {top: 5%, left: 80%, width: 6em, height: 6em, transform: none}
+                - type: custom:vertical-stack-in-card
                   cards:
+                  - type: custom:bar-card
+                    title_position: top
+                    title: Recordings
+                    show_icon: true
+                    align: center
+                    padding: 1.5px
+                    height: 40
+                    card_style: 
+                      border-radius: 5px
+                    columns: 1
+                    max: 200
+                    entities:
+                      - entity: sensor.synology_dsm_average_disk_temp_volume_1
+                        icon: mdi:thermometer
+                        unit_of_measurement: '°F'
+                        
+                        severity:
+                        - value: 130
+                          color: '#1db954'
+                        - value: 140
+                          color: '#bf9540'
+                        - value: 150
+                          color: '#bf4040'
+                  - type: custom:bar-card
+                    title_position: top
+                    title: CPU
+                    show_icon: true
+                    align: center
+                    padding: 1.5px
+                    height: 40
+                    card_style: 
+                      border-radius: 5px
+                    columns: 1
+                    max: 100
+                    entities:
+                      - entity: sensor.synology_dsm_cpu_load_total
+                        icon: mdi:flash
+                        unit_of_measurement: '%'
+                        
+                        severity:
+                        - value: 50
+                          color: '#0000ff'
+                        - value: 75
+                          color: '#ffff00'
+                        - value: 100
+                          color: '#ff0000'                      
                   
+                
+                          
+                - type: custom:vertical-stack-in-card
+                  cards:
+                  - type: custom:bar-card
+                    title_position: top
+                    title: Files
+                    show_icon: true
+                    align: center
+                    padding: 1.5px
+                    height: 40
+                    card_style: 
+                      border-radius: 5px
+                    columns: 1
+                    max: 200
+                    entities:
+                      - entity: sensor.synology_dsm_average_disk_temp_volume_2
+                        icon: mdi:thermometer
+                        unit_of_measurement: '°F'
+                        
+                        severity:
+                        - value: 130
+                          color: '#1db954'
+                        - value: 140
+                          color: '#bf9540'
+                        - value: 150
+                          color: '#bf4040'
+                  - type: custom:bar-card
+                    title_position: top
+                    title: RAM
+                    show_icon: true
+                    align: center
+                    padding: 1.5px
+                    height: 40
+                    card_style: 
+                      border-radius: 5px
+                    columns: 1
+                    max: 100
+                    entities:
+                      - entity: sensor.synology_dsm_memory_usage_real
+                        icon: mdi:chip
+                        unit_of_measurement: '%'
+                        
+                        severity:
+                        - value: 50
+                          color: '#0000ff'
+                        - value: 75
+                          color: '#ffff00'
+                        - value: 100
+                          color: '#ff0000'                      
                   
-                  - type: horizontal-stack
-                    cards:  
-                    - type: custom:circle-sensor-card
-                      entity: sensor.synology_dsm_volume_used_volume_1
-                      max: 100
-                      min: 0
-                      stroke_width: 15
-                      gradient: true
-                      fill: '#383C45'
-                      name: Used
-                      units: '%'
-                      color_stops:
-                        80: '#00ff00'
-                        100: '#ff0000'
-                      font_style: {font-size: 1.1em, font-color: white, text-shadow: '2px 2px black'}
-                      style: {top: 5%, left: 80%, width: 6em, height: 6em, transform: none}
-                    - type: custom:vertical-stack-in-card
-                      cards:
-                      - type: custom:bar-card
-                        title_position: top
-                        title: Recordings
-                        show_icon: true
-                        align: center
-                        padding: 1.5px
-                        height: 40
-                        card_style: 
-                          border-radius: 5px
-                        columns: 1
-                        max: 200
-                        entities:
-                          - entity: sensor.synology_dsm_average_disk_temp_volume_1
-                            icon: mdi:thermometer
-                            unit_of_measurement: '°F'
-                            
-                            severity:
-                            - value: 130
-                              color: '#1db954'
-                            - value: 140
-                              color: '#bf9540'
-                            - value: 150
-                              color: '#bf4040'
-                      - type: custom:bar-card
-                        title_position: top
-                        title: CPU
-                        show_icon: true
-                        align: center
-                        padding: 1.5px
-                        height: 40
-                        card_style: 
-                          border-radius: 5px
-                        columns: 1
-                        max: 100
-                        entities:
-                          - entity: sensor.synology_dsm_cpu_load_total
-                            icon: mdi:flash
-                            unit_of_measurement: '%'
-                            
-                            severity:
-                            - value: 50
-                              color: '#0000ff'
-                            - value: 75
-                              color: '#ffff00'
-                            - value: 100
-                              color: '#ff0000'                      
-                      
-                    
-                              
-                    - type: custom:vertical-stack-in-card
-                      cards:
-                      - type: custom:bar-card
-                        title_position: top
-                        title: Files
-                        show_icon: true
-                        align: center
-                        padding: 1.5px
-                        height: 40
-                        card_style: 
-                          border-radius: 5px
-                        columns: 1
-                        max: 200
-                        entities:
-                          - entity: sensor.synology_dsm_average_disk_temp_volume_2
-                            icon: mdi:thermometer
-                            unit_of_measurement: '°F'
-                            
-                            severity:
-                            - value: 130
-                              color: '#1db954'
-                            - value: 140
-                              color: '#bf9540'
-                            - value: 150
-                              color: '#bf4040'
-                      - type: custom:bar-card
-                        title_position: top
-                        title: RAM
-                        show_icon: true
-                        align: center
-                        padding: 1.5px
-                        height: 40
-                        card_style: 
-                          border-radius: 5px
-                        columns: 1
-                        max: 100
-                        entities:
-                          - entity: sensor.synology_dsm_memory_usage_real
-                            icon: mdi:chip
-                            unit_of_measurement: '%'
-                            
-                            severity:
-                            - value: 50
-                              color: '#0000ff'
-                            - value: 75
-                              color: '#ffff00'
-                            - value: 100
-                              color: '#ff0000'                      
-                      
-                    - type: custom:circle-sensor-card
-                      entity: sensor.synology_dsm_volume_used_volume_2
-                      max: 100
-                      min: 0
-                      stroke_width: 15
-                      gradient: true
-                      fill: '#383C45'
-                      name: Used
-                      units: '%'
-                      color_stops:
-                        80: '#00ff00'
-                        100: '#ff0000'
-                      font_style: {font-size: 1.1em, font-color: white, text-shadow: '2px 2px black'}
-                      style: {top: 5%, left: 80%, width: 6em, height: 6em, transform: none}
+                - type: custom:circle-sensor-card
+                  entity: sensor.synology_dsm_volume_used_volume_2
+                  max: 100
+                  min: 0
+                  stroke_width: 15
+                  gradient: true
+                  fill: '#383C45'
+                  name: Used
+                  units: '%'
+                  color_stops:
+                    80: '#00ff00'
+                    100: '#ff0000'
+                  font_style: {font-size: 1.1em, font-color: white, text-shadow: '2px 2px black'}
+                  style: {top: 5%, left: 80%, width: 6em, height: 6em, transform: none}
 
 #################################################################
 #                                                               #
@@ -7332,318 +7330,321 @@ views:
 #                                                               #
 #################################################################
  
-          - type: horizontal-stack
+          - type: custom:vertical-stack-in-card
             cards:
-              - type: custom:vertical-stack-in-card
-                cards:
-                - type: picture-elements
-                  image: /local/lovelace/room.png
-                  elements:
-                    - entity: sensor.blank
-                      hold-action: none
-                      prefix: "Hass.io"
-                      style:
-                        bottom: 20%
-                        font-size: 150%
-                        left: 5%
-                        transform: initial
-                      tap-action: none
-                      type: state-label
-                    - entity: sensor.hass_uptime
-                      prefix: "Uptime: "
-                      style:
-                        bottom: 23%
-                        font-size: 110%
-                        right: 5%
-                        transform: initial
-                      type: state-label
-                    
-                - type: horizontal-stack
-                  cards:
-                  
-                  
-                  - type: horizontal-stack
-                    cards:  
-                    
-                    - type: custom:vertical-stack-in-card
-                      cards:
-                      - type: custom:bar-card
-                        title_position: top
-                        title: CPU
-                        show_icon: true
-                        align: center
-                        padding: 1.5px
-                        height: 40
-                        card_style: 
-                          border-radius: 5px
-                        columns: 1
-                        max: 100
-                        entities:
-                          - entity: sensor.processor_use
-                            icon: mdi:flash
-                            unit_of_measurement: '%'
-                            
-                            severity:
-                            - value: 50
-                              color: '#0000ff'
-                            - value: 75
-                              color: '#ffff00'
-                            - value: 100
-                              color: '#ff0000'            
-
-                      - type: custom:bar-card
-                        title_position: top
-                        title: Temperature
-                        show_icon: true
-                        align: center
-                        padding: 1.5px
-                        height: 40
-                        card_style: 
-                          border-radius: 5px
-                        columns: 1
-                        max: 200
-                        entities:
-                          - entity: sensor.cpu_temperature
-                            icon: mdi:thermometer
-                            unit_of_measurement: '°F'
-                            
-                            severity:
-                            - value: 130
-                              color: '#1db954'
-                            - value: 140
-                              color: '#bf9540'
-                            - value: 150
-                              color: '#bf4040'
-                                
-                      
-                    
-                              
-                    - type: custom:vertical-stack-in-card
-                      cards:
-
-                      - type: custom:bar-card
-                        title_position: top
-                        title: RAM
-                        show_icon: true
-                        align: center
-                        padding: 1.5px
-                        height: 40
-                        card_style: 
-                          border-radius: 5px
-                        columns: 1
-                        max: 100
-                        entities:
-                          - entity: sensor.memory_use_percent
-                            icon: mdi:chip
-                            unit_of_measurement: '%'
-                            
-                            severity:
-                            - value: 50
-                              color: '#0000ff'
-                            - value: 75
-                              color: '#ffff00'
-                            - value: 100
-                              color: '#ff0000'           
-                              
-                      - type: custom:bar-card
-                        title_position: top
-                        title: Disk
-                        show_icon: true
-                        align: center
-                        padding: 1.5px
-                        height: 40
-                        card_style: 
-                          border-radius: 5px
-                        columns: 1
-                        max: 200
-                        entities:
-                          - entity: sensor.disk_use_percent
-                            icon: mdi:thermometer
-                            unit_of_measurement: '%'
-                            
-                            severity:
-                            - value: 130
-                              color: '#1db954'
-                            - value: 140
-                              color: '#bf9540'
-                            - value: 150
-                              color: '#bf4040'        
-               
-                - type: horizontal-stack
-                  cards:          
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Automations
-                        entity: sensor.automation_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.automation_count
-                        severity:
-                          - value: ${states['sensor.automation_count_low'].state}
-                            color: '#bf4040'
-                          - value: ${states['input_number.automation_count_expected'].state}
-                            color: '#1db954'
-                          - value: ${states['sensor.automation_count_high'].state}
-                            color: '#bf9540'
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Binary Sensors
-                        entity: sensor.binary_sensor_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.binary_sensor_count
-                        severity:
-                        - value: ${states['sensor.binary_sensor_count_low'].state}
-                          color: '#bf4040'
-                        - value: ${states['input_number.binary_sensor_count_expected'].state}
-                          color: '#1db954'
-                        - value: ${states['sensor.binary_sensor_count_high'].state}
-                          color: '#bf9540'
-              
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Switches
-                        entity: sensor.switch_count
-                        title_position: inside
-                        align: center 
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.switch_count
-                        severity:
-                          - value: ${states['sensor.switch_count_low'].state}
-                            color: '#bf4040'
-                          - value: ${states['input_number.switch_count_expected'].state}
-                            color: '#1db954'
-                          - value: ${states['sensor.switch_count_high'].state}
-                            color: '#bf9540'
-              
-                - type: horizontal-stack
-                  cards:          
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Fans
-                        entity: sensor.fan_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.fan_count
-                        severity:
-                          - value: ${states['sensor.fan_count_low'].state}
-                            color: '#bf4040'
-                          - value: ${states['input_number.fan_count_expected'].state}
-                            color: '#1db954'
-                          - value: ${states['sensor.fan_count_high'].state}
-                            color: '#bf9540'
-                  
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Lights
-                        entity: sensor.lights_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.lights_count
-                        severity:
-                          - value: ${states['sensor.light_count_low'].state}
-                            color: '#bf4040'
-                          - value: ${states['input_number.light_count_expected'].state}
-                            color: '#1db954'
-                          - value: ${states['sensor.light_count_high'].state}
-                            color: '#bf9540'
-              
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Tracked Devices
-                        entity: sensor.tracker_count
-                        title_position: inside
-                        align: center 
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.tracker_count
-                        severity:
-                          - value: ${states['sensor.tracked_device_count_low'].state}
-                            color: '#bf4040'
-                          - value: ${states['input_number.tracked_device_count_expected'].state}
-                            color: '#1db954'
-                          - value: ${states['sensor.tracked_device_count_high'].state}
-                            color: '#bf9540'
+            - type: picture-elements
+              image: /local/lovelace/room.png
+              elements:
+                - entity: sensor.blank
+                  hold-action: none
+                  prefix: "Hass.io"
+                  style:
+                    bottom: 20%
+                    font-size: 150%
+                    left: 5%
+                    transform: initial
+                  tap-action: none
+                  type: state-label
+                - entity: sensor.hass_uptime
+                  prefix: "Uptime: "
+                  style:
+                    bottom: 23%
+                    font-size: 110%
+                    right: 5%
+                    transform: initial
+                  type: state-label
                 
-                - type: horizontal-stack
-                  cards:          
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Media Players
-                        entity: sensor.media_player_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.media_player_count
-                        severity:
-                          - value: ${states['sensor.media_player_count_low'].state}
-                            color: '#bf4040'
-                          - value: ${states['input_number.media_player_count_expected'].state}
-                            color: '#1db954'
-                          - value: ${states['sensor.media_player_count_high'].state}
-                            color: '#bf9540'
+            - type: horizontal-stack
+              cards:
               
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Scripts
-                        entity: sensor.script_count
-                        title_position: inside
-                        align: center 
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.script_count
+              
+              - type: horizontal-stack
+                cards:  
+                
+                - type: custom:vertical-stack-in-card
+                  cards:
+                  - type: custom:bar-card
+                    title_position: top
+                    title: CPU
+                    show_icon: true
+                    align: center
+                    padding: 1.5px
+                    height: 40
+                    card_style: 
+                      border-radius: 5px
+                    columns: 1
+                    max: 100
+                    entities:
+                      - entity: sensor.processor_use
+                        icon: mdi:flash
+                        unit_of_measurement: '%'
+                        
                         severity:
-                          - value: ${states['sensor.script_count_low'].state}
-                            color: '#bf4040'
-                          - value: ${states['input_number.script_count_expected'].state}
-                            color: '#1db954'
-                          - value: ${states['sensor.script_count_high'].state}
-                            color: '#bf9540'
-                    
-                    - type: 'custom:config-template-card'
-                      card:
-                        type: custom:bar-card
-                        title: Sensors
-                        entity: sensor.sensor_count
-                        title_position: inside
-                        align: center
-                        padding: 4px
-                        card_style: 
-                          border-radius: 5px
-                        max: sensor.sensor_count
+                        - value: 50
+                          color: '#0000ff'
+                        - value: 75
+                          color: '#ffff00'
+                        - value: 100
+                          color: '#ff0000'            
+
+                  - type: custom:bar-card
+                    title_position: top
+                    title: Temperature
+                    show_icon: true
+                    align: center
+                    padding: 1.5px
+                    height: 40
+                    card_style: 
+                      border-radius: 5px
+                    columns: 1
+                    max: 200
+                    entities:
+                      - entity: sensor.cpu_temperature
+                        icon: mdi:thermometer
+                        unit_of_measurement: '°F'
+                        
                         severity:
-                          - value: ${states['sensor.sensor_count_low'].state}
-                            color: '#bf4040'
-                          - value: ${states['input_number.sensor_count_expected'].state}
-                            color: '#1db954'
-                          - value: ${states['sensor.sensor_count_high'].state}
-                            color: '#bf9540'
+                        - value: 130
+                          color: '#1db954'
+                        - value: 140
+                          color: '#bf9540'
+                        - value: 150
+                          color: '#bf4040'
+                            
+                  
+                
+                          
+                - type: custom:vertical-stack-in-card
+                  cards:
+
+                  - type: custom:bar-card
+                    title_position: top
+                    title: RAM
+                    show_icon: true
+                    align: center
+                    padding: 1.5px
+                    height: 40
+                    card_style: 
+                      border-radius: 5px
+                    columns: 1
+                    max: 100
+                    entities:
+                      - entity: sensor.memory_use_percent
+                        icon: mdi:chip
+                        unit_of_measurement: '%'
+                        
+                        severity:
+                        - value: 50
+                          color: '#0000ff'
+                        - value: 75
+                          color: '#ffff00'
+                        - value: 100
+                          color: '#ff0000'           
+                          
+                  - type: custom:bar-card
+                    title_position: top
+                    title: Disk
+                    show_icon: true
+                    align: center
+                    padding: 1.5px
+                    height: 40
+                    card_style: 
+                      border-radius: 5px
+                    columns: 1
+                    max: 200
+                    entities:
+                      - entity: sensor.disk_use_percent
+                        icon: mdi:thermometer
+                        unit_of_measurement: '%'
+                        
+                        severity:
+                        - value: 130
+                          color: '#1db954'
+                        - value: 140
+                          color: '#bf9540'
+                        - value: 150
+                          color: '#bf4040'        
+            - type: horizontal-stack
+              cards:
+              - type: "custom:gap-card"
+                height: 10
+              - type: "custom:gap-card"
+                height: 10
+            - type: horizontal-stack
+              cards:          
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Automations
+                    entity: sensor.automation_count
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.automation_count
+                    severity:
+                      - value: ${states['sensor.automation_count_low'].state}
+                        color: '#bf4040'
+                      - value: ${states['input_number.automation_count_expected'].state}
+                        color: '#1db954'
+                      - value: ${states['sensor.automation_count_high'].state}
+                        color: '#bf9540'
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Binary Sensors
+                    entity: sensor.binary_sensor_count
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.binary_sensor_count
+                    severity:
+                    - value: ${states['sensor.binary_sensor_count_low'].state}
+                      color: '#bf4040'
+                    - value: ${states['input_number.binary_sensor_count_expected'].state}
+                      color: '#1db954'
+                    - value: ${states['sensor.binary_sensor_count_high'].state}
+                      color: '#bf9540'
+          
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Switches
+                    entity: sensor.switch_count
+                    title_position: inside
+                    align: center 
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.switch_count
+                    severity:
+                      - value: ${states['sensor.switch_count_low'].state}
+                        color: '#bf4040'
+                      - value: ${states['input_number.switch_count_expected'].state}
+                        color: '#1db954'
+                      - value: ${states['sensor.switch_count_high'].state}
+                        color: '#bf9540'
+          
+            - type: horizontal-stack
+              cards:          
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Fans
+                    entity: sensor.fan_count
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.fan_count
+                    severity:
+                      - value: ${states['sensor.fan_count_low'].state}
+                        color: '#bf4040'
+                      - value: ${states['input_number.fan_count_expected'].state}
+                        color: '#1db954'
+                      - value: ${states['sensor.fan_count_high'].state}
+                        color: '#bf9540'
+              
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Lights
+                    entity: sensor.lights_count
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.lights_count
+                    severity:
+                      - value: ${states['sensor.light_count_low'].state}
+                        color: '#bf4040'
+                      - value: ${states['input_number.light_count_expected'].state}
+                        color: '#1db954'
+                      - value: ${states['sensor.light_count_high'].state}
+                        color: '#bf9540'
+          
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Tracked Devices
+                    entity: sensor.tracker_count
+                    title_position: inside
+                    align: center 
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.tracker_count
+                    severity:
+                      - value: ${states['sensor.tracked_device_count_low'].state}
+                        color: '#bf4040'
+                      - value: ${states['input_number.tracked_device_count_expected'].state}
+                        color: '#1db954'
+                      - value: ${states['sensor.tracked_device_count_high'].state}
+                        color: '#bf9540'
+            
+            - type: horizontal-stack
+              cards:          
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Media Players
+                    entity: sensor.media_player_count
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.media_player_count
+                    severity:
+                      - value: ${states['sensor.media_player_count_low'].state}
+                        color: '#bf4040'
+                      - value: ${states['input_number.media_player_count_expected'].state}
+                        color: '#1db954'
+                      - value: ${states['sensor.media_player_count_high'].state}
+                        color: '#bf9540'
+          
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Scripts
+                    entity: sensor.script_count
+                    title_position: inside
+                    align: center 
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.script_count
+                    severity:
+                      - value: ${states['sensor.script_count_low'].state}
+                        color: '#bf4040'
+                      - value: ${states['input_number.script_count_expected'].state}
+                        color: '#1db954'
+                      - value: ${states['sensor.script_count_high'].state}
+                        color: '#bf9540'
+                
+                - type: 'custom:config-template-card'
+                  card:
+                    type: custom:bar-card
+                    title: Sensors
+                    entity: sensor.sensor_count
+                    title_position: inside
+                    align: center
+                    padding: 4px
+                    card_style: 
+                      border-radius: 5px
+                    max: sensor.sensor_count
+                    severity:
+                      - value: ${states['sensor.sensor_count_low'].state}
+                        color: '#bf4040'
+                      - value: ${states['input_number.sensor_count_expected'].state}
+                        color: '#1db954'
+                      - value: ${states['sensor.sensor_count_high'].state}
+                        color: '#bf9540'
 
 #################################################################
 #                                                               #
