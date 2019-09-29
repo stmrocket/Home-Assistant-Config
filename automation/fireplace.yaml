@@ -1,4 +1,4 @@
-- alias: Turn On Foreplace
+- alias: Turn On Fireplace
   trigger:
   - entity_id: switch.den_fireplace
     platform: state
