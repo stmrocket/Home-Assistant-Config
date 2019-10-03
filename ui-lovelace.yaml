@@ -63,6 +63,8 @@ resources:
     type: js
   - url: /local/community/text-element/text-element.js
     type: js
+  - url: /local/community/lovelace-card-mod/card-mod.js
+    type: module
 
 #################################################################
 #                                                               #
