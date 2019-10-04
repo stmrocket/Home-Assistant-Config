@@ -568,3 +568,14 @@ display:
 
 #Browser Mod
 browser_mod:
+  devices:
+    !secret: kitchen_tablet_browser:
+      name: kitchen_tablet
+      camera: true
+    !secret shawn_chromebook_browser:
+      name: shawn_chromebook
+    !secret: shawn_office_browser:
+      name: shawn_office
+    !secret: shawn_n6_browser:
+      name: shawn_n6
+    
