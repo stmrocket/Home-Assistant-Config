@@ -560,11 +560,11 @@ alexa_media:
       url: amazon.com
 
 #Fully Kiosk Display
-display:
-  - platform: fully_kiosk
-    name: Kitchen Tablet
-    host: !secret kitchen_tablet_host
-    password: !secret kitchen_tablet_pin
+# display:
+#   - platform: fully_kiosk
+#     name: Kitchen Tablet
+#     host: !secret kitchen_tablet_host
+#     password: !secret kitchen_tablet_pin
 
 #Browser Mod
 browser_mod:

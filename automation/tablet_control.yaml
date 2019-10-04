@@ -9,9 +9,9 @@
     from: armed_home
     to: armed_night
   action:
-  - service: display.turn_off
+  - service: light.turn_off
     data:
-      entity_id: display.kitchen_tablet
+      entity_id: light.kitchen_tablet
 
 - alias: Tablet When Home
   trigger:
@@ -28,9 +28,9 @@
     from: armed_away
     to: disarmed
   action:
-  - service: display.turn_on
+  - service: light.turn_on
     data:
-      entity_id: display.kitchen_tablet
+      entity_id: light.kitchen_tablet
       
 - alias: Tablet when Away
   trigger:
@@ -38,6 +38,6 @@
     entity_id: alarm_control_panel.area_001
     to: armed_away
   action:
-  - service: display.turn_off
+  - service: light.turn_off
     data:
-      entity_id: display.kitchen_tablet
+      entity_id: light.kitchen_tablet
