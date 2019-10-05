@@ -1,0 +1,70 @@
+popup_blinds:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: "{{ deviceID }}"
+        title: House Blinds
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  entity: switch.office_blinds
+                  color_type: icon
+                  state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                  name: Office
+                  hold_action: 
+                    action: more-info
+                
+                - type: "custom:button-card"
+                  entity: switch.guest_blinds
+                  color_type: icon
+                  state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                  name: Guest
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:button-card"
+                  entity: switch.server_blinds
+                  color_type: icon
+                  state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                  name: Server
+                  hold_action: 
+                    action: more-info
+            
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:gap-card"
+
+                - type: "custom:button-card"
+                  color_type: icon
+                  icon: mdi:refresh
+                  name: Calibrate
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: habc/all/command/set/calibrate
+                
+                - type: "custom:gap-card"
