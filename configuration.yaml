@@ -407,7 +407,7 @@ group: !include groups.yaml
 
 automation: !include_dir_merge_list automation
 
-script: !include_dir_merge_list scripts
+script: !include_dir_merge_named scripts
 
 zone: !include zones.yaml
 
