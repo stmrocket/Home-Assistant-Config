@@ -2,7 +2,7 @@ popup_blinds:
   sequence:
     - service: browser_mod.popup
       data_template:
-        deviceID: "{{ deviceID }}"
+        deviceID: ["{{ ','.join(deviceID) }}"]
         title: House Blinds
         card:
           type: vertical-stack
@@ -68,3 +68,111 @@ popup_blinds:
                       topic: habc/all/command/set/calibrate
                 
                 - type: "custom:gap-card"
+
+popup_roomba:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Roomba
+        card:
+          type: entities
+          entities:
+              - entity: switch.roomba
+              - entity: sensor.roomba_battery_level
+              - entity: sensor.roomba_status
+              - entity: input_boolean.roomba_auto
+
+popup_washer:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Washer
+        card:
+          type: entities
+          entities:
+            - entity: sensor.washer_state
+            - entity: sensor.washer_voltage
+            - entity: sensor.washer_watts
+            - entity: sensor.washer_amps
+            - entity: sensor.washer_energy_today
+              icon: 'mdi:gauge'
+            - entity: sensor.washer_energy_yesterday
+              icon: 'mdi:gauge'
+            - entity: sensor.washer_signal
+              icon: 'mdi:wifi'               
+
+popup_dryer:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Dryer
+        card:
+          type: entities
+          entities:
+            - entity: sensor.dryer_state
+            - entity: sensor.dryer_voltage
+            - entity: sensor.dryer_watts
+            - entity: sensor.dryer_amps
+            - entity: sensor.dryer_energy_today
+              icon: 'mdi:gauge'
+            - entity: sensor.dryer_energy_yesterday
+              icon: 'mdi:gauge'
+            - entity: sensor.dryer_signal
+              icon: 'mdi:wifi'            
+
+popup_office_blinds:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Office Blinds
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  entity: cover.left_office_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                  name: Left
+                  hold_action: 
+                    action: more-info
+                
+                - type: "custom:button-card"
+                  entity: cover.center_office_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                  name: Center
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:button-card"
+                  entity: cover.right_office_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                  name: Right
+                  hold_action: 
+                    action: more-info
