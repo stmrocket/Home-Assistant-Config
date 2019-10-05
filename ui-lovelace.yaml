@@ -3504,8 +3504,7 @@ views:
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
                     name: Blinds
-                    hold_action: 
-                      hold_action: 
+                    hold_action:  
                       action: call-service
                       service: script.popup_office_blinds
                       service_data:
@@ -6900,153 +6899,6 @@ views:
   - id: 7  
     icon: mdi:server-network
     name: System Status
-    popup_cards:
-    
-      sensor.automation_count:
-        title: Automation Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.automation_count
-              name: Current Automations
-            - input_number.automation_count_expected
-
-      sensor.binary_sensor_count:
-        title: Binary Sensor Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.binary_sensor_count
-              name: Current Binary Sensors
-            - input_number.binary_sensor_count_expected
-      
-      sensor.switch_count:
-        title: Switch Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.switch_count
-              name: Current Switches
-            - input_number.switch_count_expected
-
-      sensor.fan_count:
-        title: Fan Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.fan_count
-              name: Current Fans
-            - input_number.fan_count_expected
-
-      sensor.lights_count:
-        title: Light Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.lights_count
-              name: Current Lights
-            - input_number.light_count_expected
-
-      sensor.tracker_count:
-        title: Device Tracker Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.tracker_count
-              name: Current Device Trackers
-            - input_number.tracked_device_count_expected
-      
-      sensor.media_player_count:
-        title: Media Player Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.media_player_count
-              name: Current Media Players
-            - input_number.media_player_count_expected
-      
-      sensor.script_count:
-        title: Script Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.script_count
-              name: Current Scripts
-            - input_number.script_count_expected
-
-      sensor.sensor_count:
-        title: Sensor Count Settings
-        card:
-          type: entities
-          entities:
-            - entity: sensor.sensor_count
-              name: Current Sensors
-            - input_number.sensor_count_expected
-
-      binary_sensor.git_update_ready:
-        title: GitHub Updater
-        card:
-          type: vertical-stack
-          cards:
-            
-            - type: horizontal-stack
-              cards:
-
-                - type: "custom:button-card"
-                  entity: binary_sensor.git_update_ready
-                  color_type: icon
-                  state:
-                    - value: 'on'
-                      color: rgb(228, 94, 101)
-                    - value: 'off'
-                      color: rgb(255, 255, 255)
-                  icon: mdi:github-circle
-                  name: Restart
-                  tap_action: 
-                    action: call-service
-                    service: script.update_config_restart
-                
-                - type: "custom:button-card"
-                  entity: binary_sensor.git_update_ready
-                  color_type: icon
-                  state:
-                    - value: 'on'
-                      color: rgb(228, 94, 101)
-                    - value: 'off'
-                      color: rgb(255, 255, 255)
-                  icon: mdi:github-circle
-                  name: Reload
-                  tap_action: 
-                    action: call-service
-                    service: script.update_config_reload_automations
-
-                - type: "custom:button-card"
-                  entity: binary_sensor.git_update_ready
-                  color_type: icon
-                  state:
-                    - value: 'on'
-                      color: rgb(228, 94, 101)
-                    - value: 'off'
-                      color: rgb(255, 255, 255)
-                  icon: mdi:equal
-                  name: Clear
-                  tap_action: 
-                    action: call-service
-                    service: script.clear_config_update_flag
-
-      sensor.hacs:
-        title: HACS
-        card:
-          type: "custom:list-card"
-          entity: sensor.hacs            
-          feed_attribute: repositories
-          columns:
-            - {field: name, title: 'Name'}
-            - {field: installed version, title: 'Installed'}
-            - {field: available version, title: 'Latest'}
-
-            
-
     cards:
        
 #################################################################
@@ -7395,7 +7247,7 @@ views:
                         - value: 75
                           color: '#ffff00'
                         - value: 100
-                          color: '#ff0000'           
+                          color: '#ff0000'     
                           
                   - type: custom:bar-card
                     title_position: top
@@ -7446,6 +7298,14 @@ views:
                         color: '#1db954'
                       - value: ${states['sensor.automation_count_high'].state}
                         color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_automation_count
+                      data:
+                        deviceID: 
+                          - this
+
                 - type: 'custom:config-template-card'
                   card:
                     type: custom:bar-card
@@ -7464,6 +7324,14 @@ views:
                       color: '#1db954'
                     - value: ${states['sensor.binary_sensor_count_high'].state}
                       color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_binary_sensor_count
+                      data:
+                        deviceID: 
+                          - this
+                    
           
                 - type: 'custom:config-template-card'
                   card:
@@ -7483,6 +7351,13 @@ views:
                         color: '#1db954'
                       - value: ${states['sensor.switch_count_high'].state}
                         color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_switch_count
+                      data:
+                        deviceID: 
+                          - this
           
             - type: horizontal-stack
               cards:          
@@ -7504,6 +7379,13 @@ views:
                         color: '#1db954'
                       - value: ${states['sensor.fan_count_high'].state}
                         color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_fan_count
+                      data:
+                        deviceID: 
+                          - this
               
                 - type: 'custom:config-template-card'
                   card:
@@ -7523,6 +7405,13 @@ views:
                         color: '#1db954'
                       - value: ${states['sensor.light_count_high'].state}
                         color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_lights_count
+                      data:
+                        deviceID: 
+                          - this
           
                 - type: 'custom:config-template-card'
                   card:
@@ -7542,6 +7431,13 @@ views:
                         color: '#1db954'
                       - value: ${states['sensor.tracked_device_count_high'].state}
                         color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_tracker_count
+                      data:
+                        deviceID: 
+                          - this
             
             - type: horizontal-stack
               cards:          
@@ -7563,6 +7459,13 @@ views:
                         color: '#1db954'
                       - value: ${states['sensor.media_player_count_high'].state}
                         color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_media_player_count
+                      data:
+                        deviceID: 
+                          - this
           
                 - type: 'custom:config-template-card'
                   card:
@@ -7582,6 +7485,13 @@ views:
                         color: '#1db954'
                       - value: ${states['sensor.script_count_high'].state}
                         color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_script_count
+                      data:
+                        deviceID: 
+                          - this
                 
                 - type: 'custom:config-template-card'
                   card:
@@ -7601,6 +7511,13 @@ views:
                         color: '#1db954'
                       - value: ${states['sensor.sensor_count_high'].state}
                         color: '#bf9540'
+                    tap_action: service
+                    service_options:
+                      domain: script
+                      service: popup_sensor_count
+                      data:
+                        deviceID: 
+                          - this
 
 #################################################################
 #                                                               #
@@ -7622,9 +7539,17 @@ views:
                     color: rgb(255, 255, 255)
                 name: GitHub
                 tap_action:
-                  action: more-info
+                  action: call-service
+                  service: script.popup_github
+                  service_data:
+                    deviceID: 
+                      - this
                 hold_action: 
-                  action: more-info
+                  action: call-service
+                  service: script.popup_github
+                  service_data:
+                    deviceID: 
+                      - this
               - type: "custom:button-card"
                 entity: sensor.hacs
                 color_type: icon
@@ -7651,9 +7576,17 @@ views:
                     color: rgb(255, 255, 255)
                 name: Hass.io
                 tap_action:
-                  action: more-info
+                  action: call-service
+                  service: script.popup_hacs
+                  service_data:
+                    deviceID: 
+                      - this
                 hold_action: 
-                  action: more-info
+                  action: call-service
+                  service: script.popup_hacs
+                  service_data:
+                    deviceID: 
+                      - this
 #################################################################
 #                                                               #
 #                       Config - Zigbee2MQTT                    #
