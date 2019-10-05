@@ -111,124 +111,6 @@ views:
   - id: 0
     icon: mdi:castle
     name: Home
-    popup_cards:
-    
-      # switch.house_blinds:
-      #   title: House Blinds
-      #   card:
-      #     type: vertical-stack
-      #     cards:
-      #       - type: horizontal-stack
-      #         cards:
-                
-      #           - type: "custom:button-card"
-      #             entity: switch.office_blinds
-      #             color_type: icon
-      #             state:
-      #                 - value: "on"
-      #                   color: rgb(228, 94, 101)
-      #                   icon: mdi:blinds-open
-      #                 - value: "off"
-      #                   color: rgb(255, 255, 255)
-      #                   icon: mdi:blinds
-      #             name: Office
-      #             hold_action: 
-      #               action: more-info
-                
-      #           - type: "custom:button-card"
-      #             entity: switch.guest_blinds
-      #             color_type: icon
-      #             state:
-      #                 - value: "on"
-      #                   color: rgb(228, 94, 101)
-      #                   icon: mdi:blinds-open
-      #                 - value: "off"
-      #                   color: rgb(255, 255, 255)
-      #                   icon: mdi:blinds
-      #             name: Guest
-      #             hold_action: 
-      #               action: more-info
-
-      #           - type: "custom:button-card"
-      #             entity: switch.server_blinds
-      #             color_type: icon
-      #             state:
-      #                 - value: "on"
-      #                   color: rgb(228, 94, 101)
-      #                   icon: mdi:blinds-open
-      #                 - value: "off"
-      #                   color: rgb(255, 255, 255)
-      #                   icon: mdi:blinds
-      #             name: Server
-      #             hold_action: 
-      #               action: more-info
-            
-      #       - type: horizontal-stack
-      #         cards:
-                
-      #           - type: "custom:gap-card"
-
-      #           - type: "custom:button-card"
-      #             #entity: cover.office_blinds
-      #             color_type: icon
-      #             # state:
-      #             #     - value: "open"
-      #             #       color: rgb(228, 94, 101)
-      #             #       icon: mdi:blinds-open
-      #             #     - value: "closed"
-      #             #       color: rgb(255, 255, 255)
-      #             #       icon: mdi:blinds
-      #             name: Calibrate
-      #             tap_action: 
-      #               action: call-service
-      #               service: mqtt.publish
-      #               service_data:
-      #                 topic: habc/all/command/set/calibrate
-                
-      #           - type: "custom:gap-card"
-
-      sensor.roomba_status:
-        title: Roomba
-        card:
-          type: entities
-          entities:
-              - entity: switch.roomba
-              - entity: sensor.roomba_battery_level
-              - entity: sensor.roomba_status
-              - entity: input_boolean.roomba_auto
-      
-      sensor.washer_state:
-        title: Washer
-        card:
-          type: entities
-          entities:
-            - entity: sensor.washer_state
-            - entity: sensor.washer_voltage
-            - entity: sensor.washer_watts
-            - entity: sensor.washer_amps
-            - entity: sensor.washer_energy_today
-              icon: 'mdi:gauge'
-            - entity: sensor.washer_energy_yesterday
-              icon: 'mdi:gauge'
-            - entity: sensor.washer_signal
-              icon: 'mdi:wifi'
-
-      sensor.dryer_state:
-        title: Dryer
-        card:
-          type: entities
-          entities:
-            - entity: sensor.dryer_state
-            - entity: sensor.dryer_voltage
-            - entity: sensor.dryer_watts
-            - entity: sensor.dryer_amps
-            - entity: sensor.dryer_energy_today
-              icon: 'mdi:gauge'
-            - entity: sensor.dryer_energy_yesterday
-              icon: 'mdi:gauge'
-            - entity: sensor.dryer_signal
-              icon: 'mdi:wifi'
-
     cards:
 
 #################################################################
@@ -649,80 +531,6 @@ views:
                       service_data:
                         deviceID: 
                           - this
-                        # title: House Blinds
-                        # card:
-                        #   type: vertical-stack
-                        #   cards:
-                        #     - type: horizontal-stack
-                        #       cards:
-                                
-                        #         - type: "custom:button-card"
-                        #           entity: switch.office_blinds
-                        #           color_type: icon
-                        #           state:
-                        #               - value: "on"
-                        #                 color: rgb(228, 94, 101)
-                        #                 icon: mdi:blinds-open
-                        #               - value: "off"
-                        #                 color: rgb(255, 255, 255)
-                        #                 icon: mdi:blinds
-                        #           name: Office
-                        #           hold_action: 
-                        #             action: more-info
-                                
-                        #         - type: "custom:button-card"
-                        #           entity: switch.guest_blinds
-                        #           color_type: icon
-                        #           state:
-                        #               - value: "on"
-                        #                 color: rgb(228, 94, 101)
-                        #                 icon: mdi:blinds-open
-                        #               - value: "off"
-                        #                 color: rgb(255, 255, 255)
-                        #                 icon: mdi:blinds
-                        #           name: Guest
-                        #           hold_action: 
-                        #             action: more-info
-
-                        #         - type: "custom:button-card"
-                        #           entity: switch.server_blinds
-                        #           color_type: icon
-                        #           state:
-                        #               - value: "on"
-                        #                 color: rgb(228, 94, 101)
-                        #                 icon: mdi:blinds-open
-                        #               - value: "off"
-                        #                 color: rgb(255, 255, 255)
-                        #                 icon: mdi:blinds
-                        #           name: Server
-                        #           hold_action: 
-                        #             action: more-info
-                            
-                        #     - type: horizontal-stack
-                        #       cards:
-                                
-                        #         - type: "custom:gap-card"
-
-                        #         - type: "custom:button-card"
-                        #           #entity: cover.office_blinds
-                        #           color_type: icon
-                        #           # state:
-                        #           #     - value: "open"
-                        #           #       color: rgb(228, 94, 101)
-                        #           #       icon: mdi:blinds-open
-                        #           #     - value: "closed"
-                        #           #       color: rgb(255, 255, 255)
-                        #           #       icon: mdi:blinds
-                        #           name: Calibrate
-                        #           tap_action: 
-                        #             action: call-service
-                        #             service: mqtt.publish
-                        #             service_data:
-                        #               topic: habc/all/command/set/calibrate
-                                
-                        #         - type: "custom:gap-card"
-
-
 
                   - type: "custom:button-card"
                     entity: switch.manual_timer_lights
@@ -749,9 +557,17 @@ views:
                         color: rgb(255, 255, 255)
                         name: Idle   
                     tap_action:
-                      action: more-info                 
+                      action: call-service
+                      service: script.popup_washer
+                      service_data:
+                        deviceID: 
+                          - this                
                     hold_action: 
-                      action: more-info
+                      action: call-service
+                      service: script.popup_washer
+                      service_data:
+                        deviceID: 
+                          - this
 
                   - type: "custom:button-card"
                     entity: sensor.dryer_state
@@ -768,9 +584,17 @@ views:
                         color: rgb(255, 200, 0)
                         name: Door                    
                     tap_action:
-                      action: more-info                 
+                      action: call-service
+                      service: script.popup_dryer
+                      service_data:
+                        deviceID: 
+                          - this              
                     hold_action: 
-                      action: more-info
+                      action: call-service
+                      service: script.popup_dryer
+                      service_data:
+                        deviceID: 
+                          - this
 
             - type: horizontal-stack
               cards:
@@ -803,7 +627,11 @@ views:
                           service_data:
                             entity_id: switch.roomba                   
                     hold_action: 
-                      action: more-info
+                      action: call-service
+                      service: script.popup_roomba
+                      service_data:
+                        deviceID: 
+                          - this
 
                   - type: "custom:button-card"
                     entity: lock.front_door
@@ -2822,55 +2650,6 @@ views:
                       topic: nuvo/command/set/zone/src
                       payload: 12,6                      
 
-      cover.office_blinds:
-        title: Office Blinds
-        card:
-          type: vertical-stack
-          cards:
-            - type: horizontal-stack
-              cards:
-                
-                - type: "custom:button-card"
-                  entity: cover.left_office_blind
-                  color_type: icon
-                  state:
-                      - value: "open"
-                        color: rgb(228, 94, 101)
-                        icon: mdi:blinds-open
-                      - value: "closed"
-                        color: rgb(255, 255, 255)
-                        icon: mdi:blinds
-                  name: Left
-                  hold_action: 
-                    action: more-info
-                
-                - type: "custom:button-card"
-                  entity: cover.center_office_blind
-                  color_type: icon
-                  state:
-                      - value: "open"
-                        color: rgb(228, 94, 101)
-                        icon: mdi:blinds-open
-                      - value: "closed"
-                        color: rgb(255, 255, 255)
-                        icon: mdi:blinds
-                  name: Center
-                  hold_action: 
-                    action: more-info
-
-                - type: "custom:button-card"
-                  entity: cover.right_office_blind
-                  color_type: icon
-                  state:
-                      - value: "open"
-                        color: rgb(228, 94, 101)
-                        icon: mdi:blinds-open
-                      - value: "closed"
-                        color: rgb(255, 255, 255)
-                        icon: mdi:blinds
-                  name: Right
-                  hold_action: 
-                    action: more-info
 
                                
 
@@ -3726,7 +3505,12 @@ views:
                         icon: mdi:blinds
                     name: Blinds
                     hold_action: 
-                      action: more-info
+                      hold_action: 
+                      action: call-service
+                      service: script.popup_office_blinds
+                      service_data:
+                        deviceID: 
+                          - this
                   - type: "custom:button-card"
                     entity: light.office_light
                     color_type: icon
@@ -3761,14 +3545,6 @@ views:
                       action: more-info
               - type: horizontal-stack
                 cards:
-                  # - type: "custom:button-card"
-                  #   entity: switch
-                  #   color_type: icon
-                  #   color: rgb(228, 94, 101)
-                  #   icon: mdi:lightbulb-outline
-                  #   name: Driveway
-                  #   hold_action: 
-                  #     action: more-info
                   - type: "custom:gap-card"
                   - type: "custom:button-card"
                     entity: switch.office_peripherals
