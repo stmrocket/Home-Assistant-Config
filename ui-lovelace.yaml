@@ -7562,9 +7562,18 @@ views:
                     color: rgb(255, 255, 255)
                 name: HACS
                 tap_action:
-                  action: more-info
+                  action: call-service
+                  service: script.popup_hacs
+                  service_data:
+                    deviceID: 
+                      - this
                 hold_action: 
-                  action: more-info
+                  action: call-service
+                  service: script.popup_hacs
+                  service_data:
+                    deviceID: 
+                      - this
+
               - type: "custom:button-card"
                 entity: binary_sensor.updater
                 color_type: icon
@@ -7576,17 +7585,9 @@ views:
                     color: rgb(255, 255, 255)
                 name: Hass.io
                 tap_action:
-                  action: call-service
-                  service: script.popup_hacs
-                  service_data:
-                    deviceID: 
-                      - this
+                  action: more-info
                 hold_action: 
-                  action: call-service
-                  service: script.popup_hacs
-                  service_data:
-                    deviceID: 
-                      - this
+                  action: more-info
 #################################################################
 #                                                               #
 #                       Config - Zigbee2MQTT                    #
