@@ -453,14 +453,14 @@ elkm1:
 
 
 
-proximity:
-  home:
-    ignored_zones:
-      - work
-    devices:
-      - device_tracker.shawn_n6
-    tolerance: 50
-    unit_of_measurement: mi
+# proximity:
+#   home:
+#     ignored_zones:
+#       - work
+#     devices:
+#       - device_tracker.shawn_n6
+#     tolerance: 50
+#     unit_of_measurement: mi
 
 api:
 alexa: !include alexa.yaml
@@ -484,13 +484,13 @@ device_tracker:
     username: !secret my_callsign
     callsigns:
       - !secret truck_callsign
-  - platform: unifi
-    host: !secret unifi_host
-    port: !secret unifi_port
-    verify_ssl: false
-    username: !secret ubnt_user
-    password: !secret ubnt_pass
-    consider_home: 60
+  # - platform: unifi
+  #   host: !secret unifi_host
+  #   port: !secret unifi_port
+  #   verify_ssl: false
+  #   username: !secret ubnt_user
+  #   password: !secret ubnt_pass
+  #   consider_home: 60
 
 #Notification Services
 notify:
