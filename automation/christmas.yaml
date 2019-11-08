@@ -9,7 +9,7 @@
   action:
   - service: switch.turn_on
     data:
-      entity_id: switch.indoor_christmas_decor
+      entity_id: switch.indoor_christmas
 
 - alias: Indoor Christmas Off When Away or Asleep
   trigger:
@@ -23,7 +23,7 @@
   action:
   - service: switch.turn_on
     data:
-      entity_id: switch.indoor_christmas_decor
+      entity_id: switch.indoor_christmas
 
 - alias: MQTT Christmas Show On
   trigger:
