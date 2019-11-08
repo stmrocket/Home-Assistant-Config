@@ -8,8 +8,6 @@ before_install:
   - mv travis_home-assistant.log home-assistant.log
   - rm -rf custom_components
   - mv travis_hacs_components/ custom_components/
-  - sed -i 's/^camera:/#camera:/g' configuration.yaml
-  - sed -i 's/^- platform: zoneminder:/#- platform: zoneminder/g' configuration.yaml
   - sudo apt-get install -y libudev-dev
 install:
   - pip3 install homeassistant
