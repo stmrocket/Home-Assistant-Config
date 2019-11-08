@@ -4034,29 +4034,29 @@ views:
                           entity_id: remote.master_bedroom_2     
                           activity: "Listen to WHA"      
 
-              - type: conditional
-                conditions:
-                - entity: sensor.master_harmony_activity_alternate
-                  state_not: "unknown"
-                card: 
-                  type: horizontal-stack
-                  cards:
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "PowerOff"
-                          color: rgb(228, 94, 101)
-                        - value: "PowerOff"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:remote-tv-off
-                      name: "Off"
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_off
-                        service_data:
-                          entity_id: remote.harmony_hub
+#               - type: conditional
+#                 conditions:
+#                 - entity: sensor.master_harmony_activity_alternate
+#                   state_not: "unknown"
+#                 card: 
+#                   type: horizontal-stack
+#                   cards:
+#                     - type: "custom:button-card"
+#                       entity: sensor.master_harmony_activity_alternate
+#                       color_type: icon
+#                       state:
+#                         - value: "PowerOff"
+#                           color: rgb(228, 94, 101)
+#                         - value: "PowerOff"
+#                           operator: '!='
+#                           color: rgb(255, 255, 255)
+#                       icon: mdi:remote-tv-off
+#                       name: "Off"
+#                       tap_action:
+#                         action: call-service
+#                         service: remote.turn_off
+#                         service_data:
+#                           entity_id: remote.harmony_hub
                     
                     # - type: "custom:button-card"
                     #   entity: sensor.master_harmony_activity_alternate
