@@ -4058,77 +4058,77 @@ views:
                         service_data:
                           entity_id: remote.harmony_hub
                     
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "Watch PVR"
-                          color: rgb(228, 94, 101)
-                        - value: "Watch PVR"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:kodi
-                      name: Kodi
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.harmony_hub     
-                          activity: "Watch PVR"            
+                    # - type: "custom:button-card"
+                    #   entity: sensor.master_harmony_activity_alternate
+                    #   color_type: icon
+                    #   state:
+                    #     - value: "Watch PVR"
+                    #       color: rgb(228, 94, 101)
+                    #     - value: "Watch PVR"
+                    #       operator: '!='
+                    #       color: rgb(255, 255, 255)
+                    #   icon: mdi:kodi
+                    #   name: Kodi
+                    #   tap_action:
+                    #     action: call-service
+                    #     service: remote.turn_on
+                    #     service_data:
+                    #       entity_id: remote.harmony_hub     
+                    #       activity: "Watch PVR"            
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "Watch Roku"
-                          color: rgb(228, 94, 101)
-                        - value: "Watch Roku"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:youtube-tv
-                      name: Roku
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.harmony_hub     
-                          activity: "Watch Roku"            
+                    # - type: "custom:button-card"
+                    #   entity: sensor.master_harmony_activity_alternate
+                    #   color_type: icon
+                    #   state:
+                    #     - value: "Watch Roku"
+                    #       color: rgb(228, 94, 101)
+                    #     - value: "Watch Roku"
+                    #       operator: '!='
+                    #       color: rgb(255, 255, 255)
+                    #   icon: mdi:youtube-tv
+                    #   name: Roku
+                    #   tap_action:
+                    #     action: call-service
+                    #     service: remote.turn_on
+                    #     service_data:
+                    #       entity_id: remote.harmony_hub     
+                    #       activity: "Watch Roku"            
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "ChromeCast"
-                          color: rgb(228, 94, 101)
-                        - value: "ChromeCast"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:cast
-                      name: Cast
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.harmony_hub     
-                          activity: "ChromeCast"           
+                    # - type: "custom:button-card"
+                    #   entity: sensor.master_harmony_activity_alternate
+                    #   color_type: icon
+                    #   state:
+                    #     - value: "ChromeCast"
+                    #       color: rgb(228, 94, 101)
+                    #     - value: "ChromeCast"
+                    #       operator: '!='
+                    #       color: rgb(255, 255, 255)
+                    #   icon: mdi:cast
+                    #   name: Cast
+                    #   tap_action:
+                    #     action: call-service
+                    #     service: remote.turn_on
+                    #     service_data:
+                    #       entity_id: remote.harmony_hub     
+                    #       activity: "ChromeCast"           
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "Listen to WHA"
-                          color: rgb(0, 145, 255)
-                        - value: "Listen to WHA"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:music
-                      name: Music
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.harmony_hub     
-                          activity: "Listen to WHA"      
+                    # - type: "custom:button-card"
+                    #   entity: sensor.master_harmony_activity_alternate
+                    #   color_type: icon
+                    #   state:
+                    #     - value: "Listen to WHA"
+                    #       color: rgb(0, 145, 255)
+                    #     - value: "Listen to WHA"
+                    #       operator: '!='
+                    #       color: rgb(255, 255, 255)
+                    #   icon: mdi:music
+                    #   name: Music
+                    #   tap_action:
+                    #     action: call-service
+                    #     service: remote.turn_on
+                    #     service_data:
+                    #       entity_id: remote.harmony_hub     
+                    #       activity: "Listen to WHA"      
 
               - type: custom:mini-media-player
                 entity: media_player.master_bedroom_stereo
@@ -8050,7 +8050,7 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_light_1
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Lights
                     hold_action: 
@@ -8058,15 +8058,15 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_sink_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Sink Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: light.breakfast_room_light
-                    color_type: card
-                    color: rgb(66, 134, 244)
+                    color_type: icon
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Table
                     hold_action: 
@@ -8076,7 +8076,7 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_leds_rgb
                     color_type: icon
-                    color: auto
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Cabinets
                     hold_action: 
@@ -8084,7 +8084,7 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_counter_leds_white
                     color_type: icon
-                    color: rgb(255, 200,0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Counter
                     hold_action: 
@@ -8092,7 +8092,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.popcorn_popper_2
                     color_type: icon
-                    color: rgb(255, 0, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:popcorn
                     name: Popper
                     hold_action: 
