@@ -10,6 +10,7 @@ before_install:
   - mv travis_hacs_components/ custom_components/
   - sudo apt-get install -y libudev-dev
 install:
-  - pip3 install homeassistant
+  #- pip3 install homeassistant
+  - pip3 install homeassistant==0.100.2
 script:
   - hass -c . --script check_config
