@@ -4058,77 +4058,77 @@ views:
                         service_data:
                           entity_id: remote.harmony_hub
                     
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "Watch PVR"
-                          color: rgb(228, 94, 101)
-                        - value: "Watch PVR"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:kodi
-                      name: Kodi
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.harmony_hub     
-                          activity: "Watch PVR"            
+                    # - type: "custom:button-card"
+                    #   entity: sensor.master_harmony_activity_alternate
+                    #   color_type: icon
+                    #   state:
+                    #     - value: "Watch PVR"
+                    #       color: rgb(228, 94, 101)
+                    #     - value: "Watch PVR"
+                    #       operator: '!='
+                    #       color: rgb(255, 255, 255)
+                    #   icon: mdi:kodi
+                    #   name: Kodi
+                    #   tap_action:
+                    #     action: call-service
+                    #     service: remote.turn_on
+                    #     service_data:
+                    #       entity_id: remote.harmony_hub     
+                    #       activity: "Watch PVR"            
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "Watch Roku"
-                          color: rgb(228, 94, 101)
-                        - value: "Watch Roku"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:youtube-tv
-                      name: Roku
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.harmony_hub     
-                          activity: "Watch Roku"            
+                    # - type: "custom:button-card"
+                    #   entity: sensor.master_harmony_activity_alternate
+                    #   color_type: icon
+                    #   state:
+                    #     - value: "Watch Roku"
+                    #       color: rgb(228, 94, 101)
+                    #     - value: "Watch Roku"
+                    #       operator: '!='
+                    #       color: rgb(255, 255, 255)
+                    #   icon: mdi:youtube-tv
+                    #   name: Roku
+                    #   tap_action:
+                    #     action: call-service
+                    #     service: remote.turn_on
+                    #     service_data:
+                    #       entity_id: remote.harmony_hub     
+                    #       activity: "Watch Roku"            
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "ChromeCast"
-                          color: rgb(228, 94, 101)
-                        - value: "ChromeCast"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:cast
-                      name: Cast
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.harmony_hub     
-                          activity: "ChromeCast"           
+                    # - type: "custom:button-card"
+                    #   entity: sensor.master_harmony_activity_alternate
+                    #   color_type: icon
+                    #   state:
+                    #     - value: "ChromeCast"
+                    #       color: rgb(228, 94, 101)
+                    #     - value: "ChromeCast"
+                    #       operator: '!='
+                    #       color: rgb(255, 255, 255)
+                    #   icon: mdi:cast
+                    #   name: Cast
+                    #   tap_action:
+                    #     action: call-service
+                    #     service: remote.turn_on
+                    #     service_data:
+                    #       entity_id: remote.harmony_hub     
+                    #       activity: "ChromeCast"           
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity_alternate
-                      color_type: icon
-                      state:
-                        - value: "Listen to WHA"
-                          color: rgb(0, 145, 255)
-                        - value: "Listen to WHA"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:music
-                      name: Music
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.harmony_hub     
-                          activity: "Listen to WHA"      
+                    # - type: "custom:button-card"
+                    #   entity: sensor.master_harmony_activity_alternate
+                    #   color_type: icon
+                    #   state:
+                    #     - value: "Listen to WHA"
+                    #       color: rgb(0, 145, 255)
+                    #     - value: "Listen to WHA"
+                    #       operator: '!='
+                    #       color: rgb(255, 255, 255)
+                    #   icon: mdi:music
+                    #   name: Music
+                    #   tap_action:
+                    #     action: call-service
+                    #     service: remote.turn_on
+                    #     service_data:
+                    #       entity_id: remote.harmony_hub     
+                    #       activity: "Listen to WHA"      
 
               - type: custom:mini-media-player
                 entity: media_player.master_bedroom_stereo
@@ -7602,272 +7602,272 @@ views:
             - entity: timer.zigbee_permit_join
             - entity: sensor.bridge_state          
 
-          - type: conditional
-            conditions:
-              - entity: sensor.prusa_mk3_current_state
-                state: "unknown"
-            card: 
-              type: picture-elements
-              image: /local/lovelace/room.png
-              elements:
-                - entity: sensor.blank
-                  hold-action: none
-                  prefix: "Prusa MK3: Offline"
-                  style:
-                    bottom: 20%
-                    font-size: 150%
-                    left: 5%
-                    transform: initial
-                  tap-action: none
-                  type: state-label
+#           - type: conditional
+#             conditions:
+#               - entity: sensor.prusa_mk3_current_state
+#                 state: "unknown"
+#             card: 
+#               type: picture-elements
+#               image: /local/lovelace/room.png
+#               elements:
+#                 - entity: sensor.blank
+#                   hold-action: none
+#                   prefix: "Prusa MK3: Offline"
+#                   style:
+#                     bottom: 20%
+#                     font-size: 150%
+#                     left: 5%
+#                     transform: initial
+#                   tap-action: none
+#                   type: state-label
 
-#################################################################
-#                                                               #
-#                          System - Prusa                       #
-#                                                               #
-#################################################################
+# #################################################################
+# #                                                               #
+# #                          System - Prusa                       #
+# #                                                               #
+# #################################################################
 
-          - type: conditional
-            conditions:
-              - entity: sensor.prusa_mk3_current_state
-                state_not: "unknown"
-            card: 
-                type: 'custom:vertical-stack-in-card'
-                cards:
-                  - type: picture-elements
-                    image: /local/lovelace/room.png
-                    elements:
-                      - entity: sensor.prusa_mk3_current_state
-                        hold-action: none
-                        prefix: "Prusa MK3: "
-                        style:
-                          bottom: 20%
-                          font-size: 150%
-                          left: 5%
-                          transform: initial
-                        tap-action: none
-                        type: state-label
-                      - entity: sensor.remaining_print_time
-                        prefix: "Remaining: "
-                        style:
-                          bottom: 23%
-                          font-size: 110%
-                          right: 5%
-                          transform: initial
-                        type: state-label
+#           - type: conditional
+#             conditions:
+#               - entity: sensor.prusa_mk3_current_state
+#                 state_not: "unknown"
+#             card: 
+#                 type: 'custom:vertical-stack-in-card'
+#                 cards:
+#                   - type: picture-elements
+#                     image: /local/lovelace/room.png
+#                     elements:
+#                       - entity: sensor.prusa_mk3_current_state
+#                         hold-action: none
+#                         prefix: "Prusa MK3: "
+#                         style:
+#                           bottom: 20%
+#                           font-size: 150%
+#                           left: 5%
+#                           transform: initial
+#                         tap-action: none
+#                         type: state-label
+#                       - entity: sensor.remaining_print_time
+#                         prefix: "Remaining: "
+#                         style:
+#                           bottom: 23%
+#                           font-size: 110%
+#                           right: 5%
+#                           transform: initial
+#                         type: state-label
 
-                  - type: horizontal-stack
-                    cards:  
-                      - type: 'custom:flex-horseshoe-card'
-                        entities:
-                          - entity: sensor.prusa_mk3_job_percentage
-                            attribute: state
-                            decimals: 0
-                            name: 'STATUS'
-                            unit: '%'
-                          - entity: sensor.elapsed_print_time
-                            attribute: state
-                            decimals: 0
+#                   - type: horizontal-stack
+#                     cards:  
+#                       - type: 'custom:flex-horseshoe-card'
+#                         entities:
+#                           - entity: sensor.prusa_mk3_job_percentage
+#                             attribute: state
+#                             decimals: 0
+#                             name: 'STATUS'
+#                             unit: '%'
+#                           - entity: sensor.elapsed_print_time
+#                             attribute: state
+#                             decimals: 0
 
-                        show:
-                          horseshoe_style: 'lineargradient'
-                        layout:
-                          hlines:
-                            # A horizontal line. Not connected to an entity
-                            - id: 0
-                              xpos: 50
-                              ypos: 52
-                              length: 40
-                              styles:
-                                - stroke: var(--primary-text-color);
-                                - stroke-width: 5;
-                                - stroke-linecap: round;
-                                - opacity: 0.7;
-                          states:
-                            # States 0 refers to the first entity in the list, ie index 0
-                            - id: 0
-                              entity_index: 0
-                              xpos: 50
-                              ypos: 44
-                              styles:
-                                - font-size: 3em;
-                            # States 1 refers to the second entity in the list, ie index 1
-                            - id: 1
-                              entity_index: 1
-                              xpos: 50
-                              ypos: 70
-                              styles:
-                                - text-anchor: middle;
-                                - font-size: 2.0em;
+#                         show:
+#                           horseshoe_style: 'lineargradient'
+#                         layout:
+#                           hlines:
+#                             # A horizontal line. Not connected to an entity
+#                             - id: 0
+#                               xpos: 50
+#                               ypos: 52
+#                               length: 40
+#                               styles:
+#                                 - stroke: var(--primary-text-color);
+#                                 - stroke-width: 5;
+#                                 - stroke-linecap: round;
+#                                 - opacity: 0.7;
+#                           states:
+#                             # States 0 refers to the first entity in the list, ie index 0
+#                             - id: 0
+#                               entity_index: 0
+#                               xpos: 50
+#                               ypos: 44
+#                               styles:
+#                                 - font-size: 3em;
+#                             # States 1 refers to the second entity in the list, ie index 1
+#                             - id: 1
+#                               entity_index: 1
+#                               xpos: 50
+#                               ypos: 70
+#                               styles:
+#                                 - text-anchor: middle;
+#                                 - font-size: 2.0em;
                             
-                          names:
-                            # Names 0 refers to the first entity in the list, ie index 0
-                            - id: 0
-                              entity_index: 0
-                              xpos: 50
-                              ypos: 95
+#                           names:
+#                             # Names 0 refers to the first entity in the list, ie index 0
+#                             - id: 0
+#                               entity_index: 0
+#                               xpos: 50
+#                               ypos: 95
                           
-                        # Scale set to -10 to +40 degrees celcius
-                        horseshoe_scale:
-                          min: 0
-                          max: 100
-                        # color stop list with 10 colors defined in the theme. With the `lineargradient` fill style, only the
-                        # first (16:) and last (25:) colors are used. The thresholds are ignored with this setting.
-                        color_stops:
-                          0: '#FFF6E3'
-                          10: '#FFE9B9'
-                          20: '#FFDA8A'
-                          30: '#FFCB5B'
-                          40: '#FFBF37'
-                          50: '#ffb414'
-                          60: '#FFAD12'
-                          70: '#FFA40E'
-                          80: '#FF9C0B' 
-                          90: '#FF8C06' 
+#                         # Scale set to -10 to +40 degrees celcius
+#                         horseshoe_scale:
+#                           min: 0
+#                           max: 100
+#                         # color stop list with 10 colors defined in the theme. With the `lineargradient` fill style, only the
+#                         # first (16:) and last (25:) colors are used. The thresholds are ignored with this setting.
+#                         color_stops:
+#                           0: '#FFF6E3'
+#                           10: '#FFE9B9'
+#                           20: '#FFDA8A'
+#                           30: '#FFCB5B'
+#                           40: '#FFBF37'
+#                           50: '#ffb414'
+#                           60: '#FFAD12'
+#                           70: '#FFA40E'
+#                           80: '#FF9C0B' 
+#                           90: '#FF8C06' 
 
-                      - type: 'custom:flex-horseshoe-card'
-                        entities:
-                          - entity: sensor.nozzle_temp_actual
-                            attribute: state
-                            decimals: 1
-                            name: 'Hotend'
-                            unit: '°C'
-                          - entity: sensor.nozzle_temp_target
-                            attribute: state
-                            decimals: 1
-                            unit: '°C'
-                            icon: mdi:thermometer
+#                       - type: 'custom:flex-horseshoe-card'
+#                         entities:
+#                           - entity: sensor.nozzle_temp_actual
+#                             attribute: state
+#                             decimals: 1
+#                             name: 'Hotend'
+#                             unit: '°C'
+#                           - entity: sensor.nozzle_temp_target
+#                             attribute: state
+#                             decimals: 1
+#                             unit: '°C'
+#                             icon: mdi:thermometer
                           
-                        show:
-                          horseshoe_style: 'lineargradient'
-                        layout:
-                          hlines:
-                            # A horizontal line. Not connected to an entity
-                            - id: 0
-                              xpos: 50
-                              ypos: 52
-                              length: 40
-                              styles:
-                                - stroke: var(--primary-text-color);
-                                - stroke-width: 5;
-                                - stroke-linecap: round;
-                                - opacity: 0.7;
-                          states:
-                            # States 0 refers to the first entity in the list, ie index 0
-                            - id: 0
-                              entity_index: 0
-                              xpos: 53
-                              ypos: 44
-                              styles:
-                                - font-size: 3em;
-                            # States 1 refers to the second entity in the list, ie index 1
-                            - id: 1
-                              entity_index: 1
-                              xpos: 50
-                              ypos: 70
-                              styles:
-                                - text-anchor: middle;
-                                - font-size: 2.0em;
+#                         show:
+#                           horseshoe_style: 'lineargradient'
+#                         layout:
+#                           hlines:
+#                             # A horizontal line. Not connected to an entity
+#                             - id: 0
+#                               xpos: 50
+#                               ypos: 52
+#                               length: 40
+#                               styles:
+#                                 - stroke: var(--primary-text-color);
+#                                 - stroke-width: 5;
+#                                 - stroke-linecap: round;
+#                                 - opacity: 0.7;
+#                           states:
+#                             # States 0 refers to the first entity in the list, ie index 0
+#                             - id: 0
+#                               entity_index: 0
+#                               xpos: 53
+#                               ypos: 44
+#                               styles:
+#                                 - font-size: 3em;
+#                             # States 1 refers to the second entity in the list, ie index 1
+#                             - id: 1
+#                               entity_index: 1
+#                               xpos: 50
+#                               ypos: 70
+#                               styles:
+#                                 - text-anchor: middle;
+#                                 - font-size: 2.0em;
                             
-                          names:
-                            # Names 0 refers to the first entity in the list, ie index 0
-                            - id: 0
-                              entity_index: 0
-                              xpos: 50
-                              ypos: 95
+#                           names:
+#                             # Names 0 refers to the first entity in the list, ie index 0
+#                             - id: 0
+#                               entity_index: 0
+#                               xpos: 50
+#                               ypos: 95
                           
-                        # Scale set to -10 to +40 degrees celcius
-                        horseshoe_scale:
-                          min: 0
-                          max: 400
-                        # color stop list with 10 colors defined in the theme. With the `lineargradient` fill style, only the
-                        # first (16:) and last (25:) colors are used. The thresholds are ignored with this setting.
-                        color_stops:
-                          0: '#FFF6E3'
-                          1000: '#FFE9B9'
-                          2000: '#FFDA8A'
-                          3000: '#FFCB5B'
-                          4000: '#FFBF37'
-                          5000: '#ffb414'
-                          6000: '#FFAD12'
-                          7000: '#FFA40E'
-                          8000: '#FF9C0B' 
-                          9000: '#FF8C06' 
+#                         # Scale set to -10 to +40 degrees celcius
+#                         horseshoe_scale:
+#                           min: 0
+#                           max: 400
+#                         # color stop list with 10 colors defined in the theme. With the `lineargradient` fill style, only the
+#                         # first (16:) and last (25:) colors are used. The thresholds are ignored with this setting.
+#                         color_stops:
+#                           0: '#FFF6E3'
+#                           1000: '#FFE9B9'
+#                           2000: '#FFDA8A'
+#                           3000: '#FFCB5B'
+#                           4000: '#FFBF37'
+#                           5000: '#ffb414'
+#                           6000: '#FFAD12'
+#                           7000: '#FFA40E'
+#                           8000: '#FF9C0B' 
+#                           9000: '#FF8C06' 
                       
-                      - type: 'custom:flex-horseshoe-card'
-                        entities:
-                          - entity: sensor.bed_temp_actual
-                            attribute: state
-                            decimals: 1
-                            name: 'BED'
-                            unit: '°C'
-                          - entity: sensor.bed_temp_target
-                            attribute: state
-                            decimals: 1
-                            unit: '°C'
-                            icon: mdi:thermometer
+#                       - type: 'custom:flex-horseshoe-card'
+#                         entities:
+#                           - entity: sensor.bed_temp_actual
+#                             attribute: state
+#                             decimals: 1
+#                             name: 'BED'
+#                             unit: '°C'
+#                           - entity: sensor.bed_temp_target
+#                             attribute: state
+#                             decimals: 1
+#                             unit: '°C'
+#                             icon: mdi:thermometer
                           
-                        show:
-                          horseshoe_style: 'lineargradient'
-                        layout:
-                          hlines:
-                            # A horizontal line. Not connected to an entity
-                            - id: 0
-                              xpos: 50
-                              ypos: 52
-                              length: 40
-                              styles:
-                                - stroke: var(--primary-text-color);
-                                - stroke-width: 5;
-                                - stroke-linecap: round;
-                                - opacity: 0.7;
-                          states:
-                            # States 0 refers to the first entity in the list, ie index 0
-                            - id: 0
-                              entity_index: 0
-                              xpos: 53
-                              ypos: 44
-                              styles:
-                                - font-size: 3em;
-                            # States 1 refers to the second entity in the list, ie index 1
-                            - id: 1
-                              entity_index: 1
-                              xpos: 50
-                              ypos: 70
-                              styles:
-                                - text-anchor: middle;
-                                - font-size: 2.0em;
+#                         show:
+#                           horseshoe_style: 'lineargradient'
+#                         layout:
+#                           hlines:
+#                             # A horizontal line. Not connected to an entity
+#                             - id: 0
+#                               xpos: 50
+#                               ypos: 52
+#                               length: 40
+#                               styles:
+#                                 - stroke: var(--primary-text-color);
+#                                 - stroke-width: 5;
+#                                 - stroke-linecap: round;
+#                                 - opacity: 0.7;
+#                           states:
+#                             # States 0 refers to the first entity in the list, ie index 0
+#                             - id: 0
+#                               entity_index: 0
+#                               xpos: 53
+#                               ypos: 44
+#                               styles:
+#                                 - font-size: 3em;
+#                             # States 1 refers to the second entity in the list, ie index 1
+#                             - id: 1
+#                               entity_index: 1
+#                               xpos: 50
+#                               ypos: 70
+#                               styles:
+#                                 - text-anchor: middle;
+#                                 - font-size: 2.0em;
                             
-                          names:
-                            # Names 0 refers to the first entity in the list, ie index 0
-                            - id: 0
-                              entity_index: 0
-                              xpos: 50
-                              ypos: 95
+#                           names:
+#                             # Names 0 refers to the first entity in the list, ie index 0
+#                             - id: 0
+#                               entity_index: 0
+#                               xpos: 50
+#                               ypos: 95
                           
-                        # Scale set to -10 to +40 degrees celcius
-                        horseshoe_scale:
-                          min: 0
-                          max: 100
-                        # color stop list with 10 colors defined in the theme. With the `lineargradient` fill style, only the
-                        # first (16:) and last (25:) colors are used. The thresholds are ignored with this setting.
-                        color_stops:
-                          0: '#FFF6E3'
-                          1000: '#FFE9B9'
-                          2000: '#FFDA8A'
-                          3000: '#FFCB5B'
-                          4000: '#FFBF37'
-                          5000: '#ffb414'
-                          6000: '#FFAD12'
-                          7000: '#FFA40E'
-                          8000: '#FF9C0B' 
-                          9000: '#FF8C06' 
+#                         # Scale set to -10 to +40 degrees celcius
+#                         horseshoe_scale:
+#                           min: 0
+#                           max: 100
+#                         # color stop list with 10 colors defined in the theme. With the `lineargradient` fill style, only the
+#                         # first (16:) and last (25:) colors are used. The thresholds are ignored with this setting.
+#                         color_stops:
+#                           0: '#FFF6E3'
+#                           1000: '#FFE9B9'
+#                           2000: '#FFDA8A'
+#                           3000: '#FFCB5B'
+#                           4000: '#FFBF37'
+#                           5000: '#ffb414'
+#                           6000: '#FFAD12'
+#                           7000: '#FFA40E'
+#                           8000: '#FF9C0B' 
+#                           9000: '#FF8C06' 
 
-                  - type: picture-entity
-                    entity: camera.prusa_mk3
-                    camera_image: camera.prusa_mk3
-                    show_name: false
-                    show_state: false
+#                   - type: picture-entity
+#                     entity: camera.prusa_mk3
+#                     camera_image: camera.prusa_mk3
+#                     show_name: false
+#                     show_state: false
 #############################################################################################################################################
 #                                                                                                                                           # 
 #                                                              VIEW 8 - Kitchen Tablet                                                      #
@@ -8050,7 +8050,7 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_light_1
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Lights
                     hold_action: 
@@ -8058,15 +8058,15 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_sink_light
                     color_type: icon
-                    color: rgb(255, 200, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Sink Light
                     hold_action: 
                       action: more-info
                   - type: "custom:button-card"
                     entity: light.breakfast_room_light
-                    color_type: card
-                    color: rgb(66, 134, 244)
+                    color_type: icon
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Table
                     hold_action: 
@@ -8076,7 +8076,7 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_leds_rgb
                     color_type: icon
-                    color: auto
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Cabinets
                     hold_action: 
@@ -8084,7 +8084,7 @@ views:
                   - type: "custom:button-card"
                     entity: light.kitchen_counter_leds_white
                     color_type: icon
-                    color: rgb(255, 200,0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:lightbulb-outline
                     name: Counter
                     hold_action: 
@@ -8092,7 +8092,7 @@ views:
                   - type: "custom:button-card"
                     entity: switch.popcorn_popper_2
                     color_type: icon
-                    color: rgb(255, 0, 0)
+                    color: rgb(228, 94, 101)
                     icon: mdi:popcorn
                     name: Popper
                     hold_action: 

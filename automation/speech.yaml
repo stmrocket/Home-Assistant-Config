@@ -270,6 +270,17 @@
     data:
       topic: parrot/command/set/play
       payload: 4,3
+  - service: notify.browser
+    data:
+      message: Someone is at the front door.
+      title: Doorbell
+  - service: notify.den_kodi
+    data:
+      title: "Doorbell"
+      message: "Someone is at the front door."
+      data:
+        displaytime: 20000
+        icon: "info"
   - service: switch.turn_off
     data:
       entity_id: switch.doorbell_pressed
