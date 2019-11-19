@@ -15,13 +15,12 @@
   trigger:
   - platform: state
     entity_id: alarm_control_panel.area_001
-    from: pending
     to: armed_away
   - platform: state
     entity_id: alarm_control_panel.area_001
     to: armed_night
   action:
-  - service: switch.turn_on
+  - service: switch.turn_off
     data:
       entity_id: switch.indoor_christmas
 
