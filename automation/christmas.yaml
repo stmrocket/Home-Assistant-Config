@@ -58,9 +58,6 @@
       entity_id: switch.shed_porch_light
   - service: switch.turn_off
     data:
-      entity_id: switch.entry_lamp
-  - service: switch.turn_off
-    data:
       entity_id: switch.office_lamp
   - service: cover.close_cover
     data:
