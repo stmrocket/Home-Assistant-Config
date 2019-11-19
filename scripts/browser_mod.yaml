@@ -363,3 +363,20 @@ popup_hacs:
             - {field: name, title: 'Name'}
             - {field: installed version, title: 'Installed'}
             - {field: available version, title: 'Latest'}              
+
+popup_christmas_outdoor:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Outdoor Christmas
+        card:
+          type: entities
+          entities:
+            - entity: input_boolean.christmas_show
+            - entity: sensor.fpp_master_playlist
+              name: Playlist
+            - entity: sensor.fpp_master_playlist_section
+              name: Playlist Section
+            - entity: sensor.fpp_master_sequence
+              name: Sequence           
