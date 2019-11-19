@@ -3937,102 +3937,97 @@ views:
 
                   - type: "custom:gap-card"
                     height: 10
-              - type: conditional
-                conditions:
-                - entity: sensor.master_harmony_activity
-                  state_not: "unknown"
-                card: 
-                  type: horizontal-stack
-                  cards:                  
+              - type: horizontal-stack
+                cards:                  
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity
-                      color_type: icon
-                      state:
-                        - value: "PowerOff"
-                          color: rgb(228, 94, 101)
-                        - value: "PowerOff"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:remote-tv-off
-                      name: "Off"
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_off
-                        service_data:
-                          entity_id: remote.master_bedroom_2
-                    
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity
-                      color_type: icon
-                      state:
-                        - value: "Watch PVR"
-                          color: rgb(228, 94, 101)
-                        - value: "Watch PVR"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:kodi
-                      name: Kodi
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.master_bedroom_2     
-                          activity: "Watch PVR"            
+                  - type: "custom:button-card"
+                    entity: sensor.master_harmony_activity
+                    color_type: icon
+                    state:
+                      - value: "PowerOff"
+                        color: rgb(228, 94, 101)
+                      - value: "PowerOff"
+                        operator: '!='
+                        color: rgb(255, 255, 255)
+                    icon: mdi:remote-tv-off
+                    name: "Off"
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_off
+                      service_data:
+                        entity_id: remote.master_bedroom_2
+                  
+                  - type: "custom:button-card"
+                    entity: sensor.master_harmony_activity
+                    color_type: icon
+                    state:
+                      - value: "Watch PVR"
+                        color: rgb(228, 94, 101)
+                      - value: "Watch PVR"
+                        operator: '!='
+                        color: rgb(255, 255, 255)
+                    icon: mdi:kodi
+                    name: Kodi
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_on
+                      service_data:
+                        entity_id: remote.master_bedroom_2     
+                        activity: "Watch PVR"            
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity
-                      color_type: icon
-                      state:
-                        - value: "Watch Roku"
-                          color: rgb(228, 94, 101)
-                        - value: "Watch Roku"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:youtube-tv
-                      name: Roku
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.master_bedroom_2     
-                          activity: "Watch Roku"            
+                  - type: "custom:button-card"
+                    entity: sensor.master_harmony_activity
+                    color_type: icon
+                    state:
+                      - value: "Watch Roku"
+                        color: rgb(228, 94, 101)
+                      - value: "Watch Roku"
+                        operator: '!='
+                        color: rgb(255, 255, 255)
+                    icon: mdi:youtube-tv
+                    name: Roku
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_on
+                      service_data:
+                        entity_id: remote.master_bedroom_2     
+                        activity: "Watch Roku"            
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity
-                      color_type: icon
-                      state:
-                        - value: "ChromeCast"
-                          color: rgb(228, 94, 101)
-                        - value: "ChromeCast"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:cast
-                      name: Cast
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.master_bedroom_2     
-                          activity: "ChromeCast"           
+                  - type: "custom:button-card"
+                    entity: sensor.master_harmony_activity
+                    color_type: icon
+                    state:
+                      - value: "ChromeCast"
+                        color: rgb(228, 94, 101)
+                      - value: "ChromeCast"
+                        operator: '!='
+                        color: rgb(255, 255, 255)
+                    icon: mdi:cast
+                    name: Cast
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_on
+                      service_data:
+                        entity_id: remote.master_bedroom_2     
+                        activity: "ChromeCast"           
 
-                    - type: "custom:button-card"
-                      entity: sensor.master_harmony_activity
-                      color_type: icon
-                      state:
-                        - value: "Listen to WHA"
-                          color: rgb(0, 145, 255)
-                        - value: "Listen to WHA"
-                          operator: '!='
-                          color: rgb(255, 255, 255)
-                      icon: mdi:music
-                      name: Music
-                      tap_action:
-                        action: call-service
-                        service: remote.turn_on
-                        service_data:
-                          entity_id: remote.master_bedroom_2     
-                          activity: "Listen to WHA"      
+                  - type: "custom:button-card"
+                    entity: sensor.master_harmony_activity
+                    color_type: icon
+                    state:
+                      - value: "Listen to WHA"
+                        color: rgb(0, 145, 255)
+                      - value: "Listen to WHA"
+                        operator: '!='
+                        color: rgb(255, 255, 255)
+                    icon: mdi:music
+                    name: Music
+                    tap_action:
+                      action: call-service
+                      service: remote.turn_on
+                      service_data:
+                        entity_id: remote.master_bedroom_2     
+                        activity: "Listen to WHA"      
 
 #               - type: conditional
 #                 conditions:
@@ -4269,6 +4264,130 @@ views:
                   controls: true
                   info: true       
 
+          # Christmas
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: picture-elements
+                image: /local/lovelace/room.png
+                elements:
+                  - entity: sensor.blank
+                    hold-action: none
+                    prefix: Christmas
+                    style:
+                      bottom: 20%
+                      font-size: 150%
+                      left: 5%
+                      transform: initial
+                    tap-action: 
+                      action: call-service
+                      service: script.christmas_outdoor
+                    type: state-label
+              - type: horizontal-stack
+                cards:                  
+
+                  - type: "custom:button-card"
+                    entity: switch.indoor_christmas
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    icon: mdi:pine-tree
+                    name: Indoor
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: switch.christmas_tree
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Tree
+                    hold_action: 
+                      action: more-info
+                  
+                  - type: "custom:button-card"
+                    entity: switch.christmas_garland
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Garland
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: switch.christmas_village
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Village
+                    hold_action: 
+                      action: more-info                 
+
+              - type: horizontal-stack
+                cards:                  
+
+                  - type: "custom:button-card"
+                    entity: switch.dining_room_decor
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Dining
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: switch.entry_hall_decor
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Entry
+                    hold_action: 
+                      action: more-info
+                  
+                  - type: "custom:button-card"
+                    entity: switch.master_bedroom_decor
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Master
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: switch.snowman
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Snowman
+                    hold_action: 
+                      action: more-info       
+
 #############################################################################################################################################
 #                                                                                                                                           # 
 #                                                                 VIEW 2 - HVAC                                                             #
@@ -4399,16 +4518,21 @@ views:
             cards:
               - type: custom:simple-thermostat
                 entity: climate.front_rooms
+                icon: mdi:thermostat-box
                 step_size: 1
+                decimals: 0
                 sensors:
                 - attribute: current_humidity
                   name: Humidity
                   unit: "%"
                 - entity: sensor.hvac_zone_2_state
-                  name: state
+                  name: State
                 hide:
                   state: true
-                
+                control:
+                  - hvac:
+                      mode: none
+
 
               - type: horizontal-stack
                 cards:    
@@ -4458,8 +4582,6 @@ views:
                       border-radius: 5px
                     max: 24
 
-
-
 #################################################################
 #                                                               #
 #                       HVAC - Living Areas                     #
@@ -4472,15 +4594,20 @@ views:
           cards:
           - type: custom:simple-thermostat
             entity: climate.living_areas
+            icon: mdi:thermostat-box
             step_size: 1
+            decimals: 0
             sensors:
             - attribute: current_humidity
               name: Humidity
               unit: "%"
             - entity: sensor.hvac_zone_1_state
-              name: state
+              name: State
             hide:
               state: true
+            control:
+                  - hvac:
+                    mode: none
 
           - type: horizontal-stack
             cards:     
@@ -4546,15 +4673,21 @@ views:
             cards:
               - type: custom:simple-thermostat
                 entity: climate.master_suite
+                icon: mdi:thermostat-box
                 step_size: 1
+                decimals: 0
                 sensors:
                 - attribute: current_humidity
                   name: Humidity
                   unit: "%"
                 - entity: sensor.hvac_zone_3_state
-                  name: state
+                  name: State
                 hide:
                   state: true
+                control:
+                  - hvac:
+                    mode: none
+
               - type: horizontal-stack
                 cards:          
 
