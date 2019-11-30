@@ -4409,7 +4409,7 @@ views:
                         icon: mdi:lightbulb-on-outline
                       - value: "off"
                         icon: mdi:lightbulb-outline
-                    name: Snowman
+                    name: Hall
                     hold_action: 
                       action: more-info       
 
