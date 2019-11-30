@@ -83,3 +83,21 @@
     data:
       id: 192.168.4.209:7001
       name: Normal    
+
+- alias: Donation Box Opened
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_197
+    to: Violated
+  action:
+  - service: mqtt.publish
+    data:
+      topic: parrot/command/set/play
+      payload: 3,4
+  - service: notify.browser
+    data:
+      message: The donation box has been opened.
+      title: Donation Box      
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.donation_box

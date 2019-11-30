@@ -4278,9 +4278,6 @@ views:
                       font-size: 150%
                       left: 5%
                       transform: initial
-                    tap-action: 
-                      action: call-service
-                      service: script.christmas_outdoor
                     type: state-label
               - type: horizontal-stack
                 cards:                  
@@ -4387,6 +4384,35 @@ views:
                     name: Snowman
                     hold_action: 
                       action: more-info       
+              - type: horizontal-stack
+                cards:                  
+
+                  - type: "custom:gap-card"
+
+                  - type: "custom:button-card"
+                    entity: input_boolean.christmas_show
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    icon: mdi:pine-tree
+                    name: Show
+                    hold_action:
+                      action: call-service
+                      service: script.popup_christmas_outdoor
+                  
+                  - type: "custom:button-card"
+                    entity: input_boolean.donation_box
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:door-open
+                      - value: "off"
+                        icon: mdi:door-closed
+                    name: Donation
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:gap-card"
 
 #############################################################################################################################################
 #                                                                                                                                           # 
