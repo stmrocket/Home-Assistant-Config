@@ -4387,7 +4387,31 @@ views:
               - type: horizontal-stack
                 cards:                  
 
-                  - type: "custom:gap-card"
+                  - type: "custom:button-card"
+                    entity: switch.kitchen_garland
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Kitchen
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:button-card"
+                    entity: switch.hall_decor
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    state:
+                      - value: "on"
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        icon: mdi:lightbulb-outline
+                    name: Snowman
+                    hold_action: 
+                      action: more-info       
 
                   - type: "custom:button-card"
                     entity: input_boolean.christmas_show
@@ -4414,8 +4438,6 @@ views:
                     name: Donation
                     hold_action: 
                       action: more-info
-
-                  - type: "custom:gap-card"
 
 #############################################################################################################################################
 #                                                                                                                                           # 

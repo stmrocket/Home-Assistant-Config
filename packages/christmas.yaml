@@ -77,11 +77,33 @@ switch:
     payload_available: "Online"
     payload_not_available: "Offline"
 
+  - platform: mqtt
+    name: "Kitchen Garland"
+    state_topic: "christmas/indoor/kitchen/stat/POWER"
+    command_topic: "christmas/indoor/kitchen/cmnd/POWER"
+    availability_topic: "christmas/indoor/kitchen/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Hall Decor"
+    state_topic: "christmas/indoor/hall/stat/POWER"
+    command_topic: "christmas/indoor/hall/cmnd/POWER"
+    availability_topic: "christmas/indoor/hall/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: template
     switches:
       indoor_christmas:
         friendly_name: "Indoor Christmas Decor"
-        value_template: '{{ states.switch.dining_room_decor.state | string == "on" or states.switch.entry_hall_decor.state | string == "on" or states.switch.christmas_village.state | string == "on" or states.switch.snowman.state | string == "on" or states.switch.christmas_tree.state | string == "on" or states.switch.christmas_garland.state | string == "on"  or states.switch.master_bedroom_decor.state | string == "on" }}'
+        value_template: '{{ states.switch.dining_room_decor.state | string == "on" or states.switch.entry_hall_decor.state | string == "on" or states.switch.christmas_village.state | string == "on" or states.switch.snowman.state | string == "on" or states.switch.christmas_tree.state | string == "on" or states.switch.christmas_garland.state | string == "on"  or states.switch.master_bedroom_decor.state | string == "on" or states.switch.kitchen_garland.state | string == "on" or states.switch.hall_decor.state | string == "on" }}'
         turn_on:
           service: mqtt.publish
           data:
@@ -163,6 +185,26 @@ sensor:
     qos: 1
     payload_available: "Online"
     payload_not_available: "Offline" 
+
+  - platform: mqtt
+    state_topic: "christmas/indoor/kitchen/tele/STATE"
+    name: "Kitchen Garland Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "christmas/indoor/kitchen/tele/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    state_topic: "christmas/indoor/hall/tele/STATE"
+    name: "Hall Decor Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "christmas/indoor/hall/tele/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
   - platform: mqtt
     state_topic: "christmas/falcon/player/Master/playlist/name/status"
