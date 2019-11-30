@@ -4398,6 +4398,9 @@ views:
                     hold_action:
                       action: call-service
                       service: script.popup_christmas_outdoor
+                      service_data:
+                        deviceID: 
+                          - this
                   
                   - type: "custom:button-card"
                     entity: input_boolean.donation_box
