@@ -198,6 +198,18 @@ sensor:
     payload_available: "Online"
     payload_not_available: "Offline"
 
+  #Wax Warmer
+
+  - platform: mqtt
+    state_topic: "warmer/tele/STATE"
+    name: "Fireplace Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "warmer/tele/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"    
+
 #Template Sensors
   - platform: template
     sensors:
@@ -291,6 +303,17 @@ switch:
     payload_off: "OFF"
     payload_available: "Online"
     payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Wax Warmer"
+    state_topic: "warmer/stat/POWER"
+    command_topic: "warmer/cmnd/POWER"
+    availability_topic: "warmer/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"    
 
 input_boolean:
 
