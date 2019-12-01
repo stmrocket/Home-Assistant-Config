@@ -3084,7 +3084,11 @@ views:
                     entity: switch.fireplace
                     color_type: icon
                     color: rgb(228, 94, 101)
-                    icon: mdi:fire
+                    state:
+                      - value: "on"
+                        icon: mdi:fireplace
+                      - value: "off"
+                        icon: mdi:fireplace-off
                     name: Fire
                     hold_action: 
                       action: more-info
@@ -3456,6 +3460,25 @@ views:
                     name: Popper
                     hold_action: 
                       action: more-info
+
+              - type: horizontal-stack
+                cards:                  
+                  
+                  - type: "custom:button-card"
+                    entity: switch.wax_warmer
+                    color_type: icon
+                    color: rgb(228, 94, 101)
+                    icon: mdi:fire
+                    name: LEDs
+                    hold_action: 
+                      action: more-info
+
+                  - type: "custom:gap-card"
+
+                  - type: "custom:gap-card"
+
+                  - type: "custom:gap-card"
+                    
 
               - type: custom:mini-media-player
                 entity: media_player.kitchen_stereo
