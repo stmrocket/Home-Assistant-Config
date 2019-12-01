@@ -3469,7 +3469,7 @@ views:
                     color_type: icon
                     color: rgb(228, 94, 101)
                     icon: mdi:fire
-                    name: LEDs
+                    name: Wax Warmer
                     hold_action: 
                       action: more-info
 
