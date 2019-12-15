@@ -1,0 +1,70 @@
+#lovelace_gen
+#Master Suite HVAC Card
+
+type: custom:vertical-stack-in-card
+cards:
+  - type: custom:simple-thermostat
+    entity: climate.master_suite
+    icon: mdi:thermostat-box
+    step_size: 1
+    decimals: 0
+    sensors:
+    - attribute: current_humidity
+      name: Humidity
+      unit: "%"
+    - entity: sensor.hvac_zone_3_state
+      name: State
+    hide:
+      state: true
+    control:
+      - hvac:
+        mode: none
+
+  - type: horizontal-stack
+    cards:          
+
+      - type: custom:bar-card
+        title: 'Heat:'
+        entity: sensor.hvac_zone_3_heat_runtime
+        title_position: inside
+        align: center
+        padding: 4px
+        card_style: 
+          border-radius: 5px
+        max: 24
+        color: red
+        
+      - type: custom:bar-card
+        title: 'Cool:'
+        entity: sensor.hvac_zone_3_cool_runtime
+        title_position: inside
+        align: center
+        padding: 4px
+        card_style: 
+          border-radius: 5px
+        max: 24
+        color: blue
+
+  - type: horizontal-stack
+    cards:          
+
+      - type: custom:bar-card
+        title: 'Fan:'
+        entity: sensor.hvac_zone_3_fan_runtime
+        title_position: inside
+        align: center
+        padding: 4px
+        card_style: 
+          border-radius: 5px
+        max: 24
+        color: green
+        
+      - type: custom:bar-card
+        title: 'Total:'
+        entity: sensor.hvac_zone_3_runtime
+        title_position: inside
+        align: center
+        padding: 4px
+        card_style: 
+          border-radius: 5px
+        max: 24

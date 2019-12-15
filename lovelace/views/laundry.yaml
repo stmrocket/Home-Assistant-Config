@@ -1,0 +1,77 @@
+#lovelace_gen
+#############################################################################################################################################
+#                                                                                                                                           # 
+#                                                                VIEW 3 - Laundry                                                           #
+#                                                                                                                                           #
+############################################################################################################################################# 
+
+id: 3
+icon: mdi:washing-machine
+name: Laundry
+cards:
+
+#################################################################
+#                                                               #
+#                     Laundry - Room Status                     #
+#                                                               #
+#################################################################
+    
+  - type: vertical-stack
+    cards:
+      - type: entities
+        show_header_toggle: false
+        title: Laundry Room
+        entities:
+        - entity: light.utility_room_light
+        - entity: switch.utility_room_vent_fan
+        - entity: lock.garage_entry
+        - entity: binary_sensor.utility_leak_dry
+          name: Leak Detector
+        - entity: sensor.dryer_vent_temperature_owfs
+          name: Vent Temperature
+
+#################################################################
+#                                                               #
+#                        Laundry - Washer                       #
+#                                                               #
+#################################################################
+    
+  - type: vertical-stack
+    cards:
+      - type: entities
+        show_header_toggle: false
+        title: Washer Status
+        entities:
+        - entity: sensor.washer_state
+        - entity: sensor.washer_voltage
+        - entity: sensor.washer_watts
+        - entity: sensor.washer_amps
+        - entity: sensor.washer_energy_today
+          icon: 'mdi:gauge'
+        - entity: sensor.washer_energy_yesterday
+          icon: 'mdi:gauge'
+        - entity: sensor.washer_signal
+          icon: 'mdi:wifi'
+
+#################################################################
+#                                                               #
+#                        Laundry - Washer                       #
+#                                                               #
+#################################################################
+    
+  - type: vertical-stack
+    cards:
+      - type: entities
+        show_header_toggle: false
+        title: Dryer Status
+        entities:
+        - entity: sensor.dryer_state
+        - entity: sensor.dryer_voltage
+        - entity: sensor.dryer_watts
+        - entity: sensor.dryer_amps
+        - entity: sensor.dryer_energy_today
+          icon: 'mdi:gauge'
+        - entity: sensor.dryer_energy_yesterday
+          icon: 'mdi:gauge'
+        - entity: sensor.dryer_signal
+          icon: 'mdi:wifi'
