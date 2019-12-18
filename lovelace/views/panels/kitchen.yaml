@@ -1,0 +1,173 @@
+#lovelace_gen
+#############################################################################################################################################
+#                                                                                                                                           # 
+#                                                              VIEW 8 - Kitchen Tablet                                                      #
+#                                                                                                                                           #
+############################################################################################################################################# 
+
+id: 8
+icon: mdi:castle
+name: Home
+cards:
+
+#################################################################
+#                                                               #
+#                      Home - Weather Card                      #
+#                                                               #
+#################################################################
+
+      - type: vertical-stack
+        cards:
+          - !include /config/lovelace/cards/weather.yaml
+
+#################################################################
+#                                                               #
+#                        Home - Waze                            #
+#                                                               #
+################################################################# 
+          - type: custom:waze-card
+            title: Travel
+            entities:
+              - entity: sensor.shawn_to_work
+                zone: zone.work
+                name: Work     
+
+#################################################################
+#                                                               #
+#                        Home - CCTV                            #
+#                                                               #
+################################################################# 
+          - type: glance
+            columns: 4
+            show_name: true
+            show_state: false
+            entities:
+                - entity: camera.front_porch
+                - entity: camera.east_front
+                - entity: camera.west_front
+                - entity: camera.back_yard           
+
+#################################################################
+#                                                               #
+#                         Home - Media                          #
+#                                                               #
+################################################################# 
+      - type: vertical-stack
+        cards:  
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_stereo
+            icon: mdi:google-play
+            artwork: cover
+            volume_stateless: true
+            hide:
+              source: true
+            
+              
+
+#################################################################
+#                                                               #
+#                       Home - HVAC                             #
+#                                                               #
+################################################################# 
+          - type: vertical-stack
+            cards:
+            - !include /config/lovelace/cards/thermostat/living.yaml
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: light.kitchen_light_1
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lightbulb-outline
+                name: Lights
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: light.kitchen_sink_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lightbulb-outline
+                name: Sink Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: light.breakfast_room_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lightbulb-outline
+                name: Table
+                hold_action: 
+                  action: more-info
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: light.kitchen_leds_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lightbulb-outline
+                name: Cabinets
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: light.kitchen_counter_leds_white
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lightbulb-outline
+                name: Counter
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.popcorn_popper_2
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:popcorn
+                name: Popper
+                hold_action: 
+                  action: more-info
+
+#################################################################
+#                                                               #
+#                          Home - Laundry                       #
+#                                                               #
+################################################################# 
+
+      - type: vertical-stack
+        cards: 
+          - type: horizontal-stack
+            cards: 
+            - type: entities
+              show_header_toggle: false
+              title: Laundry Status
+              entities:
+                  - entity: sensor.washer_state
+                    name: Washer
+                  - entity: sensor.dryer_state
+                    name: Dryer
+
+#################################################################
+#                                                               #
+#                     Home - Locks                              #
+#                                                               #
+################################################################# 
+            - type: entities
+              show_header_toggle: false
+              title: Locks
+              entities:
+                - entity: lock.front_door
+                  name: Front
+                - entity: lock.back_door    
+                  name: Back       
+
+#################################################################
+#                                                               #
+#                      Home - Alarm                             #
+#                                                               #
+################################################################# 
+          - type: alarm-panel
+            name: House Alarm
+            states:
+              - arm_home
+              - arm_night
+            entity: alarm_control_panel.area_001            

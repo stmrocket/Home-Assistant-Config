@@ -1,0 +1,31 @@
+# lovelace_gen
+#############################################################################################################################################
+#                                                                                                                                           # 
+#                                                                VIEW 4 - Blinds                                                            #
+#                                                                                                                                           #
+############################################################################################################################################# 
+
+id: 4
+icon: mdi:blinds
+name: Blinds
+cards:
+
+#################################################################
+#                                                               #
+#                     Laundry - Room Status                     #
+#                                                               #
+#################################################################
+    
+  - type: vertical-stack
+    cards:
+      - type: entities
+        show_header_toggle: false
+        title: Blinds
+        entities:
+        - entity: cover.house_blinds
+        - entity: cover.office_blinds
+        - entity: cover.left_office_blind
+        - entity: cover.center_office_blind
+        - entity: cover.right_office_blind          
+        - entity: cover.guest_blind 
+        - entity: cover.server_room_blind 

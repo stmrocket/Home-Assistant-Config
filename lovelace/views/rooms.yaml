@@ -1,0 +1,1759 @@
+# lovelace_gen
+#############################################################################################################################################
+#                                                                                                                                           # 
+#                                                                 VIEW 1 - Rooms                                                            #
+#                                                                                                                                           #
+############################################################################################################################################# 
+
+id: 1
+icon: mdi:lightbulb-on
+name: Rooms
+cards:
+            
+# Outside      
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.aquara_outside_temperature
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Outside
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: light.front_sconces
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Driveway
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: light.front_porch_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Front Porch
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.shed_porch_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Shed Outside
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.shed_inside_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Shed Inside
+                hold_action: 
+                  action: more-info
+          - type: horizontal-stack
+            cards:
+              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: switch.back_porch_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Back Porch
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.back_porch_fan_high
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Back Porch
+                hold_action: 
+                  action: more-info
+              - type: "custom:gap-card"
+
+          - type: custom:mini-media-player
+            entity: media_player.back_porch_stereo
+            name: Back Porch
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_porch
+              service_data:
+                deviceID: 
+                  - this
+
+# Garage          
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: cover.18606_tanglerose
+                style:
+                  bottom: 20%
+                  font-weight: bold
+                  right: 17%
+                  transform: initial
+                type: state-icon
+              - entity: sensor.garage_temperature_owfs
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Garage
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: switch.garage_lighting
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Lights
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.garage_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:gap-card"
+          - type: custom:mini-media-player
+            entity: media_player.garage_stereo
+            name: Garage
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_garage
+              service_data:
+                deviceID: 
+                  - this
+
+# Entry
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: lock.front_door
+                style:
+                  bottom: 20%
+                  font-weight: bold
+                  right: 5%
+                  transform: initial
+                type: state-icon
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Entry
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: light.entry_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Entry
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.hallway_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Hall
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: light.foyer_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Foyer
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.entry_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+
+# Laundry
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: binary_sensor.utility_leak_dry
+                style:
+                  bottom: 20%
+                  front-weight: bold
+                  right: 24%
+                  transform: initial
+                type: state-icon
+              - entity: lock.garage_entry
+                style:
+                  bottom: 20%
+                  font-weight: bold
+                  right: 17%
+                  transform: initial
+                type: state-icon
+              - entity: sensor.dryer_vent_temperature_owfs
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Laundry
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:gap-card"
+
+              - type: "custom:button-card"
+                entity: light.utility_room_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.utility_room_vent_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:gap-card"
+                
+# Den
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.aquara_den_temperature
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Den
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+                
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: light.den_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.den_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.den_lamps
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: TV
+                hold_action: 
+                  action: more-info   
+
+              - type: "custom:button-card"
+                entity: switch.den_table_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Piano
+                hold_action: 
+                  action: more-info        
+
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:gap-card"
+
+              - type: "custom:button-card"
+                entity: light.den_led_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.fireplace
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fireplace
+                  - value: "off"
+                    icon: mdi:fireplace-off
+                name: Fire
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:gap-card"
+
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:gap-card"
+                height: 10
+
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "PowerOff"
+                    color: rgb(228, 94, 101)
+                  - value: "PowerOff"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:remote-tv-off
+                name: "Off"
+                tap_action:
+                  action: call-service
+                  service: remote.turn_off
+                  service_data:
+                    entity_id: remote.living_room_2
+              
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch PVR"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch PVR"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:kodi
+                name: Kodi
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.living_room_2     
+                    activity: "Watch PVR"            
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch Roku"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch Roku"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:youtube-tv
+                name: Roku
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.living_room_2     
+                    activity: "Watch Roku"            
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "ChromeCast"
+                    color: rgb(228, 94, 101)
+                  - value: "ChromeCast"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:cast
+                name: Cast
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.living_room_2     
+                    activity: "ChromeCast"           
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Listen to WHA"
+                    color: rgb(228, 94, 101)
+                  - value: "Listen to WHA"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:music
+                name: Music
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.living_room_2     
+                    activity: "Listen to WHA"      
+
+          - type: custom:mini-media-player
+            entity: media_player.den_stereo
+            name: Den
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true             
+            tap_action:
+              action: call-service
+              service: script.popup_media_den
+              service_data:
+                deviceID: 
+                  - this                  
+
+# Shack
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.dining_room_temperature_owfs
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Shack
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:gap-card"
+
+              - type: "custom:button-card"
+                entity: switch.dining_room_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.dining_room_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:gap-card"
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: light.dining_room_keypad_c
+                color_type: icon
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                icon: mdi:fan-off
+                name: "Off"
+                tap_action: 
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.dining_room_fan_off
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: light.dining_room_keypad_d
+                color_type: icon
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                icon: mdi:fan
+                name: "Low"
+                tap_action: 
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.dining_room_fan_low
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.dining_room_keypad_e
+                color_type: icon
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                icon: mdi:fan
+                name: "Medium"
+                tap_action: 
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.dining_room_fan_medium
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.dining_room_keypad_f
+                color_type: icon
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                icon: mdi:fan
+                name: "High"
+                tap_action: 
+                  action: call-service
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.dining_room_fan_high
+                hold_action: 
+                  action: more-info
+
+          - type: custom:mini-media-player
+            entity: media_player.dining_room_stereo
+            name: Ham Shack
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_dining
+              service_data:
+                deviceID: 
+                  - this
+
+# Kitchen
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: lock.back_door
+                style:
+                  bottom: 20%
+                  font-weight: bold
+                  right: 5%
+                  transform: initial
+                type: state-icon
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Kitchen
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:button-card"
+                entity: light.kitchen_light_1
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Lights
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.kitchen_sink_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Sink Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: light.breakfast_room_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Table Light
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.breakfast_room_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+          
+          - type: horizontal-stack
+            cards:                  
+              
+              - type: "custom:button-card"
+                entity: light.kitchen_leds_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.kitchen_counter_leds_white
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: Counter
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.pantry_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:door
+                name: Pantry Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.popcorn_popper_2
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:popcorn
+                name: Popper
+                hold_action: 
+                  action: more-info
+
+          - type: horizontal-stack
+            cards:                  
+              
+              - type: "custom:button-card"
+                entity: switch.wax_warmer
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:fire
+                name: Wax Warmer
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:gap-card"
+
+              - type: "custom:gap-card"
+
+              - type: "custom:gap-card"
+                
+
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_stereo
+            name: Kitchen
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true       
+            tap_action:
+              action: call-service
+              service: script.popup_media_kitchen
+              service_data:
+                deviceID: 
+                  - this
+
+# Office      
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.aquara_office_temperature
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Office
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: cover.office_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_office_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
+                entity: light.office_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.office_fan_1
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.office_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+          - type: horizontal-stack
+            cards:
+              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: switch.office_peripherals
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:desktop-tower-monitor
+                name: Desk
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.lava_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lava-lamp
+                name: Lava Lamp
+                hold_action: 
+                  action: more-info
+              - type: "custom:gap-card"
+          - type: custom:mini-media-player
+            entity: media_player.office_stereo
+            name: Office
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_office
+              service_data:
+                deviceID: 
+                  - this
+
+# Guest Bedroom      
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.guest_bedroom_temperature_owfs
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Guest Bedroom
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: cover.guest_blind
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                name: Blinds
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: light.guest_bedroom_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.guest_bedroom_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.guest_room_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+          - type: horizontal-stack
+            cards:
+              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: switch.guest_closet_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:door
+                name: Closet Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: input_boolean.guest_mode
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:airplane
+                name: Guest Mode
+                hold_action: 
+                  action: more-info
+              - type: "custom:gap-card"
+          - type: custom:mini-media-player
+            entity: media_player.guest_bedroom_stereo
+            name: Guest Room
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_guest_bed
+              service_data:
+                deviceID: 
+                  - this
+
+# Server Room      
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.aquara_server_closet_temperature
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Server Room
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: cover.server_room_blind
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                name: Blinds
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: light.server_room_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.server_room_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.server_room_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+          - type: horizontal-stack
+            cards:
+              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: switch.server_closet_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:door
+                name: Closet Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.server_closet_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Vent Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:gap-card"
+          - type: custom:mini-media-player
+            entity: media_player.server_room_stereo
+            name: Server Room
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_server
+              service_data:
+                deviceID: 
+                  - this
+
+# Guest Bathroom      
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Guest Bathroom
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: light.guest_bathroom_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.guest_bathroom_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: light.guest_bathroom_led_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+              - type: "custom:gap-card"
+          - type: custom:mini-media-player
+            entity: media_player.guest_bathroom_stereo
+            name: Guest Bathroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_guest_bath
+              service_data:
+                deviceID: 
+                  - this
+
+# Master Bedroom      
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.aquara_master_bedroom_temperature
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Master Bedroom
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: light.master_bedroom_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.master_bedroom_fan_1
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan-on
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.master_bedroom_lamps_led
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: light.master_bedroom_leds_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:gap-card"
+                height: 10
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "PowerOff"
+                    color: rgb(228, 94, 101)
+                  - value: "PowerOff"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:remote-tv-off
+                name: "Off"
+                tap_action:
+                  action: call-service
+                  service: remote.turn_off
+                  service_data:
+                    entity_id: remote.master_bedroom_2
+              
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch PVR"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch PVR"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:kodi
+                name: Kodi
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.master_bedroom_2     
+                    activity: "Watch PVR"            
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch Roku"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch Roku"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:youtube-tv
+                name: Roku
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.master_bedroom_2     
+                    activity: "Watch Roku"            
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "ChromeCast"
+                    color: rgb(228, 94, 101)
+                  - value: "ChromeCast"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:cast
+                name: Cast
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.master_bedroom_2     
+                    activity: "ChromeCast"           
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Listen to WHA"
+                    color: rgb(0, 145, 255)
+                  - value: "Listen to WHA"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:music
+                name: Music
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.master_bedroom_2     
+                    activity: "Listen to WHA"        
+
+          - type: custom:mini-media-player
+            entity: media_player.master_bedroom_stereo
+            name: Master Bedroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_master_bed
+              service_data:
+                deviceID: 
+                  - this
+
+# Master Bathroom
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Master Bathroom
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:button-card"
+                entity: switch.master_bath_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Sink Light
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.master_shower_light_1
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:shower
+                name: Shower Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: light.master_bathroom_led_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.master_shower_light_a
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:shower-head
+                name: Take Shower
+                tap_action: 
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.shower_light_and_fan
+                hold_action: 
+                  action: more-info
+          
+          - type: horizontal-stack
+            cards:        
+
+              - type: "custom:button-card"
+                entity: light.master_toilet_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:toilet
+                name: Toilet Light
+                hold_action: 
+                  action: more-info      
+              
+              - type: "custom:button-card"
+                entity: switch.master_closet_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:door
+                name: Closet Light
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.master_bath_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Shower Fan
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.master_toilet_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Toilet Fan
+                hold_action: 
+                  action: more-info
+
+          - type: custom:mini-media-player
+            entity: media_player.master_bathroom_stereo
+            name: Master Bathroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true       
+            tap_action:
+              action: call-service
+              service: script.popup_media_master_bath
+              service_data:
+                deviceID: 
+                  - this
+
+      # Christmas
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Christmas
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                type: state-label
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: switch.indoor_christmas
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:pine-tree
+                name: Indoor
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.christmas_tree
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Tree
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.christmas_garland
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Garland
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.christmas_village
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Village
+                hold_action: 
+                  action: more-info                 
+
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: switch.dining_room_decor
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Dining
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.entry_hall_decor
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Entry
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.master_bedroom_decor
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Master
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.snowman
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Snowman
+                hold_action: 
+                  action: more-info       
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: switch.kitchen_garland
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Kitchen
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.hall_decor
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Hall
+                hold_action: 
+                  action: more-info       
+
+              - type: "custom:button-card"
+                entity: input_boolean.christmas_show
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:pine-tree
+                name: Show
+                hold_action:
+                  action: call-service
+                  service: script.popup_christmas_outdoor
+                  service_data:
+                    deviceID: 
+                      - this
+              
+              - type: "custom:button-card"
+                entity: input_boolean.donation_box
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:door-open
+                  - value: "off"
+                    icon: mdi:door-closed
+                name: Donation
+                hold_action: 
+                  action: more-info
