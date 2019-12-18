@@ -10,42 +10,70 @@ light:
     state_value_template: "{{value_json['rgb_power']}}"
     brightness_value_template: "{{value_json['rgb_brightness']}}"
     rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
+    availability_topic: "h801/mbed_1/tele/LWT"
     qos: 0
     retain: false
     payload_on: "ON"
     payload_off: "OFF"
     optimistic: false
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    
 sensor:
   #Driver Ststus Messages
-  - platform: mqtt
-    name: "Master Bedroom LED 1 Status"
-    state_topic: "h801/mbed_1/tele/status"
-    value_template: "{{value_json['status']}}"
+  
   - platform: mqtt
     name: "Master Bedroom LED 1 Version"
     state_topic: "h801/mbed_1/tele/status"
     value_template: "{{value_json['espVersion']}}"
+    availability_topic: "h801/mbed_1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Master Bedroom LED 1 Uptime"
     state_topic: "h801/mbed_1/tele/status"
     value_template: "{{value_json['espUptime']}}"
+    availability_topic: "h801/mbed_1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Master Bedroom LED 1 RSSI"
     state_topic: "h801/mbed_1/tele/status"
     value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "h801/mbed_1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Master Bedroom LED 1 IP"
     state_topic: "h801/mbed_1/tele/status"
     value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "h801/mbed_1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Master Bedroom LED 1 Free Heap"
     state_topic: "h801/mbed_1/tele/status"
     value_template: "{{value_json['heapFree']}}"
+    availability_topic: "h801/mbed_1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Master Bedroom LED 1 Heap Fragmentation"
     state_topic: "h801/mbed_1/tele/status"
     value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "h801/mbed_1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: mqtt
     name: "Master Bedroom LED 1 Core Version"
     state_topic: "h801/mbed_1/tele/status"
     value_template: "{{value_json['espCore']}}" 
+    availability_topic: "h801/mbed_1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
