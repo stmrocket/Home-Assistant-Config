@@ -373,13 +373,13 @@ cards:
         - type: horizontal-stack
           cards:
               - type: "custom:button-card"
-                entity: switch.house_blinds
+                entity: cover.house_blinds
                 color_type: icon
                 state:
-                  - value: "on"
+                  - value: "open"
                     color: rgb(228, 94, 101)
                     icon: mdi:blinds-open
-                  - value: "off"
+                  - value: "closed"
                     color: rgb(255, 255, 255)
                     icon: mdi:blinds
                 name: Blinds
