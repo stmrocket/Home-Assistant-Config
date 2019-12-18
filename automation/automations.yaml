@@ -94,3 +94,20 @@
   - service: input_boolean.turn_off
     data: 
       entity_id: input_boolean.vacation_mode
+
+- id: 'sonoffstart'
+  alias: Power State Sonoff on HA Start-Up
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - service: mqtt.publish
+    data:
+      payload: ''
+      topic: cmnd/fireplace/state
+  - service: mqtt.publish
+    data:
+      payload: ''
+      topic: christmas/indoor/decorations/cmnd/state
+    
+  initial_state: 'true'      
