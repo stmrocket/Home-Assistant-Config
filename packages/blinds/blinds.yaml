@@ -31,12 +31,15 @@ cover:
     command_topic: "habc/office_c/command/set/state"
     set_position_topic: "habc/office_c/command/set/positionpct"
     position_topic: "habc/office_c/tele/currentpct"
+    availability_topic: "habc/office_c/tele/LWT"
     #retain: true
     payload_open: "OPEN"
     payload_close: "CLOSE"
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
   #Right Office Blind
   - platform: mqtt
@@ -44,12 +47,15 @@ cover:
     command_topic: "habc/office_r/command/set/state"
     set_position_topic: "habc/office_r/command/set/positionpct"
     position_topic: "habc/office_r/tele/currentpct"
+    availability_topic: "habc/office_r/tele/LWT"
     #retain: true
     payload_open: "OPEN"
     payload_close: "CLOSE"
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
   #Left Office Blind
   - platform: mqtt
@@ -57,12 +63,15 @@ cover:
     command_topic: "habc/office_l/command/set/state"
     set_position_topic: "habc/office_l/command/set/positionpct"
     position_topic: "habc/office_l/tele/currentpct"
+    availability_topic: "habc/office_l/tele/LWT"
     #retain: true
     payload_open: "OPEN"
     payload_close: "CLOSE"
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
 #Guest Room Blind
   - platform: mqtt
@@ -70,12 +79,15 @@ cover:
     command_topic: "habc/guest/command/set/state"
     set_position_topic: "habc/guest/command/set/positionpct"
     position_topic: "habc/guest/tele/currentpct"
+    availability_topic: "habc/guest/tele/LWT"
     #retain: true
     payload_open: "OPEN"
     payload_close: "CLOSE"
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
 #Server Room Blind
   - platform: mqtt
@@ -83,12 +95,15 @@ cover:
     command_topic: "habc/server/command/set/state"
     set_position_topic: "habc/server/command/set/positionpct"
     position_topic: "habc/server/tele/currentpct"
+    availability_topic: "habc/server/tele/LWT"
     #retain: true
     payload_open: "OPEN"
     payload_close: "CLOSE"
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
 input_boolean:
 
