@@ -146,3 +146,266 @@ input_boolean:
     name: Blinds House Close
     initial: off
     icon: mdi:blinds
+
+sensor:
+  #Driver Status Messages
+
+  - platform: mqtt
+    name: "Left Office Blind Version"
+    state_topic: "habc/office_l/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "habc/office_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    
+  - platform: mqtt
+    name: "Left Office Blind Uptime"
+    state_topic: "habc/office_l/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "habc/office_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Office Blind RSSI"
+    state_topic: "habc/office_l/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "habc/office_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Office Blind IP"
+    state_topic: "habc/office_l/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "habc/office_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Office Blind Free Heap"
+    state_topic: "habc/office_l/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+  - platform: mqtt
+    name: "Left Office Blind Heap Fragmentation"
+    state_topic: "habc/office_l/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "habc/office_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Office Blind Core Version"
+    state_topic: "habc/office_l/tele/status"
+    value_template: "{{value_json['espCore']}}" 
+    availability_topic: "habc/office_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Center Office Blind Version"
+    state_topic: "habc/office_c/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "habc/office_c/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    
+  - platform: mqtt
+    name: "Center Office Blind Uptime"
+    state_topic: "habc/office_c/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "habc/office_c/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Center Office Blind RSSI"
+    state_topic: "habc/office_c/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "habc/office_c/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Center Office Blind IP"
+    state_topic: "habc/office_c/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "habc/office_c/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Center Office Blind Free Heap"
+    state_topic: "habc/office_c/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+  - platform: mqtt
+    name: "Center Office Blind Heap Fragmentation"
+    state_topic: "habc/office_c/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "habc/office_c/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Center Office Blind Core Version"
+    state_topic: "habc/office_c/tele/status"
+    value_template: "{{value_json['espCore']}}" 
+    availability_topic: "habc/office_c/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Right Office Blind Version"
+    state_topic: "habc/office_r/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "habc/office_r/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    
+  - platform: mqtt
+    name: "Right Office Blind Uptime"
+    state_topic: "habc/office_r/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "habc/office_r/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Right Office Blind RSSI"
+    state_topic: "habc/office_r/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "habc/office_r/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Right Office Blind IP"
+    state_topic: "habc/office_r/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "habc/office_r/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Right Office Blind Free Heap"
+    state_topic: "habc/office_r/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+  - platform: mqtt
+    name: "Right Office Blind Heap Fragmentation"
+    state_topic: "habc/office_r/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "habc/office_r/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Right Office Blind Core Version"
+    state_topic: "habc/office_r/tele/status"
+    value_template: "{{value_json['espCore']}}" 
+    availability_topic: "habc/office_r/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind Version"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    
+  - platform: mqtt
+    name: "Guest Blind Uptime"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind RSSI"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind IP"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind Free Heap"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+  - platform: mqtt
+    name: "Guest Blind Heap Fragmentation"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind Core Version"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['espCore']}}" 
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Server Room Blind Version"
+    state_topic: "habc/server/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "habc/server/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    
+  - platform: mqtt
+    name: "Server Room Blind Uptime"
+    state_topic: "habc/server/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "habc/server/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Server Room Blind RSSI"
+    state_topic: "habc/server/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "habc/server/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Server Room Blind IP"
+    state_topic: "habc/server/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "habc/server/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Server Room Blind Free Heap"
+    state_topic: "habc/server/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+  - platform: mqtt
+    name: "Server Room Blind Heap Fragmentation"
+    state_topic: "habc/server/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "habc/server/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Server Room Blind Core Version"
+    state_topic: "habc/server/tele/status"
+    value_template: "{{value_json['espCore']}}" 
+    availability_topic: "habc/server/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
