@@ -1,16 +1,25 @@
 sensor:
+  - platform: mqtt
+    name: "Eagle Current Power"
+    state_topic: "power/elec/Home/power"
+    value_template: "{{value_json['power']}}"
+    unit_of_measurement: W
+
   - platform: integration
     source: sensor.eagle_current_power
     name: energy_used
     unit_prefix: k
     round: 2
+
 utility_meter:
   energy_daily:
     source: sensor.energy_used
     cycle: daily
+
   energy_monthly:
     source: sensor.energy_used
     cycle: monthly
+
   energy_yearly:
     source: sensor.energy_used
     cycle: yearly
