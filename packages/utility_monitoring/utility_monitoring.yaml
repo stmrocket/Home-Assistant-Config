@@ -3,7 +3,7 @@ sensor:
     name: "Eagle Current Power"
     state_topic: "power/elec/Home/power"
     value_template: "{{value_json['power']}}"
-    unit_of_measure: W
+    unit_of_measurement: W
 
   - platform: integration
     source: sensor.eagle_current_power
@@ -15,7 +15,7 @@ utility_meter:
   energy_daily:
     source: sensor.energy_used
     cycle: daily
-    
+
   energy_monthly:
     source: sensor.energy_used
     cycle: monthly
