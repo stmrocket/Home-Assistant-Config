@@ -1,12 +1,12 @@
 sensor:
   - platform: mqtt
-    name: "Eagle Current Power"
+    name: "Current Power"
     state_topic: "power/elec/Home/power"
     value_template: "{{value_json['power']}}"
     unit_of_measurement: W
 
   - platform: integration
-    source: sensor.eagle_current_power
+    source: sensor.current_power
     name: energy_used
     unit_prefix: k
     round: 2
