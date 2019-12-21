@@ -11,6 +11,6 @@ before_install:
   - sudo apt-get install -y libudev-dev
 install:
   #- pip3 install homeassistant
-  - pip3 install homeassistant==0.100.2
+  - pip3 install homeassistant==0.103.3
 script:
   - hass -c . --script check_config
