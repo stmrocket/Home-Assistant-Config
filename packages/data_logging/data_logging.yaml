@@ -149,6 +149,11 @@ influxdb:
       - utility_meter.energy_daily
       - utility_meter.energy_monthly
       - utility_meter.energy_yearly
+      - sensor.rain_hour
+      - sensor.rain_day
+      - sensor.rain_month
+      - sensor.rain_year
+      - sensor.rain_rate
 
 #################################################################
 #                                                               #
