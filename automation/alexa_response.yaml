@@ -118,3 +118,31 @@
     to: "off"
   action:
   - service: rest_command.update_alexa_not_raining
+
+- alias: Update Alexa Daily Rain
+  trigger:
+  - platform: state
+    entity_id: sensor.rain_day
+  action:
+  - service: rest_command.update_alexa_daily_rain  
+
+- alias: Update Alexa Monthly Rain
+  trigger:
+  - platform: state
+    entity_id: sensor.rain_month
+  action:
+  - service: rest_command.update_alexa_monthly_rain    
+
+- alias: Update Alexa Yearly Rain
+  trigger:
+  - platform: state
+    entity_id: sensor.rain_year
+  action:
+  - service: rest_command.update_alexa_yearly_rain  
+
+- alias: Update Alexa Rain Rate
+  trigger:
+  - platform: state
+    entity_id: sensor.rain_rate
+  action:
+  - service: rest_command.update_alexa_rain_rate  
