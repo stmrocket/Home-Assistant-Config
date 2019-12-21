@@ -66,9 +66,8 @@
 
 - alias: Elk Speak Garage Entry
   trigger:
-  - entity_id: sensor.zone_002
-    platform: state
-    to: Violated
+  - platform: template
+    value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
   action:
   - service: mqtt.publish
     data:
