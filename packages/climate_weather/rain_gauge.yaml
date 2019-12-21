@@ -1,0 +1,405 @@
+counter:
+  rain_minute:
+    step: 1
+  rain_hour:
+    step: 1
+  rain_day:
+    step: 1
+  rain_month:
+    step: 1
+  rain_year:
+    step: 1
+
+sensor:
+  
+  - platform: template
+    sensors:
+      
+      rain_minute:
+        value_template: '{{ (states.counter.rain_minute.state |int / 100) | round(2) }}'
+        unit_of_measurement: 'in'
+
+      rain_hour:
+        value_template: '{{ (states.counter.rain_hour.state |int / 100) | round(2) }}'
+        unit_of_measurement: 'in'
+
+      rain_day:
+        value_template: '{{ (states.counter.rain_day.state |int / 100) | round(2) }}'
+        unit_of_measurement: 'in'
+
+      rain_month:
+        value_template: '{{ (states.counter.rain_month.state |int / 100) | round(2) }}'
+        unit_of_measurement: 'in'
+
+      rain_year:
+        value_template: '{{ (states.counter.rain_year.state |int / 100) | round(2) }}'
+        unit_of_measurement: 'in'
+
+      rain_rate:
+        value_template: >
+          {{ (states('input_number.rain_minute_00') | float +
+             states('input_number.rain_minute_01') | float +
+             states('input_number.rain_minute_02') | float +
+             states('input_number.rain_minute_03') | float +
+             states('input_number.rain_minute_04') | float +
+             states('input_number.rain_minute_05') | float +
+             states('input_number.rain_minute_06') | float +
+             states('input_number.rain_minute_07') | float +
+             states('input_number.rain_minute_08') | float +
+             states('input_number.rain_minute_09') | float +
+             states('input_number.rain_minute_10') | float +
+             states('input_number.rain_minute_11') | float +
+             states('input_number.rain_minute_12') | float +
+             states('input_number.rain_minute_13') | float +
+             states('input_number.rain_minute_14') | float +
+             states('input_number.rain_minute_15') | float +
+             states('input_number.rain_minute_16') | float +
+             states('input_number.rain_minute_17') | float +
+             states('input_number.rain_minute_18') | float +
+             states('input_number.rain_minute_19') | float +
+             states('input_number.rain_minute_20') | float +
+             states('input_number.rain_minute_21') | float +
+             states('input_number.rain_minute_22') | float +
+             states('input_number.rain_minute_23') | float +
+             states('input_number.rain_minute_24') | float +
+             states('input_number.rain_minute_25') | float +
+             states('input_number.rain_minute_26') | float +
+             states('input_number.rain_minute_27') | float +
+             states('input_number.rain_minute_28') | float +
+             states('input_number.rain_minute_29') | float +
+             states('input_number.rain_minute_30') | float +
+             states('input_number.rain_minute_31') | float +
+             states('input_number.rain_minute_32') | float +
+             states('input_number.rain_minute_33') | float +
+             states('input_number.rain_minute_34') | float +
+             states('input_number.rain_minute_35') | float +
+             states('input_number.rain_minute_36') | float +
+             states('input_number.rain_minute_37') | float +
+             states('input_number.rain_minute_38') | float +
+             states('input_number.rain_minute_39') | float +
+             states('input_number.rain_minute_40') | float +
+             states('input_number.rain_minute_41') | float +
+             states('input_number.rain_minute_42') | float +
+             states('input_number.rain_minute_43') | float +
+             states('input_number.rain_minute_44') | float +
+             states('input_number.rain_minute_45') | float +
+             states('input_number.rain_minute_46') | float +
+             states('input_number.rain_minute_47') | float +
+             states('input_number.rain_minute_48') | float +
+             states('input_number.rain_minute_49') | float +
+             states('input_number.rain_minute_50') | float +
+             states('input_number.rain_minute_51') | float +
+             states('input_number.rain_minute_52') | float +
+             states('input_number.rain_minute_53') | float +
+             states('input_number.rain_minute_54') | float +
+             states('input_number.rain_minute_55') | float +
+             states('input_number.rain_minute_56') | float +
+             states('input_number.rain_minute_57') | float +
+             states('input_number.rain_minute_58') | float +
+             states('input_number.rain_minute_59') | float) | round(2) }}
+        unit_of_measurement: 'in/hr'
+          
+
+
+input_number:
+
+  rain_minute_00:
+    min: 0
+    max: 100
+    mode: box
+    
+  
+  rain_minute_01:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_02:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_03:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_04:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_05:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_06:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_07:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_08:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_09:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_10:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_11:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_12:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_13:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_14:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_15:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_16:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_17:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_18:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_19:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_20:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_21:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_22:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_23:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_24:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_25:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_26:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_27:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_28:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_29:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_30:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_31:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_32:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_33:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_34:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_35:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_36:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_37:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_38:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_39:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_40:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_41:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_42:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_43:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_44:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_45:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_46:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_47:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_48:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_49:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_50:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_51:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_52:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_53:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_54:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_55:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_56:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_57:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_58:
+    min: 0
+    max: 100
+    mode: box
+  
+  rain_minute_59:
+    min: 0
+    max: 100
+    mode: box

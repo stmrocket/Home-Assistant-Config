@@ -39,5 +39,5 @@ entity_pop_4: sensor.dark_sky_precip_probability_4d
 entity_pop_5: sensor.dark_sky_precip_probability_5d
 entity_daytime_high: sensor.dark_sky_daytime_high_temperature_0d
 entity_pop: sensor.dark_sky_precip_probability_0d
-entity_precip_current: sensor.rain_today
-entity_precip_intensity_current: sensor.rain_rate_hr
+entity_precip_current: sensor.rain_day
+entity_precip_intensity_current: sensor.rain_rate

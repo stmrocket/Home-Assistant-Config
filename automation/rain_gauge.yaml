@@ -1,0 +1,95 @@
+- alias: Count Rainfall
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_052
+    from: Normal
+    to: Violated
+  - platform: state
+    entity_id: sensor.zone_052
+    from: Violated
+    to: Normal
+  action:
+  - service: counter.increment
+    data:
+      entity_id:
+        - counter.rain_minute
+        - counter.rain_hour
+        - counter.rain_day
+        - counter.rain_month
+        - counter.rain_year
+  - service: input_number.set_value
+    data_template:
+      entity_id: >
+        {% if  now().minute < 10 -%}
+          input_number.rain_minute_0{{ now().minute }}
+        {% else -%}
+          input_number.rain_minute_{{ now().minute }}
+        {% endif -%}
+      value: "{{ states('sensor.rain_minute') }}"
+
+- alias: Reset Minute Rain
+  trigger:
+  - platform: time_pattern
+    minutes: "*"        
+    seconds: "0"
+  action:
+  - service: input_number.set_value
+    data_template:
+      entity_id: >
+        {% if now().minute == 1 -%}
+          input_number.rain_minute_59
+        {% elif  now().minute < 10 -%}
+          input_number.rain_minute_0{{ now().minute - 1 }}
+        {% else -%}
+          input_number.rain_minute_{{ now().minute - 1 }}
+        {% endif -%}
+      value: "{{ states('sensor.rain_minute') }}"
+  - service: counter.reset
+    data:
+      entity_id: counter.rain_minute
+
+- alias: Reset Hour Rain
+  trigger:
+  - platform: time_pattern
+    hours: "*"
+    minutes: "0"        
+    seconds: "0"
+  action:
+  - service: counter.reset
+    data:
+      entity_id: counter.rain_hour
+
+- alias: Reset Day Rain
+  trigger:
+  - platform: time
+    at: '00:00:00'
+  action:
+  - service: counter.reset
+    data:
+      entity_id: counter.rain_day
+
+- alias: Reset Month Rain
+  trigger:
+  - platform: time
+    at: '00:00:00'
+  condition:
+    - condition: template
+      value_template: "{{ now().day == 1 }}"
+  action:
+  - service: counter.reset
+    data:
+      entity_id: counter.rain_day
+
+- alias: Reset Year Rain
+  trigger:
+  - platform: time
+    at: '00:00:00'
+  condition:
+    - condition: template
+      value_template: "{{ now().month == 1 }}"
+    - condition: template
+      value_template: "{{ now().day == 1 }}"
+  action:
+  - service: counter.reset
+    data:
+      entity_id: counter.rain_day

@@ -48,7 +48,7 @@ cards:
             
             - type: 'custom:flex-horseshoe-card'
               entities:
-                - entity: sensor.current_power
+                - entity: sensor.eagle_current_power
                   attribute: state
                   decimals: 0
                   name: 'Power'
