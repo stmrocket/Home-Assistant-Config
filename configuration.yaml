@@ -257,13 +257,6 @@ sensor:
 
 binary_sensor:
 
-  - platform: template
-    sensors:
-      is_raining:
-        friendly_name: "Currently Raining"
-        device_class: moisture
-        value_template:  "{{ states('sensor.emoncms_is_raining')|float == 1 }}"
-
   - platform: wyzesense
     device: "/dev/hidraw0"        
 
