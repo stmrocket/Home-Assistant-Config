@@ -1,0 +1,32 @@
+- alias: Notify Alarm Tripped
+  trigger:
+  - platform: state
+    entity_id: switch.output_183
+    to: 'on'
+  action:
+  - service: notify.browser
+    data:
+      message: The alarm has been triggered.
+      title: Alarm!
+
+- alias: Notify Smoke Alarm Tripped
+  trigger:
+  - platform: state
+    entity_id: switch.output_10
+    to: 'on'
+  action:
+  - service: notify.browser
+    data:
+      message: The fire alarm has been triggered.
+      title: Alarm!      
+
+- alias: Notify CO Alarm Tripped
+  trigger:
+  - platform: state
+    entity_id: switch.output_11
+    to: 'on'
+  action:
+  - service: notify.browser
+    data:
+      message: The CO alarm has been triggered.
+      title: Alarm!         
