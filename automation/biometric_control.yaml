@@ -28,7 +28,7 @@
       state: armed_away
     - condition: state
       entity_id: alarm_control_panel.area_001
-      state: pending
+      state: arming
   action:
   - service: lock.unlock
     entity_id: lock.garage_entry
