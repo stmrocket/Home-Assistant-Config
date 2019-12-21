@@ -96,3 +96,14 @@ rest_command:
     method: post
     payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current work room temperature is {{ states.sensor.work_room_temperature_owfs.state }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Work Room Temperature",      "content": "{{ states.sensor.work_room_temperature_owfs.state }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
   
+  update_alexa_is_raining:
+    url: "{{ states.sensor.alexa_speech_url.state }}WORKTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>It is currently raining. </speak>"    },    "card": {      "type": "Simple",      "title": "Rain Status",      "content": "It is currently raining."    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_not_raining:
+    url: "{{ states.sensor.alexa_speech_url.state }}WORKTEMP"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>It is not raining. </speak>"    },    "card": {      "type": "Simple",      "title": "Rain Status",      "content": "It is not raining."    },        "shouldEndSession": true  },  "sessionAttributes": null}'

@@ -102,3 +102,19 @@
     entity_id: sensor.work_room_temperature_owfs
   action:
   - service: rest_command.update_alexa_workroom_temp
+
+- alias: Update Alexa When Rain Starts
+  trigger:
+  - platform: state
+    entity_id: input_boolean.is_raining
+    to: "on"
+  action:
+  - service: rest_command.update_alexa_is_raining
+
+- alias: Update Alexa When Rain Stops
+  trigger:
+  - platform: state
+    entity_id: input_boolean.is_raining
+    to: "off"
+  action:
+  - service: rest_command.update_alexa_not_raining

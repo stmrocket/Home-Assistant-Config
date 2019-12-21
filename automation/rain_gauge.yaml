@@ -93,3 +93,42 @@
   - service: counter.reset
     data:
       entity_id: counter.rain_day
+
+- alias: Detect Rain Started
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_051
+    to: Violated
+  condition:
+  - condition: state 
+    entity_id: input_boolean.is_raining
+    state: "off"
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.is_raining
+  - service: notify.browser
+    data:
+      message: It is now raining.
+      title: Weather
+
+- alias: Detect Rain Stopped
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_051
+    to: Normal
+    for:
+      minutes: 10
+  condition:
+  - condition: state 
+    entity_id: input_boolean.is_raining
+    state: "on"
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.is_raining
+  - service: notify.browser
+    data:
+      message: It has stopped raining.
+      title: Weather
+  
