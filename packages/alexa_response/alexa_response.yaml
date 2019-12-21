@@ -130,4 +130,41 @@ rest_command:
     url: "{{ states.sensor.alexa_speech_url.state }}RAINRATE"
     content_type: 'application/json'
     method: post
-    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current rain rate is is {{ states.sensor.rain_rate.state }} inches per hour. </speak>"    },    "card": {      "type": "Simple",      "title": "Rain Rate",      "content": "{{ states.sensor.rain_rate.state }} inches per hour"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current rain rate is {{ states.sensor.rain_rate.state }} inches per hour. </speak>"    },    "card": {      "type": "Simple",      "title": "Rain Rate",      "content": "{{ states.sensor.rain_rate.state }} inches per hour"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+
+  update_alexa_power_usage:
+    url: "{{ states.sensor.alexa_speech_url.state }}POWER"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The house is currently consuming {{ states.sensor.eagle_current_power.state }} watts. </speak>"    },    "card": {      "type": "Simple",      "title": "Power Consumption",      "content": "{{ states.sensor.eagle_current_power.state }} watts"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+
+  update_alexa_garage_open:
+    url: "{{ states.sensor.alexa_speech_url.state }}GARAGEDOOR"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The garage door is open. </speak>"    },    "card": {      "type": "Simple",      "title": "Garage Door Status",      "content": "The Garage Door is open."    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_garage_closed:
+    url: "{{ states.sensor.alexa_speech_url.state }}GARAGEDOOR"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The garage door is closed. </speak>"    },    "card": {      "type": "Simple",      "title": "Garage Door Status",      "content": "The Garage Door is closed."    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_alarm_night:
+    url: "{{ states.sensor.alexa_speech_url.state }}ALARM"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The house alarm is armed in night mode. </speak>"    },    "card": {      "type": "Simple",      "title": "Alarm Status",      "content": "Armed Night"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_alarm_stay:
+    url: "{{ states.sensor.alexa_speech_url.state }}ALARM"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The house alarm is armed in stay mode. </speak>"    },    "card": {      "type": "Simple",      "title": "Alarm Status",      "content": "Armed Stay"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  
+  update_alexa_alarm_disarmed:
+    url: "{{ states.sensor.alexa_speech_url.state }}ALARM"
+    content_type: 'application/json'
+    method: post
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The house alarm is disarmed. </speak>"    },    "card": {      "type": "Simple",      "title": "Alarm Status",      "content": "Disarmed"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+  

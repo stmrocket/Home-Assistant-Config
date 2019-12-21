@@ -146,3 +146,51 @@
     entity_id: sensor.rain_rate
   action:
   - service: rest_command.update_alexa_rain_rate  
+
+- alias: Update Alexa Power Usage
+  trigger:
+  - platform: time_pattern
+    minutes: "*"        
+    seconds: "0"
+  action:
+  - service: rest_command.update_alexa_power_usage 
+
+- alias: Update Alexa When Garage Open
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_031
+    to: Violated
+  action:
+  - service: rest_command.update_alexa_garage_open
+
+- alias: Update Alexa When Garage Closed
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_031
+    to: Normal
+  action:
+  - service: rest_command.update_alexa_garage_closed  
+
+- alias: Update Alexa When Alarm Armed Night
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    to: armed_night
+  action:
+  - service: rest_command.update_alexa_alarm_night  
+
+- alias: Update Alexa When Alarm Armed Stay
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    to: armed_home
+  action:
+  - service: rest_command.update_alexa_alarm_stay
+
+- alias: Update Alexa When Alarm Disarmed
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    to: disarmed
+  action:
+  - service: rest_command.update_alexa_alarm_disarmed     
