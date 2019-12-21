@@ -207,3 +207,48 @@
       entity_id: climate.master_suite
       target_temp_high: 79
       target_temp_low: 68
+
+- alias: HVAC Dump Zone 1
+  trigger:
+  - platform: state
+    entity_id: switch.hvac_dump_zone_1_led
+    to: 'on'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.output_014 
+  - service: switch.turn_off
+    entity_id: 
+      - switch.output_015
+      - switch.output_016
+      - switch.hvac_dump_zone_2_led
+      - switch.hvac_dump_zone_3_led
+
+- alias: HVAC Dump Zone 2
+  trigger:
+  - platform: state
+    entity_id: switch.hvac_dump_zone_2_led
+    to: 'on'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.output_015
+  - service: switch.turn_off
+    entity_id: 
+      - switch.output_014
+      - switch.output_016
+      - switch.hvac_dump_zone_1_led
+      - switch.hvac_dump_zone_3_led      
+
+- alias: HVAC Dump Zone 3
+  trigger:
+  - platform: state
+    entity_id: switch.hvac_dump_zone_3_led
+    to: 'on'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.output_016
+  - service: switch.turn_off
+    entity_id: 
+      - switch.output_014
+      - switch.output_015
+      - switch.hvac_dump_zone_1_led
+      - switch.hvac_dump_zone_2_led    
