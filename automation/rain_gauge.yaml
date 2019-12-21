@@ -131,4 +131,22 @@
     data:
       message: It has stopped raining.
       title: Weather
+
+- alias: Display Rainfall on Elk Keypads
+  trigger:
+  - platform: template
+    value_template: "{{ states.sensor.rain_day | float > 0 }}"  
+  action:
+  - service: elkm1.alarm_display_message
+    data_template:
+      entity_id: alarm_control_panel.area_001
+      line1: 'Rain: {{ states.sensor.rain_day.state }}"'
   
+- alias: Clear Rainfall on Elk Keypads
+  trigger:
+  - platform: template
+    value_template: "{{ states.sensor.rain_day | float == 0 }}"  
+  action:
+  - service: elkm1.alarm_display_message
+    data_template:
+      clear: 0
