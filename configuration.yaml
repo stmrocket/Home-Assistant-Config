@@ -55,138 +55,6 @@ sensor:
         value_template: '{{ states.zwave.garage_entry_lock.attributes.battery_level }}'
         unit_of_measurement: '%'
         entity_id: zwave.garage_entry_lock
-#Sonoff Washer Monitor
-  - platform: mqtt
-    name: "Washer State"
-    state_topic: "hass/state/washer"
-    icon: mdi:washing-machine
-  - platform: mqtt
-    name: "Washer Watts"
-    state_topic: "tele/SNF-Washer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Power }}"
-    qos: 2
-    unit_of_measurement : "W"
-    icon: mdi:flash-circle
-    availability_topic: "tele/SNF-Washer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: "Washer Voltage"
-    state_topic: "tele/SNF-Washer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Voltage }}"
-    qos: 2
-    unit_of_measurement : "V"
-    icon: mdi:flash-circle
-    availability_topic: "tele/SNF-Washer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: "Washer Amps"
-    state_topic: "tele/SNF-Washer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Current }}"
-    qos: 2
-    unit_of_measurement : "A"
-    icon: mdi:flash-circle
-    availability_topic: "tele/SNF-Washer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: "Washer Energy Today"
-    state_topic: "tele/SNF-Washer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Today }}"
-    qos: 2
-    unit_of_measurement : "kWh"
-    availability_topic: "tele/SNF-Washer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: "Washer Energy Yesterday"
-    state_topic: "tele/SNF-Washer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Yesterday }}"
-    qos: 2
-    unit_of_measurement : "kWh"
-    availability_topic: "tele/SNF-Washer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "tele/SNF-Washer/STATE"
-    name: "Washer Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "tele/SNF-Washer/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-#Sonoff Dryer Monitor
-  - platform: mqtt
-    name: "Dryer State"
-    state_topic: "hass/state/dryer"
-    icon: mdi:tumble-dryer
-
-  - platform: mqtt
-    name: "Dryer Watts"
-    state_topic: "tele/SNF-Dryer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Power }}"
-    qos: 2
-    unit_of_measurement : "W"
-    icon: mdi:flash-circle
-    availability_topic: "tele/SNF-Dryer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Dryer Voltage"
-    state_topic: "tele/SNF-Dryer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Voltage }}"
-    qos: 2
-    unit_of_measurement : "V"
-    icon: mdi:flash-circle
-    availability_topic: "tele/SNF-Dryer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Dryer Amps"
-    state_topic: "tele/SNF-Dryer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Current }}"
-    qos: 2
-    unit_of_measurement : "A"
-    icon: mdi:flash-circle
-    availability_topic: "tele/SNF-Dryer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Dryer Energy Today"
-    state_topic: "tele/SNF-Dryer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Today }}"
-    qos: 2
-    unit_of_measurement : "kWh"
-    availability_topic: "tele/SNF-Dryer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Dryer Energy Yesterday"
-    state_topic: "tele/SNF-Dryer/SENSOR"
-    value_template: "{{value_json['ENERGY'].Yesterday }}"
-    qos: 2
-    unit_of_measurement : "kWh"
-    availability_topic: "tele/SNF-Dryer/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "tele/SNF-Dryer/STATE"
-    name: "Dryer Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "tele/SNF-Dryer/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
 
   #Fireplace
 
@@ -312,16 +180,6 @@ switch:
 
 input_boolean:
 
-  washer_end:
-    name: Washer Finished
-    initial: off
-    icon: mdi:stop-circle
-
-  dryer_end:
-    name: Dryer Finished
-    initial: off
-    icon: mdi:stop-circle
-
   guest_mode:
     name: Guest Mode
     icon: mdi:timer
@@ -379,14 +237,6 @@ light:
 # Timers
 timer:
 
-  washer_alert:
-    name: Washer Announcement Timer
-    duration: '00:05:00'
-
-  dryer_alert:
-    name: Dryer Announcement Timer
-    duration: '00:05:00'
-
   garage:
     name: Garage Light Timer
     duration: '00:10:00'
@@ -435,17 +285,6 @@ isy994:
   username: !secret isy_user
   password: !secret isy_pass
   enable_climate: false
-  # isy_variables:
-  #   sensors:
-  #     - id: 10
-  #       type: 2
-  #       unit_of_measurement: 'W'
-  #     - id: 47
-  #       type: 1
-  #       unit_of_measurement: 'in/hr'
-  #     - id: 122
-  #       type: 2
-  #       unit_of_measurement: 'in'
 
 #Elk M1 Integration
 elkm1:
@@ -471,15 +310,6 @@ elkm1:
 
 
 
-# proximity:
-#   home:
-#     ignored_zones:
-#       - work
-#     devices:
-#       - device_tracker.shawn_n6
-#     tolerance: 50
-#     unit_of_measurement: mi
-
 api:
 alexa: !include alexa.yaml
 
@@ -502,13 +332,6 @@ device_tracker:
     username: !secret my_callsign
     callsigns:
       - !secret truck_callsign
-  # - platform: unifi
-  #   host: !secret unifi_host
-  #   port: !secret unifi_port
-  #   verify_ssl: false
-  #   username: !secret ubnt_user
-  #   password: !secret ubnt_pass
-  #   consider_home: 60
 
 #Notification Services
 notify:
@@ -576,13 +399,6 @@ alexa_media:
     - email: !secret amazon_user
       password: !secret amazon_password
       url: amazon.com
-
-#Fully Kiosk Display
-# display:
-#   - platform: fully_kiosk
-#     name: Kitchen Tablet
-#     host: !secret kitchen_tablet_host
-#     password: !secret kitchen_tablet_pin
 
 #Browser Mod
 browser_mod:
