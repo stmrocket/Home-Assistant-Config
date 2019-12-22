@@ -1,9 +1,0 @@
-sensor:
-  - platform: template
-    sensors:
-      isy_url:
-        value_template: !secret isy_url
-
-rest_command:
-  initialize_isy:
-    url: "{{ states.sensor.isy_url.state }}"

@@ -16,9 +16,10 @@
         
 - alias: Dishwasher Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.dishwasher_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.dishwasher_leak
   action:
   - service: notify.browser
     data:
@@ -47,9 +48,10 @@
         
 - alias: Guest Sink Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.guest_sink_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.guest_sink_leak
   action:
   - service: notify.browser
     data:
@@ -78,9 +80,10 @@
         
 - alias: Guest Toilet Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.guest_toilet_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.guest_toilet_leak 
   action:
   - service: notify.browser
     data:
@@ -109,9 +112,10 @@
         
 - alias: Kitchen Sink Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.kitchen_sink_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:      
+      entity_id: timer.kitchen_sink_leak
   action:
   - service: notify.browser
     data:
@@ -140,9 +144,10 @@
         
 - alias: Left Master Sink Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.left_master_sink_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.left_master_sink_leak  
   action:
   - service: notify.browser
     data:
@@ -171,9 +176,10 @@
         
 - alias: Master Toilet Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.master_toilet_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.master_toilet_leak 
   action:
   - service: notify.browser
     data:
@@ -202,9 +208,10 @@
         
 - alias: Refrigerator Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.refrigerator_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.refrigerator_leak
   action:
   - service: notify.browser
     data:
@@ -233,9 +240,10 @@
         
 - alias: Right Master Sink Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.right_master_sink_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.right_master_sink_leak  
   action:
   - service: notify.browser
     data:
@@ -264,9 +272,10 @@
         
 - alias: Utility Leak Detector Error
   trigger:
-  - platform: state
-    entity_id: timer.utility_leak
-    to: idle   
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.utility_leak 
   action:
   - service: notify.browser
     data:
@@ -370,3 +379,99 @@
   action:
   - service: switch.turn_off
     entity_id: switch.zone_7    
+
+- alias: Dishwasher Leak Detector Watchdog Reset
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.dishwasher_leak_heartbeat
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.dishwasher_leak_heartbeat
+    to: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.dishwasher_leak   
+
+- alias: Guest Sink Leak Detector Watchdog Reset
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.guest_sink_leak_heartbeat
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.guest_sink_leak_heartbeat
+    to: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.guest_sink_leak
+
+- alias: Guest Toilet Leak Detector Watchdog Reset
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.guest_toilet_leak_heartbeat
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.guest_toilet_leak_heartbeat
+    to: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.guest_toilet_leak  
+
+- alias: Kitchen Sink Leak Detector Watchdog Reset
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_sink_leak_heartbeat
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.kitchen_sink_leak_heartbeat
+    to: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.kitchen_sink_leak
+
+- alias: Left Master Sink Leak Detector Watchdog Reset
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.left_master_sink_leak_heartbe
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.left_master_sink_leak_heartbe
+    to: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.left_master_sink_leak
+
+- alias: Master Toilet Leak Detector Watchdog Reset
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.master_toilet_leak_heartbeat
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.master_toilet_leak_heartbeat
+    to: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.master_toilet_leak
+
+- alias: Refrigerator Leak Detector Watchdog Reset
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.refrigerator_leak_heartbeat
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.refrigerator_leak_heartbeat
+    to: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.refrigerator_leak
+
+- alias: Right Master Sink Leak Detector Watchdog Reset
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.right_master_sink_leak_heartb
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.right_master_sink_leak_heartb
+    to: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.right_master_sink_leak                                           

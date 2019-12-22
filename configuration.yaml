@@ -162,6 +162,11 @@ input_boolean:
     initial: off
     icon: mdi:amazon-alexa
 
+  morning_trigger:
+    name: Alexa Morning Trigger
+    initial: off
+    icon: mdi:amazon-alexa    
+
   outside_timer_lights:
     name: Outside Timer Lights
     icon: mdi:timer
@@ -173,7 +178,27 @@ input_boolean:
   vacation_mode:
     name: Vacation Mode
     icon: mdi:airplane
-    
+
+  elk_night_on:
+    name: Elk Night Mode On Trigger
+    icon: mdi:alarm-bell
+
+  elk_night_off:
+    name: Elk Night Mode Off Trigger
+    icon: mdi:alarm-bell  
+
+  elk_stay_on:
+    name: Elk Stay Mode On Trigger
+    icon: mdi:alarm-bell
+
+  elk_stay_off:
+    name: Elk Stay Mode Off Trigger
+    icon: mdi:alarm-bell
+
+  elk_away_on:
+    name: Elk Away Mode On Trigger
+    icon: mdi:alarm-bell
+
 light:
 
   - platform: mqtt
@@ -377,3 +402,11 @@ browser_mod:
     !secret shawn_n6_browser:
       name: shawn_n6
     
+input_select:
+  doorbell_tone:
+    name: Doorbell Sound
+    options:
+      - Alexa Speak
+      - Wish Upon A Star    
+      - Christmas
+    icon: mdi:music

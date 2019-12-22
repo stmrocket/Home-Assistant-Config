@@ -1,0 +1,26 @@
+cover:
+  - platform: mqtt
+    name: "House Blinds"
+    command_topic: "habc/all/command/set/state"
+    set_position_topic: "habc/all/command/set/positionpct"
+    position_topic: "habc/all/tele/currentpct"
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+input_boolean:
+  house_blinds_open:
+    name: Blinds House Open
+    initial: off
+    icon: mdi:blinds
+
+  house_blinds_close:
+    name: Blinds House Close
+    initial: off
+    icon: mdi:blinds
+
+  blinds_manual:
+    name: Blinds Adjusted Manually
+    icon: mdi:blinds

@@ -1,0 +1,112 @@
+- alias: Elk Night Mode On from Trigger
+  trigger:
+  - platform: state
+    entity_id: input_boolean.elk_night_on
+    to: 'on'
+  condition:
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.attributes.alarm_state == "no_alarm_active" }}'
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.state != "armed_away" }}'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.output_178
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.elk_night_on
+
+- alias: Elk Night Mode Off from Trigger
+  trigger:
+  - platform: state
+    entity_id: input_boolean.elk_night_off
+    to: 'on'
+  condition:
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.attributes.alarm_state == "no_alarm_active" }}'
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.state != "armed_away" }}'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.output_177
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.elk_night_off  
+
+- alias: Elk Stay Mode On from Trigger
+  trigger:
+  - platform: state
+    entity_id: input_boolean.elk_stay_on
+    to: 'on'
+  condition:
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.attributes.alarm_state == "no_alarm_active" }}'
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.state != "armed_away" }}'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.output_177
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.elk_stay_on
+
+- alias: Elk Stay Mode Off from Trigger
+  trigger:
+  - platform: state
+    entity_id: input_boolean.elk_stay_off
+    to: 'on'
+  condition:
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.attributes.alarm_state == "no_alarm_active" }}'
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.state != "armed_away" }}'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.output_182
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.elk_stay_off      
+
+- alias: Elk Away Mode On from Trigger
+  trigger:
+  - platform: state
+    entity_id: input_boolean.elk_away_on
+    to: 'on'
+  condition:
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.attributes.alarm_state == "no_alarm_active" }}'
+  - condition: template
+    value_template: '{{ states.alarm_control_panel.area_001.state != "armed_away" }}'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.output_179
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.elk_away_on    
+
+- alias: Elk Clear Trigger if State Disallowed
+  trigger:
+  - platform: state
+    entity_id: input_boolean.elk_night_on
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.elk_night_off
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.elk_stay_on
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.elk_stay_off
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.elk_away_on
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: '{{ states.alarm_control_panel.area_001.attributes.alarm_state != "no_alarm_active" }}'
+    - condition: template
+      value_template: '{{ states.alarm_control_panel.area_001.state == "armed_away" }}'
+  action:
+  - service: input_boolean.turn_off
+    entity_id: 
+      - input_boolean.elk_night_on   
+      - input_boolean.elk_night_off
+      - input_boolean.elk_stay_on     
+      - input_boolean.elk_stay_off
+      - input_boolean.elk_away_on

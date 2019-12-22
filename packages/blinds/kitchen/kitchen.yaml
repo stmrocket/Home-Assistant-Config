@@ -1,0 +1,23 @@
+cover:
+  - platform: mqtt
+    name: "Kitchen Blinds"
+    command_topic: "habc/kitchen/command/set/state"
+    set_position_topic: "habc/kitchen/command/set/positionpct"
+    position_topic: "habc/kitchen/tele/currentpct"
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+input_boolean:
+
+  kitchen_blinds_open:
+    name: Blinds Kitchen Open
+    initial: off
+    icon: mdi:blinds
+
+  kitchen_blinds_close:
+    name: Blinds Kitchen Close
+    initial: off
+    icon: mdi:blinds

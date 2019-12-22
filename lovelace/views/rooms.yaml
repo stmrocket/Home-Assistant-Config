@@ -1419,7 +1419,7 @@ cards:
                 color_type: icon
                 state:
                   - value: "Listen to WHA"
-                    color: rgb(0, 145, 255)
+                    color: rgb(228, 94, 101)
                   - value: "Listen to WHA"
                     operator: '!='
                     color: rgb(255, 255, 255)
