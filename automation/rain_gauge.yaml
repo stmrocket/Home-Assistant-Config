@@ -38,7 +38,7 @@
       entity_id: >
         {% if now().minute == 1 -%}
           input_number.rain_minute_59
-        {% elif  now().minute < 10 -%}
+        {% elif  now().minute <= 10 -%}
           input_number.rain_minute_0{{ now().minute - 1 }}
         {% else -%}
           input_number.rain_minute_{{ now().minute - 1 }}
@@ -93,3 +93,60 @@
   - service: counter.reset
     data:
       entity_id: counter.rain_day
+
+- alias: Detect Rain Started
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_051
+    to: Violated
+  condition:
+  - condition: state 
+    entity_id: input_boolean.is_raining
+    state: "off"
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.is_raining
+  - service: notify.browser
+    data:
+      message: It is now raining.
+      title: Weather
+
+- alias: Detect Rain Stopped
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_051
+    to: Normal
+    for:
+      minutes: 10
+  condition:
+  - condition: state 
+    entity_id: input_boolean.is_raining
+    state: "on"
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.is_raining
+  - service: notify.browser
+    data:
+      message: It has stopped raining.
+      title: Weather
+
+- alias: Display Rainfall on Elk Keypads
+  trigger:
+  - platform: template
+    value_template: "{{ states.sensor.rain_day | float > 0 }}"  
+  action:
+  - service: elkm1.alarm_display_message
+    data_template:
+      entity_id: alarm_control_panel.area_001
+      line1: 'Rain: {{ states.sensor.rain_day.state }}"'
+  
+- alias: Clear Rainfall on Elk Keypads
+  trigger:
+  - platform: template
+    value_template: "{{ states.sensor.rain_day | float == 0 }}"  
+  action:
+  - service: elkm1.alarm_display_message
+    data_template:
+      clear: 0

@@ -1,0 +1,22 @@
+sensor:
+  - platform: template
+    sensors:
+      den_avr_url:
+        value_template: !secret den_avr_url
+
+rest_command:
+  den_avr_25:
+    url: "{{ states.sensor.den_avr_url.state }}111VL"
+    method: get
+
+  den_avr_33:
+    url: "{{ states.sensor.den_avr_url.state }}095VL"
+    method: get
+
+  den_avr_40:
+    url: "{{ states.sensor.den_avr_url.state }}081VL"
+    method: get 
+
+  den_avr_mute:
+    url: "{{ states.sensor.den_avr_url.state }}MO"
+    method: get  

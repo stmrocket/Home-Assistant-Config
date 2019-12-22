@@ -1,0 +1,63 @@
+- alias: Master Bedroom Harmony On With NuVo
+  trigger:
+  - platform: state
+    entity_id: switch.nuvo_zone_4_power
+    to: 'on'
+  action:
+  - service: remote.turn_on
+    data:
+      entity_id: remote.master_bedroom_2     
+      activity: "Listen to WHA"
+
+- alias: Master Bedroom Harmony Off With NuVo
+  trigger:
+  - platform: state
+    entity_id: switch.nuvo_zone_4_power
+    to: 'off'
+    for:
+      seconds: 15
+  condition:
+  - condition: state
+    entity_id: sensor.master_harmony_activity
+    state: "Listen to WHA"
+  action:
+  - service: remote.turn_off
+    entity_id: remote.master_bedroom_2  
+
+- alias: Den Harmony On With NuVo
+  trigger:
+  - platform: state
+    entity_id: switch.nuvo_zone_7_power
+    to: 'on'
+  action:
+  - service: remote.turn_on
+    data:
+      entity_id: remote.living_room_2   
+      activity: "Listen to WHA"
+
+- alias: Den Mute Amp When NuVo Off
+  trigger:
+  - platform: state
+    entity_id: switch.nuvo_zone_7_power
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sensor.den_harmony_activity
+    state: "Listen to WHA"
+  action:
+  - service: rest_command.den_avr_mute
+
+- alias: Den Harmony Off With NuVo
+  trigger:
+  - platform: state
+    entity_id: switch.nuvo_zone_7_power
+    to: 'off'
+    for:
+      seconds: 15
+  condition:
+  - condition: state
+    entity_id: sensor.den_harmony_activity
+    state: "Listen to WHA"
+  action:
+  - service: remote.turn_off
+    entity_id: remote.living_room_2      

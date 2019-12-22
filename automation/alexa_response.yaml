@@ -102,3 +102,95 @@
     entity_id: sensor.work_room_temperature_owfs
   action:
   - service: rest_command.update_alexa_workroom_temp
+
+- alias: Update Alexa When Rain Starts
+  trigger:
+  - platform: state
+    entity_id: input_boolean.is_raining
+    to: "on"
+  action:
+  - service: rest_command.update_alexa_is_raining
+
+- alias: Update Alexa When Rain Stops
+  trigger:
+  - platform: state
+    entity_id: input_boolean.is_raining
+    to: "off"
+  action:
+  - service: rest_command.update_alexa_not_raining
+
+- alias: Update Alexa Daily Rain
+  trigger:
+  - platform: state
+    entity_id: sensor.rain_day
+  action:
+  - service: rest_command.update_alexa_daily_rain  
+
+- alias: Update Alexa Monthly Rain
+  trigger:
+  - platform: state
+    entity_id: sensor.rain_month
+  action:
+  - service: rest_command.update_alexa_monthly_rain    
+
+- alias: Update Alexa Yearly Rain
+  trigger:
+  - platform: state
+    entity_id: sensor.rain_year
+  action:
+  - service: rest_command.update_alexa_yearly_rain  
+
+- alias: Update Alexa Rain Rate
+  trigger:
+  - platform: state
+    entity_id: sensor.rain_rate
+  action:
+  - service: rest_command.update_alexa_rain_rate  
+
+- alias: Update Alexa Power Usage
+  trigger:
+  - platform: time_pattern
+    minutes: "*"        
+    seconds: "0"
+  action:
+  - service: rest_command.update_alexa_power_usage 
+
+- alias: Update Alexa When Garage Open
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_031
+    to: Violated
+  action:
+  - service: rest_command.update_alexa_garage_open
+
+- alias: Update Alexa When Garage Closed
+  trigger:
+  - platform: state
+    entity_id: sensor.zone_031
+    to: Normal
+  action:
+  - service: rest_command.update_alexa_garage_closed  
+
+- alias: Update Alexa When Alarm Armed Night
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    to: armed_night
+  action:
+  - service: rest_command.update_alexa_alarm_night  
+
+- alias: Update Alexa When Alarm Armed Stay
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    to: armed_home
+  action:
+  - service: rest_command.update_alexa_alarm_stay
+
+- alias: Update Alexa When Alarm Disarmed
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.area_001
+    to: disarmed
+  action:
+  - service: rest_command.update_alexa_alarm_disarmed     

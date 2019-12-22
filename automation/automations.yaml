@@ -111,3 +111,20 @@
       topic: christmas/indoor/decorations/cmnd/state
     
   initial_state: 'true'      
+
+- alias: Refresh Entity Counters
+  trigger:
+  - platform: time_pattern
+    minutes: "/15"  
+  action:
+  - service: homeassistant.update_entity
+    entity_id: 
+      - sensor.automation_count
+      - sensor.binary_sensor_count
+      - sensor.switch_count
+      - sensor.fan_count
+      - sensor.lights_count
+      - sensor.tracker_count
+      - sensor.media_player_count
+      - sensor.script_count
+      - sensor.sensor_count

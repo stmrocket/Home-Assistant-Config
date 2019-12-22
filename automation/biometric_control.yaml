@@ -1,0 +1,38 @@
+- alias: Arm from Biometrics
+  trigger:
+  - platform: state
+    entity_id: switch.output_180
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.area_001
+    state: disarmed
+  action:
+  - service: lock.lock
+    entity_id: lock.garage_entry
+  - service: switch.turn_on
+    entity_id: switch.output_179
+  - service: switch.turn_off
+    entity_id: switch.output_180
+
+- alias: Disarm from Biometrics
+  trigger:
+  - platform: state
+    entity_id: switch.output_180
+    to: 'on'
+  condition:  
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.area_001
+      state: armed_away
+    - condition: state
+      entity_id: alarm_control_panel.area_001
+      state: arming
+  action:
+  - service: lock.unlock
+    entity_id: lock.garage_entry
+  - service: switch.turn_on
+    entity_id: switch.output_182
+  - service: switch.turn_off
+    entity_id: switch.output_180    

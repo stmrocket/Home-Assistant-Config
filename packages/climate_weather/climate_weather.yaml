@@ -1,9 +1,13 @@
 sensor:
+    # Weather prediction
+  - platform: yr
+
   - platform: dewpoint
     sensors:
       dewpoint_outside:
         temperature: sensor.aquara_outside_temperature
         rel_hum: sensor.aquara_outside_humidity
+        
   - platform: template
     sensors:
       pws_url:
@@ -12,6 +16,44 @@ sensor:
         unit_of_measurement: in
         value_template: "{{ (states.sensor.aquara_outside_pressure.state | float * 0.02953) | round(2) }}"
 
+# Darksky
+  - platform: darksky
+    api_key: !secret ds_key
+    forecast:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    monitored_conditions:
+      - icon
+      - summary
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - humidity
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - wind_speed
+      - wind_bearing
+      - precip_type
+      - precip_probability
+      - precip_accumulation
+      - precip_intensity
+      - precip_intensity_max
+      - uv_index
+      - daily_summary
+      - pressure
+      - visibility        
+
 rest_command:
   update_wunderground:
     url: "{{ states.sensor.pws_url.state }}tempf={{ states.sensor.aquara_outside_temperature.state }}&humidity={{ states.sensor.aquara_outside_humidity.state }}&dewptf={{ states.sensor.dewpoint_outside.state }}&baromin={{ states.sensor.press_in.state }}&rainin={{ states.sensor.rain_rate.state }}&dailyrainin={{ states.sensor.rain_day.state }}&action=updateraw"
+
+input_boolean:
+  is_raining:
+    name: Currently Raining
