@@ -38,7 +38,7 @@
       entity_id: >
         {% if now().minute == 1 -%}
           input_number.rain_minute_59
-        {% elif  now().minute < 10 -%}
+        {% elif  now().minute <= 10 -%}
           input_number.rain_minute_0{{ now().minute - 1 }}
         {% else -%}
           input_number.rain_minute_{{ now().minute - 1 }}
