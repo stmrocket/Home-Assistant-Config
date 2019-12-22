@@ -1,6 +1,7 @@
 smart_home:
   filter:
     include_entities:
+      # LIGHT
       - light.kitchen_leds_rgb
       - light.kitchen_counter_leds_white
       - light.master_suite_leds_rgb
@@ -9,6 +10,8 @@ smart_home:
       - light.den_led_rgb
       - light.guest_bathroom_led_rgb
       - light.house_leds_rgb
+
+      # SWITCH
       - switch.nuvo_zone_1_power
       - switch.nuvo_zone_2_power
       - switch.nuvo_zone_3_power
@@ -23,6 +26,30 @@ smart_home:
       - switch.fireplace
       - switch.wax_warmer
 
+      #INPUT BOOLEAN
+      - input_boolean.server_blinds_open
+      - input_boolean.server_blinds_close
+      - input_boolean.guest_blinds_open
+      - input_boolean.guest_blinds_close
+      - input_boolean.bedtime_trigger
+      - input_boolean.morning_trigger
+      - input_boolean.goodnight_trigger
+      - input_boolean.guest_mode
+      - input_boolean.office_blinds_open
+      - input_boolean.office_blinds_close
+      - input_boolean.house_blinds_open
+      - input_boolean.house_blinds_close
+      - input_boolean.elk_night_on
+      - input_boolean.elk_night_off
+      - input_boolean.elk_stay_on
+      - input_boolean.elk_stay_off
+      - input_boolean.elk_away_on
+
+      #LOCK
+      - lock.front_door
+      - lock.garage_entry
+      - lock.back_door
+
     exclude_domains:
       - automation
       - script
@@ -34,6 +61,12 @@ smart_home:
       - sensor
       - switch
       - cover
+      - binary_sensor
+      - media_player
+      - input_boolean
+      - climate
+
+      
 
   entity_config:
     lock.front_door:
