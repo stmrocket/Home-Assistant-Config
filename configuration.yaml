@@ -402,3 +402,11 @@ browser_mod:
     !secret shawn_n6_browser:
       name: shawn_n6
     
+input_select:
+  doorbell_tone:
+    name: Doorbell Sound
+    options:
+      - Alexa Speak
+      - Wish Upon A Star    
+      - Christmas
+    icon: mdi:music

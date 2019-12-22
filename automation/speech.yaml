@@ -266,9 +266,18 @@
     to: 'on'
   action:
   - service: mqtt.publish
-    data:
+    data_template:
       topic: parrot/command/set/play
-      payload: 4,3
+      payload: >
+        {% if states('input_select.doorbell_tone') == "Alexa Speak" -%}
+          4,1
+        {% elif  states('input_select.doorbell_tone') == "Wish Upon A Star" -%}
+          4,2
+        {% elif  states('input_select.doorbell_tone') == "Christmas" -%}
+          4,3
+        {% else -%}
+          4,1
+        {% endif -%}
   - service: notify.browser
     data:
       message: Someone is at the front door.
