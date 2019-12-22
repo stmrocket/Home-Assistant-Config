@@ -12,6 +12,7 @@
         topic: hass/state/dryer
         payload: 'Door Open'
         retain: 'true'
+
 - alias: 'Dryer State - Drying'
   trigger:
     platform: numeric_state
@@ -28,6 +29,9 @@
     - service: switch.turn_on
       data:
         entity_id: switch.utility_room_vent_fan
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.dryer_end
+
 - alias: 'Dryer State - Idle'
   trigger:
     platform: numeric_state
@@ -44,6 +48,7 @@
     - service: switch.turn_off
       data:
         entity_id: switch.utility_room_vent_fan
+
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #  Washing Machine Start/Finish
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -64,6 +69,9 @@
         topic: hass/state/washer
         payload: 'Washing'
         retain: 'true'
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.washer_end
+
 - alias: 'Washer State - Idle'
   trigger:
     platform: numeric_state
@@ -77,6 +85,7 @@
         topic: hass/state/washer
         payload: 'Idle'
         retain: 'true'
+
 - alias: 'Dryer Finished'
   trigger:
     platform: state
@@ -87,6 +96,7 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.dryer_end
+
 - alias: 'Washer Finished'
   trigger:
     platform: state
@@ -100,6 +110,7 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.washer_end
+
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #  Announcements
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -199,6 +210,7 @@
         data:
           displaytime: 20000
           icon: "info"
+
 - alias: 'Repeat Announce Washer Finished'
   trigger:
   - event_data:
@@ -226,6 +238,7 @@
       entity_id: timer.washer_alert
     - service: counter.increment
       entity_id: counter.dryer_alert
+
 #Reset all timers when Laundry Room entered
 - alias: 'Reset Laundry Timers on Motion'
   trigger:
@@ -245,6 +258,7 @@
     entity_id: counter.dryer_alert
   - service: counter.reset
     entity_id: counter.washer_alert
+
 #Reset all timers when Not Awake or Home
 - alias: 'Reset Laundry Timers on Alarm Status'
   trigger:
