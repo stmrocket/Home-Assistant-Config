@@ -2,47 +2,47 @@ timer:
   dishwasher_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
 
   guest_sink_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
 
   guest_toilet_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
 
   kitchen_sink_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
 
   left_master_sink_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
 
   master_toilet_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
 
   refrigerator_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
   
   right_master_sink_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
 
   utility_leak:
     duration: '30:00:00'
     #restore: true
-    restore_grace_period: '01:00:00'
+    #restore_grace_period: '01:00:00'
 
 sensor:
   - platform: template
