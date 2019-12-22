@@ -59,16 +59,6 @@
   action:
   - service: rest_command.update_wunderground
 
-#When Hass Reboots
-- alias: Initialize ISY Variables
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-  - delay:
-      minutes: 5
-  - service: rest_command.initialize_isy
-
 - alias: Vacation Mode On
   trigger:
     - platform: template
