@@ -10,6 +10,7 @@ smart_home:
       - light.den_led_rgb
       - light.guest_bathroom_led_rgb
       - light.house_leds_rgb
+      - light.den_light
 
       # SWITCH
       - switch.nuvo_zone_1_power
@@ -25,6 +26,8 @@ smart_home:
       - switch.nuvo_zone_12_power
       - switch.fireplace
       - switch.wax_warmer
+      - switch.back_porch_light
+      - switch.den_fan
 
       #INPUT BOOLEAN
       - input_boolean.server_blinds_open
