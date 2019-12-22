@@ -14,14 +14,12 @@
         state: arming
   action:
     - service: light.turn_off
-      data:
-        entity_id: light.master_bedroom_lamps
-    - service: light.turn_off
-      data: 
-        entity_id: light.master_suite_leds_rgb
+      entity_id: 
+        - light.master_bedroom_lamps
+        - light.master_suite_leds_rgb
     - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.goodnight_trigger
+      entity_id: input_boolean.goodnight_trigger
+
 - alias: Alexa Good Night Not Armed Night
   trigger:
     platform: state
@@ -38,17 +36,14 @@
         state: disarmed
   action:
     - service: light.turn_off
-      data:
-        entity_id: light.master_bedroom_lamps
-    - service: light.turn_off
-      data: 
-        entity_id: light.master_suite_leds_rgb
+      entity_id: 
+        - light.master_bedroom_lamps
+        - light.master_suite_leds_rgb
     - service: switch.turn_on
-      data:
-        entity_id: switch.output_178
+      entity_id: switch.output_178
     - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.goodnight_trigger
+      entity_id: input_boolean.goodnight_trigger
+
 - alias: Alexa Bedtime
   trigger:
     platform: state
@@ -56,8 +51,21 @@
     to: 'on'
   action:
     - service: switch.turn_on
-      data:
-        entity_id: switch.output_178
+      entity_id: 
+        - switch.output_178
+        - switch.master_bedroom_fan_1
     - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.bedtime_trigger
+      entity_id: input_boolean.bedtime_trigger
+
+- alias: Alexa Good Morning
+  trigger:
+    platform: state
+    entity_id: input_boolean.morning_trigger
+    to: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.master_bedroom_fan_1
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.elk_night_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.morning_trigger      
