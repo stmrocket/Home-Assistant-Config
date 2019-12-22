@@ -44,6 +44,14 @@ smart_home:
       - input_boolean.elk_stay_on
       - input_boolean.elk_stay_off
       - input_boolean.elk_away_on
+      - input_boolean.den_blinds_open
+      - input_boolean.den_blinds_close
+      - input_boolean.shack_blinds_open
+      - input_boolean.shack_blinds_close
+      - input_boolean.kitchen_blinds_open
+      - input_boolean.kitchen_blinds_close
+      - input_boolean.master_blinds_open
+      - input_boolean.master_blinds_close
 
       #LOCK
       - lock.front_door

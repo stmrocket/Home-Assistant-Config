@@ -1,0 +1,71 @@
+cover:
+  - platform: mqtt
+    name: "Left Shack Blind"
+    command_topic: "habc/shack_l/command/set/state"
+    set_position_topic: "habc/shack_l/command/set/positionpct"
+    position_topic: "habc/shack_l/tele/currentpct"
+    availability_topic: "habc/shack_l/tele/LWT"
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+sensor:
+  - platform: mqtt
+    name: "Left Shack Blind Version"
+    state_topic: "habc/shack_l/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "habc/shack_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    
+  - platform: mqtt
+    name: "Left Shack Blind Uptime"
+    state_topic: "habc/shack_l/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "habc/shack_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Shack Blind RSSI"
+    state_topic: "habc/shack_l/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "habc/shack_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Shack Blind IP"
+    state_topic: "habc/shack_l/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "habc/shack_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Shack Blind Free Heap"
+    state_topic: "habc/shack_l/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+    availability_topic: "habc/office_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Shack Blind Heap Fragmentation"
+    state_topic: "habc/shack_l/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "habc/shack_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Shack Blind Core Version"
+    state_topic: "habc/shack_l/tele/status"
+    value_template: "{{value_json['espCore']}}" 
+    availability_topic: "habc/shack_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
