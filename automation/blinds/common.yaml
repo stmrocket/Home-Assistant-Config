@@ -38,7 +38,7 @@
     - platform: state
       entity_id: alarm_control_panel.area_001
       to: armed_home
-    - condition: numeric_state
+    - platform: numeric_state
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
       above: 0
