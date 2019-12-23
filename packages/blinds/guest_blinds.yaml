@@ -1,0 +1,89 @@
+cover:
+  - platform: mqtt
+    name: "Guest Blind"
+    command_topic: "habc/guest/command/set/state"
+    set_position_topic: "habc/guest/command/set/positionpct"
+    position_topic: "habc/guest/tele/currentpct"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+input_boolean:
+  guest_blinds_open:
+    name: Blinds Guest Open
+    initial: off
+    icon: mdi:blinds
+
+  guest_blinds_close:
+    name: Blinds Guest Close
+    initial: off
+    icon: mdi:blinds
+
+sensor:
+  - platform: mqtt
+    name: "Guest Blind Version"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    
+  - platform: mqtt
+    name: "Guest Blind Uptime"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind RSSI"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind IP"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind Free Heap"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind Heap Fragmentation"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind Core Version"
+    state_topic: "habc/guest/tele/status"
+    value_template: "{{value_json['espCore']}}" 
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Guest Blind Light Level"
+    state_topic: "habc/guest/tele/light"
+    availability_topic: "habc/guest/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"

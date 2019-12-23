@@ -1,0 +1,78 @@
+light:
+  - platform: mqtt
+    name: "Master Bathroom LED RGB"
+    state_topic: "h801/mbath/tele/current"
+    command_topic: "h801/mbath/command/set/rgb/power"
+    brightness_state_topic: "h801/mbath/tele/current"
+    brightness_command_topic: "h801/mbath/command/set/rgb/brightness"
+    rgb_state_topic: "h801/mbath/tele/current"
+    rgb_command_topic: "h801/mbath/command/set/rgb/color"
+    state_value_template: "{{value_json['rgb_power']}}"
+    brightness_value_template: "{{value_json['rgb_brightness']}}"
+    rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
+    availability_topic: "h801/mbath/tele/LWT"
+    qos: 0
+    retain: false
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+    payload_available: "Online"
+    payload_not_available: "Offline"
+sensor:
+  #Driver Ststus Messages
+  
+  - platform: mqtt
+    name: "Master Bathroom LED Version"
+    state_topic: "h801/mbath/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "h801/mbath/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Master Bathroom LED Uptime"
+    state_topic: "h801/mbath/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "h801/mbath/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Master Bathroom LED RSSI"
+    state_topic: "h801/mbath/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "h801/mbath/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Master Bathroom LED IP"
+    state_topic: "h801/mbath/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "h801/mbath/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Master Bathroom LED Free Heap"
+    state_topic: "h801/mbath/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+    availability_topic: "h801/mbath/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Master Bathroom LED Heap Fragmentation"
+    state_topic: "h801/mbath/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "h801/mbath/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Master Bathroom LED Core Version"
+    state_topic: "h801/mbath/tele/status"
+    value_template: "{{value_json['espCore']}}" 
+    availability_topic: "h801/mbath/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"

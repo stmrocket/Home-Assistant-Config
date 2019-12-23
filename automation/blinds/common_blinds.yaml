@@ -1,0 +1,173 @@
+- alias: Close Blinds When Away, Going to Bed, or at Dusk
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      from: arming
+      to: armed_night
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      from: arming
+      to: armed_away
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      below: -2.5
+  action:
+    - service: cover.close_cover
+      entity_id: cover.house_blinds
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.blinds_manual
+
+- alias: Open Blinds When Awake and Sun Up
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: armed_home
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      above: 0
+  condition:
+    - condition: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      above: 0
+    - condition: state
+      entity_id: input_boolean.vacation_mode
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.blinds_manual
+      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state:  disarmed
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state:  armed_home
+  action:
+    - service: cover.open_cover
+      entity_id: cover.house_blinds
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.blinds_manual
+
+- alias: All Windows Same Position
+  trigger:
+    - platform: state
+      entity_id: 
+        - cover.office_blinds
+        - cover.den_blinds
+        - cover.kitchen_blinds
+        - cover.shack_blinds
+        - cover.master_blinds
+        - cover.server_room_blind
+        - cover.guest_blind
+  condition:
+    - condition: template
+      value_template: '{{ states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | int == states.cover.shack_blinds.attributes.current_position | int == states.cover.master_blinds.attributes.current_position }}'
+  action:
+    - service: mqtt.publish
+      data:
+        payload_template: '{{ states.cover.center_office_blind.attributes.current_position }}'
+        topic: habc/all/tele/currentpct
+        retain: 'true'
+
+- alias: All Windows Various Positions
+  trigger:
+    - platform: state
+      entity_id: 
+        - cover.office_blinds
+        - cover.den_blinds
+        - cover.kitchen_blinds
+        - cover.shack_blinds
+        - cover.master_blinds
+        - cover.server_room_blind
+        - cover.guest_blind
+  condition:
+    - condition: template
+      value_template: '{{not states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | int == states.cover.shack_blinds.attributes.current_position | int == states.cover.master_blinds.attributes.current_position }}'
+  action:
+    - service: mqtt.publish
+      data:
+        payload: 95
+        topic: habc/all/tele/currentpct
+        retain: 'true'
+
+- alias: Open House Blinds
+  trigger:
+    - platform: state
+      entity_id: switch.house_blinds
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: cover.house_blinds
+      state: 'closed'
+  action:
+    - service: cover.open_cover
+      entity_id: cover.house_blinds
+      
+
+- alias: Close House Blinds
+  trigger:
+    - platform: state
+      entity_id: switch.house_blinds
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: cover.house_blinds
+      state: 'open'
+  action:
+    - service: cover.close_cover
+      entity_id: cover.house_blinds
+
+- alias: House Blinds Keypad on if any Open
+  trigger:
+    - platform: state
+      entity_id: cover.house_blinds
+      to: 'open'
+  condition:
+    - condition: state
+      entity_id: switch.house_blinds
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.house_blinds
+
+- alias: House Blinds Keypad off if all Closed
+  trigger:
+    - platform: state
+      entity_id: cover.house_blinds
+      to: 'closed'
+  condition:
+    - condition: state
+      entity_id: switch.house_blinds
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.house_blinds
+
+- alias: Alexa Open House Blinds
+  trigger:
+    - platform: state
+      entity_id: input_boolean.house_blinds_open
+      to: 'on'
+  action:
+    - service: cover.open_cover
+      entity_id: cover.house_blinds
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.house_blinds_open
+
+- alias: Alexa Close House Blinds
+  trigger:
+    - platform: state
+      entity_id: input_boolean.house_blinds_close
+      to: 'on'
+  action:
+    - service: cover.close_cover
+      entity_id: cover.house_blinds
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.house_blinds_close

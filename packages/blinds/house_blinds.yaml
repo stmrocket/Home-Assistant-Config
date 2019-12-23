@@ -1,0 +1,49 @@
+cover:
+  - platform: mqtt
+    name: "House Blinds"
+    command_topic: "habc/all/command/set/state"
+    set_position_topic: "habc/all/command/set/positionpct"
+    position_topic: "habc/all/tele/currentpct"
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STOP"
+    position_open: 100
+    position_closed: 0
+
+input_boolean:
+  house_blinds_open:
+    name: Blinds House Open
+    initial: off
+    icon: mdi:blinds
+
+  house_blinds_close:
+    name: Blinds House Close
+    initial: off
+    icon: mdi:blinds
+
+  blinds_manual:
+    name: Blinds Adjusted Manually
+    icon: mdi:blinds
+
+sensor:
+  platform: average
+  name: House Blinds Average Light Level
+  entities:
+    - sensor.left_den_blind_light_level
+    - sensor.center_den_blind_light_level
+    - sensor.right_den_blind_light_level
+    - sensor.left_kitchen_blind_light_level
+    - sensor.east_kitchen_blind_light_level
+    - sensor.right_kitchen_blind_light_level
+    - sensor.left_master_blind_light_level
+    - sensor.center_master_blind_light_level
+    - sensor.right_master_blind_light_level
+    - sensor.west_master_blind_light_level
+    - sensor.left_office_blind_light_level
+    - sensor.center_office_blind_light_level
+    - sensor.right_office_blind_light_level
+    - sensor.left_shack_blind_light_level
+    - sensor.center_shack_blind_light_level
+    - sensor.right_shack_blind_light_level
+    - sensor.left_guest_blind_light_level
+    - sensor.center_server_room_blind_light_level

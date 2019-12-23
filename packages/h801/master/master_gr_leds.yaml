@@ -1,0 +1,61 @@
+light:
+  - platform: mqtt
+    name: "Master Suite LEDs RGB"
+    state_topic: "h801/master/ha/state"
+    command_topic: "h801/master/command/set/rgb/power"
+    brightness_state_topic: "h801/master/tele/current"
+    brightness_command_topic: "h801/master/command/set/rgb/brightness"
+    rgb_state_topic: "h801/master/tele/current"
+    rgb_command_topic: "h801/master/command/set/rgb/color"
+    state_value_template: "{{value_json['rgb_power']}}"
+    brightness_value_template: "{{value_json['rgb_brightness']}}"
+    rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
+    qos: 0
+    retain: false
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+automation:
+  - alias: master_gr report on
+    trigger:
+    - platform: state
+      entity_id: light.master_bedroom_led_1_rgb
+      to: 'on'
+    - platform: state
+      entity_id: light.master_bedroom_led_2_rgb
+      to: 'on'
+    - platform: state
+      entity_id: light.master_bathroon_led_rgb
+      to: 'on'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: h801/master/ha/state
+        payload_template: "ON"
+  - alias: master_gr report off
+    trigger:
+    - platform: state
+      entity_id: light.master_bedroom_led_1_rgb
+      to: 'off'
+    - platform: state
+      entity_id: light.master_bedroom_led_2_rgb
+      to: 'off'
+    - platform: state
+      entity_id: light.master_bathroon_led_rgb
+      to: 'off'
+    condition:
+    - condition: state
+      entity_id: light.master_bedroom_led_1_rgb
+      state: 'off'
+    - condition: state
+      entity_id: light.master_bedroom_led_2_rgb
+      state: 'off'
+    - condition: state
+      entity_id: light.master_bathroom_led_rgb
+      state: 'off'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: h801/master/ha/state
+        payload_template: "OFF"
+
