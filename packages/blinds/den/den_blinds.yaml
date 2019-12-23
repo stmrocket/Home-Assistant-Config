@@ -21,3 +21,11 @@ input_boolean:
     name: Blinds Den Close
     initial: off
     icon: mdi:blinds
+
+sensor:
+  platform: average
+  name: Den Blinds Average Light Level
+  entities:
+    - sensor.left_den_blind_light_level
+    - sensor.center_den_blind_light_level
+    - sensor.right_den_blind_light_level

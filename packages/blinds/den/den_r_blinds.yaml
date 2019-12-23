@@ -69,3 +69,10 @@ sensor:
     availability_topic: "habc/den_r/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Right Den Blind Light Level"
+    state_topic: "habc/den_r/tele/light"
+    availability_topic: "habc/den_r/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
