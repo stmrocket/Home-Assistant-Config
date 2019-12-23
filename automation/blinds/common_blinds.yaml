@@ -1,4 +1,4 @@
-- alias: Close Blinds When Away or Going to Bed
+- alias: Close Blinds When Away, Going to Bed, or at Dusk
   trigger:
     - platform: state
       entity_id: alarm_control_panel.area_001
@@ -8,16 +8,6 @@
       entity_id: alarm_control_panel.area_001
       from: arming
       to: armed_away
-  action:
-    - service: mqtt.publish
-      data:
-        payload: CLOSE
-        topic: habc/all/command/set/state
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.blinds_manual
-
-- alias: 'Close blind at dusk'
-  trigger:
     - platform: numeric_state
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
@@ -25,8 +15,6 @@
   action:
     - service: cover.close_cover
       entity_id: cover.house_blinds
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.blinds_manual
     - service: input_boolean.turn_off
       entity_id: input_boolean.blinds_manual
 
@@ -62,20 +50,25 @@
           entity_id: alarm_control_panel.area_001
           state:  armed_home
   action:
-    - service: mqtt.publish
-      data:
-        payload: OPEN
-        topic: habc/all/command/set/state
+    - service: cover.open_cover
+      entity_id: cover.house_blinds
     - service: input_boolean.turn_on
       entity_id: input_boolean.blinds_manual
 
 - alias: All Windows Same Position
   trigger:
     - platform: state
-      entity_id: cover.office_blinds
+      entity_id: 
+        - cover.office_blinds
+        - cover.den_blinds
+        - cover.kitchen_blinds
+        - cover.shack_blinds
+        - cover.master_blinds
+        - cover.server_room_blind
+        - cover.guest_blind
   condition:
     - condition: template
-      value_template: '{{ states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position }}'
+      value_template: '{{ states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | states.cover.shack_blinds.attributes.current_position | states.cover.master_blinds.attributes.current_position }}'
   action:
     - service: mqtt.publish
       data:
@@ -86,10 +79,17 @@
 - alias: All Windows Various Positions
   trigger:
     - platform: state
-      entity_id: cover.office_blinds
+      entity_id: 
+        - cover.office_blinds
+        - cover.den_blinds
+        - cover.kitchen_blinds
+        - cover.shack_blinds
+        - cover.master_blinds
+        - cover.server_room_blind
+        - cover.guest_blind
   condition:
     - condition: template
-      value_template: '{{not states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position }}'
+      value_template: '{{not states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | states.cover.shack_blinds.attributes.current_position | states.cover.master_blinds.attributes.current_position }}'
   action:
     - service: mqtt.publish
       data:
