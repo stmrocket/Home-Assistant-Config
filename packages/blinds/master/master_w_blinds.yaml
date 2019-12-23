@@ -69,3 +69,10 @@ sensor:
     availability_topic: "habc/master_w/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "West Master Blind Light Level"
+    state_topic: "habc/master_w/tele/light"
+    availability_topic: "habc/master_w/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"

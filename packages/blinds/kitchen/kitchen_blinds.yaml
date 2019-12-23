@@ -21,3 +21,11 @@ input_boolean:
     name: Blinds Kitchen Close
     initial: off
     icon: mdi:blinds
+
+sensor:
+  platform: average
+  name: Kitchen Blinds Average Light Level
+  entities:
+    - sensor.left_kitchen_blind_light_level
+    - sensor.east_kitchen_blind_light_level
+    - sensor.right_kitchen_blind_light_level

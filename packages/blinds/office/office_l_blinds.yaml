@@ -69,3 +69,10 @@ sensor:
     availability_topic: "habc/office_l/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Office Blind Light Level"
+    state_topic: "habc/office_l/tele/light"
+    availability_topic: "habc/office_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"

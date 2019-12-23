@@ -24,3 +24,26 @@ input_boolean:
   blinds_manual:
     name: Blinds Adjusted Manually
     icon: mdi:blinds
+
+sensor:
+  platform: average
+  name: House Blinds Average Light Level
+  entities:
+    - sensor.left_den_blind_light_level
+    - sensor.center_den_blind_light_level
+    - sensor.right_den_blind_light_level
+    - sensor.left_kitchen_blind_light_level
+    - sensor.east_kitchen_blind_light_level
+    - sensor.right_kitchen_blind_light_level
+    - sensor.left_master_blind_light_level
+    - sensor.center_master_blind_light_level
+    - sensor.right_master_blind_light_level
+    - sensor.west_master_blind_light_level
+    - sensor.left_office_blind_light_level
+    - sensor.center_office_blind_light_level
+    - sensor.right_office_blind_light_level
+    - sensor.left_shack_blind_light_level
+    - sensor.center_shack_blind_light_level
+    - sensor.right_shack_blind_light_level
+    - sensor.left_guest_blind_light_level
+    - sensor.center_server_room_blind_light_level

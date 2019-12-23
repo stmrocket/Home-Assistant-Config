@@ -69,3 +69,10 @@ sensor:
     availability_topic: "habc/kitchen_l/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Left Kitchen Blind Light Level"
+    state_topic: "habc/kitchen_l/tele/light"
+    availability_topic: "habc/kitchen_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"

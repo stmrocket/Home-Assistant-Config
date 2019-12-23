@@ -21,3 +21,11 @@ input_boolean:
     name: Blinds Office Close
     initial: off
     icon: mdi:blinds
+
+sensor:
+  platform: average
+  name: Office Blinds Average Light Level
+  entities:
+    - sensor.left_office_blind_light_level
+    - sensor.center_office_blind_light_level
+    - sensor.right_office_blind_light_level

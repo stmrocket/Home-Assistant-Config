@@ -21,3 +21,11 @@ input_boolean:
     name: Blinds Shack Close
     initial: off
     icon: mdi:blinds
+
+sensor:
+  platform: average
+  name: Shack Blinds Average Light Level
+  entities:
+    - sensor.left_shack_blind_light_level
+    - sensor.center_shack_blind_light_level
+    - sensor.right_shack_blind_light_level

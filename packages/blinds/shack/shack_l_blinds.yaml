@@ -69,3 +69,10 @@ sensor:
     availability_topic: "habc/shack_l/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Center Shack Blind Light Level"
+    state_topic: "habc/shack_l/tele/light"
+    availability_topic: "habc/shack_l/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"

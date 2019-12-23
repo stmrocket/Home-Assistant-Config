@@ -69,3 +69,10 @@ sensor:
     availability_topic: "habc/master_c/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Center Master Blind Light Level"
+    state_topic: "habc/master_c/tele/light"
+    availability_topic: "habc/master_c/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"

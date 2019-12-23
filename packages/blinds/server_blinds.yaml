@@ -80,3 +80,10 @@ sensor:
     availability_topic: "habc/server/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Server Room Blind Light Level"
+    state_topic: "habc/server/tele/light"
+    availability_topic: "habc/server/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"

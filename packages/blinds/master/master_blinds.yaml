@@ -21,3 +21,12 @@ input_boolean:
     name: Blinds Master Close
     initial: off
     icon: mdi:blinds
+
+sensor:
+  platform: average
+  name: Master Blinds Average Light Level
+  entities:
+    - sensor.left_master_blind_light_level
+    - sensor.center_master_blind_light_level
+    - sensor.right_master_blind_light_level
+    - sensor.west_master_blind_light_level
