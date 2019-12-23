@@ -1,81 +1,73 @@
 - alias: Open Server Blinds
   trigger:
-  - entity_id: switch.server_blinds
-    platform: state
-    to: 'on'
+    - platform: state
+      entity_id: switch.server_blinds
+      to: 'on'
   condition:
-  - condition: state
-    entity_id: cover.server_room_blind
-    state: 'closed'
-  action:
-  - data:
+    - condition: state
       entity_id: cover.server_room_blind
-    service: cover.open_cover
+      state: 'closed'
+  action:
+    - service: cover.open_cover
+      entity_id: cover.server_room_blind
 
 - alias: Close Server Blinds
   trigger:
-  - entity_id: switch.server_blinds
-    platform: state
-    to: 'off'
+    - platform: state
+      entity_id: switch.server_blinds
+      to: 'off'
   condition:
-  - condition: state
-    entity_id: cover.server_room_blind
-    state: 'open'
-  action:
-  - data:
+    - condition: state
       entity_id: cover.server_room_blind
-    service: cover.close_cover
+      state: 'open'
+  action:
+    - service: cover.close_cover
+      entity_id: cover.server_room_blind
 
 - alias: Server Blind Keypad on if any Open
   trigger:
-  - entity_id: cover.server_room_blind
-    platform: state
-    to: 'open'
+    - platform: state
+      entity_id: cover.server_room_blind
+      to: 'open'
   condition:
-  - condition: state
-    entity_id: switch.server_blinds
-    state: 'off'
-  action:
-  - data:
+    - condition: state
       entity_id: switch.server_blinds
-    service: switch.turn_on
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.server_blinds
 
 - alias: Server Blind Keypad off if all Closed
   trigger:
-  - entity_id: cover.server_room_blind
-    platform: state
-    to: 'closed'
+    - platform: state
+      entity_id: cover.server_room_blind
+      to: 'closed'
   condition:
-  - condition: state
-    entity_id: switch.server_blinds
-    state: 'on'
-  action:
-  - data:
+    - condition: state
       entity_id: switch.server_blinds
-    service: switch.turn_off
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.server_blinds
 
 - alias: Alexa Open Server Blinds
   trigger:
-  - entity_id: input_boolean.server_blinds_open
-    platform: state
-    to: 'on'
-  action:
-  - data:
-      entity_id: cover.server_room_blind
-    service: cover.open_cover
-  - data:
+    - platform: state
       entity_id: input_boolean.server_blinds_open
-    service: input_boolean.turn_off
+      to: 'on'
+  action:
+    - service: cover.open_cover
+      entity_id: cover.server_room_blind
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.server_blinds_open
 
 - alias: Alexa Close Server Blinds
   trigger:
-  - entity_id: input_boolean.server_blinds_close
-    platform: state
-    to: 'on'
-  action:
-  - data:
-      entity_id: cover.server_room_blind
-    service: cover.close_cover
-  - data:
+    - platform: state
       entity_id: input_boolean.server_blinds_close
-    service: input_boolean.turn_off
+      to: 'on'
+  action:
+  - service: cover.close_cover
+    entity_id: cover.server_room_blind
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.server_blinds_close

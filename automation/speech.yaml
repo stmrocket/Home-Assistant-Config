@@ -272,9 +272,9 @@
         {% if states('input_select.doorbell_tone') == "Alexa Speak" -%}
           4,1
         {% elif  states('input_select.doorbell_tone') == "Wish Upon A Star" -%}
-          4,2
-        {% elif  states('input_select.doorbell_tone') == "Christmas" -%}
           4,3
+        {% elif  states('input_select.doorbell_tone') == "Christmas" -%}
+          4,2
         {% else -%}
           4,1
         {% endif -%}

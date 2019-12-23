@@ -11,6 +11,22 @@ smart_home:
       - light.guest_bathroom_led_rgb
       - light.house_leds_rgb
       - light.den_light
+      - light.kitchen_sink_light
+      - light.hall_light
+      - light.den_light
+      - light.office_light
+      - light.entry_light
+      - light.foyer_light
+      - light.front_porch_light
+      - light.server_room_light
+      - light.breakfast_room_light
+      - light.front_sconces
+      - light.guest_bedroom_light
+      - light.master_bedroom_light
+      - light.kitchen_light_1
+      - light.master_shower_light_1
+      - light.master_toilet_light
+      - switch.master_bedroom_lamps
 
       # SWITCH
       - switch.nuvo_zone_1_power
@@ -28,6 +44,23 @@ smart_home:
       - switch.wax_warmer
       - switch.back_porch_light
       - switch.den_fan
+      - switch.shed_porch_light
+      - switch.lava_lamp
+      - switch.popcorn_popper_2
+      - switch.den_table_lamp
+      - switch.office_fan_1
+      - switch.office_peripherals
+      - switch.server_room_lamp
+      - switch.server_room_fan
+      - switch.breakfast_room_lamp
+      - switch.den_lamps
+      - switch.dining_room_light
+      - switch.guest_bedroom_fan
+      - switch.guest_room_lamp
+      - switch.master_bath_light
+      - switch.master_bedroom_fan_1
+      - switch.office_lamp
+      - switch.dining_room_lamp
 
       #INPUT BOOLEAN
       - input_boolean.server_blinds_open
@@ -75,9 +108,7 @@ smart_home:
       - binary_sensor
       - media_player
       - input_boolean
-      - climate
-
-      
+      - climate      
 
   entity_config:
     lock.front_door:
@@ -133,3 +164,45 @@ smart_home:
       name: Back Porch Stereo
     switch.nuvo_zone_12_power:
       name: Guest Bathroom Stereo
+    switch.shed_porch_light:
+      name: Shed Light
+    switch.den_table_lamp:
+      name: Piano Lamp
+    switch.office_fan_1:
+      name: Office Fan
+    switch.office_peripherals:
+      name: Desk
+    light.breakfast_room_light:
+      name: Table Light
+    switch.breakfast_room_lamp:
+      name: Kitchen Lamp
+    switch.den_lamps:
+      name: TV Lamps
+    switch.dining_room_light:
+      name: Shack Light
+    light.front_sconces:
+      name: Driveway Lights
+    switch.guest_bedroom_fan:
+      name: Guest Fan
+    light.guest_bedroom_light:
+      name: Guest Light
+    switch.guest_room_lamp:
+      name: Guest Lamp
+    light.kitchen_light_1:
+      name: Kitchen Light
+    switch.master_bath_light:
+      name: Bathroom Light
+    switch.master_bedroom_fan_1:
+      name: Master Fan
+    light.master_bedroom_light:
+      name: Master Light
+    light.master_shower_light_1:
+      name: Shower Light
+    light.master_toilet_light:
+      name: Toilet Light
+    switch.office_lamp:
+      name: Office Lamps
+    switch.dining_room_lamp:
+      name: Shack Lamp
+    switch.master_bedroom_lamps:
+      name: Master Lamps

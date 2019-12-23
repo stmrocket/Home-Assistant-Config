@@ -1,81 +1,73 @@
 - alias: Open Guest Blinds
   trigger:
-  - entity_id: switch.guest_blinds
-    platform: state
-    to: 'on'
+    - platform: state
+      entity_id: switch.guest_blinds
+      to: 'on'
   condition:
-  - condition: state
-    entity_id: cover.guest_blind
-    state: 'closed'
-  action:
-  - data:
+    - condition: state
       entity_id: cover.guest_blind
-    service: cover.open_cover
+      state: 'closed'
+  action:
+    - service: cover.open_cover
+      entity_id: cover.guest_blind
 
 - alias: Close Guest Blinds
   trigger:
-  - entity_id: switch.guest_blinds
-    platform: state
-    to: 'off'
+    - platform: state
+      entity_id: switch.guest_blinds
+      to: 'off'
   condition:
-  - condition: state
-    entity_id: cover.guest_blind
-    state: 'open'
-  action:
-  - data:
+    - condition: state
       entity_id: cover.guest_blind
-    service: cover.close_cover
+      state: 'open'
+  action:
+    - service: cover.close_cover
+      entity_id: cover.guest_blind
 
 - alias: Guest Blind Keypad on if any Open
   trigger:
-  - entity_id: cover.guest_blind
-    platform: state
-    to: 'open'
+    - platform: state
+      entity_id: cover.guest_blind
+      to: 'open'
   condition:
-  - condition: state
-    entity_id: switch.guest_blinds
-    state: 'off'
-  action:
-  - data:
+    - condition: state
       entity_id: switch.guest_blinds
-    service: switch.turn_on
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.guest_blinds    
 
 - alias: Guest Blind Keypad off if all Closed
   trigger:
-  - entity_id: cover.guest_blind
-    platform: state
-    to: 'closed'
+    - platform: state
+      entity_id: cover.guest_blind
+      to: 'closed'
   condition:
-  - condition: state
-    entity_id: switch.guest_blinds
-    state: 'on'
-  action:
-  - data:
+    - condition: state
       entity_id: switch.guest_blinds
-    service: switch.turn_off
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.guest_blinds
 
 - alias: Alexa Open Guest Blinds
   trigger:
-  - entity_id: input_boolean.guest_blinds_open
-    platform: state
-    to: 'on'
-  action:
-  - data:
-      entity_id: cover.guest_blind
-    service: cover.open_cover
-  - data:
+    - platform: state
       entity_id: input_boolean.guest_blinds_open
-    service: input_boolean.turn_off
+      to: 'on'
+  action:
+    - service: cover.open_cover
+      entity_id: cover.guest_blind
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.guest_blinds_open
 
 - alias: Alexa Close Guest Blinds
   trigger:
-  - entity_id: input_boolean.guest_blinds_close
-    platform: state
-    to: 'on'
-  action:
-  - data:
-      entity_id: cover.guest_blind
-    service: cover.close_cover
-  - data:
+    - platform: state
       entity_id: input_boolean.guest_blinds_close
-    service: input_boolean.turn_off
+      to: 'on'
+  action:
+    - service: cover.close_cover
+      entity_id: cover.guest_blind
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.guest_blinds_close

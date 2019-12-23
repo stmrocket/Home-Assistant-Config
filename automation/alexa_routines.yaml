@@ -1,44 +1,44 @@
 - alias: Alexa Good Night Armed Night
   trigger:
-    platform: state
-    entity_id: input_boolean.goodnight_trigger
-    to: 'on'
+    - platform: state
+      entity_id: input_boolean.goodnight_trigger
+      to: 'on'
   condition:
-  - condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: armed_night
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: arming
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_night
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: arming
   action:
     - service: light.turn_off
-      entity_id: 
-        - light.master_bedroom_lamps
-        - light.master_suite_leds_rgb
+      entity_id: light.master_suite_leds_rgb
+    - service: switch.turn_off
+      entity_id: switch.master_bedroom_lamps
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
 
 - alias: Alexa Good Night Not Armed Night
   trigger:
-    platform: state
-    entity_id: input_boolean.goodnight_trigger
-    to: 'on'
+    - platform: state
+      entity_id: input_boolean.goodnight_trigger
+      to: 'on'
   condition:
-  - condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: armed_home
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: disarmed
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: disarmed
   action:
     - service: light.turn_off
-      entity_id: 
-        - light.master_bedroom_lamps
-        - light.master_suite_leds_rgb
+      entity_id: light.master_suite_leds_rgb
+    - service: switch.turn_off
+      entity_id: switch.master_bedroom_lamps
     - service: switch.turn_on
       entity_id: switch.output_178
     - service: input_boolean.turn_off
@@ -46,9 +46,9 @@
 
 - alias: Alexa Bedtime
   trigger:
-    platform: state
-    entity_id: input_boolean.bedtime_trigger
-    to: 'on'
+    - platform: state
+      entity_id: input_boolean.bedtime_trigger
+      to: 'on'
   action:
     - service: switch.turn_on
       entity_id: 
@@ -59,9 +59,9 @@
 
 - alias: Alexa Good Morning
   trigger:
-    platform: state
-    entity_id: input_boolean.morning_trigger
-    to: 'on'
+    - platform: state
+      entity_id: input_boolean.morning_trigger
+      to: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.master_bedroom_fan_1
