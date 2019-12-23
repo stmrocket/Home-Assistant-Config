@@ -68,7 +68,7 @@
         - cover.guest_blind
   condition:
     - condition: template
-      value_template: '{{ states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | states.cover.shack_blinds.attributes.current_position | states.cover.master_blinds.attributes.current_position }}'
+      value_template: '{{ states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | int == states.cover.shack_blinds.attributes.current_position | int == states.cover.master_blinds.attributes.current_position }}'
   action:
     - service: mqtt.publish
       data:
@@ -89,7 +89,7 @@
         - cover.guest_blind
   condition:
     - condition: template
-      value_template: '{{not states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | states.cover.shack_blinds.attributes.current_position | states.cover.master_blinds.attributes.current_position }}'
+      value_template: '{{not states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | int == states.cover.shack_blinds.attributes.current_position | int == states.cover.master_blinds.attributes.current_position }}'
   action:
     - service: mqtt.publish
       data:
