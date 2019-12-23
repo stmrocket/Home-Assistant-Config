@@ -13,7 +13,6 @@
       data:
         payload: CLOSE
         topic: habc/all/command/set/state
-    - delay: '00:00:30'
     - service: input_boolean.turn_off
       entity_id: input_boolean.blinds_manual
 
@@ -26,7 +25,8 @@
   action:
     - service: cover.close_cover
       entity_id: cover.house_blinds
-    - delay: '00:00:30'
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.blinds_manual
     - service: input_boolean.turn_off
       entity_id: input_boolean.blinds_manual
 
@@ -66,6 +66,8 @@
       data:
         payload: OPEN
         topic: habc/all/command/set/state
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.blinds_manual
 
 - alias: All Windows Same Position
   trigger:
@@ -169,30 +171,3 @@
       entity_id: cover.house_blinds
     - service: input_boolean.turn_off
       entity_id: input_boolean.house_blinds_close
-
-- alias: Blinds Moved Manually
-  trigger:
-    - platform: state
-      entity_id: 
-        - cover.left_office_blind
-        - cover.center_office_blind
-        - cover.right_office_blind
-        - cover.guest_blind
-        - cover.server_room_blind
-        - cover.left_den_blind
-        - cover.center_den_blind
-        - cover.right_den_blind
-        - cover.left_kitchen_blind
-        - cover.right_kitchen_blind
-        - cover.east_kitchen_blind
-        - cover.left_shack_blind
-        - cover.center_shack_blind
-        - cover.right_shack_blind
-        - cover.left_master_blind
-        - cover.center_master_blind
-        - cover.right_master_blind
-        - cover.west_master_blind
-      to: 'closed'
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.blinds_manual
