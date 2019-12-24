@@ -374,6 +374,27 @@ cards:
             cards:                  
 
               - type: "custom:button-card"
+                entity: cover.den_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_den_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+
+              - type: "custom:button-card"
                 entity: light.den_light
                 color_type: icon
                 color: rgb(228, 94, 101)
@@ -406,8 +427,10 @@ cards:
                 icon: mdi:lamp
                 name: TV
                 hold_action: 
-                  action: more-info   
+                  action: more-info        
 
+          - type: horizontal-stack
+            cards:                  
               - type: "custom:button-card"
                 entity: switch.den_table_lamp
                 color_type: icon
@@ -415,11 +438,7 @@ cards:
                 icon: mdi:lamp
                 name: Piano
                 hold_action: 
-                  action: more-info        
-
-          - type: horizontal-stack
-            cards:                  
-              - type: "custom:gap-card"
+                  action: more-info   
 
               - type: "custom:button-card"
                 entity: light.den_led_rgb
@@ -589,7 +608,26 @@ cards:
                 type: state-label
           - type: horizontal-stack
             cards:                  
-              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: cover.shack_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_shack_blinds
+                  service_data:
+                    deviceID: 
+                      - this
 
               - type: "custom:button-card"
                 entity: switch.dining_room_light
@@ -733,6 +771,26 @@ cards:
           - type: horizontal-stack
             cards:                  
               - type: "custom:button-card"
+                entity: cover.kitchen_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_kitchen_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
                 entity: light.kitchen_light_1
                 color_type: icon
                 color: rgb(228, 94, 101)
@@ -768,15 +826,6 @@ cards:
                   - value: "off"
                     icon: mdi:lightbulb-outline
                 name: Table Light
-                hold_action: 
-                  action: more-info
-
-              - type: "custom:button-card"
-                entity: switch.breakfast_room_lamp
-                color_type: icon
-                color: rgb(228, 94, 101)
-                icon: mdi:lamp
-                name: Lamp
                 hold_action: 
                   action: more-info
           
@@ -828,8 +877,19 @@ cards:
                   action: more-info
 
           - type: horizontal-stack
-            cards:                  
-              
+            cards:                 
+
+              - type: "custom:gap-card" 
+
+              - type: "custom:button-card"
+                entity: switch.breakfast_room_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+            
               - type: "custom:button-card"
                 entity: switch.wax_warmer
                 color_type: icon
@@ -839,12 +899,7 @@ cards:
                 hold_action: 
                   action: more-info
 
-              - type: "custom:gap-card"
-
-              - type: "custom:gap-card"
-
-              - type: "custom:gap-card"
-                
+              - type: "custom:gap-card"                
 
           - type: custom:mini-media-player
             entity: media_player.kitchen_stereo
@@ -898,6 +953,9 @@ cards:
                   - value: "closed"
                     color: rgb(255, 255, 255)
                     icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
                 name: Blinds
                 hold_action:  
                   action: call-service
@@ -1009,6 +1067,9 @@ cards:
                   - value: "closed"
                     color: rgb(255, 255, 255)
                     icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
                 name: Blinds
                 hold_action: 
                   action: more-info
@@ -1116,6 +1177,9 @@ cards:
                   - value: "closed"
                     color: rgb(255, 255, 255)
                     icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
                 name: Blinds
                 hold_action: 
                   action: more-info
@@ -1291,6 +1355,26 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
+                entity: cover.master_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_master_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
                 entity: light.master_bedroom_light
                 color_type: icon
                 color: rgb(228, 94, 101)
@@ -1322,6 +1406,9 @@ cards:
                 name: Lamp
                 hold_action: 
                   action: more-info
+
+          - type: horizontal-stack
+            cards:
               - type: "custom:button-card"
                 entity: light.master_bedroom_leds_rgb
                 color_type: icon
