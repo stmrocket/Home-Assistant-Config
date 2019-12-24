@@ -145,7 +145,7 @@ popup_blinds:
                     action: call-service
                     service: mqtt.publish
                     service_data:
-                      topic: habc/all/command/set/calibrate- type: "custom:gap-card"
+                      topic: habc/all/command/set/calibrate
 
 popup_roomba:
   sequence:
