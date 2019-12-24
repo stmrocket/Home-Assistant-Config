@@ -11,49 +11,129 @@ popup_blinds:
               cards:
                 
                 - type: "custom:button-card"
-                  entity: switch.office_blinds
+                  entity: cover.den_blinds
                   color_type: icon
                   state:
-                      - value: "on"
-                        color: rgb(228, 94, 101)
-                        icon: mdi:blinds-open
-                      - value: "off"
-                        color: rgb(255, 255, 255)
-                        icon: mdi:blinds
-                  name: Office
+                    - value: "open"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:blinds-open
+                    - value: "closed"
+                      color: rgb(255, 255, 255)
+                      icon: mdi:blinds
+                    - value: "unavailable"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:exclamation
+                  name: Blinds
                   hold_action: 
                     action: more-info
                 
                 - type: "custom:button-card"
-                  entity: switch.guest_blinds
+                  entity: cover.kitchen_blinds
                   color_type: icon
                   state:
-                      - value: "on"
-                        color: rgb(228, 94, 101)
-                        icon: mdi:blinds-open
-                      - value: "off"
-                        color: rgb(255, 255, 255)
-                        icon: mdi:blinds
-                  name: Guest
+                    - value: "open"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:blinds-open
+                    - value: "closed"
+                      color: rgb(255, 255, 255)
+                      icon: mdi:blinds
+                    - value: "unavailable"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:exclamation
+                  name: Blinds
                   hold_action: 
                     action: more-info
 
                 - type: "custom:button-card"
-                  entity: switch.server_blinds
+                  entity: cover.office_blinds
                   color_type: icon
                   state:
-                      - value: "on"
-                        color: rgb(228, 94, 101)
-                        icon: mdi:blinds-open
-                      - value: "off"
-                        color: rgb(255, 255, 255)
-                        icon: mdi:blinds
-                  name: Server
+                    - value: "open"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:blinds-open
+                    - value: "closed"
+                      color: rgb(255, 255, 255)
+                      icon: mdi:blinds
+                    - value: "unavailable"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:exclamation
+                  name: Blinds
+                  hold_action: 
+                    action: more-info
+
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  entity: cover.master_blinds
+                  color_type: icon
+                  state:
+                    - value: "open"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:blinds-open
+                    - value: "closed"
+                      color: rgb(255, 255, 255)
+                      icon: mdi:blinds
+                    - value: "unavailable"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:exclamation
+                  name: Blinds
+                  hold_action: 
+                    action: more-info
+                
+                - type: "custom:button-card"
+                  entity: cover.guest_blind
+                  color_type: icon
+                  state:
+                    - value: "open"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:blinds-open
+                    - value: "closed"
+                      color: rgb(255, 255, 255)
+                      icon: mdi:blinds
+                    - value: "unavailable"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:exclamation
+                  name: Blinds
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:button-card"
+                  entity: cover.server_room_blind
+                  color_type: icon
+                  state:
+                    - value: "open"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:blinds-open
+                    - value: "closed"
+                      color: rgb(255, 255, 255)
+                      icon: mdi:blinds
+                    - value: "unavailable"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:exclamation
+                  name: Blinds
                   hold_action: 
                     action: more-info
             
             - type: horizontal-stack
               cards:
+
+                - type: "custom:button-card"
+                  entity: cover.shack_blinds
+                  color_type: icon
+                  state:
+                    - value: "open"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:blinds-open
+                    - value: "closed"
+                      color: rgb(255, 255, 255)
+                      icon: mdi:blinds
+                    - value: "unavailable"
+                      color: rgb(228, 94, 101)
+                      icon: mdi:exclamation
+                  name: Blinds
+                  hold_action: 
+                    action: more-info
                 
                 - type: "custom:gap-card"
 
@@ -65,9 +145,7 @@ popup_blinds:
                     action: call-service
                     service: mqtt.publish
                     service_data:
-                      topic: habc/all/command/set/calibrate
-                
-                - type: "custom:gap-card"
+                      topic: habc/all/command/set/calibrate- type: "custom:gap-card"
 
 popup_roomba:
   sequence:
@@ -145,6 +223,9 @@ popup_office_blinds:
                       - value: "closed"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
                   name: Left
                   hold_action: 
                     action: more-info
@@ -159,6 +240,9 @@ popup_office_blinds:
                       - value: "closed"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
                   name: Center
                   hold_action: 
                     action: more-info
@@ -173,6 +257,9 @@ popup_office_blinds:
                       - value: "closed"
                         color: rgb(255, 255, 255)
                         icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
                   name: Right
                   hold_action: 
                     action: more-info
@@ -2316,3 +2403,278 @@ popup_media_guest_bath:
                     service_data:
                       topic: nuvo/command/set/zone/src
                       payload: 12,6                                        
+
+popup_den_blinds:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Den Blinds
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  entity: cover.left_den_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Left
+                  hold_action: 
+                    action: more-info
+                
+                - type: "custom:button-card"
+                  entity: cover.center_den_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Center
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:button-card"
+                  entity: cover.right_den_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Right
+                  hold_action: 
+                    action: more-info                      
+
+popup_shack_blinds:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: HAM Shack Blinds
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  entity: cover.left_shack_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Left
+                  hold_action: 
+                    action: more-info
+                
+                - type: "custom:button-card"
+                  entity: cover.center_shack_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Center
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:button-card"
+                  entity: cover.right_shack_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Right
+                  hold_action: 
+                    action: more-info                    
+
+popup_kitchen_blinds:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Kitchen Blinds
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  entity: cover.left_kitchen_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Left
+                  hold_action: 
+                    action: more-info
+                
+                - type: "custom:button-card"
+                  entity: cover.right_kitchen_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Right
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:button-card"
+                  entity: cover.east_kitchen_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: East
+                  hold_action: 
+                    action: more-info                    
+
+popup_master_blinds:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Master Bedroom Blinds
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  entity: cover.left_master_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Left
+                  hold_action: 
+                    action: more-info
+                
+                - type: "custom:button-card"
+                  entity: cover.center_master_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Center
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:button-card"
+                  entity: cover.right_master_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: Right
+                  hold_action: 
+                    action: more-info                       
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:gap-card"
+                
+                - type: "custom:button-card"
+                  entity: cover.west_master_blind
+                  color_type: icon
+                  state:
+                      - value: "open"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:blinds-open
+                      - value: "closed"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:blinds
+                      - value: "unavailable"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:exclamation
+                  name: West
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:gap-card"
