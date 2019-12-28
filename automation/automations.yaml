@@ -1,120 +1,112 @@
 - alias: House Armed and Secure
   trigger:
-  - entity_id: alarm_control_panel.area_001
-    from: arming
-    platform: state
-    to: armed_away
+    - entity_id: alarm_control_panel.area_001
+      from: arming
+      platform: state
+      to: armed_away
   condition:
-  - condition: state
-    entity_id: lock.front_door
-    state: locked
-  - condition: state
-    entity_id: lock.back_door
-    state: locked
-  - condition: state
-    entity_id: lock.garage_entry
-    state: locked
+    - condition: state
+      entity_id: lock.front_door
+      state: locked
+    - condition: state
+      entity_id: lock.back_door
+      state: locked
+    - condition: state
+      entity_id: lock.garage_entry
+      state: locked
   action:
-  - service: notify.browser
-    data:
-      message: The alarm is fully armed in away mode and all doors are secure.
-      title: House Secure
+    - service: notify.browser
+      data:
+        message: The alarm is fully armed in away mode and all doors are secure.
+        title: House Secure
     
 - alias: Master Going To Bed
   trigger:
-  - platform: state
-    entity_id: alarm_control_panel.area_001
-    from: disarmed
-    to: armed_night
-  - platform: state
-    entity_id: alarm_control_panel.area_001
-    from: armed_home
-    to: armed_night
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      from: disarmed
+      to: armed_night
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      from: armed_home
+      to: armed_night
   action:
-  - service: switch.turn_on
-    data:
-      entity_id: switch.master_bedroom_fan_1
-  - service: light.turn_off
-    data:
+    - service: switch.turn_on
+      entity_id: 
+        - switch.master_bedroom_fan
+        - switch.nuvo_zone_4_power
+    - service: light.turn_off
       entity_id: light.master_bedroom_light
-  - service: switch.turn_on
-    data:
-      entity_id: switch.nuvo_zone_4_power
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/zone/src
-      payload: 4,6
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/zone/vol
-      payload: 4,40
-  - service: switch.turn_off
-    data:
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/zone/src
+        payload: 4,6
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/zone/vol
+        payload: 4,40
+    - service: switch.turn_off
       entity_id: switch.nuvo_zone_5_power
 
 - alias: Update Wunderground
   trigger:
-  - platform: time_pattern
-    minutes: "*"
+    - platform: time_pattern
+      minutes: "*"
   action:
-  - service: rest_command.update_wunderground
+    - service: rest_command.update_wunderground
 
 - alias: Vacation Mode On
   trigger:
     - platform: template
       value_template: "{{ is_state_attr('alarm_control_panel.area_001', 'armed_status', 'armed_to_vacation') }}"
   action:
-  - service: input_boolean.turn_on
-    data:
+    - service: input_boolean.turn_on
       entity_id: input_boolean.vacation_mode
 
 - alias: Vacation Mode Off
   trigger:
-  - platform: state
-    entity_id: input_boolean.hvac_geofence
-    to: 'on'
-  - platform: state
-    entity_id: device_tracker.shawn_n6_wifi
-    to: 'home'
+    - platform: state
+      entity_id: input_boolean.hvac_geofence
+      to: 'on'
+    - platform: state
+      entity_id: device_tracker.shawn_n6_wifi
+      to: 'home'
   condition:
-  - condition: state
-    entity_id: input_boolean.vacation_mode
-    state: 'on'
+    - condition: state
+      entity_id: input_boolean.vacation_mode
+      state: 'on'
   action:
-  - service: input_boolean.turn_off
-    data: 
+    - service: input_boolean.turn_off
       entity_id: input_boolean.vacation_mode
 
 - id: 'sonoffstart'
   alias: Power State Sonoff on HA Start-Up
   trigger:
-  - event: start
-    platform: homeassistant
+    - event: start
+      platform: homeassistant
   action:
-  - service: mqtt.publish
-    data:
-      payload: ''
-      topic: cmnd/fireplace/state
-  - service: mqtt.publish
-    data:
-      payload: ''
-      topic: christmas/indoor/decorations/cmnd/state
-    
-  initial_state: 'true'      
+    - service: mqtt.publish
+      data:
+        payload: ''
+        topic: cmnd/fireplace/state
+    - service: mqtt.publish
+      data:
+        payload: ''
+        topic: christmas/indoor/decorations/cmnd/state    
 
 - alias: Refresh Entity Counters
   trigger:
-  - platform: time_pattern
-    minutes: "/15"  
+    - platform: time_pattern
+      minutes: "/15"  
   action:
-  - service: homeassistant.update_entity
-    entity_id: 
-      - sensor.automation_count
-      - sensor.binary_sensor_count
-      - sensor.switch_count
-      - sensor.fan_count
-      - sensor.lights_count
-      - sensor.tracker_count
-      - sensor.media_player_count
-      - sensor.script_count
-      - sensor.sensor_count
+    - service: homeassistant.update_entity
+      entity_id: 
+        - sensor.automation_count
+        - sensor.binary_sensor_count
+        - sensor.switch_count
+        - sensor.fan_count
+        - sensor.lights_count
+        - sensor.tracker_count
+        - sensor.media_player_count
+        - sensor.script_count
+        - sensor.sensor_count
