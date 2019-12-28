@@ -65,8 +65,8 @@ light:
   - platform: mqtt
     schema: json
     name: "Master Toilet Light"
-    state_topic: "insteon/28.ff.91/state"
-    command_topic: "insteon/28.ff.91/level"
+    state_topic: "insteon/28.ff.95/state"
+    command_topic: "insteon/28.ff.95/level"
     brightness: true
 
   - platform: mqtt
@@ -128,8 +128,8 @@ light:
   - platform: mqtt
     schema: json
     name: "Lava Lamp"
-    state_topic: "insteon/23.6d.de/state"
-    command_topic: "insteon/23.6d.de/level"
+    state_topic: "insteon/23.6b.de/state"
+    command_topic: "insteon/23.6b.de/level"
     brightness: true
 
   - platform: mqtt
