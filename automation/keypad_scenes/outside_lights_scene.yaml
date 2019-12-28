@@ -3,6 +3,15 @@
     - platform: state
       entity_id: switch.outside_lights_keypad
       to: 'on'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: light.driveway_light
+          state: 'off'
+        - condition: state
+          entity_id: light.front_porch_light
+          state: 'off'
   action:
     - service: light.turn_on
       entity_id:
@@ -14,6 +23,15 @@
     - platform: state
       entity_id: switch.outside_lights_keypad
       to: 'off'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: light.driveway_light
+          state: 'on'
+        - condition: state
+          entity_id: light.front_porch_light
+          state: 'on'
   action:
     - service: light.turn_off
       entity_id:
@@ -41,7 +59,7 @@
     - service: switch.turn_on
       entity_id: switch.outside_lights_keypad
 
-- alias: Entry Lamp Keypad Off
+- alias: Outside Lights Keypad Off
   trigger:
     - platform: state
       entity_id: 

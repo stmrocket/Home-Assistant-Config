@@ -3,6 +3,10 @@
     - platform: state
       entity_id: switch.entry_lamp_keypad
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.entry_lamp
+      state: 'off'
   action:
     - service: light.turn_on
       data:
@@ -14,6 +18,10 @@
     - platform: state
       entity_id: switch.entry_lamp_keypad
       to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.entry_lamp
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.entry_lamp
