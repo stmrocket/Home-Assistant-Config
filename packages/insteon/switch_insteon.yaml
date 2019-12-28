@@ -1,0 +1,100 @@
+switch:
+  - platform: mqtt
+    name: 'Left Garage Hanging Fixture'
+    state_topic: 'insteon/1f.f9.dd/state'
+    command_topic: 'insteon/1f.f9.dd/set'
+
+  - platform: mqtt
+    name: 'Right Garage Hanging Fixture'
+    state_topic: 'insteon/1f.fd.12/state'
+    command_topic: 'insteon/1f.fd.12/set'
+
+  - platform: mqtt
+    name: 'Server Closet Fan'
+    state_topic: 'insteon/20.35.95/state'
+    command_topic: 'insteon/20.35.95/set'
+
+  - platform: mqtt
+    name: 'Water Projector'
+    state_topic: 'insteon/22.70.9b/state'
+    command_topic: 'insteon/22.70.9b/set'
+
+  - platform: mqtt
+    name: 'Outdoor'
+    state_topic: 'insteon/21.4a.89/state'
+    command_topic: 'insteon/21.4a.89/set'
+
+  - platform: mqtt
+    name: 'Den Fan'
+    state_topic: 'insteon/23.e8.8d/state'
+    command_topic: 'insteon/23.e8.8d/set'
+
+  - platform: mqtt
+    name: 'Guest Bathroom Fan'
+    state_topic: 'insteon/28.87.da/state'
+    command_topic: 'insteon/28.87.da/set'
+
+  - platform: mqtt
+    name: 'Master Bathroom Fan'
+    state_topic: 'insteon/23.ef.0f/state'
+    command_topic: 'insteon/23.ef.0f/set'
+
+  - platform: mqtt
+    name: 'Master Bathroom Light'
+    state_topic: 'insteon/23.ec.dc/state'
+    command_topic: 'insteon/23.ec.dc/set'
+
+  - platform: mqtt
+    name: 'Master Closet Light'
+    state_topic: 'insteon/23.ee.89/state'
+    command_topic: 'insteon/23.ee.89/set'
+
+  - platform: mqtt
+    name: 'Master Toilet Fan'
+    state_topic: 'insteon/28.87.a6/state'
+    command_topic: 'insteon/28.87.a6/set'
+
+  - platform: mqtt
+    name: 'Utility Room Fan'
+    state_topic: 'insteon/28.88.b1/state'
+    command_topic: 'insteon/28.88.b1/set'
+
+  - platform: mqtt
+    name: 'Desk'
+    state_topic: 'insteon/37.ff.46/state'
+    command_topic: 'insteon/37.ff.46/set'
+
+  - platform: mqtt
+    name: 'Popcorn Popper'
+    state_topic: 'insteon/37.60.82/state'
+    command_topic: 'insteon/37.60.82/set'
+
+  - platform: mqtt
+    name: 'Garage Light Keypad'
+    state_topic: 'insteon/22.cc.f8/state/1'
+    command_topic: 'insteon/22.cc.f8/set/1'
+
+  - platform: mqtt
+    name: 'Guest Bedroom Fan'
+    state_topic: 'insteon/24.ee.21/state/1'
+    command_topic: 'insteon/24.ee.21/set/1'
+
+  - platform: mqtt
+    name: 'Master Bedroom Fan'
+    state_topic: 'insteon/24.ee.1f/state/1'
+    command_topic: 'insteon/24.ee.1f/set/1'
+
+  - platform: mqtt
+    name: 'Office Fan'
+    state_topic: 'insteon/24.ee.90/state/1'
+    command_topic: 'insteon/24.ee.90/set/1'
+
+  - platform: mqtt
+    name: 'Server Room Fan'
+    state_topic: 'insteon/24.ef.64/state/1'
+    command_topic: 'insteon/24.ef.64/set/1'
+
+  - platform: mqtt
+    name: 'Shed Inside Light'
+    state_topic: 'insteon/34.d6.98/state/1'
+    command_topic: 'insteon/34.d6.98/set/1'

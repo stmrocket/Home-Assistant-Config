@@ -268,12 +268,12 @@ script: !include_dir_merge_named scripts
 
 zone: !include zones.yaml
 
-# ISY 994 Integration 
-isy994:
-  host: !secret isy_host
-  username: !secret isy_user
-  password: !secret isy_pass
-  enable_climate: false
+# # ISY 994 Integration 
+# isy994:
+#   host: !secret isy_host
+#   username: !secret isy_user
+#   password: !secret isy_pass
+#   enable_climate: false
 
 #Elk M1 Integration
 elkm1:
