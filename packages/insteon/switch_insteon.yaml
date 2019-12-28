@@ -11,8 +11,8 @@ switch:
 
   - platform: mqtt
     name: 'Server Closet Fan'
-    state_topic: 'insteon/20.35.95/state'
-    command_topic: 'insteon/20.35.95/set'
+    state_topic: 'insteon/20.35.98/state'
+    command_topic: 'insteon/20.35.98/set'
 
   - platform: mqtt
     name: 'Water Projector'
