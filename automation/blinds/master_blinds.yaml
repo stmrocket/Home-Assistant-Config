@@ -37,9 +37,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: 
-            - switch.master_bedroom_blinds_keypad
-            - switch.master_bathroom_blinds_keypad
+          entity_id: switch.master_bedroom_blinds_keypad
+          state: 'off'
+        - condition: state
+          entity_id: switch.master_bathroom_blinds_keypad
           state: 'off'
   action:
     - service: switch.turn_on
@@ -57,9 +58,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: 
-            - switch.master_bedroom_blinds_keypad
-            - switch.master_bathroom_blinds_keypad
+          entity_id: switch.master_bedroom_blinds_keypad
+          state: 'on'
+        - condition: state
+          entity_id: switch.master_bathroom_blinds_keypad
           state: 'on'
   action:
     - service: switch.turn_off
