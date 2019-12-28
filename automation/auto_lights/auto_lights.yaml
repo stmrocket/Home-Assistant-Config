@@ -1,178 +1,176 @@
 - alias: Garage Light Auto On
   trigger:
-  - platform: template
-    value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
-  - platform: state
-    entity_id: sensor.zone_032
-    from: Normal
-    to: Violated
-  - platform: state
-    entity_id: sensor.zone_031
-    from: Normal
-    to: Violated
+    - platform: template
+      value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
+    - platform: state
+      entity_id: sensor.zone_032
+      from: Normal
+      to: Violated
+    - platform: state
+      entity_id: sensor.zone_031
+      from: Normal
+      to: Violated
   condition:
-  - condition: state
-    entity_id: switch.garage_lighting
-    state: 'off'    
+    - condition: state
+      entity_id: switch.garage_light_keypad
+      state: 'off'    
   action:
     - service: switch.turn_on
-      data:
-        entity_id: switch.garage_lighting
+      entity_id: switch.garage_light_keypad
     - service: timer.start
       entity_id: timer.garage_light
 
 - alias: Garage Light Timer Reset
   trigger:
-  - platform: template
-    value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
-  - platform: state
-    entity_id: sensor.zone_032
-    from: Normal
-    to: Violated
-  - platform: state
-    entity_id: sensor.zone_031
-    from: Normal
-    to: Violated
+    - platform: template
+      value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
+    - platform: state
+      entity_id: sensor.zone_032
+      from: Normal
+      to: Violated
+    - platform: state
+      entity_id: sensor.zone_031
+      from: Normal
+      to: Violated
   condition:
-  - condition: state
-    entity_id: switch.garage_lighting
-    state: 'on'    
+    - condition: state
+      entity_id: switch.garage_light_keypad
+      state: 'on'    
   action:
     - service: timer.start
       entity_id: timer.garage_light
 
 - alias: Garage Light Auto Off
   trigger:
-  - event_data:
-      entity_id: timer.garage_light
-    event_type: timer.finished
-    platform: event  
+    - event_data:
+        entity_id: timer.garage_light
+      event_type: timer.finished
+      platform: event  
   action:
-  - service: switch.turn_off
-    data:
-      entity_id: switch.garage_lighting
+    - service: switch.turn_off
+      entity_id: switch.garage_light_keypad
 
 - alias: Auto Attic Light
   trigger:
-  - entity_id: sensor.zone_030
-    platform: state
-    to: Violated
-  - entity_id: sensor.zone_030
-    platform: state
-    to: Normal
+    - entity_id: sensor.zone_030
+      platform: state
+      to: Violated
+    - entity_id: sensor.zone_030
+      platform: state
+      to: Normal
   action:
-  - service_template: >
-      {% if states('light.attic_lights') == "off" %}
-        light.turn_on
-      {% else %}
-        light.turn_off
-      {% endif %}
-    entity_id: light.attic_lights
+    - service_template: >
+        {% if states('light.attic_lights') == "off" %}
+          light.turn_on
+        {% else %}
+          light.turn_off
+        {% endif %}
+      entity_id: light.attic_light
       
 - alias: Auto Guest Closet Light
   trigger:
-  - entity_id: sensor.zone_071
-    platform: state
-    to: Violated
-  - entity_id: sensor.zone_071
-    platform: state
-    to: Normal
+    - entity_id: sensor.zone_071
+      platform: state
+      to: Violated
+    - entity_id: sensor.zone_071
+      platform: state
+      to: Normal
   action:
-  - service_template: >
-      {% if states('light.guest_closet_light') == "off" %}
-        light.turn_on
-      {% else %}
-        light.turn_off
-      {% endif %}
-    entity_id: light.guest_closet_light   
+    - service_template: >
+        {% if states('light.guest_closet_light') == "off" %}
+          switch.turn_on
+        {% else %}
+          switch.turn_off
+        {% endif %}
+      entity_id: switch.guest_closet_keypad 
 
 - alias: Auto Pantry Light
   trigger:
-  - entity_id: sensor.zone_048
-    platform: state
-    to: Violated
-  - entity_id: sensor.zone_048
-    platform: state
-    to: Normal
+    - entity_id: sensor.zone_048
+      platform: state
+      to: Violated
+    - entity_id: sensor.zone_048
+      platform: state
+      to: Normal
   action:
-  - service_template: >
-      {% if states('light.pantry_light') == "off" %}
-        light.turn_on
-      {% else %}
-        light.turn_off
-      {% endif %}
-    entity_id: light.pantry_light
+    - service_template: >
+        {% if states('light.pantry_light') == "off" %}
+          light.turn_on
+        {% else %}
+          light.turn_off
+        {% endif %}
+      entity_id: light.pantry_light
 
 - alias: Auto Server Closet Light
   trigger:
-  - entity_id: sensor.zone_072
-    platform: state
-    to: Violated
-  - entity_id: sensor.zone_072
-    platform: state
-    to: Normal
+    - entity_id: sensor.zone_072
+      platform: state
+      to: Violated
+    - entity_id: sensor.zone_072
+      platform: state
+      to: Normal
   action:
-  - service_template: >
-      {% if states('light.server_room_closet_light') == "off" %}
-        light.turn_on
-      {% else %}
-        light.turn_off
-      {% endif %}
-    entity_id: light.server_room_closet_light    
+    - service_template: >
+        {% if states('light.server_room_closet_light') == "off" %}
+          switch.turn_on
+        {% else %}
+          switch.turn_off
+        {% endif %}
+      entity_id: switch.server_closet_light_keypad 
 
 - alias: Auto Shed Light
   trigger:
-  - entity_id: sensor.zone_049
-    platform: state
-    to: Violated
-  - entity_id: sensor.zone_049
-    platform: state
-    to: Normal
+    - entity_id: sensor.zone_049
+      platform: state
+      to: Violated
+    - entity_id: sensor.zone_049
+      platform: state
+      to: Normal
   action:
-  - service_template: >
-      {% if states('switch.shed_inside_lightt') == "off" %}
-        switch.turn_on
-      {% else %}
-        switch.turn_off
-      {% endif %}
-    entity_id: switch.shed_inside_light        
+    - service_template: >
+        {% if states('switch.shed_inside_lightt') == "off" %}
+          switch.turn_on
+        {% else %}
+          switch.turn_off
+        {% endif %}
+      entity_id: switch.shed_inside_light      
     
 - alias: Master Closet Light Auto On
   trigger:
-  - entity_id: sensor.zone_029
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_029
+      platform: state
+      to: Violated
   action:
-  - service: switch.turn_on
-    entity_id: switch.master_closet_light
+    - service: switch.turn_on
+      entity_id: switch.master_closet_light
 
 - alias: Master Closet Light Auto Off
   trigger:
-  - entity_id: sensor.zone_029
-    platform: state
-    to: Normal
-    for:
-      minutes: 2
+    - entity_id: sensor.zone_029
+      platform: state
+      to: Normal
+      for:
+        minutes: 2
   action:
-  - service: switch.turn_off
-    entity_id: switch.master_closet_light    
+    - service: switch.turn_off
+      entity_id: switch.master_closet_light    
 
 - alias: Utility Room Light Auto On
   trigger:
-  - entity_id: sensor.zone_026
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_026
+      platform: state
+      to: Violated
   action:
-  - service: light.turn_on
-    entity_id: light.utility_room_light
+    - service: light.turn_on
+      entity_id: light.utility_room_light
 
 - alias: Uitlity Room Light Auto Off
   trigger:
-  - entity_id: sensor.zone_026
-    platform: state
-    to: Normal
-    for:
-      minutes: 1
+    - entity_id: sensor.zone_026
+      platform: state
+      to: Normal
+      for:
+        minutes: 1
   action:
-  - service: light.turn_off
-    entity_id: light.utility_room_light
+    - service: light.turn_off
+      entity_id: light.utility_room_light
