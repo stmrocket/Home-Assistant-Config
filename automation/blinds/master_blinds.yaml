@@ -3,7 +3,7 @@
     - platform: state
       entity_id: 
         - switch.master_bedroom_blinds_keypad
-        - entity_id: switch.master_bathroom_blinds_keypad
+        - switch.master_bathroom_blinds_keypad
       to: 'on'
   condition:
     - condition: state
