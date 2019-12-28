@@ -1,0 +1,252 @@
+light:
+  - platform: mqtt
+    schema: json
+    name: "Guest CLoset Light"
+    state_topic: "insteon/2c.9e.e5/state"
+    command_topic: "insteon/2c.9e.e5/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Server CLoset Light"
+    state_topic: "insteon/2c.9a.4c/state"
+    command_topic: "insteon/2c.9a.4c/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Attic Light"
+    state_topic: "insteon/1f.77.e3/state"
+    command_topic: "insteon/1f.77.e3/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Foyer Light"
+    state_topic: "insteon/28.f5.3f/state"
+    command_topic: "insteon/28.f5.3f/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Front Porch Light"
+    state_topic: "insteon/29.02.b2/state"
+    command_topic: "insteon/29.02.b2/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Driveway Light"
+    state_topic: "insteon/28.ff.e3/state"
+    command_topic: "insteon/28.ff.e3/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Guest Bathroom Light"
+    state_topic: "insteon/28.f2.a3/state"
+    command_topic: "insteon/28.f2.a3/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Guest Bedroom Light"
+    state_topic: "insteon/29.0a.32/state"
+    command_topic: "insteon/29.0a.32/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Kitchen Sink Light"
+    state_topic: "insteon/28.f1.1d/state"
+    command_topic: "insteon/28.f1.1d/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Master Toilet Light"
+    state_topic: "insteon/28.ff.91/state"
+    command_topic: "insteon/28.ff.91/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Pantry Light"
+    state_topic: "insteon/28.f4.1b/state"
+    command_topic: "insteon/28.f4.1b/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Server Room Light"
+    state_topic: "insteon/28.fc.6d/state"
+    command_topic: "insteon/28.fc.6d/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Utility Room Light"
+    state_topic: "insteon/28.f0.e3/state"
+    command_topic: "insteon/28.f0.e3/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Shed Outside Light"
+    state_topic: "insteon/38.e7.a2/state"
+    command_topic: "insteon/38.e7.a2/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Kitchen Lamp"
+    state_topic: "insteon/21.93.b5/state"
+    command_topic: "insteon/21.93.b5/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "TV Lamps"
+    state_topic: "insteon/26.9e.ff/state"
+    command_topic: "insteon/26.9e.ff/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Piano Lamp"
+    state_topic: "insteon/26.a1.b2/state"
+    command_topic: "insteon/26.a1.b2/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Guest Lamp"
+    state_topic: "insteon/26.b2.3c/state"
+    command_topic: "insteon/26.b2.3c/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Lava Lamp"
+    state_topic: "insteon/23.6d.de/state"
+    command_topic: "insteon/23.6d.de/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Master Lamps"
+    state_topic: "insteon/21.9a.ab/state"
+    command_topic: "insteon/21.9a.ab/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Office Lamps"
+    state_topic: "insteon/26.70.42/state"
+    command_topic: "insteon/26.70.42/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Server Room Lamp"
+    state_topic: "insteon/26.b1.c1/state"
+    command_topic: "insteon/26.b1.c1/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Shack Lamp"
+    state_topic: "insteon/3a.f5.ff/state"
+    command_topic: "insteon/3a.f5.ff/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Garage Fan Light"
+    state_topic: "insteon/21.69.4f/state"
+    command_topic: "insteon/21.69.4f/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Back Porch Fan Light"
+    state_topic: "insteon/3f.4a.00/state"
+    command_topic: "insteon/3f.4a.00/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Shack Fan Light"
+    state_topic: "insteon/47.6b.f6/state"
+    command_topic: "insteon/47.6b.f6/level"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Back Porch Light Keypad"
+    state_topic: "insteon/29.51.40/state/1"
+    command_topic: "insteon/29.51.40/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Dining Room Light"
+    state_topic: "insteon/29.50.9f/state/1"
+    command_topic: "insteon/29.50.9f/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Den Light"
+    state_topic: "insteon/29.4f.b1/state/1"
+    command_topic: "insteon/29.4f.b1/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Entry Light"
+    state_topic: "insteon/29.4f.34/state/1"
+    command_topic: "insteon/29.4f.34/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Hall Light"
+    state_topic: "insteon/29.4f.9b/state/1"
+    command_topic: "insteon/29.4f.9b/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Kitchen Light"
+    state_topic: "insteon/29.50.52/state/1"
+    command_topic: "insteon/29.50.52/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Master Bedroom Light"
+    state_topic: "insteon/29.4b.99/state/1"
+    command_topic: "insteon/29.4b.99/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Office Light"
+    state_topic: "insteon/29.4e.fa/state/1"
+    command_topic: "insteon/29.4e.fa/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Shack Light Keypad"
+    state_topic: "insteon/3d.84.2a/state/1"
+    command_topic: "insteon/3d.84.2a/level/1"
+    brightness: true
+
+  - platform: mqtt
+    schema: json
+    name: "Master Shower Light"
+    state_topic: "insteon/2a.11.a1/state/1"
+    command_topic: "insteon/2a.11.a1/level/1"
+    brightness: true

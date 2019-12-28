@@ -1,0 +1,82 @@
+binary_sensor:
+  - platform: mqtt
+    name: 'Dishwasher Leak Detector'
+    state_topic: 'insteon/25.b9.5d/wet'
+    device_class: 'moisture'
+
+  - platform: mqtt
+    name: 'Guest Sink Leak Detector'
+    state_topic: 'insteon/25.b3.78/wet'
+    device_class: 'moisture'
+
+  - platform: mqtt
+    name: 'Guest Toilet Leak Detector'
+    state_topic: 'insteon/25.b7.78/wet'
+    device_class: 'moisture'
+
+  - platform: mqtt
+    name: 'Kitchen Sink Leak Detector'
+    state_topic: 'insteon/25.b3.a9/wet'
+    device_class: 'moisture'
+
+  - platform: mqtt
+    name: 'Left Master Sink Leak Detector'
+    state_topic: 'insteon/25.b3.c2/wet'
+    device_class: 'moisture'
+
+  - platform: mqtt
+    name: 'Master Toilet Leak Detector'
+    state_topic: 'insteon/25.bb.4d/wet'
+    device_class: 'moisture'
+  
+  - platform: mqtt
+    name: 'Refrigerator Leak Detector'
+    state_topic: 'insteon/25.b2.c3/wet'
+    device_class: 'moisture'
+
+  - platform: mqtt
+    name: 'Right Master Sink Leak Detector'
+    state_topic: 'insteon/25.b4.14/wet'
+    device_class: 'moisture'
+
+  - platform: mqtt
+    name: 'Utility Leak Detector'
+    state_topic: 'insteon/23.2a.d7/wet'
+    device_class: 'moisture'
+
+sensors:
+  - platform: mqtt
+    name: 'Dishwasher Leak Detector Heartbeat'
+    state_topic: 'insteon/25.b9.5d/heartbeat'
+
+  - platform: mqtt
+    name: 'Guest Sink Leak Detector Heartbeat'
+    state_topic: 'insteon/25.b3.78/heartbeat'
+
+  - platform: mqtt
+    name: 'Guest Toilet Leak Detector Heartbeat'
+    state_topic: 'insteon/25.b7.78/heartbeat'
+
+  - platform: mqtt
+    name: 'Kitchen Sink Leak Detector Heartbeat'
+    state_topic: 'insteon/25.b3.a9/heartbeat'
+
+  - platform: mqtt
+    name: 'Left Master Sink Leak Detector Heartbeat'
+    state_topic: 'insteon/25.b3.c2/heartbeat'
+
+  - platform: mqtt
+    name: 'Master Toilet Leak Detector Heartbeat'
+    state_topic: 'insteon/25.bb.4d/heartbeat'
+
+  - platform: mqtt
+    name: 'Refrigerator Leak Detector Heartbeat'
+    state_topic: 'insteon/25.b2.c3/heartbeat'
+
+  - platform: mqtt
+    name: 'Right Master Sink Leak Detector Heartbeat'
+    state_topic: 'insteon/25.b4.14/heartbeat'
+
+  - platform: mqtt
+    name: 'Utility Leak Detector Heartbeat'
+    state_topic: 'insteon/23.2a.d7/heartbeat'

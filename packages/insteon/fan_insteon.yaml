@@ -1,0 +1,21 @@
+fan:
+  - platform: mqtt
+    name: 'Garage Fan'
+    command_topic: 'insteon/21.69.4f/fan/set'
+    state_topic: 'insteon/21.69.4f/fan/state'
+    speed_command_topic: 'insteon/21.69.4f/fan/speed/set'
+    speed_state_topic: 'insteon/21.69.4f/fan/state'
+
+  - platform: mqtt
+    name: 'Back Porch Fan'
+    command_topic: 'insteon/3f.4a.00/fan/set'
+    state_topic: 'insteon/3f.4a.00/fan/state'
+    speed_command_topic: 'insteon/3f.4a.00/fan/speed/set'
+    speed_state_topic: 'insteon/3f.4a.00/fan/state'
+
+  - platform: mqtt
+    name: 'Shack Fan'
+    command_topic: 'insteon/47.6b.f6/fan/set'
+    state_topic: 'insteon/47.6b.f6/fan/state'
+    speed_command_topic: 'insteon/47.6b.f6/fan/speed/set'
+    speed_state_topic: 'insteon/47.6b.f6/fan/state'
