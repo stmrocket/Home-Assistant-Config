@@ -1,7 +1,9 @@
 - alias: Open Kitchen Blinds
   trigger:
     - platform: state
-      entity_id: switch.kitchen_blinds
+      entity_id: 
+        - switch.kitchen_blinds_keypad
+        - switch.dining_room_blinds_keypad
       to: 'on'
   condition:
     - condition: state
@@ -14,7 +16,9 @@
 - alias: Close Kitchen Blinds
   trigger:
     - platform: state
-      entity_id: switch.kitchen_blinds
+      entity_id: 
+        - switch.kitchen_blinds_keypad
+        - switch.dining_room_blinds_keypad
       to: 'off'
   condition:
     - condition: state
@@ -30,12 +34,19 @@
       entity_id: cover.kitchen_blinds
       to: 'open'
   condition:
-    - condition: state
-      entity_id: switch.kitchen_blinds
-      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: switch.kitchen_blinds_keypad
+        state: 'off'
+      - condition: state
+        entity_id: switch.dining_room_blinds_keypad
+        state: 'off'
   action:
     - service: switch.turn_on
-      entity_id: switch.kitchen_blinds
+      entity_id: 
+        - switch.kitchen_blinds_keypad
+        - switch.dining_room_blinds_keypad
     
 
 - alias: Kitchen Blind Keypad off if all Closed
@@ -44,12 +55,19 @@
       entity_id: cover.kitchen_blinds
       to: 'closed'
   condition:
-    - condition: state
-      entity_id: switch.kitchen_blinds
-      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: switch.kitchen_blinds_keypad
+        state: 'on'
+      - condition: state
+        entity_id: switch.dining_room_blinds_keypad
+        state: 'on'
   action:
     - service: switch.turn_off
-      entity_id: switch.kitchen_blinds
+      entity_id: 
+        - switch.kitchen_blinds_keypad
+        - switch.dining_room_blinds_keypad
 
 - alias: Alexa Open Kitchen Blinds
   trigger:

@@ -266,14 +266,9 @@ automation: !include_dir_merge_list automation
 
 script: !include_dir_merge_named scripts
 
-zone: !include zones.yaml
+scene: !include_dir_merge_named scenes
 
-# # ISY 994 Integration 
-# isy994:
-#   host: !secret isy_host
-#   username: !secret isy_user
-#   password: !secret isy_pass
-#   enable_climate: false
+zone: !include zones.yaml
 
 #Elk M1 Integration
 elkm1:
@@ -298,7 +293,7 @@ elkm1:
     exclude: [16, 53-64, 73-196, 198-207]
 
 
-
+#Alexa Integration
 api:
 alexa: !include alexa.yaml
 
@@ -315,7 +310,6 @@ camera:
   - platform: zoneminder
 
 #Device Tracking
-
 device_tracker:
   - platform: aprs
     username: !secret my_callsign
@@ -352,7 +346,8 @@ counter:
   washer_alert:
     initial: 0
     step: 1
-# Kodi Media Player
+
+#Kodi Media Player
 media_player:
   - name: den_kodi
     platform: kodi
@@ -378,9 +373,6 @@ hacs:
   appdaemon: true
   python_script: true
   theme: true
-
-#Breaking Changes
-#breaking_changes:
 
 #Alexa Media Player
 alexa_media:

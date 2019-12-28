@@ -1,14 +1,14 @@
 light:
   - platform: mqtt
     schema: json
-    name: "Guest CLoset Light"
+    name: "Guest Closet Light"
     state_topic: "insteon/2c.9e.e5/state"
     command_topic: "insteon/2c.9e.e5/level"
     brightness: true
 
   - platform: mqtt
     schema: json
-    name: "Server CLoset Light"
+    name: "Server Closet Light"
     state_topic: "insteon/2c.9a.4c/state"
     command_topic: "insteon/2c.9a.4c/level"
     brightness: true

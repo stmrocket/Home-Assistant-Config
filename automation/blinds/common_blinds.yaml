@@ -100,7 +100,7 @@
 - alias: Open House Blinds
   trigger:
     - platform: state
-      entity_id: switch.house_blinds
+      entity_id: switch.house_blinds_keypad
       to: 'on'
   condition:
     - condition: state
@@ -114,7 +114,7 @@
 - alias: Close House Blinds
   trigger:
     - platform: state
-      entity_id: switch.house_blinds
+      entity_id: switch.house_blinds_keypad
       to: 'off'
   condition:
     - condition: state
@@ -131,11 +131,11 @@
       to: 'open'
   condition:
     - condition: state
-      entity_id: switch.house_blinds
+      entity_id: switch.house_blinds_keypad
       state: 'off'
   action:
     - service: switch.turn_on
-      entity_id: switch.house_blinds
+      entity_id: switch.house_blinds_keypad
 
 - alias: House Blinds Keypad off if all Closed
   trigger:
@@ -144,11 +144,11 @@
       to: 'closed'
   condition:
     - condition: state
-      entity_id: switch.house_blinds
+      entity_id: switch.house_blinds_keypad
       state: 'on'
   action:
     - service: switch.turn_off
-      entity_id: switch.house_blinds
+      entity_id: switch.house_blinds_keypad
 
 - alias: Alexa Open House Blinds
   trigger:

@@ -1,311 +1,307 @@
 - alias: Elk Speak Front Door
   trigger:
-  - entity_id: sensor.zone_001
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_001
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,7
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,7
     
 - alias: Elk Speak Back Door
   trigger:
-  - entity_id: sensor.zone_003
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_003
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,2
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,2
 
 - alias: Elk Speak Center Master Window
   trigger:
-  - entity_id: sensor.zone_005
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_005
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,3
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,3
 
 - alias: Elk Speak Center Office Window
   trigger:
-  - entity_id: sensor.zone_005
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_005
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,4
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,4
 
 - alias: Elk Speak East Breakfast Room Window
   trigger:
-  - entity_id: sensor.zone_015
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_015
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,6
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,6
 
 - alias: Elk Speak Garage Door
   trigger:
-  - entity_id: sensor.zone_031
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_031
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,9
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,9
 
 - alias: Elk Speak Garage Entry
   trigger:
-  - platform: template
-    value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
+    - platform: template
+      value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,10
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,10
 
 - alias: Elk Speak Guest Window
   trigger:
-  - entity_id: sensor.zone_007
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_007
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,12
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,12
 
 - alias: Elk Speak Left Breakfast Room Window
   trigger:
-  - entity_id: sensor.zone_013
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_013
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,16
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,16
 
 - alias: Elk Speak Right Breakfast Room Window
   trigger:
-  - entity_id: sensor.zone_014
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_014
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,19
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,19
 
 - alias: Elk Speak Left Master Bedroom Window
   trigger:
-  - entity_id: sensor.zone_010
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_010
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,17
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,17
 
 - alias: Elk Speak Left Office Window
   trigger:
-  - entity_id: sensor.zone_006
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_006
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,18
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,18
 
 - alias: Elk Speak Right Office Window
   trigger:
-  - entity_id: sensor.zone_006
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_006
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,21
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,21
 
 - alias: Elk Speak Right Master Bedroom Window
   trigger:
-  - entity_id: sensor.zone_012
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_012
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,20
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,20
 
 - alias: Elk Speak Server Room Window
   trigger:
-  - entity_id: sensor.zone_020
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_020
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,22
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,22
 
 - alias: Elk Speak West Master Bedroom Window
   trigger:
-  - entity_id: sensor.zone_009
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_009
+      platform: state
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 1,26
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 1,26
 
 - alias: Elk Speak Air Handler Disabled
   trigger:
-  - entity_id: switch.output_013
-    platform: state
-    to: 'on'
+    - entity_id: switch.output_013
+      platform: state
+      to: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 2,1
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 2,1
 
 - alias: Elk Speak Armed Stay
   trigger:
-  - entity_id: alarm_control_panel.area_001
-    from: disarmed
-    platform: state
-    to: armed_home
-  - entity_id: alarm_control_panel.area_001
-    from: armed_night
-    platform: state
-    to: armed_home
+    - entity_id: alarm_control_panel.area_001
+      from: disarmed
+      platform: state
+      to: armed_home
+    - entity_id: alarm_control_panel.area_001
+      from: armed_night
+      platform: state
+      to: armed_home
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 2,12
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 2,12
 
 - alias: Elk Speak Armed Away
   trigger:
-  - entity_id: alarm_control_panel.area_001
-    from: disarmed
-    platform: state
-    to: armed_away
+    - entity_id: alarm_control_panel.area_001
+      from: disarmed
+      platform: state
+      to: armed_away
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 2,5
-  - delay: '00:00:48'
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 2,13
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 2,5
+    - delay: '00:00:48'
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 2,13
 
 - alias: Elk Speak Armed Vacation
   trigger:
-  - platform: template
-    value_template: "{{ is_state_attr('alarm_control_panel.area_001', 'armed_status', 'armed_to_vacation') }}"
+    - platform: template
+      value_template: "{{ is_state_attr('alarm_control_panel.area_001', 'armed_status', 'armed_to_vacation') }}"
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 2,14
-  - delay: '00:00:48'
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 2,13      
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 2,14
+    - delay: '00:00:48'
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 2,13      
 
 - alias: Elk Speak Armed Night
   trigger:
-  - entity_id: alarm_control_panel.area_001
-    from: disarmed
-    platform: state
-    to: armed_night
-  - entity_id: alarm_control_panel.area_001
-    from: armed_home
-    platform: state
-    to: armed_night
+    - entity_id: alarm_control_panel.area_001
+      from: disarmed
+      platform: state
+      to: armed_night
+    - entity_id: alarm_control_panel.area_001
+      from: armed_home
+      platform: state
+      to: armed_night
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 2,8
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 2,8
 
 - alias: Elk Speak Disarmed
   trigger:
-  - entity_id: alarm_control_panel.area_001
-    platform: state
-    to: disarmed
+    - entity_id: alarm_control_panel.area_001
+      platform: state
+      to: disarmed
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 2,2
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 2,2
 
 - alias: Doorbell Alert
   trigger:
-  - platform: state
-    entity_id: switch.doorbell_pressed
-    to: 'on'
+    - platform: mqtt
+      topic: parrot/tele/doorbell
   action:
-  - service: mqtt.publish
-    data_template:
-      topic: parrot/command/set/play
-      payload: >
-        {% if states('input_select.doorbell_tone') == "Alexa Speak" -%}
-          4,1
-        {% elif  states('input_select.doorbell_tone') == "Wish Upon A Star" -%}
-          4,3
-        {% elif  states('input_select.doorbell_tone') == "Christmas" -%}
-          4,2
-        {% else -%}
-          4,1
-        {% endif -%}
-  - service: notify.browser
-    data:
-      message: Someone is at the front door.
-      title: Doorbell
-  - service: notify.den_kodi
-    data:
-      title: "Doorbell"
-      message: "Someone is at the front door."
+    - service: mqtt.publish
+      data_template:
+        topic: parrot/command/set/play
+        payload: >
+          {% if states('input_select.doorbell_tone') == "Alexa Speak" -%}
+            4,1
+          {% elif  states('input_select.doorbell_tone') == "Wish Upon A Star" -%}
+            4,3
+          {% elif  states('input_select.doorbell_tone') == "Christmas" -%}
+            4,2
+          {% else -%}
+            4,1
+          {% endif -%}
+    - service: notify.browser
       data:
-        displaytime: 20000
-        icon: "info"
-  - service: switch.turn_off
-    data:
-      entity_id: switch.doorbell_pressed
+        message: Someone is at the front door.
+        title: Doorbell
+    - service: notify.den_kodi
+      data:
+        title: "Doorbell"
+        message: "Someone is at the front door."
+        data:
+          displaytime: 20000
+          icon: "info"
     
 
 - alias: Timer Alert
   trigger:
-  - platform: event
-    event_type: ifttt_webhook_received
-    event_data:
-      action: echotimer
+    - platform: event
+      event_type: ifttt_webhook_received
+      event_data:
+        action: echotimer
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 3,2
-  - service: switch.turn_off
-    data:
-      entity_id: switch.alexa_timer_end
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 3,2
+    - service: switch.turn_off
+      data:
+        entity_id: switch.alexa_timer_end
           

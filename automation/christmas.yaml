@@ -1,103 +1,91 @@
 - alias: Indoor Christmas On When Home
   trigger:
-  - platform: state
-    entity_id: alarm_control_panel.area_001
-    to: disarmed
-  - platform: state
-    entity_id: alarm_control_panel.area_001
-    to: armed_home
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: armed_home
   action:
-  - service: switch.turn_on
-    data:
+    - service: switch.turn_on
       entity_id: switch.indoor_christmas
 
 - alias: Indoor Christmas Off When Away or Asleep
   trigger:
-  - platform: state
-    entity_id: alarm_control_panel.area_001
-    to: armed_away
-  - platform: state
-    entity_id: alarm_control_panel.area_001
-    to: armed_night
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: armed_away
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: armed_night
   action:
-  - service: switch.turn_off
-    data:
+    - service: switch.turn_off
       entity_id: switch.indoor_christmas
 
 - alias: MQTT Christmas Show On
   trigger:
-  - platform: mqtt
-    topic: christmas/show
-    payload: "ON"
+    - platform: mqtt
+      topic: christmas/show
+      payload: "ON"
   action:
-  - service: input_boolean.turn_on
-    data:
+    - service: input_boolean.turn_on
       entity_id: input_boolean.christmas_show
 
 - alias: MQTT Christmas Show Off
   trigger:
-  - platform: mqtt
-    topic: christmas/show
-    payload: "OFF"
+    - platform: mqtt
+      topic: christmas/show
+      payload: "OFF"
   action:
-  - service: input_boolean.turn_off
-    data:
+    - service: input_boolean.turn_off
       entity_id: input_boolean.christmas_show
 
 - alias: House Off For Christmas Show
   trigger:
-  - platform: state
-    entity_id: input_boolean.christmas_show
-    to: "on"
+    - platform: state
+      entity_id: input_boolean.christmas_show
+      to: "on"
   action:
-  - service: switch.turn_off
-    data:
-      entity_id: switch.outside_lights
-  - service: switch.turn_off
-    data:
-      entity_id: switch.shed_porch_light
-  - service: switch.turn_off
-    data:
-      entity_id: switch.office_lamp
-  - service: cover.close_cover
-    data:
+    - service: switch.turn_off
+      entity_id: 
+        - switch.outside_lights_keypad
+        - switch.shed_outside_light_keypad
+        - switch.office_lamps_keypad 
+    - service: cover.close_cover
       entity_id: cover.office_blinds
-  - service: zoneminder.set_run_state
-    data:
-      id: 192.168.4.209:7001
-      name: Christmas
+    - service: zoneminder.set_run_state
+      data:
+        id: 192.168.4.209:7001
+        name: Christmas
 
 - alias: House On After Christmas Show
   trigger:
-  - platform: state
-    entity_id: input_boolean.christmas_show
-    to: "off"
+    - platform: state
+      entity_id: input_boolean.christmas_show
+      to: "off"
   action:
-  - service: switch.turn_on
-    data:
-      entity_id: switch.outside_lights
-  - service: switch.turn_on
-    data:
-      entity_id: switch.shed_porch_light
-  - service: zoneminder.set_run_state
-    data:
-      id: 192.168.4.209:7001
-      name: Normal    
+    - service: switch.turn_on
+      entity_id: 
+        - switch.outside_lights_keypad
+        - switch.shed_outside_light_keypad
+    - service: zoneminder.set_run_state
+      data:
+        id: 192.168.4.209:7001
+        name: Normal    
 
 - alias: Donation Box Opened
   trigger:
-  - platform: state
-    entity_id: sensor.zone_197
-    to: Violated
+    - platform: state
+      entity_id: sensor.zone_197
+      to: Violated
   action:
-  - service: mqtt.publish
-    data:
-      topic: parrot/command/set/play
-      payload: 3,4
-  - service: notify.browser
-    data:
-      message: The donation box has been opened.
-      title: Donation Box      
-  - service: input_boolean.turn_on
-    data:
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 3,4
+    - service: notify.browser
+      data:
+        message: The donation box has been opened.
+        title: Donation Box      
+    - service: input_boolean.turn_on
       entity_id: input_boolean.donation_box
