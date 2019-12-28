@@ -44,7 +44,7 @@ binary_sensor:
     state_topic: 'insteon/23.2a.d7/wet'
     device_class: 'moisture'
 
-sensors:
+sensor:
   - platform: mqtt
     name: 'Dishwasher Leak Detector Heartbeat'
     state_topic: 'insteon/25.b9.5d/heartbeat'
