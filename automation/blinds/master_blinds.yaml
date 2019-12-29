@@ -1,11 +1,15 @@
 - alias: Open Master Blinds
   trigger:
-    - platform: state
-      entity_id: 
-        - switch.master_bedroom_blinds
-        - switch.master_bathroom_blinds
-      from: 'off'
-      to: 'on'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.master_bedroom_light_a
+        control: DON
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.master_shower_light_a
+        control: DON
   condition:
     - condition: state
       entity_id: cover.master_blinds
@@ -16,12 +20,16 @@
 
 - alias: Close Master Blinds
   trigger:
-    - platform: state
-      entity_id: 
-        - switch.master_bedroom_blinds
-        - switch.master_bathroom_blinds
-      from: 'on'
-      to: 'off'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.master_bedroom_light_a
+        control: DOF
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.master_shower_light_a
+        control: DOF
   condition:
     - condition: state
       entity_id: cover.master_blinds

@@ -1,9 +1,10 @@
 - alias: Open Server Blinds
   trigger:
-    - platform: state
-      entity_id: switch.server_room_blinds
-      from: 'off'
-      to: 'on'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.server_room_fan_a
+        control: DON
   condition:
     - condition: state
       entity_id: cover.server_room_blind
@@ -14,10 +15,11 @@
 
 - alias: Close Server Blinds
   trigger:
-    - platform: state
-      entity_id: switch.server_room_blinds
-      from: 'on'
-      to: 'off'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.server_room_fan_a
+        control: DOF
   condition:
     - condition: state
       entity_id: cover.server_room_blind

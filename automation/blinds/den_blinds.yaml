@@ -1,9 +1,10 @@
 - alias: Open Den Blinds
   trigger:
-    - platform: state
-      entity_id: switch.den_blinds
-      from: 'off'
-      to: 'on'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.den_light_a
+        control: DON
   condition:
     - condition: state
       entity_id: cover.den_blinds
@@ -14,10 +15,11 @@
 
 - alias: Close Den Blinds
   trigger:
-    - platform: state
-      entity_id: switch.den_blinds
-      from: 'on'
-      to: 'off'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.den_light_a
+        control: DOF
   condition:
     - condition: state
       entity_id: cover.den_blinds

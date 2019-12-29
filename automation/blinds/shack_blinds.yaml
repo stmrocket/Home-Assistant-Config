@@ -1,9 +1,10 @@
 - alias: Open Shack Blinds
   trigger:
-    - platform: state
-      entity_id: switch.shack_blinds
-      from: 'off'
-      to: 'on'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.shack_keypad_a
+        control: DON
   condition:
     - condition: state
       entity_id: cover.shack_blinds
@@ -14,10 +15,11 @@
 
 - alias: Close Shack Blinds
   trigger:
-    - platform: state
-      entity_id: switch.shack_blinds
-      from: 'on'
-      to: 'off'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.shack_keypad_a
+        control: DOF
   condition:
     - condition: state
       entity_id: cover.shack_blinds
