@@ -9,7 +9,7 @@
           entity_id: alarm_control_panel.area_001
           state: armed_night
         - condition: state
-          entity_id: switch.master_bedroom_fan_c
+          entity_id: switch.master_clock_led
           state: 'on'
         - condition: state
           entity_id: calendar.work_holidays
@@ -40,7 +40,7 @@
           entity_id: alarm_control_panel.area_001
           state: armed_night
         - condition: state
-          entity_id: switch.master_bedroom_fan_c
+          entity_id: switch.master_clock_led
           state: 'on'
         - condition: state
           entity_id: calendar.work_holidays
@@ -93,7 +93,7 @@
           entity_id: alarm_control_panel.area_001
           state: armed_night
         - condition: state
-          entity_id: switch.master_bedroom_fan_c
+          entity_id: switch.master_clock_led
           state: 'on'
         - condition: state
           entity_id: calendar.work_holidays
