@@ -119,7 +119,7 @@ cards:
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.popcorn_popper_2
+                entity: switch.popper
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:popcorn

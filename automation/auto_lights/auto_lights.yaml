@@ -16,7 +16,7 @@
       state: 'off'    
   action:
     - service: switch.turn_on
-      entity_id: switch.garage_lighting
+      entity_id: switch.garage_lights
     - service: timer.start
       entity_id: timer.garage_light
 
@@ -34,7 +34,7 @@
       to: Violated
   condition:
     - condition: state
-      entity_id: switch.garage_lighting
+      entity_id: switch.garage_lights
       state: 'on'    
   action:
     - service: timer.start
@@ -48,7 +48,7 @@
       platform: event  
   action:
     - service: switch.turn_off
-      entity_id: switch.garage_lighting
+      entity_id: switch.garage_lights
 
 - alias: Auto Attic Light
   trigger:

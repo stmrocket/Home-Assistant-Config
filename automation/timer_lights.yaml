@@ -18,12 +18,12 @@
   action:
     - service: switch.turn_on
       entity_id: 
-        - switch.breakfast_room_lamp
+        - switch.kitchen_lamp
         - switch.server_room_lamp
-        - switch.office_lamp
+        - switch.office_lamps
         - switch.den_lamps
         - switch.den_table_lamp
-        - switch.dining_room_lamp
+        - switch.shack_lamp
     - service: light.turn_on
       entity_id: light.entry_lamp
     - service: input_boolean.turn_on
@@ -37,12 +37,12 @@
   action:
     - service: switch.turn_on
       entity_id: 
-        - switch.breakfast_room_lamp
+        - switch.kitchen_lamp
         - switch.server_room_lamp
-        - switch.office_lamp
+        - switch.office_lamps
         - switch.den_lamps
         - switch.den_table_lamp
-        - switch.dining_room_lamp
+        - switch.shack_lamp
     - service: light.turn_on
       entity_id: light.entry_lamp
     - service: input_boolean.turn_on
@@ -82,12 +82,12 @@
   action:
     - service: switch.turn_on
       entity_id: 
-        - switch.breakfast_room_lamp
+        - switch.kitchen_lamp
         - switch.server_room_lamp
-        - switch.office_lamp
+        - switch.office_lamps
         - switch.den_lamps
         - switch.den_table_lamp
-        - switch.dining_room_lamp
+        - switch.shack_lamp
     - service: light.turn_on
       entity_id: light.entry_lamp
     - service: input_boolean.turn_on
@@ -104,12 +104,12 @@
   action:
     - service: switch.turn_off
       entity_id: 
-        - switch.breakfast_room_lamp
+        - switch.kitchen_lamp
         - switch.server_room_lamp
-        - switch.office_lamp
+        - switch.office_lamps
         - switch.den_lamps
         - switch.den_table_lamp
-        - switch.dining_room_lamp
+        - switch.shack_lamp
     - service: light.turn_off
       entity_id: light.entry_lamp
     - service: input_boolean.turn_off
@@ -125,12 +125,12 @@
   action:
     - service: switch.turn_off
       entity_id: 
-        - switch.breakfast_room_lamp
+        - switch.kitchen_lamp
         - switch.server_room_lamp
-        - switch.office_lamp
+        - switch.office_lamps
         - switch.den_lamps
         - switch.den_table_lamp
-        - switch.dining_room_lamp
+        - switch.shack_lamp
     - service: light.turn_off
       entity_id: light.entry_lamp
     - service: input_boolean.turn_off
@@ -149,12 +149,12 @@
   action:
     - service: switch.turn_off
       entity_id: 
-        - switch.breakfast_room_lamp
+        - switch.kitchen_lamp
         - switch.server_room_lamp
-        - switch.office_lamp
+        - switch.office_lamps
         - switch.den_lamps
         - switch.den_table_lamp
-        - switch.dining_room_lamp
+        - switch.shack_lamp
     - service: light.turn_off
       entity_id: light.entry_lamp
     - service: input_boolean.turn_off
@@ -273,7 +273,7 @@
     - service: switch.turn_on
       entity_id: 
         - switch.outside_lights
-        - switch.shed_porch_light
+        - switch.shed_outside_light
 
 - alias: Timer Lights Off Outside
   trigger:
@@ -286,7 +286,7 @@
     - service: switch.turn_off
       entity_id: 
         - switch.outside_lights
-        - switch.shed_porch_light
+        - switch.shed_outside_light
 
 - alias: Timer LEDs On House
   trigger:

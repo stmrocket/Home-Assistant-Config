@@ -59,7 +59,7 @@ cards:
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.shed_porch_light
+                entity: switch.shed_outside_light
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -162,7 +162,7 @@ cards:
             cards:                  
               - type: "custom:gap-card"
               - type: "custom:button-card"
-                entity: switch.garage_lighting
+                entity: switch.garage_lights
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -630,7 +630,7 @@ cards:
                       - this
 
               - type: "custom:button-card"
-                entity: switch.dining_room_light
+                entity: switch.shack_light
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -643,7 +643,7 @@ cards:
                   action: more-info
 
               - type: "custom:button-card"
-                entity: switch.dining_room_lamp
+                entity: switch.shack_lamp
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:lamp
@@ -868,7 +868,7 @@ cards:
                   action: more-info
               
               - type: "custom:button-card"
-                entity: switch.popcorn_popper_2
+                entity: switch.popper
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:popcorn
@@ -882,7 +882,7 @@ cards:
               - type: "custom:gap-card" 
 
               - type: "custom:button-card"
-                entity: switch.breakfast_room_lamp
+                entity: switch.kitchen_lamp
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:lamp
@@ -988,7 +988,7 @@ cards:
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.office_lamp
+                entity: switch.office_lamps
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:lamp

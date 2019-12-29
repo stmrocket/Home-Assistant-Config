@@ -44,23 +44,23 @@ smart_home:
       - switch.wax_warmer
       - switch.back_porch_light
       - switch.den_fan
-      - switch.shed_porch_light
+      - switch.shed_outside_light
       - switch.lava_lamp
-      - switch.popcorn_popper_2
+      - switch.popper
       - switch.den_table_lamp
       - switch.office_fan
       - switch.office_peripherals
       - switch.server_room_lamp
       - switch.server_room_fan
-      - switch.breakfast_room_lamp
+      - switch.kitchen_lamp
       - switch.den_lamps
-      - switch.dining_room_light
+      - switch.shack_light
       - switch.guest_bedroom_fan
       - switch.guest_room_lamp
       - switch.master_bathroom_lights
       - switch.master_bedroom_fan
-      - switch.office_lamp
-      - switch.dining_room_lamp
+      - switch.office_lamps
+      - switch.shack_lamp
 
       #INPUT BOOLEAN
       - input_boolean.server_blinds_open
@@ -164,7 +164,7 @@ smart_home:
       name: Back Porch Stereo
     switch.nuvo_zone_12_power:
       name: Guest Bathroom Stereo
-    switch.shed_porch_light:
+    switch.shed_outside_light:
       name: Shed Light
     switch.den_table_lamp:
       name: Piano Lamp
@@ -174,11 +174,11 @@ smart_home:
       name: Desk
     light.dining_room_light:
       name: Table Light
-    switch.breakfast_room_lamp:
+    switch.kitchen_lamp:
       name: Kitchen Lamp
     switch.den_lamps:
       name: TV Lamps
-    switch.dining_room_light:
+    switch.shack_light:
       name: Shack Light
     light.front_sconces:
       name: Driveway Lights
@@ -200,9 +200,9 @@ smart_home:
       name: Shower Light
     light.master_toilet_light:
       name: Toilet Light
-    switch.office_lamp:
+    switch.office_lamps:
       name: Office Lamps
-    switch.dining_room_lamp:
+    switch.shack_lamp:
       name: Shack Lamp
     switch.master_bedroom_lamps:
       name: Master Lamps

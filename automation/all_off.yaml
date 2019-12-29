@@ -45,17 +45,17 @@
         - switch.office_fan
         - switch.server_room_fan
         - switch.back_porch_fan
-        - switch.garage_lighting
+        - switch.garage_lights
         - switch.garage_fan
         - switch.guest_closet_light
         - switch.server_closet_light
         - switch.master_closet_light
         - switch.shed_inside_light
         - switch.lava_lamp
-        - switch.popcorn_popper
+        - switch.popper
         - switch.shack_fan
         - switch.back_porch_light  
-        - switch.dining_room_light
+        - switch.shack_light
 
 - alias: All Off Away
   trigger:
@@ -93,11 +93,11 @@
   action:
     - service: switch.turn_off
       entity_id: 
-        - switch.breakfast_room_lamp
+        - switch.kitchen_lamp
         - switch.server_room_lamp
-        - switch.office_lamp
+        - switch.office_lamps
         - switch.den_lamps
-        - switch.dining_room_lamp
+        - switch.shack_lamp
         - switch.entry_lamp
 
 - alias: All Off Guest Lights
@@ -171,7 +171,7 @@
     - service: switch.turn_off
       entity_id: 
         - switch.outside_lights
-        - switch.shed_porch_light
+        - switch.shed_outside_light
 
 - alias: All Off Timer Lights Master
   trigger:
