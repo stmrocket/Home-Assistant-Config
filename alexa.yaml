@@ -19,12 +19,12 @@ smart_home:
       - light.foyer_light
       - light.front_porch_light
       - light.server_room_light
-      - light.breakfast_room_light
+      - light.dining_room_light
       - light.front_sconces
       - light.guest_bedroom_light
       - light.master_bedroom_light
-      - light.kitchen_light_1
-      - light.master_shower_light_1
+      - light.kitchen_light
+      - light.master_shower_light
       - light.master_toilet_light
       - switch.master_bedroom_lamps
 
@@ -48,7 +48,7 @@ smart_home:
       - switch.lava_lamp
       - switch.popcorn_popper_2
       - switch.den_table_lamp
-      - switch.office_fan_1
+      - switch.office_fan
       - switch.office_peripherals
       - switch.server_room_lamp
       - switch.server_room_fan
@@ -57,8 +57,8 @@ smart_home:
       - switch.dining_room_light
       - switch.guest_bedroom_fan
       - switch.guest_room_lamp
-      - switch.master_bath_light
-      - switch.master_bedroom_fan_1
+      - switch.master_bathroom_lights
+      - switch.master_bedroom_fan
       - switch.office_lamp
       - switch.dining_room_lamp
 
@@ -168,11 +168,11 @@ smart_home:
       name: Shed Light
     switch.den_table_lamp:
       name: Piano Lamp
-    switch.office_fan_1:
+    switch.office_fan:
       name: Office Fan
     switch.office_peripherals:
       name: Desk
-    light.breakfast_room_light:
+    light.dining_room_light:
       name: Table Light
     switch.breakfast_room_lamp:
       name: Kitchen Lamp
@@ -188,15 +188,15 @@ smart_home:
       name: Guest Light
     switch.guest_room_lamp:
       name: Guest Lamp
-    light.kitchen_light_1:
+    light.kitchen_light:
       name: Kitchen Light
-    switch.master_bath_light:
+    switch.master_bathroom_lights:
       name: Bathroom Light
-    switch.master_bedroom_fan_1:
+    switch.master_bedroom_fan:
       name: Master Fan
     light.master_bedroom_light:
       name: Master Light
-    light.master_shower_light_1:
+    light.master_shower_light:
       name: Shower Light
     light.master_toilet_light:
       name: Toilet Light

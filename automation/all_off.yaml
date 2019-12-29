@@ -26,7 +26,7 @@
   action:
     - service: light.turn_off
       entity_id: 
-        - light.breakfast_room_light
+        - light.dining_room_light
         - light.entry_light
         - light.foyer_light
         - light.attic_light
@@ -73,7 +73,7 @@
         - light.hallway_light
     - service: switch.turn_off
       entity_id:
-        - switch.master_bathroom_light
+        - switch.master_bathroom_lights
         - switch.master_bathroom_fan
         - switch.master_toilet_fan
         - switch.guest_bathroom_fan

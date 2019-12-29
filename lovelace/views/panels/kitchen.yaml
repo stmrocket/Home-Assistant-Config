@@ -76,7 +76,7 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: light.kitchen_light_1
+                entity: light.kitchen_light
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:lightbulb-outline
@@ -92,7 +92,7 @@ cards:
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"
-                entity: light.breakfast_room_light
+                entity: light.dining_room_light
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:lightbulb-outline

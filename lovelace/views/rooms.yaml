@@ -791,7 +791,7 @@ cards:
                     deviceID: 
                       - this
               - type: "custom:button-card"
-                entity: light.kitchen_light_1
+                entity: light.kitchen_light
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -817,7 +817,7 @@ cards:
                   action: more-info
               
               - type: "custom:button-card"
-                entity: light.breakfast_room_light
+                entity: light.dining_room_light
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -976,7 +976,7 @@ cards:
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.office_fan_1
+                entity: switch.office_fan
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -1387,7 +1387,7 @@ cards:
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.master_bedroom_fan_1
+                entity: switch.master_bedroom_fan
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -1563,7 +1563,7 @@ cards:
           - type: horizontal-stack
             cards:                  
               - type: "custom:button-card"
-                entity: switch.master_bath_light
+                entity: switch.master_bathroom_lights
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -1576,7 +1576,7 @@ cards:
                   action: more-info
 
               - type: "custom:button-card"
-                entity: light.master_shower_light_1
+                entity: light.master_shower_light
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:shower
@@ -1633,7 +1633,7 @@ cards:
                   action: more-info
 
               - type: "custom:button-card"
-                entity: switch.master_bath_fan
+                entity: switch.master_bathroom_fan
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:

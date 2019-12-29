@@ -23,7 +23,7 @@
 - alias: Master Shower Fan Timer
   trigger:
   - platform: state
-    entity_id: light.master_shower_light_1
+    entity_id: light.master_shower_light
     to: 'off'
   condition:
   - condition: state

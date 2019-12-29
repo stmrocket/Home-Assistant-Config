@@ -111,7 +111,7 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('light.server_room_closet_light') == "off" %}
+        {% if states('light.server_closet_light') == "off" %}
           switch.turn_on
         {% else %}
           switch.turn_off
