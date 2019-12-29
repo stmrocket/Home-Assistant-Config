@@ -128,7 +128,7 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('switch.shed_inside_lightt') == "off" %}
+        {% if states('switch.shed_inside_light') == "off" %}
           switch.turn_on
         {% else %}
           switch.turn_off

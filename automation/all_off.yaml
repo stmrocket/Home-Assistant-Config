@@ -169,9 +169,9 @@
       state: 'off'
   action:
     - service: switch.turn_off
-      entity_id: switch.outside_lights
-    - service: switch.turn_off
-      entity_id: switch.shed_porch_light
+      entity_id: 
+        - switch.outside_lights
+        - switch.shed_porch_light
 
 - alias: All Off Timer Lights Master
   trigger:
