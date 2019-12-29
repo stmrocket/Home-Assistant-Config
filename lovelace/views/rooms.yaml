@@ -98,7 +98,7 @@ cards:
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.back_porch_fan_high
+                entity: switch.back_porch_fan
                 color_type: icon
                 color: rgb(228, 94, 101)
                 state:
@@ -668,7 +668,7 @@ cards:
                   action: call-service
                   service: switch.turn_on
                   service_data:
-                    entity_id: switch.dining_room_fan_off
+                    entity_id: switch.shack_fan_off
                 hold_action: 
                   action: more-info
               
@@ -686,7 +686,7 @@ cards:
                   action: call-service
                   service: switch.turn_on
                   service_data:
-                    entity_id: switch.dining_room_fan_low
+                    entity_id: switch.shack_fan_low
                 hold_action: 
                   action: more-info
 
@@ -704,7 +704,7 @@ cards:
                   action: call-service
                   service: switch.turn_on
                   service_data:
-                    entity_id: switch.dining_room_fan_medium
+                    entity_id: switch.shack_fan_medium
                 hold_action: 
                   action: more-info
 
@@ -722,7 +722,7 @@ cards:
                   action: call-service
                   service: switch.turn_on
                   service_data:
-                    entity_id: switch.dining_room_fan_high
+                    entity_id: switch.shack_fan_high
                 hold_action: 
                   action: more-info
 

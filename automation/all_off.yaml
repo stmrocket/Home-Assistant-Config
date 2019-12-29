@@ -44,7 +44,7 @@
         - switch.warmer
         - switch.office_fan
         - switch.server_room_fan
-        - switch.back_porch_fan_high
+        - switch.back_porch_fan
         - switch.garage_lighting
         - switch.garage_fan
         - switch.guest_closet_light
@@ -53,7 +53,7 @@
         - switch.shed_inside_light
         - switch.lava_lamp
         - switch.popcorn_popper
-        - switch.dining_room_fan
+        - switch.shack_fan
         - switch.back_porch_light  
         - switch.dining_room_light
 
