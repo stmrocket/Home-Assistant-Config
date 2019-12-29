@@ -67,7 +67,7 @@
     - service: switch.turn_on
       entity_id: 
         - switch.outside_lights
-        - switch.switch.shed_porch_light
+        - switch.shed_porch_light
     - service: zoneminder.set_run_state
       data:
         id: 192.168.4.209:7001
