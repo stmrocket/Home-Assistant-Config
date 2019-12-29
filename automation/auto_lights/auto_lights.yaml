@@ -12,11 +12,11 @@
       to: Violated
   condition:
     - condition: state
-      entity_id: switch.garage_light_keypad
+      entity_id: switch.garage_light
       state: 'off'    
   action:
     - service: switch.turn_on
-      entity_id: switch.garage_light_keypad
+      entity_id: switch.garage_lights
     - service: timer.start
       entity_id: timer.garage_light
 
@@ -34,7 +34,7 @@
       to: Violated
   condition:
     - condition: state
-      entity_id: switch.garage_light_keypad
+      entity_id: switch.garage_lights
       state: 'on'    
   action:
     - service: timer.start
@@ -48,7 +48,7 @@
       platform: event  
   action:
     - service: switch.turn_off
-      entity_id: switch.garage_light_keypad
+      entity_id: switch.garage_lights
 
 - alias: Auto Attic Light
   trigger:
@@ -82,7 +82,7 @@
         {% else %}
           switch.turn_off
         {% endif %}
-      entity_id: switch.guest_closet_keypad 
+      entity_id: switch.guest_closet_light
 
 - alias: Auto Pantry Light
   trigger:
@@ -111,12 +111,12 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('light.server_room_closet_light') == "off" %}
+        {% if states('light.server_closet_light') == "off" %}
           switch.turn_on
         {% else %}
           switch.turn_off
         {% endif %}
-      entity_id: switch.server_closet_light_keypad 
+      entity_id: switch.server_closet_light
 
 - alias: Auto Shed Light
   trigger:
@@ -128,7 +128,7 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('switch.shed_inside_lightt') == "off" %}
+        {% if states('switch.shed_inside_light') == "off" %}
           switch.turn_on
         {% else %}
           switch.turn_off

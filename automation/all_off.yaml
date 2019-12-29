@@ -37,26 +37,25 @@
         - light.server_room_light
         - light.utility_room_light
         - light.den_light
-        - light.back_porch_light_keypad  
-        - light.dining_room_light    
-        - light.shack_light_keypad
     - service: switch.turn_off
       entity_id: 
-        - switch.fireplace_keypad
+        - switch.den_fireplace
         - switch.den_fan
-        - switch.wax_warmer_keypad
+        - switch.warmer
         - switch.office_fan
         - switch.server_room_fan
-        - switch.back_porch_fan_keypad
-        - switch.garage_light_keypad
-        - switch.garage_fan_keypad
-        - switch.guest_closet_keypad
-        - switch.server_closet_light_keypad
+        - switch.back_porch_fan
+        - switch.garage_lights
+        - switch.garage_fan
+        - switch.guest_closet_light
+        - switch.server_closet_light
         - switch.master_closet_light
         - switch.shed_inside_light
-        - switch.lava_lamp_keypad
-        - switch.popcorn_popper_keypad 
-        - switch.shack_fan_keypad
+        - switch.lava_lamp
+        - switch.popper
+        - switch.shack_fan
+        - switch.back_porch_light  
+        - switch.shack_light
 
 - alias: All Off Away
   trigger:
@@ -71,10 +70,10 @@
         - light.guest_bathroom_light
         - light.master_bedroom_light
         - light.master_shower_light
-        - light.hall_light
+        - light.hallway_light
     - service: switch.turn_off
       entity_id:
-        - switch.master_bathroom_light
+        - switch.master_bathroom_lights
         - switch.master_bathroom_fan
         - switch.master_toilet_fan
         - switch.guest_bathroom_fan
@@ -94,12 +93,12 @@
   action:
     - service: switch.turn_off
       entity_id: 
-        - switch.kitchen_lamp_keypad
-        - switch.server_room_lamps_keypad
-        - switch.office_lamps_keypad
-        - switch.den_lamps_keypad
-        - switch.shack_lamp_keypad
-        - switch.entry_lamp_keypad
+        - switch.kitchen_lamp
+        - switch.server_room_lamp
+        - switch.office_lamps
+        - switch.den_lamps
+        - switch.shack_lamp
+        - switch.entry_lamp
 
 - alias: All Off Guest Lights
   trigger:
@@ -170,9 +169,9 @@
       state: 'off'
   action:
     - service: switch.turn_off
-      entity_id: switch.outside_lights_keypad
-    - service: switch.turn_off
-      entity_id: switch.shed_outside_light_keypad
+      entity_id: 
+        - switch.outside_lights
+        - switch.shed_outside_light
 
 - alias: All Off Timer Lights Master
   trigger:
@@ -186,4 +185,4 @@
       state: 'off'
   action:
     - service: switch.turn_off
-      entity_id: switch.master_bedroom_lamps_keypad
+      entity_id: switch.master_bedroom_lamps

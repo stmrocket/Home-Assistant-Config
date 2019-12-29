@@ -48,9 +48,9 @@
   action:
     - service: switch.turn_off
       entity_id: 
-        - switch.outside_lights_keypad
-        - switch.shed_outside_light_keypad
-        - switch.office_lamps_keypad 
+        - switch.outside_lights
+        - switch.shed_outside_light
+        - switch.office_lamps
     - service: cover.close_cover
       entity_id: cover.office_blinds
     - service: zoneminder.set_run_state
@@ -66,8 +66,8 @@
   action:
     - service: switch.turn_on
       entity_id: 
-        - switch.outside_lights_keypad
-        - switch.shed_outside_light_keypad
+        - switch.outside_lights
+        - switch.shed_outside_light
     - service: zoneminder.set_run_state
       data:
         id: 192.168.4.209:7001

@@ -2,8 +2,8 @@
   trigger:
     - platform: state
       entity_id: 
-        - switch.master_bedroom_blinds_keypad
-        - switch.master_bathroom_blinds_keypad
+        - switch.master_bedroom_blinds
+        - switch.master_bathroom_blinds
       to: 'on'
   condition:
     - condition: state
@@ -17,8 +17,8 @@
   trigger:
     - platform: state
       entity_id: 
-        - switch.master_bedroom_blinds_keypad
-        - switch.master_bathroom_blinds_keypad
+        - switch.master_bedroom_blinds
+        - switch.master_bathroom_blinds
       to: 'off'
   condition:
     - condition: state
@@ -37,16 +37,16 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: switch.master_bedroom_blinds_keypad
+          entity_id: switch.master_bedroom_blinds
           state: 'off'
         - condition: state
-          entity_id: switch.master_bathroom_blinds_keypad
+          entity_id: switch.master_bathroom_blinds
           state: 'off'
   action:
     - service: switch.turn_on
       entity_id: 
-        - switch.master_bedroom_blinds_keypad
-        - switch.master_bathroom_blinds_keypad
+        - switch.master_bedroom_blinds
+        - switch.master_bathroom_blinds
     
 
 - alias: Master Blind Keypad off if all Closed
@@ -58,16 +58,16 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: switch.master_bedroom_blinds_keypad
+          entity_id: switch.master_bedroom_blinds
           state: 'on'
         - condition: state
-          entity_id: switch.master_bathroom_blinds_keypad
+          entity_id: switch.master_bathroom_blinds
           state: 'on'
   action:
     - service: switch.turn_off
       entity_id: 
-        - switch.master_bedroom_blinds_keypad
-        - switch.master_bathroom_blinds_keypad
+        - switch.master_bedroom_blinds
+        - switch.master_bathroom_blinds
 
 - alias: Alexa Open Master Blinds
   trigger:

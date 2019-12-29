@@ -1,7 +1,7 @@
 - alias: Open Guest Blinds
   trigger:
     - platform: state
-      entity_id: switch.guest_blinds_keypad
+      entity_id: switch.guest_blinds
       to: 'on'
   condition:
     - condition: state
@@ -14,7 +14,7 @@
 - alias: Close Guest Blinds
   trigger:
     - platform: state
-      entity_id: switch.guest_blinds_keypad
+      entity_id: switch.guest_blinds
       to: 'off'
   condition:
     - condition: state
@@ -31,11 +31,11 @@
       to: 'open'
   condition:
     - condition: state
-      entity_id: switch.guest_blinds_keypad
+      entity_id: switch.guest_blinds
       state: 'off'
   action:
     - service: switch.turn_on
-      entity_id: switch.guest_blinds_keypad
+      entity_id: switch.guest_blinds
 
 - alias: Guest Blind Keypad off if all Closed
   trigger:
@@ -44,11 +44,11 @@
       to: 'closed'
   condition:
     - condition: state
-      entity_id: switch.guest_blinds_keypad
+      entity_id: switch.guest_blinds
       state: 'on'
   action:
     - service: switch.turn_off
-      entity_id: switch.guest_blinds_keypad
+      entity_id: switch.guest_blinds
 
 - alias: Alexa Open Guest Blinds
   trigger:

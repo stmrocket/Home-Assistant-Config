@@ -7,7 +7,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.guest_mode
     - service: switch.turn_on
-      entity_id: switch.guest_mode_keypad
+      entity_id: switch.guest_mode_led
 
 - alias: Auto Guest Mode Off
   trigger:
@@ -22,12 +22,12 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.guest_mode
     - service: switch.turn_off
-      entity_id: switch.guest_mode_keypad
+      entity_id: switch.guest_mode_led
 
 - alias: Guest Mode On from Keypad
   trigger:
     - platform: state
-      entity_id: switch.guest_mode_keypad
+      entity_id: switch.guest_mode_led
       to: 'on'
   action:
     - service: input_boolean.turn_on
@@ -36,7 +36,7 @@
 - alias: Guest Mode Off from Keypad
   trigger:
     - platform: state
-      entity_id: switch.guest_mode_keypad
+      entity_id: switch.guest_mode_led
       to: 'off'
   action:
     - service: input_boolean.turn_off
