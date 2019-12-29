@@ -1,7 +1,7 @@
 - alias: Open Shack Blinds
   trigger:
     - platform: state
-      entity_id: switch.shack_blinds_keypad
+      entity_id: switch.shack_blinds
       to: 'on'
   condition:
     - condition: state
@@ -14,7 +14,7 @@
 - alias: Close Shack Blinds
   trigger:
     - platform: state
-      entity_id: switch.shack_blinds_keypad
+      entity_id: switch.shack_blinds
       to: 'off'
   condition:
     - condition: state
@@ -31,11 +31,11 @@
       to: 'open'
   condition:
     - condition: state
-      entity_id: switch.shack_blinds_keypad
+      entity_id: switch.shack_blinds
       state: 'off'
   action:
     - service: switch.turn_on
-      entity_id: switch.shack_blinds_keypad
+      entity_id: switch.shack_blinds
     
 
 - alias: Shack Blind Keypad off if all Closed
@@ -45,11 +45,11 @@
       to: 'closed'
   condition:
     - condition: state
-      entity_id: switch.shack_blinds_keypad
+      entity_id: switch.shack_blinds
       state: 'on'
   action:
     - service: switch.turn_off
-      entity_id: switch.shack_blinds_keypad
+      entity_id: switch.shack_blinds
 
 - alias: Alexa Open Shack Blinds
   trigger:

@@ -16,7 +16,7 @@
     - service: light.turn_off
       entity_id: light.master_suite_leds_rgb
     - service: switch.turn_off
-      entity_id: switch.master_bedroom_lamps_keypad
+      entity_id: switch.master_bedroom_lamps
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
 
@@ -38,7 +38,7 @@
     - service: light.turn_off
       entity_id: light.master_suite_leds_rgb
     - service: switch.turn_off
-      entity_id: switch.master_bedroom_lamps_keypad
+      entity_id: switch.master_bedroom_lamps
     - service: switch.turn_on
       entity_id: switch.output_178
     - service: input_boolean.turn_off
@@ -53,7 +53,7 @@
     - service: switch.turn_on
       entity_id: 
         - switch.output_178
-        - switch.master_bedroom_fan
+        - switch.master_bedroom_fan_1
     - service: input_boolean.turn_off
       entity_id: input_boolean.bedtime_trigger
 
@@ -64,7 +64,7 @@
       to: 'on'
   action:
     - service: switch.turn_off
-      entity_id: switch.master_bedroom_fan
+      entity_id: switch.master_bedroom_fan_1
     - service: input_boolean.turn_on
       entity_id: input_boolean.elk_night_off
     - service: input_boolean.turn_off

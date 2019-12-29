@@ -270,6 +270,13 @@ scene: !include_dir_merge_named scenes
 
 zone: !include zones.yaml
 
+# ISY 994 Integration 
+isy994:
+  host: !secret isy_host
+  username: !secret isy_user
+  password: !secret isy_pass
+  enable_climate: false
+
 #Elk M1 Integration
 elkm1:
   host: !secret elk_host
@@ -293,7 +300,7 @@ elkm1:
     exclude: [16, 53-64, 73-196, 198-207]
 
 
-#Alexa Integration
+# Alexa Integration
 api:
 alexa: !include alexa.yaml
 
