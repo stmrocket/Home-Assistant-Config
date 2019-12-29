@@ -101,6 +101,7 @@
   trigger:
     - platform: state
       entity_id: switch.house_blinds
+      from: 'off'
       to: 'on'
   condition:
     - condition: state
@@ -115,6 +116,7 @@
   trigger:
     - platform: state
       entity_id: switch.house_blinds
+      from: 'on'
       to: 'off'
   condition:
     - condition: state
@@ -128,6 +130,7 @@
   trigger:
     - platform: state
       entity_id: cover.house_blinds
+      from: 'closed'
       to: 'open'
   condition:
     - condition: state
@@ -141,6 +144,7 @@
   trigger:
     - platform: state
       entity_id: cover.house_blinds
+      from: 'open'
       to: 'closed'
   condition:
     - condition: state

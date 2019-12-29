@@ -4,6 +4,7 @@
       entity_id: 
         - switch.kitchen_blinds
         - switch.dining_room_blinds
+      from: 'off'
       to: 'on'
   condition:
     - condition: state
@@ -19,6 +20,7 @@
       entity_id: 
         - switch.kitchen_blinds
         - switch.dining_room_blinds
+      from: 'on'
       to: 'off'
   condition:
     - condition: state
@@ -32,6 +34,7 @@
   trigger:
     - platform: state
       entity_id: cover.kitchen_blinds
+      from: 'closed'
       to: 'open'
   condition:
     - condition: or
@@ -53,6 +56,7 @@
   trigger:
     - platform: state
       entity_id: cover.kitchen_blinds
+      from: 'open'
       to: 'closed'
   condition:
     - condition: or

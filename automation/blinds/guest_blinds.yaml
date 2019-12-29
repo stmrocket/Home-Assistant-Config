@@ -2,6 +2,7 @@
   trigger:
     - platform: state
       entity_id: switch.guest_blinds
+      from: 'off'
       to: 'on'
   condition:
     - condition: state
@@ -15,6 +16,7 @@
   trigger:
     - platform: state
       entity_id: switch.guest_blinds
+      from: 'on'
       to: 'off'
   condition:
     - condition: state
@@ -28,6 +30,7 @@
   trigger:
     - platform: state
       entity_id: cover.guest_blind
+      from: 'closed'
       to: 'open'
   condition:
     - condition: state
@@ -41,6 +44,7 @@
   trigger:
     - platform: state
       entity_id: cover.guest_blind
+      from: 'open'
       to: 'closed'
   condition:
     - condition: state
