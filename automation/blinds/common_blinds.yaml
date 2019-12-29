@@ -99,9 +99,11 @@
 
 - alias: Open House Blinds
   trigger:
-    - platform: state
-      entity_id: switch.house_blinds
-      to: 'on'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.entry_light_a
+        control: DON
   condition:
     - condition: state
       entity_id: cover.house_blinds
@@ -113,9 +115,11 @@
 
 - alias: Close House Blinds
   trigger:
-    - platform: state
-      entity_id: switch.house_blinds
-      to: 'off'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.entry_light_a
+        control: DOF
   condition:
     - condition: state
       entity_id: cover.house_blinds
@@ -128,6 +132,7 @@
   trigger:
     - platform: state
       entity_id: cover.house_blinds
+      from: 'closed'
       to: 'open'
   condition:
     - condition: state
@@ -141,6 +146,7 @@
   trigger:
     - platform: state
       entity_id: cover.house_blinds
+      from: 'open'
       to: 'closed'
   condition:
     - condition: state

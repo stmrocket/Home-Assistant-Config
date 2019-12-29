@@ -1,10 +1,15 @@
 - alias: Open Kitchen Blinds
   trigger:
-    - platform: state
-      entity_id: 
-        - switch.kitchen_blinds
-        - switch.dining_room_blinds
-      to: 'on'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.kitchen_light_a
+        control: DON
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.dining_room_light_a
+        control: DON
   condition:
     - condition: state
       entity_id: cover.kitchen_blinds
@@ -15,11 +20,16 @@
 
 - alias: Close Kitchen Blinds
   trigger:
-    - platform: state
-      entity_id: 
-        - switch.kitchen_blinds
-        - switch.dining_room_blinds
-      to: 'off'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.kitchen_light_a
+        control: DOF
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.dining_room_light_a
+        control: DOF
   condition:
     - condition: state
       entity_id: cover.kitchen_blinds
@@ -32,6 +42,7 @@
   trigger:
     - platform: state
       entity_id: cover.kitchen_blinds
+      from: 'closed'
       to: 'open'
   condition:
     - condition: or
@@ -53,6 +64,7 @@
   trigger:
     - platform: state
       entity_id: cover.kitchen_blinds
+      from: 'open'
       to: 'closed'
   condition:
     - condition: or
