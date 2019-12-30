@@ -1,0 +1,58 @@
+- alias: Hall Lamp On from Keypad
+  trigger:
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.hall_light_a
+        control: DON
+  condition:
+    - condition: state
+      entity_id: light.hall_lamp
+      state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.hall_lamp
+
+- alias: Entry Lamp Off from Keypad
+  trigger:
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.hall_light_a
+        control: DOF
+  condition:
+    - condition: state
+      entity_id: light.hall_lamp
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.hall_lamp
+
+- alias: Entry Lamp Keypad On
+  trigger:
+    - platform: state
+      entity_id: light.hall_lamp
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.hall_lamp
+      state:  'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.hall_lamp
+
+- alias: Entry Lamp Keypad Off
+  trigger:
+    - platform: state
+      entity_id: light.hall_lamp
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.hall_lamp
+      state:  'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.hall_lamp
