@@ -1,74 +1,75 @@
 - alias: Turn On Wax Warmer
   trigger:
-  - entity_id: switch.warmer
-    platform: state
-    to: 'on'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.dining_room_light_c
+        control: DON
   condition:
-  - condition: state
-    entity_id: switch.wax_warmer
-    state: 'off'
+    - condition: state
+      entity_id: switch.wax_warmer
+      state: 'off'
   action:
-  - service: switch.turn_on
-    data:
+    - service: switch.turn_on
       entity_id: switch.wax_warmer
 
 - alias: Turn Off Wax Warmer
   trigger:
-  - entity_id: switch.warmer
-    platform: state
-    to: 'off'
+    - platform: event
+      event_type: isy994_control
+      event_data:
+        entity_id: switch.dining_room_light_c
+        control: DOF
   condition:
-  - condition: state
-    entity_id: switch.wax_warmer
-    state: 'on'
+    - condition: state
+      entity_id: switch.wax_warmer
+      state: 'on'
   action:
-  - service: switch.turn_off
-    data:
+    - service: switch.turn_off
       entity_id: switch.wax_warmer
 
 - alias: Wax Warmer Keypad On if Warmer On
   trigger:
-  - entity_id: switch.wax_warmer
-    platform: state
-    to: 'on'
+    - entity_id: switch.wax_warmer
+      platform: state
+      from: 'off'
+      to: 'on'
   condition:
-  - condition: state
-    entity_id: switch.warmer
-    state: 'off'
+    - condition: state
+      entity_id: switch.warmer
+      state: 'off'
   action:
-  - service: switch.turn_on
-    data:
+    - service: switch.turn_on
       entity_id: switch.warmer
 
 - alias: Wax Warmer Keypad Off if Warmer Off
   trigger:
-  - entity_id: switch.wax_warmer
-    platform: state
-    to: 'off'
+    - entity_id: switch.wax_warmer
+      platform: state
+      from: 'on'
+      to: 'off'
   condition:
-  - condition: state
-    entity_id: switch.warmer
-    state: 'on'
+    - condition: state
+      entity_id: switch.warmer
+      state: 'on'
   action:
-  - service: switch.turn_off
-    data:
+    - service: switch.turn_off
       entity_id: switch.warmer
 
 - alias: Keep Wax Warmer Off When Away
   trigger:
-  - platform: state
-    entity_id: switch.wax_warmer
-    to: 'on'
+    - platform: state
+      entity_id: switch.wax_warmer
+      to: 'on'
   condition:
-  - condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: armed_night
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: armed_away
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_night
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_away
   action:
-  - service: switch.turn_off
-    data:
+    - service: switch.turn_off
       entity_id: switch.wax_warmer

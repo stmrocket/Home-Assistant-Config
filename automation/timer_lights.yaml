@@ -167,10 +167,15 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: 
-          - automation.timer_lights_on_main_weekday_am
-          - automation.timer_lights_on_main_evenings
-          - automation.timer_lights_on_main_wweekend_holiday_am
+        entity_id: automation.timer_lights_on_main_weekday_am
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_on_main_evenings
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_on_main_wweekend_holiday_am
   condition:
     - condition: or
       conditions:
@@ -189,10 +194,15 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: 
-          - automation.timer_lights_off_main_night_away
-          - automation.timer_lights_off_main_mornings
-          - automation.timer_lights_off_main_night_mode 
+        entity_id: automation.timer_lights_off_main_night_away
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_mornings
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_night_mode 
   condition:
     - condition: or
       conditions:
@@ -211,10 +221,15 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: 
-          - automation.timer_lights_on_main_weekday_am
-          - automation.timer_lights_on_main_evenings
-          - automation.timer_lights_on_main_wweekend_holiday_am
+        entity_id: automation.timer_lights_on_main_weekday_am
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_on_main_evenings
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_on_main_weekend_holiday_am
   condition:
     - condition: or
       conditions:
@@ -240,10 +255,15 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: 
-          - automation.timer_lights_off_main_night_away
-          - automation.timer_lights_off_main_mornings
-          - automation.timer_lights_off_main_night_mode 
+        entity_id: automation.timer_lights_off_main_night_away
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_mornings
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_night_mode 
   condition:
     - condition: or
       conditions:
@@ -298,10 +318,15 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: 
-          - automation.timer_lights_on_main_weekday_am
-          - automation.timer_lights_on_main_evenings
-          - automation.timer_lights_on_main_wweekend_holiday_am
+        entity_id: automation.timer_lights_on_main_weekday_am
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_on_main_evenings
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_on_main_wweekend_holiday_am
   condition:
     - condition: state
       entity_id: input_boolean.timer_lights
@@ -333,13 +358,18 @@
 
 - alias: Timer LEDs Off House
   trigger:
-  - platform: event
-    event_type: automation_triggered
-    event_data:
-      entity_id: 
-        - automation.timer_lights_off_main_night_away
-        - automation.timer_lights_off_main_mornings
-        - automation.timer_lights_off_main_night_mode 
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_night_away
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_mornings
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_night_mode 
   action:
     - service: light.turn_off
       entity_id: 
@@ -355,10 +385,15 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: 
-          - automation.timer_lights_off_main_night_away
-          - automation.timer_lights_off_main_mornings
-          - automation.timer_lights_off_main_night_mode
+        entity_id: automation.timer_lights_off_main_night_away
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_mornings
+    - platform: event
+      event_type: automation_triggered
+      event_data:
+        entity_id: automation.timer_lights_off_main_night_mode
   condition:
     - condition: state
       entity_id: input_boolean.timer_lights

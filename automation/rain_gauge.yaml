@@ -1,152 +1,144 @@
 - alias: Count Rainfall
   trigger:
-  - platform: state
-    entity_id: sensor.zone_052
-    from: Normal
-    to: Violated
-  - platform: state
-    entity_id: sensor.zone_052
-    from: Violated
-    to: Normal
+    - platform: state
+      entity_id: sensor.zone_052
+      from: Normal
+      to: Violated
+    - platform: state
+      entity_id: sensor.zone_052
+      from: Violated
+      to: Normal
   action:
-  - service: counter.increment
-    data:
+    - service: counter.increment
       entity_id:
         - counter.rain_minute
         - counter.rain_hour
         - counter.rain_day
         - counter.rain_month
         - counter.rain_year
-  - service: input_number.set_value
-    data_template:
-      entity_id: >
-        {% if  now().minute < 10 -%}
-          input_number.rain_minute_0{{ now().minute }}
-        {% else -%}
-          input_number.rain_minute_{{ now().minute }}
-        {% endif -%}
-      value: "{{ states('sensor.rain_minute') }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: >
+          {% if  now().minute < 10 -%}
+            input_number.rain_minute_0{{ now().minute }}
+          {% else -%}
+            input_number.rain_minute_{{ now().minute }}
+          {% endif -%}
+        value: "{{ states('sensor.rain_minute') }}"
 
 - alias: Reset Minute Rain
   trigger:
-  - platform: time_pattern
-    minutes: "*"        
-    seconds: "0"
+    - platform: time_pattern
+      minutes: "*"        
+      seconds: "0"
   action:
-  - service: input_number.set_value
-    data_template:
-      entity_id: >
-        {% if now().minute == 1 -%}
-          input_number.rain_minute_59
-        {% elif  now().minute <= 10 -%}
-          input_number.rain_minute_0{{ now().minute - 1 }}
-        {% else -%}
-          input_number.rain_minute_{{ now().minute - 1 }}
-        {% endif -%}
-      value: "{{ states('sensor.rain_minute') }}"
-  - service: counter.reset
-    data:
+    - service: input_number.set_value
+      data_template:
+        entity_id: >
+          {% if now().minute == 1 -%}
+            input_number.rain_minute_59
+          {% elif  now().minute <= 10 -%}
+            input_number.rain_minute_0{{ now().minute - 1 }}
+          {% else -%}
+            input_number.rain_minute_{{ now().minute - 1 }}
+          {% endif -%}
+        value: "{{ states('sensor.rain_minute') }}"
+    - service: counter.reset
       entity_id: counter.rain_minute
 
 - alias: Reset Hour Rain
   trigger:
-  - platform: time_pattern
-    hours: "*"
-    minutes: "0"        
-    seconds: "0"
+    - platform: time_pattern
+      hours: "*"
+      minutes: "0"        
+      seconds: "0"
   action:
-  - service: counter.reset
-    data:
+    - service: counter.reset
       entity_id: counter.rain_hour
 
 - alias: Reset Day Rain
   trigger:
-  - platform: time
-    at: '00:00:00'
+    - platform: time
+      at: '00:00:00'
   action:
-  - service: counter.reset
-    data:
+    - service: counter.reset
       entity_id: counter.rain_day
 
 - alias: Reset Month Rain
   trigger:
-  - platform: time
-    at: '00:00:00'
+    - platform: time
+      at: '00:00:00'
   condition:
     - condition: template
       value_template: "{{ now().day == 1 }}"
   action:
-  - service: counter.reset
-    data:
-      entity_id: counter.rain_day
+    - service: counter.reset
+      entity_id: counter.rain_month
 
 - alias: Reset Year Rain
   trigger:
-  - platform: time
-    at: '00:00:00'
+    - platform: time
+      at: '00:00:00'
   condition:
     - condition: template
       value_template: "{{ now().month == 1 }}"
     - condition: template
       value_template: "{{ now().day == 1 }}"
   action:
-  - service: counter.reset
-    data:
-      entity_id: counter.rain_day
+    - service: counter.reset
+      entity_id: counter.rain_year
 
 - alias: Detect Rain Started
   trigger:
-  - platform: state
-    entity_id: sensor.zone_051
-    to: Violated
+    - platform: state
+      entity_id: sensor.zone_051
+      to: Violated
   condition:
-  - condition: state 
-    entity_id: input_boolean.is_raining
-    state: "off"
-  action:
-  - service: input_boolean.turn_on
-    data:
+    - condition: state 
       entity_id: input_boolean.is_raining
-  - service: notify.browser
-    data:
-      message: It is now raining.
-      title: Weather
+      state: "off"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.is_raining
+    - service: notify.browser
+      data:
+        message: It is now raining.
+        title: Weather
 
 - alias: Detect Rain Stopped
   trigger:
-  - platform: state
-    entity_id: sensor.zone_051
-    to: Normal
-    for:
-      minutes: 10
+    - platform: state
+      entity_id: sensor.zone_051
+      to: Normal
+      for:
+        minutes: 10
   condition:
-  - condition: state 
-    entity_id: input_boolean.is_raining
-    state: "on"
-  action:
-  - service: input_boolean.turn_off
-    data:
+    - condition: state 
       entity_id: input_boolean.is_raining
-  - service: notify.browser
-    data:
-      message: It has stopped raining.
-      title: Weather
+      state: "on"
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.is_raining
+    - service: notify.browser
+      data:
+        message: It has stopped raining.
+        title: Weather
 
 - alias: Display Rainfall on Elk Keypads
   trigger:
-  - platform: template
-    value_template: "{{ states.sensor.rain_day | float > 0 }}"  
+    - platform: template
+      value_template: "{{ states.sensor.rain_day.state | float > 0 }}"  
   action:
-  - service: elkm1.alarm_display_message
-    data_template:
-      entity_id: alarm_control_panel.area_001
-      line1: 'Rain: {{ states.sensor.rain_day.state }}"'
+    - service: elkm1.alarm_display_message
+      data_template:
+        entity_id: alarm_control_panel.area_001
+        line1: 'Rain: {{ states.sensor.rain_day.state }}"'
   
 - alias: Clear Rainfall on Elk Keypads
   trigger:
-  - platform: template
-    value_template: "{{ states.sensor.rain_day | float == 0 }}"  
+    - platform: template
+      value_template: "{{ states.sensor.rain_day.state | float == 0 }}"  
   action:
-  - service: elkm1.alarm_display_message
-    data_template:
-      clear: 0
+    - service: elkm1.alarm_display_message
+      data_template:
+        clear: 0
