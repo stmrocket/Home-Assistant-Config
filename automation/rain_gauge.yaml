@@ -155,4 +155,5 @@
   action:
     - service: elkm1.alarm_display_message
       data_template:
+        entity_id: alarm_control_panel.area_001
         clear: 0
