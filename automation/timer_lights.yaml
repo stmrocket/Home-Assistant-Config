@@ -344,9 +344,9 @@
           state: armed_night
   action:
     - service: light.turn_on
-      entity_id: light.house_leds_rgb
-    - service: switch.turn_on
-      entity_id: switch.hall_lamp
+      entity_id: 
+        - light.house_leds_rgb
+        - light.hall_lamp
   
 - alias: Timer LEDs Off House Away
   trigger:
@@ -356,9 +356,9 @@
       to: armed_away
   action:
     - service: light.turn_off
-      entity_id: light.house_leds_rgb
-    - service: switch.turn_off
-      entity_id: switch.hall_lamp
+      entity_id: 
+        - light.house_leds_rgb
+        - light.hall_lamp
 
 - alias: Timer LEDs Off House
   trigger:
@@ -380,8 +380,7 @@
         - light.kitchen_leds_rgb
         - light.den_led_rgb
         - light.guest_bathroom_led_rgb
-    - service: switch.turn_off
-      entity_id: switch.hall_lamp
+        - light.hall_lamp
 
 - alias: Timer LEDs Off Master
   trigger:
