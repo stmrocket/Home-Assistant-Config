@@ -52,7 +52,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.dishwasher_leak_dry') == "on" %}
             Wet
-          % elif states('timer.dishwasher_leak') != "active" %}      
+          {% elif states('timer.dishwasher_leak') != "active" %}      
             Error
           {% elif states('binary_sensor.dishwasher_leak_dry') == "off" %}
             Dry
@@ -65,7 +65,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.guest_sink_leak_dry') == "on" %}
             Wet
-          % elif states('timer.guest_sink_leak_dry') != "active" %}      
+          {% elif states('timer.guest_sink_leak_dry') != "active" %}      
             Error
           {% elif states('binary_sensor.guest_sink_leak_dry') == "off" %}
             Dry
@@ -78,7 +78,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.guest_toilet_leak_dry') == "on" %}
             Wet
-          % elif states('timer.guest_toilet_leak_dry') != "active" %}      
+          {% elif states('timer.guest_toilet_leak_dry') != "active" %}      
             Error
           {% elif states('binary_sensor.guest_toilet_leak_dry') == "off" %}
             Dry
@@ -91,7 +91,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.kitchen_sink_leak_dry') == "on" %}
             Wet
-          % elif states('timer.kitchen_sink_leak_dry') != "active" %}      
+          {% elif states('timer.kitchen_sink_leak_dry') != "active" %}      
             Error
           {% elif states('binary_sensor.kitchen_sink_leak_dry') == "off" %}
             Dry
@@ -104,7 +104,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.left_master_sink_leak_dry') == "on" %}
             Wet
-          % elif states('timer.left_master_sink_leak_dry') != "active" %}      
+          {% elif states('timer.left_master_sink_leak_dry') != "active" %}      
             Error
           {% elif states('binary_sensor.left_master_sink_leak_dry') == "off" %}
             Dry
@@ -117,7 +117,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.master_toilet_leak_dry') == "on" %}
             Wet
-          % elif states('timer.master_toilet_leak_dry') != "active" %}      
+          {% elif states('timer.master_toilet_leak_dry') != "active" %}      
             Error
           {% elif states('binary_sensor.master_toilet_leak_dry') == "off" %}
             Dry
@@ -130,7 +130,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.refrigerator_leak_dry') == "on" %}
             Wet
-          % elif states('timer.refrigerator_leak_dry') != "active" %}      
+          {% elif states('timer.refrigerator_leak_dry') != "active" %}      
             Error
           {% elif states('binary_sensor.refrigerator_leak_dry') == "off" %}
             Dry
@@ -143,7 +143,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.right_master_sink_leak_dry') == "on" %}
             Wet
-          % elif states('timer.right_master_sink_leak_dry') != "active" %}      
+          {% elif states('timer.right_master_sink_leak_dry') != "active" %}      
             Error
           {% elif states('binary_sensor.right_master_sink_leak_dry') == "off" %}
             Dry
@@ -156,7 +156,7 @@ sensor:
         value_template: >
           {% if states('binary_sensor.utility_leak_dry') == "on" %}
             Wet
-          % elif states('timer.utility_leak_dry') != "active" %}      
+          {% elif states('timer.utility_leak_dry') != "active" %}      
             Error
           {% elif states('binary_sensor.utility_leak_dry') == "off" %}
             Dry
