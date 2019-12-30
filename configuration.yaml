@@ -203,9 +203,9 @@ light:
 
   - platform: mqtt
     schema: json
-    name: "Front Yard ESPixelStick"
-    state_topic: "esps/front"
-    command_topic: "esps/front/set"
+    name: "Hall Lamp"
+    state_topic: "esps/hall"
+    command_topic: "esps/hall/set"
     brightness: true
     rgb: true
     effect: true
