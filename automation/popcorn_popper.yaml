@@ -1,18 +1,17 @@
-- alias: Keep Popcoen Popper Off When Away
+- alias: Keep Popcorn Popper Off When Away
   trigger:
-  - platform: state
-    entity_id: switch.popper
-    to: 'on'
+    - platform: state
+      entity_id: switch.popper
+      to: 'on'
   condition:
-  - condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: armed_night
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: armed_away
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_night
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_away
   action:
-  - service: switch.turn_off
-    data:
+    - service: switch.turn_off
       entity_id: switch.popper
