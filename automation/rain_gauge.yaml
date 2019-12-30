@@ -128,6 +128,20 @@
   trigger:
     - platform: template
       value_template: "{{ states.sensor.rain_day.state | float > 0 }}"  
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      from: arming
+      to: armed_home
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      from: arming
+      to: armed_night
+  condition:
+    - condition: template
+      value_template: "{{ states.sensor.rain_day.state | float > 0 }}"  
   action:
     - service: elkm1.alarm_display_message
       data_template:
