@@ -35,7 +35,7 @@
     - service: input_number.set_value
       data_template:
         entity_id: >
-          {% if now().minute == 1 -%}
+          {% if now().minute == 0 -%}
             input_number.rain_minute_59
           {% elif  now().minute <= 10 -%}
             input_number.rain_minute_0{{ now().minute - 1 }}
