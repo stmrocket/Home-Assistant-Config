@@ -1,10 +1,9 @@
 - alias: Turn On Wax Warmer
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.dining_room_light_c
-        control: DON
+    - platform: state
+      entity_id: switch.warmer
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: switch.wax_warmer
@@ -15,11 +14,10 @@
 
 - alias: Turn Off Wax Warmer
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.dining_room_light_c
-        control: DOF
+    - platform: state
+      entity_id: switch.warmer
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: switch.wax_warmer

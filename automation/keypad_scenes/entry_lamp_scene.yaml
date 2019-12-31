@@ -1,10 +1,9 @@
 - alias: Entry Lamp On from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.entry_light_b
-        control: DON
+    - platform: state
+      entity_id: switch.entry_lamp
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: light.entry_lamp
@@ -17,11 +16,10 @@
 
 - alias: Entry Lamp Off from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.entry_light_b
-        control: DOF
+    - platform: state
+      entity_id: switch.entry_lamp
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: light.entry_lamp

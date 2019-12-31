@@ -1,10 +1,9 @@
 - alias: Master Shower On
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_shower_light_a
-        control: DON
+    - platform: state
+      entity_id: switch.shower_light_and_fan
+      from: 'off'
+      to: 'on'
   action:
     - service: mqtt.publish
       data:
@@ -15,11 +14,10 @@
 
 - alias: Master Shower Off
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_shower_light_a
-        control: DOF
+    - platform: state
+      entity_id: switch.shower_light_and_fan
+      from: 'on'
+      to: 'off'
   action:
     - service: mqtt.publish
       data:
@@ -33,7 +31,7 @@
     to: 'off'
   condition:
   - condition: state
-    entity_id: switch.master_shower_light_a
+    entity_id: switch.shower_light_and_fan
     state: 'on'
   action:
   - service: mqtt.publish
@@ -43,4 +41,4 @@
   - delay: 00:10:00
   - service: switch.turn_off
     data:
-      entity_id: switch.master_shower_light_a
+      entity_id: switch.shower_light_and_fan
