@@ -1,120 +1,153 @@
 - alias: Master Bedroom LEDs On from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_bedroom_light_c
-        control: DON
+    - platform: state
+      entity_id: switch.master_leds_power
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.master_bedroom_leds_rgb
+      state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.master_bedroom_leds_rgb
     
 - alias: Master Bedroom LEDs Off from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_bedroom_light_c
-        control: DOF
+    - platform: state
+      entity_id: switch.master_leds_power
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.master_bedroom_leds_rgb
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.master_bedroom_leds_rgb
       
 - alias: Master Bathroom LEDs On from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_shower_light_c
-        control: DON
+    - platform: state
+      entity_id: switch.master_bathroom_leds_power
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.master_bathroom_led_rgb
+      state: 'off'
   action:
   - service: light.turn_on
     entity_id: light.master_bathroom_led_rgb
     
 - alias: Master Bathroom LEDs Off from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_shower_light_c
-        control: DOF
+    - platform: state
+      entity_id: switch.master_bathroom_leds_power
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.master_bathroom_led_rgb
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.master_bathroom_led_rgb
       
 - alias: Kitchen LEDs On from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.kitchen_light_b
-        control: DON
+    - platform: state
+      entity_id: switch.kitchen_leds_power
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.kitchen_leds_rgb
+      state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.kitchen_leds_rgb
 
 - alias: Kitchen LEDs Off from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.kitchen_light_b
-        control: DOF
+    - platform: state
+      entity_id: switch.kitchen_leds_power
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.kitchen_leds_rgb
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.kitchen_leds_rgb
       
 - alias: Den LEDs On from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.den_light_c
-        control: DON
+    - platform: state
+      entity_id: switch.den_leds_power
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.den_led_rgb
+      state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.den_led_rgb
     
 - alias: Den LEDs Off from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.den_light_c
-        control: DOF
+    - platform: state
+      entity_id: switch.den_leds_power
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.den_led_rgb
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.den_led_rgb
     
 - alias: Guest Bathroom LEDs On from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.hallway_light_b
-        control: DON
+    - platform: state
+      entity_id: switch.guest_bathroom_leds_power
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.guest_bathroom_led_rgb
+      state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.guest_bathroom_led_rgb
       
 - alias: Guest Bathroom LEDs Off from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.hallway_light_b
-        control: DOF
+    - platform: state
+      entity_id: switch.guest_bathroom_leds_power
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.guest_bathroom_led_rgb
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.guest_bathroom_led_rgb
       
 - alias: Counter LEDs On from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.kitchen_light_c
-        control: DON
+    - platform: state
+      entity_id: switch.kitchen_undercabinet_lights
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.kitchen_counter_leds_white
+      state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.kitchen_counter_leds_white
@@ -122,11 +155,14 @@
 
 - alias: Counter LEDs Off from Keypad
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.kitchen_light_c
-        control: DOF
+    - platform: state
+      entity_id: switch.kitchen_undercabinet_lights
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.kitchen_counter_leds_white
+      state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.kitchen_counter_leds_white
@@ -138,9 +174,13 @@
       platform: state
       from: 'off'
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.master_leds_power
+      state: 'off'
   action:
     - service: switch.turn_on
-      entity_id: switch.master_bedroom_leds
+      entity_id: switch.master_leds_power
 
 - alias: Master Bedroom LEDs Keypad Off
   trigger:
@@ -148,9 +188,13 @@
       platform: state
       from: 'on'
       to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.master_leds_power
+      state: 'on'
   action:
     - service: switch.turn_off
-      entity_id: switch.master_bedroom_leds
+      entity_id: switch.master_leds_power
 
 - alias: Master Bathroom LEDs Keypad On
   trigger:
@@ -158,6 +202,10 @@
       platform: state
       from: 'off'
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.master_bathroom_leds_power
+      state: 'off'
   action:
     - service: switch.turn_on
       entity_id: switch.master_bathroom_leds_power
@@ -168,6 +216,10 @@
       platform: state
       from: 'on'
       to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.master_bathroom_leds_power
+      state: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.master_bathroom_leds_power
@@ -178,6 +230,10 @@
       platform: state
       from: 'off'
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.kitchen_leds_power
+      state: 'off'
   action:
     - service: switch.turn_on
       entity_id: switch.kitchen_leds_power
@@ -188,6 +244,10 @@
       platform: state
       from: 'on'
       to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.kitchen_leds_power
+      state: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.kitchen_leds_power
@@ -198,6 +258,10 @@
       platform: state
       from: 'off'
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.den_leds_power
+      state: 'off'
   action:
     - service: switch.turn_on
       entity_id: switch.den_leds_power
@@ -208,6 +272,10 @@
       platform: state
       from: 'on'
       to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.den_leds_power
+      state: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.den_leds_power
@@ -218,6 +286,10 @@
       platform: state
       from: 'off'
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.guest_bathroom_leds_power
+      state: 'off'
   action:
     - service: switch.turn_on
       entity_id: switch.guest_bathroom_leds_power
@@ -228,6 +300,10 @@
       platform: state
       from: 'on'
       to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.guest_bathroom_leds_power
+      state: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.guest_bathroom_leds_power
@@ -238,6 +314,10 @@
       platform: state
       from: 'off'
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.kitchen_undercabinet_lights
+      state: 'off'
   action:
     - service: switch.turn_on
       entity_id: switch.kitchen_undercabinet_lights
@@ -248,6 +328,10 @@
       platform: state
       from: 'on'
       to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.kitchen_undercabinet_lights
+      state: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.kitchen_undercabinet_lights

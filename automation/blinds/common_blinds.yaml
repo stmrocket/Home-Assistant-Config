@@ -69,6 +69,10 @@
   condition:
     - condition: template
       value_template: '{{ states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | int == states.cover.shack_blinds.attributes.current_position | int == states.cover.master_blinds.attributes.current_position }}'
+    - condition: template
+      value_template: '{{ not states.cover.guest_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.server_room_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
@@ -90,6 +94,10 @@
   condition:
     - condition: template
       value_template: '{{not states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | int == states.cover.shack_blinds.attributes.current_position | int == states.cover.master_blinds.attributes.current_position }}'
+    - condition: template
+      value_template: '{{ not states.cover.guest_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.server_room_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
@@ -99,11 +107,10 @@
 
 - alias: Open House Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.entry_light_a
-        control: DON
+    - platform: state
+      entity_id: switch.house_blinds
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: cover.house_blinds
@@ -115,11 +122,10 @@
 
 - alias: Close House Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.entry_light_a
-        control: DOF
+    - platform: state
+      entity_id: switch.house_blinds
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: cover.house_blinds

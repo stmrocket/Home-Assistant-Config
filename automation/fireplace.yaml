@@ -1,10 +1,9 @@
 - alias: Turn On Fireplace
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.den_light_d
-        control: DON
+    - platform: state
+      entity_id: switch.den_fireplace
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: switch.fireplace
@@ -15,11 +14,10 @@
 
 - alias: Turn Off Fireplace
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.den_light_d
-        control: DOF
+    - platform: state
+      entity_id: switch.den_fireplace
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: switch.fireplace

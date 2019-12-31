@@ -1,10 +1,9 @@
 - alias: Open Office Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.office_light_a
-        control: DON
+    - platform: state
+      entity_id: switch.office_blinds
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: cover.office_blinds
@@ -15,11 +14,10 @@
 
 - alias: Close Office Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.office_light_a
-        control: DOF
+    - platform: state
+      entity_id: switch.office_blinds
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: cover.office_blinds
@@ -89,6 +87,12 @@
   condition:
     - condition: template
       value_template: '{{ states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position }}'
+    - condition: template
+      value_template: '{{ not states.cover.center_office_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.left_office_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.right_office_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
@@ -106,6 +110,12 @@
   condition:
     - condition: template
       value_template: '{{not states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position }}'
+    - condition: template
+      value_template: '{{ not states.cover.center_office_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.left_office_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.right_office_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
