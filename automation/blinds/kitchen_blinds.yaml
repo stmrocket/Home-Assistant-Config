@@ -105,12 +105,12 @@
   condition:
     - condition: template
       value_template: '{{ states.cover.east_kitchen_blind.attributes.current_position | int == states.cover.right_kitchen_blind.attributes.current_position | int == states.cover.left_kitchen_blind.attributes.current_position }}'
-    - condition:
-        value_template: '{{ not states.cover.east_kitchen_blind.state == "unavailable" }}'
-    - condition:
-        value_template: '{{ not states.cover.left_kitchen_blind.state == "unavailable" }}'
-    - condition:
-        value_template: '{{ not states.cover.right_kitchen_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.east_kitchen_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.left_kitchen_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.right_kitchen_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
@@ -128,12 +128,12 @@
   condition:
     - condition: template
       value_template: '{{not states.cover.east_kitchen_blind.attributes.current_position | int == states.cover.right_kitchen_blind.attributes.current_position | int == states.cover.left_kitchen_blind.attributes.current_position }}'
-    - condition:
-        value_template: '{{ not states.cover.east_kitchen_blind.state == "unavailable" }}'
-    - condition:
-        value_template: '{{ not states.cover.left_kitchen_blind.state == "unavailable" }}'
-    - condition:
-        value_template: '{{ not states.cover.right_kitchen_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.east_kitchen_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.left_kitchen_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.right_kitchen_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:

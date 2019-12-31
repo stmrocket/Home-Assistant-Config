@@ -69,10 +69,10 @@
   condition:
     - condition: template
       value_template: '{{ states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | int == states.cover.shack_blinds.attributes.current_position | int == states.cover.master_blinds.attributes.current_position }}'
-    - condition:
-        value_template: '{{ not states.cover.guest_blind.state == "unavailable" }}'
-    - condition:
-        value_template: '{{ not states.cover.server_room_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.guest_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.server_room_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
@@ -94,10 +94,10 @@
   condition:
     - condition: template
       value_template: '{{not states.cover.office_blinds.attributes.current_position | int == states.cover.den_blinds.attributes.current_position | int == states.cover.kitchen_blinds.attributes.current_position | int == states.cover.guest_blind.attributes.current_position | int == states.cover.server_room_blind.attributes.current_position | int == states.cover.shack_blinds.attributes.current_position | int == states.cover.master_blinds.attributes.current_position }}'
-    - condition:
-        value_template: '{{ not states.cover.guest_blind.state == "unavailable" }}'
-    - condition:
-        value_template: '{{ not states.cover.server_room_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.guest_blind.state == "unavailable" }}'
+    - condition: template
+      value_template: '{{ not states.cover.server_room_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
