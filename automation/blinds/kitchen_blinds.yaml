@@ -1,15 +1,11 @@
 - alias: Open Kitchen Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.kitchen_light_a
-        control: DON
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.dining_room_light_a
-        control: DON
+    - platform: state
+      entity_id: 
+        - switch.kitchen_blinds
+        - switch.dining_room_blinds
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: cover.kitchen_blinds
@@ -20,16 +16,12 @@
 
 - alias: Close Kitchen Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.kitchen_light_a
-        control: DOF
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.dining_room_light_a
-        control: DOF
+    - platform: state
+      entity_id: 
+        - switch.kitchen_blinds
+        - switch.dining_room_blinds
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: cover.kitchen_blinds
@@ -113,6 +105,12 @@
   condition:
     - condition: template
       value_template: '{{ states.cover.east_kitchen_blind.attributes.current_position | int == states.cover.right_kitchen_blind.attributes.current_position | int == states.cover.left_kitchen_blind.attributes.current_position }}'
+    - condition:
+        value_template: '{{ not states.cover.east_kitchen_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.left_kitchen_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.right_kitchen_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
@@ -130,6 +128,12 @@
   condition:
     - condition: template
       value_template: '{{not states.cover.east_kitchen_blind.attributes.current_position | int == states.cover.right_kitchen_blind.attributes.current_position | int == states.cover.left_kitchen_blind.attributes.current_position }}'
+    - condition:
+        value_template: '{{ not states.cover.east_kitchen_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.left_kitchen_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.right_kitchen_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:

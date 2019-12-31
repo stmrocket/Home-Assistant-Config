@@ -1,10 +1,9 @@
 - alias: Open Guest Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.guest_bedroom_fan_a
-        control: DON
+    - platform: state
+      entity_id: switch.guest_blind
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: cover.guest_blind
@@ -15,11 +14,10 @@
 
 - alias: Close Guest Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.guest_bedroom_fan_a
-        control: DOF
+    - platform: state
+      entity_id: switch.guest_blind
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: cover.guest_blind

@@ -1,15 +1,11 @@
 - alias: Open Master Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_bedroom_light_a
-        control: DON
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_shower_light_a
-        control: DON
+    - platform: state
+      entity_id: 
+        - switch.master_bedroom_blinds
+        - switch.master_bathroom_blinds
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: cover.master_blinds
@@ -20,16 +16,12 @@
 
 - alias: Close Master Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_bedroom_light_a
-        control: DOF
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.master_shower_light_a
-        control: DOF
+    - platform: state
+      entity_id: 
+        - switch.master_bedroom_blinds
+        - switch.master_bathroom_blinds
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: cover.master_blinds
@@ -114,6 +106,14 @@
   condition:
     - condition: template
       value_template: '{{ states.cover.center_master_blind.attributes.current_position | int == states.cover.right_master_blind.attributes.current_position | int == states.cover.left_master_blind.attributes.current_position | int == states.cover.west_master_blind.attributes.current_position }}'
+    - condition:
+        value_template: '{{ not states.cover.center_master_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.left_master_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.right_master_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.west_master_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
@@ -132,6 +132,14 @@
   condition:
     - condition: template
       value_template: '{{not states.cover.center_master_blind.attributes.current_position | int == states.cover.right_master_blind.attributes.current_position | int == states.cover.left_master_blind.attributes.current_position | int == states.cover.west_master_blind.attributes.current_position }}'
+    - condition:
+        value_template: '{{ not states.cover.center_master_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.left_master_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.right_master_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.west_master_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:

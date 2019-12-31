@@ -1,10 +1,9 @@
 - alias: Open Shack Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.shack_keypad_a
-        control: DON
+    - platform: state
+      entity_id: switch.shack_blinds
+      from: 'off'
+      to: 'on'
   condition:
     - condition: state
       entity_id: cover.shack_blinds
@@ -15,11 +14,10 @@
 
 - alias: Close Shack Blinds
   trigger:
-    - platform: event
-      event_type: isy994_control
-      event_data:
-        entity_id: switch.shack_keypad_a
-        control: DOF
+    - platform: state
+      entity_id: switch.shack_blinds
+      from: 'on'
+      to: 'off'
   condition:
     - condition: state
       entity_id: cover.shack_blinds
@@ -89,6 +87,12 @@
   condition:
     - condition: template
       value_template: '{{ states.cover.center_shack_blind.attributes.current_position | int == states.cover.right_shack_blind.attributes.current_position | int == states.cover.left_shack_blind.attributes.current_position }}'
+    - condition:
+        value_template: '{{ not states.cover.center_shack_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.left_shack_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.right_shack_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
@@ -106,6 +110,12 @@
   condition:
     - condition: template
       value_template: '{{not states.cover.center_shack_blind.attributes.current_position | int == states.cover.right_shack_blind.attributes.current_position | int == states.cover.left_shack_blind.attributes.current_position }}'
+    - condition:
+        value_template: '{{ not states.cover.center_shack_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.left_shack_blind.state == "unavailable" }}'
+    - condition:
+        value_template: '{{ not states.cover.right_shack_blind.state == "unavailable" }}'
   action:
     - service: mqtt.publish
       data:
