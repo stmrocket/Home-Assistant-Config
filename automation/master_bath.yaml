@@ -1,4 +1,4 @@
-- alias: Master Shower Increase Volume
+- alias: Master Shower On
   trigger:
     - platform: event
       event_type: isy994_control
@@ -10,8 +10,10 @@
       data:
         topic: nuvo/command/set/zone/vol
         payload_template: '5,40'
+    - service: cover.close_cover
+      entity_id: cover.master_blinds
 
-- alias: Master Shower Decrease Volume
+- alias: Master Shower Off
   trigger:
     - platform: event
       event_type: isy994_control
