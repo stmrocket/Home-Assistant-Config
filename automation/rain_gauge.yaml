@@ -126,8 +126,8 @@
 
 - alias: Display Rainfall on Elk Keypads
   trigger:
-    - platform: template
-      value_template: "{{ states.sensor.rain_day.state | float > 0 }}"  
+    - platform: state
+      entity_id: sensor.zone_052
     - platform: state
       entity_id: alarm_control_panel.area_001
       to: disarmed
