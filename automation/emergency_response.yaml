@@ -1,0 +1,199 @@
+- alias: Fire Alarm Tripped
+  trigger:
+  - platform: state
+    entity_id: switch.output_10
+    to: 'on'
+  action:
+  - service: notify.browser
+    data:
+      message: The fire alarm has been triggered.
+      title: Alarm!  
+  - service: scene.create
+    data:
+      scene_id: fire_alarm_restore
+      snapshot_entities:
+        - light.master_bedroom_light
+        - switch.master_bathroom_lights
+        - light.den_light
+        - light.kitchen_light
+        - light.kitchen_sink_light
+        - light.dining_room_light
+        - light.foyer_light
+        - light.entry_light
+        - switch.shack_light
+        - switch.back_porch_light
+        - switch.outside_lights
+        - switch.garage_lights
+        - light.hallway_light
+        - light.master_toilet_light
+        - light.utility_room_light
+        - light.office_light
+        - light.guest_bedroom_light
+        - light.server_room_light
+        - light.guest_bathroom_light
+        - switch.master_closet_light
+        - switch.server_closet_fan
+        - switch.master_bedroom_fan
+        - switch.guest_bedroom_fan
+        - switch.den_fan
+        - switch.shack_fan
+        - switch.garage_fan
+        - switch.office_fan
+        - switch.server_room_fan
+  - service: switch.turn_off
+    entity_id:
+      - switch.popper
+      - switch.den_fireplace
+      - switch.fireplace
+      - switch.warmer
+      - switch.wax_warmer
+      - switch.server_closet_fan
+      - switch.master_bedroom_fan
+      - switch.guest_bedroom_fan
+      - switch.den_fan
+      - switch.shack_fan
+      - switch.garage_fan
+      - switch.office_fan
+      - switch.server_room_fan
+  - service: light.turn_on
+    entity_id:
+      - light.master_bedroom_light
+      - light.den_light
+      - light.kitchen_light
+      - light.kitchen_sink_light
+      - light.dining_room_light
+      - light.foyer_light
+      - light.entry_light
+      - light.hallway_light
+      - light.master_toilet_light
+      - light.utility_room_light
+      - light.office_light
+      - light.guest_bedroom_light
+      - light.server_room_light
+      - light.guest_bathroom_light
+  - service: switch.turn_on
+    entity_id:
+      - switch.master_bathroom_lights
+      - switch.shack_light
+      - switch.back_porch_light
+      - switch.outside_lights
+      - switch.garage_lights
+      - switch.master_closet_light    
+  - service: mqtt.publish
+    data:
+      topic: clock/command/set/fire
+      payload: 'ON'
+
+- alias: Fire Alarm Restored
+  trigger:
+  - platform: state
+    entity_id: switch.output_10
+    from: 'on'
+    to: 'off'
+  action:
+  - service: scene.turn_on
+    entity_id: scene.fire_alarm_restore
+  - service: mqtt.publish
+    data:
+      topic: clock/command/set/fire
+      payload: 'OFF'
+
+- alias: CO Alarm Tripped
+  trigger:
+  - platform: state
+    entity_id: switch.output_11
+    to: 'on'
+  action:
+  - service: notify.browser
+    data:
+      message: The CO alarm has been triggered.
+      title: Alarm! 
+  - service: scene.create
+    data:
+      scene_id: gas_alarm_restore
+      snapshot_entities:
+        - light.master_bedroom_light
+        - switch.master_bathroom_lights
+        - light.den_light
+        - light.kitchen_light
+        - light.kitchen_sink_light
+        - light.dining_room_light
+        - light.foyer_light
+        - light.entry_light
+        - switch.shack_light
+        - switch.back_porch_light
+        - switch.outside_lights
+        - switch.garage_lights
+        - light.hallway_light
+        - light.master_toilet_light
+        - light.utility_room_light
+        - light.office_light
+        - light.guest_bedroom_light
+        - light.server_room_light
+        - light.guest_bathroom_light
+        - switch.master_closet_light
+        - switch.server_closet_fan
+        - switch.master_bedroom_fan
+        - switch.guest_bedroom_fan
+        - switch.den_fan
+        - switch.shack_fan
+        - switch.garage_fan
+        - switch.office_fan
+        - switch.server_room_fan
+  - service: switch.turn_off
+    entity_id:
+      - switch.popper
+      - switch.den_fireplace
+      - switch.fireplace
+      - switch.warmer
+      - switch.wax_warmer
+      - switch.server_closet_fan
+      - switch.master_bedroom_fan
+      - switch.guest_bedroom_fan
+      - switch.den_fan
+      - switch.shack_fan
+      - switch.garage_fan
+      - switch.office_fan
+      - switch.server_room_fan
+  - service: light.turn_on
+    entity_id:
+      - light.master_bedroom_light
+      - light.den_light
+      - light.kitchen_light
+      - light.kitchen_sink_light
+      - light.dining_room_light
+      - light.foyer_light
+      - light.entry_light
+      - light.hallway_light
+      - light.master_toilet_light
+      - light.utility_room_light
+      - light.office_light
+      - light.guest_bedroom_light
+      - light.server_room_light
+      - light.guest_bathroom_light
+  - service: switch.turn_on
+    entity_id:
+      - switch.master_bathroom_lights
+      - switch.shack_light
+      - switch.back_porch_light
+      - switch.outside_lights
+      - switch.garage_lights
+      - switch.master_closet_light    
+  - service: mqtt.publish
+    data:
+      topic: clock/command/set/gas
+      payload: 'ON'
+
+- alias: CO Alarm Restored
+  trigger:
+  - platform: state
+    entity_id: switch.output_11
+    from: 'on'
+    to: 'off'
+  action:
+  - service: scene.turn_on
+    entity_id: scene.gas_alarm_restore
+  - service: mqtt.publish
+    data:
+      topic: clock/command/set/gas
+      payload: 'OFF'
