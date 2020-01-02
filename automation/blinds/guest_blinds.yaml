@@ -1,7 +1,7 @@
 - alias: Open Guest Blinds
   trigger:
     - platform: state
-      entity_id: switch.guest_blind
+      entity_id: switch.guest_blins
       from: 'off'
       to: 'on'
   condition:
@@ -15,7 +15,7 @@
 - alias: Close Guest Blinds
   trigger:
     - platform: state
-      entity_id: switch.guest_blind
+      entity_id: switch.guest_blinds
       from: 'on'
       to: 'off'
   condition:
