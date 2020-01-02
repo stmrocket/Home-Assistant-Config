@@ -1,7 +1,7 @@
 - alias: Open Guest Blinds
   trigger:
     - platform: state
-      entity_id: switch.guest_blins
+      entity_id: switch.guest_blinds
       from: 'off'
       to: 'on'
   condition:
