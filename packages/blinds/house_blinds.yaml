@@ -45,5 +45,5 @@ sensor:
     - sensor.left_shack_blind_light_level
     - sensor.center_shack_blind_light_level
     - sensor.right_shack_blind_light_level
-    - sensor.left_guest_blind_light_level
-    - sensor.center_server_room_blind_light_level
+    - sensor.guest_blind_light_level
+    - sensor.server_room_blind_light_level
