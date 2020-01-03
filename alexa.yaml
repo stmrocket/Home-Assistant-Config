@@ -26,7 +26,7 @@ smart_home:
       - light.kitchen_light
       - light.master_shower_light
       - light.master_toilet_light
-      - switch.master_bedroom_lamps
+      - light.shack_desk_light
 
       # SWITCH
       - switch.nuvo_zone_1_power
@@ -61,6 +61,7 @@ smart_home:
       - switch.master_bedroom_fan
       - switch.office_lamps
       - switch.shack_lamp
+      - switch.master_bedroom_lamps
 
       #INPUT BOOLEAN
       - input_boolean.server_blinds_open
