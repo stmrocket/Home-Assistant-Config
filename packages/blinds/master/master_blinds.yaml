@@ -13,12 +13,12 @@ cover:
 input_boolean:
 
   master_blinds_open:
-    name: Blinds Master Open
+    name: Cover Master Open
     initial: off
     icon: mdi:blinds
 
   master_blinds_close:
-    name: Blinds Master Close
+    name: Cover Master Close
     initial: off
     icon: mdi:blinds
 

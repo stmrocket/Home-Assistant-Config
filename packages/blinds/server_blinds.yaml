@@ -15,12 +15,12 @@ cover:
 
 input_boolean:
   server_blinds_open:
-    name: Blinds Server Open
+    name: Cover Server Open
     initial: off
     icon: mdi:blinds
 
   server_blinds_close:
-    name: Blinds Server Close
+    name: Cover Server Close
     initial: off
     icon: mdi:blinds
 

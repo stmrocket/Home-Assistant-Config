@@ -13,12 +13,12 @@ cover:
 input_boolean:
 
   office_blinds_open:
-    name: Blinds Office Open
+    name: Cover Office Open
     initial: off
     icon: mdi:blinds
 
   office_blinds_close:
-    name: Blinds Office Close
+    name: Cover Office Close
     initial: off
     icon: mdi:blinds
 

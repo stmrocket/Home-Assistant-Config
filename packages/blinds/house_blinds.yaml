@@ -12,12 +12,12 @@ cover:
 
 input_boolean:
   house_blinds_open:
-    name: Blinds House Open
+    name: Cover House Open
     initial: off
     icon: mdi:blinds
 
   house_blinds_close:
-    name: Blinds House Close
+    name: Cover House Close
     initial: off
     icon: mdi:blinds
 

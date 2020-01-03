@@ -13,12 +13,12 @@ cover:
 input_boolean:
 
   den_blinds_open:
-    name: Blinds Den Open
+    name: Cover Den Open
     initial: off
     icon: mdi:blinds
 
   den_blinds_close:
-    name: Blinds Den Close
+    name: Cover Den Close
     initial: off
     icon: mdi:blinds
 

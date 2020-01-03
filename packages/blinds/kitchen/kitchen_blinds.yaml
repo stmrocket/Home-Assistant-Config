@@ -13,12 +13,12 @@ cover:
 input_boolean:
 
   kitchen_blinds_open:
-    name: Blinds Kitchen Open
+    name: Cover Kitchen Open
     initial: off
     icon: mdi:blinds
 
   kitchen_blinds_close:
-    name: Blinds Kitchen Close
+    name: Cover Kitchen Close
     initial: off
     icon: mdi:blinds
 
