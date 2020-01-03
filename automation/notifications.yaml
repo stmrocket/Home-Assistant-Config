@@ -1,47 +1,25 @@
 - alias: Notify Alarm Tripped
   trigger:
-  - platform: state
-    entity_id: switch.output_183
-    to: 'on'
+    - platform: state
+      entity_id: switch.output_183
+      to: 'on'
   action:
-  - service: notify.browser
-    data:
-      message: The alarm has been triggered.
-      title: Alarm!
-
-- alias: Notify Smoke Alarm Tripped
-  trigger:
-  - platform: state
-    entity_id: switch.output_10
-    to: 'on'
-  action:
-  - service: notify.browser
-    data:
-      message: The fire alarm has been triggered.
-      title: Alarm!      
-
-- alias: Notify CO Alarm Tripped
-  trigger:
-  - platform: state
-    entity_id: switch.output_11
-    to: 'on'
-  action:
-  - service: notify.browser
-    data:
-      message: The CO alarm has been triggered.
-      title: Alarm!         
+    - service: notify.browser
+      data:
+        message: The alarm has been triggered.
+        title: Alarm!        
 
 - alias: Notify Garage Opened While Away
   trigger:
-  - platform: state
-    entity_id: sensor.zone_031
-    to: Violated
+    - platform: state
+      entity_id: sensor.zone_031
+      to: Violated
   condition:
-  - condition: state
-    entity_id: alarm_control_panel.area_001
-    state: armed_away
+    - condition: state
+      entity_id: alarm_control_panel.area_001
+      state: armed_away
   action:
-  - service: notify.browser
-    data:
-      message: The garage door was opened while the alarm was armed.
-      title: Garage Door        
+    - service: notify.browser
+      data:
+        message: The garage door was opened while the alarm was armed.
+        title: Garage Door        

@@ -15,12 +15,12 @@ cover:
 
 input_boolean:
   guest_blinds_open:
-    name: Blinds Guest Open
+    name: Cover Guest Open
     initial: off
     icon: mdi:blinds
 
   guest_blinds_close:
-    name: Blinds Guest Close
+    name: Cover Guest Close
     initial: off
     icon: mdi:blinds
 

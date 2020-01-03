@@ -13,12 +13,12 @@ cover:
 input_boolean:
 
   shack_blinds_open:
-    name: Blinds Shack Open
+    name: Cover Shack Open
     initial: off
     icon: mdi:blinds
 
   shack_blinds_close:
-    name: Blinds Shack Close
+    name: Cover Shack Close
     initial: off
     icon: mdi:blinds
 
