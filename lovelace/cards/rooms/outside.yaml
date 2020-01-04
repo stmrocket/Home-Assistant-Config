@@ -1,119 +1,119 @@
 #lovelace_gen
 # Outside      
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: picture-elements
-            image: /local/lovelace/room.png
-            elements:
-              - entity: sensor.aquara_outside_temperature
-                style:
-                  bottom: 20%
-                  right: 5%
-                  transform: initial
-                type: state-label
-              - entity: sensor.blank
-                hold-action: none
-                prefix: Outside
-                style:
-                  bottom: 20%
-                  font-size: 150%
-                  left: 5%
-                  transform: initial
-                tap-action: none
-                type: state-label
-          - type: horizontal-stack
-            cards:
-              - type: "custom:button-card"
-                entity: light.front_sconces
-                color_type: icon
-                color: rgb(228, 94, 101)
-                state:
-                  - value: "on"
-                    icon: mdi:lightbulb-on-outline
-                  - value: "off"
-                    icon: mdi:lightbulb-outline
-                name: Driveway
-                hold_action: 
-                  action: more-info
-              - type: "custom:button-card"
-                entity: light.front_porch_light
-                color_type: icon
-                color: rgb(228, 94, 101)
-                state:
-                  - value: "on"
-                    icon: mdi:lightbulb-on-outline
-                  - value: "off"
-                    icon: mdi:lightbulb-outline
-                name: Front Porch
-                hold_action: 
-                  action: more-info
-              - type: "custom:button-card"
-                entity: switch.shed_outside_light
-                color_type: icon
-                color: rgb(228, 94, 101)
-                state:
-                  - value: "on"
-                    icon: mdi:lightbulb-on-outline
-                  - value: "off"
-                    icon: mdi:lightbulb-outline
-                name: Shed Outside
-                hold_action: 
-                  action: more-info
-              - type: "custom:button-card"
-                entity: switch.shed_inside_light
-                color_type: icon
-                color: rgb(228, 94, 101)
-                state:
-                  - value: "on"
-                    icon: mdi:lightbulb-on-outline
-                  - value: "off"
-                    icon: mdi:lightbulb-outline
-                name: Shed Inside
-                hold_action: 
-                  action: more-info
-          - type: horizontal-stack
-            cards:
-              - type: "custom:gap-card"
-              - type: "custom:button-card"
-                entity: switch.back_porch_light
-                color_type: icon
-                color: rgb(228, 94, 101)
-                state:
-                  - value: "on"
-                    icon: mdi:lightbulb-on-outline
-                  - value: "off"
-                    icon: mdi:lightbulb-outline
-                name: Back Porch
-                hold_action: 
-                  action: more-info
-              - type: "custom:button-card"
-                entity: switch.back_porch_fan
-                color_type: icon
-                color: rgb(228, 94, 101)
-                state:
-                  - value: "on"
-                    icon: mdi:fan
-                  - value: "off"
-                    icon: mdi:fan-off
-                name: Back Porch
-                hold_action: 
-                  action: more-info
-              - type: "custom:gap-card"
+      type: custom:vertical-stack-in-card
+      cards:
+        - type: picture-elements
+          image: /local/lovelace/room.png
+          elements:
+            - entity: sensor.aquara_outside_temperature
+              style:
+                bottom: 20%
+                right: 5%
+                transform: initial
+              type: state-label
+            - entity: sensor.blank
+              hold-action: none
+              prefix: Outside
+              style:
+                bottom: 20%
+                font-size: 150%
+                left: 5%
+                transform: initial
+              tap-action: none
+              type: state-label
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.front_sconces
+              color_type: icon
+              color: rgb(228, 94, 101)
+              state:
+                - value: "on"
+                  icon: mdi:lightbulb-on-outline
+                - value: "off"
+                  icon: mdi:lightbulb-outline
+              name: Driveway
+              hold_action: 
+                action: more-info
+            - type: "custom:button-card"
+              entity: light.front_porch_light
+              color_type: icon
+              color: rgb(228, 94, 101)
+              state:
+                - value: "on"
+                  icon: mdi:lightbulb-on-outline
+                - value: "off"
+                  icon: mdi:lightbulb-outline
+              name: Front Porch
+              hold_action: 
+                action: more-info
+            - type: "custom:button-card"
+              entity: switch.shed_outside_light
+              color_type: icon
+              color: rgb(228, 94, 101)
+              state:
+                - value: "on"
+                  icon: mdi:lightbulb-on-outline
+                - value: "off"
+                  icon: mdi:lightbulb-outline
+              name: Shed Outside
+              hold_action: 
+                action: more-info
+            - type: "custom:button-card"
+              entity: switch.shed_inside_light
+              color_type: icon
+              color: rgb(228, 94, 101)
+              state:
+                - value: "on"
+                  icon: mdi:lightbulb-on-outline
+                - value: "off"
+                  icon: mdi:lightbulb-outline
+              name: Shed Inside
+              hold_action: 
+                action: more-info
+        - type: horizontal-stack
+          cards:
+            - type: "custom:gap-card"
+            - type: "custom:button-card"
+              entity: switch.back_porch_light
+              color_type: icon
+              color: rgb(228, 94, 101)
+              state:
+                - value: "on"
+                  icon: mdi:lightbulb-on-outline
+                - value: "off"
+                  icon: mdi:lightbulb-outline
+              name: Back Porch
+              hold_action: 
+                action: more-info
+            - type: "custom:button-card"
+              entity: switch.back_porch_fan
+              color_type: icon
+              color: rgb(228, 94, 101)
+              state:
+                - value: "on"
+                  icon: mdi:fan
+                - value: "off"
+                  icon: mdi:fan-off
+              name: Back Porch
+              hold_action: 
+                action: more-info
+            - type: "custom:gap-card"
 
-          - type: custom:mini-media-player
-            entity: media_player.back_porch_stereo
-            name: Back Porch
-            icon: mdi:speaker
-            group: true
-            artwork: none
-            volume_stateless: true
-            hide:
-              source: true
-              controls: true
-              info: true
-            tap_action:
-              action: call-service
-              service: script.popup_media_porch
-              service_data:
-                deviceID: 
-                  - this
+        - type: custom:mini-media-player
+          entity: media_player.back_porch_stereo
+          name: Back Porch
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_porch
+            service_data:
+              deviceID: 
+                - this
