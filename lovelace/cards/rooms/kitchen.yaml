@@ -1,0 +1,175 @@
+#lovelace_gen
+# Kitchen
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: lock.back_door
+                style:
+                  bottom: 20%
+                  font-weight: bold
+                  right: 5%
+                  transform: initial
+                type: state-icon
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Kitchen
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:button-card"
+                entity: cover.kitchen_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_kitchen_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
+                entity: light.kitchen_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Lights
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.kitchen_sink_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Sink Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: light.dining_room_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Table Light
+                hold_action: 
+                  action: more-info
+          
+          - type: horizontal-stack
+            cards:                  
+              
+              - type: "custom:button-card"
+                entity: light.kitchen_leds_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.kitchen_counter_leds_white
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: Counter
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.pantry_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:door
+                name: Pantry Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.popper
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:popcorn
+                name: Popper
+                hold_action: 
+                  action: more-info
+
+          - type: horizontal-stack
+            cards:                 
+
+              - type: "custom:gap-card" 
+
+              - type: "custom:button-card"
+                entity: switch.kitchen_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+            
+              - type: "custom:button-card"
+                entity: switch.wax_warmer
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:fire
+                name: Wax Warmer
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:gap-card"                
+
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_stereo
+            name: Kitchen
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true       
+            tap_action:
+              action: call-service
+              service: script.popup_media_kitchen
+              service_data:
+                deviceID: 
+                  - this

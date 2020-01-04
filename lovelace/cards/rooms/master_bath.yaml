@@ -1,0 +1,133 @@
+#lovelace_gen
+# Master Bathroom
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Master Bathroom
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:button-card"
+                entity: switch.master_bathroom_lights
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Sink Light
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: light.master_shower_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:shower
+                name: Shower Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: light.master_bathroom_led_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.master_shower_light_a
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:shower-head
+                name: Take Shower
+                tap_action: 
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.shower_light_and_fan
+                hold_action: 
+                  action: more-info
+          
+          - type: horizontal-stack
+            cards:        
+
+              - type: "custom:button-card"
+                entity: light.master_toilet_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:toilet
+                name: Toilet Light
+                hold_action: 
+                  action: more-info      
+              
+              - type: "custom:button-card"
+                entity: switch.master_closet_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:door
+                name: Closet Light
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.master_bathroom_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Shower Fan
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.master_toilet_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Toilet Fan
+                hold_action: 
+                  action: more-info
+
+          - type: custom:mini-media-player
+            entity: media_player.master_bathroom_stereo
+            name: Master Bathroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true       
+            tap_action:
+              action: call-service
+              service: script.popup_media_master_bath
+              service_data:
+                deviceID: 
+                  - this
