@@ -1,0 +1,74 @@
+#lovelace_gen
+# Entry
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: lock.front_door
+                style:
+                  bottom: 20%
+                  font-weight: bold
+                  right: 5%
+                  transform: initial
+                type: state-icon
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Entry
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: light.entry_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Entry
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: light.foyer_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Foyer
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.entry_lamp
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.outside_lights
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Outside
+                hold_action: 
+                  action: more-info

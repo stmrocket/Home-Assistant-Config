@@ -1,0 +1,75 @@
+#lovelace_gen
+# Garage          
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: cover.18606_tanglerose
+                style:
+                  bottom: 20%
+                  font-weight: bold
+                  right: 17%
+                  transform: initial
+                type: state-icon
+              - entity: sensor.garage_temperature_owfs
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Garage
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: switch.garage_lights
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Lights
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.garage_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:gap-card"
+          - type: custom:mini-media-player
+            entity: media_player.garage_stereo
+            name: Garage
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_garage
+              service_data:
+                deviceID: 
+                  - this

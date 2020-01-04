@@ -1,0 +1,69 @@
+#lovelace_gen
+# Laundry
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: binary_sensor.utility_leak_dry
+                style:
+                  bottom: 20%
+                  front-weight: bold
+                  right: 24%
+                  transform: initial
+                type: state-icon
+              - entity: lock.garage_entry
+                style:
+                  bottom: 20%
+                  font-weight: bold
+                  right: 17%
+                  transform: initial
+                type: state-icon
+              - entity: sensor.dryer_vent_temperature_owfs
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Laundry
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:gap-card"
+
+              - type: "custom:button-card"
+                entity: light.utility_room_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.utility_room_vent_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:gap-card"

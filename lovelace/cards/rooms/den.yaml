@@ -1,0 +1,230 @@
+#lovelace_gen
+# Den
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.aquara_den_temperature
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Den
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+                
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: cover.den_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_den_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+
+              - type: "custom:button-card"
+                entity: light.den_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.den_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: switch.den_lamps
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamps
+                hold_action: 
+                  action: more-info        
+
+          - type: horizontal-stack
+            cards:                  
+              - type: "custom:gap-card" 
+
+              - type: "custom:button-card"
+                entity: light.den_led_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:button-card"
+                entity: switch.fireplace
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fireplace
+                  - value: "off"
+                    icon: mdi:fireplace-off
+                name: Fire
+                hold_action: 
+                  action: more-info
+              
+              - type: "custom:gap-card"
+
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:gap-card"
+                height: 10
+
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "PowerOff"
+                    color: rgb(228, 94, 101)
+                  - value: "PowerOff"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:remote-tv-off
+                name: "Off"
+                tap_action:
+                  action: call-service
+                  service: remote.turn_off
+                  service_data:
+                    entity_id: remote.living_room_2
+              
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch PVR"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch PVR"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:kodi
+                name: Kodi
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.living_room_2     
+                    activity: "Watch PVR"            
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch Roku"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch Roku"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:youtube-tv
+                name: Roku
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.living_room_2     
+                    activity: "Watch Roku"            
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "ChromeCast"
+                    color: rgb(228, 94, 101)
+                  - value: "ChromeCast"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:cast
+                name: Cast
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.living_room_2     
+                    activity: "ChromeCast"           
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Listen to WHA"
+                    color: rgb(228, 94, 101)
+                  - value: "Listen to WHA"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:music
+                name: Music
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.living_room_2     
+                    activity: "Listen to WHA"      
+
+          - type: custom:mini-media-player
+            entity: media_player.den_stereo
+            name: Den
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true             
+            tap_action:
+              action: call-service
+              service: script.popup_media_den
+              service_data:
+                deviceID: 
+                  - this                  
