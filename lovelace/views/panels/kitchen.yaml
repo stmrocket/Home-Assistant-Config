@@ -131,13 +131,13 @@ cards:
             cards:
               - type: "custom:gap-card"
               - type: "custom:button-card"
-              entity: switch.wax_warmer
-              color_type: icon
-              color: rgb(228, 94, 101)
-              icon: mdi:fire
-              name: Wax Warmer
-              hold_action: 
-                action: more-info
+                entity: switch.wax_warmer
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:fire
+                name: Wax Warmer
+                hold_action: 
+                  action: more-info
               - type: "custom:gap-card"
 
 #################################################################
