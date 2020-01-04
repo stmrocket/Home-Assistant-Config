@@ -1,48 +1,48 @@
 #lovelace_gen
 # Front Hall    
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: picture-elements
-            image: /local/lovelace/room.png
-            elements:
-              - entity: sensor.front_hall_temperature_owfs
-                style:
-                  bottom: 20%
-                  right: 5%
-                  transform: initial
-                type: state-label
-              - entity: sensor.blank
-                hold-action: none
-                prefix: Hall
-                style:
-                  bottom: 20%
-                  font-size: 150%
-                  left: 5%
-                  transform: initial
-                tap-action: none
-                type: state-label
-          - type: horizontal-stack
-            cards:
-              - type: "custom:gap-card"
-              - type: "custom:button-card"
-                entity: light.hallway_light
-                color_type: icon
-                color: rgb(228, 94, 101)
-                state:
-                  - value: "on"
-                    icon: mdi:lightbulb-on-outline
-                  - value: "off"
-                    icon: mdi:lightbulb-outline
-                name: Light
-                hold_action: 
-                  action: more-info
-              - type: "custom:button-card"
-                entity: light.hall_lamp
-                color_type: icon
-                color: rgb(228, 94, 101)
-                icon: mdi:lamp
-                name: Lamp
-                hold_action: 
-                  action: more-info
-              - type: "custom:gap-card"
-          
+      type: custom:vertical-stack-in-card
+      cards:
+        - type: picture-elements
+          image: /local/lovelace/room.png
+          elements:
+            - entity: sensor.front_hall_temperature_owfs
+              style:
+                bottom: 20%
+                right: 5%
+                transform: initial
+              type: state-label
+            - entity: sensor.blank
+              hold-action: none
+              prefix: Hall
+              style:
+                bottom: 20%
+                font-size: 150%
+                left: 5%
+                transform: initial
+              tap-action: none
+              type: state-label
+        - type: horizontal-stack
+          cards:
+            - type: "custom:gap-card"
+            - type: "custom:button-card"
+              entity: light.hallway_light
+              color_type: icon
+              color: rgb(228, 94, 101)
+              state:
+                - value: "on"
+                  icon: mdi:lightbulb-on-outline
+                - value: "off"
+                  icon: mdi:lightbulb-outline
+              name: Light
+              hold_action: 
+                action: more-info
+            - type: "custom:button-card"
+              entity: light.hall_lamp
+              color_type: icon
+              color: rgb(228, 94, 101)
+              icon: mdi:lamp
+              name: Lamp
+              hold_action: 
+                action: more-info
+            - type: "custom:gap-card"
+        
