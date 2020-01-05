@@ -60,7 +60,7 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('light.attic_lights') == "off" %}
+        {% if states('sensor.zone_030') == "Violated" %}
           light.turn_on
         {% else %}
           light.turn_off
@@ -77,7 +77,7 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('light.guest_closet_light') == "off" %}
+        {% if states('sensor.zone_071') == "Violated" %}
           switch.turn_on
         {% else %}
           switch.turn_off
@@ -94,7 +94,7 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('light.pantry_light') == "off" %}
+        {% if states('sensor.zone_048') == "Violated" %}
           light.turn_on
         {% else %}
           light.turn_off
@@ -111,7 +111,7 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('light.server_closet_light') == "off" %}
+        {% if states('sensor.zone_072') == "Violated" %}
           switch.turn_on
         {% else %}
           switch.turn_off
@@ -128,7 +128,7 @@
       to: Normal
   action:
     - service_template: >
-        {% if states('switch.shed_inside_light') == "off" %}
+        {% if states('sensor.zone_049') == "Violated" %}
           switch.turn_on
         {% else %}
           switch.turn_off
