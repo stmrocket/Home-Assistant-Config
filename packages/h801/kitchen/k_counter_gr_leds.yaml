@@ -6,7 +6,7 @@ light:
     brightness_state_topic: "h801/k_counter/tele/current"
     brightness_command_topic: "h801/k_counter/command/set/rgb/brightness"
     rgb_state_topic: "h801/k_counter/tele/current"
-    rgb_command_topic: "h801/k_counter/command/set/rgb/color"state_value_template: "{{value_json['rgb_power']}}"
+    rgb_command_topic: "h801/k_counter/command/set/rgb/color"
     brightness_value_template: "{{value_json['rgb_brightness']}}"
     rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
     qos: 0
