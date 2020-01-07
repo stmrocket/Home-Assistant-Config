@@ -105,7 +105,7 @@
         - cover.west_master_blind
   condition:
     - condition: template
-      value_template: '{{ states.cover.center_master_blind.attributes.current_position | int == states.cover.right_master_blind.attributes.current_position | int == states.cover.left_master_blind.attributes.current_position | int == states.cover.west_master_blind.attributes.current_position }}'
+      value_template: '{{ states.cover.center_master_blind.state == states.cover.right_master_blind.state == states.cover.left_master_blind.state == states.cover.west_master_blind.state }}'
     - condition: template
       value_template: '{{ not states.cover.center_master_blind.state == "unavailable" }}'
     - condition: template
@@ -131,7 +131,7 @@
         - cover.west_master_blind
   condition:
     - condition: template
-      value_template: '{{not states.cover.center_master_blind.attributes.current_position | int == states.cover.right_master_blind.attributes.current_position | int == states.cover.left_master_blind.attributes.current_position | int == states.cover.west_master_blind.attributes.current_position }}'
+      value_template: '{{not states.cover.center_master_blind.state == states.cover.right_master_blind.state == states.cover.left_master_blind.state == states.cover.west_master_blind.state }}'
     - condition: template
       value_template: '{{ not states.cover.center_master_blind.state == "unavailable" }}'
     - condition: template
