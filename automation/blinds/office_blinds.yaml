@@ -86,7 +86,7 @@
         - cover.left_office_blind
   condition:
     - condition: template
-      value_template: '{{ states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position }}'
+      value_template: '{{ states.cover.center_office_blind.state == states.cover.right_office_blind.state == states.cover.left_office_blind.state }}'
     - condition: template
       value_template: '{{ not states.cover.center_office_blind.state == "unavailable" }}'
     - condition: template
@@ -109,7 +109,7 @@
         - cover.left_office_blind
   condition:
     - condition: template
-      value_template: '{{not states.cover.center_office_blind.attributes.current_position | int == states.cover.right_office_blind.attributes.current_position | int == states.cover.left_office_blind.attributes.current_position }}'
+      value_template: '{{not states.cover.center_office_blind.state == states.cover.right_office_blind.state == states.cover.left_office_blind.state }}'
     - condition: template
       value_template: '{{ not states.cover.center_office_blind.state == "unavailable" }}'
     - condition: template
