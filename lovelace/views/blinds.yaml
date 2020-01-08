@@ -22,153 +22,153 @@ cards:
         show_header_toggle: false
         title: Blinds
         entities:
-        - entity: "custom:fold-entity-row"
-          head: cover.house_blinds
-          entities:
-            - sensor.house_blinds_average_light_level
-        - entity: "custom:fold-entity-row"
-          head: cover.den_blinds
-          entities:
-            - entity: "custom:fold-entity-row"
-              head: cover.left_den_blind
-              entities:
-                - sensor.left_den_blind_light_level
-                - sensor.left_den_blind_version
-                - sensor.left_den_blind_ip
-                - sensor.left_den_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.center_den_blind
-              entities:
-                - sensor.center_den_blind_light_level
-                - sensor.center_den_blind_version
-                - sensor.center_den_blind_ip
-                - sensor.center_den_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.right_den_blind
-              entities:
-                - sensor.right_den_blind_light_level
-                - sensor.right_den_blind_version
-                - sensor.right_den_blind_ip
-                - sensor.right_den_blind_uptime
-            - sensor.den_blinds_average_light_level
-        - entity: "custom:fold-entity-row"
-          head: cover.kitchen_blinds
-          entities:
-            - entity: "custom:fold-entity-row"
-              head: cover.left_kitchen_blind
-              entities:
-                - sensor.left_kitchen_blind_light_level
-                - sensor.left_kitchen_blind_version
-                - sensor.left_kitchen_blind_ip
-                - sensor.left_kitchen_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.right_kitchen_blind
-              entities:
-                - sensor.right_kitchen_blind_light_level
-                - sensor.right_kitchen_blind_version
-                - sensor.right_kitchen_blind_ip
-                - sensor.right_kitchen_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.center_kitchen_blind
-              entities:
-                - sensor.east_kitchen_blind_light_level
-                - sensor.east_kitchen_blind_version
-                - sensor.east_kitchen_blind_ip
-                - sensor.east_kitchen_blind_uptime
-            - sensor.kitchen_blinds_average_light_level
-        - entity: "custom:fold-entity-row"
-          head: cover.office_blinds
-          entities:
-            - entity: "custom:fold-entity-row"
-              head: cover.left_office_blind
-              entities:
-                - sensor.left_office_blind_light_level
-                - sensor.left_office_blind_version
-                - sensor.left_office_blind_ip
-                - sensor.left_office_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.center_office_blind
-              entities:
-                - sensor.center_office_blind_light_level
-                - sensor.center_office_blind_version
-                - sensor.center_office_blind_ip
-                - sensor.center_office_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.right_office_blind
-              entities:
-                - sensor.right_office_blind_light_level
-                - sensor.right_office_blind_version
-                - sensor.right_office_blind_ip
-                - sensor.right_office_blind_uptime
-            - sensor.office_blinds_average_light_level
-        - entity: "custom:fold-entity-row"
-          head: cover.master_blinds
-          entities:
-            - entity: "custom:fold-entity-row"
-              head: cover.left_master_blind
-              entities:
-                - sensor.left_master_blind_light_level
-                - sensor.left_master_blind_version
-                - sensor.left_master_blind_ip
-                - sensor.left_master_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.center_master_blind
-              entities:
-                - sensor.center_master_blind_light_level
-                - sensor.center_master_blind_version
-                - sensor.center_master_blind_ip
-                - sensor.center_master_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.right_master_blind
-              entities:
-                - sensor.right_master_blind_light_level
-                - sensor.right_master_blind_version
-                - sensor.right_master_blind_ip
-                - sensor.right_master_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.west_master_blind
-              entities:
-                - sensor.west_master_blind_light_level
-                - sensor.west_master_blind_version
-                - sensor.west_master_blind_ip
-                - sensor.west_master_blind_uptime
-            - sensor.master_blinds_average_light_level
-        - entity: "custom:fold-entity-row"
-          head: cover.guest_blind
-          entities:
-            - sensor.guest_blind_light_level
-            - sensor.guest_blind_version
-            - sensor.guest_blind_ip
-            - sensor.guest_blind_uptime
-        - entity: "custom:fold-entity-row"
-          head: cover.server_room_blind
-          entities:
-            - sensor.server_room_blind_light_level
-            - sensor.server_room_blind_version
-            - sensor.server_room_blind_ip
-            - sensor.server_room_blind_uptime
-        - entity: "custom:fold-entity-row"
-          head: cover.shack_blinds
-          entities:
-            - entity: "custom:fold-entity-row"
-              head: cover.left_shack_blind
-              entities:
-                - sensor.left_shack_blind_light_level
-                - sensor.left_shack_blind_version
-                - sensor.left_shack_blind_ip
-                - sensor.left_shack_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.center_shack_blind
-              entities:
-                - sensor.center_shack_blind_light_level
-                - sensor.center_shack_blind_version
-                - sensor.center_shack_blind_ip
-                - sensor.center_shack_blind_uptime
-            - entity: "custom:fold-entity-row"
-              head: cover.right_shack_blind
-              entities:
-                - sensor.right_shack_blind_light_level
-                - sensor.right_shack_blind_version
-                - sensor.right_shack_blind_ip
-                - sensor.right_shack_blind_uptime
-            - sensor.shack_blinds_average_light_level
+          - type: custom:fold-entity-row
+            head: cover.house_blinds
+            entities:
+              - sensor.house_blinds_average_light_level
+          - type: custom:fold-entity-row
+            head: cover.den_blinds
+            entities:
+              - type: custom:fold-entity-row
+                head: cover.left_den_blind
+                entities:
+                  - sensor.left_den_blind_light_level
+                  - sensor.left_den_blind_version
+                  - sensor.left_den_blind_ip
+                  - sensor.left_den_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.center_den_blind
+                entities:
+                  - sensor.center_den_blind_light_level
+                  - sensor.center_den_blind_version
+                  - sensor.center_den_blind_ip
+                  - sensor.center_den_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.right_den_blind
+                entities:
+                  - sensor.right_den_blind_light_level
+                  - sensor.right_den_blind_version
+                  - sensor.right_den_blind_ip
+                  - sensor.right_den_blind_uptime
+              - sensor.den_blinds_average_light_level
+          - type: custom:fold-entity-row
+            head: cover.kitchen_blinds
+            entities:
+              - type: custom:fold-entity-row
+                head: cover.left_kitchen_blind
+                entities:
+                  - sensor.left_kitchen_blind_light_level
+                  - sensor.left_kitchen_blind_version
+                  - sensor.left_kitchen_blind_ip
+                  - sensor.left_kitchen_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.right_kitchen_blind
+                entities:
+                  - sensor.right_kitchen_blind_light_level
+                  - sensor.right_kitchen_blind_version
+                  - sensor.right_kitchen_blind_ip
+                  - sensor.right_kitchen_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.east_kitchen_blind
+                entities:
+                  - sensor.east_kitchen_blind_light_level
+                  - sensor.east_kitchen_blind_version
+                  - sensor.east_kitchen_blind_ip
+                  - sensor.east_kitchen_blind_uptime
+              - sensor.kitchen_blinds_average_light_level
+          - type: custom:fold-entity-row
+            head: cover.office_blinds
+            entities:
+              - type: custom:fold-entity-row
+                head: cover.left_office_blind
+                entities:
+                  - sensor.left_office_blind_light_level
+                  - sensor.left_office_blind_version
+                  - sensor.left_office_blind_ip
+                  - sensor.left_office_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.center_office_blind
+                entities:
+                  - sensor.center_office_blind_light_level
+                  - sensor.center_office_blind_version
+                  - sensor.center_office_blind_ip
+                  - sensor.center_office_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.right_office_blind
+                entities:
+                  - sensor.right_office_blind_light_level
+                  - sensor.right_office_blind_version
+                  - sensor.right_office_blind_ip
+                  - sensor.right_office_blind_uptime
+              - sensor.office_blinds_average_light_level
+          - type: custom:fold-entity-row
+            head: cover.master_blinds
+            entities:
+              - type: custom:fold-entity-row
+                head: cover.left_master_blind
+                entities:
+                  - sensor.left_master_blind_light_level
+                  - sensor.left_master_blind_version
+                  - sensor.left_master_blind_ip
+                  - sensor.left_master_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.center_master_blind
+                entities:
+                  - sensor.center_master_blind_light_level
+                  - sensor.center_master_blind_version
+                  - sensor.center_master_blind_ip
+                  - sensor.center_master_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.right_master_blind
+                entities:
+                  - sensor.right_master_blind_light_level
+                  - sensor.right_master_blind_version
+                  - sensor.right_master_blind_ip
+                  - sensor.right_master_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.west_master_blind
+                entities:
+                  - sensor.west_master_blind_light_level
+                  - sensor.west_master_blind_version
+                  - sensor.west_master_blind_ip
+                  - sensor.west_master_blind_uptime
+              - sensor.master_blinds_average_light_level
+          - type: custom:fold-entity-row
+            head: cover.guest_blind
+            entities:
+              - sensor.guest_blind_light_level
+              - sensor.guest_blind_version
+              - sensor.guest_blind_ip
+              - sensor.guest_blind_uptime
+          - type: custom:fold-entity-row
+            head: cover.server_room_blind
+            entities:
+              - sensor.server_room_blind_light_level
+              - sensor.server_room_blind_version
+              - sensor.server_room_blind_ip
+              - sensor.server_room_blind_uptime
+          - type: custom:fold-entity-row
+            head: cover.shack_blinds
+            entities:
+              - type: custom:fold-entity-row
+                head: cover.left_shack_blind
+                entities:
+                  - sensor.left_shack_blind_light_level
+                  - sensor.left_shack_blind_version
+                  - sensor.left_shack_blind_ip
+                  - sensor.left_shack_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.center_shack_blind
+                entities:
+                  - sensor.center_shack_blind_light_level
+                  - sensor.center_shack_blind_version
+                  - sensor.center_shack_blind_ip
+                  - sensor.center_shack_blind_uptime
+              - type: custom:fold-entity-row
+                head: cover.right_shack_blind
+                entities:
+                  - sensor.right_shack_blind_light_level
+                  - sensor.right_shack_blind_version
+                  - sensor.right_shack_blind_ip
+                  - sensor.right_shack_blind_uptime
+              - sensor.shack_blinds_average_light_level
