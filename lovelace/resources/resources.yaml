@@ -23,7 +23,7 @@
 - url: /local/community/dark-sky-weather-card/dark-sky-weather-card.js
   type: module
 - url: /local/community/lovelace-fold-entity-row/fold-entity-row.js
-  type: js
+  type: module
 - url: /local/community/lovelace-gap-card/gap-card.js
   type: js
 - url: /local/community/mini-graph-card/mini-graph-card-bundle.js
