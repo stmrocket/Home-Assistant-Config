@@ -67,7 +67,7 @@
                 action: more-info
             
             - type: "custom:button-card"
-              entity: switch.shack_leds_power
+              entity: light.shack_desk_light
               color_type: icon
               color: rgb(228, 94, 101)
               icon: mdi:radio-tower

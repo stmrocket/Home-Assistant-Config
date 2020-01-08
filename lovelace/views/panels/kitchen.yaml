@@ -129,7 +129,40 @@ cards:
 
           - type: horizontal-stack
             cards:
-              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: sensor.roomba_status
+                color_type: icon
+                icon: mdi:robot-vacuum
+                state:
+                  - value: "error"
+                    color: rgb(255, 0, 0)
+                    name: Error
+                  - value: "docked"
+                    color: rgb(255, 255, 255)
+                    name: Docked
+                  - value: "cleaning"
+                    color: rgb(228, 94, 101)
+                    name: Cleaning
+                  - value: "returning"
+                    color: rgb(228, 94, 101)
+                    name: Docking
+                  - value: "idle"
+                    color: rgb(255, 255, 255)
+                    name: Idle
+                  - value: "paused"
+                    color: rgb(255, 200, 0)
+                    name: Paused
+                tap_action: 
+                      action: call-service
+                      service: switch.toggle
+                      service_data:
+                        entity_id: switch.roomba                   
+                hold_action: 
+                  action: call-service
+                  service: script.popup_roomba
+                  service_data:
+                    deviceID: 
+                      - this
               - type: "custom:button-card"
                 entity: switch.wax_warmer
                 color_type: icon
