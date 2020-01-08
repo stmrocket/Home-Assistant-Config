@@ -76,6 +76,26 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
+                entity: cover.kitchen_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_kitchen_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
                 entity: light.kitchen_light
                 color_type: icon
                 color: rgb(228, 94, 101)
@@ -91,6 +111,8 @@ cards:
                 name: Sink Light
                 hold_action: 
                   action: more-info
+          - type: horizontal-stack
+            cards:
               - type: "custom:button-card"
                 entity: light.dining_room_light
                 color_type: icon
@@ -99,9 +121,6 @@ cards:
                 name: Table
                 hold_action: 
                   action: more-info
-
-          - type: horizontal-stack
-            cards:
               - type: "custom:button-card"
                 entity: light.kitchen_leds_rgb
                 color_type: icon
@@ -117,7 +136,9 @@ cards:
                 icon: mdi:lightbulb-outline
                 name: Counter
                 hold_action: 
-                  action: more-info
+                  action: more-info             
+          - type: horizontal-stack
+            cards:
               - type: "custom:button-card"
                 entity: switch.popper
                 color_type: icon
@@ -126,10 +147,40 @@ cards:
                 name: Popper
                 hold_action: 
                   action: more-info
-
-          - type: horizontal-stack
-            cards:
-              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: sensor.roomba_status
+                color_type: icon
+                icon: mdi:robot-vacuum
+                state:
+                  - value: "error"
+                    color: rgb(255, 0, 0)
+                    name: Error
+                  - value: "docked"
+                    color: rgb(255, 255, 255)
+                    name: Docked
+                  - value: "cleaning"
+                    color: rgb(228, 94, 101)
+                    name: Cleaning
+                  - value: "returning"
+                    color: rgb(228, 94, 101)
+                    name: Docking
+                  - value: "idle"
+                    color: rgb(255, 255, 255)
+                    name: Idle
+                  - value: "paused"
+                    color: rgb(255, 200, 0)
+                    name: Paused
+                tap_action: 
+                      action: call-service
+                      service: switch.toggle
+                      service_data:
+                        entity_id: switch.roomba                   
+                hold_action: 
+                  action: call-service
+                  service: script.popup_roomba
+                  service_data:
+                    deviceID: 
+                      - this
               - type: "custom:button-card"
                 entity: switch.wax_warmer
                 color_type: icon
@@ -138,7 +189,6 @@ cards:
                 name: Wax Warmer
                 hold_action: 
                   action: more-info
-              - type: "custom:gap-card"
 
 #################################################################
 #                                                               #
