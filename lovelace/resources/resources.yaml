@@ -18,7 +18,7 @@
   type: js
 - url: /local/community/fan-control-entity-row/fan-control-entity-row.js
   type: js
-- url: /local/community/compact-custom-header/compact-custom-header.js
+- url: /local/community/custom-header/custom-header.js
   type: module
 - url: /local/community/dark-sky-weather-card/dark-sky-weather-card.js
   type: module
@@ -31,8 +31,6 @@
 - url: /local/community/mini-media-player/mini-media-player-bundle.js
   type: module
 - url: /local/custom_ui/moment.js
-  type: js
-- url: /local/community/monster-card/monster-card.js
   type: js
 - url: /local/community/lovelace-slider-entity-row/slider-entity-row.js
   type: js
@@ -54,8 +52,6 @@
   type: module
 - url: /local/community/simple-thermostat/simple-thermostat.js
   type: module
-- url: /local/community/lovelace-popup-card/popup-card.js
-  type: js
 - url: /local/community/flex-horseshoe-card/flex-horseshoe-card.js
   type: module
 - url: /local/community/list-card/list-card.js

@@ -8,25 +8,27 @@ resources: !include /config/lovelace/resources/resources.yaml
 #                                                               #
 ################################################################# 
 
-cch:
-  main_config: true
+custom_header:
   background: 'rgba(150, 150, 150, 0.2)'
-  #background: transparent
-  menu: show
-  voice: show
-  options: clock
-  clock_format: '24'
-  clock_date: true
-  date_locale: en-us
-  disable: false
-  hide_tabs: 8
-  default_tab: 0
+  compact_mode: true
+  hide_config: true
+  hide_unused: true
+  hide_help: true
+  button_text:
+    options: '{{ time }}<br>{{ date }}'
+  hide_tabs: '8'
+  default_tab: '0'
   exceptions:
     - conditions:
         user_agent: fully-kitchen
       config:
-        hide_tabs: 0 to 7
-        default_tab: 8
+        hide_tabs: '0 to 7'
+        default_tab: '8'
+    - conditions:
+        user_agent: Android
+      config:
+        options_hide: true
+        hide_tabs: '3'
 
 #############################################################################################################################################
 #                                                                                                                                           # 
