@@ -590,7 +590,12 @@ cards:
           hide:
             source: true
             power: true
-            #volume: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_wha
+            service_data:
+              deviceID: 
+                - this
               
 #################################################################
 #                                                               #
