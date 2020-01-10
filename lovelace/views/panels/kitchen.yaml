@@ -199,29 +199,75 @@ cards:
       - type: vertical-stack
         cards: 
           - type: horizontal-stack
-            cards: 
-            - type: entities
-              show_header_toggle: false
-              title: Laundry Status
-              entities:
-                  - entity: sensor.washer_state
-                    name: Washer
-                  - entity: sensor.dryer_state
-                    name: Dryer
+            cards:
+              - type: "custom:button-card"
+                entity: sensor.washer_state
+                color_type: icon
+                icon: mdi:washing-machine
+                state:
+                  - value: "Washing"
+                    color: rgb(228, 94, 101)
+                    name: Washing
+                  - value: "Idle"
+                    color: rgb(255, 255, 255)
+                    name: Idle   
+                tap_action:
+                  action: call-service
+                  service: script.popup_washer
+                  service_data:
+                    deviceID: 
+                      - this                
+                hold_action: 
+                  action: call-service
+                  service: script.popup_washer
+                  service_data:
+                    deviceID: 
+                      - this
 
-#################################################################
-#                                                               #
-#                     Home - Locks                              #
-#                                                               #
-################################################################# 
-            - type: entities
-              show_header_toggle: false
-              title: Locks
-              entities:
-                - entity: lock.front_door
-                  name: Front
-                - entity: lock.back_door    
-                  name: Back       
+              - type: "custom:button-card"
+                entity: sensor.dryer_state
+                color_type: icon
+                icon: mdi:tumble-dryer
+                state:
+                  - value: "Drying"
+                    color: rgb(228, 94, 101)
+                    name: Drying
+                  - value: "Idle"
+                    color: rgb(255, 255, 255)
+                    name: Idle
+                  - value: "Door Open"
+                    color: rgb(255, 200, 0)
+                    name: Door                    
+                tap_action:
+                  action: call-service
+                  service: script.popup_dryer
+                  service_data:
+                    deviceID: 
+                      - this              
+                hold_action: 
+                  action: call-service
+                  service: script.popup_dryer
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
+                entity: lock.back_door
+                color_type: icon
+                state:
+                  - value: "locked"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:lock
+                  - value: "unlocked"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:lock-open
+                name: Back
+                tap_action: 
+                      action: call-service
+                      service: lock.lock
+                      service_data:
+                        entity_id: lock.back_door
+                hold_action: 
+                  action: more-info       
 
 #################################################################
 #                                                               #
