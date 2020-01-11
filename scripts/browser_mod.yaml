@@ -2686,30 +2686,30 @@ popup_media_wha:
         deviceID: ["{{ ','.join(deviceID) }}"]
         title: Google Music
         card:
-          - type: vertical-stack
-            cards:
-              - type: entities
-                show_header_toggle: false
-                title: Google Music
-                entities:
-                - entity: input_select.gmusic_player_speakers
-                - entity: input_select.gmusic_player_source
-                - entity: input_select.gmusic_player_playlist
-                - entity: input_select.gmusic_player_station
-                - type: custom:mini-media-player
-                  entity: media_player.gmusic_player
-                  icon: mdi:google-play
-                  #group: true
-                  artwork: cover
-                  hide:
-                    source: true
+          type: vertical-stack
+          cards:
+            - type: entities
+              show_header_toggle: false
+              title: Google Music
+              entities:
+              - entity: input_select.gmusic_player_speakers
+              - entity: input_select.gmusic_player_source
+              - entity: input_select.gmusic_player_playlist
+              - entity: input_select.gmusic_player_station
+              - type: custom:mini-media-player
+                entity: media_player.gmusic_player
+                icon: mdi:google-play
+                #group: true
+                artwork: cover
+                hide:
+                  source: true
 
-                - type: custom:mini-media-player
-                  entity: media_player.whole_house_audio
-                  icon: mdi:cast
-                  #group: true
-                  artwork: cover
-                  volume_stateless: true
-                  hide:
-                    source: true
-                    volume: true
+              - type: custom:mini-media-player
+                entity: media_player.whole_house_audio
+                icon: mdi:cast
+                #group: true
+                artwork: cover
+                volume_stateless: true
+                hide:
+                  source: true
+                  volume: true
