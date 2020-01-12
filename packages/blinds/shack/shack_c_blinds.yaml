@@ -73,6 +73,7 @@ sensor:
   - platform: mqtt
     name: "Center Shack Blind Light Level"
     state_topic: "habc/shack_c/tele/light"
+    unit_of_measurement: '%'
     availability_topic: "habc/shack_c/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"

@@ -81,7 +81,7 @@
         - switch.master_closet_light    
     - service: mqtt.publish
       data:
-        topic: clock/command/set/fire
+        topic: horn/command/set/fire
         payload: 'ON'
 
 - alias: Fire Alarm Restored
@@ -95,7 +95,7 @@
       entity_id: scene.fire_alarm_restore
     - service: mqtt.publish
       data:
-        topic: clock/command/set/fire
+        topic: horn/command/set/fire
         payload: 'OFF'
 
 - alias: CO Alarm Tripped
@@ -181,7 +181,7 @@
         - switch.master_closet_light    
     - service: mqtt.publish
       data:
-        topic: clock/command/set/gas
+        topic: horn/command/set/gas
         payload: 'ON'
 
 - alias: CO Alarm Restored
@@ -195,5 +195,5 @@
       entity_id: scene.gas_alarm_restore
     - service: mqtt.publish
       data:
-        topic: clock/command/set/gas
+        topic: horn/command/set/gas
         payload: 'OFF'

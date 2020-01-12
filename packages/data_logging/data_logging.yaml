@@ -82,7 +82,13 @@ recorder:
     - sensor.eagle_current_power
     - utility_meter.energy_daily
     - utility_meter.energy_monthly
-    - utility_meter.energy_yearly
+    - utility_meter.energy_yearly    
+    - sensor.den_blinds_average_light_level
+    - sensor.house_blinds_average_light_level
+    - sensor.kitchen_blinds_average_light_level
+    - sensor.master_blinds_average_light_level
+    - sensor.office_blinds_average_light_level
+    - sensor.shack_blinds_average_light_level
 
 #################################################################
 #                                                               #
@@ -154,3 +160,27 @@ influxdb:
       - sensor.rain_month
       - sensor.rain_year
       - sensor.rain_rate
+      - sensor.left_den_blind_light_level
+      - sensor.center_den_blind_light_level
+      - sensor.right_den_blind_light_level
+      - sensor.left_kitchen_blind_light_level
+      - sensor.east_kitchen_blind_light_level
+      - sensor.right_kitchen_blind_light_level
+      - sensor.left_master_blind_light_level
+      - sensor.center_master_blind_light_level
+      - sensor.right_master_blind_light_level
+      - sensor.west_master_blind_light_level
+      - sensor.left_office_blind_light_level
+      - sensor.center_office_blind_light_level
+      - sensor.right_office_blind_light_level
+      - sensor.left_shack_blind_light_level
+      - sensor.center_shack_blind_light_level
+      - sensor.right_shack_blind_light_level
+      - sensor.guest_blind_light_level
+      - sensor.server_room_blind_light_level
+      - sensor.den_blinds_average_light_level
+      - sensor.house_blinds_average_light_level
+      - sensor.kitchen_blinds_average_light_level
+      - sensor.master_blinds_average_light_level
+      - sensor.office_blinds_average_light_level
+      - sensor.shack_blinds_average_light_level

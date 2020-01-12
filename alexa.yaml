@@ -62,6 +62,7 @@ smart_home:
       - switch.office_lamps
       - switch.shack_lamp
       - switch.master_bedroom_lamps
+      - switch.water_projector
 
       #INPUT BOOLEAN
       - input_boolean.server_blinds_open

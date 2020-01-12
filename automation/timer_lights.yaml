@@ -436,7 +436,9 @@
       data:
         entity_id: light.master_suite_leds_rgb
     - service: switch.turn_off
-      entity_id: switch.master_bedroom_lamps
+      entity_id: 
+        - switch.master_bedroom_lamps
+        - switch.water_projector
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.master_lamp_timer

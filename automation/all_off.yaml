@@ -80,6 +80,7 @@
         - switch.guest_bathroom_fan
         - switch.guest_bedroom_fan
         - switch.master_bedroom_fan
+        - switch.water_projector
   
 - alias: All Off Timer Lights
   trigger:

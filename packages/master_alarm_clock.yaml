@@ -1,0 +1,43 @@
+input_boolean:
+
+  work_alarm_enabled:
+    name: Work Alarm Clock Enabled
+    icon: mdi:timer
+  manual_alarm_enabled:
+    name: Manual Alarm Clock Enabled
+    icon: mdi:timer
+  work_alarm_ringing:
+    name: Work Alarm Clock Ringing
+    icon: mdi:timer
+  manual_alarm_ringing:
+    name: Manual Alarm Clock Ringing
+    icon: mdi:timer
+  manual_alarm_repeat:
+    name: Manual Alarm Clock Repeat
+    icon: mdi:timer
+  manual_alarm_horn:
+    name: Manual Alarm Clock Use Horn
+    icon: mdi:timer
+  alarm_clock_ringing:
+    name: Alarm Clock Ringing
+    icon: mdi:timer
+
+counter:
+  master_snooze:
+    initial: 0
+    step: 1
+
+timer:
+  master_snooze:
+    name: Master Snooze Timer
+    duration: '00:09:00'
+
+input_datetime:
+  master_manual_alarm:
+    name: Manual Alarm Clock Setting
+    has_date: false
+    has_time: true
+sensor:
+  - platform: time_date
+    display_options:
+      - 'time'    

@@ -73,6 +73,7 @@ sensor:
   - platform: mqtt
     name: "East Kitchen Blind Light Level"
     state_topic: "habc/kitchen_e/tele/light"
+    unit_of_measurement: '%'
     availability_topic: "habc/kitchen_e/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
