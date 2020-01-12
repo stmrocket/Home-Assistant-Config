@@ -2689,8 +2689,6 @@ popup_media_wha:
           type: vertical-stack
           cards:
             - type: entities
-              show_header_toggle: false
-              title: Google Music
               entities:
               - entity: input_select.gmusic_player_speakers
               - entity: input_select.gmusic_player_source
@@ -2713,3 +2711,58 @@ popup_media_wha:
                 hide:
                   source: true
                   volume: true
+
+popup_manual_alarm:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Manual Alarm Clock
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  entity: input_boolean.manual_alarm_enabled
+                  color_type: icon
+                  color: rgb(228, 94, 101)
+                  state:
+                    - value: "on"
+                      icon: mdi:alarm-check
+                    - value: "off"
+                      icon: mdi:alarm-off
+                  name: Enable
+                  hold_action: 
+                    action: more-info
+                
+                - type: "custom:button-card"
+                  entity: input_boolean.manual_alarm_repeat
+                  color_type: icon
+                  color: rgb(228, 94, 101)
+                  state:
+                    - value: "on"
+                      icon: mdi:repeat
+                    - value: "off"
+                      icon: mdi:repeat-off
+                  name: Repeat
+                  hold_action: 
+                    action: more-info
+
+                - type: "custom:button-card"
+                  entity: input_boolean.manual_alarm_lights
+                  color_type: icon
+                  color: rgb(228, 94, 101)
+                  state:
+                    - value: "on"
+                      icon: mdi:lightbulb-on-outline
+                    - value: "off"
+                      icon: mdi:lightbulb-off-outline
+                  name: Lights
+                  hold_action: 
+                    action: more-info                                         
+            - type: entities
+              entities:
+              - entity: input_datetime.master_manual_alarm
+                name: "Alarm Time"
