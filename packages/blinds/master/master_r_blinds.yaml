@@ -73,6 +73,7 @@ sensor:
   - platform: mqtt
     name: "Right Master Blind Light Level"
     state_topic: "habc/master_r/tele/light"
+    unit_of_measurement: '%'
     availability_topic: "habc/master_r/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"

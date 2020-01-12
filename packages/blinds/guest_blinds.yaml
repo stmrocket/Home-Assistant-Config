@@ -84,6 +84,7 @@ sensor:
   - platform: mqtt
     name: "Guest Blind Light Level"
     state_topic: "habc/guest/tele/light"
+    unit_of_measurement: '%'
     availability_topic: "habc/guest/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"

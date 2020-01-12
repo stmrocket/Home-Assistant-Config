@@ -73,6 +73,7 @@ sensor:
   - platform: mqtt
     name: "Center Office Blind Light Level"
     state_topic: "habc/office_c/tele/light"
+    unit_of_measurement: '%'
     availability_topic: "habc/office_c/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
