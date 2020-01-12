@@ -122,7 +122,14 @@
                   deviceID: 
                     - this 
                        
-            - type: "custom:gap-card"
+            - type: "custom:button-card"
+              entity: light.master_bedroom_leds_rgb
+              color_type: icon
+              color: rgb(228, 94, 101)
+              icon: mdi:waves
+              name: Waves
+              hold_action: 
+                action: more-info
 
             
 
