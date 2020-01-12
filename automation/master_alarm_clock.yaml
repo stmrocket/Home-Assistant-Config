@@ -52,6 +52,10 @@
         entity_id: media_player.master_bedroom_3
         media_content_id: "today's worship"
         media_content_type: "PANDORA"
+    - service: light.turn_on
+      data:
+        entity_id: light.master_bedroom_lamps
+        brightness: 64
     - service: input_boolean.turn_on
       entity_id: 
         - input_boolean.manual_alarm_ringing
@@ -76,6 +80,10 @@
       data:
         topic: horn/command/set/clock
         payload: 'ON'
+    - service: light.turn_on
+      data:
+        entity_id: light.master_bedroom_lamps
+        brightness: 64
     - service: input_boolean.turn_on
       entity_id: 
         - input_boolean.manual_alarm_ringing
@@ -368,21 +376,52 @@
         - input_boolean.alarm_clock_ringing
         - input_boolean.manual_alarm_ringing
 
+- alias: Master Wake Work Disable
+  trigger:
+    - platform: state
+      entity_id: input_boolean.work_alarm_enabled
+      from: 'on'
+      to: 'off'
+  action:
+    - service: mqtt.publish
+      data:
+        topic: horn/command/set/clock
+        payload: 'OFF'
+    - service: timer.cancel
+      entity_id: timer.master_snooze
+    - service: counter.reset
+      entity_id: counter.master_snooze
+    - service: input_boolean.turn_off
+      entity_id: 
+        - input_boolean.alarm_clock_ringing
+        - input_boolean.work_alarm_ringing
+
 - alias: Master Wake Manual Disable
   trigger:
     - platform: mqtt
       topic: zigbee2mqtt/button_1
     - platform: mqtt
       topic: zigbee2mqtt/button_2
-  condition:
-    - condition: template
-      value_template: "{{ trigger.payload_json['click'] == 'quadruple' }}"
-    - condition: state
-      entity_id: input_boolean.manual_alarm_ringing
-      state: 'on'
-    - condition: state
+    - platform: state
       entity_id: input_boolean.manual_alarm_enabled
-      state: 'on'
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: template
+              value_template: "{{ trigger.payload_json['click'] == 'quadruple' }}"
+            - condition: state
+              entity_id: input_boolean.manual_alarm_ringing
+              state: 'on'
+            - condition: state
+              entity_id: input_boolean.manual_alarm_enabled
+              state: 'on'
+        - condition: state
+          entity_id: input_boolean.manual_alarm_enabled
+          state: 'off'
   action:
     - service: mqtt.publish
       data:
@@ -495,3 +534,4 @@
   action:
     - service: switch.turn_off
       entity_id: switch.master_clock_manual      
+

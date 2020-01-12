@@ -2761,7 +2761,7 @@ popup_manual_alarm:
                     - value: "off"
                       icon: mdi:music
                       color: rgb(228, 94, 101)
-                      name: Horn
+                      name: Music
                   hold_action: 
                     action: more-info                                         
             - type: entities
