@@ -123,7 +123,7 @@
                     - this 
                        
             - type: "custom:button-card"
-              entity: light.master_bedroom_leds_rgb
+              entity: switch.water_projector
               color_type: icon
               color: rgb(228, 94, 101)
               icon: mdi:waves
