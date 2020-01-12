@@ -15,8 +15,8 @@ input_boolean:
   manual_alarm_repeat:
     name: Manual Alarm Clock Repeat
     icon: mdi:timer
-  manual_alarm_lights:
-    name: Manual Alarm Clock Lights
+  manual_alarm_horn:
+    name: Manual Alarm Clock Use Horn
     icon: mdi:timer
   alarm_clock_ringing:
     name: Alarm Clock Ringing
