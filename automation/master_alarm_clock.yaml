@@ -396,32 +396,21 @@
         - input_boolean.alarm_clock_ringing
         - input_boolean.work_alarm_ringing
 
-- alias: Master Wake Manual Disable
+- alias: Master Wake Manual Disable Button
   trigger:
     - platform: mqtt
       topic: zigbee2mqtt/button_1
     - platform: mqtt
       topic: zigbee2mqtt/button_2
-    - platform: state
-      entity_id: input_boolean.manual_alarm_enabled
-      from: 'on'
-      to: 'off'
   condition:
-    - condition: or
-      conditions:
-        - condition: and
-          conditions:
-            - condition: template
-              value_template: "{{ trigger.payload_json['click'] == 'quadruple' }}"
-            - condition: state
-              entity_id: input_boolean.manual_alarm_ringing
-              state: 'on'
-            - condition: state
-              entity_id: input_boolean.manual_alarm_enabled
-              state: 'on'
-        - condition: state
-          entity_id: input_boolean.manual_alarm_enabled
-          state: 'off'
+    - condition: template
+      value_template: "{{ trigger.payload_json['click'] == 'quadruple' }}"
+    - condition: state
+      entity_id: input_boolean.manual_alarm_ringing
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.manual_alarm_enabled
+      state: 'on'
   action:
     - service: mqtt.publish
       data:
@@ -437,7 +426,33 @@
       entity_id: 
         - input_boolean.alarm_clock_ringing
         - input_boolean.manual_alarm_ringing 
-        - inout_boolean.manual_alarm_enabled          
+        - input_boolean.manual_alarm_enabled          
+
+- alias: Master Wake Manual Disable
+  trigger:
+    - platform: state
+      entity_id: input_boolean.manual_alarm_enabled
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.manual_alarm_ringing
+      state: 'on'
+  action:
+    - service: mqtt.publish
+      data:
+        topic: horn/command/set/clock
+        payload: 'OFF'
+    - service: media_player.turn_off
+      entity_id: media_player.master_bedroom_3
+    - service: timer.cancel
+      entity_id: timer.master_snooze
+    - service: counter.reset
+      entity_id: counter.master_snooze
+    - service: input_boolean.turn_off
+      entity_id: 
+        - input_boolean.alarm_clock_ringing
+        - input_boolean.manual_alarm_ringing     
 
 - alias: Master Wake Work On from Keypad
   trigger:
