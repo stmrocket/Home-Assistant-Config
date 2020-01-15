@@ -89,6 +89,7 @@ recorder:
     - sensor.master_blinds_average_light_level
     - sensor.office_blinds_average_light_level
     - sensor.shack_blinds_average_light_level
+    - counter.master_snooze
 
 #################################################################
 #                                                               #
@@ -184,3 +185,4 @@ influxdb:
       - sensor.master_blinds_average_light_level
       - sensor.office_blinds_average_light_level
       - sensor.shack_blinds_average_light_level
+      - counter.master_snooze
