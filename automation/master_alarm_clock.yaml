@@ -31,6 +31,8 @@
         - input_boolean.master_lamp_timer
         - input_boolean.work_alarm_ringing
         - input_boolean.alarm_clock_ringing
+    - service: counter.increment
+      entity_id: counter.master_snooze
 
 - alias: Master Wake Manual With Music
   trigger:
@@ -60,6 +62,8 @@
       entity_id: 
         - input_boolean.manual_alarm_ringing
         - input_boolean.alarm_clock_ringing
+    - service: counter.increment
+      entity_id: counter.master_snooze
 
 - alias: Master Wake Manual With Horn
   trigger:
@@ -88,17 +92,15 @@
       entity_id: 
         - input_boolean.manual_alarm_ringing
         - input_boolean.alarm_clock_ringing
+    - service: counter.increment
+      entity_id: counter.master_snooze
 
 - alias: Master Wake Work First Snooze
   trigger:
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.master_snooze
-  condition:
-    - condition: state
+    - platform: state
       entity_id: counter.master_snooze
-      state: '1'
+      to: '2'
+  condition:
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
       state: 'on'
@@ -136,14 +138,10 @@
       
 - alias: Master Wake Work Second Snooze
   trigger:
-    - platform: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.master_snooze
-  condition:
-    - condition: state
+    - platform: state
       entity_id: counter.master_snooze
-      state: '2'
+      to: '3'
+  condition:
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
       state: 'on'
@@ -173,8 +171,6 @@
         payload: 'OFF'
     - service: timer.start
       entity_id: timer.master_snooze
-    - service: counter.increment
-      entity_id: counter.master_snooze
     - service: input_boolean.turn_off
       entity_id: input_boolean.alarm_clock_ringing
 
@@ -198,6 +194,8 @@
         payload: 'ON'
     - service: input_boolean.turn_on
       entity_id: input_boolean.alarm_clock_ringing
+    - service: counter.increment
+      entity_id: counter.master_snooze
 
 - alias: Master Wake Manual Snooze Start
   trigger:
@@ -225,12 +223,10 @@
       entity_id: light.master_bedroom_lamps
     - service: timer.start
       entity_id: timer.master_snooze
-    - service: counter.increment
-      entity_id: counter.master_snooze
     - service: input_boolean.turn_off
       entity_id: input_boolean.alarm_clock_ringing
 
-- alias: Master Wake Work Snooze Stop Music
+- alias: Master Wake Manual Snooze Stop Music
   trigger:
     - platform: event
       event_type: timer.finished
@@ -257,9 +253,11 @@
         entity_id: light.master_bedroom_lamps
         brightness: 64
     - service: input_boolean.turn_on
-      entity_id: input_boolean.alarm_clock_ringing      
+      entity_id: input_boolean.alarm_clock_ringing   
+    - service: counter.increment
+      entity_id: counter.master_snooze
 
-- alias: Master Wake Work Snooze Stop Horn
+- alias: Master Wake Manual Snooze Stop Horn
   trigger:
     - platform: event
       event_type: timer.finished
@@ -285,7 +283,9 @@
         entity_id: light.master_bedroom_lamps
         brightness: 64
     - service: input_boolean.turn_on
-      entity_id: input_boolean.alarm_clock_ringing            
+      entity_id: input_boolean.alarm_clock_ringing     
+    - service: counter.increment
+      entity_id: counter.master_snooze       
 
 - alias: Master Wake Work Off
   trigger:
