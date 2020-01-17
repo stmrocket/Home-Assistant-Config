@@ -90,6 +90,11 @@ recorder:
     - sensor.office_blinds_average_light_level
     - sensor.shack_blinds_average_light_level
     - counter.master_snooze
+    - sensor.hvac_runtime_yesterday
+    - sensor.hvac_runtime_before_last_filter_change
+    - sensor.hvac_runtime_today
+    - sensor.hvac_runtime_last_7_days
+    - input_number.hvac_runtime
 
 #################################################################
 #                                                               #
