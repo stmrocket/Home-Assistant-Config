@@ -17,7 +17,7 @@ sensor:
 - platform: history_stats
   name: HVAC runtime yesterday
   entity_id: sensor.zone_065
-  state: 'Violated'
+  state: Violated
   type: time
   duration:
     hours: 24
@@ -27,7 +27,7 @@ sensor:
 - platform: history_stats
   name: HVAC runtime before last filter change
   entity_id: sensor.zone_065
-  state: 'Violated'
+  state: Violated
   type: time
   start: "{{ as_timestamp(now().replace(hour=0).replace(minute=0).replace(second=0)) }}"
   end: "{{ as_timestamp(states('input_text.furnace_filter')) }}"
@@ -36,7 +36,7 @@ sensor:
 - platform: history_stats
   name: HVAC runtime today
   entity_id: sensor.zone_065
-  state: 'Violated'
+  state: Violated
   type: time
   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
   end: '{{ now() }}'  
@@ -45,7 +45,7 @@ sensor:
 - platform: history_stats
   name: HVAC runtime last 7 days
   entity_id: sensor.zone_065
-  state: 'Violated'
+  state: Violated
   type: time
   end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
   duration:
