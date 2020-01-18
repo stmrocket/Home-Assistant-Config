@@ -1,7 +1,7 @@
 - alias: Fire Alarm Tripped
   trigger:
     - platform: state
-      entity_id: switch.output_10
+      entity_id: switch.output_010
       to: 'on'
   action:
     - service: notify.browser
@@ -87,7 +87,7 @@
 - alias: Fire Alarm Restored
   trigger:
     - platform: state
-      entity_id: switch.output_10
+      entity_id: switch.output_010
       from: 'on'
       to: 'off'
   action:
@@ -101,7 +101,7 @@
 - alias: CO Alarm Tripped
   trigger:
     - platform: state
-      entity_id: switch.output_11
+      entity_id: switch.output_011
       to: 'on'
   action:
     - service: notify.browser
@@ -187,7 +187,7 @@
 - alias: CO Alarm Restored
   trigger:
     - platform: state
-      entity_id: switch.output_11
+      entity_id: switch.output_011
       from: 'on'
       to: 'off'
   action:
