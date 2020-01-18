@@ -95,6 +95,7 @@ recorder:
     - sensor.hvac_runtime_today
     - sensor.hvac_runtime_last_7_days
     - input_number.hvac_runtime
+    - binary_sensor.hvac_running
 
 #################################################################
 #                                                               #
