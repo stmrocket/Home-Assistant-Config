@@ -16,7 +16,7 @@ binary_sensor:
   sensors:
     hvac_running:
       friendly_name: HVAC Running
-      value_template: "{{ states.sensor.zone_065.state }}"
+      value_template: "{{ states.sensor.zone_065.state == 'Violated' }}"
 sensor:
 # Runtime yesterday (for use in storing runtime each night)
 - platform: history_stats
