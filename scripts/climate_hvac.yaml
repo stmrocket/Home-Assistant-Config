@@ -1,0 +1,26 @@
+hvac_dump_zone_1:
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.output_014 
+    - service: switch.turn_off
+      entity_id: 
+        - switch.output_015
+        - switch.output_016
+
+hvac_dump_zone_2:
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.output_015
+    - service: switch.turn_off
+      entity_id: 
+        - switch.output_014
+        - switch.output_016  
+
+hvac_dump_zone_3:
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.output_016
+    - service: switch.turn_off
+      entity_id: 
+        - switch.output_014
+        - switch.output_015  
