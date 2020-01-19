@@ -129,8 +129,7 @@ input_number:
 # Used to set max number of hours of filter runtime to calculate days until filter change required
   replacement_threshold:
     name: Threshold
-    min: 100
+    min: 0
     max: 1000
-    step: 25
     mode: box
     unit_of_measurement: 'h'
