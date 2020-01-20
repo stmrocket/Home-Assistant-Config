@@ -1,5 +1,10 @@
 hvac_dump_zone_1:
   sequence:
+    - condition: state
+      entity_id: binary_sensor.hvac_running
+      state: 'off'
+      for: 
+        minutes: 5
     - service: switch.turn_on
       entity_id: switch.output_014 
     - service: switch.turn_off
@@ -9,6 +14,11 @@ hvac_dump_zone_1:
 
 hvac_dump_zone_2:
   sequence:
+    - condition: state
+      entity_id: binary_sensor.hvac_running
+      state: 'off'
+      for: 
+        minutes: 5
     - service: switch.turn_on
       entity_id: switch.output_015
     - service: switch.turn_off
@@ -18,6 +28,11 @@ hvac_dump_zone_2:
 
 hvac_dump_zone_3:
   sequence:
+    - condition: state
+      entity_id: binary_sensor.hvac_running
+      state: 'off'
+      for: 
+        minutes: 5
     - service: switch.turn_on
       entity_id: switch.output_016
     - service: switch.turn_off
