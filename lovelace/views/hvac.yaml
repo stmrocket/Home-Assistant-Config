@@ -95,11 +95,11 @@ cards:
             - entity: sensor.plenum_hvac_return_temperature_owfs
               name: Return
             - entity: sensor.front_hvac_return_temperature_owfs
-              name: Front Hall
+              name: Hall
             - entity: sensor.back_hvac_return_temperature_owfs
-              name: Master Suite
+              name: Master
             - entity: sensor.server_room_hvac_return_temperature_owfs
-              name: Server Closet
+              name: Server
         
         - type: horizontal-stack
           cards:          
