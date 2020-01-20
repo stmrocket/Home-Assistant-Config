@@ -17,21 +17,90 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:vertical-stack-in-card
+        title: System
         cards:
-        - type: entities
-          show_header_toggle: false
-          title: System
+        - type: horizontal-stack
+          cards:
+              - type: "custom:button-card"
+                entity: switch.output_015
+                color_type: icon
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:mdi:valve-open
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:valve
+                name: Front
+                tap_action: 
+                  action: call-service
+                  service: script.hvac_dump_zone_2
+
+              - type: "custom:button-card"
+                entity: switch.output_014
+                color_type: icon
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:mdi:valve-open
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:valve
+                name: Living
+                tap_action: 
+                  action: call-service
+                  service: script.hvac_dump_zone_1
+
+              - type: "custom:button-card"
+                entity: switch.output_016
+                color_type: icon
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:mdi:valve-open
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:valve
+                name: Master
+                tap_action: 
+                  action: call-service
+                  service: script.hvac_dump_zone_3
+
+              - type: "custom:button-card"
+                entity: binary_sensor.hvac_filter_needs_replacement
+                color_type: icon
+                icon: mdi:air-filter
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                    name: Replace
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                    name: OK                   
+                tap_action:
+                  action: call-service
+                  service: script.popup_filter
+                  service_data:
+                    deviceID: 
+                      - this              
+                hold_action: 
+                  action: call-service
+                  service: script.furnace_filter_date
+        - type: glance
+          columns: 5
+          show_icon: false
           entities:
-          - entity: sensor.hvac_supply_temperature_owfs
-            name: Supply Temperature
-          - entity: sensor.plenum_hvac_return_temperature_owfs
-            name: Return Plenum Temperature
-          - entity: sensor.front_hvac_return_temperature_owfs
-            name: Front Hallway Return Temperature
-          - entity: sensor.back_hvac_return_temperature_owfs
-            name: Master Suite Return Temperature
-          - entity: sensor.server_room_hvac_return_temperature_owfs
-            name: Server Closet Return Temperature
+            - entity: sensor.hvac_supply_temperature_owfs
+              name: Supply
+            - entity: sensor.plenum_hvac_return_temperature_owfs
+              name: Return
+            - entity: sensor.front_hvac_return_temperature_owfs
+              name: Front Hall
+            - entity: sensor.back_hvac_return_temperature_owfs
+              name: Master Suite
+            - entity: sensor.server_room_hvac_return_temperature_owfs
+              name: Server Closet
+        
         - type: horizontal-stack
           cards:          
           
