@@ -2768,3 +2768,19 @@ popup_manual_alarm:
               entities:
               - entity: input_datetime.master_manual_alarm
                 name: "Alarm Time"
+
+popup_filter:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: HVAC Filter
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              entities:
+              - entity: sensor.furnace_filter_life
+              - entity: sensor.average_total_runtime_week
+              - entity: sensor.furnace_filter_days_remaining
+              - entity: input_number.replacement_threshold          
