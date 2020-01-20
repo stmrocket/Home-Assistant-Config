@@ -85,7 +85,10 @@ cards:
                       - this              
                 hold_action: 
                   action: call-service
-                  service: script.furnace_filter_date
+                  service: script.popup_filter
+                  service_data:
+                    deviceID: 
+                      - this     
         - type: glance
           columns: 5
           show_icon: false
