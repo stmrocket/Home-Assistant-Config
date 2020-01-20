@@ -35,6 +35,8 @@ cards:
                 tap_action: 
                   action: call-service
                   service: script.hvac_dump_zone_2
+                  confirmation:
+                    text: '[[[ return `Please ensure that the AHU is not running and has been stopped for at least 1 minute.` ]]]'
 
               - type: "custom:button-card"
                 entity: switch.output_014
@@ -50,6 +52,8 @@ cards:
                 tap_action: 
                   action: call-service
                   service: script.hvac_dump_zone_1
+                  confirmation:
+                    text: '[[[ return `Please ensure that the AHU is not running and has been stopped for at least 1 minute.` ]]]'
 
               - type: "custom:button-card"
                 entity: switch.output_016
@@ -65,6 +69,8 @@ cards:
                 tap_action: 
                   action: call-service
                   service: script.hvac_dump_zone_3
+                  confirmation:
+                    text: '[[[ return `Please ensure that the AHU is not running and has been stopped for at least 1 minute.` ]]]'
 
               - type: "custom:button-card"
                 entity: binary_sensor.hvac_filter_needs_replacement
