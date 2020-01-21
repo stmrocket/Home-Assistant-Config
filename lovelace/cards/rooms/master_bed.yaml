@@ -259,8 +259,6 @@
       conditions:
         - entity: sensor.master_harmony_activity
           state: "unavailable"
-        - entity: sensor.master_harmony_activity
-          state: "unknown"
       card:      
         type: custom:vertical-stack-in-card
         cards:
