@@ -20,7 +20,7 @@ binary_sensor:
       
       hvac_filter_needs_replacement:
         friendly_name: HVAC FIlter Needs Replacement
-        value_template: "{{ states.sensor.furnace_filter_life.state > states.input_number.replacement_threshold.state }}"
+        value_template: "{{ states.sensor.furnace_filter_life.state | int > states.input_number.replacement_threshold.state | int }}"
 
 sensor:
 # Runtime yesterday (for use in storing runtime each night)
