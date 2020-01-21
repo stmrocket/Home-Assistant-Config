@@ -1,249 +1,511 @@
 #lovelace_gen
-# Master Bedroom      
-      type: custom:vertical-stack-in-card
-      cards:
-        - type: picture-elements
-          image: /local/lovelace/room.png
-          elements:
-            - entity: sensor.aquara_master_bedroom_temperature
-              style:
-                bottom: 20%
-                right: 5%
-                transform: initial
-              type: state-label
-            - entity: sensor.blank
-              hold-action: none
-              prefix: Master Bedroom
-              style:
-                bottom: 20%
-                font-size: 150%
-                left: 5%
-                transform: initial
-              tap-action: none
-              type: state-label
-        - type: horizontal-stack
-          cards:
-            - type: "custom:button-card"
-              entity: cover.master_blinds
-              color_type: icon
-              state:
-                - value: "open"
-                  color: rgb(228, 94, 101)
-                  icon: mdi:blinds-open
-                - value: "closed"
-                  color: rgb(255, 255, 255)
-                  icon: mdi:blinds
-                - value: "unavailable"
-                  color: rgb(228, 94, 101)
-                  icon: mdi:exclamation
-              name: Blinds
-              hold_action:  
-                action: call-service
-                service: script.popup_master_blinds
-                service_data:
-                  deviceID: 
-                    - this
-            - type: "custom:button-card"
-              entity: light.master_bedroom_light
-              color_type: icon
-              color: rgb(228, 94, 101)
-              state:
-                - value: "on"
-                  icon: mdi:lightbulb-on-outline
-                - value: "off"
-                  icon: mdi:lightbulb-outline
-              name: Light
-              hold_action: 
-                action: more-info
-            - type: "custom:button-card"
-              entity: switch.master_bedroom_fan
-              color_type: icon
-              color: rgb(228, 94, 101)
-              state:
-                - value: "on"
-                  icon: mdi:fan-on
-                - value: "off"
-                  icon: mdi:fan-off
-              name: Fan
-              hold_action: 
-                action: more-info
-            - type: "custom:button-card"
-              entity: switch.master_bedroom_lamps
-              color_type: icon
-              color: rgb(228, 94, 101)
-              icon: mdi:lamp
-              name: Lamp
-              hold_action: 
-                action: more-info
+# Master Bedroom  
+      type: conditional
+      conditions:
+        - entity: sensor.master_harmony_activity
+          state_not: "unavailable"
+        - entity: sensor.master_harmony_activity
+          state_not: "unknown"
+      card:      
+        type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.aquara_master_bedroom_temperature
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Master Bedroom
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: cover.master_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_master_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
+                entity: light.master_bedroom_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.master_bedroom_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan-on
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.master_bedroom_lamps
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
 
-        - type: horizontal-stack
-          cards:
+          - type: horizontal-stack
+            cards:
 
-            - type: "custom:button-card"
-              entity: light.master_bedroom_leds_rgb
-              color_type: icon
-              color: rgb(228, 94, 101)
-              state:
-                - value: "on"
-                  icon: mdi:led-on
-                - value: "off"
-                  icon: mdi:led-off
-              name: LEDs
-              hold_action: 
-                action: more-info
+              - type: "custom:button-card"
+                entity: light.master_bedroom_leds_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
 
-            - type: "custom:button-card"
-              entity: input_boolean.work_alarm_enabled
-              color_type: icon
-              color: rgb(228, 94, 101)
-              state:
-                - value: "on"
-                  icon: mdi:alarm-check
-                - value: "off"
-                  icon: mdi:alarm-off
-              name: Work
-              hold_action: 
-                action: more-info
+              - type: "custom:button-card"
+                entity: input_boolean.work_alarm_enabled
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:alarm-check
+                  - value: "off"
+                    icon: mdi:alarm-off
+                name: Work
+                hold_action: 
+                  action: more-info
 
-            - type: "custom:button-card"
-              entity: input_boolean.manual_alarm_enabled
-              color_type: icon
-              color: rgb(228, 94, 101)
-              state:
-                - value: "on"
-                  icon: mdi:alarm-check
-                - value: "off"
-                  icon: mdi:alarm-off
-              name: Manual
-              hold_action: 
-                action: call-service
-                service: script.popup_manual_alarm
-                service_data:
-                  deviceID: 
-                    - this 
-                       
-            - type: "custom:button-card"
-              entity: switch.water_projector
-              color_type: icon
-              color: rgb(228, 94, 101)
-              icon: mdi:waves
-              name: Waves
-              hold_action: 
-                action: more-info
+              - type: "custom:button-card"
+                entity: input_boolean.manual_alarm_enabled
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:alarm-check
+                  - value: "off"
+                    icon: mdi:alarm-off
+                name: Manual
+                hold_action: 
+                  action: call-service
+                  service: script.popup_manual_alarm
+                  service_data:
+                    deviceID: 
+                      - this 
+                        
+              - type: "custom:button-card"
+                entity: switch.water_projector
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:waves
+                name: Waves
+                hold_action: 
+                  action: more-info
 
-            
+              
 
-        - type: horizontal-stack
-          cards:
+          - type: horizontal-stack
+            cards:
 
-            - type: "custom:gap-card"
-              height: 10
-        - type: horizontal-stack
-          cards:                  
+              - type: "custom:gap-card"
+                height: 10
+          - type: horizontal-stack
+            cards:                  
 
-            - type: "custom:button-card"
-              entity: sensor.master_harmony_activity
-              color_type: icon
-              state:
-                - value: "PowerOff"
-                  color: rgb(228, 94, 101)
-                - value: "PowerOff"
-                  operator: '!='
-                  color: rgb(255, 255, 255)
-              icon: mdi:remote-tv-off
-              name: "Off"
-              tap_action:
-                action: call-service
-                service: remote.turn_off
-                service_data:
-                  entity_id: remote.master_bedroom_2
-            
-            - type: "custom:button-card"
-              entity: sensor.master_harmony_activity
-              color_type: icon
-              state:
-                - value: "Watch PVR"
-                  color: rgb(228, 94, 101)
-                - value: "Watch PVR"
-                  operator: '!='
-                  color: rgb(255, 255, 255)
-              icon: mdi:kodi
-              name: Kodi
-              tap_action:
-                action: call-service
-                service: remote.turn_on
-                service_data:
-                  entity_id: remote.master_bedroom_2     
-                  activity: "Watch PVR"            
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "PowerOff"
+                    color: rgb(228, 94, 101)
+                  - value: "PowerOff"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:remote-tv-off
+                name: "Off"
+                tap_action:
+                  action: call-service
+                  service: remote.turn_off
+                  service_data:
+                    entity_id: remote.master_bedroom_2
+              
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch PVR"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch PVR"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:kodi
+                name: Kodi
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.master_bedroom_2     
+                    activity: "Watch PVR"            
 
-            - type: "custom:button-card"
-              entity: sensor.master_harmony_activity
-              color_type: icon
-              state:
-                - value: "Watch Roku"
-                  color: rgb(228, 94, 101)
-                - value: "Watch Roku"
-                  operator: '!='
-                  color: rgb(255, 255, 255)
-              icon: mdi:youtube-tv
-              name: Roku
-              tap_action:
-                action: call-service
-                service: remote.turn_on
-                service_data:
-                  entity_id: remote.master_bedroom_2     
-                  activity: "Watch Roku"            
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch Roku"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch Roku"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:youtube-tv
+                name: Roku
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.master_bedroom_2     
+                    activity: "Watch Roku"            
 
-            - type: "custom:button-card"
-              entity: sensor.master_harmony_activity
-              color_type: icon
-              state:
-                - value: "ChromeCast"
-                  color: rgb(228, 94, 101)
-                - value: "ChromeCast"
-                  operator: '!='
-                  color: rgb(255, 255, 255)
-              icon: mdi:cast
-              name: Cast
-              tap_action:
-                action: call-service
-                service: remote.turn_on
-                service_data:
-                  entity_id: remote.master_bedroom_2     
-                  activity: "ChromeCast"           
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "ChromeCast"
+                    color: rgb(228, 94, 101)
+                  - value: "ChromeCast"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:cast
+                name: Cast
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.master_bedroom_2     
+                    activity: "ChromeCast"           
 
-            - type: "custom:button-card"
-              entity: sensor.master_harmony_activity
-              color_type: icon
-              state:
-                - value: "Listen to WHA"
-                  color: rgb(228, 94, 101)
-                - value: "Listen to WHA"
-                  operator: '!='
-                  color: rgb(255, 255, 255)
-              icon: mdi:music
-              name: Music
-              tap_action:
-                action: call-service
-                service: remote.turn_on
-                service_data:
-                  entity_id: remote.master_bedroom_2     
-                  activity: "Listen to WHA"        
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Listen to WHA"
+                    color: rgb(228, 94, 101)
+                  - value: "Listen to WHA"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:music
+                name: Music
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.master_bedroom_2     
+                    activity: "Listen to WHA"        
 
-        - type: custom:mini-media-player
-          entity: media_player.master_bedroom_stereo
-          name: Master Bedroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_master_bed
-            service_data:
-              deviceID: 
-                - this
+          - type: custom:mini-media-player
+            entity: media_player.master_bedroom_stereo
+            name: Master Bedroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_master_bed
+              service_data:
+                deviceID: 
+                  - this
+
+      type: conditional
+      conditions:
+        - entity: sensor.master_harmony_activity
+          state: "unavailable"
+        - entity: sensor.master_harmony_activity
+          state: "unknown"
+      card:      
+        type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.aquara_master_bedroom_temperature
+                style:
+                  bottom: 20%
+                  right: 5%
+                  transform: initial
+                type: state-label
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Master Bedroom
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: cover.master_blinds
+                color_type: icon
+                state:
+                  - value: "open"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:blinds-open
+                  - value: "closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:blinds
+                  - value: "unavailable"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:exclamation
+                name: Blinds
+                hold_action:  
+                  action: call-service
+                  service: script.popup_master_blinds
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
+                entity: light.master_bedroom_light
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:lightbulb-on-outline
+                  - value: "off"
+                    icon: mdi:lightbulb-outline
+                name: Light
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.master_bedroom_fan
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:fan-on
+                  - value: "off"
+                    icon: mdi:fan-off
+                name: Fan
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.master_bedroom_lamps
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:lamp
+                name: Lamp
+                hold_action: 
+                  action: more-info
+
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:button-card"
+                entity: light.master_bedroom_leds_rgb
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:led-on
+                  - value: "off"
+                    icon: mdi:led-off
+                name: LEDs
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: input_boolean.work_alarm_enabled
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:alarm-check
+                  - value: "off"
+                    icon: mdi:alarm-off
+                name: Work
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: input_boolean.manual_alarm_enabled
+                color_type: icon
+                color: rgb(228, 94, 101)
+                state:
+                  - value: "on"
+                    icon: mdi:alarm-check
+                  - value: "off"
+                    icon: mdi:alarm-off
+                name: Manual
+                hold_action: 
+                  action: call-service
+                  service: script.popup_manual_alarm
+                  service_data:
+                    deviceID: 
+                      - this 
+                        
+              - type: "custom:button-card"
+                entity: switch.water_projector
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:waves
+                name: Waves
+                hold_action: 
+                  action: more-info
+
+              
+
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:gap-card"
+                height: 10
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity_alternate
+                color_type: icon
+                state:
+                  - value: "PowerOff"
+                    color: rgb(228, 94, 101)
+                  - value: "PowerOff"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:remote-tv-off
+                name: "Off"
+                tap_action:
+                  action: call-service
+                  service: remote.turn_off
+                  service_data:
+                    entity_id: remote.harmony_hub
+              
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity_alternate
+                color_type: icon
+                state:
+                  - value: "Watch PVR"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch PVR"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:kodi
+                name: Kodi
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_hub  
+                    activity: "Watch PVR"            
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity_alternate
+                color_type: icon
+                state:
+                  - value: "Watch Roku"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch Roku"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:youtube-tv
+                name: Roku
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_hub 
+                    activity: "Watch Roku"            
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity_alternate
+                color_type: icon
+                state:
+                  - value: "ChromeCast"
+                    color: rgb(228, 94, 101)
+                  - value: "ChromeCast"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:cast
+                name: Cast
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_hub    
+                    activity: "ChromeCast"           
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity_alternate
+                color_type: icon
+                state:
+                  - value: "Listen to WHA"
+                    color: rgb(228, 94, 101)
+                  - value: "Listen to WHA"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:music
+                name: Music
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_hub    
+                    activity: "Listen to WHA"        
+
+          - type: custom:mini-media-player
+            entity: media_player.master_bedroom_stereo
+            name: Master Bedroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_master_bed
+              service_data:
+                deviceID: 
+                  - this                  
