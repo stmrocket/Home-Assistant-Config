@@ -86,17 +86,17 @@
         - cover.left_den_blind
   condition:
     - condition: template
-      value_template: '{{ states.cover.center_den_blind.state == states.cover.right_den_blind.state == states.cover.left_den_blind.state }}'
+      value_template: "{{ states('cover.center_den_blind') == states(cover.right_den_blind') == states('cover.left_den_blind') }}"
     - condition: template
-      value_template: '{{ not states.cover.center_den_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.center_den_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.left_den_blind.state == "unavailable" }}'
+      value_template:  "{{ not is_state('cover.left_den_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.right_den_blind.state == "unavailable" }}'
+      value_template:  "{{ not is_state('cover.right_den_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:
-        payload_template: '{{ states.cover.center_den_blind.attributes.current_position }}'
+        payload_template: "{{ state_attr('cover.center_den_blind', 'current_position') }}"
         topic: habc/den/tele/currentpct
         retain: 'true'
 
@@ -109,13 +109,13 @@
         - cover.left_den_blind
   condition:
     - condition: template
-      value_template: '{{not states.cover.center_den_blind.state == states.cover.right_den_blind.state == states.cover.left_den_blind.state }}'
+      value_template: "{{ not states('cover.center_den_blind') == states(cover.right_den_blind') == states('cover.left_den_blind') }}"
     - condition: template
-      value_template: '{{ not states.cover.center_den_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.center_den_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.left_den_blind.state == "unavailable" }}'
+      value_template:  "{{ not is_state('cover.left_den_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.right_den_blind.state == "unavailable" }}'
+      value_template:  "{{ not is_state('cover.right_den_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:

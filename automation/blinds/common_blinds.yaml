@@ -68,15 +68,15 @@
         - cover.guest_blind
   condition:
     - condition: template
-      value_template: '{{ states.cover.office_blinds.state == states.cover.den_blinds.state == states.cover.kitchen_blinds.state == states.cover.guest_blind.state == states.cover.server_room_blind.state == states.cover.shack_blinds.state == states.cover.master_blinds.state }}'
+      value_template: "{{ states('cover.office_blinds') == states('cover.den_blinds') == states('cover.kitchen_blinds') == states('cover.guest_blind') == states('cover.server_room_blind') == states('cover.shack_blinds') == states('cover.master_blinds') }}"
     - condition: template
-      value_template: '{{ not states.cover.guest_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.guest_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.server_room_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.server_room_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:
-        payload_template: '{{ states.cover.center_office_blind.attributes.current_position }}'
+        payload_template: "{{ state_attr('cover.center_office_blind', 'current_position') }}"
         topic: habc/all/tele/currentpct
         retain: 'true'
 
@@ -93,11 +93,11 @@
         - cover.guest_blind
   condition:
     - condition: template
-      value_template: '{{not states.cover.office_blinds.state == states.cover.den_blinds.state == states.cover.kitchen_blinds.state == states.cover.guest_blind.state == states.cover.server_room_blind.state == states.cover.shack_blinds.state == states.cover.master_blinds.state }}'
+      value_template: "{{ not states('cover.office_blinds') == states('cover.den_blinds') == states('cover.kitchen_blinds') == states('cover.guest_blind') == states('cover.server_room_blind') == states('cover.shack_blinds') == states('cover.master_blinds') }}"
     - condition: template
-      value_template: '{{ not states.cover.guest_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.guest_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.server_room_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.server_room_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:
