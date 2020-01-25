@@ -141,17 +141,17 @@
       to: armed_night
   condition:
     - condition: template
-      value_template: "{{ states.sensor.rain_day.state | float > 0 }}"  
+      value_template: "{{ states('sensor.rain_day') | float > 0 }}"  
   action:
     - service: elkm1.alarm_display_message
       data_template:
         entity_id: alarm_control_panel.area_001
-        line1: 'Rain: {{ states.sensor.rain_day.state }}"'
+        line1: 'Rain: {{ states("sensor.rain_day") }}"'
   
 - alias: Clear Rainfall on Elk Keypads
   trigger:
     - platform: template
-      value_template: "{{ states.sensor.rain_day.state | float == 0 }}"  
+      value_template: "{{ states('sensor.rain_day') | float == 0 }}"  
   action:
     - service: elkm1.alarm_display_message
       data_template:
