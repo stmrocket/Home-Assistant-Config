@@ -1,11 +1,11 @@
 - alias: 'Dryer State - Door'
   trigger:
-    platform: numeric_state
-    entity_id: sensor.dryer_watts
-    above: 5
-    below: 20
-    for:
-      seconds: 2
+    - platform: numeric_state
+      entity_id: sensor.dryer_watts
+      above: 5
+      below: 20
+      for:
+        seconds: 2
   action:
     - service: mqtt.publish
       data:
@@ -15,11 +15,11 @@
 
 - alias: 'Dryer State - Drying'
   trigger:
-    platform: numeric_state
-    entity_id: sensor.dryer_watts
-    above: 50
-    for:
-      seconds: 2
+    - platform: numeric_state
+      entity_id: sensor.dryer_watts
+      above: 50
+      for:
+        seconds: 2
   action:
     - service: mqtt.publish
       data:
@@ -27,18 +27,17 @@
         payload: 'Drying'
         retain: 'true'
     - service: switch.turn_on
-      data:
-        entity_id: switch.utility_room_vent_fan
+      entity_id: switch.utility_room_vent_fan
     - service: input_boolean.turn_off
       entity_id: input_boolean.dryer_end
 
 - alias: 'Dryer State - Idle'
   trigger:
-    platform: numeric_state
-    entity_id: sensor.dryer_watts
-    below: 5
-    for:
-      seconds: 2
+    - platform: numeric_state
+      entity_id: sensor.dryer_watts
+      below: 5
+      for:
+        seconds: 2
   action:
     - service: mqtt.publish
       data:
@@ -46,23 +45,22 @@
         payload: 'Idle'
         retain: 'true'
     - service: switch.turn_off
-      data:
-        entity_id: switch.utility_room_vent_fan
+      entity_id: switch.utility_room_vent_fan
 
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #  Washing Machine Start/Finish
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 - alias: 'Washer State - Start'
   trigger:
-    platform: numeric_state
-    entity_id: sensor.washer_watts
-    above: 20
-    for:
-      seconds: 10
+    - platform: numeric_state
+      entity_id: sensor.washer_watts
+      above: 20
+      for:
+        seconds: 10
 # Make sure washer isn't already running and delaying between cycles - don't re-trigger and cause stopwatch reset
   condition:
-    condition: template
-    value_template: "{{ states.sensor.washer_state.state != 'Washing' }}"
+    - condition: template
+      value_template: "{{ not is_state('sensor.washer_state', 'Washing') }}"
   action:
     - service: mqtt.publish
       data:
@@ -74,11 +72,11 @@
 
 - alias: 'Washer State - Idle'
   trigger:
-    platform: numeric_state
-    entity_id: sensor.washer_watts
-    below: 20
-    for:
-      minutes: 2
+    - platform: numeric_state
+      entity_id: sensor.washer_watts
+      below: 20
+      for:
+        minutes: 2
   action:
     - service: mqtt.publish
       data:
@@ -88,49 +86,44 @@
 
 - alias: 'Dryer Finished'
   trigger:
-    platform: state
-    entity_id: sensor.dryer_state
-    from: 'Drying'
-    to: 'Idle'
+    - platform: state
+      entity_id: sensor.dryer_state
+      from: 'Drying'
+      to: 'Idle'
   action:
     - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.dryer_end
+      entity_id: input_boolean.dryer_end
 
 - alias: 'Washer Finished'
   trigger:
-    platform: state
-    entity_id: sensor.washer_state
-    from: 'Washing'
-    to: 'Idle'
+    - platform: state
+      entity_id: sensor.washer_state
+      from: 'Washing'
+      to: 'Idle'
   condition:
-    condition: template
-    value_template: "{{ states.sensor.dryer_state.state != 'Drying' }}"
+    - condition: template
+      value_template: "{{ not is_state('sensor.dryer_state', 'Washing') }}"
   action:
     - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.washer_end
+      entity_id: input_boolean.washer_end
 
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #  Announcements
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 - alias: 'Announce Dryer Finished'
   trigger:
-    platform: state
-    entity_id: input_boolean.dryer_end
-    to: 'on'
+    - platform: state
+      entity_id: input_boolean.dryer_end
+      to: 'on'
   condition:
-  #- condition: state
-  #  entity_id: sensor.fpp_status
-  #  state: 'idle'
-  - condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: 'disarmed'
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: 'armed_home'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: 'disarmed'
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: 'armed_home'
   action:
     - service: mqtt.publish
       data:
@@ -152,22 +145,22 @@
       
 - alias: 'Repeat Announce Dryer Finished'
   trigger:
-  - event_data:
-      entity_id: timer.dryer_alert
-    event_type: timer.finished
-    platform: event
+    - event_data:
+        entity_id: timer.dryer_alert
+      event_type: timer.finished
+      platform: event
   condition:
-  - condition: numeric_state
-    entity_id: counter.dryer_alert
-    below: 7
-  - condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: 'disarmed'
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: 'armed_home'
+    - condition: numeric_state
+      entity_id: counter.dryer_alert
+      below: 7
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: 'disarmed'
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: 'armed_home'
   action:
     - service: mqtt.publish
       data:
@@ -180,18 +173,18 @@
 
 - alias: 'Announce Washer Finished'
   trigger:
-    platform: state
-    entity_id: input_boolean.washer_end
-    to: 'on'
+    - platform: state
+      entity_id: input_boolean.washer_end
+      to: 'on'
   condition:
-  - condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: 'disarmed'
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: 'armed_home'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: 'disarmed'
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: 'armed_home'
   action:
     - service: mqtt.publish
       data:
@@ -213,22 +206,22 @@
 
 - alias: 'Repeat Announce Washer Finished'
   trigger:
-  - event_data:
-      entity_id: timer.washer_alert
-    event_type: timer.finished
-    platform: event
+    - event_data:
+        entity_id: timer.washer_alert
+      event_type: timer.finished
+      platform: event
   condition:
-  - condition: numeric_state
-    entity_id: counter.washer_alert
-    below: 7
-  - condition: or
-    conditions:
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: 'disarmed'
-      - condition: state
-        entity_id: alarm_control_panel.area_001
-        state: 'armed_home'
+    - condition: numeric_state
+      entity_id: counter.washer_alert
+      below: 7
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: 'disarmed'
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: 'armed_home'
   action:
     - service: mqtt.publish
       data:
@@ -242,51 +235,51 @@
 #Reset all timers when Laundry Room entered
 - alias: 'Reset Laundry Timers on Motion'
   trigger:
-  - entity_id: sensor.zone_026
-    platform: state
-    to: Violated
+    - entity_id: sensor.zone_026
+      platform: state
+      to: Violated
   action:
   - service: input_boolean.turn_off
-    entity_id: input_boolean.dryer_end
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.washer_end
+    entity_id: 
+      - input_boolean.dryer_end
+      - input_boolean.washer_end
   - service: timer.cancel
-    entity_id: timer.dryer_alert
-  - service: timer.cancel
-    entity_id: timer.washer_alert
+    entity_id: 
+      - timer.dryer_alert
+      - timer.washer_alert
   - service: counter.reset
-    entity_id: counter.dryer_alert
-  - service: counter.reset
-    entity_id: counter.washer_alert
+    entity_id: 
+      - counter.dryer_alert
+      - counter.washer_alert
 
 #Reset all timers when Not Awake or Home
 - alias: 'Reset Laundry Timers on Alarm Status'
   trigger:
-  - entity_id: input_boolean.dryer_end
-    platform: state
-    to: 'on'
-  - entity_id: input_boolean.washer_end
-    platform: state
-    to: 'on'
+    - entity_id: input_boolean.dryer_end
+      platform: state
+      to: 'on'
+    - entity_id: input_boolean.washer_end
+      platform: state
+      to: 'on'
   condition:
-  - condition: or
-    conditions:
-    - condition: state
-      entity_id: alarm_control_panel.area_001
-      state: 'armed_away'
-    - condition: state
-      entity_id: alarm_control_panel.area_001
-      state: 'armed_night'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: alarm_control_panel.area_001
+        state: 'armed_away'
+      - condition: state
+        entity_id: alarm_control_panel.area_001
+        state: 'armed_night'
   action:
   - service: input_boolean.turn_off
-    entity_id: input_boolean.dryer_end
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.washer_end
+    entity_id: 
+      - input_boolean.dryer_end
+      - input_boolean.washer_end
   - service: timer.cancel
-    entity_id: timer.dryer_alert
-  - service: timer.cancel
-    entity_id: timer.washer_alert
+    entity_id: 
+      - timer.dryer_alert
+      - timer.washer_alert
   - service: counter.reset
-    entity_id: counter.dryer_alert
-  - service: counter.reset
-    entity_id: counter.washer_alert
+    entity_id: 
+      - counter.dryer_alert
+      - counter.washer_alert
