@@ -86,17 +86,17 @@
         - cover.left_shack_blind
   condition:
     - condition: template
-      value_template: '{{ states.cover.center_shack_blind.state == states.cover.right_shack_blind.state == states.cover.left_shack_blind.state }}'
+      value_template: "{{ states('cover.center_shack_blind') == states('cover.right_shack_blind') == states('cover.left_shack_blind') }}"
     - condition: template
-      value_template: '{{ not states.cover.center_shack_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.center_shack_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.left_shack_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.left_shack_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.right_shack_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.right_shack_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:
-        payload_template: '{{ states.cover.center_shack_blind.attributes.current_position }}'
+        payload_template: "{{ state_attr('cover.center_shack_blind', 'current_position') }}"
         topic: habc/shack/tele/currentpct
         retain: 'true'
 
@@ -109,13 +109,13 @@
         - cover.left_shack_blind
   condition:
     - condition: template
-      value_template: '{{not states.cover.center_shack_blind.state == states.cover.right_shack_blind.state == states.cover.left_shack_blind.state }}'
+      value_template: "{{ not states('cover.center_shack_blind') == states('cover.right_shack_blind') == states('cover.left_shack_blind') }}"
     - condition: template
-      value_template: '{{ not states.cover.center_shack_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.center_shack_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.left_shack_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.left_shack_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.right_shack_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.right_shack_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:

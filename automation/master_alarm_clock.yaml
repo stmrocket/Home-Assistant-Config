@@ -37,7 +37,7 @@
 - alias: Master Wake Manual With Music
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (states.input_datetime.master_manual_alarm.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
   condition:
     - condition: state
       entity_id: alarm_control_panel.area_001
@@ -68,7 +68,7 @@
 - alias: Master Wake Manual With Horn
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (states.input_datetime.master_manual_alarm.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
   condition:
     - condition: state
       entity_id: alarm_control_panel.area_001
@@ -94,6 +94,35 @@
         - input_boolean.alarm_clock_ringing
     - service: counter.increment
       entity_id: counter.master_snooze
+
+- alias: Master Wake Manual Resume HVAC
+  trigger:
+    - platform: state
+      entity_id: counter.master_snooze
+      to: '1'
+  condition:
+    - condition: state
+      entity_id: input_boolean.manual_alarm_ringing
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.manual_alarm_hvac
+      state: 'on'
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.living_areas
+        target_temp_high: 78
+        target_temp_low: 68
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.front_rooms
+        target_temp_high: 78
+        target_temp_low: 68
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.master_suite
+        target_temp_high: 79
+        target_temp_low: 68     
 
 - alias: Master Wake Work First Snooze
   trigger:
