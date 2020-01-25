@@ -40,17 +40,17 @@ sensor:
     sensors:
       lock_front_door_battery:
         friendly_name: 'Front Door Lock Battery'
-        value_template: '{{ states.zwave.front_door_lock.attributes.battery_level }}'
+        value_template: "{{ state_attr('zwave.front_door_lock', 'battery_level') }}"
         unit_of_measurement: '%'
         entity_id: zwave.front_door_lock
       lock_back_door_battery:
         friendly_name: 'Back Door Lock Battery'
-        value_template: '{{ states.zwave.back_door_lock.attributes.battery_level }}'
+        value_template: "{{ state_attr('zwave.back_door_lock', 'battery_level') }}"
         unit_of_measurement: '%'
         entity_id: zwave.back_door_lock
       lock_garage_entry_battery:
         friendly_name: 'Garage Entry Lock Battery'
-        value_template: '{{ states.zwave.garage_entry_lock.attributes.battery_level }}'
+        value_template: "{{ state_attr('zwave.garage_entry_lock', 'battery_level') }}"
         unit_of_measurement: '%'
         entity_id: zwave.garage_entry_lock
 
@@ -98,7 +98,7 @@ switch:
     switches:
       irrigation_program:
         friendly_name: "Irrigation Program Enabled"
-        value_template: '{{ states.switch.every_3_days.state | string != "unavailable" }}'
+        value_template: "{{ not is_state('switch.every_3_days', 'unavailable') }}"
         turn_on:
           service: rainmachine.enable_program
           data:
@@ -110,7 +110,7 @@ switch:
 
       irrigation_run_program:
         friendly_name: "Run Irrigation Program"
-        value_template: '{{ states.switch.every_3_days.state | string == "on" }}'
+        value_template: "{{ is_state('switch.every_3_days', 'on') }}"
         turn_on:
           service: rainmachine.start_program
           data:
