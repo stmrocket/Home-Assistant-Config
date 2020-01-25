@@ -105,19 +105,19 @@
         - cover.west_master_blind
   condition:
     - condition: template
-      value_template: '{{ states.cover.center_master_blind.state == states.cover.right_master_blind.state == states.cover.left_master_blind.state == states.cover.west_master_blind.state }}'
+      value_template: "{{ states('cover.center_master_blind') == states('cover.right_master_blind') == states('cover.left_master_blind') == states('cover.west_master_blind') }}"
     - condition: template
-      value_template: '{{ not states.cover.center_master_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.center_master_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.left_master_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.left_master_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.right_master_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.right_master_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.west_master_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.west_master_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:
-        payload_template: '{{ states.cover.center_master_blind.attributes.current_position }}'
+        payload_template: "{{ state_attr('cover.center_master_blind', 'current_position') }}"
         topic: habc/master/tele/currentpct
         retain: 'true'
 
@@ -131,15 +131,15 @@
         - cover.west_master_blind
   condition:
     - condition: template
-      value_template: '{{not states.cover.center_master_blind.state == states.cover.right_master_blind.state == states.cover.left_master_blind.state == states.cover.west_master_blind.state }}'
+      value_template: "{{ not states('cover.center_master_blind') == states('cover.right_master_blind') == states('cover.left_master_blind') == states('cover.west_master_blind') }}"
     - condition: template
-      value_template: '{{ not states.cover.center_master_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.center_master_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.left_master_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.left_master_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.right_master_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.right_master_blind', 'unavailable') }}"
     - condition: template
-      value_template: '{{ not states.cover.west_master_blind.state == "unavailable" }}'
+      value_template: "{{ not is_state('cover.west_master_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:
