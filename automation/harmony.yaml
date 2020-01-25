@@ -5,7 +5,7 @@
       to: 'on'
   condition:
     - condition: template
-      value_template: "{{ not is_state('sensor.master_harmony_activity', 'unavailable' }}"
+      value_template: "{{ not is_state('sensor.master_harmony_activity', 'unavailable') }}"
   action:
     - service: remote.turn_on
       data:
@@ -21,7 +21,7 @@
         seconds: 15
   condition:
     - condition: template
-      value_template: "{{ not is_state('sensor.master_harmony_activity', 'unavailable' }}"
+      value_template: "{{ not is_state('sensor.master_harmony_activity', 'unavailable') }}"
     - condition: state
       entity_id: sensor.master_harmony_activity
       state: "Listen to WHA"
@@ -36,7 +36,7 @@
       to: 'on'
   condition:
     - condition: template
-      value_template: "{{ is_state('sensor.master_harmony_activity', 'unavailable' }}"
+      value_template: "{{ is_state('sensor.master_harmony_activity', 'unavailable') }}"
   action:
     - service: remote.turn_on
       data:
@@ -52,7 +52,7 @@
         seconds: 15
   condition:
     - condition: template
-      value_template: "{{ is_state('sensor.master_harmony_activity', 'unavailable' }}"
+      value_template: "{{ is_state('sensor.master_harmony_activity', 'unavailable') }}"
     - condition: state
       entity_id: sensor.master_harmony_activity_alternate
       state: "Listen to WHA"
