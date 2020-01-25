@@ -18,6 +18,9 @@ input_boolean:
   manual_alarm_horn:
     name: Manual Alarm Clock Use Horn
     icon: mdi:timer
+  manual_alarm_hvac:
+    name: Manual Alarm Resume HVAC
+    icon: mdi:timer
   alarm_clock_ringing:
     name: Alarm Clock Ringing
     icon: mdi:timer
