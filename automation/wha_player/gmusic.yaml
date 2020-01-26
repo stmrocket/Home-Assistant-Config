@@ -2,925 +2,931 @@
 
 - alias: Update Keypad Dispinfo when Playing
   trigger:
-  - platform: template
-    value_template: "{{ states.media_player.whole_house_audio.attributes.media_duration }}"
-  - platform: template
-    value_template: "{{ states.media_player.whole_house_audio.attributes.media_position }}"
-  - platform: state
-    entity_id: media_player.whole_house_audio
+    - platform: template
+      value_template: "{{ state_attr('media_player.whole_house_audio', 'media_duration') }}"
+    - platform: template
+      value_template: "{{ state_attr('media_player.whole_house_audio', 'media_position') }}"
+    - platform: state
+      entity_id: media_player.whole_house_audio
   condition:
-  - condition: state
-    entity_id: media_player.gmusic_player
-    state: playing
+    - condition: state
+      entity_id: media_player.gmusic_player
+      state: playing
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/info
-      payload_template: '5,{{ (states.media_player.whole_house_audio.attributes.media_duration | float * 10) | float |  round(0)}},{{ (states.media_player.whole_house_audio.attributes.media_position | float * 10) | float |  round(0)}},{% if is_state("media_player.gmusic_player", "playing")  -%}2{%- elif is_state("media_player.gmusic_player", "paused") -%}3{%- else -%}1{%- endif %}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/info
+        payload_template: "5,{{ (state_attr('media_player.whole_house_audio', 'media_duration') | float * 10) | float |  round(0)}},{{ (state_attr('media_player.whole_house_audio', 'media_position') | float * 10) | float |  round(0)}},{% if is_state('media_player.gmusic_player', 'playing')  -%}2{%- elif is_state('media_player.gmusic_player', 'paused') -%}3{%- else -%}1{%- endif %}"
+
 - alias: Update Keypad Dispinfo when pausing
   trigger:
-  - platform: state
-    entity_id: media_player.whole_house_audio
-    to: paused
+    - platform: state
+      entity_id: media_player.whole_house_audio
+      to: paused
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/info
-      payload_template: '5,{{ (states.media_player.whole_house_audio.attributes.media_duration | float * 10) | float |  round(0)}},{{ (states.media_player.whole_house_audio.attributes.media_position | float * 10) | float |  round(0)}},{% if is_state("media_player.gmusic_player", "playing")  -%}2{%- elif is_state("media_player.gmusic_player", "paused") -%}3{%- else -%}1{%- endif %}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/info
+        payload_template: "5,{{ (state_attr('media_player.whole_house_audio', 'media_duration') | float * 10) | float |  round(0)}},{{ (state_attr('media_player.whole_house_audio', 'media_position') | float * 10) | float |  round(0)}},{% if is_state('media_player.gmusic_player', 'playing')  -%}2{%- elif is_state('media_player.gmusic_player', 'paused') -%}3{%- else -%}1{%- endif %}"
+
 - alias: Update Keypad Displine Station
   trigger:
-  - platform: template
-    value_template: "{{ states.media_player.whole_house_audio.attributes.media_duration }}"
-  - platform: template
-    value_template: "{{ states.media_player.whole_house_audio.attributes.media_position }}"
-  - platform: state
-    entity_id: media_player.gmusic_player
+    - platform: template
+      value_template: "{{ state_attr('media_player.whole_house_audio', 'media_duration') }}"
+    - platform: template
+      value_template: "{{ state_attr('media_player.whole_house_audio', 'media_position') }}"
+    - platform: state
+      entity_id: media_player.gmusic_player
   condition:
-  - condition: state
-    entity_id: media_player.gmusic_player
-    state: playing
-  - condition: template
-    value_template: '{% if states.media_player.gmusic_player.attributes.media_title is not defined %}False{% else %}True{% endif %}'
-  - condition: template
-    value_template: '{% if states.media_player.gmusic_player.attributes.media_artist is not defined %}False{% else %}True{% endif %}'
-  - condition: template
-    value_template: '{% if states.media_player.gmusic_player.attributes.media_album_name is not defined %}False{% else %}True{% endif %}'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Station'
+    - condition: state
+      entity_id: media_player.gmusic_player
+      state: playing
+    - condition: template
+      value_template: "{{ not state_attr('media_player.gmusic_player', 'media_title') ==  None }}"
+    - condition: template
+      value_template: "{{ not state_attr('media_player.gmusic_player', 'media_artist') ==  None }}"
+    - condition: template
+      value_template: "{{ not state_attr('media_player.gmusic_player', 'media_album_name') ==  None }}"
+    - condition: state
+      entity_id: input_select.gmusic_player_source
+      state: 'Station'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,{{ states.input_select.gmusic_player_station.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,{{ states.media_player.gmusic_player.attributes.media_album_name }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.media_player.gmusic_player.attributes.media_artist }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,{{ states.media_player.gmusic_player.attributes.media_title }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: "5,1,{{ states('input_select.gmusic_player_station') }}"
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: "5,2,{{ state_attr('media_player.gmusic_player', 'media_album_name') }}"
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: "5,3,{{ state_attr('media_player.gmusic_player', 'media_artist') }}"
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: "5,4,{{ state_attr('media_player.gmusic_player', 'media_title') }}"
+
 - alias: Update Keypad Displine Playlist
   trigger:
-  - platform: template
-    value_template: "{{ states.media_player.whole_house_audio.attributes.media_duration }}"
-  - platform: template
-    value_template: "{{ states.media_player.whole_house_audio.attributes.media_position }}"
-  - platform: state
-    entity_id: media_player.gmusic_player
+    - platform: template
+      value_template: "{{ state_attr('media_player.whole_house_audio', 'media_duration') }}"
+    - platform: template
+      value_template: "{{ state_attr('media_player.whole_house_audio', 'media_position') }}"
+    - platform: state
+      entity_id: media_player.gmusic_player
   condition:
-  - condition: state
-    entity_id: media_player.gmusic_player
-    state: playing
-  - condition: template
-    value_template: '{% if states.media_player.gmusic_player.attributes.media_title is not defined %}False{% else %}True{% endif %}'
-  - condition: template
-    value_template: '{% if states.media_player.gmusic_player.attributes.media_artist is not defined %}False{% else %}True{% endif %}'
-  - condition: template
-    value_template: '{% if states.media_player.gmusic_player.attributes.media_album_name is not defined %}False{% else %}True{% endif %}'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Playlist'
+    - condition: state
+      entity_id: media_player.gmusic_player
+      state: playing
+    - condition: template
+      value_template: "{{ not state_attr('media_player.gmusic_player', 'media_title') ==  None }}"
+    - condition: template
+      value_template: "{{ not state_attr('media_player.gmusic_player', 'media_artist') ==  None }}"
+    - condition: template
+      value_template: "{{ not state_attr('media_player.gmusic_player', 'media_album_name') ==  None }}"
+    - condition: state
+      entity_id: input_select.gmusic_player_source
+      state: 'Playlist'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,{{ states.input_select.gmusic_player_playlist.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,{{ states.media_player.gmusic_player.attributes.media_album_name }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.media_player.gmusic_player.attributes.media_artist }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,{{ states.media_player.gmusic_player.attributes.media_title }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: "5,1,{{ states('input_select.gmusic_player_playlist') }}"
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: "5,2,{{ state_attr('media_player.gmusic_player', 'media_album_name') }}"
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: "5,3,{{ state_attr('media_player.gmusic_player', 'media_artist') }}"
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: "5,4,{{ state_attr('media_player.gmusic_player', 'media_title') }}"
+
 - alias: Pause from Keypad
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'PLAY'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'PLAY'
   condition:
-  - condition: state
-    entity_id: media_player.gmusic_player
-    state: playing
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'off'
-  action:
-  - service: media_player.media_pause
-    data:
+    - condition: state
       entity_id: media_player.gmusic_player
+      state: playing
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'off'
+  action:
+    - service: media_player.media_pause
+      entity_id: media_player.gmusic_player
+
 - alias: Play from Keypad
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'PLAY'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'PLAY'
   condition:
-  - condition: or
-    conditions:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: media_player.gmusic_player
+        state: paused
+      - condition: state
+        entity_id: media_player.gmusic_player
+        state: 'off'
     - condition: state
-      entity_id: media_player.gmusic_player
-      state: paused
-    - condition: state
-      entity_id: media_player.gmusic_player
+      entity_id: input_boolean.nuvo_in_menu
       state: 'off'
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'off'
   action:
-  - service: media_player.media_play
-    data:
+    - service: media_player.media_play
       entity_id: media_player.gmusic_player
+
 - alias: Next Track from Keypad CC On
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'NEXT'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'NEXT'
   condition:
-  - condition: state
-    entity_id: media_player.gmusic_player
-    state: playing
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'off'
-  action:
-   - service: media_player.media_next_track
-     data:
+    - condition: state
       entity_id: media_player.gmusic_player
+      state: playing
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'off'
+  action:
+    - service: media_player.media_next_track
+      entity_id: media_player.gmusic_player
+
 - alias: Previous Track from Keypad CC On
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'PREV'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'PREV'
   condition:
-  - condition: state
-    entity_id: media_player.gmusic_player
-    state: playing
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'off'
-  action:
-  - service: media_player.media_previous_track
-    data:
+    - condition: state
       entity_id: media_player.gmusic_player
+      state: playing
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'off'
+  action:
+    - service: media_player.media_previous_track
+      entity_id: media_player.gmusic_player
+
 - alias: Keep Track of Current GM Values
   trigger:
-  - platform: state
-    entity_id: media_player.gmusic_player
+    - platform: state
+      entity_id: media_player.gmusic_player
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'off'
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'off'
   action:
-  - service: input_text.set_value
-    data_template:
-      entity_id: input_text.gm_current_mode
-      value: "{{ states.input_select.gmusic_player_source.state | string }}"
-  - service: input_text.set_value
-    data_template:
-      entity_id: input_text.gm_current_station
-      value: "{{ states.input_select.gmusic_player_station.state | string }}"
-  - service: input_text.set_value
-    data_template:
-      entity_id: input_text.gm_current_playlist
-      value: "{{ states.input_select.gmusic_player_playlist.state | string }}"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.gm_current_mode
+        value: "{{ states('input_select.gmusic_player_source') }}"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.gm_current_station
+        value: "{{ states('input_select.gmusic_player_station') }}"
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.gm_current_playlist
+        value: "{{ states('input_select.gmusic_player_playlist') }}"
+
 #Menu Navigation
 - alias: GM Nuvo Enter Menu Station Mode
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'HPLAY'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'HPLAY'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'off'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Station'
-  action:
-  - service: input_boolean.turn_on
-    data:
+    - condition: state
       entity_id: input_boolean.nuvo_in_menu
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,Select a Station'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,""'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.input_select.gmusic_player_station.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,""'
+      state: 'off'
+    - condition: state
+      entity_id: input_select.gmusic_player_source
+      state: 'Station'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.nuvo_in_menu
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,Select a Station'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ states("input_select.gmusic_player_station") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,""'
+
 - alias: GM Nuvo Next Station
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'NEXT'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'NEXT'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Station'
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'on'
+    - condition: state
+      entity_id: input_select.gmusic_player_source
+      state: 'Station'
   action:
-  - service: input_select.select_next
-    data:
+    - service: input_select.select_next
       entity_id: input_select.gmusic_player_station
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,Select a Station'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,""'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.input_select.gmusic_player_station.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,Select a Station'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ states("input_select.gmusic_player_station") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,""'
+
 - alias: GM Nuvo Previous Station
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'PREV'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'PREV'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Station'
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'on'
+    - condition: state
+      entity_id: input_select.gmusic_player_source
+      state: 'Station'
   action:
-  - service: input_select.select_previous
-    data:
+    - service: input_select.select_previous
       entity_id: input_select.gmusic_player_station
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,Select a Station'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,""'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.input_select.gmusic_player_station.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,Select a Station'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ states("input_select.gmusic_player_station") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,""'
+
 - alias: GM Nuvo Play Selection
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'PLAY'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'PLAY'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  action:
-  - service: media_player.media_play
-    data:
-      entity_id: media_player.gmusic_player
-  - service: input_boolean.turn_off
-    data:
+    - condition: state
       entity_id: input_boolean.nuvo_in_menu
+      state: 'on'
+  action:
+    - service: media_player.media_play
+      entity_id: media_player.gmusic_player
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.nuvo_in_menu
+
 - alias: GM Nuvo Menu Station to Playlist
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'HPREV'
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'HNEXT'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'HPREV'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'HNEXT'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Station'
-  action:
-  - service: input_select.select_option
-    data:
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'on'
+    - condition: state
       entity_id: input_select.gmusic_player_source
-      option: Playlist
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,Select a Playlist'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,""'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.input_select.gmusic_player_playlist.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,""'
+      state: 'Station'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.gmusic_player_source
+        option: Playlist
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,Select a Playlist'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ states("input_select.gmusic_player_playlist") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,""'
+
 - alias: GM Nuvo Menu Playlist to Station
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'HPREV'
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'HNEXT'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'HPREV'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'HNEXT'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Playlist'
-  action:
-  - service: input_select.select_option
-    data:
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'on'
+    - condition: state
       entity_id: input_select.gmusic_player_source
-      option: Station
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,Select a Station'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,""'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.input_select.gmusic_player_station.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,""'
+      state: 'Playlist'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.gmusic_player_source
+        option: Station
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,Select a Station'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ states("input_select.gmusic_player_station") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,""'
+
 - alias: GM Nuvo Enter Menu Playlist Mode
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'HPLAY'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'HPLAY'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'off'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Playlist'
-  action:
-  - service: input_boolean.turn_on
-    data:
+    - condition: state
       entity_id: input_boolean.nuvo_in_menu
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,Select a Playliast'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,""'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.input_select.gmusic_player_playlist.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,""'
+      state: 'off'
+    - condition: state
+      entity_id: input_select.gmusic_player_source
+      state: 'Playlist'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.nuvo_in_menu
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,Select a Playliast'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ states("input_select.gmusic_player_playlist") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,""'
+
 - alias: GM Nuvo Next Playlist
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'NEXT'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'NEXT'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Playlist'
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'on'
+    - condition: state
+      entity_id: input_select.gmusic_player_source
+      state: 'Playlist'
   action:
-  - service: input_select.select_next
-    data:
+    - service: input_select.select_next
       entity_id: input_select.gmusic_player_playlist
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,Select a Playlist'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,""'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.input_select.gmusic_player_playlist.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,Select a Playlist'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ states("input_select.gmusic_player_playlist") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,""'
+
 - alias: GM Nuvo Previous Playlist
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'PREV'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'PREV'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  - condition: state
-    entity_id: input_select.gmusic_player_source
-    state: 'Playlist'
+    - condition: state
+      entity_id: input_boolean.nuvo_in_menu
+      state: 'on'
+    - condition: state
+      entity_id: input_select.gmusic_player_source
+      state: 'Playlist'
   action:
-  - service: input_select.select_previous
-    data:
+    - service: input_select.select_previous
       entity_id: input_select.gmusic_player_playlist
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,Select a Playlist'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,""'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.input_select.gmusic_player_playlist.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,Select a Playlist'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,""'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ states("input_select.gmusic_player_playlist") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,""'
+
 - alias: GM Nuvo Return Without Change Station
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'HPLAY'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'HPLAY'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  - condition: state
-    entity_id: input_text.gm_current_mode
-    state: 'Station'
-  action:
-  - service: input_boolean.turn_off
-    data:
+    - condition: state
       entity_id: input_boolean.nuvo_in_menu
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_source
-      option: "{{ states.input_text.gm_current_mode.state }}"
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_station
-      option: "{{ states.input_text.gm_current_station.state }}"
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_playlist
-      option: "{{ states.input_text.gm_current_playlist.state }}"
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,{{ states.input_select.gmusic_player_station.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,{{ states.media_player.gmusic_player.attributes.media_album_name }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.media_player.gmusic_player.attributes.media_artist }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,{{ states.media_player.gmusic_player.attributes.media_title }}'
+      state: 'on'
+    - condition: state
+      entity_id: input_text.gm_current_mode
+      state: 'Station'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.nuvo_in_menu
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_source
+        option: "{{ states('input_text.gm_current_mode') }}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_station
+        option: "{{ states('input_text.gm_current_station') }}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_playlist
+        option: "{{ states('input_text.gm_current_playlist') }}"
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,{{ states("input_select.gmusic_player_station") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,{{ state_attr("media_player.gmusic_player", "media_album_name") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ state_attr("media_player.gmusic_player", "media_artist") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,{{ state_attr("media_player.gmusic_player", "media_title") }}'
+
 - alias: GM Nuvo Return Without Change Playlist
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/source/5/press
-    payload: 'HPLAY'
+    - platform: mqtt
+      topic: nuvo/tele/source/5/press
+      payload: 'HPLAY'
   condition:
-  - condition: state
-    entity_id: input_boolean.nuvo_in_menu
-    state: 'on'
-  - condition: state
-    entity_id: input_text.gm_current_mode
-    state: 'Playlist'
-  action:
-  - service: input_boolean.turn_off
-    data:
+    - condition: state
       entity_id: input_boolean.nuvo_in_menu
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_source
-      option: "{{ states.input_text.gm_current_mode.state }}"
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_station
-      option: "{{ states.input_text.gm_current_station.state }}"
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_playlist
-      option: "{{ states.input_text.gm_current_playlist.state }}"
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,1,{{ states.input_select.gmusic_player_playlist.state }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,2,{{ states.media_player.gmusic_player.attributes.media_album_name }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,3,{{ states.media_player.gmusic_player.attributes.media_artist }}'
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/source/line
-      payload_template: '5,4,{{ states.media_player.gmusic_player.attributes.media_title }}'
+      state: 'on'
+    - condition: state
+      entity_id: input_text.gm_current_mode
+      state: 'Playlist'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.nuvo_in_menu
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_source
+        option: "{{ states('input_text.gm_current_mode') }}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_station
+        option: "{{ states('input_text.gm_current_station') }}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_playlist
+        option: "{{ states('input_text.gm_current_playlist') }}"
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,1,{{ states("input_select.gmusic_player_playlist") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,2,{{ state_attr("media_player.gmusic_player", "media_album_name") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,3,{{ state_attr("media_player.gmusic_player", "media_artist") }}'
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/source/line
+        payload_template: '5,4,{{ state_attr("media_player.gmusic_player", "media_title") }}'
+
 #Auto Zone Playback Control
 - alias: Play When Source Selected
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/zone/#
+    - platform: mqtt
+      topic: nuvo/tele/zone/#
   condition:
-  - condition: template
-    value_template: '{{not states.media_player.gmusic_player.state == "playing"}}'
-  - condition: template
-    value_template: "{{not trigger.payload_json['power'] == 'OFF'}}"
-  - condition: or
-    conditions:
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_1_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_1_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_2_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_2_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_3_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_3_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_4_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_4_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_5_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_5_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_6_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_6_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_7_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_7_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_8_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_8_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_9_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_9_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_10_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_10_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_11_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_11_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_12_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_12_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_13_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_13_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_14_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_14_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_15_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_15_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_16_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_16_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_17_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_17_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_18_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_18_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_19_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_19_source
-            state: '5'
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_20_power
-            state: 'on'
-          - condition: state
-            entity_id: sensor.nuvo_zone_20_source
-            state: '5'
+    - condition: template
+      value_template: "{{not is_state('media_player.gmusic_player', 'playing') }}"
+    - condition: template
+      value_template: "{{not trigger.payload_json['power'] == 'OFF'}}"
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_1_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_1_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_2_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_2_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_3_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_3_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_4_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_4_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_5_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_5_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_6_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_6_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_7_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_7_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_8_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_8_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_9_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_9_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_10_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_10_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_11_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_11_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_12_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_12_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_13_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_13_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_14_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_14_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_15_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_15_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_16_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_16_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_17_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_17_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_18_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_18_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_19_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_19_source
+              state: '5'
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_20_power
+              state: 'on'
+            - condition: state
+              entity_id: sensor.nuvo_zone_20_source
+              state: '5'
   action:
-  - service: media_player.media_play
-    data:
+    - service: media_player.media_play
       entity_id: media_player.gmusic_player
+
 - alias: Pause When Source Not In Use
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/zone/#
+    - platform: mqtt
+      topic: nuvo/tele/zone/#
   condition:
-  - condition: and
-    conditions:
-      - condition: state
-        entity_id: media_player.gmusic_player
-        state: playing
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_1_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_1_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_2_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_2_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_3_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_3_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_4_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_4_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_5_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_5_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_6_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_6_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_7_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_7_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_8_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_8_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_9_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_9_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_10_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_10_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_11_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_11_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_12_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_12_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_13_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_13_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_14_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_14_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_15_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_15_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_16_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_16_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_17_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_17_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_18_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_18_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_19_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_19_source.state | int == 5}}'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: switch.nuvo_zone_20_power
-            state: 'off'
-          - condition: template
-            value_template: '{{not states.sensor.nuvo_zone_20_source.state | int == 5}}'     
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: media_player.gmusic_player
+          state: playing
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_1_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_1_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_2_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_2_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_3_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_3_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_4_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_4_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_5_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_5_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_6_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_6_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_7_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_7_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_8_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_8_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_9_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_9_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_10_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_10_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_11_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_11_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_12_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_12_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_13_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_13_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_14_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_14_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_15_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_15_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_16_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_16_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_17_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_17_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_18_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_18_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_19_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_19_source') | int == 5 }}"
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: switch.nuvo_zone_20_power
+              state: 'off'
+            - condition: template
+              value_template: "{{ not states('sensor.nuvo_zone_20_source') | int == 5 }}"     
   action:
-  - service: media_player.media_pause
-    data:
+    - service: media_player.media_pause
       entity_id: media_player.gmusic_player
+
 - alias: GMusic Pause if Alloff
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: media_player.gmusic_player
-    state: playing
-  action:
-  - service: media_player.media_pause
-    data:
+    - condition: state
       entity_id: media_player.gmusic_player
+      state: playing
+  action:
+    - service: media_player.media_pause
+      entity_id: media_player.gmusic_player
+
 #When Hass Reboots
 - alias: GM After Reboot
   trigger:
     - platform: homeassistant
       event: start
   action:
-  - delay:
-      seconds: 20
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_source
-      option: "{{ states.input_text.gm_current_mode.state }}"
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_station
-      option: "{{ states.input_text.gm_current_station.state }}"
-  - service: input_select.select_option
-    data_template:
-      entity_id: input_select.gmusic_player_playlist
-      option: "{{ states.input_text.gm_current_playlist.state }}"
+    - delay:
+        seconds: 20
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_source
+        option: "{{ states('input_text.gm_current_mode') }}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_station
+        option: "{{ states('input_text.gm_current_station') }}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.gmusic_player_playlist
+        option: "{{ states('input_text.gm_current_playlist') }}"
