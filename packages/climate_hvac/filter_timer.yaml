@@ -16,11 +16,11 @@ binary_sensor:
     sensors:
       hvac_running:
         friendly_name: HVAC Running
-        value_template: "{{ states.sensor.zone_065.state == 'Violated' }}"
+        value_template: "{{ is_state('sensor.zone_065', 'Violated' }}"
       
       hvac_filter_needs_replacement:
         friendly_name: HVAC FIlter Needs Replacement
-        value_template: "{{ states.sensor.furnace_filter_life.state | int > states.input_number.replacement_threshold.state | int }}"
+        value_template: "{{ states('sensor.furnace_filter_life') | int > states('input_number.replacement_threshold') | int }}"
 
 sensor:
 # Runtime yesterday (for use in storing runtime each night)
