@@ -17,7 +17,7 @@ binary_sensor:
     sensors:
       git_update_ready:
         friendly_name: "Update Ready"
-        value_template: "{{ not states.input_text.prev_git_version.state == states.sensor.home_assistant_config.state }}"
+        value_template: "{{ not states('input_text.prev_git_version') == states('sensor.home_assistant_config.state') }}"
 
 shell_command:
   get_latest_config: bash /config/bin/update_config_from_github.sh
@@ -28,7 +28,7 @@ script:
       - service: input_text.set_value
         data_template:
           entity_id: input_text.prev_git_version
-          value: "{{ states.sensor.home_assistant_config.state | string }}"
+          value: "{{ states('sensor.home_assistant_config') }}"
       - service: shell_command.get_latest_config
       - service: homeassistant.restart
 
@@ -37,7 +37,7 @@ script:
       - service: input_text.set_value
         data_template:
           entity_id: input_text.prev_git_version
-          value: "{{ states.sensor.home_assistant_config.state | string }}"
+          value: "{{ states('sensor.home_assistant_config') }}"
       - service: shell_command.get_latest_config
       - service: automation.reload
   
@@ -46,4 +46,4 @@ script:
       - service: input_text.set_value
         data_template:
           entity_id: input_text.prev_git_version
-          value: "{{ states.sensor.home_assistant_config.state | string }}"
+          value: "{{ states('sensor.home_assistant_config') }}"

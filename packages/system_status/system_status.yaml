@@ -1301,80 +1301,80 @@ sensor:
 
       automation_count_high:
         friendly_name: 'Automation Count High Limit'
-        value_template: '{{ states.input_number.automation_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.automation_count_expected') |int + 150 }}"
 
       automation_count_low:
         friendly_name: 'Automation Count Low Limit'
-        value_template: '{{ states.input_number.automation_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.automation_count_expected') |int - 1 }}"
 
       binary_sensor_count_high:
         friendly_name: 'Binary Sensor Count High Limit'
-        value_template: '{{ states.input_number.binary_sensor_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.binary_sensor_count_expected') |int + 150 }}"
 
       binary_sensor_count_low:
         friendly_name: 'Binary Sensor Count Low Limit'
-        value_template: '{{ states.input_number.binary_sensor_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.binary_sensor_count_expected') |int - 1 }}"
 
       switch_count_high:
         friendly_name: 'Switch Count High Limit'
-        value_template: '{{ states.input_number.switch_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.switch_count_expected') |int + 150 }}"
 
       switch_count_low:
         friendly_name: 'Switch Count Low Limit'
-        value_template: '{{ states.input_number.switch_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.switch_count_expected') |int - 1 }}"
 
       fan_count_high:
         friendly_name: 'Fan Count High Limit'
-        value_template: '{{ states.input_number.fan_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.fan_count_expected') |int + 150 }}"
 
       fan_count_low:
         friendly_name: 'Fan Count Low Limit'
-        value_template: '{{ states.input_number.fan_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.fan_count_expected') |int - 1 }}"
 
       light_count_high:
         friendly_name: 'Light Count High Limit'
-        value_template: '{{ states.input_number.light_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.light_count_expected') |int + 150 }}"
 
       light_count_low:
         friendly_name: 'Light Count Low Limit'
-        value_template: '{{ states.input_number.light_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.light_count_expected') |int - 1 }}"
 
       tracked_device_count_high:
         friendly_name: 'Tracked Device Count High Limit'
-        value_template: '{{ states.input_number.tracked_device_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.tracked_device_count_expected') |int + 150 }}"
 
       tracked_device_count_low:
         friendly_name: 'Tracked Device Count Low Limit'
-        value_template: '{{ states.input_number.tracked_device_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.tracked_device_count_expected') |int - 1 }}"
 
       media_player_count_high:
         friendly_name: 'Media Player Count High Limit'
-        value_template: '{{ states.input_number.media_player_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.media_player_count_expected') |int + 150 }}"
 
       media_player_count_low:
         friendly_name: 'Media Player Count Low Limit'
-        value_template: '{{ states.input_number.media_player_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.media_player_count_expected') |int - 1 }}"
 
       script_count_high:
         friendly_name: 'Script Count High Limit'
-        value_template: '{{ states.input_number.script_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.script_count_expected') |int + 150 }}"
 
       script_count_low:
         friendly_name: 'Script Count Low Limit'
-        value_template: '{{ states.input_number.script_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.script_count_expected') |int - 1 }}"
 
       sensor_count_high:
         friendly_name: 'Sensor Count High Limit'
-        value_template: '{{ states.input_number.sensor_count_expected.state |int + 150}}'
+        value_template: "{{ states('input_number.sensor_count_expected') |int + 150 }}"
 
       sensor_count_low:
         friendly_name: 'Sensor Count Low Limit'
-        value_template: '{{ states.input_number.sensor_count_expected.state |int - 1}}'
+        value_template: "{{ states('input_number.sensor_count_expected') |int - 1 }}"
 
       hass_uptime:
         friendly_name: Home Assistant Uptime
         value_template: >-
-          {% set time = states.sensor.time_online.state | int %}
+          {% set time = states('sensor.time_online') | int %}
             {% set minutes = ((time % 60) ) | int%}
             {% set hours = ((time % 1440) / 60) | int %}
             {% set days = (time / 1440) | int %}

@@ -6,17 +6,17 @@ sensor:
 
 rest_command:
   den_avr_25:
-    url: "{{ states.sensor.den_avr_url.state }}111VL"
+    url: "{{ states('sensor.den_avr_url') }}111VL"
     method: get
 
   den_avr_33:
-    url: "{{ states.sensor.den_avr_url.state }}095VL"
+    url: "{{ states('sensor.den_avr_url') }}095VL"
     method: get
 
   den_avr_40:
-    url: "{{ states.sensor.den_avr_url.state }}081VL"
+    url: "{{ states('sensor.den_avr_url') }}081VL"
     method: get 
 
   den_avr_mute:
-    url: "{{ states.sensor.den_avr_url.state }}MO"
+    url: "{{ states('sensor.den_avr_url') }}MO"
     method: get  

@@ -13,4 +13,4 @@ sensor:
   sensors:
     shawn_position:
       friendly_name: 'Shawn Positioin'
-      value_template: '{{states.device_tracker.shawn_n6.attributes.latitude}}, {{states.device_tracker.shawn_n6.attributes.longitude}}'
+      value_template: "{{ state_attr('device_tracker.shawn_n6', 'latitude') }}, {{ state_attr('device_tracker.shawn_n6', 'longitude') }}"
