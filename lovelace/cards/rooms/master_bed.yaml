@@ -3,7 +3,7 @@
       type: conditional
       conditions:
         - entity: sensor.master_harmony_activity
-          state_not: "unavailable"
+          state_not: "None"
       card:      
         type: custom:vertical-stack-in-card
         cards:
@@ -256,7 +256,7 @@
       type: conditional
       conditions:
         - entity: sensor.master_harmony_activity
-          state: "unavailable"
+          state: "None"
       card:      
         type: custom:vertical-stack-in-card
         cards:
