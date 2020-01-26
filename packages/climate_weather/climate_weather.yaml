@@ -14,7 +14,7 @@ sensor:
         value_template: !secret pws_url
       press_in:
         unit_of_measurement: in
-        value_template: "{{ (states.sensor.aquara_outside_pressure.state | float * 0.02953) | round(2) }}"
+        value_template: "{{ (states('sensor.aquara_outside_pressure') | float * 0.02953) | round(2) }}"
 
 # Darksky
   - platform: darksky
