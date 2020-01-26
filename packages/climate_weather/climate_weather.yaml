@@ -52,7 +52,7 @@ sensor:
 
 rest_command:
   update_wunderground:
-    url: "{{ states.sensor.pws_url.state }}tempf={{ states.sensor.aquara_outside_temperature.state }}&humidity={{ states.sensor.aquara_outside_humidity.state }}&dewptf={{ states.sensor.dewpoint_outside.state }}&baromin={{ states.sensor.press_in.state }}&rainin={{ states.sensor.rain_rate.state }}&dailyrainin={{ states.sensor.rain_day.state }}&action=updateraw"
+    url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.aquara_outside_temperature') }}&humidity={{ states('sensor.aquara_outside_humidity') }}&dewptf={{ states('sensor.dewpoint_outside') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&action=updateraw"
 
 input_boolean:
   is_raining:
