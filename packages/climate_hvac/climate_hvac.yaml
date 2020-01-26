@@ -36,51 +36,51 @@ binary_sensor:
 
       hvac_system_fan:
         friendly_name: "HVAC System Fan Call"
-        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_066.state | string == ''Normal'' and states.sensor.zone_067.state | string == ''Normal'' }}'
+        value_template: "{{ is_state('sensor.zone_065', 'Violated') and is_state('sensor.zone_066', 'Normal') and is_state('sensor.zone_067', 'Normal') }}"
 
       hvac_system_heat:
         friendly_name: "HVAC System Heat Call"
-        value_template: '{{ states.sensor.zone_066.state | string == ''Violated'' }}'
+        value_template: "{{ is_state('sensor.zone_066', 'Violated') }}"
 
       hvac_system_cool:
         friendly_name: "HVAC System Cool Call"
-        value_template: '{{ states.sensor.zone_067.state | string == ''Violated'' }}'
+        value_template: "{{ is_state('sensor.zone_067', 'Violated') }}"
 
       hvac_zone_1_fan:
         friendly_name: "HVAC Zone 1 Fan Call"
-        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_066.state | string == ''Normal'' and states.sensor.zone_067.state | string == ''Normal'' and states.sensor.zone_068.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_065', 'Violated') and is_state('sensor.zone_066', 'Normal') and is_state('sensor.zone_067', 'Normal') and is_state('sensor.zone_068', 'Normal') }}"
       
       hvac_zone_1_heat:
         friendly_name: "HVAC Zone 1 Heat Call"
-        value_template: '{{ states.sensor.zone_066.state | string == ''Violated'' and states.sensor.zone_068.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_066', 'Violated') and is_state('sensor.zone_068', 'Normal') }}"
 
       hvac_zone_1_cool:
         friendly_name: "HVAC Zone 1 Cool Call"
-        value_template: '{{ states.sensor.zone_067.state | string == ''Violated'' and states.sensor.zone_068.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_067', 'Violated') and is_states('sensor.zone_068', 'Normal') }}"
 
       hvac_zone_2_fan:
         friendly_name: "HVAC Zone 2 Fan Call"
-        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_066.state | string == ''Normal'' and states.sensor.zone_067.state | string == ''Normal'' and states.sensor.zone_069.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_065', 'Violated') and is_state('sensor.zone_066', 'Normal') and is_state('sensor.zone_067', 'Normal') and is_state('sensor.zone_069', 'Normal' }}"
       
       hvac_zone_2_heat:
         friendly_name: "HVAC Zone 2 Heat Call"
-        value_template: '{{ states.sensor.zone_066.state | string == ''Violated'' and states.sensor.zone_069.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_066', 'Violated') and is_state('sensor.zone_069', 'Normal') }}"
 
       hvac_zone_2_cool:
         friendly_name: "HVAC Zone 2 Cool Call"
-        value_template: '{{ states.sensor.zone_067.state | string == ''Violated'' and states.sensor.zone_069.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_067', 'Violated') and is_state('sensor.zone_069', 'Normal') }}"
       
       hvac_zone_3_fan:
         friendly_name: "HVAC Zone 3 Fan Call"
-        value_template: '{{ states.sensor.zone_065.state | string == ''Violated'' and states.sensor.zone_066.state | string == ''Normal'' and states.sensor.zone_067.state | string == ''Normal'' and states.sensor.zone_070.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_065', 'Violated') and is_state('sensor.zone_066', 'Normal') and is_state('sensor.zone_067', 'Normal') and is_state('sensor.zone_070', 'Normal' }}"
       
       hvac_zone_3_heat:
         friendly_name: "HVAC Zone 3 Heat Call"
-        value_template: '{{ states.sensor.zone_066.state | string == ''Violated'' and states.sensor.zone_070.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_066', 'Violated') and is_state('sensor.zone_070', 'Normal') }}"
 
       hvac_zone_3_cool:
         friendly_name: "HVAC Zone 3 Cool Call"
-        value_template: '{{ states.sensor.zone_067.state | string == ''Violated'' and states.sensor.zone_070.state | string == ''Normal''}}'
+        value_template: "{{ is_state('sensor.zone_067', 'Violated') and is_state('sensor.zone_070', 'Normal') }}"
 
 #################################################################
 #                                                               #
@@ -155,33 +155,33 @@ sensor:
         friendly_name: "HVAC Total System Runtime"
         unit_of_measurement: 'h'
         value_template: >-
-          {{ ((states.sensor.hvac_system_fan_runtime.state | float) +
-          (states.sensor.hvac_system_heat_runtime.state | float) +
-          (states.sensor.hvac_system_cool_runtime.state | float)) | round(2) }}
+          {{ ((states('sensor.hvac_system_fan_runtime') | float) +
+          (states('sensor.hvac_system_heat_runtime') | float) +
+          (states('sensor.hvac_system_cool_runtime') | float)) | round(2) }}
       
       hvac_zone_1_runtime:
         friendly_name: "HVAC Zone 1 Total Runtime"
         unit_of_measurement: 'h'
         value_template: >-
-          {{ ((states.sensor.hvac_zone_1_fan_runtime.state | float) +
-          (states.sensor.hvac_zone_1_heat_runtime.state | float) +
-          (states.sensor.hvac_zone_1_cool_runtime.state | float)) | round(2) }}
+          {{ ((states('sensor.hvac_zone_1_fan_runtime') | float) +
+          (states('sensor.hvac_zone_1_heat_runtime') | float) +
+          (states('sensor.hvac_zone_1_cool_runtime') | float)) | round(2) }}
 
       hvac_zone_2_runtime:
         friendly_name: "HVAC Zone 2 Total Runtime"
         unit_of_measurement: 'h'
         value_template: >-
-          {{ ((states.sensor.hvac_zone_2_fan_runtime.state | float) +
-          (states.sensor.hvac_zone_2_heat_runtime.state | float) +
-          (states.sensor.hvac_zone_2_cool_runtime.state | float)) | round(2) }}
+          {{ ((states('sensor.hvac_zone_2_fan_runtime') | float) +
+          (states('sensor.hvac_zone_2_heat_runtime') | float) +
+          (states('sensor.hvac_zone_2_cool_runtime') | float)) | round(2) }}
 
       hvac_zone_3_runtime:
         friendly_name: "HVAC Zone 3 Total Runtime"
         unit_of_measurement: 'h'
         value_template: >-
-          {{ ((states.sensor.hvac_zone_3_fan_runtime.state | float) +
-          (states.sensor.hvac_zone_3_heat_runtime.state | float) +
-          (states.sensor.hvac_zone_3_cool_runtime.state | float)) | round(2) }}
+          {{ ((states('sensor.hvac_zone_3_fan_runtime') | float) +
+          (states('sensor.hvac_zone_3_heat_runtime') | float) +
+          (states('sensor.hvac_zone_3_cool_runtime') | float)) | round(2) }}
 
       hvac_zone_1_damper_position:
         friendly_name: "HVAC Zone 1 Damper Position"
