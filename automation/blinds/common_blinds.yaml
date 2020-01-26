@@ -31,6 +31,9 @@
       value_template: '{{ state.attributes.elevation }}'
       above: 0
   condition:
+    - condition: state
+      entity_id: switch.master_shower_light_a
+      state: 'off'
     - condition: numeric_state
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
@@ -52,6 +55,52 @@
   action:
     - service: cover.open_cover
       entity_id: cover.house_blinds
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.blinds_manual
+
+- alias: Open Blinds When Awake and Sun Up Taking Shower
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.area_001
+      to: armed_home
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      above: 0
+  condition:
+    - condition: state
+      entity_id: switch.master_shower_light_a
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      above: 0
+    - condition: state
+      entity_id: input_boolean.vacation_mode
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.blinds_manual
+      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state:  disarmed
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state:  armed_home
+  action:
+    - service: cover.open_cover
+      entity_id: 
+        - cover.office_blinds
+        - cover.guest_blind
+        - cover.server_room_blind
+        - cover.den_blinds
+        - cover.kitchen_blinds
+        - cover.shack_blinds
     - service: input_boolean.turn_on
       entity_id: input_boolean.blinds_manual
 
