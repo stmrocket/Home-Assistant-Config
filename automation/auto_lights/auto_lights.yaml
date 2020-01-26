@@ -174,3 +174,49 @@
   action:
     - service: light.turn_off
       entity_id: light.utility_room_light
+
+- alias: Auto Entry Closet Light On
+  trigger:
+    - entity_id: sensor.zone_079
+      platform: state
+      to: Violated
+  action:
+    - service: scene.create
+      data:
+        scene_id: entry_closet_restore
+        snapshot_entities:
+          - light.entry_light
+    - service: light.turn_on
+      entity_id: light.entry_light
+
+- alias: Auto Entry Closet Light Off
+  trigger:
+    - entity_id: sensor.zone_079
+      platform: state
+      to: Normal
+  action:
+    - service: scene.turn_on
+      entity_id: scene.entry_closet_restore  
+
+- alias: Auto Hall Closet Light On
+  trigger:
+    - entity_id: sensor.zone_080
+      platform: state
+      to: Violated
+  action:
+    - service: scene.create
+      data:
+        scene_id: hall_closet_restore
+        snapshot_entities:
+          - light.hallway_light
+    - service: light.turn_on
+      entity_id: light.hallway_light
+
+- alias: Auto Hall Closet Light Off
+  trigger:
+    - entity_id: sensor.zone_080
+      platform: state
+      to: Normal
+  action:
+    - service: scene.turn_on
+      entity_id: scene.hall_closet_restore        
