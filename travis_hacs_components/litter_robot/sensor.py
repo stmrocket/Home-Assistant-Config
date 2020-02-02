@@ -15,16 +15,17 @@ LITTER_ROBOTS = 'litter_robots'
 LITTER_ROBOT_UNIT_STATUS = {
   'RDY': 'Ready',
   'CCP': 'Clean Cycling',
-  'CCC': 'Ready',
-  'DF1': 'Ready - Drawer Warning',
-  'DF2': 'Ready - Drawer Warning',
+  'CCC': 'Ready - Clean Cycling Complete',
+  'DF1': 'Ready - 2 Cycles Until Full',
+  'DF2': 'Ready - 1 Cycle Until Full',
   'CSI': 'Cat Sensor Interrupt',
   'CST': 'Cat Sensor Timing',
   'BR' : 'Bonnet Removed',
   'P'  : 'Paused',
   'OFF': 'Off',
   'SDF': 'Not Ready - Drawer Full',
-  'DFS': 'Not Ready - Drawer Full'
+  'DFS': 'Not Ready - Drawer Full',
+  'CSF': 'Cat Sensor Interrupted'
 }
 SENSOR_PREFIX = 'Litter-Robot '
 
@@ -38,7 +39,6 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     devices = []
     for robot in hass.data[LITTER_ROBOT_DOMAIN][LITTER_ROBOTS]:
         devices.append(StatusSensor(robot, controller))
-        devices.append(StatusSensorShort(robot, controller))
         devices.append(WasteGaugeSensor(robot, controller))
         devices.append(NightLightStatusSensor(robot, controller))
 
@@ -80,7 +80,7 @@ class StatusSensor(Entity):
             if int(sleep_mode_active[1:].split(':')[0]) < 8:
                 return 'Sleeping'
         
-        return LITTER_ROBOT_UNIT_STATUS[unit_status]
+        return LITTER_ROBOT_UNIT_STATUS.get(unit_status, unit_status)
 
     @property
     def unit_of_measurement(self):
@@ -92,71 +92,6 @@ class StatusSensor(Entity):
         robots = self._controller.update_robots()
         if robots is not None:
             self._robot = [x for x in robots if x['litterRobotId'] == self._robot['litterRobotId']][0]
-
-class StatusSensorShort(Entity):
-    """Representation of the status sensor as a single word."""
-
-    def __init__(self, robot, controller):
-        """Initialize of the sensor."""
-        self._robot = robot
-        self._controller = controller
-        self._name = SENSOR_PREFIX + robot['litterRobotNickname'] + ' status short'
-
-    @property
-    def icon(self):
-        return 'mdi:flash'
-
-    @property
-    def name(self):
-        """Return the state of the sensor."""
-        return self._name
-
-    @property
-    def device_state_attributes(self):
-        """Return information about the device."""
-        return {
-            "litter_robot_id": self._robot['litterRobotId']
-        }
-
-    @property
-    def state(self):
-        """Return the state of the sensor as a single word."""
-        sleep_mode_active = self._robot['sleepModeActive']
-        unit_status = self._robot['unitStatus']
-        if sleep_mode_active != '0' and unit_status == 'RDY':
-            # over 8 hours since last sleep 
-            if int(sleep_mode_active[1:].split(':')[0]) < 8:
-                return 'Sleep'
-        elif unit_status == 'RDY' or unit_status == 'CCC':
-            return 'Ready'
-        elif unit_status == 'CCP':
-            return 'Clean'
-        elif unit_status == 'DF1' or unit_status == 'DF2':
-            return 'Drawer'
-        elif unit_status == 'CSO' or unit_status == 'BR':
-            return 'Error'
-        elif unit_status == 'CST':
-            return 'Timing'
-        elif unit_status == 'OFF':
-            return 'Off'
-        elif unit_status == 'P':
-            return 'Paused'
-        elif unit_status == 'SDF' or unit_status == 'DFS':
-            return 'Full'
-
-        
-        return LITTER_ROBOT_UNIT_STATUS[unit_status]
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit_of_measurement of the device."""
-        return None
-
-    def update(self):
-        """Update the state from the sensor."""
-        robots = self._controller.update_robots()
-        if robots is not None:
-            self._robot = [x for x in robots if x['litterRobotId'] == self._robot['litterRobotId']][0]            
 
 
 class WasteGaugeSensor(Entity):

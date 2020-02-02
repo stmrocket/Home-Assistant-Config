@@ -329,12 +329,6 @@ media_player:
     platform: kodi
     host: !secret master_kodi_host
       
-#Pooper
-litter_robot:
-  username: !secret pooper_user
-  password: !secret pooper_pass
-  api_key: !secret pooper_key
-
 #Google Calendar
 google:
   client_id: !secret gcal_client_id

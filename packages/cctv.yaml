@@ -1,73 +1,73 @@
 camera:
-  - platform: generic
+  - platform: mjpeg
     name: East Front
     still_image_url: !secret east_front_still
-    stream_source: !secret east_front_stream
+    mjpeg_url: !secret east_front_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: West Front
     still_image_url: !secret west_front_still
-    stream_source: !secret west_front_stream
+    mjpeg_url: !secret west_front_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Front Porch
     still_image_url: !secret front_porch_still
-    stream_source: !secret front_porch_stream
+    mjpeg_url: !secret front_porch_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Back Porch
     still_image_url: !secret back_porch_still
-    stream_source: !secret back_porch_stream
+    mjpeg_url: !secret back_porch_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Back Yard
     still_image_url: !secret back_yard_still
-    stream_source: !secret back_yard_stream
+    mjpeg_url: !secret back_yard_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: East Side
     still_image_url: !secret east_side_still
-    stream_source: !secret east_side_stream
+    mjpeg_url: !secret east_side_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: West Side
     still_image_url: !secret west_side_still
-    stream_source: !secret west_side_stream
+    mjpeg_url: !secret west_side_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Garage
     still_image_url: !secret garage_still
-    stream_source: !secret garage_stream
+    mjpeg_url: !secret garage_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Den
     still_image_url: !secret den_still
-    stream_source: !secret den_stream
+    mjpeg_url: !secret den_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Kitchen
     still_image_url: !secret kitchen_still
-    stream_source: !secret kitchen_stream
+    mjpeg_url: !secret kitchen_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Master
     still_image_url: !secret master_still
-    stream_source: !secret master_stream
+    mjpeg_url: !secret master_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Office
     still_image_url: !secret office_still
-    stream_source: !secret office_stream
+    mjpeg_url: !secret office_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Guest
     still_image_url: !secret guest_still
-    stream_source: !secret guest_stream
+    mjpeg_url: !secret guest_stream
 
-  - platform: generic
+  - platform: mjpeg
     name: Hall
     still_image_url: !secret hall_still
-    stream_source: !secret hall_stream
+    mjpeg_url: !secret hall_stream
 
   - platform: mqtt
     name: West Front Last Person
