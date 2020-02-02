@@ -234,7 +234,7 @@ cards:
                   decimals: 0
                   name: 'Pooper'
                   unit: '%'
-                - entity: sensor.litter_robot_april_s_carnival_status_short
+                - entity: sensor.litter_robot_status_short
                   attribute: state
                   decimals: 1
 
