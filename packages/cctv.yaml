@@ -1,0 +1,175 @@
+camera:
+  - platform: generic
+    name: East Front
+    still_image_url: !secret east_front_still
+    stream_source: !secret east_front_stream
+
+  - platform: generic
+    name: West Front
+    still_image_url: !secret west_front_still
+    stream_source: !secret west_front_stream
+
+  - platform: generic
+    name: Front Porch
+    still_image_url: !secret front_porch_still
+    stream_source: !secret front_porch_stream
+
+  - platform: generic
+    name: Back Porch
+    still_image_url: !secret back_porch_still
+    stream_source: !secret back_porch_stream
+
+  - platform: generic
+    name: Back Yard
+    still_image_url: !secret back_yard_still
+    stream_source: !secret back_yard_stream
+
+  - platform: generic
+    name: East Side
+    still_image_url: !secret east_side_still
+    stream_source: !secret east_side_stream
+
+  - platform: generic
+    name: West Side
+    still_image_url: !secret west_side_still
+    stream_source: !secret west_side_stream
+
+  - platform: generic
+    name: Garage
+    still_image_url: !secret garage_still
+    stream_source: !secret garage_stream
+
+  - platform: generic
+    name: Den
+    still_image_url: !secret den_still
+    stream_source: !secret den_stream
+
+  - platform: generic
+    name: Kitchen
+    still_image_url: !secret kitchen_still
+    stream_source: !secret kitchen_stream
+
+  - platform: generic
+    name: Master
+    still_image_url: !secret master_still
+    stream_source: !secret master_stream
+
+  - platform: generic
+    name: Office
+    still_image_url: !secret office_still
+    stream_source: !secret office_stream
+
+  - platform: generic
+    name: Guest
+    still_image_url: !secret guest_still
+    stream_source: !secret guest_stream
+
+  - platform: generic
+    name: Hall
+    still_image_url: !secret hall_still
+    stream_source: !secret hall_stream
+
+  - platform: mqtt
+    name: West Front Last Person
+    topic: frigate/west_front/person/snapshot
+
+  - platform: mqtt
+    name: East Front Last Person
+    topic: frigate/east_front/person/snapshot
+
+  - platform: mqtt
+    name: West Side Last Person
+    topic: frigate/west_side/person/snapshot
+
+  - platform: mqtt
+    name: East Side Last Person
+    topic: frigate/east_side/person/snapshot
+
+  - platform: mqtt
+    name: Back Yard Last Person
+    topic: frigate/back_yard/person/snapshot
+
+  - platform: mqtt
+    name: Back Porch Last Person
+    topic: frigate/back_porch/person/snapshot
+
+binary_sensor:
+  - platform: mqtt
+    name: West Front Person
+    state_topic: frigate/west_front/person
+    device_class: motion
+    availability_topic: frigate/available
+
+  - platform: mqtt
+    name: East Front Person
+    state_topic: frigate/east_front/person
+    device_class: motion
+    availability_topic: frigate/available
+
+  - platform: mqtt
+    name: West Side Person
+    state_topic: frigate/west_side/person
+    device_class: motion
+    availability_topic: frigate/available
+
+  - platform: mqtt
+    name: East Side Person
+    state_topic: frigate/east_side/person
+    device_class: motion
+    availability_topic: frigate/available
+
+  - platform: mqtt
+    name: Back Yard Person
+    state_topic: frigate/back_yard/person
+    device_class: motion
+    availability_topic: frigate/available
+
+  - platform: mqtt
+    name: Back Porch Person
+    state_topic: frigate/back_porch/person
+    device_class: motion
+    availability_topic: frigate/available
+
+sensor:
+  - platform: rest
+    name: Frigate Debug
+    resource: !secret frigate_debug
+    json_attributes:
+      - west_front
+      - east_front
+      - west_side
+      - east_side
+      - back_yard
+      - pack_porch
+      - coral
+    value_template: 'OK' 
+
+  - platform: template
+    sensors:
+      frigate_west_front_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["camera_fps"] }}'
+        unit_of_measurement: 'FPS'
+      frigate_east_front_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["camera_fps"] }}'
+        unit_of_measurement: 'FPS'
+      frigate_west_side_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["camera_fps"] }}'
+        unit_of_measurement: 'FPS'
+      frigate_east_side_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["fps"] }}'
+        unit_of_measurement: 'FPS'
+      frigate_back_yard_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["fps"] }}'
+        unit_of_measurement: 'FPS'
+      frigate_back_porch_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["fps"] }}'
+        unit_of_measurement: 'FPS'
+      frigate_coral_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps"] }}'
+        unit_of_measurement: 'FPS'
+      frigate_coral_inference:
+        value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["inference_speed"] }}' 
+        unit_of_measurement: 'ms'   
+      frigate_coral_queue_length:
+        value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["queue_length"] }}' 
+        unit_of_measurement: 'frames'       

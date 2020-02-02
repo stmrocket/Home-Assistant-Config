@@ -304,46 +304,12 @@ elkm1:
 api:
 alexa: !include alexa.yaml
 
-# Zoneminder
-zoneminder:
-  host: !secret zm_host
-  ssl: true
-  verify_ssl: false
-  username: !secret zm_user
-  password: !secret zm_pass
-
-# IP Cameras
-camera:
-  - platform: zoneminder
-
 #Device Tracking
 device_tracker:
   - platform: aprs
     username: !secret my_callsign
     callsigns:
       - !secret truck_callsign
-
-#Notification Services
-notify:
-  - name: Elk_Pushover
-    platform: pushover
-    api_key: !secret push_elk
-    user_key: !secret push_usr
-  - name: System_Pushover
-    platform: pushover
-    api_key: !secret push_sys
-    user_key: !secret push_usr
-  - name: den_kodi
-    platform: kodi
-    host: !secret den_kodi_host
-  - name: master_kodi
-    platform: kodi
-    host: !secret master_kodi_host
-  - platform: html5
-    name: browser
-    vapid_pub_key: !secret vapid_public
-    vapid_prv_key: !secret vapid_private
-    vapid_email: !secret vapid_email
 
 #Counters
 counter:

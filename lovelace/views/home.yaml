@@ -567,13 +567,11 @@ cards:
               - entity: camera.back_porch
               - entity: camera.garage
               - entity: camera.den
-              - entity: camera.kitchen_fisheye
+              - entity: camera.kitchen
               - entity: camera.office
-              - entity: camera.master_bedroom
-              - entity: camera.server_room
-              - entity: camera.guest_room
-              - entity: camera.kitten
-              - entity: camera.wyze
+              - entity: camera.master
+              - entity: camera.hall
+              - entity: camera.guest
 
 #################################################################
 #                                                               #
