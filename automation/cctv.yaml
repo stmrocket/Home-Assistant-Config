@@ -1,0 +1,22 @@
+- alias: CCTV West Front Person Detected
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.west_front_person
+      to: 'on'
+  action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.west_front
+        filename: /config/www/cctv/west_front_full.jpg
+    - service: camera.snapshot
+      data:
+        entity_id: camera.west_front_last_person
+        filename: /config/www/cctv/west_front_person.jpg
+    - service: notify.cctv_email
+      data:
+        title: "West Front Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+        message: "A person was detected on the front porch camera at {{now().strftime('%Y-%m-%d %H:%M:%S') }}."
+        data: 
+          - images:
+            - /config/www/cctv/west_front_person.jpg
+            - /config/www/cctv/west_front_full.jpg
