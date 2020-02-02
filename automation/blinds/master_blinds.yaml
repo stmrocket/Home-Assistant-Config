@@ -103,6 +103,16 @@
         - cover.right_master_blind
         - cover.left_master_blind
         - cover.west_master_blind
+      from: 'closed'
+      to: 'open'
+    - platform: state
+      entity_id:
+        - cover.center_master_blind
+        - cover.right_master_blind
+        - cover.left_master_blind
+        - cover.west_master_blind
+      from: 'open'
+      to: 'closed'
   condition:
     - condition: template
       value_template: "{{ states('cover.center_master_blind') == states('cover.right_master_blind') == states('cover.left_master_blind') == states('cover.west_master_blind') }}"
@@ -129,6 +139,16 @@
         - cover.right_master_blind
         - cover.left_master_blind
         - cover.west_master_blind
+      from: 'closed'
+      to: 'open'
+    - platform: state
+      entity_id:
+        - cover.center_master_blind
+        - cover.right_master_blind
+        - cover.left_master_blind
+        - cover.west_master_blind
+      from: 'open'
+      to: 'closed'
   condition:
     - condition: template
       value_template: "{{ not states('cover.center_master_blind') == states('cover.right_master_blind') == states('cover.left_master_blind') == states('cover.west_master_blind') }}"
