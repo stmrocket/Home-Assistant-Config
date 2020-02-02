@@ -130,7 +130,7 @@ binary_sensor:
     device_class: motion
     availability_topic: frigate/available
 
-semsor:
+sensor:
   - platform: rest
     name: Frigate Debug
     resource: !secret frigate_debug
