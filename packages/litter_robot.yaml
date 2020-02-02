@@ -1,0 +1,4 @@
+#Pooper
+litter_robot:
+  username: !secret pooper_user
+  password: !secret pooper_pass
