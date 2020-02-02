@@ -42,7 +42,6 @@ device_tracker:
     hosts:
       core_router: !secret core_router_ip
       nas: !secret  nas_ip
-      zoneminder: !secret zm_ip
       webserver: !secret webserver_ip
       hdhomerun: !secret hdhr_ip
       musicport: !secret musicport_ip
@@ -106,7 +105,6 @@ group:
     view: no
     entities:
       - binary_sensor.nas
-      - binary_sensor.zoneminder
       - binary_sensor.webserver
       - binary_sensor.redlink
       - binary_sensor.isy_994
@@ -243,17 +241,6 @@ binary_sensor:
             mdi:harddisk
           {% else %}
             mdi:harddisk
-          {% endif %}
-      zoneminder:
-        friendly_name: ZoneMinder
-        device_class: connectivity
-        entity_id: device_tracker.zoneminder
-        value_template: "{{ is_state('device_tracker.zoneminder', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.zoneminder', 'home') %}
-            mdi:camcorder
-          {% else %}
-            mdi:camcorder
           {% endif %}
       webserver:
         friendly_name: Web Server
@@ -877,16 +864,6 @@ sensor:
           {% if is_state('device_tracker.nas', 'home') %}
             100
           {% elif is_state('device_tracker.nas', 'not_home') %}
-            0
-          {% endif %}
-      
-      zoneminder_state:
-        friendly_name: ZoneMinder
-        entity_id: device_tracker.zoneminder
-        value_template: >-
-          {% if is_state('device_tracker.zoneminder', 'home') %}
-            100
-          {% elif is_state('device_tracker.zoneminder', 'not_home') %}
             0
           {% endif %}
       

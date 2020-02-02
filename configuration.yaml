@@ -304,18 +304,6 @@ elkm1:
 api:
 alexa: !include alexa.yaml
 
-# Zoneminder
-zoneminder:
-  host: !secret zm_host
-  ssl: true
-  verify_ssl: false
-  username: !secret zm_user
-  password: !secret zm_pass
-
-# IP Cameras
-camera:
-  - platform: zoneminder
-
 #Device Tracking
 device_tracker:
   - platform: aprs
