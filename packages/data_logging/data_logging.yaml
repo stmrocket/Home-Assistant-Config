@@ -96,6 +96,16 @@ recorder:
     - sensor.hvac_runtime_last_7_days
     - input_number.hvac_runtime
     - binary_sensor.hvac_running
+    - frigate_west_front_fps
+    - frigate_east_front_fps
+    - frigate_west_side_fps
+    - frigate_east_side_fps
+    - frigate_back_yard_fps
+    - frigate_back_porch_fps
+    - frigate_coral_fps
+    - frigate_coral_inference
+    - frigate_coral_queue_length
+
 
 #################################################################
 #                                                               #
