@@ -1,0 +1,37 @@
+notify:
+  - name: Elk_Pushover
+    platform: pushover
+    api_key: !secret push_elk
+    user_key: !secret push_usr
+
+  - name: System_Pushover
+    platform: pushover
+    api_key: !secret push_sys
+    user_key: !secret push_usr
+
+  - name: den_kodi
+    platform: kodi
+    host: !secret den_kodi_host
+
+  - name: master_kodi
+    platform: kodi
+    host: !secret master_kodi_host
+
+  - platform: html5
+    name: browser
+    vapid_pub_key: !secret vapid_public
+    vapid_prv_key: !secret vapid_private
+    vapid_email: !secret vapid_email
+  
+  - platform: smtp
+    name: cctv_email
+    server: !secret smtp_server
+    port: 587
+    timeout: 15
+    sender: !secret smtp_user
+    encryption: starttls
+    username: !secret smtp_user
+    password: !secret smtp_pass
+    recipient:
+      - !secret shawn_email
+    sender_name: Home Assistant
