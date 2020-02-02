@@ -140,7 +140,7 @@ sensor:
       - west_side
       - east_side
       - back_yard
-      - pack_porch
+      - back_porch
       - coral
     value_template: 'OK' 
 
