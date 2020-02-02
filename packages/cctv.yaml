@@ -170,13 +170,13 @@ sensor:
         value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["camera_fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_east_side_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["camera_fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_back_yard_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["camera_fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_back_porch_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["camera_fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_coral_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps"] }}'

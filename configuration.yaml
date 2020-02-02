@@ -90,7 +90,7 @@ sensor:
 binary_sensor:
 
   - platform: wyzesense
-    device: "/dev/hidraw0"        
+    device: auto      
 
 switch:
 
@@ -337,9 +337,6 @@ google:
 #HACS
 hacs:
   token: !secret hacs_git
-  appdaemon: true
-  python_script: true
-  theme: true
 
 #Alexa Media Player
 alexa_media:
