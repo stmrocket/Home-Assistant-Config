@@ -2,3 +2,35 @@
 litter_robot:
   username: !secret pooper_user
   password: !secret pooper_pass
+
+sensor:
+    - platform: template
+      sensors:
+        litter_robot_status_short:
+          friendly_name: Short Litter Robot Status
+          value_template: >-
+            {% if is_state('sensor.litter_robot_april_s_carnival_status', 'Ready') or is_state('sensor.litter_robot_april_s_carnival_status', 'Ready - Clean Cycling Complete') -%}
+              Ready
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Clean Cycling') -%}
+              Clean
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Ready - 2 Cycles Until Full') -%}
+              Drawer 2
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Ready - 1 Cycle Until Full') -%}
+              Drawer 1
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Cat Sensor Interrupt') or is_state('sensor.litter_robot_april_s_carnival_status', 'Cat Sensor Interrupted') -%}
+              Sensor
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Cat Sensor Timing') -%}
+              Timing
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Bonnet Removed') -%}
+              Bonnet  
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Paused') -%}
+              Paused 
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Off') -%}
+              Off 
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Not Ready - Drawer Full') -%}
+              Full
+            {% elif  is_state('sensor.litter_robot_april_s_carnival_status', 'Sleeping') -%}
+              Sleep
+            {% else -%}
+              Error
+            {% endif -%}

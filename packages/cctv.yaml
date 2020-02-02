@@ -3,71 +3,85 @@ camera:
     name: East Front
     still_image_url: !secret east_front_still
     mjpeg_url: !secret east_front_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: West Front
     still_image_url: !secret west_front_still
     mjpeg_url: !secret west_front_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Front Porch
     still_image_url: !secret front_porch_still
     mjpeg_url: !secret front_porch_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Back Porch
     still_image_url: !secret back_porch_still
     mjpeg_url: !secret back_porch_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Back Yard
     still_image_url: !secret back_yard_still
     mjpeg_url: !secret back_yard_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: East Side
     still_image_url: !secret east_side_still
     mjpeg_url: !secret east_side_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: West Side
     still_image_url: !secret west_side_still
     mjpeg_url: !secret west_side_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Garage
     still_image_url: !secret garage_still
     mjpeg_url: !secret garage_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Den
     still_image_url: !secret den_still
     mjpeg_url: !secret den_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Kitchen
     still_image_url: !secret kitchen_still
     mjpeg_url: !secret kitchen_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Master
     still_image_url: !secret master_still
     mjpeg_url: !secret master_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Office
     still_image_url: !secret office_still
     mjpeg_url: !secret office_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Guest
     still_image_url: !secret guest_still
     mjpeg_url: !secret guest_stream
+    verify_ssl: false
 
   - platform: mjpeg
     name: Hall
     still_image_url: !secret hall_still
     mjpeg_url: !secret hall_stream
+    verify_ssl: false
 
   - platform: mqtt
     name: West Front Last Person
@@ -140,7 +154,7 @@ sensor:
       - west_side
       - east_side
       - back_yard
-      - pack_porch
+      - back_porch
       - coral
     value_template: 'OK' 
 
