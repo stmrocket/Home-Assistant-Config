@@ -107,6 +107,10 @@ camera:
     name: Back Porch Last Person
     topic: frigate/back_porch/person/snapshot
 
+  - platform: mqtt
+    name: Front Porch Last Person
+    topic: frigate/front_porch/person/snapshot
+
 binary_sensor:
   - platform: mqtt
     name: West Front Person
@@ -144,6 +148,12 @@ binary_sensor:
     device_class: motion
     availability_topic: frigate/available
 
+  - platform: mqtt
+    name: Front Porch Person
+    state_topic: frigate/front_porch/person
+    device_class: motion
+    availability_topic: frigate/available
+
 sensor:
   - platform: rest
     name: Frigate Debug
@@ -155,6 +165,7 @@ sensor:
       - east_side
       - back_yard
       - back_porch
+      - front_porch
       - coral
     value_template: 'OK' 
 
@@ -177,6 +188,9 @@ sensor:
         unit_of_measurement: 'FPS'
       frigate_back_porch_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["camera_fps"] }}'
+        unit_of_measurement: 'FPS'
+      frigate_back_porch_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["camera_fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_coral_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps"] }}'

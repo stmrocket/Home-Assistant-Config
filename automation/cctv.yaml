@@ -15,7 +15,7 @@
     - service: notify.cctv_email
       data:
         title: "CCTV Alarm: West Front - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-        message: "A person was detected on the west front camera at {{now().strftime('%Y-%m-%d %H:%M:%S') }}."
+        message: "A person was detected on the west front camera at {{now().strftime('%H:%M:%S') }}."
         data: 
           images:
             - /config/www/cctv/west_front_person.jpg
@@ -38,7 +38,7 @@
     - service: notify.cctv_email
       data:
         title: "CCTV Alarm: East Front - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-        message: "A person was detected on the east front camera at {{now().strftime('%Y-%m-%d %H:%M:%S') }}."
+        message: "A person was detected on the east front camera at {{now().strftime('%H:%M:%S') }}."
         data: 
           images:
             - /config/www/cctv/east_front_person.jpg
@@ -61,7 +61,7 @@
     - service: notify.cctv_email
       data:
         title: "CCTV Alarm: West Side - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-        message: "A person was detected on the west side camera at {{now().strftime('%Y-%m-%d %H:%M:%S') }}."
+        message: "A person was detected on the west side camera at {{now().strftime('%H:%M:%S') }}."
         data: 
           images:
             - /config/www/cctv/west_side_person.jpg
@@ -84,7 +84,7 @@
     - service: notify.cctv_email
       data:
         title: "CCTV Alarm: East Side - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-        message: "A person was detected on the east side camera at {{now().strftime('%Y-%m-%d %H:%M:%S') }}."
+        message: "A person was detected on the east side camera at {{now().strftime('%H:%M:%S') }}."
         data: 
           images:
             - /config/www/cctv/east_side_person.jpg
@@ -107,7 +107,7 @@
     - service: notify.cctv_email
       data:
         title: "CCTV Alarm: Back Yard - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-        message: "A person was detected on the east side camera at {{now().strftime('%Y-%m-%d %H:%M:%S') }}."
+        message: "A person was detected on the back yard camera at {{now().strftime('%H:%M:%S') }}."
         data: 
           images:
             - /config/www/cctv/back_yard_person.jpg
@@ -130,8 +130,31 @@
     - service: notify.cctv_email
       data:
         title: "CCTV Alarm: Back Porch - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-        message: "A person was detected on the east side camera at {{now().strftime('%Y-%m-%d %H:%M:%S') }}."
+        message: "A person was detected on the back porch camera at {{now().strftime('%H:%M:%S') }}."
         data: 
           images:
             - /config/www/cctv/back_porch_person.jpg
             - /config/www/cctv/back_porch_full.jpg                    
+
+- alias: CCTV Front Porch Person Detected
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_porch_person
+      to: 'on'
+  action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.front_porch
+        filename: /config/www/cctv/front_porch_full.jpg
+    - service: camera.snapshot
+      data:
+        entity_id: camera.front_porch_last_person
+        filename: /config/www/cctv/front_porch_person.jpg
+    - service: notify.cctv_email
+      data:
+        title: "CCTV Alarm: Front Porch - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+        message: "A person was detected on the front porch camera at {{now().strftime('%H:%M:%S') }}."
+        data: 
+          images:
+            - /config/www/cctv/front_porch_person.jpg
+            - /config/www/cctv/front_porch_full.jpg                                
