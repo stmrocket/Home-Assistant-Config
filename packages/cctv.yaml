@@ -189,7 +189,7 @@ sensor:
       frigate_back_porch_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["camera_fps"] }}'
         unit_of_measurement: 'FPS'
-      frigate_back_porch_fps: 
+      frigate_front_porch_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["camera_fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_coral_fps: 
