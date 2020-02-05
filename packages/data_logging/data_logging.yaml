@@ -116,6 +116,8 @@ recorder:
 
 influxdb:
   host: !secret influx_host
+  username: !secret influx_user
+  password: !secret influx_pass
   include:
     entities:
       - sensor.attic_temperature_owfs
