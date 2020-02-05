@@ -90,8 +90,8 @@ sensor:
 binary_sensor:
 
   - platform: wyzesense
-    device: auto      
-
+    device: "/dev/hidraw0"
+    
 switch:
 
   - platform: template
