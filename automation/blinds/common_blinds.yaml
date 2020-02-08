@@ -115,6 +115,19 @@
         - cover.master_blinds
         - cover.server_room_blind
         - cover.guest_blind
+      from: 'closed'
+      to: 'open'
+    - platform: state
+      entity_id: 
+        - cover.office_blinds
+        - cover.den_blinds
+        - cover.kitchen_blinds
+        - cover.shack_blinds
+        - cover.master_blinds
+        - cover.server_room_blind
+        - cover.guest_blind
+      from: 'open'
+      to: 'closed'
   condition:
     - condition: template
       value_template: "{{ states('cover.office_blinds') == states('cover.den_blinds') == states('cover.kitchen_blinds') == states('cover.guest_blind') == states('cover.server_room_blind') == states('cover.shack_blinds') == states('cover.master_blinds') }}"
@@ -140,6 +153,19 @@
         - cover.master_blinds
         - cover.server_room_blind
         - cover.guest_blind
+      from: 'closed'
+      to: 'open'
+    - platform: state
+      entity_id: 
+        - cover.office_blinds
+        - cover.den_blinds
+        - cover.kitchen_blinds
+        - cover.shack_blinds
+        - cover.master_blinds
+        - cover.server_room_blind
+        - cover.guest_blind
+      from: 'open'
+      to: 'closed'
   condition:
     - condition: template
       value_template: "{{ not states('cover.office_blinds') == states('cover.den_blinds') == states('cover.kitchen_blinds') == states('cover.guest_blind') == states('cover.server_room_blind') == states('cover.shack_blinds') == states('cover.master_blinds') }}"
