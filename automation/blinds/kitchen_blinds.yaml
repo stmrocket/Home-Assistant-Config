@@ -102,6 +102,15 @@
         - cover.east_kitchen_blind
         - cover.right_kitchen_blind
         - cover.left_kitchen_blind
+      from: 'closed'
+      to: 'open'
+    - platform: state
+      entity_id:
+        - cover.east_kitchen_blind
+        - cover.right_kitchen_blind
+        - cover.left_kitchen_blind
+      from: 'open'
+      to: 'closed'
   condition:
     - condition: template
       value_template: "{{ states('cover.east_kitchen_blind') == states('cover.right_kitchen_blind') == states('cover.left_kitchen_blind') }}"
@@ -125,6 +134,15 @@
         - cover.east_kitchen_blind
         - cover.right_kitchen_blind
         - cover.left_kitchen_blind
+      from: 'closed'
+      to: 'open'
+    - platform: state
+      entity_id:
+        - cover.east_kitchen_blind
+        - cover.right_kitchen_blind
+        - cover.left_kitchen_blind
+      from: 'open'
+      to: 'closed'
   condition:
     - condition: template
       value_template: "{{ not states('cover.east_kitchen_blind') == states('cover.right_kitchen_blind') == states('cover.left_kitchen_blind') }}"
