@@ -340,7 +340,9 @@
     - service: input_boolean.turn_off
       entity_id: 
         - input_boolean.alarm_clock_ringing
-        - input_boolean.work_alarm_ringing
+        - input_boolean.work_alarm_ringing     
+    - service: switch.turn_on
+      entity_id: switch.master_bedroom_lamps 
 
 - alias: Master Wake Manual Off Single
   trigger:

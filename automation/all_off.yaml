@@ -57,6 +57,7 @@
         - switch.shack_fan
         - switch.back_porch_light  
         - switch.shack_light
+        - switch.office_peripherals
 
 - alias: All Off Away
   trigger:
