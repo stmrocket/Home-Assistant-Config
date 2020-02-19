@@ -158,3 +158,17 @@
           images:
             - /config/www/cctv/front_porch_person.jpg
             - /config/www/cctv/front_porch_full.jpg                                
+
+- alias: Restart Frigate if Hung
+  trigger:
+    - platform: state
+      entity_id: sensor.frigate_coral_queue_length
+      to: '101'
+      for: 
+        seconds: 30
+  action:
+    - service: rest_command.docker_frigate_restart
+    - service: notify.browser
+      data:
+        message: Frigate has been restarted due to unresponsiveness.
+        title: Frigate CCTV
