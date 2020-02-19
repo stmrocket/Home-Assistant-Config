@@ -106,6 +106,15 @@ recorder:
     - sensor.frigate_coral_fps
     - sensor.frigate_coral_inference
     - sensor.frigate_coral_queue_length
+    - sensor.memory_use_percent
+    - sensor.synology_dsm_memory_usage_real
+    - sensor.synology_dsm_cpu_load_total
+    - sensor.processor_use
+    - sensor.disk_use_percent
+    - sensor.synology_dsm_average_disk_temp_volume_1
+    - sensor.synology_dsm_average_disk_temp_volume_2
+    - sensor.synology_dsm_volume_used_volume_1
+    - sensor.synology_dsm_volume_used_volume_2
 
 
 #################################################################
