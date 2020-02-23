@@ -1,0 +1,19 @@
+sensor:
+  - platform: imap_email_content
+    server: imap.gmail.com
+    name: generator_status
+    port: 993
+    username: !secret smtp_user
+    password: !secret smtp_pass
+    senders:
+      - oncueplus@kohlercloud.com
+    value_template: >-
+      {% if 'Generator supplying power due to loss of utility power' in subject %}
+        Running
+      {% elif 'Generator State: Performing Cycle Exercise' in body %}
+        Testing
+      {% elif 'Generator State: Standby' in body %}
+        Idle
+      {% elif 'Action Required' in subject %}
+        Error
+      {% endif %}
