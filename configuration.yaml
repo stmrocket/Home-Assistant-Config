@@ -334,9 +334,9 @@ google:
   client_id: !secret gcal_client_id
   client_secret: !secret gcal_client_secret
 
-#HACS
-hacs:
-  token: !secret hacs_git
+# #HACS
+# hacs:
+#   token: !secret hacs_git
 
 #Alexa Media Player
 alexa_media:
