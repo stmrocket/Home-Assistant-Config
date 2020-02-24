@@ -30,7 +30,7 @@ script:
           entity_id: input_text.prev_git_version
           value: "{{ states('sensor.home_assistant_config') }}"
       - service: shell_command.get_latest_config
-      - service: rest_command.docker_home_assistant_restart
+      - service: homeassistant.restart
 
   update_config_reload_automations:
     sequence:
