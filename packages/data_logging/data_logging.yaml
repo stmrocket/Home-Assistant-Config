@@ -97,12 +97,26 @@ recorder:
     - input_number.hvac_runtime
     - binary_sensor.hvac_running
     - sensor.frigate_west_front_fps
+    - sensor.frigate_west_front_detection_fps
+    - sensor.frigate_west_front_skipped_fps
     - sensor.frigate_east_front_fps
+    - sensor.frigate_east_front_detection_fps
+    - sensor.frigate_east_front_skipped_fps
     - sensor.frigate_west_side_fps
+    - sensor.frigate_west_side_detection_fps
+    - sensor.frigate_west_side_skipped_fps
     - sensor.frigate_east_side_fps
+    - sensor.frigate_east_side_detection_fps
+    - sensor.frigate_east_side_skipped_fps
     - sensor.frigate_back_yard_fps
+    - sensor.frigate_back_yard_detection_fps
+    - sensor.frigate_back_yard_skipped_fps
     - sensor.frigate_back_porch_fps
+    - sensor.frigate_back_porch_detection_fps
+    - sensor.frigate_back_porch_skipped_fps
     - sensor.frigate_front_porch_fps
+    - sensor.frigate_front_porch_detection_fps
+    - sensor.frigate_front_porch_skipped_fps
     - sensor.frigate_coral_fps
     - sensor.frigate_coral_inference
     - sensor.frigate_coral_queue_length
