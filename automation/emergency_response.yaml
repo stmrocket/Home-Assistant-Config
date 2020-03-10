@@ -4,7 +4,7 @@
       entity_id: switch.output_010
       to: 'on'
   action:
-    - service: notify.browser
+    - service: notify.mobile_app_shawn_7t
       data:
         message: The fire alarm has been triggered.
         title: Alarm!  
@@ -104,7 +104,7 @@
       entity_id: switch.output_011
       to: 'on'
   action:
-    - service: notify.browser
+    - service: notify.mobile_app_shawn_7t
       data:
         message: The CO alarm has been triggered.
         title: Alarm! 

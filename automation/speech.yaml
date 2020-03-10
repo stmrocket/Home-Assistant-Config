@@ -277,7 +277,7 @@
           {% else -%}
             4,1
           {% endif -%}
-    - service: notify.browser
+    - service: notify.mobile_app_shawn_7t
       data:
         message: Someone is at the front door.
         title: Doorbell

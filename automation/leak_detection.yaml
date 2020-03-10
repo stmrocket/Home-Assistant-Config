@@ -5,7 +5,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the dishwasher.
@@ -21,7 +21,7 @@
     event_data:
       entity_id: timer.dishwasher_leak
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The dishwasher leak detector is not reporting.
@@ -37,7 +37,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the guest bathroom sink.
@@ -53,7 +53,7 @@
     event_data:
       entity_id: timer.guest_sink_leak
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The guest bathroom sink leak detector is not reporting.
@@ -69,7 +69,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the guest toilet.
@@ -85,7 +85,7 @@
     event_data:
       entity_id: timer.guest_toilet_leak 
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The guest toilet leak detector is not reporting.
@@ -101,7 +101,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the kitchen sink.
@@ -117,7 +117,7 @@
     event_data:      
       entity_id: timer.kitchen_sink_leak
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The kitchen sink leak detector is not reporting.
@@ -133,7 +133,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the left master bathroom sink.
@@ -149,7 +149,7 @@
     event_data:
       entity_id: timer.left_master_sink_leak  
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The left master sink leak detector is not reporting.
@@ -165,7 +165,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the master toilet.
@@ -181,7 +181,7 @@
     event_data:
       entity_id: timer.master_toilet_leak 
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The master toilet leak detector is not reporting.
@@ -197,7 +197,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the refrigerator.
@@ -213,7 +213,7 @@
     event_data:
       entity_id: timer.refrigerator_leak
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The refrigerator leak detector is not reporting.
@@ -229,7 +229,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the right master bathroom sink.
@@ -245,7 +245,7 @@
     event_data:
       entity_id: timer.right_master_sink_leak  
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The right master bathroom sink leak detector is not reporting.
@@ -261,7 +261,7 @@
     from: 'off'
     to: 'on'    
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detected!
       message: A leak has been detected in the utility room.
@@ -277,7 +277,7 @@
     event_data:
       entity_id: timer.utility_leak 
   action:
-  - service: notify.browser
+  - service: notify.mobile_app_shawn_7t
     data:
       title: Leak Detector Error!
       message: The utility room leak detector is not reporting.
