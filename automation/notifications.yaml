@@ -4,7 +4,7 @@
       entity_id: switch.output_183
       to: 'on'
   action:
-    - service: notify.browser
+    - service: notify.mobile_app_shawn_7t
       data:
         message: The alarm has been triggered.
         title: Alarm!        
@@ -19,7 +19,7 @@
       entity_id: alarm_control_panel.area_001
       state: armed_away
   action:
-    - service: notify.browser
+    - service: notify.mobile_app_shawn_7t
       data:
         message: The garage door was opened while the alarm was armed.
         title: Garage Door        
