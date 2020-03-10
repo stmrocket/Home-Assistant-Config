@@ -3,7 +3,7 @@
 - url: /local/community/aftership-card/aftership-card.js
   type: module
 - url: /local/community/bar-card/bar-card.js
-  type: js
+  type: module
 - url: /local/community/bignumber-card/bignumber-card.js
   type: js
 - url: /local/community/button-card/button-card.js
