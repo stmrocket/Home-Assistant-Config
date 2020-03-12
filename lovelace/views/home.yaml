@@ -53,11 +53,15 @@ cards:
                   decimals: 0
                   name: 'Power'
                   unit: 'W'
+                  tap_action:
+                    action: more-info
                 - entity: sensor.energy_daily
                   attribute: state
                   decimals: 1
                   unit: 'KWh'
                   icon: mdi:power-plug
+                  tap_action:
+                    action: more-info
                 
               show:
                 horseshoe_style: 'lineargradient'
@@ -132,14 +136,20 @@ cards:
                   icon: mdi:memory
                   name: 'SERVER'
                   unit: '%'
+                  tap_action:
+                    action: more-info
                 - entity: sensor.memory_use_percent
                   decimals: 0
                   unit: '%'
                   name: 'RAM'
+                  tap_action:
+                    action: more-info
                 - entity: sensor.disk_use_percent
                   decimals: 0
                   unit: '%'
                   name: 'DISK'
+                  tap_action:
+                    action: more-info
 
               show:
                 horseshoe_style: 'lineargradient'
@@ -234,9 +244,13 @@ cards:
                   decimals: 0
                   name: 'Pooper'
                   unit: '%'
+                  tap_action:
+                    action: more-info
                 - entity: sensor.litter_robot_status_short
                   attribute: state
                   decimals: 1
+                  tap_action:
+                    action: more-info
 
               show:
                 horseshoe_style: 'lineargradient'
