@@ -710,7 +710,7 @@ sensor:
           {% if is_state('device_tracker.generator', 'not_home') -%}
             Offline
           {% else -%}
-            {{ states('sensor.generator_status') }}
+            {{ states('sensor.generator_monitor') }}
           {% endif -%}
 
 ####################################################
