@@ -58,3 +58,5 @@
   type: js
 - url: /local/community/lovelace-card-mod/card-mod.js
   type: module
+- url: /local/community/restriction-card/restriction-card.js
+  type: module  
