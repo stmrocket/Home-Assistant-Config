@@ -2874,25 +2874,29 @@ popup_docker:
                 restrictions:
                   confirm: true
                   text: "Change container state?"
-                entity: switch.frigate
+                card:
+                  entity: switch.frigate
               - type: "custom:restriction-card"
                 row: true
                 restrictions:
                   confirm: true
                   text: "Change container state?"
-                entity: switch.mysql
+                card:
+                  entity: switch.mysql
               - type: "custom:restriction-card"
                 row: true
                 restrictions:
                   confirm: true
                   text: "Change container state?"
-                entity: switch.tv_headend
+                card:
+                  entity: switch.tv_headend
               - type: "custom:restriction-card"
                 row: true
                 restrictions:
                   confirm: true
                   text: "Change container state?"
-                entity: switch.eagle_mqtt               
+                card:
+                  entity: switch.eagle_mqtt               
 
 popup_server_ups:
   sequence:
