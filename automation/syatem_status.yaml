@@ -223,6 +223,7 @@
   trigger:
   - platform: state
     entity_id: sensor.server_ups_status
+    from: 'Battery'
     to: 'Utility'    
   action:
   - service: notify.mobile_app_shawn_7t
@@ -271,6 +272,7 @@
   trigger:
   - platform: state
     entity_id: sensor.office_ups_status
+    from: 'Battery'
     to: 'Utility'    
   action:
   - service: notify.mobile_app_shawn_7t
