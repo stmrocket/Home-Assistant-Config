@@ -926,3 +926,130 @@ cards:
                   - value: "not_home"
                     color: rgb(228, 94, 101)
                 name: Parrot                
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: device_tracker.horn
+                color_type: icon
+                icon: mdi:clock-outline
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: Master
+
+              - type: "custom:button-card"
+                entity: device_tracker.rainmachine
+                color_type: icon
+                icon: mdi:sprinkler
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: RainMachine
+
+              - type: "custom:button-card"
+                entity: group.docker
+                color_type: icon
+                icon: mdi:docker
+                state:
+                  - value: "on"
+                    color: rgb(94, 228, 101)
+                  - value: "off"
+                    color: rgb(228, 94, 101)
+                name: Docker
+                tap_action:  
+                  action: call-service
+                  service: script.popup_docker
+                  service_data:
+                    deviceID: 
+                      - this   
+
+              - type: "custom:button-card"
+                entity: sensor.server_ups_status
+                color_type: icon
+                state:
+                  - value: "Offline"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:power-plug
+                  - value: "Battery Fail"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:battery-alert
+                  - value: "Utility"
+                    color: rgb(94, 228, 101)
+                    icon: mdi:power-plug
+                  - value: "Battery"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:battery
+                  - value: "Error"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:power-plug-off
+                name: Server
+                tap_action:  
+                  action: call-service
+                  service: script.popup_server_ups
+                  service_data:
+                    deviceID: 
+                      - this
+              
+              - type: "custom:button-card"
+                entity: sensor.office_ups_status
+                color_type: icon
+                state:
+                  - value: "Offline"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:power-plug
+                  - value: "Battery Fail"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:battery-alert
+                  - value: "Utility"
+                    color: rgb(94, 228, 101)
+                    icon: mdi:power-plug
+                  - value: "Battery"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:battery
+                  - value: "Error"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:power-plug-off
+                name: Office
+                tap_action:  
+                  action: call-service
+                  service: script.popup_office_ups
+                  service_data:
+                    deviceID: 
+                      - this
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:gap-card"
+
+              - type: "custom:gap-card" 
+
+              - type: "custom:button-card"
+                entity: sensor.generator_status
+                color_type: icon
+                state:
+                  - value: "Offline"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:power-plug
+                  - value: "Running"
+                    color: rgb(94, 228, 101)
+                    icon: mdi:engine-outline
+                  - value: "Idle"
+                    color: rgb(94, 228, 101)
+                    icon: mdi:power-plug
+                  - value: "Testing"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:check-outline
+                  - value: "Error"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:engine-off-outline
+                name: Genset
+                tap_action:  
+                  action: more-info
+              
+              - type: "custom:gap-card"
+              - type: "custom:gap-card"

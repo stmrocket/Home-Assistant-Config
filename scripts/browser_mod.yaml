@@ -2801,3 +2801,143 @@ popup_filter:
               - entity: input_number.replacement_threshold   
               - entity: script.furnace_filter_date   
                 name: Reset Filter    
+
+popup_blind_network:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Blind Status
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              entities:
+              - device_tracker.den_c
+              - device_tracker.den_l
+              - device_tracker.den_r
+              - device_tracker.guest
+              - device_tracker.kitchen_e
+              - device_tracker.kitchen_l
+              - device_tracker.kitchen_r
+              - device_tracker.master_c
+              - device_tracker.master_l
+              - device_tracker.master_r
+              - device_tracker.master_w
+              - device_tracker.office_c
+              - device_tracker.office_l
+              - device_tracker.office_r
+              - device_tracker.shack_c
+              - device_tracker.shack_l
+              - device_tracker.shack_r
+              - device_tracker.server                 
+
+popup_led_network:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: LED Controller Status
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              entities:
+              - device_tracker.den_1
+              - device_tracker.gbath
+              - device_tracker.kitchen_1
+              - device_tracker.kitchen_2
+              - device_tracker.kitchen_3
+              - device_tracker.kitchen_4
+              - device_tracker.kitchen_5
+              - device_tracker.kitchen_6
+              - device_tracker.kitchen_7
+              - device_tracker.kitchen_8
+              - device_tracker.mbath
+              - device_tracker.mbed_1
+              - device_tracker.mbed_2
+              - device_tracker.shack               
+
+popup_docker:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Docker Container Status
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              entities:
+              - switch.frigate
+              - switch.mysql
+              - switch.tv_headend
+              - switch.eagle_mqtt               
+
+popup_server_ups:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Server Room UPS Status
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              entities:
+              - entity: sensor.server_ups_status
+                name: Power Source
+              - entity: sensor.server_ups_battery_health
+                name: Battery Status
+              - entity: sensor.server_ups_battery_capacity
+                name: Charge Level
+              - entity: sensor.server_ups_remaining_runtime
+                name: Runtime
+              - entity: sensor.server_ups_output_load
+                name: Load
+              - entity: sensor.server_ups_output_voltage
+                name: Output Voltage
+              - entity: sensor.server_ups_output_frequency
+                name: Output Frequenct
+              - entity: sensor.server_ups_output_current
+                name: Output Current
+              - entity: sensor.server_ups_input_voltage
+                name: Input Voltage
+              - entity: sensor.server_ups_input_frequency
+                name: Input Frequency
+              - entity: sensor.server_ups_battery_temperature
+                name: Battery Temperature
+
+popup_office_ups:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Office UPS Status
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              entities:
+              - entity: sensor.office_ups_status
+                name: Power Source
+              - entity: sensor.office_ups_battery_health
+                name: Battery Status
+              - entity: sensor.office_ups_battery_capacity
+                name: Charge Level
+              - entity: sensor.office_ups_remaining_runtime
+                name: Runtime
+              - entity: sensor.office_ups_output_load
+                name: Load
+              - entity: sensor.office_ups_output_voltage
+                name: Output Voltage
+              - entity: sensor.office_ups_output_frequency
+                name: Output Frequenct
+              - entity: sensor.office_ups_output_current
+                name: Output Current
+              - entity: sensor.office_ups_input_voltage
+                name: Input Voltage
+              - entity: sensor.office_ups_input_frequency
+                name: Input Frequency
+              - entity: sensor.office_ups_battery_temperature
+                name: Battery Temperature
