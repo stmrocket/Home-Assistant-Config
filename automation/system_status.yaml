@@ -305,3 +305,155 @@
     data:
       title: Office UPS Replace Battery
       message: The office UPS battery has failed.  Replace immediately.
+
+- alias: Notify Docker Frigate Down
+  trigger:
+  - platform: state
+    entity_id: switch.frigate
+    to: 'off'    
+    for:
+      minutes: 2
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Container Down
+      message: The Frigate Docker container is down.     
+
+- alias: Notify Docker MySQL Down
+  trigger:
+  - platform: state
+    entity_id: switch.mysql
+    to: 'off'    
+    for:
+      minutes: 2
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Container Down
+      message: The MySQL Docker container is down.      
+
+- alias: Notify TV Headend Frigate Down
+  trigger:
+  - platform: state
+    entity_id: switch.tv_headend
+    to: 'off'    
+    for:
+      minutes: 2
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Container Down
+      message: The TV Headend Docker container is down.          
+
+- alias: Notify Docker Eagle MQTT Down
+  trigger:
+  - platform: state
+    entity_id: switch.eagle_mqtt
+    to: 'off'    
+    for:
+      minutes: 2
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Container Down
+      message: The Eagle MQTT Docker container is down.        
+
+- alias: Notify Parrot Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.parrot
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The MQTT Parrot has been offline for 5 minutes.      
+
+- alias: Notify Clock Horn Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.horn
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The clock horn has been offline for 5 minutes.      
+
+- alias: Notify RainMachine Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.rainmachine
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The RainMachine has been offline for 5 minutes.    
+
+- alias: Notify Genset Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.generator
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The standby generator has been offline for 5 minutes.        
+
+- alias: Notify Genset Running
+  trigger:
+  - platform: state
+    entity_id: sensor.generator_status
+    to: 'Running'    
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Generator Running
+      message: The generator is supplying power to the house.           
+
+- alias: Notify Genset Stopped
+  trigger:
+  - platform: state
+    entity_id: sensor.generator_status
+    to: 'Idle'    
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Generator Stopped
+      message: The generator has stopped.         
+
+- alias: Notify Genset Running
+  trigger:
+  - platform: state
+    entity_id: sensor.generator_status
+    to: 'Testing'   
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Generator Testing
+      message: The generator is performing a test cycle.    
+
+- alias: Notify Genset Trouble
+  trigger:
+  - platform: state
+    entity_id: sensor.generator_status
+    to: 'Error'  
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Generator Fault
+      message: The generator is reporting an error.              

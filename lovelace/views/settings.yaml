@@ -35,7 +35,7 @@ cards:
               - type: "custom:button-card"
                 entity: switch.irrigation_program
                 color_type: icon
-                color: rgb(0, 145, 255)
+                color: rgb(228, 94, 101)
                 icon: mdi:alarm-check
                 name: Program Enable
                 hold_action: 
@@ -43,7 +43,7 @@ cards:
               - type: "custom:button-card"
                 entity: switch.irrigation_run_program
                 color_type: icon
-                color: rgb(0, 145, 255)
+                color: rgb(228, 94, 101)
                 icon: mdi:weather-pouring
                 name: Run Program
                 hold_action: 
@@ -54,7 +54,7 @@ cards:
               - type: "custom:button-card"
                 entity: switch.east_front
                 color_type: icon
-                color: rgb(0, 145, 255)
+                color: rgb(228, 94, 101)
                 icon: mdi:numeric-1-box
                 name: E Front
                 hold_action: 
@@ -62,7 +62,7 @@ cards:
               - type: "custom:button-card"
                 entity: switch.east_side
                 color_type: icon
-                color: rgb(0, 145, 255)
+                color: rgb(228, 94, 101)
                 icon: mdi:numeric-2-box
                 name: E Side
                 hold_action: 
@@ -70,7 +70,7 @@ cards:
               - type: "custom:button-card"
                 entity: switch.back_yard
                 color_type: icon
-                color: rgb(0, 145, 255)
+                color: rgb(228, 94, 101)
                 icon: mdi:numeric-3-box
                 name: Back
                 hold_action: 
@@ -78,7 +78,7 @@ cards:
               - type: "custom:button-card"
                 entity: switch.west_side
                 color_type: icon
-                color: rgb(0, 145, 255)
+                color: rgb(228, 94, 101)
                 icon: mdi:numeric-4-box
                 name: W Side
                 hold_action: 
@@ -86,7 +86,7 @@ cards:
               - type: "custom:button-card"
                 entity: switch.west_front
                 color_type: icon
-                color: rgb(0, 145, 255)
+                color: rgb(228, 94, 101)
                 icon: mdi:numeric-5-box
                 name: W Front
                 hold_action: 
