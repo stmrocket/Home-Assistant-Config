@@ -56,7 +56,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Battery Capacity'
+    name: 'Server UPS Battery Capacity'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.1.0
     community: 'public'
@@ -66,7 +66,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Remaining Runtime'
+    name: 'Server UPS Remaining Runtime'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.3.0
     accept_errors: true
@@ -74,7 +74,7 @@ sensor:
     value_template: '{{((value | int) / 6000) | int}}'
 
   - platform: snmp
-    name: 'Office UPS Battery Temperature'
+    name: 'Server UPS Battery Temperature'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.2.0
     accept_errors: true
@@ -84,7 +84,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Input Voltage'
+    name: 'Server UPS Input Voltage'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.3.2.1.0
     accept_errors: true
@@ -94,7 +94,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Input Frequency'
+    name: 'Server UPS Input Frequency'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.3.2.4.0
     accept_errors: true
@@ -104,7 +104,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Output Voltage'
+    name: 'Server UPS Output Voltage'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.1.0
     accept_errors: true
@@ -114,7 +114,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Output Frequency'
+    name: 'Server UPS Output Frequency'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.2.0
     accept_errors: true
@@ -124,7 +124,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Output Current'
+    name: 'Server UPS Output Current'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.4.0
     accept_errors: true
@@ -134,7 +134,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Output Load'
+    name: 'Server UPS Output Load'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.3.0
     accept_errors: true
@@ -144,7 +144,7 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Office UPS Battery Status'
+    name: 'Server UPS Battery Status'
     host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.4.0
     accept_errors: true
