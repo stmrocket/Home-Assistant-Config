@@ -12,8 +12,6 @@ device_tracker:
       alarm_panel: !secret alarm_panel_ip
       unifi_front: !secret unifi_front_ip
       unifi_back: !secret unifi_back_ip
-      office_printer: !secret office_printer_ip
-      shack_printer: !secret shack_printer_ip
       ha_dev: !secret ha_dev_ip
       elk_fpp: !secret elk_fpp_ip
       redlink: !secret redlink_ip
