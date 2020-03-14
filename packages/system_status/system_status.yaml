@@ -12,7 +12,6 @@ device_tracker:
       alarm_panel: !secret alarm_panel_ip
       unifi_front: !secret unifi_front_ip
       unifi_back: !secret unifi_back_ip
-      elk_fpp: !secret elk_fpp_ip
       redlink: !secret redlink_ip
       server_ups: !secret server_ups_ip
       office_ups: !secret office_ups_ip
