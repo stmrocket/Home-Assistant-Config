@@ -2793,14 +2793,20 @@ popup_filter:
         card:
           type: vertical-stack
           cards:
-            - type: entities
-              entities:
+            - type: "custom:hui-entities-card"
+              entities:                  
               - entity: sensor.furnace_filter_life
               - entity: sensor.average_total_runtime_week
               - entity: sensor.furnace_filter_days_remaining
               - entity: input_number.replacement_threshold   
-              - entity: script.furnace_filter_date   
-                name: Reset Filter    
+              - type: "custom:restriction-card"
+                row: true
+                restrictions:
+                  confirm: true
+                  text: "Change container state?"
+                card:
+                  entity: script.furnace_filter_date   
+                  name: Reset Filter    
 
 popup_blind_network:
   sequence:
