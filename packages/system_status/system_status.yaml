@@ -650,7 +650,27 @@ sensor:
                 {%- endif -%}
               {%- endif -%}
 
+      office_ups_battery_health:
+        friendly_name: Office UPS Battery Status
+        value_template: >
+          {% if is_state('sensor.office_ups_battery_status', '1') -%}
+            Good
+          {% elif  is_state('sensor.office_ups_battery_status', '2') -%}
+            Replace
+          {% else -%}
+            Error
+          {% endif -%}
 
+      server_ups_battery_health:
+        friendly_name: Server UPS Battery Status
+        value_template: >
+          {% if is_state('sensor.server_ups_battery_status', '1') -%}
+            Good
+          {% elif  is_state('sensor.server_ups_battery_status', '2') -%}
+            Replace
+          {% else -%}
+            Error
+          {% endif -%}
 
 ####################################################
 #                                                  #
