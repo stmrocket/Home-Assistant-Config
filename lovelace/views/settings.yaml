@@ -5,19 +5,92 @@
 #                                                                                                                                           #
 ############################################################################################################################################# 
 
-id: 4
-icon: mdi:blinds
-name: Blinds
+id: 5
+icon: mdi:settings
+
+name: Settings
 cards:
 
-#################################################################
-#                                                               #
-#                     Laundry - Room Status                     #
-#                                                               #
-#################################################################
     
   - type: vertical-stack
     cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: RainMachine
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+            
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: switch.irrigation_program
+                color_type: icon
+                color: rgb(0, 145, 255)
+                icon: mdi:alarm-check
+                name: Program Enable
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.irrigation_run_program
+                color_type: icon
+                color: rgb(0, 145, 255)
+                icon: mdi:weather-pouring
+                name: Run Program
+                hold_action: 
+                  action: more-info
+    
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: switch.east_front
+                color_type: icon
+                color: rgb(0, 145, 255)
+                icon: mdi:numeric-1-box
+                name: E Front
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.east_side
+                color_type: icon
+                color: rgb(0, 145, 255)
+                icon: mdi:numeric-2-box
+                name: E Side
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.back_yard
+                color_type: icon
+                color: rgb(0, 145, 255)
+                icon: mdi:numeric-3-box
+                name: Back
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.west_side
+                color_type: icon
+                color: rgb(0, 145, 255)
+                icon: mdi:numeric-4-box
+                name: W Side
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.west_front
+                color_type: icon
+                color: rgb(0, 145, 255)
+                icon: mdi:numeric-5-box
+                name: W Front
+                hold_action: 
+                  action: more-info    
       - type: entities
         show_header_toggle: false
         title: Blinds
@@ -172,3 +245,29 @@ cards:
                   - sensor.right_shack_blind_ip
                   - sensor.right_shack_blind_uptime
               - sensor.shack_blinds_average_light_level
+
+#################################################################
+#                                                               #
+#                      Home - GitHub                            #
+#                                                               #
+################################################################# 
+  - type: vertical-stack
+    cards:           
+      - type: entities
+        show_header_toggle: false
+        title: CCTV
+        entities:          
+          - input_boolean.frigate_enabled
+#################################################################
+#                                                               #
+#                       Config - Zigbee2MQTT                    #
+#                                                               #
+#################################################################
+    
+      - type: entities
+        show_header_toggle: false
+        title: Zigbee2MQTT
+        entities:
+        - entity: input_boolean.zigbee_permit_join
+        - entity: timer.zigbee_permit_join
+        - entity: sensor.bridge_state                        

@@ -16,20 +16,20 @@ custom_header:
   hide_help: true
   button_text:
     options: '{{ time }}<br>{{ date }}'
-  hide_tabs: '8'
+  hide_tabs: '6'
   default_tab: '0'
   exceptions:
     - conditions:
         user_agent: fully-kitchen
       config:
         menu_dropdown: true
-        hide_tabs: '0 to 7'
-        default_tab: '8'
-    - conditions:
-        user_agent: Android
-      config:
-        options_hide: true
-        hide_tabs: '3, 8'
+        hide_tabs: '0 to 5'
+        default_tab: '6'
+    # - conditions:
+    #     user_agent: Android
+    #   config:
+    #     options_hide: true
+    #     hide_tabs: '3, 8'
 
 #############################################################################################################################################
 #                                                                                                                                           # 
@@ -43,9 +43,7 @@ views:
   - !include /config/lovelace/views/home.yaml
   - !include /config/lovelace/views/rooms.yaml  
   - !include /config/lovelace/views/hvac.yaml
-  - !include /config/lovelace/views/laundry.yaml
-  - !include /config/lovelace/views/blinds.yaml
   - !include /config/lovelace/views/media.yaml
-  - !include /config/lovelace/views/irrigation.yaml
-  - !include /config/lovelace/views/system.yaml        
+  - !include /config/lovelace/views/system.yaml    
+  - !include /config/lovelace/views/settings.yaml       
   - !include /config/lovelace/views/panels/kitchen.yaml

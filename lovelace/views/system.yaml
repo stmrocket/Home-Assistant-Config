@@ -5,7 +5,7 @@
 #                                                                                                                                           #
 #############################################################################################################################################
 
-id: 7  
+id: 4  
 icon: mdi:server-network
 name: System Status
 cards:
@@ -648,79 +648,281 @@ cards:
 #                                                               #
 ################################################################# 
   - type: vertical-stack
-    cards:           
-      - type: horizontal-stack
+    cards:  
+      - type: custom:vertical-stack-in-card
         cards:
-          - type: "custom:button-card"
-            entity: binary_sensor.git_update_ready
-            color_type: icon
-            icon: mdi:github-circle
-            state:
-              - value: "on"
-                color: rgb(228, 94, 101)
-              - value: "off"
-                color: rgb(255, 255, 255)
-            name: GitHub
-            tap_action:
-              action: call-service
-              service: script.popup_github
-              service_data:
-                deviceID: 
-                  - this
-            hold_action: 
-              action: call-service
-              service: script.popup_github
-              service_data:
-                deviceID: 
-                  - this
-          - type: "custom:button-card"
-            entity: sensor.hacs
-            color_type: icon
-            icon: mdi:package
-            state:
-              - value: 0
-                operator: '>'
-                color: rgb(228, 94, 101)
-              - value: 0
-                color: rgb(255, 255, 255)
-            name: HACS
-            tap_action:
-              action: call-service
-              service: script.popup_hacs
-              service_data:
-                deviceID: 
-                  - this
-            hold_action: 
-              action: call-service
-              service: script.popup_hacs
-              service_data:
-                deviceID: 
-                  - this
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Updates
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: binary_sensor.git_update_ready
+                color_type: icon
+                icon: mdi:github-circle
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                name: GitHub
+                tap_action:
+                  action: call-service
+                  service: script.popup_github
+                  service_data:
+                    deviceID: 
+                      - this
+                hold_action: 
+                  action: call-service
+                  service: script.popup_github
+                  service_data:
+                    deviceID: 
+                      - this
+              - type: "custom:button-card"
+                entity: sensor.hacs
+                color_type: icon
+                icon: mdi:package
+                state:
+                  - value: 0
+                    operator: '>'
+                    color: rgb(228, 94, 101)
+                  - value: 0
+                    color: rgb(255, 255, 255)
+                name: HACS
+                tap_action:
+                  action: call-service
+                  service: script.popup_hacs
+                  service_data:
+                    deviceID: 
+                      - this
+                hold_action: 
+                  action: call-service
+                  service: script.popup_hacs
+                  service_data:
+                    deviceID: 
+                      - this
 
-          - type: "custom:button-card"
-            entity: binary_sensor.updater
-            color_type: icon
-            icon: mdi:home-assistant
-            state:
-              - value: "on"
-                color: rgb(228, 94, 101)
-              - value: "off"
-                color: rgb(255, 255, 255)
-            name: Hass.io
-            tap_action:
-              action: more-info
-            hold_action: 
-              action: more-info
-#################################################################
-#                                                               #
-#                       Config - Zigbee2MQTT                    #
-#                                                               #
-#################################################################
-    
-      - type: entities
-        show_header_toggle: false
-        title: Zigbee2MQTT
-        entities:
-        - entity: input_boolean.zigbee_permit_join
-        - entity: timer.zigbee_permit_join
-        - entity: sensor.bridge_state          
+              - type: "custom:button-card"
+                entity: binary_sensor.updater
+                color_type: icon
+                icon: mdi:home-assistant
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                name: Hass.io
+                tap_action:
+                  action: more-info
+                hold_action: 
+                  action: more-info
+      
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Device Status
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap-action: none
+                type: state-label
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: device_tracker.core_router
+                color_type: icon
+                icon: mdi:network-router
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: Router
+
+              - type: "custom:button-card"
+                entity: device_tracker.core_switch
+                color_type: icon
+                icon: mdi:switch
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: Core
+
+              - type: "custom:button-card"
+                entity: device_tracker.poe_switch
+                color_type: icon
+                icon: mdi:switch
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: POE
+              
+              - type: "custom:button-card"
+                entity: device_tracker.unifi_front
+                color_type: icon
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                    icon: mdi:access-point-network
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:access-point-network-off
+                name: Hall
+
+              - type: "custom:button-card"
+                entity: device_tracker.unifi_back
+                color_type: icon
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                    icon: mdi:access-point-network
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:access-point-network-off
+                name: Den
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: device_tracker.nas
+                color_type: icon
+                icon: mdi:server-network
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: NAS
+
+              - type: "custom:button-card"
+                entity: device_tracker.owfs_pi
+                color_type: icon
+                icon: mdi:home-thermometer
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: OWFS
+
+              - type: "custom:button-card"
+                entity: device_tracker.musicport
+                color_type: icon
+                icon: mdi:music
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: MusicPort
+              
+              - type: "custom:button-card"
+                entity: device_tracker.isy_994
+                color_type: icon
+                icon: mdi:lightbulb-on
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: ISY
+
+              - type: "custom:button-card"
+                entity: device_tracker.alarm_panel
+                color_type: icon
+                icon: mdi:alarm-bell
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: ELK
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: device_tracker.redlink
+                color_type: icon
+                icon: mdi:thermostat
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: Honeywell
+
+              - type: "custom:button-card"
+                entity: device_tracker.hdhomerun
+                color_type: icon
+                icon: mdi:television-classic
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: HDHR
+
+              - type: "custom:button-card"
+                entity: group.blinds
+                color_type: icon
+                icon: mdi:blinds
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: Blinds
+                tap_action:  
+                  action: call-service
+                  service: script.popup_blind_network
+                  service_data:
+                    deviceID: 
+                      - this
+              
+              - type: "custom:button-card"
+                entity: group.leds
+                color_type: icon
+                icon: mdi:led-on
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: LEDs
+                tap_action:  
+                  action: call-service
+                  service: script.popup_led_network
+                  service_data:
+                    deviceID: 
+                      - this
+
+              - type: "custom:button-card"
+                entity: device_tracker.parrot
+                color_type: icon
+                icon: mdi:speaker
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: Parrot                
