@@ -2867,12 +2867,32 @@ popup_docker:
         card:
           type: vertical-stack
           cards:
-            - type: entities
+            - type: "custom:hui-entities-card"
               entities:
-              - switch.frigate
-              - switch.mysql
-              - switch.tv_headend
-              - switch.eagle_mqtt               
+              - type: "custom:restriction-card"
+                row: true
+                restrictions:
+                  confirm: true
+                  text: "Change container state?"
+                entity: switch.frigate
+              - type: "custom:restriction-card"
+                row: true
+                restrictions:
+                  confirm: true
+                  text: "Change container state?"
+                entity: switch.mysql
+              - type: "custom:restriction-card"
+                row: true
+                restrictions:
+                  confirm: true
+                  text: "Change container state?"
+                entity: switch.tv_headend
+              - type: "custom:restriction-card"
+                row: true
+                restrictions:
+                  confirm: true
+                  text: "Change container state?"
+                entity: switch.eagle_mqtt               
 
 popup_server_ups:
   sequence:
