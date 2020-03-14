@@ -15,6 +15,8 @@ device_tracker:
       redlink: !secret redlink_ip
       server_ups: !secret server_ups_ip
       office_ups: !secret office_ups_ip
+      generator: !secret generator_ip
+      rainmachine: !secret rainmachine_ip
 
 
 #################################################################
@@ -396,7 +398,7 @@ sensor:
 #                       Template Sensors                        #
 #                                                               #
 ################################################################# 
-   
+
   - platform: template
     sensors:
       wan_in_mbps:
@@ -702,6 +704,15 @@ sensor:
             Error
           {% endif -%}
 
+      generator_status:
+        friendly_name: Generator Operating Status
+        value_template: >
+          {% if is_state('device_tracker.generator', 'not_home') -%}
+            Offline
+          {% else -%}
+            {{ states('sensor.generator_status') }}
+          {% endif -%}
+
 ####################################################
 #                                                  #
 #                 Sensor - Uptime                  #
@@ -819,3 +830,11 @@ group:
       - device_tracker.shack_l
       - device_tracker.shack_r
       - device_tracker.server
+  docker:
+    name: Docker
+    all: 'true'
+    entities:
+      - switch.frigate
+      - switch.mysql
+      - switch.tv_headend
+      - switch.eagle_mqtt

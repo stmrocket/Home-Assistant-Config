@@ -1,7 +1,7 @@
 sensor:
   - platform: imap_email_content
     server: imap.gmail.com
-    name: generator_status
+    name: generator_monitor
     port: 993
     username: !secret smtp_user
     password: !secret smtp_pass
