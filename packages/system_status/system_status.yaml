@@ -1,59 +1,15 @@
-#################################################################
-#                                                               #
-#                    Packages/Core Network                      #
-#                                                               #
-#################################################################
-
-#################################################################
-#                                                               #
-#                          Customize                            #
-#                                                               #
-#################################################################
-
-homeassistant:
-  customize:
-    sensor.disk_use:
-      friendly_name: Disk Use
-    sensor.speedtest_ping:
-      friendly_name: Ping
-      icon: mdi:pulse
-    sensor.speedtest_download:
-      friendly_name: Download
-      icon: mdi:arrow-down-bold
-    sensor.speedtest_upload:
-      friendly_name: Upload
-      icon: mdi:arrow-up-bold
-      
-#################################################################
-#                                                               #
-#                       Device Tracker                          #
-#                                                               #
-#################################################################
-
 device_tracker:
-
-####################################################
-#                                                  #
-#               Device Track - Ping                #
-#                                                  #
-####################################################
-
   - platform: ping
     hosts:
       core_router: !secret core_router_ip
       nas: !secret  nas_ip
-      webserver: !secret webserver_ip
       hdhomerun: !secret hdhr_ip
       musicport: !secret musicport_ip
       owfs_pi: !secret owfs_pi_ip
-      den_kodi: !secret den_kodi_ip
-      master_kodi: !secret master_kodi_ip
       core_switch: !secret core_switch_ip
       poe_switch: !secret poe_switch_ip
       isy_994: !secret isy_ip
-      tvheadend: !secret tvheadend_ip
       alarm_panel: !secret alarm_panel_ip
-      influx: !secret influx_ip
       unifi_front: !secret unifi_front_ip
       unifi_back: !secret unifi_back_ip
       office_printer: !secret office_printer_ip
@@ -65,100 +21,8 @@ device_tracker:
       den_roku: !secret den_roku_ip
       master_roku: !secret master_roku_ip
       server_ups: !secret server_ups_ip
+      office_ups: !secret office_ups_ip
 
-####################################################
-#                                                  #
-#               Device Track - Nmap                #
-#                                                  #
-####################################################
-
-  - platform: nmap_tracker
-    hosts:
-      - !secret alexa_den_ip
-      - !secret alexa_master_ip
-      - !secret alexa_office_ip
-      - !secret alexa_guest_ip
-      - !secret alexa_server_ip
-      - !secret alexa_elk_ip
-
-
-
-#################################################################
-#                                                               #
-#                           Group                               #
-#                                                               #
-#################################################################
-
-group:
-  core network:
-    name: Core Network
-    view: no
-    entities:
-      - binary_sensor.core_router
-      - binary_sensor.core_switch
-      - binary_sensor.poe_switch
-      - binary_sensor.unifi_front
-      - binary_sensor.unifi_back
-      
-  core devices:
-    name: Core Devices
-    view: no
-    entities:
-      - binary_sensor.nas
-      - binary_sensor.webserver
-      - binary_sensor.redlink
-      - binary_sensor.isy_994
-      - binary_sensor.alexa_den
-      - binary_sensor.alexa_master
-      - binary_sensor.alexa_office
-      - binary_sensor.alexa_guest
-      - binary_sensor.alexa_server
-      - binary_sensor.alexa_elk
-      - binary_sensor.desktop
-      - binary_sensor.office_printer
-      - binary_sensor.shack_printer
-      - binary_sensor.server_ups
-      - binary_sensor.redlink
-      
-  ha devices:
-    name: HA Devices
-    view: no
-    entities:
-      - binary_sensor.alarm_panel
-      - binary_sensor.owfs_pi
-      - binary_sensor.influx
-      - binary_sensor.elk_fpp
-      - binary_sensor.ha_dev
-      
-  media devices:
-    name: Media Devices
-    view: no
-    entities:
-      - binary_sensor.tvheadend
-      - binary_sensor.hdhomerun
-      - binary_sensor.musicport
-      - binary_sensor.den_kodi
-      - binary_sensor.den_roku
-      - binary_sensor.master_kodi
-      - binary_sensor.master_roku
-      
-  internet:
-    name: Internet
-    view: no
-    entities:
-      - sensor.wan_ping   
-      - sensor.wan_in_mbps 
-      - sensor.wan_out_mbps 
-    
-  rpi resources:
-    name: RPi Resources
-    view: no
-    entities:
-      - sensor.disk_use
-      - sensor.memory_use_percent
-      - sensor.processor_use
-      - sensor.cpu_temperature
-      - sensor.last_boot    
 
 #################################################################
 #                                                               #
@@ -167,362 +31,6 @@ group:
 #################################################################
 
 binary_sensor:
-
-####################################################
-#                                                  #
-#            Binary Sensor - Template              #
-#                                                  #
-####################################################
-
-  - platform: template
-    sensors:
-      core_router:
-        friendly_name: Core Router
-        device_class: connectivity
-        entity_id: device_tracker.core_router
-        value_template: "{{ is_state('device_tracker.core_router', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.core_router', 'home') %}
-            mdi:router-wireless
-          {% else %}
-            mdi:router-wireless
-          {% endif %}
-      core_switch:
-        friendly_name: Core Switch
-        device_class: connectivity
-        entity_id: device_tracker.core_switch
-        value_template: "{{ is_state('device_tracker.core_switch', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.core_switch', 'home') %}
-            mdi:switch
-          {% else %}
-            mdi:switch
-          {% endif %}
-      poe_switch:
-        friendly_name: Core Switch
-        device_class: connectivity
-        entity_id: device_tracker.poe_switch
-        value_template: "{{ is_state('device_tracker.poe_switch', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.poe_switch', 'home') %}
-            mdi:switch
-          {% else %}
-            mdi:switch
-          {% endif %}
-      unifi_front:
-        friendly_name: UniFi AP Front Rooms
-        device_class: connectivity
-        entity_id: device_tracker.unifi_front
-        value_template: "{{ is_state('device_tracker.unifi_front', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.unifi_front', 'home') %}
-            mdi:access-point
-          {% else %}
-            mdi:access-point
-          {% endif %}
-      unifi_back:
-        friendly_name: UniFi AP Back Rooms
-        device_class: connectivity
-        entity_id: device_tracker.unifi_back
-        value_template: "{{ is_state('device_tracker.unifi_back', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.unifi_back', 'home') %}
-            mdi:access-point
-          {% else %}
-            mdi:access-point
-          {% endif %}
-      nas:
-        friendly_name: NAS
-        device_class: connectivity
-        entity_id: device_tracker.nas
-        value_template: "{{ is_state('device_tracker.nas', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.nas', 'home') %}
-            mdi:harddisk
-          {% else %}
-            mdi:harddisk
-          {% endif %}
-      webserver:
-        friendly_name: Web Server
-        device_class: connectivity
-        entity_id: device_tracker.webserver
-        value_template: "{{ is_state('device_tracker.webserver', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.webserver', 'home') %}
-            mdi:web
-          {% else %}
-            mdi:web
-          {% endif %}
-      redlink:
-        friendly_name: Honeywell Redlink Gateway
-        device_class: connectivity
-        entity_id: device_tracker.redlink
-        value_template: "{{ is_state('device_tracker.redlink', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.redlink', 'home') %}
-            mdi:thermostat-box
-          {% else %}
-            mdi:thermostat-box
-          {% endif %}
-      isy_994:
-        friendly_name: ISY-994
-        device_class: connectivity
-        entity_id: device_tracker.isy_994
-        value_template: "{{ is_state('device_tracker.isy_994', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.isy_994', 'home') %}
-           mdi:lamp
-          {% else %}
-            mdi:lamp
-          {% endif %}
-      office_printer:
-        friendly_name: Office Printer
-        device_class: connectivity
-        entity_id: device_tracker.office_printer
-        value_template: "{{ is_state('device_tracker.office_printer', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.office_printer', 'home') %}
-            mdi:printer
-          {% else %}
-            mdi:printer
-          {% endif %}
-      shack_printer:
-        friendly_name: HAM Shack Printer
-        device_class: connectivity
-        entity_id: device_tracker.shack_printer
-        value_template: "{{ is_state('device_tracker.shack_printer', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.shack_printer', 'home') %}
-            mdi:printer
-          {% else %}
-            mdi:printer
-          {% endif %}
-      alexa_den:
-        friendly_name: Den Alexa
-        device_class: connectivity
-        entity_id: device_tracker.alexa_den
-        value_template: "{{ is_state('device_tracker.alexa_den', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.alexa_den', 'home') %}
-            mdi:amazon-alexa
-          {% else %}
-            mdi:amazon-alexa
-          {% endif %}
-      alexa_master:
-        friendly_name: Master Bedroom Alexa
-        device_class: connectivity
-        entity_id: device_tracker.alexa_master
-        value_template: "{{ is_state('device_tracker.alexa_master', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.alexa_master', 'home') %}
-            mdi:amazon-alexa
-          {% else %}
-            mdi:amazon-alexa
-          {% endif %}
-      alexa_office:
-        friendly_name: Office Alexa
-        device_class: connectivity
-        entity_id: device_tracker.alexa_office
-        value_template: "{{ is_state('device_tracker.alexa_office', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.alexa_office', 'home') %}
-            mdi:amazon-alexa
-          {% else %}
-            mdi:amazon-alexa
-          {% endif %}
-      alexa_guest:
-        friendly_name: Guest Room Alexa
-        device_class: connectivity
-        entity_id: device_tracker.alexa_guest
-        value_template: "{{ is_state('device_tracker.alexa_guest', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.alexa_guest', 'home') %}
-            mdi:amazon-alexa
-          {% else %}
-            mdi:amazon-alexa
-          {% endif %}
-      alexa_server:
-        friendly_name: Server Room Alexa
-        device_class: connectivity
-        entity_id: device_tracker.alexa_server
-        value_template: "{{ is_state('device_tracker.alexa_server', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.alexa_server', 'home') %}
-            mdi:amazon-alexa
-          {% else %}
-            mdi:amazon-alexa
-          {% endif %}
-      alexa_elk:
-        friendly_name: Elk Alexa
-        device_class: connectivity
-        entity_id: device_tracker.alexa_elk
-        value_template: "{{ is_state('device_tracker.alexa_elk', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.alexa_elk', 'home') %}
-            mdi:amazon-alexa
-          {% else %}
-            mdi:amazon-alexa
-          {% endif %}
-      desktop:
-        friendly_name: Office Desktop
-        device_class: connectivity
-        entity_id: device_tracker.desktop
-        value_template: "{{ is_state('device_tracker.desktop', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.desktop', 'home') %}
-            mdi:desktop-classic
-          {% else %}
-            mdi:desktop-classic
-          {% endif %}
-      server_ups:
-        friendly_name: Server Room UPS
-        device_class: connectivity
-        entity_id: device_tracker.server_ups
-        value_template: "{{ is_state('device_tracker.server_ups', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.server_ups', 'home') %}
-            mdi:car-battery
-          {% else %}
-            mdi:car-battery
-          {% endif %}
-      alarm_panel:
-        friendly_name: Elk M1
-        device_class: connectivity
-        entity_id: device_tracker.alarm_panel
-        value_template: "{{ is_state('device_tracker.alarm_panel', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.alarm_panel', 'home') %}
-            mdi:shield-home
-          {% else %}
-            mdi:shield-home
-          {% endif %}
-      owfs_pi:
-        friendly_name: OWFS Server
-        device_class: connectivity
-        entity_id: device_tracker.owfs_pi
-        value_template: "{{ is_state('device_tracker.owfs_pi', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.owfs_pi', 'home') %}
-            mdi:raspberry-pi
-          {% else %}
-            mdi:raspberry-pi
-          {% endif %}
-      influx:
-        friendly_name: InfluxDB Server
-        device_class: connectivity
-        entity_id: device_tracker.influx
-        value_template: "{{ is_state('device_tracker.influx', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.influx', 'home') %}
-            mdi:server
-          {% else %}
-            mdi:server
-          {% endif %}
-      elk_fpp:
-        friendly_name: FPP TTS System
-        device_class: connectivity
-        entity_id: device_tracker.elk_fpp
-        value_template: "{{ is_state('device_tracker.elk_fpp', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.elk_fpp', 'home') %}
-            mdi:text-to-speech
-          {% else %}
-            mdi:text-to-speech
-          {% endif %}
-      ha_dev:
-        friendly_name: HA Dev System
-        device_class: connectivity
-        entity_id: device_tracker.ha_dev
-        value_template: "{{ is_state('device_tracker.ha_dev', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.ha_dev', 'home') %}
-            mdi:home-assistant
-          {% else %}
-            mdi:home-assistant
-          {% endif %}
-      hdhomerun:
-        friendly_name: HDHomeRun
-        device_class: connectivity
-        entity_id: device_tracker.hdhomerun
-        value_template: "{{ is_state('device_tracker.hdhomerun', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.hdhomerun', 'home') %}
-            mdi:television-box
-          {% else %}
-            mdi:television-box
-          {% endif %}
-      tvheadend:
-        friendly_name: TVHeadend Server
-        device_class: connectivity
-        entity_id: device_tracker.tvheadend
-        value_template: "{{ is_state('device_tracker.tvheadend', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.tvheadend', 'home') %}
-            mdi:television-box
-          {% else %}
-            mdi:television-box
-          {% endif %}
-      musicport:
-        friendly_name: MPS4E Server
-        device_class: connectivity
-        entity_id: device_tracker.musicport
-        value_template: "{{ is_state('device_tracker.musicport', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.musicport', 'home') %}
-            mdi:music
-          {% else %}
-            mdi:music
-          {% endif %}
-      den_kodi:
-        friendly_name: Den Kodi
-        device_class: connectivity
-        entity_id: device_tracker.den_kodi
-        value_template: "{{ is_state('device_tracker.den_kodi', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.den_kodi', 'home') %}
-            mdi:kodi
-          {% else %}
-            mdi:kodi
-          {% endif %}
-      master_kodi:
-        friendly_name: Master Kodi
-        device_class: connectivity
-        entity_id: device_tracker.den_kodi
-        value_template: "{{ is_state('device_tracker.master_kodi', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.master_kodi', 'home') %}
-            mdi:kodi
-          {% else %}
-            mdi:kodi
-          {% endif %}
-      den_roku:
-        friendly_name: Den Roku
-        device_class: connectivity
-        entity_id: device_tracker.den_roku
-        value_template: "{{ is_state('device_tracker.den_roku', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.den_roku', 'home') %}
-           mdi:file-video
-          {% else %}
-            mdi:file-video
-          {% endif %}
-      master_roku:
-        friendly_name: Master Roku
-        device_class: connectivity
-        entity_id: device_tracker.den_roku
-        value_template: "{{ is_state('device_tracker.master_roku', 'home') }}"
-        icon_template: >-
-          {% if is_state('device_tracker.master_roku', 'home') %}
-           mdi:file-video
-          {% else %}
-            mdi:file-video
-          {% endif %}
-
-####################################################
-#                                                  #
-#              Binary Sensor - Ping                #
-#                                                  #
-####################################################
 
   - platform: ping
     name: WAN Ping
@@ -537,35 +45,6 @@ binary_sensor:
 #################################################################
 
 sensor:
-
-####################################################
-#                                                  #
-#              Sensor - Command Line               #
-#                                                  #
-####################################################
-
-
-  # - platform: command_line
-  #   name: CPU Temperature
-  #   command: "cat /sys/class/thermal/thermal_zone0/temp"
-  #   unit_of_measurement: "°C"
-  #   value_template: '{{ (value | multiply(0.001)) | round(1) }}'
-    
- ####################################################
- #                                                  #
- #                 Sensor - DNS IP                  #
- #                                                  #
- ####################################################
-
-  - platform: dnsip
-    name: My IP
-
-
-####################################################
-#                                                  #
-#                  Sensor - SNMP                   #
-#                                                  #
-#################################################### 
 
   - platform: snmp
     name: 'ERL WAN In'
@@ -584,8 +63,8 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Battery Capacity'
-    host: !secret server_ups_host
+    name: 'Office UPS Battery Capacity'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.1.0
     community: 'public'
     version: '1'
@@ -594,16 +73,16 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Remaining Runtime'
-    host: !secret server_ups_host
+    name: 'Office UPS Remaining Runtime'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.3.0
     accept_errors: true
     unit_of_measurement: 'minutes'
     value_template: '{{((value | int) / 6000) | int}}'
 
   - platform: snmp
-    name: 'Server UPS Battery Temperature'
-    host: !secret server_ups_host
+    name: 'Office UPS Battery Temperature'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.2.0
     accept_errors: true
     unit_of_measurement: "°C"
@@ -612,8 +91,8 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Input Voltage'
-    host: !secret server_ups_host
+    name: 'Office UPS Input Voltage'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.3.2.1.0
     accept_errors: true
     unit_of_measurement: "V"
@@ -622,8 +101,8 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Input Frequency'
-    host: !secret server_ups_host
+    name: 'Office UPS Input Frequency'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.3.2.4.0
     accept_errors: true
     unit_of_measurement: "Hz"
@@ -632,8 +111,8 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Output Voltage'
-    host: !secret server_ups_host
+    name: 'Office UPS Output Voltage'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.1.0
     accept_errors: true
     unit_of_measurement: "V"
@@ -642,8 +121,8 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Output Frequency'
-    host: !secret server_ups_host
+    name: 'Office UPS Output Frequency'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.2.0
     accept_errors: true
     unit_of_measurement: "Hz"
@@ -652,8 +131,8 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Output Current'
-    host: !secret server_ups_host
+    name: 'Office UPS Output Current'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.4.0
     accept_errors: true
     unit_of_measurement: "A"
@@ -662,8 +141,8 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Output Load'
-    host: !secret server_ups_host
+    name: 'Office UPS Output Load'
+    host: !secret server_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.3.0
     accept_errors: true
     unit_of_measurement: "%"
@@ -672,8 +151,105 @@ sensor:
     scan_interval: 10
 
   - platform: snmp
-    name: 'Server UPS Battery Status'
-    host: !secret server_ups_host
+    name: 'Office UPS Battery Status'
+    host: !secret server_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.4.0
+    accept_errors: true
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Battery Capacity'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.1.0
+    community: 'public'
+    version: '1'
+    accept_errors: true
+    unit_of_measurement: '%'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Remaining Runtime'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.3.0
+    accept_errors: true
+    unit_of_measurement: 'minutes'
+    value_template: '{{((value | int) / 6000) | int}}'
+
+  - platform: snmp
+    name: 'Office UPS Battery Temperature'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.2.0
+    accept_errors: true
+    unit_of_measurement: "°C"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Input Voltage'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.3.2.1.0
+    accept_errors: true
+    unit_of_measurement: "V"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Input Frequency'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.3.2.4.0
+    accept_errors: true
+    unit_of_measurement: "Hz"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Output Voltage'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.1.0
+    accept_errors: true
+    unit_of_measurement: "V"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Output Frequency'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.2.0
+    accept_errors: true
+    unit_of_measurement: "Hz"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Output Current'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.4.0
+    accept_errors: true
+    unit_of_measurement: "A"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Output Load'
+    host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.3.0
+    accept_errors: true
+    unit_of_measurement: "%"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Office UPS Battery Status'
+    host: !secret office_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.4.0
     accept_errors: true
     community: 'public'
@@ -809,7 +385,7 @@ sensor:
 ####################################################
 
   - platform: synologydsm
-    host: !secret nas_host
+    host: !secret nas_ip
     username: !secret nas_user
     password: !secret nas_pass
     scan_interval: 10
@@ -846,315 +422,6 @@ sensor:
             - binary_sensor.wan_ping
           value_template: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2) }}"
           unit_of_measurement: "ms"
-
-      core_router_state:
-        friendly_name: Core Router
-        entity_id: device_tracker.core_router
-        value_template: >-
-          {% if is_state('device_tracker.core_router', 'home') %}
-            100
-          {% elif is_state('device_tracker.core_router', 'not_home') %}
-            0
-          {% endif %}
-
-      nas_state:
-        friendly_name: NAS
-        entity_id: device_tracker.nas
-        value_template: >-
-          {% if is_state('device_tracker.nas', 'home') %}
-            100
-          {% elif is_state('device_tracker.nas', 'not_home') %}
-            0
-          {% endif %}
-      
-      webserver_state:
-        friendly_name: Web Server
-        entity_id: device_tracker.webserver
-        value_template: >-
-          {% if is_state('device_tracker.webserver', 'home') %}
-            100
-          {% elif is_state('device_tracker.webserver', 'not_home') %}
-            0
-          {% endif %}
-
-      hdhomerun_state:
-        friendly_name: HDHomeRun
-        entity_id: device_tracker.hdhomerun
-        value_template: >-
-          {% if is_state('device_tracker.hdhomerun', 'home') %}
-            100
-          {% elif is_state('device_tracker.hdhomerun', 'not_home') %}
-            0
-          {% endif %}
-      
-      musicport_state:
-        friendly_name: MusicPort Server
-        entity_id: device_tracker.musicport
-        value_template: >-
-          {% if is_state('device_tracker.musicport', 'home') %}
-            100
-          {% elif is_state('device_tracker.musicport', 'not_home') %}
-            0
-          {% endif %}
-
-      owfs_state:
-        friendly_name: OWFS Server
-        entity_id: device_tracker.owfs_pi
-        value_template: >-
-          {% if is_state('device_tracker.owfs_pi', 'home') %}
-            100
-          {% elif is_state('device_tracker.owfs_pi', 'not_home') %}
-            0
-          {% endif %}
-
-      den_kodi_state:
-        friendly_name: Den Kodi
-        entity_id: device_tracker.den_kodi
-        value_template: >-
-          {% if is_state('device_tracker.den_kodi', 'home') %}
-            100
-          {% elif is_state('device_tracker.den_kodi', 'not_home') %}
-            0
-          {% endif %}
-
-      master_kodi_state:
-        friendly_name: Master Kodi
-        entity_id: device_tracker.master_kodi
-        value_template: >-
-          {% if is_state('device_tracker.master_kodi', 'home') %}
-            100
-          {% elif is_state('device_tracker.master_kodi', 'not_home') %}
-            0
-          {% endif %}
-
-      core_switch_state:
-        friendly_name: Core Switch
-        entity_id: device_tracker.core_switch
-        value_template: >-
-          {% if is_state('device_tracker.core_switch', 'home') %}
-            100
-          {% elif is_state('device_tracker.core_switch', 'not_home') %}
-            0
-          {% endif %}
-
-      poe_switch_state:
-        friendly_name: POE Switch
-        entity_id: device_tracker.poe_switch
-        value_template: >-
-          {% if is_state('device_tracker.poe_switch', 'home') %}
-            100
-          {% elif is_state('device_tracker.poe_switch', 'not_home') %}
-            0
-          {% endif %}
-
-      isy_994_state:
-        friendly_name: ISY-994
-        entity_id: device_tracker.isy_994
-        value_template: >-
-          {% if is_state('device_tracker.isy_994', 'home') %}
-            100
-          {% elif is_state('device_tracker.isy_994', 'not_home') %}
-            0
-          {% endif %}
-      tvheadend_state:
-        friendly_name: TVHeadend Server
-        entity_id: device_tracker.tvheadend
-        value_template: >-
-          {% if is_state('device_tracker.tvheadend', 'home') %}
-            100
-          {% elif is_state('device_tracker.tvheadend', 'not_home') %}
-            0
-          {% endif %}
-
-      alarm_panel_state:
-        friendly_name: Elk M1 Panel
-        entity_id: device_tracker.alarm_panel
-        value_template: >-
-          {% if is_state('device_tracker.alarm_panel', 'home') %}
-            100
-          {% elif is_state('device_tracker.alarm_panel', 'not_home') %}
-            0
-          {% endif %}
-
-      influx_state:
-        friendly_name: InfluxDB Server
-        entity_id: device_tracker.influx
-        value_template: >-
-          {% if is_state('device_tracker.influx', 'home') %}
-            100
-          {% elif is_state('device_tracker.influx', 'not_home') %}
-            0
-          {% endif %}
-
-      unifi_front_state:
-        friendly_name: Front UniFi AP
-        entity_id: device_tracker.unifi_front
-        value_template: >-
-          {% if is_state('device_tracker.unifi_front', 'home') %}
-            100
-          {% elif is_state('device_tracker.unifi_front', 'not_home') %}
-            0
-          {% endif %}
-
-      unifi_back_state:
-        friendly_name: Back UniFi AP
-        entity_id: device_tracker.unifi_back
-        value_template: >-
-          {% if is_state('device_tracker.unifi_back', 'home') %}
-            100
-          {% elif is_state('device_tracker.unifi_back', 'not_home') %}
-            0
-          {% endif %}
-
-      office_printer_state:
-        friendly_name: Office Printer
-        entity_id: device_tracker.office_printer
-        value_template: >-
-          {% if is_state('device_tracker.office_printer', 'home') %}
-            100
-          {% elif is_state('device_tracker.office_printer', 'not_home') %}
-            0
-          {% endif %}
-
-      shack_printer_state:
-        friendly_name: HAM Shack Printer
-        entity_id: device_tracker.shack_printer
-        value_template: >-
-          {% if is_state('device_tracker.shack_printer', 'home') %}
-            100
-          {% elif is_state('device_tracker.shack_printer', 'not_home') %}
-            0
-          {% endif %}
-      
-      ha_dev_state:
-        friendly_name: HA Dev System
-        entity_id: device_tracker.ha_dev
-        value_template: >-
-          {% if is_state('device_tracker.ha_dev', 'home') %}
-            100
-          {% elif is_state('device_tracker.ha_dev', 'not_home') %}
-            0
-          {% endif %}
-
-      elk_fpp_state:
-        friendly_name: Elk TTS System
-        entity_id: device_tracker.elk_fpp
-        value_template: >-
-          {% if is_state('device_tracker.elk_fpp', 'home') %}
-            100
-          {% elif is_state('device_tracker.elk_fpp', 'not_home') %}
-            0
-          {% endif %}
-
-      alexa_den_state:
-        friendly_name: Den Alexa
-        entity_id: device_tracker.alexa_den
-        value_template: >-
-          {% if is_state('device_tracker.alexa_den', 'home') %}
-            100
-          {% elif is_state('device_tracker.alexa_den', 'not_home') %}
-            0
-          {% endif %}
-
-      alexa_master_state:
-        friendly_name: Master Suite Alexa
-        entity_id: device_tracker.alexa_master
-        value_template: >-
-          {% if is_state('device_tracker.alexa_master', 'home') %}
-            100
-          {% elif is_state('device_tracker.alexa_master', 'not_home') %}
-            0
-          {% endif %}
-      
-      alexa_office_state:
-        friendly_name: Office Alexa
-        entity_id: device_tracker.alexa_office
-        value_template: >-
-          {% if is_state('device_tracker.alexa_office', 'home') %}
-            100
-          {% elif is_state('device_tracker.alexa_office', 'not_home') %}
-            0
-          {% endif %}
-
-      alexa_guest_state:
-        friendly_name: Guest Room Alexa
-        entity_id: device_tracker.alexa_guest
-        value_template: >-
-          {% if is_state('device_tracker.alexa_guest', 'home') %}
-            100
-          {% elif is_state('device_tracker.alexa_guest', 'not_home') %}
-            0
-          {% endif %}
-
-      alexa_server_state:
-        friendly_name: Server Room Alexa
-        entity_id: device_tracker.alexa_server
-        value_template: >-
-          {% if is_state('device_tracker.alexa_server', 'home') %}
-            100
-          {% elif is_state('device_tracker.alexa_server', 'not_home') %}
-            0
-          {% endif %}
-
-      alexa_elk_state:
-        friendly_name: Elk Alexa
-        entity_id: device_tracker.alexa_elk
-        value_template: >-
-          {% if is_state('device_tracker.alexa_elk', 'home') %}
-            100
-          {% elif is_state('device_tracker.alexa_elk', 'not_home') %}
-            0
-          {% endif %}
-      
-      redlink_state:
-        friendly_name: Honeywell Redlink Bridge
-        entity_id: device_tracker.redlink
-        value_template: >-
-          {% if is_state('device_tracker.redlink', 'home') %}
-            100
-          {% elif is_state('device_tracker.redlink', 'not_home') %}
-            0
-          {% endif %}
-
-      desktop_state:
-        friendly_name: Office Desktop
-        entity_id: device_tracker.desktop
-        value_template: >-
-          {% if is_state('device_tracker.desktop', 'home') %}
-            100
-          {% elif is_state('device_tracker.desktop', 'not_home') %}
-            0
-          {% endif %}
-
-      den_roku_state:
-        friendly_name: Den Roku
-        entity_id: device_tracker.den_roku
-        value_template: >-
-          {% if is_state('device_tracker.den_roku', 'home') %}
-            100
-          {% elif is_state('device_tracker.den_roku', 'not_home') %}
-            0
-          {% endif %}
-
-      master_roku_state:
-        friendly_name: Master Suite Roku
-        entity_id: device_tracker.master_roku
-        value_template: >-
-          {% if is_state('device_tracker.master_roku', 'home') %}
-            100
-          {% elif is_state('device_tracker.master_roku', 'not_home') %}
-            0
-          {% endif %}
-
-      server_ups_state:
-        friendly_name: Server Closet UPS
-        entity_id: device_tracker.server_ups
-        value_template: >-
-          {% if is_state('device_tracker.server_ups', 'home') %}
-            100
-          {% elif is_state('device_tracker.server_ups', 'not_home') %}
-            0
-          {% endif %}
       
       sensor_count:
         friendly_name: 'Number of Sensors'
@@ -1462,3 +729,50 @@ input_number:
 
 system_health:              
 
+#################################################################
+#                                                               #
+#                             Groups                            #
+#                                                               #
+################################################################# 
+
+group:
+  leds:
+    name: LED Controllers
+    all: 'true'
+    entities:
+      - device_tracker.den_1
+      - device_tracker.gbath
+      - device_tracker.kitchen_1
+      - device_tracker.kitchen_2
+      - device_tracker.kitchen_3
+      - device_tracker.kitchen_4
+      - device_tracker.kitchen_5
+      - device_tracker.kitchen_6
+      - device_tracker.kitchen_7
+      - device_tracker.kitchen_8
+      - device_tracker.mbath
+      - device_tracker.mbed_1
+      - device_tracker.mbed_2
+      - device_tracker.shack
+  blinds:
+    name: Blind Controllers
+    all: 'true'
+    entities:
+      - device_tracker.den_c
+      - device_tracker.den_l
+      - device_tracker.den_r
+      - device_tracker.guest
+      - device_tracker.kitchen_e
+      - device_tracker.kitchen_l
+      - device_tracker.kitchen_r
+      - device_tracker.master_c
+      - device_tracker.master_l
+      - device_tracker.master_r
+      - device_tracker.master_w
+      - device_tracker.office_c
+      - device_tracker.office_l
+      - device_tracker.office_r
+      - device_tracker.shack_c
+      - device_tracker.shack_l
+      - device_tracker.shack_r
+      - device_tracker.server

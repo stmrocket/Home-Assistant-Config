@@ -243,3 +243,9 @@ sensor:
       frigate_coral_queue_length:
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["detection_queue"] }}' 
         unit_of_measurement: 'frames'       
+
+input_boolean:
+
+  frigate_enabled:
+    name: Enable Frigate
+    icon: mdi:cctv
