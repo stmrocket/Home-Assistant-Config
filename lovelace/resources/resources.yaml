@@ -8,8 +8,6 @@
   type: js
 - url: /local/community/button-card/button-card.js
   type: module
-- url: /local/community/lovelace-card-modder/card-modder.js
-  type: module
 - url: /local/community/lovelace-card-tools/card-tools.js
   type: js
 - url: /local/community/circle-sensor-card/circle-sensor-card.js
