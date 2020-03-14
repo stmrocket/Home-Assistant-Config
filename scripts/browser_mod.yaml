@@ -2803,7 +2803,7 @@ popup_filter:
                 row: true
                 restrictions:
                   confirm: true
-                  text: "Change container state?"
+                  text: "Reset filter timer?"
                 card:
                   entity: script.furnace_filter_date   
                   name: Reset Filter    
