@@ -7,6 +7,7 @@ sensor:
     password: !secret smtp_pass
     senders:
       - oncueplus@kohlercloud.com
+      - !secret shawn_email
     value_template: >-
       {% if 'Generator supplying power due to loss of utility power' in subject %}
         Running
