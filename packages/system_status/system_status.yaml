@@ -672,6 +672,36 @@ sensor:
             Error
           {% endif -%}
 
+      office_ups_status:
+        friendly_name: Office UPS Operating Status
+        value_template: >
+          {% if is_state('device_tracker.office_ups', 'not_home') -%}
+            Offline
+          {% elif is_state('sensor.office_ups_battery_status', '2') -%}
+            Battery Fail
+          {% elif  states('sensor.office_ups_input_voltage') | int > 100 -%}
+            Utility
+          {% elif  states('sensor.office_ups_input_voltage') | int < 100 and states('sensor.office_ups_output_voltage') | int > 100 -%}
+            Battery
+          {% else -%}
+            Error
+          {% endif -%}
+
+      server_ups_status:
+        friendly_name: Server UPS Operating Status
+        value_template: >
+          {% if is_state('device_tracker.server_ups', 'not_home') -%}
+            Offline
+          {% elif is_state('sensor.server_ups_battery_status', '2') -%}
+            Battery Fail
+          {% elif  states('sensor.server_ups_input_voltage') | int > 100 -%}
+            Utility
+          {% elif  states('sensor.server_ups_input_voltage') | int < 100 and states('sensor.server_ups_output_voltage') | int > 100 -%}
+            Battery
+          {% else -%}
+            Error
+          {% endif -%}
+
 ####################################################
 #                                                  #
 #                 Sensor - Uptime                  #

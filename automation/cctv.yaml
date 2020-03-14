@@ -6,7 +6,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'true'
+      state: 'on'
   action:
     - service: camera.snapshot
       data:
@@ -33,7 +33,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'true'
+      state: 'on'
   action:
     - service: camera.snapshot
       data:
@@ -60,7 +60,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'true'
+      state: 'on'
   action:
     - service: camera.snapshot
       data:
@@ -87,7 +87,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'true'
+      state: 'on'
   action:
     - service: camera.snapshot
       data:
@@ -114,7 +114,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'true'
+      state: 'on'
   action:
     - service: camera.snapshot
       data:
@@ -141,7 +141,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'true'
+      state: 'on'
   action:
     - service: camera.snapshot
       data:
@@ -168,7 +168,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'true'
+      state: 'on'
   action:
     - service: camera.snapshot
       data:

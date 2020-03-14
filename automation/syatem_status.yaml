@@ -1,0 +1,307 @@
+- alias: Notify Blind Controller Offline
+  trigger:
+  - platform: state
+    entity_id: group.blinds
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: A blind controller has been offline for 5 minutes.
+
+- alias: Notify LED Controller Offline
+  trigger:
+  - platform: state
+    entity_id: group.leds
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: An LED controller has been offline for 5 minutes.
+
+- alias: Notify NAS Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.nas
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The NAS has been offline for 5 minutes.
+
+- alias: Notify HDHomeRun Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.hdhomerun
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The HDHomeRun has been offline for 5 minutes.
+
+- alias: Notify MusicPort Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.musicport
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The MusicPort server has been offline for 5 minutes.
+
+- alias: Notify OWFS Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.owfs_pi
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The OWFS server has been offline for 5 minutes.
+
+- alias: Notify Core Switch Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.core_switch
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The Core switch has been offline for 5 minutes.
+
+- alias: Notify POE Switch Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.poe_switch
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The POE switch has been offline for 5 minutes.
+
+- alias: Notify ISY Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.isy_994
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The ISY has been offline for 5 minutes.
+
+- alias: Notify ELK Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.alarm_panel
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The alarm panel has been offline for 5 minutes.
+
+- alias: Notify Front AP Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.unifi_front
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The front AP has been offline for 5 minutes.
+
+- alias: Notify den AP Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.unifi_front
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The den AP has been offline for 5 minutes.
+
+- alias: Notify Redlink Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.redlink
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The Redlink bridge has been offline for 5 minutes.
+
+- alias: Notify Server UPS Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.server_ups
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The server room UPS has been offline for 5 minutes.
+
+- alias: Notify Office UPS Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.server_ups
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The office UPS has been offline for 5 minutes.
+
+- alias: Notify Server UPS On Battery
+  trigger:
+  - platform: state
+    entity_id: sensor.server_ups_status
+    to: 'Battery'    
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Server UPS On Battery Power
+      message: The server room is running on battery power.
+
+- alias: Notify Server UPS On Utility
+  trigger:
+  - platform: state
+    entity_id: sensor.server_ups_status
+    from: 'Battery'
+    to: 'Utility'    
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Server UPS Power Restored
+      message: Power has been restored to the server closet.
+
+- alias: Notify Server UPS Battery Low
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.server_ups_remaining_runtime
+    below: 11  
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Server UPS Battery Low
+      message: The server room UPS battery is low.
+
+- alias: Notify Server UPS Battery Fail
+  trigger:
+  - platform: state
+    entity_id: sensor.server_ups_battery_status
+    to: '2'
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Server UPS Replace Battery
+      message: The server room UPS battery has failed.  Replace immediately.
+  - service: persistent_notification.create
+    data:
+      title: Server UPS Replace Battery
+      message: The server room UPS battery has failed.  Replace immediately.
+
+- alias: Notify Office UPS On Battery
+  trigger:
+  - platform: state
+    entity_id: sensor.office_ups_status
+    to: 'Battery'    
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Office UPS On Battery Power
+      message: The office is running on battery power.
+
+- alias: Notify Office UPS On Utility
+  trigger:
+  - platform: state
+    entity_id: sensor.office_ups_status
+    from: 'Battery'
+    to: 'Utility'    
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Office UPS Power Restored
+      message: Power has been restored to the office.
+
+- alias: Notify Office UPS Battery Low
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.office_ups_remaining_runtime
+    below: 11  
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Office UPS Battery Low
+      message: The office UPS battery is low.
+
+- alias: Notify Office UPS Battery Fail
+  trigger:
+  - platform: state
+    entity_id: sensor.office_ups_battery_status
+    to: '2'
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Office UPS Replace Battery
+      message: The office UPS battery has failed.  Replace immediately.
+  - service: persistent_notification.create
+    data:
+      title: Office UPS Replace Battery
+      message: The office UPS battery has failed.  Replace immediately.
