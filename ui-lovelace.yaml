@@ -2,6 +2,11 @@ title: The Geek House
 
 resources: !include /config/lovelace/resources/resources.yaml
 
+# Preload Cards
+
+preload:
+  - picture-elements
+
 #################################################################
 #                                                               #
 #                    Compact Header Config                      #
