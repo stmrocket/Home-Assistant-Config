@@ -39,6 +39,8 @@
                   color: rgb(228, 94, 101)
                   icon: mdi:exclamation
               name: Blinds
+              tap_action:
+                action: toggle
               hold_action:  
                 action: call-service
                 service: script.popup_den_blinds

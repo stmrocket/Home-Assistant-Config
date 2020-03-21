@@ -397,6 +397,8 @@ cards:
                     color: rgb(255, 255, 255)
                     icon: mdi:blinds
                 name: Blinds
+                tap_action:
+                  action: toggle
                 hold_action: 
                   action: call-service
                   service: script.popup_blinds
