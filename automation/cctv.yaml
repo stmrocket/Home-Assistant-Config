@@ -189,9 +189,9 @@
 
 - alias: Restart Frigate if Hung
   trigger:
-    - platform: state
+    - platform: numeric_state
       entity_id: sensor.frigate_coral_queue_length
-      to: '101'
+      above: 100
       for: 
         seconds: 30
   action:
