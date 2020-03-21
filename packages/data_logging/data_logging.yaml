@@ -129,6 +129,15 @@ recorder:
     - sensor.synology_dsm_average_disk_temp_volume_2
     - sensor.synology_dsm_volume_used_volume_1
     - sensor.synology_dsm_volume_used_volume_2
+    - sensor.us_coronavirus_confirmed
+    - sensor.us_coronavirus_current
+    - sensor.us_coronavirus_deaths
+    - sensor.us_coronavirus_recovered
+    - sensor.worldwide_coronavirus_confirmed
+    - sensor.worldwide_coronavirus_current
+    - sensor.worldwide_coronavirus_deaths
+    - sensor.worldwide_coronavirus_recovered
+
 
 
 #################################################################
