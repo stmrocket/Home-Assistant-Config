@@ -102,7 +102,7 @@
       to: 'Idle'
   condition:
     - condition: template
-      value_template: "{{ not is_state('sensor.dryer_state', 'Washing') }}"
+      value_template: "{{ not is_state('sensor.dryer_state', 'Drying') }}"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.washer_end
