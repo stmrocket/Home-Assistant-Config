@@ -155,6 +155,7 @@ popup_roomba:
         title: Roomba
         card:
           type: entities
+          shaw_header_toggle: false
           entities:
               - entity: switch.roomba
               - entity: sensor.roomba_battery_level

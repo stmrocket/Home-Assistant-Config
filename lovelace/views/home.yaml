@@ -380,12 +380,7 @@ cards:
           cards:
             - type: custom:mini-graph-card
               entities: 
-                - entity: sensor.us_coronavirus_confirmed
-                  name: TOTAL
-                - entity: sensor.us_coronavirus_recovered
-                  name: RECOVERED
-                - entity: sensor.us_coronavirus_deaths
-                  name: DEAD
+                - sensor.us_coronavirus_confirmed
               name: US Cases
               height: 74
               line_width: 2
@@ -397,12 +392,7 @@ cards:
               
             - type: custom:mini-graph-card
               entities: 
-                - entity: sensor.worldwide_coronavirus_confirmed
-                  name: TOTAL
-                - entity: sensor.worldwide_coronavirus_recovered
-                  name: RECOVERED
-                - entity: sensor.worldwide_coronavirus_deaths
-                  name: DEAD
+                - sensor.worldwide_coronavirus_confirmed
               name: Worldwide Cases
               height: 74
               line_width: 2
@@ -411,6 +401,7 @@ cards:
               points_per_hour: 1
               show:
                 icon: false
+                
 #################################################################
 #                                                               #
 #                          Home - Buttons                       #

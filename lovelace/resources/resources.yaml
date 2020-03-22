@@ -60,3 +60,5 @@
   type: module
 - url: /local/community/restriction-card/restriction-card.js
   type: module  
+- url: /local/community/lovelace-card-preloader/lovelace-card-preloader.js
+  type: module    
