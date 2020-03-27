@@ -142,6 +142,14 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
+                entity: switch.popper
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:popcorn
+                name: Popper
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
                 entity: sensor.roomba_status
                 color_type: icon
                 state:
@@ -174,16 +182,19 @@ cards:
                     name: Paused
                     icon: mdi:robot-vacuum
                 tap_action: 
-                      action: call-service
-                      service: switch.toggle
-                      service_data:
-                        entity_id: switch.roomba                   
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.roomba                   
                 hold_action: 
                   action: call-service
                   service: script.popup_roomba
                   service_data:
                     deviceID: 
                       - this
+                double_tap_action:
+                  action: call-service
+                  service: script.reset_roomba_counter
               - type: "custom:button-card"
                 entity: switch.wax_warmer
                 color_type: icon
