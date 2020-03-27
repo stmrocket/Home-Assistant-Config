@@ -99,3 +99,8 @@ script:
         data:
           topic: roomba/command/set
           payload: dock            
+
+  reset_roomba_counter:
+    sequence:
+      - service: counter.reset
+        entity_id: counter.roomba_cycles   
