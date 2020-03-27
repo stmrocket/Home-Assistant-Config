@@ -57,7 +57,7 @@ sensor:
           {% elif states('binary_sensor.dishwasher_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
       
       guest_sink_leak_detector:
@@ -70,7 +70,7 @@ sensor:
           {% elif states('binary_sensor.guest_sink_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
       
       guest_toilet_leak_detector:
@@ -83,7 +83,7 @@ sensor:
           {% elif states('binary_sensor.guest_toilet_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
 
       kitchen_sink_leak_detector:
@@ -96,7 +96,7 @@ sensor:
           {% elif states('binary_sensor.kitchen_sink_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
 
       left_master_sink_leak_detector:
@@ -109,7 +109,7 @@ sensor:
           {% elif states('binary_sensor.left_master_sink_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
 
       master_toilet_leak_detector:
@@ -122,7 +122,7 @@ sensor:
           {% elif states('binary_sensor.master_toilet_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
           
       refrigerator_leak_detector:
@@ -135,7 +135,7 @@ sensor:
           {% elif states('binary_sensor.refrigerator_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
 
       right_master_sink_leak_detector:
@@ -148,7 +148,7 @@ sensor:
           {% elif states('binary_sensor.right_master_sink_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
 
       utility_leak_detector:
@@ -161,5 +161,5 @@ sensor:
           {% elif states('binary_sensor.utility_leak_dry') == "off" %}
             Dry
           {% else %}
-           Error
+            Error
           {% endif %}
