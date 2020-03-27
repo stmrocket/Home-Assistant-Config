@@ -500,26 +500,35 @@ cards:
               - type: "custom:button-card"
                 entity: sensor.roomba_status
                 color_type: icon
-                icon: mdi:robot-vacuum
                 state:
                   - value: "error"
                     color: rgb(255, 0, 0)
                     name: Error
+                    icon: mdi:robot-vacuum
                   - value: "docked"
                     color: rgb(255, 255, 255)
                     name: Docked
+                    icon: mdi:robot-vacuum
+                  - value: "full"
+                    color: rgb(255, 0, 0)
+                    name: Docked
+                    icon: mdi:trash-can
                   - value: "cleaning"
                     color: rgb(228, 94, 101)
                     name: Cleaning
+                    icon: mdi:robot-vacuum
                   - value: "returning"
                     color: rgb(228, 94, 101)
                     name: Docking
+                    icon: mdi:robot-vacuum
                   - value: "idle"
                     color: rgb(255, 255, 255)
                     name: Idle
+                    icon: mdi:robot-vacuum
                   - value: "paused"
                     color: rgb(255, 200, 0)
                     name: Paused
+                    icon: mdi:robot-vacuum
                 tap_action: 
                       action: call-service
                       service: switch.toggle
