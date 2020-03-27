@@ -1,27 +1,34 @@
 - alias: Start Roomba from Schedule
   trigger:
-  - platform: state
-    entity_id: sensor.roomba_scheduler_command
-    from: stop
-    to: start
+    - platform: state
+      entity_id: sensor.roomba_scheduler_command
+      from: stop
+      to: start
   action:
-  - data:
+    - service: vacuum.start
       entity_id: vacuum.roomba
-    service: vacuum.start
+
+- alias: Count Roomba Cycles
+  trigger:
+    - platform: state
+      entity_id: sensor.roomba_status
+      to: 'cleaning'
+  action:
+    - service: counter.increment
+      entity_id: counter.roomba_cycles    
 
 - alias: Roomba Return if House Disarmed
   trigger:
-  - entity_id: alarm_control_panel.area_001
-    platform: state
-    to: disarmed
+    - entity_id: alarm_control_panel.area_001
+      platform: state
+      to: disarmed
   condition:
-  - condition: state
-    entity_id: sensor.roomba_status
-    state: cleaning
-  - condition: state
-    entity_id: input_boolean.roomba_auto
-    state: 'on'
+    - condition: state
+      entity_id: sensor.roomba_status
+      state: cleaning
+    - condition: state
+      entity_id: input_boolean.roomba_auto
+      state: 'on'
   action:
-  - service: script.turn_on
-    data:
+    - service: script.turn_on
       entity_id: script.roomba_dock

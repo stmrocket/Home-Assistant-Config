@@ -49,8 +49,12 @@ sensor:
 
       roomba_status:
         friendly_name: 'Roomba Status'
-        value_template: "{{ states('vacuum.roomba') }}"
-        entity_id: vacuum.roomba
+        value_template: >-
+          {% if is_state('vacuum.roomba', 'docked') and states('counter.roomba_cycles') | int >= 5 -%}
+            full
+          {% else -%}
+            {{ states('vacuum.roomba') }}
+          {% endif -%}
         
 # Roomba Switches
 
@@ -74,6 +78,10 @@ input_boolean:
   roomba_auto:
     name: Schedule Enabled
     icon: mdi:timer      
+
+counter:
+  roomba_cycles:
+    step: 1
 
 # Roomba Scripts
 
