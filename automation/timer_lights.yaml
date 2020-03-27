@@ -3,18 +3,26 @@
     - platform: time
       at: '04:50:00'
   condition:
-    - condition: and #Weekdays at 4:50am Not On Holiday
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: or 
       conditions:
-        - condition: time
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
+        - condition: and
+          conditions:
+            - condition: state
+              entity_id: calendar.work_holidays
+              state: 'off'
+            - condition: state
+              entity_id: input_boolean.work_alarm_enabled
+              state: 'on'
         - condition: state
-          entity_id: calendar.work_holidays
-          state: 'off'
+          entity_id: alarm_control_panel.area_001
+          state: armed_away
   action:
     - service: switch.turn_on
       entity_id: 
@@ -79,6 +87,9 @@
               weekday:
                 - sat
                 - sun
+            - condition: state
+              entity_id: input_boolean.work_alarm_enabled
+              state: 'off'
   action:
     - service: switch.turn_on
       entity_id: 
