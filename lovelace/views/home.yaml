@@ -530,16 +530,19 @@ cards:
                     name: Paused
                     icon: mdi:robot-vacuum
                 tap_action: 
-                      action: call-service
-                      service: switch.toggle
-                      service_data:
-                        entity_id: switch.roomba                   
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.roomba                   
                 hold_action: 
                   action: call-service
                   service: script.popup_roomba
                   service_data:
                     deviceID: 
                       - this
+                double_tap_action:
+                  action: call-service
+                  service: script.reset_roomba_counter
 
               - type: "custom:button-card"
                 entity: lock.front_door
