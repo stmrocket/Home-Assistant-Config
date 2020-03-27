@@ -155,12 +155,18 @@ popup_roomba:
         title: Roomba
         card:
           type: entities
-          shaw_header_toggle: false
+          show_header_toggle: false
           entities:
               - entity: switch.roomba
               - entity: sensor.roomba_battery_level
               - entity: sensor.roomba_status
               - entity: input_boolean.roomba_auto
+              - entity: counter.roomba_cycles
+                name: Cycles Since Emptied
+                icon: mdi:robot-vacuum
+              - entity: script.reset_roomba_counter
+                name: Reset Cycle Count
+                icon: mdi:delete-empty
 
 popup_washer:
   sequence:
