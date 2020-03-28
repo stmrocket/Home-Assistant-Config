@@ -105,7 +105,11 @@
                   icon: mdi:alarm-off
               name: Work
               hold_action: 
-                action: more-info
+                action: call-service
+                service: script.popup_work_alarm
+                service_data:
+                  deviceID: 
+                    - this 
 
             - type: "custom:button-card"
               entity: input_boolean.manual_alarm_enabled
