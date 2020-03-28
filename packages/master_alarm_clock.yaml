@@ -40,6 +40,11 @@ input_datetime:
     name: Manual Alarm Clock Setting
     has_date: false
     has_time: true
+  master_work_alarm:
+    name: Work Alarm Clock Setting
+    has_date: false
+    has_time: true
+
 sensor:
   - platform: time_date
     display_options:

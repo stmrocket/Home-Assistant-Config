@@ -1,7 +1,7 @@
 - alias: Master Wake Work
   trigger:
-    - platform: time
-      at: '04:50:00'
+    - platform: template
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_work_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
   condition:
     - condition: and
       conditions:
@@ -37,7 +37,7 @@
 - alias: Master Wake Manual With Music
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
   condition:
     - condition: state
       entity_id: alarm_control_panel.area_001
