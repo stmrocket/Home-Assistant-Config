@@ -97,3 +97,30 @@
   action:
     - service: remote.turn_off
       entity_id: remote.living_room_2      
+
+- alias: Control Living Area Blinds from Den Harmony
+  trigger:
+    - platform: event
+      event_type: roku_command
+      event_data:
+        source_name: Home Assistant
+        type: keypress
+        key: Left
+  action:
+    - service: cover.toggle
+      entity_id: 
+        - cover.den_blinds
+        - cover.kitchen_blinds
+        - cover.shack_blinds           
+
+- alias: Control Den Fan from Den Harmony
+  trigger:
+    - platform: event
+      event_type: roku_command
+      event_data:
+        source_name: Home Assistant
+        type: keypress
+        key: Right
+  action:
+    - service: switch.toggle
+      entity_id: switch.den_fan         
