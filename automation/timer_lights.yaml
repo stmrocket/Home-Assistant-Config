@@ -1,7 +1,7 @@
 - alias: Timer Lights On Main Weekday AM
   trigger:
-    - platform: time
-      at: '04:50:00'
+    - platform: template
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_work_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
   condition:
     - condition: time
       weekday:
@@ -186,7 +186,7 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: automation.timer_lights_on_main_wweekend_holiday_am
+        entity_id: automation.timer_lights_on_main_weekend_holiday_am
   condition:
     - condition: or
       conditions:
@@ -196,6 +196,9 @@
         - condition: state
           entity_id: input_boolean.guest_mode
           state: 'off'
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_away
   action:
     - service: switch.turn_on
       entity_id: switch.guest_room_lamp
@@ -223,6 +226,9 @@
         - condition: state
           entity_id: input_boolean.guest_mode
           state: 'off'
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_away
   action:
     - service: switch.turn_off
       entity_id: switch.guest_room_lamp

@@ -2978,3 +2978,18 @@ popup_office_ups:
                 name: Input Frequency
               - entity: sensor.office_ups_battery_temperature
                 name: Battery Temperature
+
+popup_work_alarm:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Work Alarm
+        card:
+          type: entities
+          show_header_toggle: false
+          entities:
+              - entity: input_boolean.work_alarm_enabled
+                name: Enabled
+              - entity: input_datetime.master_work_alarm
+                name: "Alarm Time"         
