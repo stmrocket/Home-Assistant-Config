@@ -1,0 +1,39 @@
+#Entity configuration for Google Music Nuvo Integration
+input_boolean:
+  alexa_wha1_in_menu:
+    name: Alexa WHA1 in menu
+    initial: off
+
+input_text:
+  alexa_wha1_current_mode:
+    name: Alexa WHA1 Current mode
+  alexa_wha1_current_pandora:
+    name: Alexa WHA1 Current Pandora Station
+  alexa_wha1_current_tunein:
+    name: Google Music Current TuneIn Station
+
+input_select:
+  alexa_wha1_source:
+    name: Source
+    icon: mdi:library-music
+    options:
+    - "Pandora"
+    - "TuneIn"
+
+  alexa_wha1_pandora:
+    name: Pandora
+    icon: mdi:playlist-music
+    options: 
+    - "90s, 2000s, Today's Country Radio"
+    - "2000s Country Radio"
+    - "Today's Top Worship Radio"
+    - "LIVE Worship Today Radio"
+    - "Christian Contemporary Holidays Radio"
+    - "Christmas Radio"
+
+  alexa_wha1_pandora:
+    name: TuneIn
+    icon: mdi:playlist-music
+    options:  
+    - "KSBJ"    
+    - "K-LOVE"
