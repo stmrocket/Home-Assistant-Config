@@ -94,6 +94,11 @@ binary_sensor:
 
   - platform: wyzesense
     device: "/dev/hidraw0"
+  - platform: template
+    sensors:
+      is_dst:
+        entity_id: sensor.date
+        value_template: "{{ now().timetuple().tm_isdst > 0 }}"
     
 switch:
 
