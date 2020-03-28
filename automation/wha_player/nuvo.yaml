@@ -301,48 +301,48 @@
 
 - alias: Update GC Clock
   trigger:
-  - platform: time
-    time: 00:00:00
-  - platform: state
-    entity_id: binary_sensor.is_dst
+    - platform: time
+      at: "00:00:00"
+    - platform: state
+      entity_id: binary_sensor.is_dst
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/time
-      payload_template: >-
-        {% set year = now().year %}
-        {% set month = now().month %}
-        {% set day = now().day %}
-        {% set hour = now().hour %}
-        {% set minute = now().minute %}
-          {{ year }},     
-          {%- if month < 10 -%}
-            0{{ month }},
-          {%- else -%}
-            {{ month }},
-          {%- endif -%}
-          {%- if day < 10 -%}
-            0{{ day }},
-          {%- else -%}
-            {{ day }},
-          {%- endif -%}
-          {%- if hour == 0 -%}
-            00,
-          {%- endif -%}
-          {%- if hour > 0 -%}        
-            {%- if hour < 10 -%}
-              0{{ hour }},
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/system/time
+        payload_template: >-
+          {% set year = now().year %}
+          {% set month = now().month %}
+          {% set day = now().day %}
+          {% set hour = now().hour %}
+          {% set minute = now().minute %}
+            {{ year }},     
+            {%- if month < 10 -%}
+              0{{ month }},
             {%- else -%}
-              {{ hour }},
+              {{ month }},
             {%- endif -%}
-          {%- endif -%}
-          {%- if minute == 0 -%}
-            00
-          {%- endif -%}
-          {%- if minute > 0 -%}
-            {%- if minute < 10 -%}
-              0{{ minute }}
+            {%- if day < 10 -%}
+              0{{ day }},
             {%- else -%}
-              {{ minute }}
+              {{ day }},
             {%- endif -%}
-          {%- endif -%}
+            {%- if hour == 0 -%}
+              00,
+            {%- endif -%}
+            {%- if hour > 0 -%}        
+              {%- if hour < 10 -%}
+                0{{ hour }},
+              {%- else -%}
+                {{ hour }},
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minute == 0 -%}
+              00
+            {%- endif -%}
+            {%- if minute > 0 -%}
+              {%- if minute < 10 -%}
+                0{{ minute }}
+              {%- else -%}
+                {{ minute }}
+              {%- endif -%}
+            {%- endif -%}
