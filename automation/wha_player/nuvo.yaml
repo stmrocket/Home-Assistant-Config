@@ -1,281 +1,348 @@
 # Handle All Off message
 - alias: Nuvo Zone 1 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_1_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_1_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/1/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/1/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 2 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_2_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_2_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/2/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/2/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 3 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_3_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_3_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/3/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/3/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 4 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_4_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_4_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/4/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/4/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 5 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_5_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_5_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/5/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/5/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 6 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_6_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_6_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/6/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/6/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 7 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_7_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_7_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/7/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/7/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 8 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_8_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_8_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/8/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/8/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 9 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_9_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_9_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/9/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/9/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 10 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_10_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_10_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/10/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/10/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 11 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_11_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_11_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/11/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/11/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 12 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_12_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_12_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/12/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/12/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 13 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_13_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_13_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/13/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/13/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 14 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_14_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_14_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/14/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/14/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 15 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_15_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_15_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/15/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/15/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 16 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_16_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_16_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/16/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/16/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 17 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_17_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_17_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/17/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/17/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 18 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_18_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_18_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/18/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/18/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 19 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_19_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_19_power
+      state: 'on'
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/tele/zone/19/power
-      payload: "OFF"
-      retain: true
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/19/power
+        payload: "OFF"
+        retain: true
+
 - alias: Nuvo Zone 20 All Off
   trigger:
-  - platform: mqtt
-    topic: nuvo/tele/system/alloff
+    - platform: mqtt
+      topic: nuvo/tele/system/alloff
   condition:
-  - condition: state
-    entity_id: switch.nuvo_zone_20_power
-    state: 'on'
+    - condition: state
+      entity_id: switch.nuvo_zone_20_power
+      state: 'on'
+  action:
+    - service: mqtt.publish
+      data:
+        topic: nuvo/tele/zone/20/power
+        payload: "OFF"
+        retain: true
+
+- alias: Update GC Clock
+  trigger:
+  - platform: time
+    time: 00:00:00
+  - platform: state
+    entity_id: binary_sensor.is_dst
   action:
   - service: mqtt.publish
     data:
-      topic: nuvo/tele/zone/20/power
-      payload: "OFF"
-      retain: true
+      topic: nuvo/command/set/time
+      payload_template: >-
+        {% set year = now().year %}
+        {% set month = now().month %}
+        {% set day = now().day %}
+        {% set hour = now().hour %}
+        {% set minute = now().minute %}
+          {{ year }},     
+          {%- if month < 10 -%}
+            0{{ month }},
+          {%- else -%}
+            {{ month }},
+          {%- endif -%}
+          {%- if day < 10 -%}
+            0{{ day }},
+          {%- else -%}
+            {{ day }},
+          {%- endif -%}
+          {%- if hour == 0 -%}
+            00,
+          {%- endif -%}
+          {%- if hour > 0 -%}        
+            {%- if hour < 10 -%}
+              0{{ hour }},
+            {%- else -%}
+              {{ hour }},
+            {%- endif -%}
+          {%- endif -%}
+          {%- if minute == 0 -%}
+            00
+          {%- endif -%}
+          {%- if minute > 0 -%}
+            {%- if minute < 10 -%}
+              0{{ minute }}
+            {%- else -%}
+              {{ minute }}
+            {%- endif -%}
+          {%- endif -%}
