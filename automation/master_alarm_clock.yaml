@@ -581,3 +581,25 @@
     - service: switch.turn_off
       entity_id: switch.master_clock_manual      
 
+- alias: Master Wake Manual Disable if Awake and No Repeat
+  trigger:
+    - platform: template
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.area_001
+          state: disarmed
+    - condition: state
+      entity_id: input_boolean.manual_alarm_enabled
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.manual_alarm_repeat
+      state: 'off'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.manual_alarm_enabled
