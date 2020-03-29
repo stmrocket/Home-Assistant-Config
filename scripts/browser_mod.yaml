@@ -24,6 +24,8 @@ popup_blinds:
                       color: rgb(228, 94, 101)
                       icon: mdi:exclamation
                   name: Den
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
                 
@@ -41,6 +43,8 @@ popup_blinds:
                       color: rgb(228, 94, 101)
                       icon: mdi:exclamation
                   name: Kitchen
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -58,6 +62,8 @@ popup_blinds:
                       color: rgb(228, 94, 101)
                       icon: mdi:exclamation
                   name: Office
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -78,6 +84,8 @@ popup_blinds:
                       color: rgb(228, 94, 101)
                       icon: mdi:exclamation
                   name: Master
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
                 
@@ -95,6 +103,8 @@ popup_blinds:
                       color: rgb(228, 94, 101)
                       icon: mdi:exclamation
                   name: Guest
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -112,6 +122,8 @@ popup_blinds:
                       color: rgb(228, 94, 101)
                       icon: mdi:exclamation
                   name: Server
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
             
@@ -132,6 +144,8 @@ popup_blinds:
                       color: rgb(228, 94, 101)
                       icon: mdi:exclamation
                   name: Shack
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
                 
@@ -234,6 +248,8 @@ popup_office_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Left
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
                 
@@ -251,6 +267,8 @@ popup_office_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Center
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -268,6 +286,8 @@ popup_office_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Right
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -2437,6 +2457,8 @@ popup_den_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Left
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
                 
@@ -2454,6 +2476,8 @@ popup_den_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Center
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -2471,6 +2495,8 @@ popup_den_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Right
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info                      
 
@@ -2500,6 +2526,8 @@ popup_shack_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Left
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
                 
@@ -2517,6 +2545,8 @@ popup_shack_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Center
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -2534,6 +2564,8 @@ popup_shack_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Right
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info                    
 
@@ -2563,6 +2595,8 @@ popup_kitchen_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Left
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
                 
@@ -2580,6 +2614,8 @@ popup_kitchen_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Right
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -2597,6 +2633,8 @@ popup_kitchen_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: East
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info                    
 
@@ -2626,6 +2664,8 @@ popup_master_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Left
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
                 
@@ -2643,6 +2683,8 @@ popup_master_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Center
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
@@ -2660,6 +2702,8 @@ popup_master_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: Right
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info                       
             - type: horizontal-stack
@@ -2681,6 +2725,8 @@ popup_master_blinds:
                         color: rgb(228, 94, 101)
                         icon: mdi:exclamation
                   name: West
+                  tap_action:
+                    action: toggle
                   hold_action: 
                     action: more-info
 
