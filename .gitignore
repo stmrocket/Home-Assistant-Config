@@ -2,6 +2,7 @@
 .cloud/
 .storage/
 .vscode/
+.vscodecounter/
 .google.token
 appdaemon/
 deps/
