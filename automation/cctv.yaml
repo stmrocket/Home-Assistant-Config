@@ -205,7 +205,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.frigate_enabled
-      to: 'on'
+      to: 'off'
   action:
     - service: timer.start
       data_template:
