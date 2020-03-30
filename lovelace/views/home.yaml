@@ -376,31 +376,31 @@ cards:
                   color: "#1db954"
                 - value: 32
                   color: "#3498db"    
-        - type: horizontal-stack
-          cards:
-            - type: custom:mini-graph-card
-              entities: 
-                - sensor.us_coronavirus_confirmed
-              name: US Cases
-              height: 74
-              line_width: 2
-              font_size: 65
-              hours_to_show: 168
-              points_per_hour: 1
-              show:
-                icon: false
+        # - type: horizontal-stack
+        #   cards:
+        #     - type: custom:mini-graph-card
+        #       entities: 
+        #         - sensor.us_coronavirus_confirmed
+        #       name: US Cases
+        #       height: 74
+        #       line_width: 2
+        #       font_size: 65
+        #       hours_to_show: 168
+        #       points_per_hour: 1
+        #       show:
+        #         icon: false
               
-            - type: custom:mini-graph-card
-              entities: 
-                - sensor.worldwide_coronavirus_confirmed
-              name: Worldwide Cases
-              height: 74
-              line_width: 2
-              font_size: 65
-              hours_to_show: 168
-              points_per_hour: 1
-              show:
-                icon: false
+        #     - type: custom:mini-graph-card
+        #       entities: 
+        #         - sensor.worldwide_coronavirus_confirmed
+        #       name: Worldwide Cases
+        #       height: 74
+        #       line_width: 2
+        #       font_size: 65
+        #       hours_to_show: 168
+        #       points_per_hour: 1
+        #       show:
+        #         icon: false
                 
 #################################################################
 #                                                               #
