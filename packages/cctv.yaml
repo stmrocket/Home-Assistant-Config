@@ -261,6 +261,6 @@ input_number:
 
 timer:
   frigate_disable:
-    Name: Frigate Auto-restart Timer
+    name: Frigate Auto-restart Timer
     icon: mdi:timer
     
