@@ -200,3 +200,41 @@
       data:
         message: Frigate has been restarted due to unresponsiveness.
         title: Frigate CCTV
+
+- alias: Start Reset Timer When Frigate Disabled
+  trigger:
+    - platform: state
+      entity_id: input_boolean.frigate_enabled
+      to: 'off'
+  action:
+    - service: timer.start
+      data_template:
+        entity_id: timer.frigate_disable
+        duration: "{{ states('input_number.frigate_disable_time') | int * 3600}}"
+
+- alias: Restart Frigate When Restart Timer Expires
+  trigger:
+    - event_data:
+        entity_id: timer.frigate_disable
+      event_type: timer.finished
+      platform: event
+  condition:
+    - condition: state
+      entity_id: input_boolean.frigate_enabled
+      state: 'off'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.frigate_enabled
+
+- alias: Cancel Frigate Timer if Frigate Manually Enabled
+  trigger:
+    - platform: state
+      entity_id: input_boolean.frigate_enabled
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: timer.frigate_disable
+      state: 'active'
+  action:
+    - service: timer.cancel
+      entity_id: timer.frigate_disable

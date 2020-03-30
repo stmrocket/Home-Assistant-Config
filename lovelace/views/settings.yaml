@@ -258,6 +258,11 @@ cards:
         title: CCTV
         entities:          
           - input_boolean.frigate_enabled
+          - entity: input_number.frigate_disable_time
+            name: Time to Disable
+          - entity: timer.frigate_disable
+            name: Time Remaining
+          
 #################################################################
 #                                                               #
 #                       Config - Zigbee2MQTT                    #

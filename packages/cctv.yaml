@@ -249,3 +249,18 @@ input_boolean:
   frigate_enabled:
     name: Enable Frigate
     icon: mdi:cctv
+
+input_number:
+  frigate_disable_time:
+    name: Frigate Disable Time
+    min: 1
+    max: 24
+    step: 1
+    icon: mdi:camera-timer
+    unit_of_measurement: h
+
+timer:
+  frigate_disable:
+    name: Frigate Auto-restart Timer
+    icon: mdi:timer
+    
