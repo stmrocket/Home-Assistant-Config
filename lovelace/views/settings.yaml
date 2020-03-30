@@ -259,7 +259,7 @@ cards:
         entities:          
           - input_boolean.frigate_enabled
           - entity: input_number.frigate_disable_time
-            name: Restart Delay
+            name: Delay
           - entity: timer.frigate_disable
             name: Time Remaining
           
