@@ -137,6 +137,10 @@ recorder:
     - sensor.worldwide_coronavirus_current
     - sensor.worldwide_coronavirus_deaths
     - sensor.worldwide_coronavirus_recovered
+    - sensor.covid_us_today_new
+    - sensor.covid_us_yesterday_new
+    - sensor.covid_world_today_new
+    - sensor.covid_world_yesterday_new
 
 
 
