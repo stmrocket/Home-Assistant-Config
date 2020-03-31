@@ -1,0 +1,80 @@
+#COVID-19 Tracking
+
+input_number:  
+  covid_us_yesterday_new:
+    name: US New COVID-19 Cases yesterday
+    icon: mdi:biohazard
+    mode: box
+    min: 0
+    max: 10000000
+
+  covid_us_yesterday_total:
+    name: US Total COVID-19 Cases yesterday
+    icon: mdi:biohazard
+    mode: box
+    min: 0
+    max: 100000000
+  
+  covid_world_yesterday_new:
+    name: World New COVID-19 Cases yesterday
+    icon: mdi:biohazard
+    mode: box
+    min: 0
+    max: 10000000
+
+  covid_world_yesterday_total:
+    name: World Total COVID-19 Cases yesterday
+    icon: mdi:biohazard
+    mode: box
+    min: 0
+    max: 100000000
+
+sensor:
+  - platform: template
+    sensors:
+      covid_us_today_new:
+        friendly_name: US New COVID-19 Cases Today
+        value_template: "{{ states('sensor.us_coronavirus_confirmed') | int - states('input_number.covid_us_yesterday_total') | int }}"
+
+      covid_us_yesterday_new:
+        friendly_name: US New COVID-19 Cases Yesterday
+        value_template: "{{ states('input_number.covid_us_yesterday_new') | int }}"
+
+      covid_us_total:
+        friendly_name: US total COVID-19 Cases 
+        value_template: "{{ states('sensor.us_coronavirus_confirmed') | int }}"
+
+      covid_world_today_new:
+        friendly_name: World New COVID-19 Cases Today
+        value_template: "{{ states('sensor.worldwide_coronavirus_confirmed') | int - states('input_number.covid_world_yesterday_total') | int }}"
+
+      covid_world_yesterday_new:
+        friendly_name: World New COVID-19 Cases Yesterday
+        value_template: "{{ states('input_number.covid_world_yesterday_new') | int }}"
+
+      covid_world_total:
+        friendly_name: World total COVID-19 Cases 
+        value_template: "{{ states('sensor.worldwide_coronavirus_confirmed') | int }}"
+
+automation:
+  - alias: Update COVID Sensors at Midnight
+    trigger:
+      - platform: time
+        at: '00:00:00'
+    action:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.covid_us_yesterday_new
+          value: "{{ states('sensor.covid_us_today_new') }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.covid_us_yesterday_total
+          value: "{{ states('sensor.us_coronavirus_confirmed') }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.covid_world_yesterday_new
+          value: "{{ states('sensor.covid_world_today_new') }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.covid_world_yesterday_total
+          value: "{{ states('sensor.worldwide_coronavirus_confirmed') }}"
