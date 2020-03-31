@@ -141,6 +141,17 @@ recorder:
     - sensor.covid_us_yesterday_new
     - sensor.covid_world_today_new
     - sensor.covid_world_yesterday_new
+    - sensor.covid_us_total
+    - sensor.covid_world_total
+    - binary_sensor.dishwasher_leak_heartbeat
+    - binary_sensor.guest_sink_leak_heartbeat
+    - binary_sensor.guest_toilet_leak_heartbeat
+    - binary_sensor.kitchen_sink_leak_heartbeat
+    - binary_sensor.left_master_sink_leak_heartbe
+    - binary_sensor.master_toilet_leak_heartbeat
+    - binary_sensor.refrigerator_leak_heartbeat
+    - binary_sensor.right_master_sink_leak_heartb
+    - binary_sensor.utility_leak_heartbeat
 
 
 
