@@ -276,3 +276,24 @@ cards:
         - entity: input_boolean.zigbee_permit_join
         - entity: timer.zigbee_permit_join
         - entity: sensor.bridge_state                        
+
+      - type: horizontal-stack
+        cards:
+          - type: entities
+            title: "COVID-19 US Cases"
+            entities:
+              - entity: sensor.covid_us_total
+                name: Total
+              - entity: sensor.covid_us_today_new
+                name: Today
+              - entity: sensor.covid_us_yesterday_new
+      - type: horizontal-stack
+        cards:
+          - type: entities
+            title: "COVID-19 Worldwide Cases"
+            entities:
+              - entity: sensor.covid_world_total
+                name: Total
+              - entity: sensor.covid_world_today_new
+                name: Today
+              - entity: sensor.covid_world_yesterday_new
