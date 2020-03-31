@@ -1,477 +1,417 @@
 - alias: Dishwasher Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.dishwasher_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.dishwasher_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the dishwasher.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the dishwasher.
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the dishwasher.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the dishwasher.
         
 - alias: Dishwasher Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.dishwasher_leak
+    - platform: state
+      entity_id: binary_sensor.dishwasher_leak_heartbeat
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.dishwasher_leak_heartbeat
+      to: 'off'
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The dishwasher leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The dishwasher leak detector is not reporting.      
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The dishwasher leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The dishwasher leak detector is not reporting.      
 
 - alias: Guest Sink Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.guest_sink_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.guest_sink_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the guest bathroom sink.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the guest bathroom sink.
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the guest bathroom sink.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the guest bathroom sink.
         
 - alias: Guest Sink Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.guest_sink_leak
+    - platform: state
+      entity_id: binary_sensor.guest_sink_leak_heartbeat
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.guest_sink_leak_heartbeat
+      to: 'off'
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The guest bathroom sink leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The guest bathroom sink leak detector is not reporting. 
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The guest bathroom sink leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The guest bathroom sink leak detector is not reporting. 
 
 - alias: Guest Toilet Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.guest_toilet_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.guest_toilet_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the guest toilet.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the guest toilet.
-        
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the guest toilet.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the guest toilet.
+
 - alias: Guest Toilet Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.guest_toilet_leak 
+    - platform: state
+      entity_id: binary_sensor.guest_toilet_leak_heartbeat
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.guest_toilet_leak_heartbeat
+      to: 'off'
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The guest toilet leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The guest toilet leak detector is not reporting.
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The guest toilet leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The guest toilet leak detector is not reporting.
 
 - alias: Kitchen Sink Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.kitchen_sink_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.kitchen_sink_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the kitchen sink.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the kitchen sink.
-        
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the kitchen sink.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the kitchen sink.
+
 - alias: Kitchen Sink Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:      
-      entity_id: timer.kitchen_sink_leak
+    - platform: state
+      entity_id: binary_sensor.kitchen_sink_leak_heartbeat
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.kitchen_sink_leak_heartbeat
+      to: 'off'
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The kitchen sink leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The kitchen sink leak detector is not reporting.
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The kitchen sink leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The kitchen sink leak detector is not reporting.
 
 - alias: Left Master Sink Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.left_master_sink_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.left_master_sink_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the left master bathroom sink.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the left master bathroom sink.
-        
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the left master bathroom sink.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the left master bathroom sink.
+
 - alias: Left Master Sink Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.left_master_sink_leak  
+    - platform: state
+      entity_id: binary_sensor.left_master_sink_leak_heartbe
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.left_master_sink_leak_heartbe
+      to: 'off' 
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The left master sink leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The left master sink leak detector is not reporting. 
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The left master sink leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The left master sink leak detector is not reporting. 
 
 - alias: Master Toilet Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.master_toilet_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.master_toilet_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the master toilet.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the master toilet.
-        
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the master toilet.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the master toilet.
+
 - alias: Master Toilet Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.master_toilet_leak 
+    - platform: state
+      entity_id: binary_sensor.master_toilet_leak_heartbeat
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.master_toilet_leak_heartbeat
+      to: 'off'
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The master toilet leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The master toilet leak detector is not reporting.     
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The master toilet leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The master toilet leak detector is not reporting.     
 
 - alias: Refrigerator Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.refrigerator_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.refrigerator_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the refrigerator.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the refrigerator.
-        
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the refrigerator.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the refrigerator.
+
 - alias: Refrigerator Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.refrigerator_leak
+    - platform: state
+      entity_id: binary_sensor.refrigerator_leak_heartbeat
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.refrigerator_leak_heartbeat
+      to: 'off'
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The refrigerator leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The refrigerator leak detector is not reporting.
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The refrigerator leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The refrigerator leak detector is not reporting.
 
 - alias: Right Master Sink Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.right_master_sink_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.right_master_sink_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the right master bathroom sink.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the right master bathroom sink.
-        
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the right master bathroom sink.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the right master bathroom sink.
+
 - alias: Right Master Sink Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.right_master_sink_leak  
+    - platform: state
+      entity_id: binary_sensor.right_master_sink_leak_heartb
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.right_master_sink_leak_heartb
+      to: 'off'
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The right master bathroom sink leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The right master bathroom sink leak detector is not reporting.
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The right master bathroom sink leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The right master bathroom sink leak detector is not reporting.
 
 - alias: Utility Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.utility_leak_dry
-    from: 'off'
-    to: 'on'    
+    - platform: state
+      entity_id: binary_sensor.utility_leak_dry
+      from: 'off'
+      to: 'on'    
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the utility room.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detected!
-      message: A leak has been detected in the utility room.
-        
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the utility room.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detected!
+        message: A leak has been detected in the utility room.
+
 - alias: Utility Leak Detector Error
   trigger:
-  - platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.utility_leak 
+    - platform: state
+      entity_id: binary_sensor.utility_leak_heartbeat
+      to: 'on'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.utility_leak_heartbeat
+      to: 'off'
+      for: '30:00:00'
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Leak Detector Error!
-      message: The utility room leak detector is not reporting.
-  - service: persistent_notification.create
-    data:
-      title: Leak Detector Error!
-      message: The utility room leak detector is not reporting.                                            
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Leak Detector Error!
+        message: The utility room leak detector is not reporting.
+    - service: persistent_notification.create
+      data:
+        title: Leak Detector Error!
+        message: The utility room leak detector is not reporting.                                            
 
 - alias: Turn On Elk Alert When Leak Detected
   trigger:
-  - platform: state
-    entity_id: binary_sensor.dishwasher_leak_dry
-    to: 'on'      
-  - platform: state
-    entity_id: binary_sensor.guest_sink_leak_dry
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.guest_toilet_leak_dry
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.kitchen_sink_leak_dry
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.left_master_sink_leak_dry
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.master_toilet_leak_dry
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.refrigerator_leak_dry
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.right_master_sink_leak_dry
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.utility_leak_dry
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.dishwasher_leak_dry
+      to: 'off'      
+    - platform: state
+      entity_id: binary_sensor.guest_sink_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.guest_toilet_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.kitchen_sink_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.left_master_sink_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.master_toilet_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.refrigerator_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.right_master_sink_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.utility_leak_dry
+      to: 'off'
   action:
-  - service: switch.turn_on
-    entity_id: switch.zone_7
+    - service: switch.turn_on
+      entity_id: switch.zone_7
 
-- alias: Turn Off Elk Alert When Leak Detected
+- alias: Turn Off Elk Alert When Leak Detection Cleared
   trigger:
-  - platform: state
-    entity_id: binary_sensor.dishwasher_leak_dry
-    to: 'off'      
-  - platform: state
-    entity_id: binary_sensor.guest_sink_leak_dry
-    to: 'off'
-  - platform: state
-    entity_id: binary_sensor.guest_toilet_leak_dry
-    to: 'off'
-  - platform: state
-    entity_id: binary_sensor.kitchen_sink_leak_dry
-    to: 'off'
-  - platform: state
-    entity_id: binary_sensor.left_master_sink_leak_dry
-    to: 'off'
-  - platform: state
-    entity_id: binary_sensor.master_toilet_leak_dry
-    to: 'off'
-  - platform: state
-    entity_id: binary_sensor.refrigerator_leak_dry
-    to: 'off'
-  - platform: state
-    entity_id: binary_sensor.right_master_sink_leak_dry
-    to: 'off'
-  - platform: state
-    entity_id: binary_sensor.utility_leak_dry
-    to: 'off'
+    - platform: state
+      entity_id: binary_sensor.dishwasher_leak_dry
+      to: 'on'      
+    - platform: state
+      entity_id: binary_sensor.guest_sink_leak_dry
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.guest_toilet_leak_dry
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.kitchen_sink_leak_dry
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.left_master_sink_leak_dry
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.master_toilet_leak_dry
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.refrigerator_leak_dry
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.right_master_sink_leak_dry
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.utility_leak_dry
+      to: 'on'
   condition:
   - condition: state
     entity_id: binary_sensor.dishwasher_leak_dry
-    state: 'off'      
+    state: 'on'      
   - condition: state
     entity_id: binary_sensor.guest_sink_leak_dry
-    state: 'off'
+    state: 'on'
   - condition: state
     entity_id: binary_sensor.guest_toilet_leak_dry
-    state: 'off'
+    state: 'on'
   - condition: state
     entity_id: binary_sensor.kitchen_sink_leak_dry
-    state: 'off'
+    state: 'on'
   - condition: state
     entity_id: binary_sensor.left_master_sink_leak_dry
-    state: 'off'
+    state: 'on'
   - condition: state
     entity_id: binary_sensor.master_toilet_leak_dry
-    state: 'off'
+    state: 'on'
   - condition: state
     entity_id: binary_sensor.refrigerator_leak_dry
-    state: 'off'
+    state: 'on'
   - condition: state
     entity_id: binary_sensor.right_master_sink_leak_dry
-    state: 'off'
+    state: 'on'
   - condition: state
     entity_id: binary_sensor.utility_leak_dry
-    state: 'off'
+    state: 'on'
   action:
   - service: switch.turn_off
     entity_id: switch.zone_7    
-
-- alias: Dishwasher Leak Detector Watchdog Reset
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.dishwasher_leak_heartbeat
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.dishwasher_leak_heartbeat
-    to: 'off'
-  action:
-  - service: timer.start
-    entity_id: timer.dishwasher_leak   
-
-- alias: Guest Sink Leak Detector Watchdog Reset
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.guest_sink_leak_heartbeat
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.guest_sink_leak_heartbeat
-    to: 'off'
-  action:
-  - service: timer.start
-    entity_id: timer.guest_sink_leak
-
-- alias: Guest Toilet Leak Detector Watchdog Reset
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.guest_toilet_leak_heartbeat
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.guest_toilet_leak_heartbeat
-    to: 'off'
-  action:
-  - service: timer.start
-    entity_id: timer.guest_toilet_leak  
-
-- alias: Kitchen Sink Leak Detector Watchdog Reset
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.kitchen_sink_leak_heartbeat
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.kitchen_sink_leak_heartbeat
-    to: 'off'
-  action:
-  - service: timer.start
-    entity_id: timer.kitchen_sink_leak
-
-- alias: Left Master Sink Leak Detector Watchdog Reset
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.left_master_sink_leak_heartbe
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.left_master_sink_leak_heartbe
-    to: 'off'
-  action:
-  - service: timer.start
-    entity_id: timer.left_master_sink_leak
-
-- alias: Master Toilet Leak Detector Watchdog Reset
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.master_toilet_leak_heartbeat
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.master_toilet_leak_heartbeat
-    to: 'off'
-  action:
-  - service: timer.start
-    entity_id: timer.master_toilet_leak
-
-- alias: Refrigerator Leak Detector Watchdog Reset
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.refrigerator_leak_heartbeat
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.refrigerator_leak_heartbeat
-    to: 'off'
-  action:
-  - service: timer.start
-    entity_id: timer.refrigerator_leak
-
-- alias: Right Master Sink Leak Detector Watchdog Reset
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.right_master_sink_leak_heartb
-    to: 'on'
-  - platform: state
-    entity_id: binary_sensor.right_master_sink_leak_heartb
-    to: 'off'
-  action:
-  - service: timer.start
-    entity_id: timer.right_master_sink_leak                                           
