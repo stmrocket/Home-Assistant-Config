@@ -24,6 +24,10 @@
       entity_id: binary_sensor.dishwasher_leak_heartbeat
       to: 'off'
       for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.dishwasher_leak_heartbeat
+      to: 'unknown'
+      for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
       data:
@@ -59,6 +63,10 @@
     - platform: state
       entity_id: binary_sensor.guest_sink_leak_heartbeat
       to: 'off'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.guest_sink_leak_heartbeat
+      to: 'unknown'
       for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
@@ -96,6 +104,10 @@
       entity_id: binary_sensor.guest_toilet_leak_heartbeat
       to: 'off'
       for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.guest_toilet_leak_heartbeat
+      to: 'unknown'
+      for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
       data:
@@ -131,6 +143,10 @@
     - platform: state
       entity_id: binary_sensor.kitchen_sink_leak_heartbeat
       to: 'off'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.kitchen_sink_leak_heartbeat
+      to: 'unknown'
       for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
@@ -168,6 +184,10 @@
       entity_id: binary_sensor.left_master_sink_leak_heartbe
       to: 'off' 
       for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.left_master_sink_leak_heartbe
+      to: 'unknown' 
+      for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
       data:
@@ -203,6 +223,10 @@
     - platform: state
       entity_id: binary_sensor.master_toilet_leak_heartbeat
       to: 'off'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.master_toilet_leak_heartbeat
+      to: 'unknown'
       for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
@@ -240,6 +264,10 @@
       entity_id: binary_sensor.refrigerator_leak_heartbeat
       to: 'off'
       for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.refrigerator_leak_heartbeat
+      to: 'unknown'
+      for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
       data:
@@ -275,6 +303,10 @@
     - platform: state
       entity_id: binary_sensor.right_master_sink_leak_heartb
       to: 'off'
+      for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.right_master_sink_leak_heartb
+      to: 'unknown'
       for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
@@ -312,6 +344,10 @@
       entity_id: binary_sensor.utility_leak_heartbeat
       to: 'off'
       for: '30:00:00'
+    - platform: state
+      entity_id: binary_sensor.utility_leak_heartbeat
+      to: 'unknown'
+      for: '30:00:00'
   action:
     - service: notify.mobile_app_shawn_7t
       data:
@@ -323,39 +359,6 @@
         message: The utility room leak detector is not reporting.                                            
 
 - alias: Turn On Elk Alert When Leak Detected
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.dishwasher_leak_dry
-      to: 'off'      
-    - platform: state
-      entity_id: binary_sensor.guest_sink_leak_dry
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.guest_toilet_leak_dry
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.kitchen_sink_leak_dry
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.left_master_sink_leak_dry
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.master_toilet_leak_dry
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.refrigerator_leak_dry
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.right_master_sink_leak_dry
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.utility_leak_dry
-      to: 'off'
-  action:
-    - service: switch.turn_on
-      entity_id: switch.zone_7
-
-- alias: Turn Off Elk Alert When Leak Detection Cleared
   trigger:
     - platform: state
       entity_id: binary_sensor.dishwasher_leak_dry
@@ -384,34 +387,67 @@
     - platform: state
       entity_id: binary_sensor.utility_leak_dry
       to: 'on'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.dishwasher_leak_dry
-    state: 'on'      
-  - condition: state
-    entity_id: binary_sensor.guest_sink_leak_dry
-    state: 'on'
-  - condition: state
-    entity_id: binary_sensor.guest_toilet_leak_dry
-    state: 'on'
-  - condition: state
-    entity_id: binary_sensor.kitchen_sink_leak_dry
-    state: 'on'
-  - condition: state
-    entity_id: binary_sensor.left_master_sink_leak_dry
-    state: 'on'
-  - condition: state
-    entity_id: binary_sensor.master_toilet_leak_dry
-    state: 'on'
-  - condition: state
-    entity_id: binary_sensor.refrigerator_leak_dry
-    state: 'on'
-  - condition: state
-    entity_id: binary_sensor.right_master_sink_leak_dry
-    state: 'on'
-  - condition: state
-    entity_id: binary_sensor.utility_leak_dry
-    state: 'on'
   action:
-  - service: switch.turn_off
-    entity_id: switch.zone_7    
+    - service: switch.turn_on
+      entity_id: switch.zone_7
+
+- alias: Turn Off Elk Alert When Leak Detection Cleared
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dishwasher_leak_dry
+      to: 'off'      
+    - platform: state
+      entity_id: binary_sensor.guest_sink_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.guest_toilet_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.kitchen_sink_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.left_master_sink_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.master_toilet_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.refrigerator_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.right_master_sink_leak_dry
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.utility_leak_dry
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.dishwasher_leak_dry
+      state: 'off'      
+    - condition: state
+      entity_id: binary_sensor.guest_sink_leak_dry
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.guest_toilet_leak_dry
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.kitchen_sink_leak_dry
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.left_master_sink_leak_dry
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.master_toilet_leak_dry
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.refrigerator_leak_dry
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.right_master_sink_leak_dry
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.utility_leak_dry
+      state: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.zone_7    
