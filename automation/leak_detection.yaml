@@ -19,11 +19,6 @@
     - platform: state
       entity_id: binary_sensor.dishwasher_leak_heartbeat
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.dishwasher_leak_heartbeat
-      to: 'off'
-      for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.dishwasher_leak_heartbeat
       to: 'unknown'
@@ -59,11 +54,6 @@
     - platform: state
       entity_id: binary_sensor.guest_sink_leak_heartbeat
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.guest_sink_leak_heartbeat
-      to: 'off'
-      for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.guest_sink_leak_heartbeat
       to: 'unknown'
@@ -99,11 +89,6 @@
     - platform: state
       entity_id: binary_sensor.guest_toilet_leak_heartbeat
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.guest_toilet_leak_heartbeat
-      to: 'off'
-      for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.guest_toilet_leak_heartbeat
       to: 'unknown'
@@ -139,11 +124,6 @@
     - platform: state
       entity_id: binary_sensor.kitchen_sink_leak_heartbeat
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.kitchen_sink_leak_heartbeat
-      to: 'off'
-      for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.kitchen_sink_leak_heartbeat
       to: 'unknown'
@@ -179,11 +159,6 @@
     - platform: state
       entity_id: binary_sensor.left_master_sink_leak_heartbe
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.left_master_sink_leak_heartbe
-      to: 'off' 
-      for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.left_master_sink_leak_heartbe
       to: 'unknown' 
@@ -219,11 +194,6 @@
     - platform: state
       entity_id: binary_sensor.master_toilet_leak_heartbeat
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.master_toilet_leak_heartbeat
-      to: 'off'
-      for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.master_toilet_leak_heartbeat
       to: 'unknown'
@@ -259,11 +229,6 @@
     - platform: state
       entity_id: binary_sensor.refrigerator_leak_heartbeat
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.refrigerator_leak_heartbeat
-      to: 'off'
-      for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.refrigerator_leak_heartbeat
       to: 'unknown'
@@ -299,11 +264,6 @@
     - platform: state
       entity_id: binary_sensor.right_master_sink_leak_heartb
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.right_master_sink_leak_heartb
-      to: 'off'
-      for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.right_master_sink_leak_heartb
       to: 'unknown'
@@ -339,10 +299,6 @@
     - platform: state
       entity_id: binary_sensor.utility_leak_heartbeat
       to: 'on'
-      for: '30:00:00'
-    - platform: state
-      entity_id: binary_sensor.utility_leak_heartbeat
-      to: 'off'
       for: '30:00:00'
     - platform: state
       entity_id: binary_sensor.utility_leak_heartbeat
