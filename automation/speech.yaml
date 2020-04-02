@@ -288,7 +288,9 @@
         data:
           displaytime: 20000
           icon: "info"
-    
+    - service: browser_mod.toast
+      data:
+        message: "Someone is at the door."
 
 - alias: Timer Alert
   trigger:
