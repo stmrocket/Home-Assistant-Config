@@ -4,14 +4,20 @@ binary_sensor:
       front_door_lock_battery_low:
         value_template: "{{ states('sensor.front_door_lock_battery_level') | int < 20 }}"
         friendly_name: 'Front Door Lock Battery Low'
+        delay_on: 
+          minutes: 5
 
       back_door_lock_battery_low:
         value_template: "{{ states('sensor.back_door_lock_battery_level') | int < 20 }}"
         friendly_name: 'Back Door Lock Battery Low'
+        delay_on: 
+          minutes: 5
 
       garage_entry_lock_battery_low:
         value_template: "{{ states('sensor.garage_entry_lock_battery_level') | int < 20 }}"
         friendly_name: 'Front Door Lock Battery Low'
+        delay_on: 
+          minutes: 5
 
 alert:
   front_door_lock_battery_low:
