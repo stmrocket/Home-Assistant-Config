@@ -3,15 +3,18 @@ binary_sensor:
     sensors:
       kitchen_leak_detectors:
         value_template: "{{ is_state('binary_sensor.kitchen_sink_leak_dry', 'on') or is_state('binary_sensor.refrigerator_leak_dry', 'on') or is_state('binary_sensor.dishwasher_leak_dry', 'on') }}"
-        friendly_name: 'Kitchen Leak Detectors'      
+        friendly_name: 'Kitchen Leak Detectors'  
+        device_class: moisture    
 
       guest_bathroom_leak_detectors:
         value_template: "{{ is_state('binary_sensor.guest_sink_leak_dry', 'on') or is_state('binary_sensor.guest_toilet_leak_dry', 'on') }}"
-        friendly_name: 'Guest Bathroom Leak Detectors'  
+        friendly_name: 'Guest Bathroom Leak Detectors'    
+        device_class: moisture    
 
       master_bathroom_leak_detectors:
         value_template: "{{ is_state('binary_sensor.left_master_sink_leak_dry', 'on') or is_state('binary_sensor.right_master_sink_leak_dry', 'on') or is_state('binary_sensor.master_toilet_leak_dry', 'on') }}"
-        friendly_name: 'Master Bathroom Leak Detectors'  
+        friendly_name: 'Master Bathroom Leak Detectors'    
+        device_class: moisture    
 
 alert:
   dishwasher_leak_detected:
