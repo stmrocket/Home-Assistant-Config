@@ -38,24 +38,6 @@ cover:
 
 # Sensors
 sensor:
-  #Lock Battery Ststus
-  - platform: template
-    sensors:
-      lock_front_door_battery:
-        friendly_name: 'Front Door Lock Battery'
-        value_template: "{{ state_attr('zwave.front_door_lock', 'battery_level') }}"
-        unit_of_measurement: '%'
-        entity_id: zwave.front_door_lock
-      lock_back_door_battery:
-        friendly_name: 'Back Door Lock Battery'
-        value_template: "{{ state_attr('zwave.back_door_lock', 'battery_level') }}"
-        unit_of_measurement: '%'
-        entity_id: zwave.back_door_lock
-      lock_garage_entry_battery:
-        friendly_name: 'Garage Entry Lock Battery'
-        value_template: "{{ state_attr('zwave.garage_entry_lock', 'battery_level') }}"
-        unit_of_measurement: '%'
-        entity_id: zwave.garage_entry_lock
 
   #Fireplace
 
