@@ -11,7 +11,7 @@
                 font-weight: bold
                 right: 5%
                 transform: initial
-            - entity: group.kitchen_leak
+            - entity: binary_sensor.kitchen_leak_detectors
               style:
                 bottom: 20%
                 font-weight: bold

@@ -5,7 +5,7 @@
         - type: picture-elements
           image: /local/lovelace/room.png
           elements:
-            - entity: group.guest_bath_leak
+            - entity: binary_sensor.guest_bathroom_leak_detectors
               style:
                 bottom: 20%
                 font-weight: bold
