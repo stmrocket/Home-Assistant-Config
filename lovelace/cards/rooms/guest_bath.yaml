@@ -5,6 +5,18 @@
         - type: picture-elements
           image: /local/lovelace/room.png
           elements:
+            - entity: group.guest_bath_leak
+              style:
+                bottom: 20%
+                font-weight: bold
+                right: 5%
+                transform: initial
+              tap_action: 
+                action: call-service
+                service: script.popup_guest_leak
+                service_data:
+                  deviceID: 
+                    - this
             - entity: sensor.blank
               hold-action: none
               prefix: Guest Bathroom
