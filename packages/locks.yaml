@@ -1,0 +1,51 @@
+binary_sensor:
+  - platform: template
+    sensors:
+      front_door_lock_battery_low:
+        value_template: "{{ states('sensor.front_door_lock_battery_level') | int < 20 }}"
+        friendly_name: 'Front Door Lock Battery Low'
+
+      back_door_lock_battery_low:
+        value_template: "{{ states('sensor.back_door_lock_battery_level') | int < 20 }}"
+        friendly_name: 'Back Door Lock Battery Low'
+
+      garage_entry_lock_battery_low:
+        value_template: "{{ states('sensor.garage_entry_lock_battery_level') | int < 20 }}"
+        friendly_name: 'Front Door Lock Battery Low'
+
+alert:
+  front_door_lock_battery_low:
+    name: Low Battery!
+    entity_id: binary_sensor.front_door_lock_battery_low
+    state: 'on'
+    repeat: 1440
+    can_acknowledge: true
+    skip_first: false
+    message: "The front door lock battery is low."
+    done_message: "The front door lock battery has been replaced."
+    notifiers:
+      - mobile_app_shawn_7t        
+
+  back_door_lock_battery_low:
+    name: Low Battery!
+    entity_id: binary_sensor.back_door_lock_battery_low
+    state: 'on'
+    repeat: 1440
+    can_acknowledge: true
+    skip_first: false
+    message: "The back door lock battery is low."
+    done_message: "The back door lock battery has been replaced."
+    notifiers:
+      - mobile_app_shawn_7t        
+
+  garage_entry_lock_battery_low:
+    name: Low Battery!
+    entity_id: binary_sensor.garage_entry_lock_battery_low
+    state: 'on'
+    repeat: 1440
+    can_acknowledge: true
+    skip_first: false
+    message: "The garage entry lock battery is low."
+    done_message: "The garage entry lock battery has been replaced."
+    notifiers:
+      - mobile_app_shawn_7t        
