@@ -101,6 +101,7 @@
       to: 'unknown'
       for: '30:00:00'
   action:
+    - service: persistent_notification.create
       data:
         title: Leak Detector Error!
         message: The kitchen sink leak detector is not reporting.
