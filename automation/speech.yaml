@@ -263,6 +263,9 @@
   trigger:
     - platform: mqtt
       topic: parrot/tele/doorbell
+    - platform: state
+      entity_id: sensor.zone_037
+      to: Violated
   action:
     - service: mqtt.publish
       data_template:

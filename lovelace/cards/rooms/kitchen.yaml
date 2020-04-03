@@ -11,12 +11,14 @@
                 font-weight: bold
                 right: 5%
                 transform: initial
+              type: state-icon
             - entity: binary_sensor.kitchen_leak_detectors
               style:
                 bottom: 20%
                 font-weight: bold
                 right: 12%
                 transform: initial
+              type: state-icon
               tap_action: 
                 action: call-service
                 service: script.popup_kitchen_leak
