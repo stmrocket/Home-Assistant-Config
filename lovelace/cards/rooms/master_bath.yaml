@@ -11,6 +11,7 @@
                 font-weight: bold
                 right: 5%
                 transform: initial
+              type: state-icon
               tap_action: 
                 action: call-service
                 service: script.popup_master_leak
