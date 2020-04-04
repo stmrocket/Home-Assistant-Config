@@ -288,12 +288,13 @@
       data_template:
         title: Doorbell
         message: Someone is at the front door.
-        image: "{{ states('sensor.external_url') }}/local/cctv/tmp/front_door_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
         data:
+          image: "{{ states('sensor.external_url') }}/local/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+          data:
           actions:
             - action: URI
               title: "Open Image"
-              uri: "{{ states('sensor.external_url') }}/local/cctv/tmp/front_door_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+              uri: "{{ states('sensor.external_url') }}/local/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
     - service: notify.den_kodi
       data:
         title: "Doorbell"
@@ -301,11 +302,12 @@
         data:
           displaytime: 20000
           icon: "info"
+          
     - service: browser_mod.toast
       data:
         message: "Someone is at the door."
     - service: notify.cctv_email
-      data:
+      data_template:
         title: "CCTV Alarm: Front Porch - Doorbell Pressed {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "The doorbell was rung at {{now().strftime('%H:%M:%S') }}."
         data: 
