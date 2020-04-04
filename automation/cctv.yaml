@@ -238,3 +238,10 @@
   action:
     - service: timer.cancel
       entity_id: timer.frigate_disable
+
+- alias: Clean Up Temporary Camera Images
+  trigger:
+    - platform: time
+      at: '00:00:00'
+  action:
+    - service: shell_command.clear_temp_images

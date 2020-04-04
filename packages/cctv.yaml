@@ -264,3 +264,5 @@ timer:
     name: Frigate Auto-restart Timer
     icon: mdi:timer
     
+shell_command:
+  clear_temp_images: bash /config/bin/clean_up_temp_images.sh
