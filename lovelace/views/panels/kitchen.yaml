@@ -237,6 +237,11 @@ cards:
                   service_data:
                     deviceID: 
                       - this
+                double_tap_action:
+                  action: call-service
+                  service: input_boolean.turn_off
+                  service_data:
+                    entity_id: input_boolean.washer_end
 
               - type: "custom:button-card"
                 entity: sensor.dryer_state
@@ -264,6 +269,11 @@ cards:
                   service_data:
                     deviceID: 
                       - this
+                double_tap_action:
+                  action: call-service
+                  service: input_boolean.turn_off
+                  service_data:
+                    entity_id: input_boolean.dryer_end
               - type: "custom:button-card"
                 entity: lock.back_door
                 color_type: icon
