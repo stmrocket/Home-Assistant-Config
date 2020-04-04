@@ -72,6 +72,9 @@ sensor:
         value_template: ''
         friendly_name: ''
 
+      external_url:
+        value_template: !secret ext_url
+
 binary_sensor:
 
   - platform: wyzesense
