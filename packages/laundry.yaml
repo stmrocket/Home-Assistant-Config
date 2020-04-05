@@ -134,6 +134,24 @@ sensor:
     qos: 1
     payload_available: "Online"
     payload_not_available: "Offline"
+  
+  - platform: template
+    sensors:
+      washer_status:
+        value_template: >-
+          {% if is_state('input_boolean.washer_end', 'on')  -%}
+            Done
+          {% else -%}
+            {{ states('sensor.washer_state')}}
+          {% endif -%}
+          
+      dryer_status:
+        value_template: >-
+          {% if is_state('input_boolean.dryer_end', 'on')  -%}
+            Done
+          {% else -%}
+            {{ states('sensor.dryer_state')}}
+          {% endif -%}
 
 input_boolean:
 
