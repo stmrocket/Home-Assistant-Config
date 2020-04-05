@@ -420,7 +420,7 @@ cards:
                   action: more-info
 
               - type: "custom:button-card"
-                entity: sensor.washer_state
+                entity: sensor.washer_status
                 color_type: icon
                 icon: mdi:washing-machine
                 state:
@@ -430,6 +430,9 @@ cards:
                   - value: "Idle"
                     color: rgb(255, 255, 255)
                     name: Idle   
+                  - value: "Done"
+                    color: rgb(255, 255, 255)
+                    name: Done
                 tap_action:
                   action: call-service
                   service: script.popup_washer
@@ -449,7 +452,7 @@ cards:
                     entity_id: input_boolean.washer_end
 
               - type: "custom:button-card"
-                entity: sensor.dryer_state
+                entity: sensor.dryer_status
                 color_type: icon
                 icon: mdi:tumble-dryer
                 state:
@@ -459,6 +462,9 @@ cards:
                   - value: "Idle"
                     color: rgb(255, 255, 255)
                     name: Idle
+                  - value: "Done"
+                    color: rgb(255, 255, 255)
+                    name: Done
                   - value: "Door Open"
                     color: rgb(255, 200, 0)
                     name: Door                    

@@ -42,38 +42,76 @@ cards:
         - type: horizontal-stack
           cards:          
             - type: custom:bar-card
-              title: WAN IN
+              name: WAN IN
               entity: sensor.wan_in_mbps
-              title_position: inside
-              align: center
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
               padding: 4px
               card_style: 
                 border-radius: 5px
               max: 1000
               severity:
-              - value: 99
+              - from: 0
+                to: 99
                 color: '#00ff00'
-              - value: 499
+              - from: 100
+                to: 499
                 color: '#ffff00'
-              - value: 1000
+              - from: 500
+                to: 1000
                 color: '#ff0000'
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }
 
             - type: custom:bar-card
-              title: WAN OUT
+              name: WAN OUT
               entity: sensor.wan_out_mbps
-              title_position: inside
-              align: center
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
               padding: 4px
               card_style: 
                 border-radius: 5px
               max: 1000
               severity:
-              - value: 99
+              - from: 0
+                to: 99
                 color: '#00ff00'
-              - value: 499
+              - from: 100
+                to: 499
                 color: '#ffff00'
-              - value: 1000
+              - from: 500
+                to: 1000
                 color: '#ff0000'
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }
 
 
 
@@ -109,137 +147,233 @@ cards:
         - type: horizontal-stack
           cards:
           
-          
           - type: horizontal-stack
             cards:  
-            - type: custom:circle-sensor-card
-              entity: sensor.synology_dsm_volume_used_volume_1
-              max: 100
-              min: 0
-              stroke_width: 15
-              gradient: true
-              fill: '#383C45'
-              name: Used
-              units: '%'
-              color_stops:
-                80: '#00ff00'
-                100: '#ff0000'
-              font_style: {font-size: 1.1em, font-color: white, text-shadow: '2px 2px black'}
-              style: {top: 5%, left: 80%, width: 6em, height: 6em, transform: none}
             - type: custom:vertical-stack-in-card
               cards:
               - type: custom:bar-card
-                title_position: top
-                title: Recordings
-                show_icon: true
-                align: center
-                padding: 1.5px
-                height: 40
+                name: Disk (Videos)
+                entity: sensor.synology_dsm_volume_used_volume_1
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
+                padding: 4px
                 card_style: 
                   border-radius: 5px
-                columns: 1
-                max: 200
-                entities:
-                  - entity: sensor.synology_dsm_average_disk_temp_volume_1
-                    icon: mdi:thermometer
-                    unit_of_measurement: '°F'
-                    
-                    severity:
-                    - value: 130
-                      color: '#1db954'
-                    - value: 140
-                      color: '#bf9540'
-                    - value: 150
-                      color: '#bf4040'
-              - type: custom:bar-card
-                title_position: top
-                title: CPU
-                show_icon: true
-                align: center
-                padding: 1.5px
-                height: 40
-                card_style: 
-                  border-radius: 5px
-                columns: 1
                 max: 100
-                entities:
-                  - entity: sensor.synology_dsm_cpu_load_total
-                    icon: mdi:flash
-                    unit_of_measurement: '%'
-                    
-                    severity:
-                    - value: 50
-                      color: '#0000ff'
-                    - value: 75
-                      color: '#ffff00'
-                    - value: 100
-                      color: '#ff0000'                      
+                severity:
+                - from: 0
+                  to: 79
+                  color: '#1db954'
+                - from: 80
+                  to: 94
+                  color: '#bf9540'
+                - from: 95
+                  to: 100
+                  color: '#ff0000'  
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
+              - type: custom:bar-card
+                name: Temperature (Videos)
+                entity: sensor.synology_dsm_average_disk_temp_volume_1
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 200
+                severity:
+                - from: 0
+                  to: 130
+                  color: '#1db954'
+                - from: 131
+                  to: 140
+                  color: '#bf9540'
+                - from: 141
+                  to: 150
+                  color: '#bf4040'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }
+                  bar-card-name {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+
               
-            
-                      
             - type: custom:vertical-stack-in-card
               cards:
               - type: custom:bar-card
-                title_position: top
-                title: Files
-                show_icon: true
-                align: center
-                padding: 1.5px
-                height: 40
+                name: CPU
+                entity: sensor.synology_dsm_cpu_load_total
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
+                padding: 4px
                 card_style: 
                   border-radius: 5px
-                columns: 1
-                max: 200
-                entities:
-                  - entity: sensor.synology_dsm_average_disk_temp_volume_2
-                    icon: mdi:thermometer
-                    unit_of_measurement: '°F'
-                    
-                    severity:
-                    - value: 130
-                      color: '#1db954'
-                    - value: 140
-                      color: '#bf9540'
-                    - value: 150
-                      color: '#bf4040'
-              - type: custom:bar-card
-                title_position: top
-                title: RAM
-                show_icon: true
-                align: center
-                padding: 1.5px
-                height: 40
-                card_style: 
-                  border-radius: 5px
-                columns: 1
                 max: 100
-                entities:
-                  - entity: sensor.synology_dsm_memory_usage_real
-                    icon: mdi:chip
-                    unit_of_measurement: '%'
-                    
-                    severity:
-                    - value: 50
-                      color: '#0000ff'
-                    - value: 75
-                      color: '#ffff00'
-                    - value: 100
-                      color: '#ff0000'                      
+                severity:
+                - from: 0
+                  to: 50
+                  color: '#1db954'
+                - from: 51
+                  to: 75
+                  color: '#bf9540'
+                - from: 76
+                  to: 100
+                  color: '#ff0000'  
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }   
+              - type: custom:bar-card
+                name: RAM
+                entity: sensor.synology_dsm_memory_usage_real
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 100
+                severity:
+                - from: 0
+                  to: 50
+                  color: '#1db954'
+                - from: 51
+                  to: 75
+                  color: '#bf9540'
+                - from: 76
+                  to: 100
+                  color: '#ff0000'            
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                           
               
-            - type: custom:circle-sensor-card
-              entity: sensor.synology_dsm_volume_used_volume_2
-              max: 100
-              min: 0
-              stroke_width: 15
-              gradient: true
-              fill: '#383C45'
-              name: Used
-              units: '%'
-              color_stops:
-                80: '#00ff00'
-                100: '#ff0000'
-              font_style: {font-size: 1.1em, font-color: white, text-shadow: '2px 2px black'}
-              style: {top: 5%, left: 80%, width: 6em, height: 6em, transform: none}
+            - type: custom:vertical-stack-in-card
+              cards:
+              - type: custom:bar-card
+                name: Disk (Files)
+                entity: sensor.synology_dsm_volume_used_volume_2
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 100
+                severity:
+                - from: 0
+                  to: 79
+                  color: '#1db954'
+                - from: 80
+                  to: 94
+                  color: '#bf9540'
+                - from: 95
+                  to: 100
+                  color: '#ff0000'  
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
+              - type: custom:bar-card
+                name: Temperature (Files)
+                entity: sensor.synology_dsm_average_disk_temp_volume_2
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 200
+                severity:
+                - from: 0
+                  to: 130
+                  color: '#1db954'
+                - from: 131
+                  to: 140
+                  color: '#bf9540'
+                - from: 141
+                  to: 150
+                  color: '#bf4040'  
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }              
 
 #################################################################
 #                                                               #
@@ -273,83 +407,112 @@ cards:
             
         - type: horizontal-stack
           cards:
-          
-          
-          - type: horizontal-stack
-            cards:  
-            
-            
             - type: custom:bar-card
-              title_position: top
-              title: CPU
-              show_icon: true
-              align: center
-              padding: 1.5px
-              height: 40
+              name: CPU
+              entity: sensor.processor_use
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
+              padding: 4px
               card_style: 
                 border-radius: 5px
-              columns: 1
               max: 100
-              entities:
-                - entity: sensor.processor_use
-                  icon: mdi:flash
-                  unit_of_measurement: '%'
-                  
-                  severity:
-                  - value: 50
-                    color: '#0000ff'
-                  - value: 75
-                    color: '#ffff00'
-                  - value: 100
-                    color: '#ff0000'            
-
+              severity:
+              - from: 0
+                to: 50
+                color: '#1db954'
+              - from: 51
+                to: 75
+                color: '#bf9540'
+              - from: 76
+                to: 100
+                color: '#ff0000'  
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }   
             - type: custom:bar-card
-              title_position: top
-              title: RAM
-              show_icon: true
-              align: center
-              padding: 1.5px
-              height: 40
+              name: RAM
+              entity: sensor.memory_use_percent
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
+              padding: 4px
               card_style: 
                 border-radius: 5px
-              columns: 1
               max: 100
-              entities:
-                - entity: sensor.memory_use_percent
-                  icon: mdi:chip
-                  unit_of_measurement: '%'
-                  
-                  severity:
-                  - value: 50
-                    color: '#0000ff'
-                  - value: 75
-                    color: '#ffff00'
-                  - value: 100
-                    color: '#ff0000'     
-                      
+              severity:
+              - from: 0
+                to: 50
+                color: '#1db954'
+              - from: 51
+                to: 75
+                color: '#bf9540'
+              - from: 76
+                to: 100
+                color: '#ff0000'            
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }                          
+            
             - type: custom:bar-card
-              title_position: top
-              title: Disk
-              show_icon: true
-              align: center
-              padding: 1.5px
-              height: 40
+              name: Disk
+              entity: sensor.disk_use_percent
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
+              padding: 4px
               card_style: 
                 border-radius: 5px
-              columns: 1
-              max: 200
-              entities:
-                - entity: sensor.disk_use_percent
-                  icon: mdi:thermometer
-                  unit_of_measurement: '%'
-                  
-                  severity:
-                  - value: 50
-                    color: '#1db954'
-                  - value: 75
-                    color: '#bf9540'
-                  - value: 100
-                    color: '#bf4040'        
+              max: 100
+              severity:
+              - from: 0
+                to: 79
+                color: '#1db954'
+              - from: 80
+                to: 94
+                color: '#bf9540'
+              - from: 95
+                to: 100
+                color: '#ff0000'  
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }                    
         - type: horizontal-stack
           cards:
           - type: "custom:gap-card"
@@ -366,21 +529,40 @@ cards:
                 - input_number.automation_count_expected
               card:
                 type: custom:bar-card
-                title: Automations
+                name: Automations
                 entity: sensor.automation_count
-                title_position: inside
-                align: center
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.automation_count
+                max: ${states['sensor.automation_count'].state}
                 severity:
-                  - value: ${states['sensor.automation_count_low'].state}
+                  - from: 0
+                    to: ${states['sensor.automation_count_low'].state}
                     color: '#bf4040'
-                  - value: ${states['input_number.automation_count_expected'].state}
+                  - from: ${states['input_number.automation_count_expected'].state}
+                    to: ${states['input_number.automation_count_expected'].state}
                     color: '#1db954'
-                  - value: ${states['sensor.automation_count_high'].state}
+                  - from: ${states['input_number.automation_count_expected'].state + 1}
+                    to: ${states['sensor.automation_count_high'].state}
                     color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script
@@ -397,21 +579,40 @@ cards:
                 - input_number.binary_sensor_count_expected
               card:
                 type: custom:bar-card
-                title: Binary Sensors
+                name: Binary Sensors
                 entity: sensor.binary_sensor_count
-                title_position: inside
-                align: center
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.binary_sensor_count
+                max: ${states['sensor.binary_sensor_count'].state}
                 severity:
-                - value: ${states['sensor.binary_sensor_count_low'].state}
+                - from: 0
+                  to: ${states['sensor.binary_sensor_count_low'].state}
                   color: '#bf4040'
-                - value: ${states['input_number.binary_sensor_count_expected'].state}
+                - from: ${states['input_number.binary_sensor_count_expected'].state}
+                  to: ${states['input_number.binary_sensor_count_expected'].state}
                   color: '#1db954'
-                - value: ${states['sensor.binary_sensor_count_high'].state}
+                - from: ${states['input_number.binary_sensor_count_expected'].state + 1}
+                  to: ${states['sensor.binary_sensor_count_high'].state}
                   color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script
@@ -429,21 +630,40 @@ cards:
                 - input_number.switch_count_expected
               card:
                 type: custom:bar-card
-                title: Switches
+                name: Switches
                 entity: sensor.switch_count
-                title_position: inside
-                align: center 
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.switch_count
+                max: ${states['sensor.switch_count'].state}
                 severity:
-                  - value: ${states['sensor.switch_count_low'].state}
+                  - from: 0 
+                    to: ${states['sensor.switch_count_low'].state}
                     color: '#bf4040'
-                  - value: ${states['input_number.switch_count_expected'].state}
+                  - from: ${states['input_number.switch_count_expected'].state}
+                    to: ${states['input_number.switch_count_expected'].state}
                     color: '#1db954'
-                  - value: ${states['sensor.switch_count_high'].state}
+                  - from: ${states['input_number.switch_count_expected'].state + 1}
+                    to: ${states['sensor.switch_count_high'].state}
                     color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script
@@ -462,21 +682,40 @@ cards:
                 - input_number.fan_count_expected
               card:
                 type: custom:bar-card
-                title: Fans
+                name: Fans
                 entity: sensor.fan_count
-                title_position: inside
-                align: center
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.fan_count
+                max: ${states['sensor.fan_count'].state}
                 severity:
-                  - value: ${states['sensor.fan_count_low'].state}
+                  - from: 0
+                    to: ${states['sensor.fan_count_low'].state}
                     color: '#bf4040'
-                  - value: ${states['input_number.fan_count_expected'].state}
+                  - from: ${states['input_number.fan_count_expected'].state}
+                    to: ${states['input_number.fan_count_expected'].state}
                     color: '#1db954'
-                  - value: ${states['sensor.fan_count_high'].state}
+                  - from: ${states['input_number.fan_count_expected'].state + 1}
+                    to: ${states['sensor.fan_count_high'].state}
                     color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script
@@ -493,21 +732,40 @@ cards:
                 - input_number.light_count_expected
               card:
                 type: custom:bar-card
-                title: Lights
+                name: Lights
                 entity: sensor.lights_count
-                title_position: inside
-                align: center
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.lights_count
+                max: ${states['sensor.lights_count'].state}
                 severity:
-                  - value: ${states['sensor.light_count_low'].state}
+                  - from: 0
+                    to: ${states['sensor.light_count_low'].state}
                     color: '#bf4040'
-                  - value: ${states['input_number.light_count_expected'].state}
+                  - from: ${states['input_number.light_count_expected'].state}
+                    to: ${states['input_number.light_count_expected'].state}
                     color: '#1db954'
-                  - value: ${states['sensor.light_count_high'].state}
+                  - from: ${states['input_number.light_count_expected'].state + 1}
+                    to: ${states['sensor.light_count_high'].state}
                     color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script
@@ -524,21 +782,40 @@ cards:
                 - input_number.tracked_device_count_expected
               card:
                 type: custom:bar-card
-                title: Tracked Devices
+                name: Tracked Devices
                 entity: sensor.tracker_count
-                title_position: inside
-                align: center 
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.tracker_count
+                max: ${states['sensor.tracker_count'].state}
                 severity:
-                  - value: ${states['sensor.tracked_device_count_low'].state}
+                  - from: 0
+                    to: ${states['sensor.tracked_device_count_low'].state}
                     color: '#bf4040'
-                  - value: ${states['input_number.tracked_device_count_expected'].state}
+                  - from: ${states['input_number.tracked_device_count_expected'].state}
+                    to: ${states['input_number.tracked_device_count_expected'].state}
                     color: '#1db954'
-                  - value: ${states['sensor.tracked_device_count_high'].state}
+                  - from: ${states['input_number.tracked_device_count_expected'].state + 1}
+                    to:: ${states['sensor.tracked_device_count_high'].state}
                     color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script
@@ -557,21 +834,40 @@ cards:
                 - input_number.media_player_count_expected
               card:
                 type: custom:bar-card
-                title: Media Players
+                name: Media Players
                 entity: sensor.media_player_count
-                title_position: inside
-                align: center
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.media_player_count
+                max: ${states['sensor.media_player_count'].state}
                 severity:
-                  - value: ${states['sensor.media_player_count_low'].state}
+                  - from: 0
+                    to: ${states['sensor.media_player_count_low'].state}
                     color: '#bf4040'
-                  - value: ${states['input_number.media_player_count_expected'].state}
+                  - from: ${states['input_number.media_player_count_expected'].state}
+                    to: ${states['input_number.media_player_count_expected'].state}
                     color: '#1db954'
-                  - value: ${states['sensor.media_player_count_high'].state}
+                  - from: ${states['input_number.media_player_count_expected'].state + 1}
+                    to: ${states['sensor.media_player_count_high'].state}
                     color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script
@@ -588,21 +884,40 @@ cards:
                 - input_number.script_count_expected
               card:
                 type: custom:bar-card
-                title: Scripts
+                name: Scripts
                 entity: sensor.script_count
-                title_position: inside
-                align: center 
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.script_count
+                max: ${states['sensor.script_count'].state}
                 severity:
-                  - value: ${states['sensor.script_count_low'].state}
+                  - from: 0
+                    to: ${states['sensor.script_count_low'].state}
                     color: '#bf4040'
-                  - value: ${states['input_number.script_count_expected'].state}
+                  - from: ${states['input_number.script_count_expected'].state}
+                    to: ${states['input_number.script_count_expected'].state}
                     color: '#1db954'
-                  - value: ${states['sensor.script_count_high'].state}
+                  - from: ${states['input_number.script_count_expected'].state + 1}
+                    to: ${states['sensor.script_count_high'].state}
                     color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script
@@ -619,21 +934,40 @@ cards:
                 - input_number.sensor_count_expected
               card:
                 type: custom:bar-card
-                title: Sensors
+                name: Sensors
                 entity: sensor.sensor_count
-                title_position: inside
-                align: center
+                entity_row: true
+                positions:
+                  icon: 'off'
+                  title: inside
+                  value: inside
                 padding: 4px
                 card_style: 
                   border-radius: 5px
-                max: sensor.sensor_count
+                max: ${states['sensor.sensor_count'].state}
                 severity:
-                  - value: ${states['sensor.sensor_count_low'].state}
+                  - from: 0
+                    to: ${states['sensor.sensor_count_low'].state}
                     color: '#bf4040'
-                  - value: ${states['input_number.sensor_count_expected'].state}
+                  - from: ${states['input_number.sensor_count_expected'].state}
+                    to: ${states['input_number.sensor_count_expected'].state}
                     color: '#1db954'
-                  - value: ${states['sensor.sensor_count_high'].state}
+                  - from: ${states['input_number.sensor_count_expected'].state + 1}
+                    to: ${states['sensor.sensor_count_high'].state}
                     color: '#bf9540'
+                style: |-
+                  bar-card-value {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-bottom: auto;
+                    margin-top: 0px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+                  bar-card-contentbar {
+                    flex-direction: column;
+                  }                    
                 tap_action: service
                 service_options:
                   domain: script

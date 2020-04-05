@@ -124,52 +124,120 @@ cards:
         
         - type: horizontal-stack
           cards:          
-          
+
             - type: custom:bar-card
-              title: 'Heat:'
+              name: 'Heat:'
               entity: sensor.hvac_system_heat_runtime
-              title_position: inside
-              align: center
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
               padding: 4px
               card_style: 
                 border-radius: 5px
               max: 24
               color: red
+              decimal: 2
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }
               
             - type: custom:bar-card
-              title: 'Cool:'
+              name: 'Cool:'
               entity: sensor.hvac_system_cool_runtime
-              title_position: inside
-              align: center
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
               padding: 4px
               card_style: 
                 border-radius: 5px
               max: 24
               color: blue
+              decimal: 2
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }
 
         - type: horizontal-stack
           cards:          
 
             - type: custom:bar-card
-              title: 'Fan:'
+              name: 'Fan:'
               entity: sensor.hvac_system_fan_runtime
-              title_position: inside
-              align: center
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
               padding: 4px
               card_style: 
                 border-radius: 5px
               max: 24
               color: green
+              decimal: 2
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }
               
             - type: custom:bar-card
-              title: 'Total:'
+              name: 'Total:'
               entity: sensor.hvac_system_runtime
-              title_position: inside
-              align: center
+              entity_row: true
+              positions:
+                icon: 'off'
+                title: inside
+                value: inside
               padding: 4px
               card_style: 
                 border-radius: 5px
               max: 24
+              decimal: 2
+              style: |-
+                bar-card-value {
+                  margin-right: auto;
+                  margin-left: auto;
+                  margin-bottom: auto;
+                  margin-top: 0px;
+                }
+                bar-card-divider {
+                  display: none;
+                }
+                bar-card-contentbar {
+                  flex-direction: column;
+                }
 
 #################################################################
 #                                                               #
