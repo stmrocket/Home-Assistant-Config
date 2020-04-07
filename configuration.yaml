@@ -247,6 +247,10 @@ timer:
     name: Garage Lighting Timer
     duration: '00:10:00'
 
+  doorbell_popup:
+    name: Garage Lighting Timer
+    duration: '00:01:00'
+
 # Text to speech
 tts:
 

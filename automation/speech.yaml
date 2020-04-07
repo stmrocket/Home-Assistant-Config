@@ -284,6 +284,10 @@
       data:
         entity_id: camera.front_porch
         filename: /config/www/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
+    - service: browser_mod.more_info
+      entity_id: camera.front_porch
+    - service: timer.start
+      entity_id: timer.doorbell_popup
     - service: notify.mobile_app_shawn_7t
       data_template:
         title: Doorbell
@@ -313,6 +317,15 @@
         data: 
           images:
             - /config/www/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
+
+- alias: Close Doorbell Popup When Timer Expires
+  trigger:
+    - event_data:
+        entity_id: timer.doorbell_popup
+      event_type: timer.finished
+      platform: event
+  action:
+    - service: browser_mod.close_popup
 
 - alias: Timer Alert
   trigger:
