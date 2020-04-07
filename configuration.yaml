@@ -272,7 +272,6 @@ isy994:
   host: !secret isy_host
   username: !secret isy_user
   password: !secret isy_pass
-  enable_climate: false
 
 #Elk M1 Integration
 elkm1:
