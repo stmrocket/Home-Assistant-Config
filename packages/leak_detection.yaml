@@ -197,7 +197,7 @@ alert:
     notifiers:
       - mobile_app_shawn_7t
   
-  left_master_sink_leak_error:
+  right_master_sink_leak_error:
     name: Leak Detector Error!
     entity_id: binary_sensor.right_master_sink_leak_heartb
     state: 'on'
