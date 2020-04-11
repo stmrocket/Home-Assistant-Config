@@ -20,7 +20,7 @@ reset_all_entity_counters:
     - service: input_number.set_value
       data_template:
         entity_id: input_number.light_count_expected
-        value: "{{ states('sensor.light_count') | float }}"
+        value: "{{ states('sensor.lights_count') | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.tracked_device_count_expected
