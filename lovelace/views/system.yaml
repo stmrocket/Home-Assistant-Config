@@ -394,7 +394,9 @@ cards:
                 font-size: 150%
                 left: 5%
                 transform: initial
-              tap-action: none
+              double-tap-action:
+                action: call-service
+                service: script.reset_all_entity_counters
               type: state-label
             - entity: sensor.hass_uptime
               prefix: "Uptime: "
