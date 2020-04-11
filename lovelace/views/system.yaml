@@ -1047,6 +1047,29 @@ cards:
                       - this
 
               - type: "custom:button-card"
+                entity: binary_sensor.updater_addons
+                color_type: icon
+                icon: mdi:docker
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                name: Add-Ons
+                tap_action:
+                  action: call-service
+                  service: script.popup_addons
+                  service_data:
+                    deviceID: 
+                      - this
+                hold_action: 
+                  action: call-service
+                  service: script.popup_addons
+                  service_data:
+                    deviceID: 
+                      - this
+
+              - type: "custom:button-card"
                 entity: binary_sensor.updater
                 color_type: icon
                 icon: mdi:home-assistant
@@ -1055,11 +1078,34 @@ cards:
                     color: rgb(228, 94, 101)
                   - value: "off"
                     color: rgb(255, 255, 255)
-                name: Hass.io
+                name: Core
                 tap_action:
                   action: more-info
                 hold_action: 
                   action: more-info
+              
+              - type: "custom:button-card"
+                entity: binary_sensor.updater_supervisor
+                color_type: icon
+                icon: mdi:server
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                name: Supervisor
+                tap_action:
+                  action: call-service
+                  service: script.popup_supervisor
+                  service_data:
+                    deviceID: 
+                      - this
+                hold_action: 
+                  action: call-service
+                  service: script.popup_supervisor
+                  service_data:
+                    deviceID: 
+                      - this
       
       - type: custom:vertical-stack-in-card
         cards:
