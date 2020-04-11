@@ -4,36 +4,36 @@ reset_all_entity_counters:
     - service: input_number.set_value
       data_template:
         entity_id: input_number.automation_count_expected
-        value: "{{ states('sensor.automation_count') }}"
+        value: "{{ states('sensor.automation_count' | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.binary_sensor_count_expected
-        value: "{{ states('sensor.binary_sensor_count') }}"
+        value: "{{ states('sensor.binary_sensor_count' | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.switch_count_expected
-        value: "{{ states('sensor.switch_count') }}"
+        value: "{{ states('sensor.switch_count' | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.fan_count_expected
-        value: "{{ states('sensor.fan_count') }}"
+        value: "{{ states('sensor.fan_count' | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.light_count_expected
-        value: "{{ states('sensor.light_count') }}"
+        value: "{{ states('sensor.light_count' | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.tracked_device_count_expected
-        value: "{{ states('sensor.tracker_count') }}"
+        value: "{{ states('sensor.tracker_count' | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.media_player_count_expected
-        value: "{{ states('sensor.media_player_count') }}"
+        value: "{{ states('sensor.media_player_count' | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.script_count_expected
-        value: "{{ states('sensor.script_count') }}"
+        value: "{{ states('sensor.script_count' | float }}"
     - service: input_number.set_value
       data_template:
         entity_id: input_number.sensor_count_expected
-        value: "{{ states('sensor.sensor_count') }}"
+        value: "{{ states('sensor.sensor_count' | float }}"
