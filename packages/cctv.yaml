@@ -83,6 +83,12 @@ camera:
     mjpeg_url: !secret hall_stream
     verify_ssl: false
 
+  - platform: mjpeg
+    name: Shack
+    still_image_url: !secret shack_still
+    mjpeg_url: !secret shack_stream
+    verify_ssl: false
+
   - platform: mqtt
     name: West Front Last Person
     topic: frigate/west_front/person/snapshot

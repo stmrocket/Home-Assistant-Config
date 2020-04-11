@@ -616,6 +616,7 @@ cards:
               - entity: camera.master
               - entity: camera.hall
               - entity: camera.guest
+              - entity: camera.shack
 
 #################################################################
 #                                                               #
