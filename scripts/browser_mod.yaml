@@ -3088,3 +3088,38 @@ popup_guest_leak:
                 name: "Sink"                
               - entity: binary_sensor.guest_toilet_leak_dry
                 name: "Toilet"                       
+
+popup_addons:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]        
+        title: Add-Ons
+        card:
+          type: "custom:list-card"
+          entity: sensor.supervisor_updates         
+          feed_attribute: addons
+          columns:
+            - {field: name, title: 'Name'}
+            - {field: installed, title: 'Installed'}
+            - {field: version, title: 'Latest'}                             
+
+popup_supervisor:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Supervisor
+        card:
+          type: entities
+          show_header_toggle: false
+          entities:
+              - entity:  sensor.supervisor_updates
+                type: custom:multiple-entity-row
+                name: Version
+                show_state: false
+                entities:
+                  - attribute: current_version
+                    name: Installed
+                  - attribute: newest_version
+                    name: Available              
