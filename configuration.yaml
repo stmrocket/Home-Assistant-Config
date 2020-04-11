@@ -283,9 +283,11 @@ elkm1:
   counter:
     enabled: false
   keypad:
-    exclude: [7-16]
+    enabled: false
   output:
     include: [3, 7, 9-16, 177-180, 182-183, 197]
+  setting:
+    enabled: false
   task:
     enabled: false
   thermostat:
