@@ -19,7 +19,8 @@
                 font-size: 150%
                 left: 5%
                 transform: initial
-              tap-action: none
+              tap_action: none
+              hold_action: none
               type: state-label
               
         - type: horizontal-stack
