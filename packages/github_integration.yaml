@@ -47,13 +47,13 @@ script:
           entity_id: input_text.prev_git_version
           value: "{{ states('sensor.home_assistant_config') }}"
 
-reload_all_helpers:
-    sequence:
-      - service: input_boolean.reload
-      - service: input_datetime.reload
-      - service: input_number.reload
-      - service: input_select.reload
-      - service: input_text.reload
-      - service: group.reload
-      - service: timer.reload
-      - service: scene.reload
+  reload_all_helpers:
+      sequence:
+        - service: input_boolean.reload
+        - service: input_datetime.reload
+        - service: input_number.reload
+        - service: input_select.reload
+        - service: input_text.reload
+        - service: group.reload
+        - service: timer.reload
+        - service: scene.reload
