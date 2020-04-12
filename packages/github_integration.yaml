@@ -56,4 +56,4 @@ reload_all_helpers:
       - service: input_text.reload
       - service: group.reload
       - service: timer.reload
-      - group: scene.reload
+      - service: scene.reload
