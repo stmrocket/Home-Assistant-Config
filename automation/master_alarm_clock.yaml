@@ -51,7 +51,7 @@
   action:
     - service: media_player.play_media
       data:
-        entity_id: media_player.master_bedroom_3
+        entity_id: media_player.alexa_master_bedroom
         media_content_id: "today's worship"
         media_content_type: "PANDORA"
     - service: light.turn_on
@@ -247,7 +247,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: light.turn_off
       entity_id: light.master_bedroom_lamps
     - service: timer.start
@@ -274,7 +274,7 @@
   action:
     - service: media_player.play_media
       data:
-        entity_id: media_player.master_bedroom_3
+        entity_id: media_player.alexa_master_bedroom
         media_content_id: "today's worship"
         media_content_type: "PANDORA"
     - service: light.turn_on
@@ -365,7 +365,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
@@ -397,7 +397,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
@@ -448,7 +448,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
@@ -475,7 +475,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
