@@ -119,10 +119,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: 'disarmed'
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: 'armed_home'
   action:
     - service: mqtt.publish
@@ -159,10 +159,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: 'disarmed'
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: 'armed_home'
   action:
     - service: mqtt.publish
@@ -183,10 +183,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: 'disarmed'
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: 'armed_home'
   action:
     - service: mqtt.publish
@@ -223,10 +223,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: 'disarmed'
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: 'armed_home'
   action:
     - service: mqtt.publish
@@ -271,10 +271,10 @@
     - condition: or
       conditions:
       - condition: state
-        entity_id: alarm_control_panel.area_001
+        entity_id: alarm_control_panel.house
         state: 'armed_away'
       - condition: state
-        entity_id: alarm_control_panel.area_001
+        entity_id: alarm_control_panel.house
         state: 'armed_night'
   action:
   - service: input_boolean.turn_off

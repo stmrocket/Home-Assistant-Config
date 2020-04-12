@@ -19,7 +19,7 @@
 
 - alias: Roomba Return if House Disarmed
   trigger:
-    - entity_id: alarm_control_panel.area_001
+    - entity_id: alarm_control_panel.house
       platform: state
       to: disarmed
   condition:

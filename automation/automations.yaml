@@ -1,6 +1,6 @@
 - alias: House Armed and Secure
   trigger:
-    - entity_id: alarm_control_panel.area_001
+    - entity_id: alarm_control_panel.house
       from: arming
       platform: state
       to: armed_away
@@ -23,11 +23,11 @@
 - alias: Master Going To Bed
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: disarmed
       to: armed_night
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_home
       to: armed_night
   action:
@@ -58,7 +58,7 @@
 - alias: Vacation Mode On
   trigger:
     - platform: template
-      value_template: "{{ is_state_attr('alarm_control_panel.area_001', 'armed_status', 'armed_to_vacation') }}"
+      value_template: "{{ is_state_attr('alarm_control_panel.house', 'armed_status', 'armed_to_vacation') }}"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.vacation_mode

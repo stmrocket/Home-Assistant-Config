@@ -21,7 +21,7 @@
               entity_id: input_boolean.work_alarm_enabled
               state: 'on'
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_away
   action:
     - service: switch.turn_on
@@ -59,10 +59,10 @@
 - alias: Timer Lights On Main Weekend Holiday AM
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: disarmed
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_night
       to: armed_home    
   condition:
@@ -73,10 +73,10 @@
         - condition: or
           conditions:
             - condition: state
-              entity_id: alarm_control_panel.area_001
+              entity_id: alarm_control_panel.house
               state: disarmed
             - condition: state
-              entity_id: alarm_control_panel.area_001
+              entity_id: alarm_control_panel.house
               state: armed_home
         - condition: or
           conditions:
@@ -110,7 +110,7 @@
       at: '23:30:00'
   condition:
     - condition: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       state: armed_away
   action:
     - service: switch.turn_off
@@ -152,10 +152,10 @@
 - alias: Timer Lights Off Main Night Mode
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
   condition:
     - condition: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       state: armed_night
   action:
     - service: switch.turn_off
@@ -197,7 +197,7 @@
           entity_id: input_boolean.guest_mode
           state: 'off'
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_away
   action:
     - service: switch.turn_on
@@ -227,7 +227,7 @@
           entity_id: input_boolean.guest_mode
           state: 'off'
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_away
   action:
     - service: switch.turn_off
@@ -251,13 +251,13 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: disarmed
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_away
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_home
   action:
     - service: switch.turn_on
@@ -285,13 +285,13 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: disarmed
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_away
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_home
   action:
     - service: switch.turn_off
@@ -328,7 +328,7 @@
 - alias: Timer LEDs On House
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
     - platform: state
       entity_id: input_boolean.timer_lights
       to: 'on'
@@ -351,13 +351,13 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: disarmed
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_home
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_night
   action:
     - service: light.turn_on
@@ -368,7 +368,7 @@
 - alias: Timer LEDs Off House Away
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_away
   action:
@@ -423,10 +423,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: disarmed
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_home
   action:
   - service: light.turn_off
@@ -435,7 +435,7 @@
 - alias: Master Suite Off if Sleeping
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_night
       for: '00:45:00'

@@ -309,4 +309,4 @@ cards:
             states:
               - arm_home
               - arm_night
-            entity: alarm_control_panel.area_001            
+            entity: alarm_control_panel.house            

@@ -186,11 +186,11 @@
 
 - alias: Elk Speak Armed Stay
   trigger:
-    - entity_id: alarm_control_panel.area_001
+    - entity_id: alarm_control_panel.house
       from: disarmed
       platform: state
       to: armed_home
-    - entity_id: alarm_control_panel.area_001
+    - entity_id: alarm_control_panel.house
       from: armed_night
       platform: state
       to: armed_home
@@ -202,7 +202,7 @@
 
 - alias: Elk Speak Armed Away
   trigger:
-    - entity_id: alarm_control_panel.area_001
+    - entity_id: alarm_control_panel.house
       from: disarmed
       platform: state
       to: armed_away
@@ -220,7 +220,7 @@
 - alias: Elk Speak Armed Vacation
   trigger:
     - platform: template
-      value_template: "{{ is_state_attr('alarm_control_panel.area_001', 'armed_status', 'armed_to_vacation') }}"
+      value_template: "{{ is_state_attr('alarm_control_panel.house', 'armed_status', 'armed_to_vacation') }}"
   action:
     - service: mqtt.publish
       data:
@@ -234,11 +234,11 @@
 
 - alias: Elk Speak Armed Night
   trigger:
-    - entity_id: alarm_control_panel.area_001
+    - entity_id: alarm_control_panel.house
       from: disarmed
       platform: state
       to: armed_night
-    - entity_id: alarm_control_panel.area_001
+    - entity_id: alarm_control_panel.house
       from: armed_home
       platform: state
       to: armed_night
@@ -250,7 +250,7 @@
 
 - alias: Elk Speak Disarmed
   trigger:
-    - entity_id: alarm_control_panel.area_001
+    - entity_id: alarm_control_panel.house
       platform: state
       to: disarmed
   action:
