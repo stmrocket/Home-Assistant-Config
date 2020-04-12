@@ -430,10 +430,10 @@ popup_github:
                     - value: 'off'
                       color: rgb(255, 255, 255)
                   icon: mdi:github-circle
-                  name: Restart
+                  name: Pull
                   tap_action: 
                     action: call-service
-                    service: script.update_config_restart
+                    service: script.update_config
                 
                 - type: "custom:button-card"
                   entity: binary_sensor.git_update_ready
@@ -444,10 +444,10 @@ popup_github:
                     - value: 'off'
                       color: rgb(255, 255, 255)
                   icon: mdi:github-circle
-                  name: Reload
+                  name: Restart
                   tap_action: 
                     action: call-service
-                    service: script.update_config_reload_automations
+                    service: script.update_config_restart
 
                 - type: "custom:button-card"
                   entity: binary_sensor.git_update_ready
@@ -462,7 +462,36 @@ popup_github:
                   tap_action: 
                     action: call-service
                     service: script.clear_config_update_flag
+                    
+            - type: horizontal-stack
+              cards:
 
+                - type: "custom:button-card"
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:robot
+                  name: Automations
+                  tap_action: 
+                    action: call-service
+                    service: automation.reload
+                
+                - type: "custom:button-card"
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:script-text
+                  name: Scripts
+                  tap_action: 
+                    action: call-service
+                    service: script.reload
+
+                - type: "custom:button-card"
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:tools
+                  name: Helpers
+                  tap_action: 
+                    action: call-service
+                    service: script.reload_all_helpers
 popup_hacs:
   sequence:
     - service: browser_mod.popup

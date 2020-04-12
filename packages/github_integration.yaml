@@ -32,14 +32,13 @@ script:
       - service: shell_command.get_latest_config
       - service: homeassistant.restart
 
-  update_config_reload_automations:
+  update_config:
     sequence:
       - service: input_text.set_value
         data_template:
           entity_id: input_text.prev_git_version
           value: "{{ states('sensor.home_assistant_config') }}"
       - service: shell_command.get_latest_config
-      - service: automation.reload
   
   clear_config_update_flag:
     sequence:
@@ -47,3 +46,14 @@ script:
         data_template:
           entity_id: input_text.prev_git_version
           value: "{{ states('sensor.home_assistant_config') }}"
+
+reload_all_helpers:
+    sequence:
+      - service: input_boolean.reload
+      - service: input_datetime.reload
+      - service: input_number.reload
+      - service: input_select.reload
+      - service: input_text.reload
+      - service: group.reload
+      - service: timer.reload
+      - group: scene.reload
