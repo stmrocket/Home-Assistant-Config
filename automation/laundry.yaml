@@ -241,7 +241,7 @@
 #Reset all timers when Laundry Room entered
 - alias: 'Reset Laundry Timers on Motion'
   trigger:
-    - entity_id: sensor.zone_026
+    - entity_id: sensor.elk_utility_motion
       platform: state
       to: Violated
   action:

@@ -6,11 +6,11 @@ hvac_dump_zone_1:
       for: 
         minutes: 5
     - service: switch.turn_on
-      entity_id: switch.output_014 
+      entity_id: switch.elk_hvac_zone_1_dump 
     - service: switch.turn_off
       entity_id: 
-        - switch.output_015
-        - switch.output_016
+        - switch.elk_hvac_zone_1_dump
+        - switch.elk_hvac_zone_1_dump
 
 hvac_dump_zone_2:
   sequence:
@@ -20,11 +20,11 @@ hvac_dump_zone_2:
       for: 
         minutes: 5
     - service: switch.turn_on
-      entity_id: switch.output_015
+      entity_id: switch.elk_hvac_zone_1_dump
     - service: switch.turn_off
       entity_id: 
-        - switch.output_014
-        - switch.output_016  
+        - switch.elk_hvac_zone_1_dump
+        - switch.elk_hvac_zone_1_dump  
 
 hvac_dump_zone_3:
   sequence:
@@ -34,8 +34,8 @@ hvac_dump_zone_3:
       for: 
         minutes: 5
     - service: switch.turn_on
-      entity_id: switch.output_016
+      entity_id: switch.elk_hvac_zone_1_dump
     - service: switch.turn_off
       entity_id: 
-        - switch.output_014
-        - switch.output_015  
+        - switch.elk_hvac_zone_1_dump
+        - switch.elk_hvac_zone_1_dump  

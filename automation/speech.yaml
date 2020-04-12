@@ -1,6 +1,6 @@
 - alias: Elk Speak Front Door
   trigger:
-    - entity_id: sensor.zone_001
+    - entity_id: sensor.elk_front_door
       platform: state
       to: Violated
   action:
@@ -11,7 +11,7 @@
     
 - alias: Elk Speak Back Door
   trigger:
-    - entity_id: sensor.zone_003
+    - entity_id: sensor.elk_back_door
       platform: state
       to: Violated
   action:
@@ -22,7 +22,7 @@
 
 - alias: Elk Speak Center Master Window
   trigger:
-    - entity_id: sensor.zone_005
+    - entity_id: sensor.elk_master_bed_window_center
       platform: state
       to: Violated
   action:
@@ -33,7 +33,7 @@
 
 - alias: Elk Speak Center Office Window
   trigger:
-    - entity_id: sensor.zone_005
+    - entity_id: sensor.elk_office_window_center
       platform: state
       to: Violated
   action:
@@ -44,7 +44,7 @@
 
 - alias: Elk Speak East Breakfast Room Window
   trigger:
-    - entity_id: sensor.zone_015
+    - entity_id: sensor.elk_dining_room_window_east
       platform: state
       to: Violated
   action:
@@ -55,7 +55,7 @@
 
 - alias: Elk Speak Garage Door
   trigger:
-    - entity_id: sensor.zone_031
+    - entity_id: sensor.elk_garage_door
       platform: state
       to: Violated
   action:
@@ -67,7 +67,7 @@
 - alias: Elk Speak Garage Entry
   trigger:
     - platform: template
-      value_template: "{{ is_state_attr('sensor.zone_002', 'physical_status', 'open') }}"
+      value_template: "{{ is_state_attr('sensor.elk_garage_entry', 'physical_status', 'open') }}"
   action:
     - service: mqtt.publish
       data:
@@ -76,7 +76,7 @@
 
 - alias: Elk Speak Guest Window
   trigger:
-    - entity_id: sensor.zone_007
+    - entity_id: sensor.elk_guest_bed_wildow
       platform: state
       to: Violated
   action:
@@ -87,7 +87,7 @@
 
 - alias: Elk Speak Left Breakfast Room Window
   trigger:
-    - entity_id: sensor.zone_013
+    - entity_id: sensor.elk_dining_room_window_left
       platform: state
       to: Violated
   action:
@@ -98,7 +98,7 @@
 
 - alias: Elk Speak Right Breakfast Room Window
   trigger:
-    - entity_id: sensor.zone_014
+    - entity_id: sensor.elk_dining_room_window_right
       platform: state
       to: Violated
   action:
@@ -109,7 +109,7 @@
 
 - alias: Elk Speak Left Master Bedroom Window
   trigger:
-    - entity_id: sensor.zone_010
+    - entity_id: sensor.elk_master_bed_window_left
       platform: state
       to: Violated
   action:
@@ -120,7 +120,7 @@
 
 - alias: Elk Speak Left Office Window
   trigger:
-    - entity_id: sensor.zone_006
+    - entity_id: sensor.elk_office_window_left
       platform: state
       to: Violated
   action:
@@ -131,7 +131,7 @@
 
 - alias: Elk Speak Right Office Window
   trigger:
-    - entity_id: sensor.zone_006
+    - entity_id: sensor.elk_office_window_right
       platform: state
       to: Violated
   action:
@@ -142,7 +142,7 @@
 
 - alias: Elk Speak Right Master Bedroom Window
   trigger:
-    - entity_id: sensor.zone_012
+    - entity_id: sensor.elk_master_bed_window_right
       platform: state
       to: Violated
   action:
@@ -153,7 +153,7 @@
 
 - alias: Elk Speak Server Room Window
   trigger:
-    - entity_id: sensor.zone_020
+    - entity_id: sensor.elk_server_room_window
       platform: state
       to: Violated
   action:
@@ -164,7 +164,7 @@
 
 - alias: Elk Speak West Master Bedroom Window
   trigger:
-    - entity_id: sensor.zone_009
+    - entity_id: sensor.elk_master_bed_window_west
       platform: state
       to: Violated
   action:
@@ -175,7 +175,7 @@
 
 - alias: Elk Speak Air Handler Disabled
   trigger:
-    - entity_id: switch.output_013
+    - entity_id: switch.elk_ahu_disable
       platform: state
       to: 'on'
   action:
@@ -264,7 +264,7 @@
     - platform: mqtt
       topic: parrot/tele/doorbell
     - platform: state
-      entity_id: sensor.zone_037
+      entity_id: sensor.elk_doorbell
       to: Violated
   action:
     - service: mqtt.publish

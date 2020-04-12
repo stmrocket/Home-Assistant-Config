@@ -10,7 +10,7 @@
       value_template: "{{ not is_state('alarm_control_panel.house', 'armed_away') }}"
   action:
     - service: switch.turn_on
-      entity_id: switch.output_178
+      entity_id: switch.elk_night_mode_on
     - service: input_boolean.turn_off
       entity_id: input_boolean.elk_night_on
 
@@ -26,7 +26,7 @@
       value_template: "{{ not is_state('alarm_control_panel.house', 'armed_away') }}"
   action:
     - service: switch.turn_on
-      entity_id: switch.output_177
+      entity_id: switch.elk_night_mode_off
     - service: input_boolean.turn_off
       entity_id: input_boolean.elk_night_off  
 
@@ -42,7 +42,7 @@
       value_template: "{{ not is_state('alarm_control_panel.house', 'armed_away') }}"
   action:
     - service: switch.turn_on
-      entity_id: switch.output_177
+      entity_id: switch.elk_night_mode_off
     - service: input_boolean.turn_off
       entity_id: input_boolean.elk_stay_on
 
@@ -58,7 +58,7 @@
       value_template: "{{ not is_state('alarm_control_panel.house', 'armed_away') }}"
   action:
     - service: switch.turn_on
-      entity_id: switch.output_182
+      entity_id: switch.elk_stay_mode_off
     - service: input_boolean.turn_off
       entity_id: input_boolean.elk_stay_off      
 
@@ -74,7 +74,7 @@
       value_template: "{{ not is_state('alarm_control_panel.house', 'armed_away') }}"
   action:
     - service: switch.turn_on
-      entity_id: switch.output_179
+      entity_id: switch.elk_away_mode_on
     - service: input_boolean.turn_off
       entity_id: input_boolean.elk_away_on    
 

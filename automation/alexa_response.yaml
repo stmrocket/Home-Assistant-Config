@@ -158,7 +158,7 @@
 - alias: Update Alexa When Garage Open
   trigger:
   - platform: state
-    entity_id: sensor.zone_031
+    entity_id: sensor.elk_garage_door
     to: Violated
   action:
   - service: rest_command.update_alexa_garage_open
@@ -166,7 +166,7 @@
 - alias: Update Alexa When Garage Closed
   trigger:
   - platform: state
-    entity_id: sensor.zone_031
+    entity_id: sensor.elk_garage_door
     to: Normal
   action:
   - service: rest_command.update_alexa_garage_closed  

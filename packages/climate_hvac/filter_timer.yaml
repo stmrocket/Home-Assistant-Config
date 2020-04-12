@@ -16,7 +16,7 @@ binary_sensor:
     sensors:
       hvac_running:
         friendly_name: HVAC Running
-        value_template: "{{ is_state('sensor.zone_065', 'Violated') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') }}"
       
       hvac_filter_needs_replacement:
         friendly_name: HVAC FIlter Needs Replacement

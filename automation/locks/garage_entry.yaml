@@ -18,7 +18,7 @@
     service: lock.lock
 - alias: Garage Entry Lock Timer Trigger
   trigger:
-  - entity_id: sensor.zone_002
+  - entity_id: sensor.elk_garage_entry
     from: Normal
     to: Violated
     platform: state
@@ -26,7 +26,7 @@
     from: locked
     platform: state
     to: unlocked
-  - entity_id: sensor.zone_032
+  - entity_id: sensor.elk_garage_motion
     from: Normal
     to: Violated
     platform: state
@@ -41,10 +41,10 @@
     platform: event
   condition:
   - condition: state
-    entity_id: sensor.zone_002
+    entity_id: sensor.elk_garage_entry
     state: Normal
   - condition: state
-    entity_id: sensor.zone_031
+    entity_id: sensor.elk_garage_door
     state: Violated
   - condition: state
     entity_id: lock.garage_entry

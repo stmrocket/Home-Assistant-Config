@@ -1,7 +1,7 @@
 - alias: Arm from Biometrics
   trigger:
   - platform: state
-    entity_id: switch.output_180
+    entity_id: switch.elk_biometric_trigger
     to: 'on'
   condition:
   - condition: state
@@ -11,14 +11,14 @@
   - service: lock.lock
     entity_id: lock.garage_entry
   - service: switch.turn_on
-    entity_id: switch.output_179
+    entity_id: switch.elk_away_mode_on
   - service: switch.turn_off
-    entity_id: switch.output_180
+    entity_id: switch.elk_biometric_trigger
 
 - alias: Disarm from Biometrics
   trigger:
   - platform: state
-    entity_id: switch.output_180
+    entity_id: switch.elk_biometric_trigger
     to: 'on'
   condition:  
   - condition: or
@@ -33,6 +33,6 @@
   - service: lock.unlock
     entity_id: lock.garage_entry
   - service: switch.turn_on
-    entity_id: switch.output_182
+    entity_id: switch.elk_stay_mode_off
   - service: switch.turn_off
-    entity_id: switch.output_180    
+    entity_id: switch.elk_biometric_trigger    
