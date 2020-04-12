@@ -36,51 +36,51 @@ binary_sensor:
 
       hvac_system_fan:
         friendly_name: "HVAC System Fan Call"
-        value_template: "{{ is_state('sensor.zone_065', 'Violated') and is_state('sensor.zone_066', 'Normal') and is_state('sensor.zone_067', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') and is_state('sensor.elk_hvac_heat_call', 'Normal') and is_state('sensor.elk_hvac_cool_call', 'Normal') }}"
 
       hvac_system_heat:
         friendly_name: "HVAC System Heat Call"
-        value_template: "{{ is_state('sensor.zone_066', 'Violated') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_heat_call', 'Violated') }}"
 
       hvac_system_cool:
         friendly_name: "HVAC System Cool Call"
-        value_template: "{{ is_state('sensor.zone_067', 'Violated') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_cool_call', 'Violated') }}"
 
       hvac_zone_1_fan:
         friendly_name: "HVAC Zone 1 Fan Call"
-        value_template: "{{ is_state('sensor.zone_065', 'Violated') and is_state('sensor.zone_066', 'Normal') and is_state('sensor.zone_067', 'Normal') and is_state('sensor.zone_068', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') and is_state('sensor.elk_hvac_heat_call', 'Normal') and is_state('sensor.elk_hvac_cool_call', 'Normal') and is_state('sensor.elk_hvac_zone_1_closed', 'Normal') }}"
       
       hvac_zone_1_heat:
         friendly_name: "HVAC Zone 1 Heat Call"
-        value_template: "{{ is_state('sensor.zone_066', 'Violated') and is_state('sensor.zone_068', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_heat_call', 'Violated') and is_state('sensor.elk_hvac_zone_1_closed', 'Normal') }}"
 
       hvac_zone_1_cool:
         friendly_name: "HVAC Zone 1 Cool Call"
-        value_template: "{{ is_state('sensor.zone_067', 'Violated') and is_states('sensor.zone_068', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_cool_call', 'Violated') and is_states('sensor.elk_hvac_zone_1_closed', 'Normal') }}"
 
       hvac_zone_2_fan:
         friendly_name: "HVAC Zone 2 Fan Call"
-        value_template: "{{ is_state('sensor.zone_065', 'Violated') and is_state('sensor.zone_066', 'Normal') and is_state('sensor.zone_067', 'Normal') and is_state('sensor.zone_069', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') and is_state('sensor.elk_hvac_heat_call', 'Normal') and is_state('sensor.elk_hvac_cool_call', 'Normal') and is_state('sensor.elk_hvac_zone_2_closed', 'Normal') }}"
       
       hvac_zone_2_heat:
         friendly_name: "HVAC Zone 2 Heat Call"
-        value_template: "{{ is_state('sensor.zone_066', 'Violated') and is_state('sensor.zone_069', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_heat_call', 'Violated') and is_state('sensor.elk_hvac_zone_2_closed', 'Normal') }}"
 
       hvac_zone_2_cool:
         friendly_name: "HVAC Zone 2 Cool Call"
-        value_template: "{{ is_state('sensor.zone_067', 'Violated') and is_state('sensor.zone_069', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_cool_call', 'Violated') and is_state('sensor.elk_hvac_zone_2_closed', 'Normal') }}"
       
       hvac_zone_3_fan:
         friendly_name: "HVAC Zone 3 Fan Call"
-        value_template: "{{ is_state('sensor.zone_065', 'Violated') and is_state('sensor.zone_066', 'Normal') and is_state('sensor.zone_067', 'Normal') and is_state('sensor.zone_070', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') and is_state('sensor.elk_hvac_heat_call', 'Normal') and is_state('sensor.elk_hvac_cool_call', 'Normal') and is_state('sensor.elk_hvac_zone_3_closed', 'Normal') }}"
       
       hvac_zone_3_heat:
         friendly_name: "HVAC Zone 3 Heat Call"
-        value_template: "{{ is_state('sensor.zone_066', 'Violated') and is_state('sensor.zone_070', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_heat_call', 'Violated') and is_state('sensor.elk_hvac_zone_3_closed', 'Normal') }}"
 
       hvac_zone_3_cool:
         friendly_name: "HVAC Zone 3 Cool Call"
-        value_template: "{{ is_state('sensor.zone_067', 'Violated') and is_state('sensor.zone_070', 'Normal') }}"
+        value_template: "{{ is_state('sensor.elk_hvac_cool_call', 'Violated') and is_state('sensor.elk_hvac_zone_3_closed', 'Normal') }}"
 
 #################################################################
 #                                                               #
@@ -186,39 +186,39 @@ sensor:
       hvac_zone_1_damper_position:
         friendly_name: "HVAC Zone 1 Damper Position"
         value_template: >-
-          {% if is_state("switch.output_014", 'on') and is_state("sensor.zone_068", 'Normal') -%}
+          {% if is_state("switch.elk_hvac_zone_1_dump", 'on') and is_state("sensor.elk_hvac_zone_1_closed", 'Normal') -%}
             Open Bypass
-          {% elif is_state("switch.output_014", 'on') and is_state("sensor.zone_068", 'Violated') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'on') and is_state("sensor.elk_hvac_zone_1_closed", 'Violated') -%}
             Closed Bypass
-          {% elif is_state("switch.output_014", 'off') and is_state("sensor.zone_068", 'Normal') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'off') and is_state("sensor.elk_hvac_zone_1_closed", 'Normal') -%}
             Open
-          {% elif is_state("switch.output_014", 'off') and is_state("sensor.zone_068", 'Violated') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'off') and is_state("sensor.elk_hvac_zone_1_closed", 'Violated') -%}
             Closed
           {%- endif %}
       
       hvac_zone_2_damper_position:
         friendly_name: "HVAC Zone 2 Damper Position"
         value_template: >-
-          {% if is_state("switch.output_015", 'on') and is_state("sensor.zone_069", 'Normal') -%}
+          {% if is_state("switch.elk_hvac_zone_1_dump", 'on') and is_state("sensor.elk_hvac_zone_2_closed", 'Normal') -%}
             Open Bypass
-          {% elif is_state("switch.output_015", 'on') and is_state("sensor.zone_069", 'Violated') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'on') and is_state("sensor.elk_hvac_zone_2_closed", 'Violated') -%}
             Closed Bypass
-          {% elif is_state("switch.output_015", 'off') and is_state("sensor.zone_069", 'Normal') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'off') and is_state("sensor.elk_hvac_zone_2_closed", 'Normal') -%}
             Open
-          {% elif is_state("switch.output_015", 'off') and is_state("sensor.zone_069", 'Violated') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'off') and is_state("sensor.elk_hvac_zone_2_closed", 'Violated') -%}
             Closed
           {%- endif %}
 
       hvac_zone_3_damper_position:
         friendly_name: "HVAC Zone 3 Damper Position"
         value_template: >-
-          {% if is_state("switch.output_016", 'on') and is_state("sensor.zone_070", 'Normal') -%}
+          {% if is_state("switch.elk_hvac_zone_1_dump", 'on') and is_state("sensor.elk_hvac_zone_3_closed", 'Normal') -%}
             Open Bypass
-          {% elif is_state("switch.output_016", 'on') and is_state("sensor.zone_070", 'Violated') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'on') and is_state("sensor.elk_hvac_zone_3_closed", 'Violated') -%}
             Closed Bypass
-          {% elif is_state("switch.output_016", 'off') and is_state("sensor.zone_070", 'Normal') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'off') and is_state("sensor.elk_hvac_zone_3_closed", 'Normal') -%}
             Open
-          {% elif is_state("switch.output_016", 'off') and is_state("sensor.zone_070", 'Violated') -%}
+          {% elif is_state("switch.elk_hvac_zone_1_dump", 'off') and is_state("sensor.elk_hvac_zone_3_closed", 'Violated') -%}
             Closed
           {%- endif %}
 

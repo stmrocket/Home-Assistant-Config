@@ -18,7 +18,7 @@
     service: lock.lock
 - alias: Front Door Lock Timer Trigger
   trigger:
-  - entity_id: sensor.zone_001
+  - entity_id: sensor.elk_front_door
     from: Normal
     to: Violated
     platform: state
@@ -37,7 +37,7 @@
     platform: event
   condition:
   - condition: state
-    entity_id: sensor.zone_001
+    entity_id: sensor.elk_front_door
     state: Normal
   - condition: state
     entity_id: lock.front_door

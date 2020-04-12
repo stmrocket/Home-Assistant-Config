@@ -1,7 +1,7 @@
 - alias: Notify Alarm Tripped
   trigger:
     - platform: state
-      entity_id: switch.output_183
+      entity_id: switch.elk_intruder_alarm_tripped
       to: 'on'
   action:
     - service: notify.mobile_app_shawn_7t
@@ -12,7 +12,7 @@
 - alias: Notify Garage Opened While Away
   trigger:
     - platform: state
-      entity_id: sensor.zone_031
+      entity_id: sensor.elk_garage_door
       to: Violated
   condition:
     - condition: state

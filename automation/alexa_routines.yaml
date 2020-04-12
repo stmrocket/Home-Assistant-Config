@@ -40,7 +40,7 @@
     - service: switch.turn_off
       entity_id: switch.master_bedroom_lamps
     - service: switch.turn_on
-      entity_id: switch.output_178
+      entity_id: switch.elk_night_mode_on
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
 
@@ -52,7 +52,7 @@
   action:
     - service: switch.turn_on
       entity_id: 
-        - switch.output_178
+        - switch.elk_night_mode_on
         - switch.master_bedroom_fan
     - service: input_boolean.turn_off
       entity_id: input_boolean.bedtime_trigger

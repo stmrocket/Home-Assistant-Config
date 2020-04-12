@@ -1,11 +1,11 @@
 - alias: Count Rainfall
   trigger:
     - platform: state
-      entity_id: sensor.zone_052
+      entity_id: sensor.elk_mechanical_rain
       from: Normal
       to: Violated
     - platform: state
-      entity_id: sensor.zone_052
+      entity_id: sensor.elk_mechanical_rain
       from: Violated
       to: Normal
   action:
@@ -91,7 +91,7 @@
 - alias: Detect Rain Started
   trigger:
     - platform: state
-      entity_id: sensor.zone_051
+      entity_id: sensor.elk_optical_rain
       to: Violated
   condition:
     - condition: state 
@@ -108,7 +108,7 @@
 - alias: Detect Rain Stopped
   trigger:
     - platform: state
-      entity_id: sensor.zone_051
+      entity_id: sensor.elk_optical_rain
       to: Normal
       for:
         minutes: 10
@@ -127,7 +127,7 @@
 - alias: Display Rainfall on Elk Keypads
   trigger:
     - platform: state
-      entity_id: sensor.zone_052
+      entity_id: sensor.elk_mechanical_rain
     - platform: state
       entity_id: alarm_control_panel.house
       to: disarmed

@@ -68,7 +68,7 @@
 - alias: Donation Box Opened
   trigger:
     - platform: state
-      entity_id: sensor.zone_197
+      entity_id: sensor.elk_donation_box
       to: Violated
   action:
     - service: mqtt.publish
