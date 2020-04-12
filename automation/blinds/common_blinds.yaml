@@ -1,11 +1,11 @@
 - alias: Close Blinds When Away, Going to Bed, or at Dusk
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_night
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_away
     - platform: numeric_state
@@ -21,10 +21,10 @@
 - alias: Open Blinds When Awake and Sun Up
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: disarmed
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: armed_home
     - platform: numeric_state
       entity_id: sun.sun
@@ -47,10 +47,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state:  disarmed
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state:  armed_home
   action:
     - service: cover.open_cover
@@ -61,10 +61,10 @@
 - alias: Open Blinds When Awake and Sun Up Taking Shower
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: disarmed
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: armed_home
     - platform: numeric_state
       entity_id: sun.sun
@@ -87,10 +87,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state:  disarmed
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state:  armed_home
   action:
     - service: cover.open_cover

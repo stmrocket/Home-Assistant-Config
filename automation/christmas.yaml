@@ -1,10 +1,10 @@
 - alias: Indoor Christmas On When Home
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: disarmed
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: armed_home
   action:
     - service: switch.turn_on
@@ -13,10 +13,10 @@
 - alias: Indoor Christmas Off When Away or Asleep
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: armed_away
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: armed_night
   action:
     - service: switch.turn_off

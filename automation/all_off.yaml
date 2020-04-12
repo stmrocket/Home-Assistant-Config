@@ -1,7 +1,7 @@
 - alias: All Off NuVo Away
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_away
   action:
@@ -12,15 +12,15 @@
 - alias: All Off Main
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_away
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_home
       to: armed_night
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: disarmed
       to: armed_night
   action:
@@ -62,7 +62,7 @@
 - alias: All Off Away
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_away
   action:
@@ -141,11 +141,11 @@
 - alias: All Off NuVo Night
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: disarmed
       to: armed_night
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_home
       to: armed_night
   action:

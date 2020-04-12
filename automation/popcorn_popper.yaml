@@ -7,10 +7,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_night
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_away
   action:
     - service: switch.turn_off

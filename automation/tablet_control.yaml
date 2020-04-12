@@ -1,11 +1,11 @@
 - alias: Tablet Night
   trigger:
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     from: disarmed
     to: armed_night
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     from: armed_home
     to: armed_night
   action:
@@ -16,15 +16,15 @@
 - alias: Tablet When Home
   trigger:
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     from: armed_night
     to: disarmed
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     from: armed_night
     to: armed_home
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     from: armed_away
     to: disarmed
   action:
@@ -35,7 +35,7 @@
 - alias: Tablet when Away
   trigger:
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     to: armed_away
   action:
   - service: light.turn_off

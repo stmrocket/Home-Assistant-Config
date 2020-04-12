@@ -129,14 +129,14 @@
     - platform: state
       entity_id: sensor.zone_052
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: disarmed
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_home
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: arming
       to: armed_night
   condition:
@@ -145,7 +145,7 @@
   action:
     - service: elkm1.alarm_display_message
       data_template:
-        entity_id: alarm_control_panel.area_001
+        entity_id: alarm_control_panel.house
         line1: 'Rain: {{ states("sensor.rain_day") }}"'
   
 - alias: Clear Rainfall on Elk Keypads
@@ -155,5 +155,5 @@
   action:
     - service: elkm1.alarm_display_message
       data_template:
-        entity_id: alarm_control_panel.area_001
+        entity_id: alarm_control_panel.house
         clear: 0

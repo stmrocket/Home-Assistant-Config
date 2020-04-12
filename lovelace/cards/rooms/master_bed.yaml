@@ -163,7 +163,7 @@
                 action: call-service
                 service: remote.turn_off
                 service_data:
-                  entity_id: remote.master_bedroom_2
+                  entity_id: remote.harmony_master_bedroom
             
             - type: "custom:button-card"
               entity: sensor.master_harmony_activity
@@ -180,7 +180,7 @@
                 action: call-service
                 service: remote.turn_on
                 service_data:
-                  entity_id: remote.master_bedroom_2     
+                  entity_id: remote.harmony_master_bedroom     
                   activity: "Watch PVR"            
 
             - type: "custom:button-card"
@@ -198,7 +198,7 @@
                 action: call-service
                 service: remote.turn_on
                 service_data:
-                  entity_id: remote.master_bedroom_2     
+                  entity_id: remote.harmony_master_bedroom     
                   activity: "Watch Roku"            
 
             - type: "custom:button-card"
@@ -216,7 +216,7 @@
                 action: call-service
                 service: remote.turn_on
                 service_data:
-                  entity_id: remote.master_bedroom_2     
+                  entity_id: remote.harmony_master_bedroom     
                   activity: "ChromeCast"           
 
             - type: "custom:button-card"
@@ -234,7 +234,7 @@
                 action: call-service
                 service: remote.turn_on
                 service_data:
-                  entity_id: remote.master_bedroom_2     
+                  entity_id: remote.harmony_master_bedroom     
                   activity: "Listen to WHA"        
 
         - type: custom:mini-media-player

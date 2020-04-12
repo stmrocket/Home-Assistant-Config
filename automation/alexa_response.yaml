@@ -174,7 +174,7 @@
 - alias: Update Alexa When Alarm Armed Night
   trigger:
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     to: armed_night
   action:
   - service: rest_command.update_alexa_alarm_night  
@@ -182,7 +182,7 @@
 - alias: Update Alexa When Alarm Armed Stay
   trigger:
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     to: armed_home
   action:
   - service: rest_command.update_alexa_alarm_stay
@@ -190,7 +190,7 @@
 - alias: Update Alexa When Alarm Disarmed
   trigger:
   - platform: state
-    entity_id: alarm_control_panel.area_001
+    entity_id: alarm_control_panel.house
     to: disarmed
   action:
   - service: rest_command.update_alexa_alarm_disarmed     

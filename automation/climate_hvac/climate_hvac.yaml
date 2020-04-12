@@ -5,7 +5,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       state: armed_away   
   action:
     - service: climate.set_temperature
@@ -32,7 +32,7 @@
       for: 00:20:00
   condition:
     - condition: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       state: armed_away   
   action:
     - service: climate.set_temperature
@@ -54,11 +54,11 @@
 - alias: HVAC Night No Guest
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: disarmed
       to: armed_night
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_home
       to: armed_night
   condition:
@@ -85,11 +85,11 @@
 - alias: HVAC Night Guest Mode
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: disarmed
       to: armed_night
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_home
       to: armed_night
   condition:
@@ -116,19 +116,19 @@
 - alias: HVAC When Home
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_night
       to: disarmed
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_night
       to: armed_home
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: armed_away
       to: disarmed
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       from: pending
       to: disarmed
   condition:
@@ -155,7 +155,7 @@
 - alias: HVAC When Away
   trigger:
     - platform: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       to: armed_away
   action:
     - service: climate.set_temperature

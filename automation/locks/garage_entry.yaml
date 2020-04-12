@@ -1,10 +1,10 @@
 - alias: Lock Garage Entry When Leaving or Going to Bed
   trigger:
-  - entity_id: alarm_control_panel.area_001
+  - entity_id: alarm_control_panel.house
     from: arming
     platform: state
     to: armed_night
-  - entity_id: alarm_control_panel.area_001
+  - entity_id: alarm_control_panel.house
     from: arming
     platform: state
     to: armed_away

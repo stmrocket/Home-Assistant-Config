@@ -6,7 +6,7 @@
     - condition: and
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_night
         - condition: state
           entity_id: input_boolean.work_alarm_enabled
@@ -40,7 +40,7 @@
       value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
   condition:
     - condition: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       state: armed_night
     - condition: state
       entity_id: input_boolean.manual_alarm_enabled
@@ -51,7 +51,7 @@
   action:
     - service: media_player.play_media
       data:
-        entity_id: media_player.master_bedroom_3
+        entity_id: media_player.alexa_master_bedroom
         media_content_id: "today's worship"
         media_content_type: "PANDORA"
     - service: light.turn_on
@@ -71,7 +71,7 @@
       value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
   condition:
     - condition: state
-      entity_id: alarm_control_panel.area_001
+      entity_id: alarm_control_panel.house
       state: armed_night
     - condition: state
       entity_id: input_boolean.manual_alarm_enabled
@@ -247,7 +247,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: light.turn_off
       entity_id: light.master_bedroom_lamps
     - service: timer.start
@@ -274,7 +274,7 @@
   action:
     - service: media_player.play_media
       data:
-        entity_id: media_player.master_bedroom_3
+        entity_id: media_player.alexa_master_bedroom
         media_content_id: "today's worship"
         media_content_type: "PANDORA"
     - service: light.turn_on
@@ -365,7 +365,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
@@ -397,7 +397,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
@@ -448,7 +448,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
@@ -475,7 +475,7 @@
         topic: horn/command/set/clock
         payload: 'OFF'
     - service: media_player.turn_off
-      entity_id: media_player.master_bedroom_3
+      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
@@ -589,10 +589,10 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: armed_home
         - condition: state
-          entity_id: alarm_control_panel.area_001
+          entity_id: alarm_control_panel.house
           state: disarmed
     - condition: state
       entity_id: input_boolean.manual_alarm_enabled

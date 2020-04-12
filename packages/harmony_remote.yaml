@@ -3,12 +3,8 @@ sensor:
     sensors:
       den_harmony_activity:
         friendly_name: Den Harmony Activity
-        value_template: "{{ state_attr('remote.living_room_2', 'current_activity') }}"
+        value_template: "{{ state_attr('remote.harmony_den', 'current_activity') }}"
 
       master_harmony_activity:
         friendly_name: Master Bedroom Harmony Activity
-        value_template: "{{ state_attr('remote.master_bedroom_2', 'current_activity') }}"
-
-      master_harmony_activity_alternate:
-        friendly_name: Master Bedroom Harmony Activity Alternate
-        value_template: "{{ state_attr('remote.harmony_hub', 'current_activity') }}"
+        value_template: "{{ state_attr('remote.harmony_master_bedroom', 'current_activity') }}"
