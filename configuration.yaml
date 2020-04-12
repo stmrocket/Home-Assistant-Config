@@ -295,7 +295,7 @@ elkm1:
   plc:
     enabled: false
   zone:
-    exclude: [16, 53-64, 73-78, 81-196, 198-207]
+    exclude: [16, 35-36, 38-39, 53-64, 73-78, 81-196, 198-207]
 
 
 # Alexa Integration
