@@ -8,7 +8,3 @@ sensor:
       master_harmony_activity:
         friendly_name: Master Bedroom Harmony Activity
         value_template: "{{ state_attr('remote.harmony_master_bedroom', 'current_activity') }}"
-
-      master_harmony_activity_alternate:
-        friendly_name: Master Bedroom Harmony Activity Alternate
-        value_template: "{{ state_attr('remote.harmony_hub', 'current_activity') }}"
