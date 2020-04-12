@@ -29,20 +29,6 @@ script:
         data_template:
           entity_id: input_text.prev_git_version
           value: "{{ states('sensor.home_assistant_config') }}"
-      - service: media_player.turn_off
-        entity_id:
-          - media_player.gmusic_player
-          - media_player.office_stereo
-          - media_player.guest_bedroom_stereo
-          - media_player.server_room_stereo
-          - media_player.master_bedroom_stereo
-          - media_player.master_bathroom_stereo
-          - media_player.garage_stereo
-          - media_player.den_stereo
-          - media_player.dining_room_stereo
-          - media_player.kitchen_stereo
-          - media_player.back_porch_stereo
-          - media_player.guest_bathroom_stereo
       - service: shell_command.get_latest_config
       - service: homeassistant.restart
 
