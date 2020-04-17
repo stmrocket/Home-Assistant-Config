@@ -267,11 +267,7 @@ scene: !include_dir_merge_named scenes
 
 zone: !include zones.yaml
 
-# ISY 994 Integration 
-isy994:
-  host: !secret isy_host
-  username: !secret isy_user
-  password: !secret isy_pass
+
 
 #Elk M1 Integration
 elkm1:
