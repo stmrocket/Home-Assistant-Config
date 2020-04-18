@@ -4,8 +4,9 @@ resources: !include /config/lovelace/resources/resources.yaml
 
 # Preload Cards
 
-preload:
+preload_cards:
   - picture-elements
+  - picture-entity
 
 #################################################################
 #                                                               #
