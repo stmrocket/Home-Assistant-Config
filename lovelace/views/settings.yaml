@@ -566,5 +566,6 @@ cards:
               - type: picture-entity
                 entity: camera.prusa_mk3
                 camera_image: camera.prusa_mk3
+                camera_view: live
                 show_name: false
                 show_state: false                    
