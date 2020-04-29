@@ -53,6 +53,8 @@
         - switch.office_lamps
     - service: cover.close_cover
       entity_id: cover.office_blinds
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.frigate_enabled_christmas
 
 - alias: House On After Christmas Show
   trigger:
@@ -64,6 +66,8 @@
       entity_id: 
         - switch.outside_lights
         - switch.shed_outside_light
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.frigate_enabled_christmas
 
 - alias: Donation Box Opened
   trigger:

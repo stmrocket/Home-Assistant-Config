@@ -7,6 +7,9 @@
     - condition: state
       entity_id: input_boolean.frigate_enabled
       state: 'on'
+    - condition: state
+      entity_id: input_boolean.frigate_enabled_christmas
+      state: 'on'
   action:
     - service: camera.snapshot
       data:
@@ -34,6 +37,9 @@
     - condition: state
       entity_id: input_boolean.frigate_enabled
       state: 'on'
+    - condition: state
+      entity_id: input_boolean.frigate_enabled_christmas
+      state: 'on'
   action:
     - service: camera.snapshot
       data:
@@ -60,6 +66,9 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.frigate_enabled_christmas
       state: 'on'
   action:
     - service: camera.snapshot
@@ -168,6 +177,9 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.frigate_enabled_christmas
       state: 'on'
   action:
     - service: camera.snapshot
