@@ -332,7 +332,7 @@
       title: Container Down
       message: The MySQL Docker container is down.      
 
-- alias: Notify TV Headend Frigate Down
+- alias: Notify TV Headend Down
   trigger:
   - platform: state
     entity_id: switch.tv_headend

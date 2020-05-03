@@ -235,3 +235,7 @@ input_boolean:
   donation_box:
     name: Donation Box
     icon: mdi:door-closed
+
+  frigate_enabled_christmas:
+    name: Firgate Enabled Christmas
+    icon: mdi:cctv

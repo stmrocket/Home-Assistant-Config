@@ -175,3 +175,12 @@ timer:
   dryer_alert:
     name: Dryer Announcement Timer
     duration: '00:05:00'        
+
+#Counters
+counter:
+  dryer_alert:
+    initial: 0
+    step: 1
+  washer_alert:
+    initial: 0
+    step: 1    

@@ -305,15 +305,6 @@ device_tracker:
     callsigns:
       - !secret truck_callsign
 
-#Counters
-counter:
-  dryer_alert:
-    initial: 0
-    step: 1
-  washer_alert:
-    initial: 0
-    step: 1
-
 #Kodi Media Player
 media_player:
   - name: den_kodi

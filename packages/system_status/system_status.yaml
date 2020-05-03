@@ -750,6 +750,11 @@ sensor:
     - current_version
     - addons    
 
+  - platform: mqtt
+    name: HA Restart Time
+    state_topic: harestart
+    unit_of_measurement: s
+
 ####################################################
 #                                                  #
 #                  NUMERIC INPUT                   #
