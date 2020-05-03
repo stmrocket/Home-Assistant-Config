@@ -29,7 +29,7 @@ cards:
         entity_row: true
         positions:
           icon: 'off'
-          title: inside
+          name: inside
           value: inside
         padding: 4px
         card_style: 
@@ -57,7 +57,7 @@ cards:
         entity_row: true
         positions:
           icon: 'off'
-          title: inside
+          name: inside
           value: inside
         padding: 4px
         card_style: 
@@ -88,7 +88,7 @@ cards:
         entity_row: true
         positions:
           icon: 'off'
-          title: inside
+          name: inside
           value: inside
         padding: 4px
         card_style: 
@@ -116,7 +116,7 @@ cards:
         entity_row: true
         positions:
           icon: 'off'
-          title: inside
+          name: inside
           value: inside
         padding: 4px
         card_style: 
