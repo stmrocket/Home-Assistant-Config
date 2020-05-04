@@ -64,17 +64,37 @@ cards:
                 to: 1000
                 color: '#ff0000'
               style: |-
-                bar-card-value {
-                  margin-right: auto;
+                .contentbar-direction-right {
+                  flex-direction: column;
+                }
+                .min-direction-right {
+                  margin: 0px;
+                  margin-bottom: -20px;
+                  bottom: 10px;
+                }
+                  bar-card-value {
+                  margin: 0px;
+                  font-size: 13px;
                   margin-left: auto;
-                  margin-bottom: auto;
-                  margin-top: 0px;
+                  margin-right: auto;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;
+                }
+                bar-card-name {
+                  margin: 0px;
+                  margin-top: 5px;
+                  font-size: 14px;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;              
+                }
+                bar-card-max {
+                  margin: 0px;
+                  margin-left: auto;
+                  margin-top: -20px;
+                  top: 10px;
                 }
                 bar-card-divider {
                   display: none;
-                }
-                bar-card-contentbar {
-                  flex-direction: column;
                 }
 
             - type: custom:bar-card
@@ -100,17 +120,37 @@ cards:
                 to: 1000
                 color: '#ff0000'
               style: |-
-                bar-card-value {
-                  margin-right: auto;
+                .contentbar-direction-right {
+                  flex-direction: column;
+                }
+                .min-direction-right {
+                  margin: 0px;
+                  margin-bottom: -20px;
+                  bottom: 10px;
+                }
+                  bar-card-value {
+                  margin: 0px;
+                  font-size: 13px;
                   margin-left: auto;
-                  margin-bottom: auto;
-                  margin-top: 0px;
+                  margin-right: auto;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;
+                }
+                bar-card-name {
+                  margin: 0px;
+                  margin-top: 5px;
+                  font-size: 14px;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;              
+                }
+                bar-card-max {
+                  margin: 0px;
+                  margin-left: auto;
+                  margin-top: -20px;
+                  top: 10px;
                 }
                 bar-card-divider {
                   display: none;
-                }
-                bar-card-contentbar {
-                  flex-direction: column;
                 }
 
 
@@ -155,6 +195,7 @@ cards:
               - type: custom:bar-card
                 name: Disk (Videos)
                 entity: sensor.synology_volume_used_volume_1
+                decimal: 1
                 entity_row: true
                 positions:
                   icon: 'off'
@@ -175,21 +216,43 @@ cards:
                   to: 100
                   color: '#ff0000'  
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
                   }                    
+
               - type: custom:bar-card
                 name: Temperature (Videos)
                 entity: sensor.synology_maximum_disk_temp_volume_1
+                decimal: 1
                 entity_row: true
                 positions:
                   icon: 'off'
@@ -210,24 +273,38 @@ cards:
                   to: 150
                   color: '#bf4040'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }
-                  bar-card-name {
-                    margin-right: auto;
-                    margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
-                  }
+                  } 
 
               
             - type: custom:vertical-stack-in-card
@@ -235,6 +312,7 @@ cards:
               - type: custom:bar-card
                 name: CPU
                 entity: sensor.synology_cpu_load_total
+                decimal: 1
                 entity_row: true
                 positions:
                   icon: 'off'
@@ -255,21 +333,43 @@ cards:
                   to: 100
                   color: '#ff0000'  
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }   
+                  } 
+
               - type: custom:bar-card
                 name: RAM
                 entity: sensor.synology_memory_usage_real
+                decimal: 1
                 entity_row: true
                 positions:
                   icon: 'off'
@@ -290,24 +390,45 @@ cards:
                   to: 100
                   color: '#ff0000'            
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }                           
+                  }                         
               
             - type: custom:vertical-stack-in-card
               cards:
               - type: custom:bar-card
                 name: Disk (Files)
                 entity: sensor.synology_volume_used_volume_2
+                decimal: 1
                 entity_row: true
                 positions:
                   icon: 'off'
@@ -328,21 +449,43 @@ cards:
                   to: 100
                   color: '#ff0000'  
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }                    
+                  } 
+
               - type: custom:bar-card
                 name: Temperature (Files)
                 entity: sensor.synology_maximum_disk_temp_volume_2
+                decimal: 1
                 entity_row: true
                 positions:
                   icon: 'off'
@@ -363,18 +506,38 @@ cards:
                   to: 150
                   color: '#bf4040'  
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }              
+                  }           
 
 #################################################################
 #                                                               #
@@ -435,18 +598,39 @@ cards:
                 to: 100
                 color: '#ff0000'  
               style: |-
-                bar-card-value {
-                  margin-right: auto;
+                .contentbar-direction-right {
+                  flex-direction: column;
+                }
+                .min-direction-right {
+                  margin: 0px;
+                  margin-bottom: -20px;
+                  bottom: 10px;
+                }
+                  bar-card-value {
+                  margin: 0px;
+                  font-size: 13px;
                   margin-left: auto;
-                  margin-bottom: auto;
-                  margin-top: 0px;
+                  margin-right: auto;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;
+                }
+                bar-card-name {
+                  margin: 0px;
+                  margin-top: 5px;
+                  font-size: 14px;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;              
+                }
+                bar-card-max {
+                  margin: 0px;
+                  margin-left: auto;
+                  margin-top: -20px;
+                  top: 10px;
                 }
                 bar-card-divider {
                   display: none;
-                }
-                bar-card-contentbar {
-                  flex-direction: column;
                 }   
+
             - type: custom:bar-card
               name: RAM
               entity: sensor.memory_use_percent
@@ -470,17 +654,37 @@ cards:
                 to: 100
                 color: '#ff0000'            
               style: |-
-                bar-card-value {
-                  margin-right: auto;
+                .contentbar-direction-right {
+                  flex-direction: column;
+                }
+                .min-direction-right {
+                  margin: 0px;
+                  margin-bottom: -20px;
+                  bottom: 10px;
+                }
+                  bar-card-value {
+                  margin: 0px;
+                  font-size: 13px;
                   margin-left: auto;
-                  margin-bottom: auto;
-                  margin-top: 0px;
+                  margin-right: auto;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;
+                }
+                bar-card-name {
+                  margin: 0px;
+                  margin-top: 5px;
+                  font-size: 14px;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;              
+                }
+                bar-card-max {
+                  margin: 0px;
+                  margin-left: auto;
+                  margin-top: -20px;
+                  top: 10px;
                 }
                 bar-card-divider {
                   display: none;
-                }
-                bar-card-contentbar {
-                  flex-direction: column;
                 }                          
             
             - type: custom:bar-card
@@ -506,24 +710,46 @@ cards:
                 to: 100
                 color: '#ff0000'  
               style: |-
-                bar-card-value {
-                  margin-right: auto;
+                .contentbar-direction-right {
+                  flex-direction: column;
+                }
+                .min-direction-right {
+                  margin: 0px;
+                  margin-bottom: -20px;
+                  bottom: 10px;
+                }
+                  bar-card-value {
+                  margin: 0px;
+                  font-size: 13px;
                   margin-left: auto;
-                  margin-bottom: auto;
-                  margin-top: 0px;
+                  margin-right: auto;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;
+                }
+                bar-card-name {
+                  margin: 0px;
+                  margin-top: 5px;
+                  font-size: 14px;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;              
+                }
+                bar-card-max {
+                  margin: 0px;
+                  margin-left: auto;
+                  margin-top: -20px;
+                  top: 10px;
                 }
                 bar-card-divider {
                   display: none;
-                }
-                bar-card-contentbar {
-                  flex-direction: column;
-                }                    
+                } 
+
         - type: horizontal-stack
           cards:
           - type: "custom:gap-card"
             height: 10
           - type: "custom:gap-card"
             height: 10
+
         - type: horizontal-stack
           cards:          
             - type: 'custom:config-template-card'
@@ -556,18 +782,38 @@ cards:
                     to: ${states['sensor.automation_count_high'].state}
                     color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }                    
+                  }                     
                 tap_action: service
                 service_options:
                   domain: script
@@ -606,17 +852,37 @@ cards:
                   to: ${states['sensor.binary_sensor_count_high'].state}
                   color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
                   }                    
                 tap_action: service
                 service_options:
@@ -657,18 +923,38 @@ cards:
                     to: ${states['sensor.switch_count_high'].state}
                     color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }                    
+                  }                   
                 tap_action: service
                 service_options:
                   domain: script
@@ -709,17 +995,37 @@ cards:
                     to: ${states['sensor.fan_count_high'].state}
                     color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
                   }                    
                 tap_action: service
                 service_options:
@@ -759,17 +1065,37 @@ cards:
                     to: ${states['sensor.light_count_high'].state}
                     color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
                   }                    
                 tap_action: service
                 service_options:
@@ -809,18 +1135,38 @@ cards:
                     to:: ${states['sensor.tracked_device_count_high'].state}
                     color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }                    
+                  }                  
                 tap_action: service
                 service_options:
                   domain: script
@@ -861,18 +1207,38 @@ cards:
                     to: ${states['sensor.media_player_count_high'].state}
                     color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }                    
+                  }                   
                 tap_action: service
                 service_options:
                   domain: script
@@ -911,17 +1277,37 @@ cards:
                     to: ${states['sensor.script_count_high'].state}
                     color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
                   }                    
                 tap_action: service
                 service_options:
@@ -961,18 +1347,38 @@ cards:
                     to: ${states['sensor.sensor_count_high'].state}
                     color: '#bf9540'
                 style: |-
-                  bar-card-value {
-                    margin-right: auto;
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
                     margin-left: auto;
-                    margin-bottom: auto;
-                    margin-top: 0px;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
                   }
                   bar-card-divider {
                     display: none;
-                  }
-                  bar-card-contentbar {
-                    flex-direction: column;
-                  }                    
+                  }                   
                 tap_action: service
                 service_options:
                   domain: script
