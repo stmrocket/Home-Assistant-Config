@@ -3152,3 +3152,158 @@ popup_supervisor:
                     name: Installed
                   - attribute: newest_version
                     name: Available              
+
+popup_pooper:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]                                    
+        title: Litter Robot
+        card:
+          type: vertical-stack
+          cards:
+            
+            - type: entities
+              entities:
+                - entity: sensor.litter_robot_status_short
+                  name: Status
+                  icon: mdi:cat
+                - entity: sensor.litter_robot_cycle_count
+                  name: Cycle Count
+                  icon: mdi:toilet
+                - entity: sensor.litter_robot_average_cycle_capacity
+                  name: Average Drawer Capacity
+                  icon: mdi:trash-can-outline
+
+            - type: horizontal-stack
+              cards:
+
+                - type: "custom:button-card"
+                  entity: switch.litter_robot_power
+                  color_type: icon
+                  state:
+                    - value: 'on'
+                      color: rgb(228, 94, 101)
+                    - value: 'off'
+                      color: rgb(255, 255, 255)
+                  icon: mdi:power
+                  name: Power
+                
+                - type: "custom:button-card"
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:trash-can-empty
+                  name: Empty
+                  tap_action: 
+                    action: call-service
+                    service: script.litter_robot_empty
+
+                - type: "custom:button-card"
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:reload
+                  name: Cycle
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: "pooper/command/clean"
+                    
+            - type: horizontal-stack
+              cards:
+
+                - type: "custom:button-card"
+                  entity: switch.litter_robot_lock
+                  color_type: icon
+                  state:
+                    - value: 'on'
+                      color: rgb(228, 94, 101)
+                      icon: mdi:lock
+                    - value: 'off'
+                      color: rgb(255, 255, 255)
+                      icon: mdi:lock-open
+                  name: Lock
+                
+                - type: "custom:button-card"
+                  entity: switch.litter_robot_light
+                  color_type: icon
+                  state:
+                    - value: 'on'
+                      color: rgb(228, 94, 101)
+                      icon: mdi:lightbulb-on-outline
+                    - value: 'off'
+                      color: rgb(255, 255, 255)
+                      icon: mdi:lightbulb-outline
+                  name: Light
+
+                - type: "custom:button-card"
+                  entity: switch.litter_robot_sleep_mode
+                  color_type: icon
+                  state:
+                    - value: 'on'
+                      color: rgb(228, 94, 101)
+                      icon: mdi:sleep
+                    - value: 'off'
+                      color: rgb(255, 255, 255)
+                      icon: mdi:sleep-off
+                  name: Sleep                   
+
+            - type: horizontal-stack
+              cards:
+
+                - type: "custom:button-card"
+                  entity: sensor.litter_robot_cycle_wait_time
+                  color_type: icon
+                  icon: mdi:timer
+                  state:
+                    - value: '3'
+                      color: rgb(228, 94, 101)
+                    - operator: '!='
+                      value: '3'
+                      color: rgb(255, 255, 255)
+                      icon: mdi:lock-open
+                  name: 3 Min.
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: "pooper/command/wait"
+                      payload: "3"
+
+                - type: "custom:button-card"
+                  entity: sensor.litter_robot_cycle_wait_time
+                  color_type: icon
+                  icon: mdi:timer
+                  state:
+                    - value: '7'
+                      color: rgb(228, 94, 101)
+                    - operator: '!='
+                      value: '7'
+                      color: rgb(255, 255, 255)
+                      icon: mdi:lock-open
+                  name: 7 Min.
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: "pooper/command/wait"
+                      payload: "7"
+
+                - type: "custom:button-card"
+                  entity: sensor.litter_robot_cycle_wait_time
+                  color_type: icon
+                  icon: mdi:timer
+                  state:
+                    - value: '15'
+                      color: rgb(228, 94, 101)
+                    - operator: '!='
+                      value: '15'
+                      color: rgb(255, 255, 255)
+                      icon: mdi:lock-open
+                  name: 15 Min.
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: "pooper/command/wait"
+                      payload: "15"

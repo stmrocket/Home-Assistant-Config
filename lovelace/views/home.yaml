@@ -239,18 +239,26 @@ cards:
 
             - type: 'custom:flex-horseshoe-card'
               entities:
-                - entity: sensor.litter_robot_april_s_carnival_waste
+                - entity: sensor.litter_robot_drawer_level
                   attribute: state
                   decimals: 0
                   name: 'Pooper'
                   unit: '%'
                   tap_action:
-                    action: more-info
+                    action: call-service
+                    service: script.popup_pooper
+                    service_data:
+                      deviceID: 
+                        - this
                 - entity: sensor.litter_robot_status_short
                   attribute: state
                   decimals: 1
                   tap_action:
-                    action: more-info
+                    action: call-service
+                    service: script.popup_pooper
+                    service_data:
+                      deviceID: 
+                        - this
 
               show:
                 horseshoe_style: 'lineargradient'
