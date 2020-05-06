@@ -48,4 +48,4 @@ litter_robot_empty:
       entity_id: input_number.litter_robot_empty_count
     - service: mqtt.publish
       data:
-        topic: "pooper/empty"
+        topic: "pooper/command/empty"
