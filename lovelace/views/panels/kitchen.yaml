@@ -215,6 +215,25 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
+                entity: sensor.litter_robot_status_short
+                color_type: icon
+                icon: mdi:cat
+                state_display: 'on'
+                state:
+                  - value: "Full"
+                    color: rgb(228, 94, 101)
+                    name: Washing
+                  - operator: '!='
+                    value: 'Full'
+                    color: rgb(255, 255, 255)
+                tap_action:
+                  action: call-service
+                  service: script.popup_pooper
+                  service_data:
+                    deviceID: 
+                      - this                
+
+              - type: "custom:button-card"
                 entity: sensor.washer_status
                 color_type: icon
                 icon: mdi:washing-machine
@@ -245,7 +264,7 @@ cards:
                   service: input_boolean.turn_off
                   service_data:
                     entity_id: input_boolean.washer_end
-
+          
               - type: "custom:button-card"
                 entity: sensor.dryer_status
                 color_type: icon
@@ -280,6 +299,47 @@ cards:
                   service: input_boolean.turn_off
                   service_data:
                     entity_id: input_boolean.dryer_end
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: lock.front_door
+                color_type: icon
+                state:
+                  - value: "locked"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:lock
+                  - value: "unlocked"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:lock-open
+                name: Front
+                tap_action: 
+                      action: call-service
+                      service: lock.lock
+                      service_data:
+                        entity_id: lock.front_door
+                hold_action: 
+                  action: more-info
+
+              - type: "custom:button-card"
+                entity: lock.garage_entry
+                color_type: icon
+                state:
+                  - value: "locked"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:lock
+                  - value: "unlocked"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:lock-open
+                name: Garage
+                tap_action: 
+                      action: call-service
+                      service: lock.lock
+                      service_data:
+                        entity_id: lock.garage_entry
+                hold_action: 
+                  action: more-info
+
               - type: "custom:button-card"
                 entity: lock.back_door
                 color_type: icon
@@ -297,7 +357,7 @@ cards:
                       service_data:
                         entity_id: lock.back_door
                 hold_action: 
-                  action: more-info       
+                  action: more-info             
 
 #################################################################
 #                                                               #
