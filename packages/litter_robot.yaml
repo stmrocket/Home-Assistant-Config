@@ -70,7 +70,7 @@ sensor:
             Paused 
           {% elif  is_state('sensor.litter_robot_status', 'OFF') -%}
             Off 
-          {% elif  is_state('sensor.litter_robot_status', 'DFS') OF is_state('sensor.litter_robot_status', 'SDF') -%}
+          {% elif  is_state('sensor.litter_robot_status', 'DFS') or is_state('sensor.litter_robot_status', 'SDF') -%}
             Full
           {% elif  is_state('switch.litter_robot_sleep', 'on') -%}
             Sleep
