@@ -218,14 +218,40 @@ cards:
                 entity: sensor.litter_robot_status_short
                 color_type: icon
                 icon: mdi:cat
-                state_display: 'on'
                 state:
+                  - value: "Ready"
+                    color: rgb(255, 255, 255)
+                    name: Ready
+                  - value: "Clean"
+                    color: rgb(255, 255, 255)
+                    name: Clean
+                  - value: "Drawer 2"
+                    color: rgb(255, 255, 255)
+                    name: Drawer 2
+                  - value: "Drawer 1"
+                    color: rgb(255, 255, 255)
+                    name: Drawer 1
+                  - value: "Sensor"
+                    color: rgb(228, 94, 101)
+                    name: Sensor
+                  - value: "Timing"
+                    color: rgb(255, 255, 255)
+                    name: Timing
+                  - value: "Bonnet"
+                    color: rgb(228, 94, 101)
+                    name: Bonnet
+                  - value: "Paused"
+                    color: rgb(228, 94, 101)
+                    name: Paused
+                  - value: "Off"
+                    color: rgb(255, 255, 255)
+                    name: "Off"
                   - value: "Full"
                     color: rgb(228, 94, 101)
-                    name: Washing
-                  - operator: '!='
-                    value: 'Full'
-                    color: rgb(255, 255, 255)
+                    name: Full
+                  - value: "Error"
+                    color: rgb(228, 94, 101)
+                    name: Error
                 tap_action:
                   action: call-service
                   service: script.popup_pooper
