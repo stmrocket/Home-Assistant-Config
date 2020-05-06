@@ -37,3 +37,15 @@ reset_all_entity_counters:
       data_template:
         entity_id: input_number.sensor_count_expected
         value: "{{ states('sensor.sensor_count') | float }}"
+
+litter_robot_empty:
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.litter_robot_cycle_count
+        value: "{{ states('input_number.litter_robot_cycle_count') | int + states('sensor.litter_robot_cycle_count') | int }}"        
+    - service: input_number.increment
+      entity_id: input_number.litter_robot_empty_count
+    - service: mqtt.publish
+      data:
+        topic: "pooper/empty"

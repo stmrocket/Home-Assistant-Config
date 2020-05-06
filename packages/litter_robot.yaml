@@ -52,7 +52,7 @@ sensor:
       litter_robot_status_short:
         friendly_name: Short Litter Robot Status
         value_template: >-
-          {% if is_state('sensor.litter_robot_status', 'RDY') or is_state('sensor.litter_robot_status', 'CCC'') -%}
+          {% if is_state('sensor.litter_robot_status', 'RDY') or is_state('sensor.litter_robot_status', 'CCC') -%}
             Ready
           {% elif  is_state('sensor.litter_robot_status', 'CCP') -%}
             Clean
@@ -162,7 +162,7 @@ input_number:
     max: 1000000
     step: 1
 
-  litter_robot_cycle_count:
+  litter_robot_empty_count:
     name: Litter Robot Total Empties
     mode: box
     min: 0
