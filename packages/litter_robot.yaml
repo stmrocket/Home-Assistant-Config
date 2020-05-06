@@ -81,7 +81,7 @@ sensor:
       litter_robot_average_cycle_capacity:
         friendly_name: Litter Robot Average Cycle Capacity
         value_template: >-
-          {% if is_state('input_number.litter_robot_empty_count', '0') -%}
+          {% if states('input_number.litter_robot_empty_count',) | int == 0 -%}
             33
           {% else -%}
             {{(states('input_number.litter_robot_cycle_count') | int / states('input_number.litter_robot_empty_count') | int) | round(0)}}

@@ -3192,7 +3192,7 @@ popup_pooper:
                 - type: "custom:button-card"
                   color_type: icon
                   color: rgb(255, 255, 255)
-                  icon: mdi:trash-can-empty
+                  icon: mdi:trash-can
                   name: Empty
                   tap_action: 
                     action: call-service
@@ -3261,7 +3261,6 @@ popup_pooper:
                     - operator: '!='
                       value: '3'
                       color: rgb(255, 255, 255)
-                      icon: mdi:lock-open
                   name: 3 Min.
                   tap_action: 
                     action: call-service
@@ -3280,7 +3279,6 @@ popup_pooper:
                     - operator: '!='
                       value: '7'
                       color: rgb(255, 255, 255)
-                      icon: mdi:lock-open
                   name: 7 Min.
                   tap_action: 
                     action: call-service
@@ -3299,7 +3297,6 @@ popup_pooper:
                     - operator: '!='
                       value: '15'
                       color: rgb(255, 255, 255)
-                      icon: mdi:lock-open
                   name: 15 Min.
                   tap_action: 
                     action: call-service
