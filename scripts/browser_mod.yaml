@@ -3010,7 +3010,7 @@ popup_server_ups:
               - entity: sensor.server_ups_output_voltage
                 name: Output Voltage
               - entity: sensor.server_ups_output_frequency
-                name: Output Frequenct
+                name: Output Frequency
               - entity: sensor.server_ups_output_current
                 name: Output Current
               - entity: sensor.server_ups_input_voltage
@@ -3044,7 +3044,7 @@ popup_office_ups:
               - entity: sensor.office_ups_output_voltage
                 name: Output Voltage
               - entity: sensor.office_ups_output_frequency
-                name: Output Frequenct
+                name: Output Frequency
               - entity: sensor.office_ups_output_current
                 name: Output Current
               - entity: sensor.office_ups_input_voltage
