@@ -47,5 +47,6 @@ litter_robot_empty:
     - service: input_number.increment
       entity_id: input_number.litter_robot_empty_count
     - service: mqtt.publish
-      data:
+      data_template:
         topic: "pooper/command/empty"
+        payload: "{{ states('sensor.litter_robot_average_cycle_capacity') }}"
