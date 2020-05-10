@@ -14,6 +14,7 @@ device_tracker:
       unifi_back: !secret unifi_back_ip
       redlink: !secret redlink_ip
       server_ups: !secret server_ups_ip
+      shack_ups: !secret shack_ups_ip
       office_ups: !secret office_ups_ip
       generator: !secret generator_ip
       rainmachine: !secret rainmachine_ip
@@ -262,6 +263,103 @@ sensor:
   - platform: snmp
     name: 'Office UPS Battery Status'
     host: !secret office_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.4.0
+    accept_errors: true
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Battery Capacity'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.1.0
+    community: 'public'
+    version: '1'
+    accept_errors: true
+    unit_of_measurement: '%'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Remaining Runtime'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.3.0
+    accept_errors: true
+    unit_of_measurement: 'minutes'
+    value_template: '{{((value | int) / 6000) | int}}'
+
+  - platform: snmp
+    name: 'Shack UPS Battery Temperature'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.2.0
+    accept_errors: true
+    unit_of_measurement: "°C"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Input Voltage'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.3.2.1.0
+    accept_errors: true
+    unit_of_measurement: "V"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Input Frequency'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.3.2.4.0
+    accept_errors: true
+    unit_of_measurement: "Hz"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Output Voltage'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.1.0
+    accept_errors: true
+    unit_of_measurement: "V"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Output Frequency'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.2.0
+    accept_errors: true
+    unit_of_measurement: "Hz"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Output Current'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.4.0
+    accept_errors: true
+    unit_of_measurement: "A"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Output Load'
+    host: !secret shack_ups_ip
+    baseoid: .1.3.6.1.4.1.318.1.1.1.4.2.3.0
+    accept_errors: true
+    unit_of_measurement: "%"
+    community: 'public'
+    version: '1'
+    scan_interval: 10
+
+  - platform: snmp
+    name: 'Shack UPS Battery Status'
+    host: !secret shack_ups_ip
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.4.0
     accept_errors: true
     community: 'public'
@@ -671,6 +769,17 @@ sensor:
             Error
           {% endif -%}
 
+      shack_ups_battery_health:
+        friendly_name: Shack UPS Battery Status
+        value_template: >
+          {% if is_state('sensor.shack_ups_battery_status', '1') -%}
+            Good
+          {% elif  is_state('sensor.shack_ups_battery_status', '2') -%}
+            Replace
+          {% else -%}
+            Error
+          {% endif -%}
+
       office_ups_status:
         friendly_name: Office UPS Operating Status
         value_template: >
@@ -701,13 +810,19 @@ sensor:
             Error
           {% endif -%}
 
-      generator_status:
-        friendly_name: Generator Operating Status
+      shack_ups_status:
+        friendly_name: Shack UPS Operating Status
         value_template: >
-          {% if is_state('device_tracker.generator', 'not_home') -%}
+          {% if is_state('device_tracker.shack_ups', 'not_home') -%}
             Offline
+          {% elif is_state('sensor.shack_ups_battery_status', '2') -%}
+            Battery Fail
+          {% elif  states('sensor.shack_ups_input_voltage') | int > 100 -%}
+            Utility
+          {% elif  states('sensor.shack_ups_input_voltage') | int < 100 and states('sensor.server_ups_output_voltage') | int > 100 -%}
+            Battery
           {% else -%}
-            {{ states('sensor.generator_monitor') }}
+            Error
           {% endif -%}
 
 ####################################################

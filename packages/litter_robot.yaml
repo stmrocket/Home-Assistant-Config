@@ -68,6 +68,8 @@ sensor:
             Bonnet  
           {% elif  is_state('sensor.litter_robot_status', 'P') -%}
             Paused 
+          {% elif  is_state('sensor.litter_robot_status', 'PD') -%}
+            Pinch
           {% elif  is_state('sensor.litter_robot_status', 'OFF') -%}
             Off 
           {% elif  is_state('sensor.litter_robot_status', 'DFS') or is_state('sensor.litter_robot_status', 'SDF') -%}
@@ -95,22 +97,16 @@ binary_sensor:
   - platform: mqtt
     name: Litter Robot Online
     state_topic: "pooper/status"
-    value_template: >-
-      {% if value_json.didNotifyOffline == "false" %}
-        {{'ON'}}
-      {% else %}
-        {{'OFF'}}
-      {% endif %}
+    value_template: '{{value_json.didNotifyOffline}}'
+    payload_on: "false"
+    payload_off: "true"
 
   - platform: mqtt
     name: Litter Robot Drawer Full
     state_topic: "pooper/status"
-    value_template: >-
-      {% if value_json.didNotifyOffline == "1" %}
-        {{'ON'}}
-      {% else %}
-        {{'OFF'}}
-      {% endif %}
+    value_template: '{{value_json.value_json.isDFITriggered}}'
+    payload_on: "1"
+    payload_off: "0"
 
 switch:
   - platform: mqtt

@@ -1817,32 +1817,44 @@ cards:
 
           - type: horizontal-stack
             cards:
-              - type: "custom:gap-card"
-
-              - type: "custom:gap-card" 
-
               - type: "custom:button-card"
-                entity: sensor.generator_status
+                entity: sensor.shack_ups_status
                 color_type: icon
                 state:
                   - value: "Offline"
                     color: rgb(228, 94, 101)
                     icon: mdi:power-plug
-                  - value: "Running"
-                    color: rgb(94, 228, 101)
-                    icon: mdi:engine-outline
-                  - value: "Idle"
+                  - value: "Battery Fail"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:battery-alert
+                  - value: "Utility"
                     color: rgb(94, 228, 101)
                     icon: mdi:power-plug
-                  - value: "Testing"
+                  - value: "Battery"
                     color: rgb(228, 94, 101)
-                    icon: mdi:check-outline
+                    icon: mdi:battery
                   - value: "Error"
                     color: rgb(228, 94, 101)
-                    icon: mdi:engine-off-outline
-                name: Genset
+                    icon: mdi:power-plug-off
+                name: Shack
                 tap_action:  
-                  action: more-info
+                  action: call-service
+                  service: script.popup_shack_ups
+                  service_data:
+                    deviceID: 
+                      - this
+
+              - type: "custom:button-card"
+                entity: device_tracker.generator
+                color_type: icon
+                icon: mdi:engine
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: Generator
               
               - type: "custom:gap-card"
               - type: "custom:gap-card"
+              - type: "custom:gap-card" 
