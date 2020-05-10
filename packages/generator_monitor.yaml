@@ -293,8 +293,8 @@ binary_sensor:
     name: Generator Network Connected
     state_topic: "genset/tele/status"
     value_template: '{{value_json.networkConnected}}'
-    payload_on: "True"
-    payload_off: "False"
+    payload_on: "true"
+    payload_off: "false"
 
   - platform: mqtt
     name: Generator ATS Connected
