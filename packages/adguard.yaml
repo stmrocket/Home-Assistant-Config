@@ -23,8 +23,8 @@ sensor:
 
       adguard_queries_last_hour:
         friendly_name: Ad Guard DNS Queries Last Hour
-        value_template: "{{ (state_attr('sensor.adguard_queries_hourly','last_period') }}"    
+        value_template: "{{ state_attr('sensor.adguard_queries_hourly','last_period') }}"    
 
       adguard_blocked_last_hour:
         friendly_name: Ad Guard Blocked DNS Queries Last Hour
-        value_template: "{{ (state_attr('sensor.adguard_blocked_hourly','last_period') }}"    
+        value_template: "{{ state_attr('sensor.adguard_blocked_hourly','last_period') }}"    
