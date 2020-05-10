@@ -3020,6 +3020,40 @@ popup_server_ups:
               - entity: sensor.server_ups_battery_temperature
                 name: Battery Temperature
 
+popup_shack_ups:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Shack UPS Status
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              entities:
+              - entity: sensor.shack_ups_status
+                name: Power Source
+              - entity: sensor.shack_ups_battery_health
+                name: Battery Status
+              - entity: sensor.shack_ups_battery_capacity
+                name: Charge Level
+              - entity: sensor.shack_ups_remaining_runtime
+                name: Runtime
+              - entity: sensor.shack_ups_output_load
+                name: Load
+              - entity: sensor.shack_ups_output_voltage
+                name: Output Voltage
+              - entity: sensor.shack_ups_output_frequency
+                name: Output Frequency
+              - entity: sensor.shack_ups_output_current
+                name: Output Current
+              - entity: sensor.shack_ups_input_voltage
+                name: Input Voltage
+              - entity: sensor.shack_ups_input_frequency
+                name: Input Frequency
+              - entity: sensor.shack_ups_battery_temperature
+                name: Battery Temperature                
+
 popup_office_ups:
   sequence:
     - service: browser_mod.popup
