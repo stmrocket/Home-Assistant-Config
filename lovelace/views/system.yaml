@@ -1859,6 +1859,149 @@ cards:
               - type: "custom:gap-card"
               - type: "custom:gap-card" 
 
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Ad Guard
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap_action:  
+                  action: call-service
+                  service: script.popup_adguard
+                  service_data:
+                    deviceID: 
+                      - this
+                hold_action: none
+                type: state-label
+
+          - type: horizontal-stack
+            cards:
+              - type: custom:mini-graph-card
+                entities: 
+                  - entity: sensor.adguard_queries_last_hour
+                    aggregate_func: max
+                    show_state: false
+                    show_legend: false
+                  - entity: sensor.adguard_queries_daily
+                    show_state: true
+                    show_legend: false
+                    show_graph: false
+                name: Queries
+                height: 46
+                line_width: 2
+                font_size: 65
+                hours_to_show: 24
+                points_per_hour: 1
+                show:
+                  icon: false
+                  extrema: true
+
+              - type: custom:mini-graph-card                
+                entities: 
+                  - entity: sensor.adguard_blocked_last_hour
+                    aggregate_func: max
+                    show_state: false
+                    show_legend: false
+                  - entity: sensor.adguard_blocked_daily
+                    show_state: true
+                    show_legend: false
+                    show_graph: false
+                name: Blocked
+                height: 46
+                line_width: 2
+                font_size: 65
+                hours_to_show: 24
+                points_per_hour: 1
+                show:
+                  icon: false
+                  extrema: true                     
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:gap-card"
+                height: 10
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: switch.adguard_protection
+                lock:
+                  enabled: true
+                  unlock: hold
+                color_type: icon
+                state:
+                  - value: "on"
+                    icon: mdi:lock
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    icon: mdi:lock-open
+                    color: rgb(255, 255, 255)
+                name: "Master"
+              
+              - type: "custom:button-card"
+                entity: switch.adguard_filtering
+                lock:
+                  enabled: true
+                  unlock: hold
+                color_type: icon
+                state:
+                  - value: "on"
+                    icon: mdi:lock
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    icon: mdi:lock-open
+                    color: rgb(255, 255, 255)
+                name: "Filter"
+
+              - type: "custom:button-card"
+                entity: switch.adguard_parental_control
+                lock:
+                  enabled: true
+                  unlock: hold
+                color_type: icon
+                icon: mdi:human-male-boy
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                name: "Parent"
+              
+              - type: "custom:button-card"
+                entity: switch.adguard_safe_search
+                lock:
+                  enabled: true
+                  unlock: hold
+                color_type: icon
+                icon: mdi:search-web
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                name: "Search"
+
+              - type: "custom:button-card"
+                entity: switch.adguard_safe_browsing
+                lock:
+                  enabled: true
+                  unlock: hold
+                color_type: icon
+                icon: mdi:web
+                state:
+                  - value: "on"
+                    color: rgb(228, 94, 101)
+                  - value: "off"
+                    color: rgb(255, 255, 255)
+                name: "Web"
+
   - type: vertical-stack
     cards:
       - type: custom:vertical-stack-in-card
@@ -2082,148 +2225,3 @@ cards:
                       left: 16%
                       top: 72.6%
                       font-size: 120%
-
-  - type: vertical-stack
-    cards:
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: picture-elements
-            image: /local/lovelace/room.png
-            elements:
-              - entity: sensor.blank
-                hold-action: none
-                prefix: Ad Guard
-                style:
-                  bottom: 20%
-                  font-size: 150%
-                  left: 5%
-                  transform: initial
-                tap_action:  
-                  action: call-service
-                  service: script.popup_adguard
-                  service_data:
-                    deviceID: 
-                      - this
-                hold_action: none
-                type: state-label
-
-          - type: horizontal-stack
-            cards:
-              - type: custom:mini-graph-card
-                entities: 
-                  - entity: sensor.adguard_queries_last_hour
-                    aggregate_func: max
-                    show_state: false
-                    show_legend: false
-                  - entity: sensor.adguard_queries_daily
-                    show_state: true
-                    show_legend: false
-                    show_graph: false
-                name: Queries
-                height: 46
-                line_width: 2
-                font_size: 65
-                hours_to_show: 24
-                points_per_hour: 1
-                show:
-                  icon: false
-                  extrema: true
-
-              - type: custom:mini-graph-card                
-                entities: 
-                  - entity: sensor.adguard_blocked_last_hour
-                    aggregate_func: max
-                    show_state: false
-                    show_legend: false
-                  - entity: sensor.adguard_blocked_daily
-                    show_state: true
-                    show_legend: false
-                    show_graph: false
-                name: Blocked
-                height: 46
-                line_width: 2
-                font_size: 65
-                hours_to_show: 24
-                points_per_hour: 1
-                show:
-                  icon: false
-                  extrema: true                     
-
-          - type: horizontal-stack
-            cards:
-              - type: "custom:gap-card"
-                height: 10
-          - type: horizontal-stack
-            cards:                  
-
-              - type: "custom:button-card"
-                entity: switch.adguard_protection
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                state:
-                  - value: "on"
-                    icon: mdi:lock
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    icon: mdi:lock-open
-                    color: rgb(255, 255, 255)
-                name: "Master"
-              
-              - type: "custom:button-card"
-                entity: switch.adguard_filtering
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                state:
-                  - value: "on"
-                    icon: mdi:lock
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    icon: mdi:lock-open
-                    color: rgb(255, 255, 255)
-                name: "Filter"
-
-              - type: "custom:button-card"
-                entity: switch.adguard_parental_control
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                icon: mdi:human-male-boy
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: "Parent"
-              
-              - type: "custom:button-card"
-                entity: switch.adguard_safe_search
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                icon: mdi:search-web
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: "Search"
-
-              - type: "custom:button-card"
-                entity: switch.adguard_safe_browsing
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                icon: mdi:web
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: "Web"
