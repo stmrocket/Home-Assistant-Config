@@ -211,7 +211,7 @@ sensor:
           {% elif  is_state('sensor.generator_state', 'Off') -%}
             Unavailable Alert
           {% elif  is_state('sensor.generator_state', 'Standby') -%}
-            Unavailable
+            Standby
           {% elif  is_state('sensor.generator_state', 'Running') -%}
             Running
           {% elif  is_state('sensor.generator_state', 'Cool Down') -%}
@@ -274,7 +274,7 @@ sensor:
             Offline
           {% elif  is_state('binary_sensor.ats_connected', 'off') -%}
             Fault
-          {% elif  is_state('sensor.generator_ats_sources', 'Source1') -%}
+          {% elif  is_state('sensor.generator_available_sources', 'Source1') -%}
             Utility
           {% else -%}
             Generator
