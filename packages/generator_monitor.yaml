@@ -201,6 +201,85 @@ sensor:
     state_topic: "genset/tele/exercise"
     value_template: "{{value_json['exerciseMode']}}"
 
+  - platform: template
+    sensors:
+      generator_status:
+        friendly_name: Generator Status
+        value_template: >-
+          {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
+            Offline
+          {% elif  is_state('sensor.generator_state', 'Off') -%}
+            Unavailable Alert
+          {% elif  is_state('sensor.generator_state', 'Standby') -%}
+            Unavailable
+          {% elif  is_state('sensor.generator_state', 'Running') -%}
+            Running
+          {% elif  is_state('sensor.generator_state', 'Cool Down') -%}
+            Cool Down
+          {% elif  is_state('sensor.generator_state', 'Performing Unloaded Test ') -%}
+            Unloaded Test
+          {% elif  is_state('sensor.generator_state', 'Performing Cycle Exercise') -%}
+            Cycle Exercise
+          {% elif  is_state('sensor.generator_state', 'Performing Loaded Exercise') -%}
+            Loaded Exercise
+          {% elif  is_state('sensor.generator_state', 'Performing Unloaded Full Speed Exercise') -%}
+            Unloaded Exercise
+          {% else -%}
+            Error
+          {% endif -%}
+
+      generator_icon:
+        friendly_name: Generator Status Icon
+        value_template: >-
+          {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
+            Offline
+          {% elif  is_state('sensor.generator_available_sources', 'Source1') and is_state('binary_sensor.generator_running', 'on')-%}
+            Unavailable Running
+          {% elif  is_state('sensor.generator_state', 'Standby') and is_state('sensor.generator_alert', '')-%}
+            Unavailable
+          {% elif  is_state('sensor.generator_state', 'Standby') -%}
+            Unavailable Alert
+          {% elif  (is_state('sensor.generator_available_sources', 'Source2') or is_state('sensor.generator_available_sources', '3')) and is_state('sensor.generator_alert', '')-%}
+            Available
+          {% elif  is_state('sensor.generator_available_sources', 'Source2') or is_state('sensor.generator_available_sources', '3') -%}
+            Available Alert
+          {% else -%}
+            Unavailable Alert
+          {% endif -%}
+
+      generator_load_icon:
+        friendly_name: Generator Load Icon
+        value_template: >-
+          {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
+            Offline
+          {% else -%}
+            Good
+          {% endif -%}
+
+      generator_utility_icon:
+        friendly_name: Generator Utility Icon
+        value_template: >-
+          {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
+            Offline
+          {% elif  is_state('sensor.generator_available_sources', 'Source1') or is_state('sensor.generator_available_sources', '3') -%}
+            Available
+          {% else -%}
+            Unavailable
+          {% endif -%}
+      
+      generator_ats_icon:
+        friendly_name: Generator ATS Icon
+        value_template: >-
+          {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
+            Offline
+          {% elif  is_state('binary_sensor.ats_connected', 'off') -%}
+            Fault
+          {% elif  is_state('sensor.generator_ats_sources', 'Source1') -%}
+            Utility
+          {% else -%}
+            Generator
+          {% endif -%}
+
 binary_sensor:
 
   - platform: mqtt
@@ -237,3 +316,9 @@ binary_sensor:
     value_template: '{{value_json.exerciseActive}}'
     payload_on: "true"
     payload_off: "false"
+
+  - platform: template
+    sensors:
+      generator_running:
+        friendly_name: Generator Running
+        value_template: "{{ states('sensor.generator_speed') | int > 0 }}"
