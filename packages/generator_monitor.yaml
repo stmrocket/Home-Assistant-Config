@@ -209,7 +209,7 @@ sensor:
           {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
             Offline
           {% elif  is_state('sensor.generator_state', 'Off') -%}
-            Unavailable Alert
+            Not in Auto
           {% elif  is_state('sensor.generator_state', 'Standby') -%}
             Standby
           {% elif  is_state('sensor.generator_state', 'Running') -%}
@@ -224,6 +224,8 @@ sensor:
             Loaded Exercise
           {% elif  is_state('sensor.generator_state', 'Performing Unloaded Full Speed Exercise') -%}
             Unloaded Exercise
+          {% elif  is_state('sensor.generator_state', 'Performing Full Speed Diagnostics') -%}
+            Full Speed Diagnostics
           {% else -%}
             Error
           {% endif -%}
@@ -274,10 +276,12 @@ sensor:
             Offline
           {% elif  is_state('binary_sensor.ats_connected', 'off') -%}
             Fault
-          {% elif  is_state('sensor.generator_available_sources', 'Source1') -%}
+          {% elif  is_state('sensor.generator_ats_position', 'Source1') -%}
             Utility
-          {% else -%}
+          {% elif  is_state('sensor.generator_ats_position', 'Source2') -%}
             Generator
+          {% else -%}
+            Fault
           {% endif -%}
 
       generator_firmware_status:
@@ -377,6 +381,6 @@ binary_sensor:
     sensors:
       generator_running:
         friendly_name: Generator Running
-        value_template: "{{ states('sensor.generator_speed') | int > 0 }}"
+        value_template: "{{ states('sensor.generator_engine_speed') | int > 0 }}"
 
   

@@ -1889,17 +1889,13 @@ cards:
                     show_state: true
                     show_legend: false
                     show_graph: false
-                    icon: false
-                    extrema: false 
                   - entity: sensor.adguard_queries_last_hour
                     aggregate_func: max
-                    color: '#e45e65'
                     show_state: false
                     show_legend: false
-                    icon: false
-                    extrema: false 
+                    show_points: false
                 name: Requested
-                height: 46
+                #height: 46
                 line_width: 2
                 font_size: 65
                 hours_to_show: 24
@@ -1913,17 +1909,14 @@ cards:
                     show_state: true
                     show_legend: false
                     show_graph: false
-                    icon: false
-                    extrema: false 
                   - entity: sensor.adguard_blocked_last_hour
                     aggregate_func: max
                     color: '#e45e65'
                     show_state: false
                     show_legend: false
-                    icon: false
-                    extrema: false 
+                    show_points: false
                 name: Blocked
-                height: 46
+                #height: 46
                 line_width: 2
                 font_size: 65
                 hours_to_show: 24
@@ -2031,28 +2024,20 @@ cards:
 
           - type: custom:mini-graph-card
             entities: 
-              - sensor.eagle_current_power
+              - entity: sensor.eagle_current_power
+                show_points: false
+              - entity: sensor.energy_daily
+                show_state: true
+                show_legend: false
+                show_graph: false
             name: Electricity Usage
-            height: 46
             line_width: 2
             font_size: 65
             hours_to_show: 24
-            points_per_hour: 60
+            points_per_hour: 60     
             show:
-              icon: false
-              extrema: false
-          - type: custom:mini-graph-card
-            entities: 
-              - sensor.energy_daily
-            name: 24 Hour Electricity Usage
-            height: 46
-            line_width: 2
-            font_size: 65
-            hours_to_show: 24
-            points_per_hour: 10
-            show:
-              icon: false
-              extrema: false
+              icon: false   
+              
           - type: entities
             entities:
               - type: custom:multiple-entity-row
