@@ -197,7 +197,7 @@ sensor:
     value_template: "{{value_json['exerciseDuration']}}"
   
   - platform: mqtt
-    name: Generator Exercise Duration
+    name: Generator Exercise Mode
     state_topic: "genset/tele/exercise"
     value_template: "{{value_json['exerciseMode']}}"
 
@@ -280,6 +280,62 @@ sensor:
             Generator
           {% endif -%}
 
+      generator_firmware_status:
+        friendly_name: Generator Firmware Update Available
+        value_template: >-
+          {% if states('sensor.generator_current_firmware') ==  states('sensor.generator_latest_firmware') -%}
+            Up to Date
+          {% else -%}
+            Update Available
+          {% endif -%}
+
+      generator_ats_sources:
+        friendly_name: Generator ATS Sources Available
+        value_template: >-
+          {% if is_state('sensor.generator_available_sources', 'Source1') -%}
+            Source1
+          {% elif is_state('sensor.generator_available_sources', 'Source2') -%}
+            Source2
+          {% else -%}
+            Both
+          {% endif -%}
+
+      generator_exercise_scheduled:
+        friendly_name: Generator Exercise Scheduled
+        value_template: >-
+          {% if is_state('binary_sensor.generator_exercise_scheduled', 'on') -%}
+            Yes
+          {% else -%}
+            No
+          {% endif -%}
+
+      generator_exercise_active:
+        friendly_name: Generator Exercise Active
+        value_template: >-
+          {% if is_state('binary_sensor.generator_exercise_active', 'on') -%}
+            Yes
+          {% else -%}
+            No
+          {% endif -%}
+
+      generator_ats_connected:
+        friendly_name: Generator Exercise Active
+        value_template: >-
+          {% if is_state('binary_sensor.generator_ats_connected', 'on') -%}
+            Yes
+          {% else -%}
+            No
+          {% endif -%}
+
+      generator_network_connected:
+        friendly_name: Generator Exercise Active
+        value_template: >-
+          {% if is_state('binary_sensor.generator_network_connected', 'on') -%}
+            Yes
+          {% else -%}
+            No
+          {% endif -%}
+
 binary_sensor:
 
   - platform: mqtt
@@ -322,3 +378,5 @@ binary_sensor:
       generator_running:
         friendly_name: Generator Running
         value_template: "{{ states('sensor.generator_speed') | int > 0 }}"
+
+  
