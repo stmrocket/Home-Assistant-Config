@@ -122,3 +122,17 @@
     - service: frontend.set_theme
       data:
         name: midnight        
+
+- alias: Update OpenUV every 30 minutes during the daytime
+  trigger:
+    platform: time_pattern
+    minutes: '/30'
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunrise
+      - condition: sun
+        before: sunset
+  action:
+    service: openuv.update_data

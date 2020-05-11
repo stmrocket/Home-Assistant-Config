@@ -1885,15 +1885,20 @@ cards:
             cards:
               - type: custom:mini-graph-card
                 entities: 
-                  - entity: sensor.adguard_queries_last_hour
-                    aggregate_func: max
-                    show_state: false
-                    show_legend: false
                   - entity: sensor.adguard_queries_daily
                     show_state: true
                     show_legend: false
                     show_graph: false
-                name: Queries
+                    icon: false
+                    extrema: false 
+                  - entity: sensor.adguard_queries_last_hour
+                    aggregate_func: max
+                    color: '#e45e65'
+                    show_state: false
+                    show_legend: false
+                    icon: false
+                    extrema: false 
+                name: Requested
                 height: 46
                 line_width: 2
                 font_size: 65
@@ -1901,27 +1906,30 @@ cards:
                 points_per_hour: 1
                 show:
                   icon: false
-                  extrema: true
 
               - type: custom:mini-graph-card                
                 entities: 
-                  - entity: sensor.adguard_blocked_last_hour
-                    aggregate_func: max
-                    show_state: false
-                    show_legend: false
                   - entity: sensor.adguard_blocked_daily
                     show_state: true
                     show_legend: false
                     show_graph: false
+                    icon: false
+                    extrema: false 
+                  - entity: sensor.adguard_blocked_last_hour
+                    aggregate_func: max
+                    color: '#e45e65'
+                    show_state: false
+                    show_legend: false
+                    icon: false
+                    extrema: false 
                 name: Blocked
                 height: 46
                 line_width: 2
                 font_size: 65
                 hours_to_show: 24
-                points_per_hour: 1
+                points_per_hour: 1     
                 show:
-                  icon: false
-                  extrema: true                     
+                  icon: false              
 
           - type: horizontal-stack
             cards:
@@ -2064,9 +2072,9 @@ cards:
                 show_state: false
                 entities:
                   - entity: sensor.electricity_cost_last_week
-                    name: previous
+                    name: Previous
                   - entity: sensor.electricity_cost_this_week
-                    name: current
+                    name: Current
               - type: custom:multiple-entity-row
                 entity: sensor.electricity_cost_this_month
                 name: Monthly
@@ -2074,9 +2082,9 @@ cards:
                 show_state: false
                 entities:
                   - entity: sensor.electricity_cost_last_month
-                    name: previous
+                    name: Previous
                   - entity: sensor.electricity_cost_this_month
-                    name: current
+                    name: Current
 
           - type: picture-elements
             image: /local/genset/background.png
