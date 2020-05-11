@@ -1,0 +1,30 @@
+utility_meter:
+
+  adguard_queries_hourly:
+    source: sensor.adguard_dns_queries
+    cycle: hourly
+
+  adguard_queries_daily:
+    source: sensor.adguard_dns_queries
+    cycle: daily
+
+  adguard_blocked_hourly:
+    source: sensor.adguard_dns_queries_blocked
+    cycle: hourly
+
+  adguard_blocked_daily:
+    source: sensor.adguard_dns_queries_blocked
+    cycle: daily
+
+sensor:
+
+  - platform: template
+    sensors:
+
+      adguard_queries_last_hour:
+        friendly_name: Ad Guard DNS Queries Last Hour
+        value_template: "{{ state_attr('sensor.adguard_queries_hourly','last_period') }}"    
+
+      adguard_blocked_last_hour:
+        friendly_name: Ad Guard Blocked DNS Queries Last Hour
+        value_template: "{{ state_attr('sensor.adguard_blocked_hourly','last_period') }}"    
