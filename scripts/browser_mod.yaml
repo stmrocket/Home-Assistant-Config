@@ -3607,7 +3607,11 @@ popup_adguard:
           cards:
             - type: entities
               entities:
-                - entity: sensor.adguard_queries
+                - entity: sensor.adguard_dns_queries
+                  name: Total DNS Queries
                 - entity: sensor.adguard_dns_queries_blocked
+                  name: DNS Queries Blocked
                 - entity: sensor.adguard_dns_queries_blocked_ratio
+                  name: Blocked Query Ratio
                 - entity: sensor.adguard_average_processing_speed
+                  name: Average Processing Speed
