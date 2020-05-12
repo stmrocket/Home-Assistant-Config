@@ -367,15 +367,15 @@ binary_sensor:
     name: Generator Exercise Scheduled
     state_topic: "genset/tele/exercise"
     value_template: '{{value_json.exerciseScheduled}}'
-    payload_on: "true"
-    payload_off: "false"
+    payload_on: true
+    payload_off: false
 
   - platform: mqtt
     name: Generator Exercise Active
     state_topic: "genset/tele/exercise"
     value_template: '{{value_json.exerciseActive}}'
-    payload_on: "true"
-    payload_off: "false"
+    payload_on: true
+    payload_off: false
 
   - platform: template
     sensors:
