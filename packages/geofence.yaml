@@ -6,3 +6,22 @@ proximity:
       - device_tracker.shawn_7t
     tolerance: 50
     unit_of_measurement: km
+
+automation:
+  - alias: Mark 2km Geofence Entered
+    trigger:
+      - platform: numeric_state
+        entity_id: proximity.home
+        below: 2
+    action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.hvac_geofence
+
+  - alias: Mark 2km Geofence Exited
+    trigger:
+      - platform: numeric_state
+        entity_id: proximity.home
+        above: 2
+    action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.hvac_geofence
