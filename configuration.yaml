@@ -221,11 +221,7 @@ input_boolean:
   master_lamp_timer:
     name: Master Lamp Timer
     icon: mdi:timer
-
-  vacation_mode:
-    name: Vacation Mode
-    icon: mdi:airplane
-
+    
   elk_night_on:
     name: Elk Night Mode On Trigger
     icon: mdi:alarm-bell
