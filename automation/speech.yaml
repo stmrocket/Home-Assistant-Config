@@ -343,6 +343,15 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_wake
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: disarmed
   action:
     - service: mqtt.publish
       data:
