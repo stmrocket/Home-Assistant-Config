@@ -3202,7 +3202,7 @@ popup_pooper:
                 - entity: sensor.litter_robot_status_short
                   name: Status
                   icon: mdi:cat
-                - entity: sensor.litter_robot_cycle_count
+                - entity: counter.litter_robot_cycle_count
                   name: Cycle Count
                   icon: mdi:toilet
                 - entity: sensor.litter_robot_average_cycle_capacity
