@@ -363,7 +363,7 @@
       data:
         topic: parrot/command/set/play
         payload: 3,2
-    - delay: 0:30
+    - delay: 00:00:30
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
