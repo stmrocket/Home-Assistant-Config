@@ -90,8 +90,8 @@ sensor:
           {% endif -%}
 
       litter_robot_drawer_level:
-        friendly_name: Litter Robot Average Cycle Capacity
-        value_template: "{{ ((states('sensor.litter_robot_cycle_count') | int / states('sensor.litter_robot_average_cycle_capacity') | int) * 100) | round(0) }}"
+        friendly_name: Litter Robot Drawer Level
+        value_template: "{{ ((states('counter.litter_robot_cycle_count') | int / states('sensor.litter_robot_average_cycle_capacity') | int) * 100) | round(0) }}"
 
 binary_sensor:
   - platform: mqtt
@@ -164,3 +164,35 @@ input_number:
     min: 0
     max: 1000000
     step: 1
+
+counter:
+  litter_robot_cycle_count:
+    step: 1    
+
+script:
+  litter_robot_empty:
+    sequence:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.litter_robot_cycle_count
+          value: "{{ states('input_number.litter_robot_cycle_count') | int + states('counter.litter_robot_cycle_count') | int }}"        
+      - service: input_number.increment
+        entity_id: input_number.litter_robot_empty_count
+      - service: counter.reset
+        entity_id: counter.litter_robot_cycle_count
+      - service: mqtt.publish
+        data_template:
+          topic: "pooper/command/empty"
+          payload: "{{ states('sensor.litter_robot_average_cycle_capacity') }}"    
+
+automation:
+  - alias: Update Litter Robot Cycle Count
+    trigger:
+      - platform: state
+        entity_id: sensor.litter_robot_cycle_count
+    condition:
+      - condition: template
+        value_template: "{{ not is_state('sensor.litter_robot_cycle_count', '0') }}"
+    action:
+      - service: counter.increment
+        entity_id: counter.litter_robot_cycle_count
