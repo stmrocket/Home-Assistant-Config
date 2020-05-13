@@ -352,11 +352,3 @@ input_select:
       - Wish Upon A Star    
       - Christmas
     icon: mdi:music
-proximity:
-  home:
-    ignored_zones:
-      - work
-    devices:
-      - device_tracker.shawn_7t
-    tolerance: 50
-    unit_of_measurement: mi
