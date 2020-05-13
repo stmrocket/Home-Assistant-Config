@@ -338,7 +338,26 @@
       data:
         topic: parrot/command/set/play
         payload: 3,2
-    - service: switch.turn_off
-      data:
-        entity_id: switch.alexa_timer_end
           
+- alias: Remote Wake
+  trigger:
+    - platform: webhook
+      webhook_id: !secret webhook_wake
+  action:
+    - service: mqtt.publish
+      data:
+        topic: horn/command/set/clock
+        payload: 'ON'
+    - service: light.turn_on
+      entity_id: light.den_light
+    - service: mqtt.publish
+      data:
+        topic: parrot/command/set/play
+        payload: 3,2
+    - delay: 0:30
+    - service: mqtt.publish
+      data:
+        topic: horn/command/set/clock
+        payload: 'OFF'
+    - service: light.turn_off
+      entity_id: light.den_light
