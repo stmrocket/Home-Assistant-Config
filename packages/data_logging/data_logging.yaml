@@ -120,3 +120,4 @@ influxdb:
       - sensor.shack_blinds_average_light_level
       - counter.master_snooze
       - sensor.energy_used
+      - counter.litter_robot_cycle_count
