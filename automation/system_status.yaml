@@ -457,3 +457,52 @@
     data:
       title: Generator Fault
       message: The generator is reporting an error.              
+
+- alias: Notify Shack UPS On Battery
+  trigger:
+  - platform: state
+    entity_id: sensor.shack_ups_status
+    to: 'Battery'    
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Shack UPS On Battery Power
+      message: The shack is running on battery power.
+
+- alias: Notify Shack UPS On Utility
+  trigger:
+  - platform: state
+    entity_id: sensor.shack_ups_status
+    from: 'Battery'
+    to: 'Utility'    
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Shack UPS Power Restored
+      message: Power has been restored to the shack.
+
+- alias: Notify Shack UPS Battery Low
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.shack_ups_remaining_runtime
+    below: 11  
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Shack UPS Battery Low
+      message: The shack UPS battery is low.
+
+- alias: Notify Shack UPS Battery Fail
+  trigger:
+  - platform: state
+    entity_id: sensor.shack_ups_battery_status
+    to: '2'
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Shack UPS Replace Battery
+      message: The shack UPS battery has failed.  Replace immediately.
+  - service: persistent_notification.create
+    data:
+      title: Shack UPS Replace Battery
+      message: The shack UPS battery has failed.  Replace immediately.      
