@@ -6,145 +6,145 @@ input_boolean:
 
 sensor:
   - platform: history_stats
-    name: "Replay Back Porch Light"
+    name: 'Replay Back Porch Light'
     entity_id: switch.back_porch_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Office Light"
+    name: 'Replay Office Light'
     entity_id: light.office_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Server Room Light"
+    name: 'Replay Server Room Light'
     entity_id: light.server_room_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Hall Light"
+    name: 'Replay Hall Light'
     entity_id: light.hallway_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Kitchen Light"
+    name: 'Replay Kitchen Light'
     entity_id: light.kitchen_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Kitchen Sink Light"
+    name: 'Replay Kitchen Sink Light'
     entity_id: light.kitchen_sink_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Dining Room Light"
+    name: 'Replay Dining Room Light'
     entity_id: light.dining_room_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Guest Bathroom Light"
+    name: 'Replay Guest Bathroom Light'
     entity_id: light.guest_bathroom_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Entry Light"
+    name: 'Replay Entry Light'
     entity_id: light.entry_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Foyer Light"
+    name: 'Replay Foyer Light'
     entity_id: light.foyer_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Den Light"
+    name: 'Replay Den Light'
     entity_id: light.den_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Master Bedroom Light"
+    name: 'Replay Master Bedroom Light'
     entity_id: light.master_bedroom_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Shack Light"
+    name: 'Replay Shack Light'
     entity_id: switch.shack_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Guest Bedroom Light"
+    name: 'Replay Guest Bedroom Light'
     entity_id: light.guest_bedroom_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Master Sink Light"
+    name: 'Replay Master Sink Light'
     entity_id: switch.master_bathroom_lights
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Master Shower Light"
+    name: 'Replay Master Shower Light'
     entity_id: light.master_shower_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Master Toilet Light"
+    name: 'Replay Master Toilet Light'
     entity_id: light.master_toilet_light
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
-    name: "Replay Timer Lamps"
+    name: 'Replay Timer Lamps'
     entity_id: input_boolean.timer_lights
-    state: "on"
+    state: 'on'
     type: count
     start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
