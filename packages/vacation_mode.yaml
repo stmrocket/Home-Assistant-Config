@@ -10,7 +10,7 @@ sensor:
     entity_id: switch.back_porch_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -18,7 +18,7 @@ sensor:
     entity_id: light.office_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -26,7 +26,7 @@ sensor:
     entity_id: light.server_room_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -34,7 +34,7 @@ sensor:
     entity_id: light.hallway_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -42,7 +42,7 @@ sensor:
     entity_id: light.kitchen_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -50,7 +50,7 @@ sensor:
     entity_id: light.kitchen_sink_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -58,7 +58,7 @@ sensor:
     entity_id: light.dining_room_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -66,7 +66,7 @@ sensor:
     entity_id: light.guest_bathroom_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -74,7 +74,7 @@ sensor:
     entity_id: light.entry_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -82,7 +82,7 @@ sensor:
     entity_id: light.foyer_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -90,7 +90,7 @@ sensor:
     entity_id: light.den_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -98,7 +98,7 @@ sensor:
     entity_id: light.master_bedroom_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -106,7 +106,7 @@ sensor:
     entity_id: switch.shack_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -114,7 +114,7 @@ sensor:
     entity_id: light.guest_bedroom_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -122,7 +122,7 @@ sensor:
     entity_id: switch.master_bathroom_lights
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -130,7 +130,7 @@ sensor:
     entity_id: light.master_shower_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -138,7 +138,7 @@ sensor:
     entity_id: light.master_toilet_light
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
 
   - platform: history_stats
@@ -146,5 +146,5 @@ sensor:
     entity_id: input_boolean.timer_lights
     state: "on"
     type: count
-    start: "{{ as_timestamp(now()) - (7*86400) }}"
+    start: '{{ as_timestamp(now()) - (7*86400) }}'
     duration: 00:00:30
