@@ -18,6 +18,7 @@ sensor:
     name: Replay Office Light
     entity_id: light.office_light
     state: 'on'
+    type: count
     start: >
       {{ as_timestamp(now()) - (7*86400) }}
     duration: 00:00:30
@@ -165,3 +166,37 @@ sensor:
     start: >
       {{ as_timestamp(now()) - (7*86400) }}
     duration: 00:00:30
+
+automation:
+  - alias: Vacation Replay Lights Off in Morning
+    trigger:
+      - platform: state
+        entity_id: input_boolean.outside_timer_lights
+        from: 'on'
+        to: 'off'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - service: light.turn_off
+        entity_id:
+          - light.den_light
+          - light.dining_room_light
+          - light.entry_light
+          - light.foyer_light
+          - light.guest_bathroom_light
+          - light.guest_bedroom_light
+          - light.hallway_light
+          - light.kitchen_light
+          - light.kitchen_sink_light
+          - light.master_bedroom_light
+          - light.master_shower_light
+          - light.master_toilet_light
+          - light.office_light
+          - light.server_room_light
+      - service: switch.turn_off
+        entity_id:
+          - switch.back_porch_light
+          - switch.master_bathroom_lights
+          - switch.shack_light

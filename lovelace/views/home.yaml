@@ -157,7 +157,7 @@ cards:
                 hlines:
                   - id: 0
                     xpos: 50
-                    ypos: 38
+                    ypos: 52
                     length: 40
                     styles:
                       - stroke: var(--primary-text-color);
@@ -168,7 +168,7 @@ cards:
                 vlines:
                   - id: 0
                     xpos: 50
-                    ypos: 56
+                    ypos: 70
                     length: 20
                     styles:
                       - stroke: var(--primary-text-color);
@@ -179,21 +179,21 @@ cards:
                   - id: 0
                     entity_index: 0
                     xpos: 50
-                    ypos: 30
+                    ypos: 44
                     styles:
                       - font-size: 3em;
                       - opacity: 0.9;
                   - id: 1
                     entity_index: 1
                     xpos: 46
-                    ypos: 54
+                    ypos: 68
                     styles:
                       - font-size: 1.8em;
                       - text-anchor: end;
                   - id: 2
                     entity_index: 2
                     xpos: 54
-                    ypos: 54
+                    ypos: 68
                     styles:
                       - font-size: 1.8em;
                       - text-anchor: start;
@@ -205,7 +205,7 @@ cards:
                   - id: 1
                     entity_index: 1
                     xpos: 46
-                    ypos: 62
+                    ypos: 76
                     styles:
                       - font-size: 1.1em;
                       - text-anchor: end;
@@ -213,7 +213,7 @@ cards:
                   - id: 2
                     entity_index: 2
                     xpos: 54
-                    ypos: 62
+                    ypos: 76
                     styles:
                       - font-size: 1.1em;
                       - text-anchor: start;
