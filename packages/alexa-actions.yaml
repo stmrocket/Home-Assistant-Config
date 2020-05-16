@@ -1,3 +1,16 @@
+sensor:
+  - platform: template
+    sensors:
+      last_alexa:
+        entity_id:
+          - media_player.alexa_den
+          - media_player.alexa_guest_room
+          - media_player.alexa_master_bedroom
+          - media_player.alexa_office
+          - media_player.alexa_server_room
+        value_template: >
+          {{ states.media_player | selectattr('attributes.last_called', 'eq', True) | map(attribute='entity_id') | first }}
+
 input_text:
   alexa_actionable_notification:
     name: Alexa Actionable Notification Holder
