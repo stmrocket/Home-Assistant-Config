@@ -2180,7 +2180,7 @@ cards:
               - type: conditional
                 conditions:
                   - entity: sensor.generator_available_sources
-                    state: Source1
+                    state_not: Source2
                 elements:
                   - type: state-label
                     entity: sensor.generator_source_1_voltage
