@@ -3101,7 +3101,7 @@ popup_work_alarm:
         deviceID: ["{{ ','.join(deviceID) }}"]
         title: Work Alarm
         card:
-          type: vertical-stacl
+          type: vertical-stack
           cards:
             - type: entities
               show_header_toggle: false
