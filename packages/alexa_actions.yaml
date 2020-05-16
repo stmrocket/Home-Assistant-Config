@@ -1,0 +1,39 @@
+sensor:
+  - platform: template
+    sensors:
+      last_alexa:
+        entity_id:
+          - media_player.alexa_den
+          - media_player.alexa_guest_room
+          - media_player.alexa_master_bedroom
+          - media_player.alexa_office
+          - media_player.alexa_server_room
+        value_template: >
+          {{ states.media_player | selectattr('attributes.last_called', 'eq', True) | map(attribute='entity_id') | first }}
+
+input_text:
+  alexa_actionable_notification:
+    name: Alexa Actionable Notification Holder
+    max: 255
+    initial: '{"text": "This is a test of the alexa actions custom skill. Did it work?", "event": "actionable.skill.test"}'
+
+script:
+  activate_alexa_actionable_notification:
+    # description: 'Activates an actionable notification on a specific echo device'
+    # fields:
+    #   text:
+    #     description: 'The text you would like alexa to speak.'
+    #   event_id:
+    #     description: 'Correlation ID for event responses'
+    #   alexa_device: 
+    #     description: 'Alexa device you want to trigger'
+    sequence:
+      - service: input_text.set_value
+        data_template:
+          entity_id: input_text.alexa_actionable_notification
+          value: '{"text": "{{ text }}", "event": "{{ event_id }}"}'
+      - service: media_player.play_media
+        data_template:
+          entity_id: "{{ alexa_device }}"
+          media_content_type: skill
+          media_content_id: !secret notification_skill_id
