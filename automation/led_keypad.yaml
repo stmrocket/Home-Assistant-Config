@@ -90,11 +90,11 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: light.den_led_rgb
+      entity_id: light.den_leds_rgb
       state: 'off'
   action:
     - service: light.turn_on
-      entity_id: light.den_led_rgb
+      entity_id: light.den_leds_rgb
     
 - alias: Den LEDs Off from Keypad
   trigger:
@@ -104,11 +104,11 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: light.den_led_rgb
+      entity_id: light.den_leds_rgb
       state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.den_led_rgb
+      entity_id: light.den_leds_rgb
     
 - alias: Guest Bathroom LEDs On from Keypad
   trigger:
@@ -254,7 +254,7 @@
 
 - alias: Den LEDs Keypad On
   trigger:
-    - entity_id: light.den_led_rgb
+    - entity_id: light.den_leds_rgb
       platform: state
       from: 'off'
       to: 'on'
@@ -268,7 +268,7 @@
 
 - alias: Den LEDs Keypad Off
   trigger:
-    - entity_id: light.den_led_rgb
+    - entity_id: light.den_leds_rgb
       platform: state
       from: 'on'
       to: 'off'

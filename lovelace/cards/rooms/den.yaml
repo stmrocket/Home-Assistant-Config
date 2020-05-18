@@ -89,7 +89,7 @@
             - type: "custom:gap-card" 
 
             - type: "custom:button-card"
-              entity: light.den_led_rgb
+              entity: light.den_leds_rgb
               color_type: icon
               color: rgb(228, 94, 101)
               state:
