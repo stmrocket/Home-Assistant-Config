@@ -76,6 +76,8 @@ lovelace:
       type: module    
     - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
       type: module   
+    - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
+      type: module 
 
 lovelace_gen:
 
@@ -221,7 +223,7 @@ input_boolean:
   master_lamp_timer:
     name: Master Lamp Timer
     icon: mdi:timer
-    
+
   elk_night_on:
     name: Elk Night Mode On Trigger
     icon: mdi:alarm-bell
@@ -300,6 +302,10 @@ timer:
   doorbell_popup:
     name: Garage Lighting Timer
     duration: '00:01:00'
+
+  blinds_after_shower_repeat:
+    name: Repeat Prompt to Open Blinds After Shower
+    duration: '00:05:00'
 
 # Text to speech
 tts:

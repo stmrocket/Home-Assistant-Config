@@ -42,3 +42,47 @@
   - service: switch.turn_off
     data:
       entity_id: switch.shower_light_and_fan
+
+- alias: Alexa Prompt to Open Blinds After Shower
+  trigger:
+    - platform: state
+      entity_id: switch.shower_light_and_fan
+      from: 'on'      
+      to: 'off'
+      for: 00:01:00
+    - event_data:
+        entity_id: timer.blinds_after_shower_repeat
+      event_type: timer.finished
+      platform: event
+  condition:
+    - condition: state
+      entity_id: cover.house_blinds
+      state: open
+  action:
+    - service: script.activate_alexa_actionable_notification
+      data_template:
+        text: 'Now that you are out of the shower, would you like me to open the blinds?'
+        event_id: 'actionable_notification_open_master_blinds'
+        alexa_device: 'media_player.alexa_master_bedroom' 
+
+- alias: Open Master Blinds via Actionable Notificaiton
+  trigger:
+    platform: event
+    event_type: alexa_actionable_notification
+    event_data:
+      event_id: actionable_notification_open_master_blinds
+      event_response: ResponseYes
+  action:
+    - service: cover.open_cover
+      entity_id: cover.master_blinds       
+
+- alias: Repeat Master Blinds via Actionable Notificaiton
+  trigger:
+    platform: event
+    event_type: alexa_actionable_notification
+    event_data:
+      event_id: actionable_notification_open_master_blinds
+      event_response: ResponseNone
+  action:
+    - service: timer.start
+      entity_id: timer.blinds_after_shower_repeat           
