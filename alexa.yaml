@@ -7,7 +7,7 @@ smart_home:
       - light.master_suite_leds_rgb
       - light.master_bedroom_leds_rgb
       - light.master_bathroom_led_rgb
-      - light.den_led_rgb
+      - light.den_leds_rgb
       - light.guest_bathroom_led_rgb
       - light.house_leds_rgb
       - light.den_light
@@ -137,7 +137,7 @@ smart_home:
     light.master_bathroom_led_rgb:
       name: Bathroom LEDs
       description: Master Bathroom LEDs
-    light.den_led_rgb:
+    light.den_leds_rgb:
       name: Den LEDs
     light.guest_bathroom_led_rgb:
       name: Guest LEDs

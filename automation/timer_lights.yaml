@@ -395,7 +395,7 @@
     - service: light.turn_off
       entity_id: 
         - light.kitchen_leds_rgb
-        - light.den_led_rgb
+        - light.den_leds_rgb
         - light.guest_bathroom_led_rgb
         - light.hall_lamp
 

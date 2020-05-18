@@ -1,16 +1,16 @@
 light:
   - platform: mqtt
-    name: "Den LED RGB"
-    state_topic: "h801/den_1/tele/current"
-    command_topic: "h801/den_1/command/set/rgb/power"
-    brightness_state_topic: "h801/den_1/tele/current"
-    brightness_command_topic: "h801/den_1/command/set/rgb/brightness"
-    rgb_state_topic: "h801/den_1/tele/current"
-    rgb_command_topic: "h801/den_1/command/set/rgb/color"
+    name: "Den LED 4 CCT"
+    state_topic: "h801/den_4/tele/current"
+    command_topic: "h801/den_4/command/set/rgb/power"
+    brightness_state_topic: "h801/den_4/tele/current"
+    brightness_command_topic: "h801/den_4/command/set/rgb/brightness"
+    color_temp_command_topic: "h801/den_4/command/set/w1/temperature"
+    color_temp_state_topic: "h801/den_4/tele/current"
+    color_temp_value_template: "{{value_json['temperature']}}"
     state_value_template: "{{value_json['rgb_power']}}"
     brightness_value_template: "{{value_json['rgb_brightness']}}"
-    rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
-    availability_topic: "h801/den_1/tele/LWT"
+    availability_topic: "h801/den_4/tele/LWT"
     qos: 0
     retain: false
     payload_on: "ON"
@@ -23,57 +23,57 @@ sensor:
   #Driver Status Messages
 
   - platform: mqtt
-    name: "Den LED Version"
-    state_topic: "h801/den_1/tele/status"
+    name: "Den LED 4 Version"
+    state_topic: "h801/den_4/tele/status"
     value_template: "{{value_json['espVersion']}}"
-    availability_topic: "h801/den_1/tele/LWT"
+    availability_topic: "h801/den_4/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
 
   - platform: mqtt
-    name: "Den LED Uptime"
-    state_topic: "h801/den_1/tele/status"
+    name: "Den LED 4 Uptime"
+    state_topic: "h801/den_4/tele/status"
     value_template: "{{value_json['espUptime']}}"
-    availability_topic: "h801/den_1/tele/LWT"
+    availability_topic: "h801/den_4/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
 
   - platform: mqtt
-    name: "Den LED RSSI"
-    state_topic: "h801/den_1/tele/status"
+    name: "Den LED 4 RSSI"
+    state_topic: "h801/den_4/tele/status"
     value_template: "{{value_json['signalStrength']}}"
-    availability_topic: "h801/den_1/tele/LWT"
+    availability_topic: "h801/den_4/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
 
   - platform: mqtt
-    name: "Den LED IP"
-    state_topic: "h801/den_1/tele/status"
+    name: "Den LED 4 IP"
+    state_topic: "h801/den_4/tele/status"
     value_template: "{{value_json['bridgeIP']}}"
-    availability_topic: "h801/den_1/tele/LWT"
+    availability_topic: "h801/den_4/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
 
   - platform: mqtt
-    name: "Den LED Free Heap"
-    state_topic: "h801/den_1/tele/status"
+    name: "Den LED 4 Free Heap"
+    state_topic: "h801/den_4/tele/status"
     value_template: "{{value_json['heapFree']}}"
-    availability_topic: "h801/den_1/tele/LWT"
+    availability_topic: "h801/den_4/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
 
   - platform: mqtt
-    name: "Den LED Heap Fragmentation"
-    state_topic: "h801/den_1/tele/status"
+    name: "Den LED 4 Heap Fragmentation"
+    state_topic: "h801/den_4/tele/status"
     value_template: "{{value_json['heapFragmentation']}}"
-    availability_topic: "h801/den_1/tele/LWT"
+    availability_topic: "h801/den_4/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
 
   - platform: mqtt
-    name: "Den LED Core Version"
-    state_topic: "h801/den_1/tele/status"
+    name: "Den LED 4 Core Version"
+    state_topic: "h801/den_4/tele/status"
     value_template: "{{value_json['espCore']}}" 
-    availability_topic: "h801/den_1/tele/LWT"
+    availability_topic: "h801/den_4/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
