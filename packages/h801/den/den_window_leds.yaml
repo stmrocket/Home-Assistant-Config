@@ -50,13 +50,13 @@ automation:
     condition:
       - condition: state
         entity_id: light.den_led_2_cct
-        to: 'off'
+        state: 'off'
       - condition: state
         entity_id: light.den_led_3_cct
-        to: 'off'
+        state: 'off'
       - condition: state
         entity_id: light.den_led_4_cct
-        to: 'off'
+        state: 'off'
     action:
       - service: mqtt.publish
         data:

@@ -148,16 +148,16 @@ automation:
         state: 'off'
       - condition: state
         entity_id: light.den_led_1_rgb
-        to: 'off'
+        state: 'off'
       - condition: state
         entity_id: light.den_led_2_cct
-        to: 'off'
+        state: 'off'
       - condition: state
         entity_id: light.den_led_3_cct
-        to: 'off'
+        state: 'off'
       - condition: state
         entity_id: light.den_led_4_cct
-        to: 'off'
+        state: 'off'
       - condition: state
         entity_id: light.guest_bathroom_led_rgb
         state: 'off'
