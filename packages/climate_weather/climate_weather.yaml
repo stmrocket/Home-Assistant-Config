@@ -72,6 +72,19 @@ sensor:
       - pressure
       - visibility        
 
+  - platform: mqtt
+    name: Bear Creek Elevation
+    state_topic: "hcfws/elevation"
+    unit_of_measurement: "ft"
+  - platform: mqtt
+    name: Bear Creek Rain This Hour
+    state_topic: "hcfws/rain/current"
+    unit_of_measurement: "in"
+  - platform: mqtt
+    name: Bear Creek Rain Last Hour
+    state_topic: "hcfws/rain/last"
+    unit_of_measurement: "in"
+
 rest_command:
   update_wunderground:
     url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.aquara_outside_temperature') }}&humidity={{ states('sensor.aquara_outside_humidity') }}&dewptf={{ states('sensor.dewpoint_outside') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&action=updateraw"
