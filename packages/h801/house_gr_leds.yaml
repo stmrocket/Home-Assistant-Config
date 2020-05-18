@@ -146,16 +146,16 @@ automation:
       - condition: state
         entity_id: light.kitchen_led_8_rgb
         state: 'off'
-      - platform: state
+      - condition: state
         entity_id: light.den_led_1_rgb
         to: 'off'
-      - platform: state
+      - condition: state
         entity_id: light.den_led_2_cct
         to: 'off'
-      - platform: state
+      - condition: state
         entity_id: light.den_led_3_cct
         to: 'off'
-      - platform: state
+      - condition: state
         entity_id: light.den_led_4_cct
         to: 'off'
       - condition: state
