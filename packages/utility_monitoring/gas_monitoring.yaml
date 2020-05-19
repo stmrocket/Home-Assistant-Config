@@ -117,7 +117,6 @@ sensor:
 
   - platform: average
     name: Average Neighborhood Gas Use This Hour
-    unit_of_measurement: "CCF"
     entities:
       - sensor.gas_monthly
       - sensor.n1_gas_hourly
@@ -135,7 +134,6 @@ sensor:
       - sensor.n13_gas_hourly
   - platform: average
     name: Average Neighborhood Gas Use Last Hour
-    unit_of_measurement: "CCF"
     entities:
       - sensor.gas_last_hour
       - sensor.n1_gas_last_hour
@@ -153,7 +151,6 @@ sensor:
       - sensor.n13_gas_last_hour
   - platform: average
     name: Average Neighborhood Gas Use Today
-    unit_of_measurement: "CCF"
     entities:
       - sensor.gas_daily
       - sensor.n1_gas_daily
@@ -171,7 +168,6 @@ sensor:
       - sensor.n13_gas_daily
   - platform: average
     name: Average Neighborhood Gas Use This Week
-    unit_of_measurement: "CCF"
     entities:
       - sensor.gas_weekly
       - sensor.n1_gas_weekly
@@ -189,7 +185,6 @@ sensor:
       - sensor.n13_gas_weekly
   - platform: average
     name: Average Neighborhood Gas Use This Month
-    unit_of_measurement: "CCF"
     entities:
       - sensor.gas_monthly
       - sensor.n1_gas_monthly
@@ -207,7 +202,6 @@ sensor:
       - sensor.n13_gas_monthly
   - platform: average
     name: Average Neighborhood Gas Use This Year
-    unit_of_measurement: "CCF"
     entities:
       - sensor.gas_yearly
       - sensor.n1_gas_yearly
