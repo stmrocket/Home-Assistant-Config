@@ -74,46 +74,46 @@ sensor:
     sensors:
       gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.gas_monthly','last_period') }}"
       n1_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n1_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n1_gas_monthly','last_period') }}"
       n2_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n2_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n2_gas_monthly','last_period') }}"
       n3_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n3_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n3_gas_monthly','last_period') }}"
       n4_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n4_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n4_gas_monthly','last_period') }}"
       n5_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n5_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n5_gas_monthly','last_period') }}"
       n6_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n6_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n6_gas_monthly','last_period') }}"
       n7_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n7_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n7_gas_monthly','last_period') }}"
       n8_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n8_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n8_gas_monthly','last_period') }}"
       n9_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n9_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n9_gas_monthly','last_period') }}"
       n10_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n10_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n10_gas_monthly','last_period') }}"
       n11_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n11_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n11_gas_monthly','last_period') }}"
       n12_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n12_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n12_gas_monthly','last_period') }}"
       n13_gas_last_hour:
         unit_of_measurement: "CCF"
-        value_template: "{{ (state_attr('sensor.n13_gas_monthly','last_period') }}"
+        value_template: "{{ state_attr('sensor.n13_gas_monthly','last_period') }}"
 
   - platform: average
     name: Average Neighborhood Gas Use This Hour
