@@ -5,67 +5,67 @@ sensor:
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 1
+    name: N1 Gas Meter 
     state_topic: !secret n1_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 2
+    name: N2 Gas Meter
     state_topic: !secret n2_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 3
+    name: N3 Gas Meter
     state_topic: !secret n3_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 4
+    name: N4 Gas Meter
     state_topic: !secret n4_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 5
+    name: N5 Gas Meter
     state_topic: !secret n5_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 6
+    name: N6 Gas Meter
     state_topic: !secret n6_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 7
+    name: N7 Gas Meter
     state_topic: !secret n7_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 8
+    name: N8 Gas Meter
     state_topic: !secret n8_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 9
+    name: N9 Gas Meter
     state_topic: !secret n9_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 10
+    name: N10 Gas Meter
     state_topic: !secret n10_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 11
+    name: N11 Gas Meter
     state_topic: !secret n11_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 12
+    name: N12 Gas Meter
     state_topic: !secret n12_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: Gas Meter Neighbor 13
+    name: N13 Gas Meter
     state_topic: !secret n13_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
