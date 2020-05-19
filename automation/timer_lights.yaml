@@ -348,6 +348,9 @@
     - condition: state
       entity_id: input_boolean.timer_lights
       state: 'on'
+    - condition: state
+      entity_id: light.house_leds_rgb
+      state: 'off'
     - condition: or
       conditions:
         - condition: state

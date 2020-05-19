@@ -121,3 +121,4 @@ influxdb:
       - counter.master_snooze
       - sensor.energy_used
       - counter.litter_robot_cycle_count
+      - sensor.gas_meter

@@ -1,0 +1,501 @@
+sensor:
+  - platform: mqtt
+    name: Gas Meter
+    state_topic: !secret my_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 1
+    state_topic: !secret n1_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 2
+    state_topic: !secret n2_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 3
+    state_topic: !secret n3_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 4
+    state_topic: !secret n4_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 5
+    state_topic: !secret n5_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 6
+    state_topic: !secret n6_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 7
+    state_topic: !secret n7_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 8
+    state_topic: !secret n8_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 9
+    state_topic: !secret n9_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 10
+    state_topic: !secret n10_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 11
+    state_topic: !secret n11_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 12
+    state_topic: !secret n12_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+  - platform: mqtt
+    name: Gas Meter Neighbor 13
+    state_topic: !secret n13_gas_meter
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
+
+  - platform: template
+    sensors:
+      gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.gas_monthly','last_period') }}"
+      n1_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n1_gas_monthly','last_period') }}"
+      n2_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n2_gas_monthly','last_period') }}"
+      n3_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n3_gas_monthly','last_period') }}"
+      n4_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n4_gas_monthly','last_period') }}"
+      n5_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n5_gas_monthly','last_period') }}"
+      n6_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n6_gas_monthly','last_period') }}"
+      n7_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n7_gas_monthly','last_period') }}"
+      n8_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n8_gas_monthly','last_period') }}"
+      n9_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n9_gas_monthly','last_period') }}"
+      n10_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n10_gas_monthly','last_period') }}"
+      n11_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n11_gas_monthly','last_period') }}"
+      n12_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n12_gas_monthly','last_period') }}"
+      n13_gas_last_hour:
+        unit_of_measurement: "CCF"
+        value_template: "{{ state_attr('sensor.n13_gas_monthly','last_period') }}"
+
+  - platform: average
+    name: Average Neighborhood Gas Use This Hour
+    entities:
+      - sensor.gas_monthly
+      - sensor.n1_gas_monthly
+      - sensor.n2_gas_monthly
+      - sensor.n3_gas_monthly
+      - sensor.n4_gas_monthly
+      - sensor.n5_gas_monthly
+      - sensor.n6_gas_monthly
+      - sensor.n7_gas_monthly
+      - sensor.n8_gas_monthly
+      - sensor.n9_gas_monthly
+      - sensor.n10_gas_monthly
+      - sensor.n11_gas_monthly
+      - sensor.n12_gas_monthly
+      - sensor.n13_gas_monthly
+  - platform: average
+    name: Average Neighborhood Gas Use Last Hour
+    entities:
+      - sensor.gas_last_hour
+      - sensor.n1_gas_last_hour
+      - sensor.n2_gas_last_hour
+      - sensor.n3_gas_last_hour
+      - sensor.n4_gas_last_hour
+      - sensor.n5_gas_last_hour
+      - sensor.n6_gas_last_hour
+      - sensor.n7_gas_last_hour
+      - sensor.n8_gas_last_hour
+      - sensor.n9_gas_last_hour
+      - sensor.n10_gas_last_hour
+      - sensor.n11_gas_last_hour
+      - sensor.n12_gas_last_hour
+      - sensor.n13_gas_last_hour
+  - platform: average
+    name: Average Neighborhood Gas Use Today
+    entities:
+      - sensor.gas_daily
+      - sensor.n1_gas_daily
+      - sensor.n2_gas_daily
+      - sensor.n3_gas_daily
+      - sensor.n4_gas_daily
+      - sensor.n5_gas_daily
+      - sensor.n6_gas_daily
+      - sensor.n7_gas_daily
+      - sensor.n8_gas_daily
+      - sensor.n9_gas_daily
+      - sensor.n10_gas_daily
+      - sensor.n11_gas_daily
+      - sensor.n12_gas_daily
+      - sensor.n13_gas_daily
+  - platform: average
+    name: Average Neighborhood Gas Use This Week
+    entities:
+      - sensor.gas_weekly
+      - sensor.n1_gas_weekly
+      - sensor.n2_gas_weekly
+      - sensor.n3_gas_weekly
+      - sensor.n4_gas_weekly
+      - sensor.n5_gas_weekly
+      - sensor.n6_gas_weekly
+      - sensor.n7_gas_weekly
+      - sensor.n8_gas_weekly
+      - sensor.n9_gas_weekly
+      - sensor.n10_gas_weekly
+      - sensor.n11_gas_weekly
+      - sensor.n12_gas_weekly
+      - sensor.n13_gas_weekly
+  - platform: average
+    name: Average Neighborhood Gas Use This Month
+    entities:
+      - sensor.gas_monthly
+      - sensor.n1_gas_monthly
+      - sensor.n2_gas_monthly
+      - sensor.n3_gas_monthly
+      - sensor.n4_gas_monthly
+      - sensor.n5_gas_monthly
+      - sensor.n6_gas_monthly
+      - sensor.n7_gas_monthly
+      - sensor.n8_gas_monthly
+      - sensor.n9_gas_monthly
+      - sensor.n10_gas_monthly
+      - sensor.n11_gas_monthly
+      - sensor.n12_gas_monthly
+      - sensor.n13_gas_monthly
+  - platform: average
+    name: Average Neighborhood Gas Use This Year
+    entities:
+      - sensor.gas_yearly
+      - sensor.n1_gas_yearly
+      - sensor.n2_gas_yearly
+      - sensor.n3_gas_yearly
+      - sensor.n4_gas_yearly
+      - sensor.n5_gas_yearly
+      - sensor.n6_gas_yearly
+      - sensor.n7_gas_yearly
+      - sensor.n8_gas_yearly
+      - sensor.n9_gas_yearly
+      - sensor.n10_gas_yearly
+      - sensor.n11_gas_yearly
+      - sensor.n12_gas_yearly
+      - sensor.n13_gas_yearly
+
+utility_meter:
+
+  gas_monthly:
+    source: sensor.gas_meter
+    cycle: monthly
+
+  gas_daily:
+    source: sensor.gas_meter
+    cycle: daily
+
+  gas_weekly:
+    source: sensor.gas_meter
+    cycle: weekly
+
+  gas_monthly:
+    source: sensor.gas_meter
+    cycle: monthly
+
+  gas_yearly:
+    source: sensor.gas_meter
+    cycle: yearly    
+
+  n1_gas_monthly:
+    source: sensor.n1_gas_meter
+    cycle: monthly
+
+  n1_gas_daily:
+    source: sensor.n1_gas_meter
+    cycle: daily
+
+  n1_gas_weekly:
+    source: sensor.n1_gas_meter
+    cycle: weekly
+
+  n1_gas_monthly:
+    source: sensor.n1_gas_meter
+    cycle: monthly
+
+  n1_gas_yearly:
+    source: sensor.n1_gas_meter
+    cycle: yearly    
+
+  n2_gas_monthly:
+    source: sensor.n2_gas_meter
+    cycle: monthly
+
+  n2_gas_daily:
+    source: sensor.n2_gas_meter
+    cycle: daily
+
+  n2_gas_weekly:
+    source: sensor.n2_gas_meter
+    cycle: weekly
+
+  n2_gas_monthly:
+    source: sensor.n2_gas_meter
+    cycle: monthly
+
+  n2_gas_yearly:
+    source: sensor.n2_gas_meter
+    cycle: yearly    
+
+  n3_gas_monthly:
+    source: sensor.n3_gas_meter
+    cycle: monthly
+
+  n3_gas_daily:
+    source: sensor.n3_gas_meter
+    cycle: daily
+
+  n3_gas_weekly:
+    source: sensor.n3_gas_meter
+    cycle: weekly
+
+  n3_gas_monthly:
+    source: sensor.n3_gas_meter
+    cycle: monthly
+
+  n3_gas_yearly:
+    source: sensor.n3_gas_meter
+    cycle: yearly    
+
+  n4_gas_monthly:
+    source: sensor.n4_gas_meter
+    cycle: monthly
+
+  n4_gas_daily:
+    source: sensor.n4_gas_meter
+    cycle: daily
+
+  n4_gas_weekly:
+    source: sensor.n4_gas_meter
+    cycle: weekly
+
+  n4_gas_monthly:
+    source: sensor.n4_gas_meter
+    cycle: monthly
+
+  n4_gas_yearly:
+    source: sensor.n4_gas_meter
+    cycle: yearly    
+
+  n5_gas_monthly:
+    source: sensor.n5_gas_meter
+    cycle: monthly
+
+  n5_gas_daily:
+    source: sensor.n5_gas_meter
+    cycle: daily
+
+  n5_gas_weekly:
+    source: sensor.n5_gas_meter
+    cycle: weekly
+
+  n5_gas_monthly:
+    source: sensor.n5_gas_meter
+    cycle: monthly
+
+  n5_gas_yearly:
+    source: sensor.n5_gas_meter
+    cycle: yearly    
+
+  n6_gas_monthly:
+    source: sensor.n6_gas_meter
+    cycle: monthly
+
+  n6_gas_daily:
+    source: sensor.n6_gas_meter
+    cycle: daily
+
+  n6_gas_weekly:
+    source: sensor.n6_gas_meter
+    cycle: weekly
+
+  n6_gas_monthly:
+    source: sensor.n6_gas_meter
+    cycle: monthly
+
+  n6_gas_yearly:
+    source: sensor.n6_gas_meter
+    cycle: yearly    
+
+  n7_gas_monthly:
+    source: sensor.n7_gas_meter
+    cycle: monthly
+
+  n7_gas_daily:
+    source: sensor.n7_gas_meter
+    cycle: daily
+
+  n7_gas_weekly:
+    source: sensor.n7_gas_meter
+    cycle: weekly
+
+  n7_gas_monthly:
+    source: sensor.n7_gas_meter
+    cycle: monthly
+
+  n7_gas_yearly:
+    source: sensor.n7_gas_meter
+    cycle: yearly    
+
+  n8_gas_monthly:
+    source: sensor.n8_gas_meter
+    cycle: monthly
+
+  n8_gas_daily:
+    source: sensor.n8_gas_meter
+    cycle: daily
+
+  n8_gas_weekly:
+    source: sensor.n8_gas_meter
+    cycle: weekly
+
+  n8_gas_monthly:
+    source: sensor.n8_gas_meter
+    cycle: monthly
+
+  n8_gas_yearly:
+    source: sensor.n8_gas_meter
+    cycle: yearly    
+
+  n9_gas_monthly:
+    source: sensor.n9_gas_meter
+    cycle: monthly
+
+  n9_gas_daily:
+    source: sensor.n9_gas_meter
+    cycle: daily
+
+  n9_gas_weekly:
+    source: sensor.n9_gas_meter
+    cycle: weekly
+
+  n9_gas_monthly:
+    source: sensor.n9_gas_meter
+    cycle: monthly
+
+  n9_gas_yearly:
+    source: sensor.n9_gas_meter
+    cycle: yearly    
+
+  n10_gas_monthly:
+    source: sensor.n10_gas_meter
+    cycle: monthly
+
+  n10_gas_daily:
+    source: sensor.n10_gas_meter
+    cycle: daily
+
+  n10_gas_weekly:
+    source: sensor.n10_gas_meter
+    cycle: weekly
+
+  n10_gas_monthly:
+    source: sensor.n10_gas_meter
+    cycle: monthly
+
+  n10_gas_yearly:
+    source: sensor.n10_gas_meter
+    cycle: yearly    
+
+  n11_gas_monthly:
+    source: sensor.n11_gas_meter
+    cycle: monthly
+
+  n11_gas_daily:
+    source: sensor.n11_gas_meter
+    cycle: daily
+
+  n11_gas_weekly:
+    source: sensor.n11_gas_meter
+    cycle: weekly
+
+  n11_gas_monthly:
+    source: sensor.n11_gas_meter
+    cycle: monthly
+
+  n11_gas_yearly:
+    source: sensor.n11_gas_meter
+    cycle: yearly    
+
+  n12_gas_monthly:
+    source: sensor.n12_gas_meter
+    cycle: monthly
+
+  n12_gas_daily:
+    source: sensor.n12_gas_meter
+    cycle: daily
+
+  n12_gas_weekly:
+    source: sensor.n12_gas_meter
+    cycle: weekly
+
+  n12_gas_monthly:
+    source: sensor.n12_gas_meter
+    cycle: monthly
+
+  n12_gas_yearly:
+    source: sensor.n12_gas_meter
+    cycle: yearly    
+
+  n13_gas_monthly:
+    source: sensor.n13_gas_meter
+    cycle: monthly
+
+  n13_gas_daily:
+    source: sensor.n13_gas_meter
+    cycle: daily
+
+  n13_gas_weekly:
+    source: sensor.n13_gas_meter
+    cycle: weekly
+
+  n13_gas_monthly:
+    source: sensor.n13_gas_meter
+    cycle: monthly
+
+  n13_gas_yearly:
+    source: sensor.n13_gas_meter
+    cycle: yearly    
