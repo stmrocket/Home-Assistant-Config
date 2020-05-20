@@ -2,103 +2,117 @@ sensor:
   - platform: mqtt
     name: Gas Meter
     state_topic: !secret my_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N1 Gas Meter 
     state_topic: !secret n1_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N2 Gas Meter
     state_topic: !secret n2_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N3 Gas Meter
     state_topic: !secret n3_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N4 Gas Meter
     state_topic: !secret n4_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N5 Gas Meter
     state_topic: !secret n5_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N6 Gas Meter
     state_topic: !secret n6_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N7 Gas Meter
     state_topic: !secret n7_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N8 Gas Meter
     state_topic: !secret n8_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N9 Gas Meter
     state_topic: !secret n9_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N10 Gas Meter
     state_topic: !secret n10_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N11 Gas Meter
     state_topic: !secret n11_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N12 Gas Meter
     state_topic: !secret n12_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
   - platform: mqtt
     name: N13 Gas Meter
     state_topic: !secret n13_gas_meter
-    unit_of_measurement: "ft3"
+    value_template: "{{ value | float / 100 }}"
+    unit_of_measurement: "CCF"
 
   - platform: template
     sensors:
       gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.gas_hourly','last_period') }}"
       n1_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n1_gas_hourly','last_period') }}"
       n2_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n2_gas_hourly','last_period') }}"
       n3_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n3_gas_hourly','last_period') }}"
       n4_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n4_gas_hourly','last_period') }}"
       n5_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n5_gas_hourly','last_period') }}"
       n6_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n6_gas_hourly','last_period') }}"
       n7_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n7_gas_hourly','last_period') }}"
       n8_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n8_gas_hourly','last_period') }}"
       n9_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n9_gas_hourly','last_period') }}"
       n10_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n10_gas_hourly','last_period') }}"
       n11_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n11_gas_hourly','last_period') }}"
       n12_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n12_gas_hourly','last_period') }}"
       n13_gas_last_hour:
-        unit_of_measurement: "ft3"
+        unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n13_gas_hourly','last_period') }}"
 
   - platform: average
