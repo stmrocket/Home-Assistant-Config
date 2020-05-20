@@ -329,6 +329,10 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
+      to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: armed_home
     - platform: state
       entity_id: input_boolean.timer_lights
       to: 'on'
@@ -350,7 +354,7 @@
       state: 'on'
     - condition: state
       entity_id: light.house_leds_rgb
-      state: 'off'
+      state: 'on'
     - condition: or
       conditions:
         - condition: state
@@ -359,14 +363,13 @@
         - condition: state
           entity_id: alarm_control_panel.house
           state: armed_home
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_night
   action:
     - service: light.turn_on
       entity_id: 
         - light.house_leds_rgb
         - light.hall_lamp
+    - service: switch.turn_on
+      entity_id: switch.den_stained_glass
   
 - alias: Timer LEDs Off House Away
   trigger:
@@ -379,6 +382,8 @@
       entity_id: 
         - light.house_leds_rgb
         - light.hall_lamp
+    - service: switch.turn_on
+      entity_id: switch.den_stained_glass
 
 - alias: Timer LEDs Off House
   trigger:
@@ -401,6 +406,8 @@
         - light.den_leds_rgb
         - light.guest_bathroom_led_rgb
         - light.hall_lamp
+    - service: switch.turn_on
+      entity_id: switch.den_stained_glass
 
 - alias: Timer LEDs Off Master
   trigger:
