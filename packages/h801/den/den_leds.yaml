@@ -9,9 +9,6 @@ light:
     rgb_command_topic: "h801/den/command/set/rgb/color"
     brightness_value_template: "{{value_json['rgb_brightness']}}"
     rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
-    color_temp_command_topic: "h801/den/command/set/w1/temperature"
-    color_temp_state_topic: "h801/den/tele/current"
-    color_temp_value_template: "{{value_json['temperature']}}"
     qos: 0
     retain: false
     payload_on: "ON"
