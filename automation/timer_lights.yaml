@@ -368,6 +368,8 @@
       entity_id: 
         - light.house_leds_rgb
         - light.hall_lamp
+    - service: switch.turn_on
+      entity_id: switch.den_stained_glass
   
 - alias: Timer LEDs Off House Away
   trigger:
@@ -380,6 +382,8 @@
       entity_id: 
         - light.house_leds_rgb
         - light.hall_lamp
+    - service: switch.turn_on
+      entity_id: switch.den_stained_glass
 
 - alias: Timer LEDs Off House
   trigger:
@@ -402,6 +406,8 @@
         - light.den_leds_rgb
         - light.guest_bathroom_led_rgb
         - light.hall_lamp
+    - service: switch.turn_on
+      entity_id: switch.den_stained_glass
 
 - alias: Timer LEDs Off Master
   trigger:

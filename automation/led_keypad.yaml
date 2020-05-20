@@ -335,3 +335,59 @@
   action:
     - service: switch.turn_off
       entity_id: switch.kitchen_undercabinet_lights
+
+- alias: Stained Glass LEDs On from Keypad
+  trigger:
+    - platform: state
+      entity_id: switch.stained_glass
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.den_stained_glass
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.den_stained_glass
+    
+- alias: Stained Glass LEDs Off from Keypad
+  trigger:
+    - platform: state
+      entity_id: switch.stained_glass
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.den_stained_glass
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.den_stained_glass     
+
+- alias: Stained Glass LEDs Keypad On
+  trigger:
+    - entity_id: switch.den_stained_glass
+      platform: state
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.stained_glass
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.stained_glass
+
+- alias: Stained Glass LEDs Keypad Off
+  trigger:
+    - entity_id: switch.den_stained_glass
+      platform: state
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: switch.stained_glass
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.stained_glass
