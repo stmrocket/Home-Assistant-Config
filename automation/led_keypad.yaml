@@ -344,11 +344,11 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: switch.den_stained_glass
+      entity_id: light.den_window_leds_cct
       state: 'off'
   action:
-    - service: switch.turn_on
-      entity_id: switch.den_stained_glass
+    - service: light.turn_on
+      entity_id: light.den_window_leds_cct
     
 - alias: Stained Glass LEDs Off from Keypad
   trigger:
@@ -358,15 +358,15 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: switch.den_stained_glass
+      entity_id: light.den_window_leds_cct
       state: 'on'
   action:
-    - service: switch.turn_off
-      entity_id: switch.den_stained_glass     
+    - service: light.turn_off
+      entity_id: light.den_window_leds_cct
 
 - alias: Stained Glass LEDs Keypad On
   trigger:
-    - entity_id: switch.den_stained_glass
+    - entity_id: light.den_window_leds_cct
       platform: state
       from: 'off'
       to: 'on'
@@ -380,7 +380,7 @@
 
 - alias: Stained Glass LEDs Keypad Off
   trigger:
-    - entity_id: switch.den_stained_glass
+    - entity_id: light.den_window_leds_cct
       platform: state
       from: 'on'
       to: 'off'
