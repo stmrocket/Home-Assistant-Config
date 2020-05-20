@@ -70,6 +70,8 @@ sensor:
             Paused 
           {% elif  is_state('sensor.litter_robot_status', 'PD') -%}
             Pinch
+          {% elif  is_state('sensor.litter_robot_status', 'PD') -%}
+            Pinch
           {% elif  is_state('sensor.litter_robot_status', 'OFF') -%}
             Off 
           {% elif  is_state('sensor.litter_robot_status', 'DFS') or is_state('sensor.litter_robot_status', 'SDF') -%}
