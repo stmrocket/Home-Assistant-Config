@@ -86,8 +86,6 @@
 
         - type: horizontal-stack
           cards:                  
-            - type: "custom:gap-card" 
-
             - type: "custom:button-card"
               entity: light.den_leds_rgb
               color_type: icon
@@ -100,6 +98,20 @@
               name: LEDs
               hold_action: 
                 action: more-info
+            
+            - type: "custom:button-card"
+              entity: light.den_window_leds_cct
+              color_type: icon
+              color: rgb(228, 94, 101)
+              state:
+                - value: "on"
+                  icon: mdi:window-open-variant
+                - value: "off"
+                  icon: mdi:window-open-variant
+              name: Windows
+              hold_action: 
+                action: more-info 
+
             
             - type: "custom:button-card"
               entity: switch.fireplace
