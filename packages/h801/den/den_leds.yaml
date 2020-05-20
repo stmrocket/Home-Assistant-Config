@@ -9,6 +9,9 @@ light:
     rgb_command_topic: "h801/den/command/set/rgb/color"
     brightness_value_template: "{{value_json['rgb_brightness']}}"
     rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
+    color_temp_command_topic: "h801/den/command/set/w1/temperature"
+    color_temp_state_topic: "h801/den/tele/current"
+    color_temp_value_template: "{{value_json['temperature']}}"
     qos: 0
     retain: false
     payload_on: "ON"
@@ -21,6 +24,15 @@ automation:
       - platform: state
         entity_id: light.den_led_1_rgb
         to: 'on'
+      - platform: state
+        entity_id: light.den_led_2_cct
+        to: 'on'
+      - platform: state
+        entity_id: light.den_led_3_cct
+        to: 'on'
+      - platform: state
+        entity_id: light.den_led_4_cct
+        to: 'on'
     action:
       - service: mqtt.publish
         data:
@@ -32,9 +44,27 @@ automation:
       - platform: state
         entity_id: light.den_led_1_rgb
         to: 'off'
+      - platform: state
+        entity_id: light.den_led_2_cct
+        to: 'off'
+      - platform: state
+        entity_id: light.den_led_3_cct
+        to: 'off'
+      - platform: state
+        entity_id: light.den_led_4_cct
+        to: 'off'
     condition:
       - condition: state
         entity_id: light.den_led_1_rgb
+        state: 'off'
+      - condition: state
+        entity_id: light.den_led_2_cct
+        state: 'off'
+      - condition: state
+        entity_id: light.den_led_3_cct
+        state: 'off'
+      - condition: state
+        entity_id: light.den_led_4_cct
         state: 'off'
     action:
       - service: mqtt.publish
