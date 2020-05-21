@@ -36,6 +36,7 @@ cards:
                 show_state: true
                 show_legend: false
                 show_graph: false
+                color: '#e45e65'
             name: Electricity Usage
             line_width: 2
             font_size: 65
@@ -249,18 +250,28 @@ cards:
             line_width: 2
             name: Hourly Gas Use
             entities:
+              - entity: sensor.average_neighborhood_gas_use_this_hour
+                show_state: true
+                show_legend: false
+                show_graph: false
+              - entity: sensor.gas_hourly
+                show_state: true
+                show_legend: false
+                show_graph: false
               - entity: sensor.average_neighborhood_gas_use_last_hour
                 name: Neighbors
                 show_legend: true
                 show_points: true
                 show_state: true
                 aggregate_func: max
+                color: '#e45e65'
               - entity: sensor.gas_last_hour
                 name: House
                 show_legend: true
                 show_points: true
                 show_state: true
                 aggregate_func: max
+                color: '#0091ff'
             
             points_per_hour: 1
             show:
@@ -274,11 +285,13 @@ cards:
                 show_legend: true
                 show_points: true
                 show_state: true
+                color: '#e45e65'
               - entity: sensor.gas_daily
                 name: House
                 show_legend: true
                 show_points: true
                 show_state: true
+                color: '#0091ff'
             font_size: 65
             hours_to_show: 24
             line_width: 2
