@@ -107,7 +107,7 @@
                 - value: "on"
                   icon: mdi:window-open-variant
                 - value: "off"
-                  icon: mdi:window-open-variant
+                  icon: mdi:window-closed-variant
               name: Windows
               hold_action: 
                 action: more-info 

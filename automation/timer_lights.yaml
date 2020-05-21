@@ -401,6 +401,7 @@
         - light.kitchen_leds_rgb
         - light.den_leds_rgb
         - light.guest_bathroom_led_rgb
+        - light.den_window_leds_cct
         - light.hall_lamp
 
 - alias: Timer LEDs Off Master
