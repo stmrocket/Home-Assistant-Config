@@ -243,79 +243,79 @@ cards:
                 tap_action: none
                 hold_action: none
                 type: state-label
-      - type: 'custom:mini-graph-card'
-        font_size: 65
-        hours_to_show: 24
-        line_width: 2
-        name: Hourly Gas Use
-        entities:
-          - entity: sensor.average_neighborhood_gas_use_last_hour
-            name: Neighbors
-            show_legend: true
-            show_points: true
-            show_state: false
-            aggregate_func: max
-          - entity: sensor.gas_last_hour
-            name: House
-            show_legend: true
-            show_points: true
-            show_state: false
-            aggregate_func: max
-        
-        points_per_hour: 1
-        show:
-          icon: false
+          - type: 'custom:mini-graph-card'
+            font_size: 65
+            hours_to_show: 24
+            line_width: 2
+            name: Hourly Gas Use
+            entities:
+              - entity: sensor.average_neighborhood_gas_use_last_hour
+                name: Neighbors
+                show_legend: true
+                show_points: true
+                show_state: true
+                aggregate_func: max
+              - entity: sensor.gas_last_hour
+                name: House
+                show_legend: true
+                show_points: true
+                show_state: true
+                aggregate_func: max
+            
+            points_per_hour: 1
+            show:
+              icon: false
 
-      - type: 'custom:mini-graph-card'
-        name: Daily Gas Use
-        entities:
-          - entity: sensor.average_neighborhood_gas_use_today
-            name: Neighbors
-            show_legend: true
-            show_points: false
-            show_state: true
-          - entity: sensor.gas_daily
-            name: House
-            show_legend: true
-            show_points: false
-            show_state: true
-        font_size: 65
-        hours_to_show: 24
-        line_width: 2
-        points_per_hour: 1
-        show:
-          icon: false
-        smoothing: true
-      
-      - type: entities
-        entities:
-          - type: custom:multiple-entity-row
-            entity: sensor.gas_daily
-            name: Daily
-            icon: mdi:calendar-today
-            show_state: false
+          - type: 'custom:mini-graph-card'
+            name: Daily Gas Use
             entities:
               - entity: sensor.average_neighborhood_gas_use_today
                 name: Neighbors
+                show_legend: true
+                show_points: true
+                show_state: true
               - entity: sensor.gas_daily
                 name: House
-          - type: custom:multiple-entity-row
-            entity: sensor.gas_weekly
-            name: Weekly
-            icon: mdi:calendar-week
-            show_state: false
+                show_legend: true
+                show_points: true
+                show_state: true
+            font_size: 65
+            hours_to_show: 24
+            line_width: 2
+            points_per_hour: 1
+            show:
+              icon: false
+            smoothing: true
+          
+          - type: entities
             entities:
-              - entity: sensor.average_neighborhood_gas_use_this_week
-                name: Neighbors
-              - entity: sensor.gas_weekly
-                name: House
-          - type: custom:multiple-entity-row
-            entity: sensor.gas_monthly
-            name: Monthly
-            icon: mdi:calendar-month
-            show_state: false
-            entities:
-              - entity: sensor.average_neighborhood_gas_use_this_month
-                name: Neighbors
-              - entity: sensor.gas_monthly
-                name: House
+              - type: custom:multiple-entity-row
+                entity: sensor.gas_daily
+                name: Daily
+                icon: mdi:calendar-today
+                show_state: false
+                entities:
+                  - entity: sensor.average_neighborhood_gas_use_today
+                    name: Neighbors
+                  - entity: sensor.gas_daily
+                    name: House
+              - type: custom:multiple-entity-row
+                entity: sensor.gas_weekly
+                name: Weekly
+                icon: mdi:calendar-week
+                show_state: false
+                entities:
+                  - entity: sensor.average_neighborhood_gas_use_this_week
+                    name: Neighbors
+                  - entity: sensor.gas_weekly
+                    name: House
+              - type: custom:multiple-entity-row
+                entity: sensor.gas_monthly
+                name: Monthly
+                icon: mdi:calendar-month
+                show_state: false
+                entities:
+                  - entity: sensor.average_neighborhood_gas_use_this_month
+                    name: Neighbors
+                  - entity: sensor.gas_monthly
+                    name: House
