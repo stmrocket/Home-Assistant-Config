@@ -5,7 +5,7 @@
 #                                                                                                                                           #
 #############################################################################################################################################
 
-id: 4  
+id: 5
 icon: mdi:server-network
 name: System Status
 cards:
@@ -1880,341 +1880,126 @@ cards:
                       - this
                 hold_action: none
                 type: state-label
-
-          - type: horizontal-stack
-            cards:
-              - type: custom:mini-graph-card
-                entities: 
-                  - entity: sensor.adguard_queries_daily
-                    show_state: true
-                    show_legend: false
-                    show_graph: false
-                  - entity: sensor.adguard_queries_last_hour
-                    aggregate_func: max
-                    show_state: false
-                    show_legend: false
-                    show_points: false
-                name: Requested
-                #height: 46
-                line_width: 2
-                font_size: 65
-                hours_to_show: 24
-                points_per_hour: 1
-                show:
-                  icon: false
-
-              - type: custom:mini-graph-card                
-                entities: 
-                  - entity: sensor.adguard_blocked_daily
-                    show_state: true
-                    show_legend: false
-                    show_graph: false
-                  - entity: sensor.adguard_blocked_last_hour
-                    aggregate_func: max
-                    color: '#e45e65'
-                    show_state: false
-                    show_legend: false
-                    show_points: false
-                name: Blocked
-                #height: 46
-                line_width: 2
-                font_size: 65
-                hours_to_show: 24
-                points_per_hour: 1     
-                show:
-                  icon: false              
-
-          - type: horizontal-stack
-            cards:
-              - type: "custom:gap-card"
-                height: 10
-          - type: horizontal-stack
-            cards:                  
-
-              - type: "custom:button-card"
-                entity: switch.adguard_protection
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                state:
-                  - value: "on"
-                    icon: mdi:lock
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    icon: mdi:lock-open
-                    color: rgb(255, 255, 255)
-                name: "Master"
-              
-              - type: "custom:button-card"
-                entity: switch.adguard_filtering
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                state:
-                  - value: "on"
-                    icon: mdi:lock
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    icon: mdi:lock-open
-                    color: rgb(255, 255, 255)
-                name: "Filter"
-
-              - type: "custom:button-card"
-                entity: switch.adguard_parental_control
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                icon: mdi:human-male-boy
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: "Parent"
-              
-              - type: "custom:button-card"
-                entity: switch.adguard_safe_search
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                icon: mdi:search-web
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: "Search"
-
-              - type: "custom:button-card"
-                entity: switch.adguard_safe_browsing
-                lock:
-                  enabled: true
-                  unlock: hold
-                color_type: icon
-                icon: mdi:web
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: "Web"
-
   - type: vertical-stack
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: horizontal-stack
         cards:
-          - type: picture-elements
-            image: /local/lovelace/room.png
-            elements:
-              - entity: sensor.blank
-                hold-action: none
-                prefix: Power Monitoring
-                style:
-                  bottom: 20%
-                  font-size: 150%
-                  left: 5%
-                  transform: initial
-                tap_action: none
-                hold_action: none
-                type: state-label
-
           - type: custom:mini-graph-card
             entities: 
-              - entity: sensor.eagle_current_power
-                show_points: false
-              - entity: sensor.energy_daily
+              - entity: sensor.adguard_queries_daily
                 show_state: true
                 show_legend: false
                 show_graph: false
-            name: Electricity Usage
+              - entity: sensor.adguard_queries_last_hour
+                aggregate_func: max
+                show_state: false
+                show_legend: false
+                show_points: false
+            name: Requested
+            #height: 46
             line_width: 2
             font_size: 65
             hours_to_show: 24
-            points_per_hour: 60     
+            points_per_hour: 1
             show:
-              icon: false   
-              
-          - type: entities
-            entities:
-              - type: custom:multiple-entity-row
-                entity: sensor.electricity_cost_today_unit
-                name: Daily
-                icon: mdi:calendar-today
+              icon: false
+
+          - type: custom:mini-graph-card                
+            entities: 
+              - entity: sensor.adguard_blocked_daily
+                show_state: true
+                show_legend: false
+                show_graph: false
+              - entity: sensor.adguard_blocked_last_hour
+                aggregate_func: max
+                color: '#e45e65'
                 show_state: false
-                entities:
-                  - entity: sensor.electricity_cost_yesterday_unit
-                    name: Yesterday
-                  - entity: sensor.electricity_cost_today_unit
-                    name: Today
-              - type: custom:multiple-entity-row
-                entity: sensor.electricity_cost_this_week_unit
-                name: Weekly
-                icon: mdi:calendar-week
-                show_state: false
-                entities:
-                  - entity: sensor.electricity_cost_last_week_unit
-                    name: Previous
-                  - entity: sensor.electricity_cost_this_week_unit
-                    name: Current
-              - type: custom:multiple-entity-row
-                entity: sensor.electricity_cost_this_month_unit
-                name: Monthly
-                icon: mdi:calendar-month
-                show_state: false
-                entities:
-                  - entity: sensor.electricity_cost_last_month_unit
-                    name: Previous
-                  - entity: sensor.electricity_cost_this_month_unit
-                    name: Current
+                show_legend: false
+                show_points: false
+            name: Blocked
+            #height: 46
+            line_width: 2
+            font_size: 65
+            hours_to_show: 24
+            points_per_hour: 1     
+            show:
+              icon: false              
 
-          - type: picture-elements
-            image: /local/genset/background.png
-            elements:
-              - type: image
-                entity: sensor.generator_icon
-                state_image:
-                  Offline: /local/genset/GensetOffline.png
-                  Unavailable Running: /local/genset/GensetUnavailableRunning.png
-                  Unavailable: /local/genset/GensetUnavailable.png
-                  Unavailable Alert: /local/genset/GensetUnavailableAlert.png
-                  Available: /local/genset/GensetAvailable.png
-                  Available Alert: /local/genset/GensetAvailableAlert.png
-                style:
-                  left: 16%
-                  top: 33%
-                  width: 30%
-                tap_action:  
-                  action: call-service
-                  service: script.popup_generator_genset
-                  service_data:
-                    deviceID: 
-                      - this
-                hold_action: none
+      - type: horizontal-stack
+        cards:
+          - type: "custom:gap-card"
+            height: 10
+      - type: horizontal-stack
+        cards:                  
 
-              - type: image
-                entity: sensor.generator_utility_icon
-                state_image:
-                  Offline: /local/genset/UtilityOffline.png
-                  Unavailable: /local/genset/UtilityUnavailable.png
-                  Available: /local/genset/UtilityAvailable.png
-                style:
-                  left: 84%
-                  top: 33%
-                  width: 30%
-                tap_action:  
-                  action: call-service
-                  service: script.popup_generator_utility
-                  service_data:
-                    deviceID: 
-                      - this
-                hold_action: none
+          - type: "custom:button-card"
+            entity: switch.adguard_protection
+            lock:
+              enabled: true
+              unlock: hold
+            color_type: icon
+            state:
+              - value: "on"
+                icon: mdi:lock
+                color: rgb(228, 94, 101)
+              - value: "off"
+                icon: mdi:lock-open
+                color: rgb(255, 255, 255)
+            name: "Master"
+          
+          - type: "custom:button-card"
+            entity: switch.adguard_filtering
+            lock:
+              enabled: true
+              unlock: hold
+            color_type: icon
+            state:
+              - value: "on"
+                icon: mdi:lock
+                color: rgb(228, 94, 101)
+              - value: "off"
+                icon: mdi:lock-open
+                color: rgb(255, 255, 255)
+            name: "Filter"
 
-              - type: image
-                entity: sensor.generator_load_icon
-                state_image:
-                  Offline: /local/genset/LoadOffline.png
-                  Fault: /local/genset/LoadGoodAlert.png
-                  Good: /local/genset/LoadGood.png
-                style:
-                  left: 50%
-                  top: 67%
-                  width: 30%
-                tap_action:  
-                  action: call-service
-                  service: script.popup_generator_load
-                  service_data:
-                    deviceID: 
-                      - this
-                hold_action: none
+          - type: "custom:button-card"
+            entity: switch.adguard_parental_control
+            lock:
+              enabled: true
+              unlock: hold
+            color_type: icon
+            icon: mdi:human-male-boy
+            state:
+              - value: "on"
+                color: rgb(228, 94, 101)
+              - value: "off"
+                color: rgb(255, 255, 255)
+            name: "Parent"
+          
+          - type: "custom:button-card"
+            entity: switch.adguard_safe_search
+            lock:
+              enabled: true
+              unlock: hold
+            color_type: icon
+            icon: mdi:search-web
+            state:
+              - value: "on"
+                color: rgb(228, 94, 101)
+              - value: "off"
+                color: rgb(255, 255, 255)
+            name: "Search"
 
-              - type: image
-                entity: sensor.generator_ats_icon
-                state_image:
-                  Offline: /local/genset/SourceOffline.png
-                  Fault: /local/genset/SourceFault.png
-                  Utility: /local/genset/SourceUtility.png
-                  Generator: /local/genset/SourceGenset.png
-                style:
-                  left: 50%
-                  top: 30%
-                  width: 40%
-                tap_action:  
-                  action: call-service
-                  service: script.popup_generator_ats
-                  service_data:
-                    deviceID: 
-                      - this
-                hold_action: none
-
-              - type: state-label
-                entity: sensor.generator_state
-                style:
-                  left: 50%
-                  top: 9%
-                  font-size: 170%
-                tap_action:  
-                  action: call-service
-                  service: script.popup_generator_control
-                  service_data:
-                    deviceID: 
-                      - this
-                hold_action: none
-
-              - type: state-label
-                entity: sensor.generator_alert
-                style:
-                  left: 50%
-                  top: 94%
-                  font-size: 120%
-                tap_action: none
-                hold_action:
-                  action: call-service
-                  service: mqtt.publish
-                  service_data:
-                    topic: "genset/command/clear/faults"
-
-              - type: conditional
-                conditions:
-                  - entity: sensor.generator_available_sources
-                    state_not: Source2
-                elements:
-                  - type: state-label
-                    entity: sensor.generator_source_1_voltage
-                    style:
-                      left: 84%
-                      top: 59.4%
-                      font-size: 120%
-                  - type: state-label
-                    entity: sensor.generator_source_1_frequency
-                    style:
-                      left: 84%
-                      top: 66%
-                      font-size: 120%
-
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.generator_running
-                    state: 'on'
-                elements:
-                  - type: state-label
-                    entity: sensor.generator_source_2_voltage
-                    style:
-                      left: 16%
-                      top: 59.4%
-                      font-size: 120%
-                  - type: state-label
-                    entity: sensor.generator_source_2_frequency
-                    style:
-                      left: 16%
-                      top: 66%
-                      font-size: 120%
-                  - type: state-label
-                    entity: sensor.generator_engine_speed
-                    style:
-                      left: 16%
-                      top: 72.6%
-                      font-size: 120%
+          - type: "custom:button-card"
+            entity: switch.adguard_safe_browsing
+            lock:
+              enabled: true
+              unlock: hold
+            color_type: icon
+            icon: mdi:web
+            state:
+              - value: "on"
+                color: rgb(228, 94, 101)
+              - value: "off"
+                color: rgb(255, 255, 255)
+            name: "Web"
