@@ -262,14 +262,14 @@ cards:
                 name: Neighbors
                 show_legend: true
                 show_points: true
-                show_state: true
+                show_state: false
                 aggregate_func: max
                 color: '#e45e65'
               - entity: sensor.gas_last_hour
                 name: House
                 show_legend: true
                 show_points: true
-                show_state: true
+                show_state: false
                 aggregate_func: max
                 color: '#0091ff'
             
