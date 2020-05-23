@@ -58,6 +58,9 @@
     - condition: state
       entity_id: cover.house_blinds
       state: open
+    - condition: state
+      entity_id: cover.master_blinds
+      state: closed
   action:
     - service: script.activate_alexa_actionable_notification
       data_template:
