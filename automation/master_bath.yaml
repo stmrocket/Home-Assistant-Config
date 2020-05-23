@@ -1,7 +1,7 @@
 - alias: Master Shower On
   trigger:
     - platform: state
-      entity_id: switch.master_shower_light_a
+      entity_id: switch.shower_light_and_fan
       from: 'off'
       to: 'on'
   action:
@@ -15,7 +15,7 @@
 - alias: Master Shower Off
   trigger:
     - platform: state
-      entity_id: switch.master_shower_light_a
+      entity_id: switch.shower_light_and_fan
       from: 'on'
       to: 'off'
   action:
@@ -31,7 +31,7 @@
     to: 'off'
   condition:
   - condition: state
-    entity_id: switch.master_shower_light_a
+    entity_id: switch.shower_light_and_fan
     state: 'on'
   action:
   - service: mqtt.publish
@@ -58,6 +58,9 @@
     - condition: state
       entity_id: cover.house_blinds
       state: open
+    - condition: state
+      entity_id: cover.master_blinds
+      state: closed
   action:
     - service: script.activate_alexa_actionable_notification
       data_template:
