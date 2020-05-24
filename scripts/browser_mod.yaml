@@ -2871,7 +2871,6 @@ popup_manual_alarm:
                 align_controls: right
                 hour_mode: single
 
-
 popup_filter:
   sequence:
     - service: browser_mod.popup
@@ -2882,7 +2881,8 @@ popup_filter:
           type: vertical-stack
           cards:
             - type: "custom:hui-entities-card"
-              entities:                  
+              entities:                 
+              - entity: sensor.furnace_filter_last_replaced 
               - entity: sensor.furnace_filter_life
               - entity: sensor.average_total_runtime_week
               - entity: sensor.furnace_filter_days_remaining
