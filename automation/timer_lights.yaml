@@ -51,6 +51,7 @@
         - switch.den_lamps
         - switch.den_table_lamp
         - switch.shack_lamp
+        - switch.guest_room_lamp
     - service: light.turn_on
       entity_id: light.entry_lamp
     - service: input_boolean.turn_on
@@ -99,6 +100,7 @@
         - switch.den_lamps
         - switch.den_table_lamp
         - switch.shack_lamp
+        - switch.guest_room_lamp
     - service: light.turn_on
       entity_id: light.entry_lamp
     - service: input_boolean.turn_on
@@ -121,6 +123,7 @@
         - switch.den_lamps
         - switch.den_table_lamp
         - switch.shack_lamp
+        - switch.guest_room_lamp
     - service: light.turn_off
       entity_id: light.entry_lamp
     - service: input_boolean.turn_off
@@ -142,6 +145,7 @@
         - switch.den_lamps
         - switch.den_table_lamp
         - switch.shack_lamp
+        - switch.guest_room_lamp
     - service: light.turn_off
       entity_id: light.entry_lamp
     - service: input_boolean.turn_off
@@ -179,20 +183,9 @@
       event_type: automation_triggered
       event_data:
         entity_id: automation.timer_lights_on_main_weekday_am
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_on_main_evenings
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_on_main_weekend_holiday_am
   condition:
     - condition: or
       conditions:
-        - condition: sun
-          after: sunset
-          after_offset: "-00:30:00"
         - condition: state
           entity_id: input_boolean.guest_mode
           state: 'off'
@@ -208,27 +201,11 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: automation.timer_lights_off_main_night_away
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_off_main_mornings
-    - platform: event
-      event_type: automation_triggered
-      event_data:
         entity_id: automation.timer_lights_off_main_night_mode 
   condition:
-    - condition: or
-      conditions:
-        - condition: sun
-          after: sunrise
-          after_offset: "+00:30:00"
-        - condition: state
-          entity_id: input_boolean.guest_mode
-          state: 'off'
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_away
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
   action:
     - service: switch.turn_off
       entity_id: switch.guest_room_lamp
