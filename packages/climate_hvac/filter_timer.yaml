@@ -92,10 +92,10 @@ sensor:
           {% endif %}
         unit_of_measurement: 'd'
 
-    furnace_filter_last_replaced:
-      friendly_name: Last Replaced
-      value_template: "{{ states('input_text.furnace_filter')[:10] }}"
-      icon: mdi:calendar-month
+      furnace_filter_last_replaced:
+        friendly_name: Last Replaced
+        value_template: "{{ states('input_text.furnace_filter')[:10] }}"
+        icon: mdi:calendar-month
 
 
 script:
