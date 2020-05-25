@@ -3631,3 +3631,57 @@ popup_adguard:
                   name: Blocked Query Ratio
                 - entity: sensor.adguard_average_processing_speed
                   name: Average Processing Speed
+
+popup_truck:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Truck COntrol
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                
+                - type: "custom:button-card"
+                  color: rgb(255, 255, 255)
+                  icon: mdi:lock-open
+                  name: Unlock
+                  tap_action: 
+                    action: call-service
+                    service: rest_command.unlock_truck
+                
+                - type: "custom:button-card"
+                  color: rgb(255, 255, 255)
+                  icon: mdi:lock
+                  name: Lock
+                  tap_action: 
+                    action: call-service
+                    service: rest_command.lock_truck
+                
+
+
+            - type: horizontal-stack
+              cards:               
+                
+                - type: "custom:button-card"
+                  lock:
+                    enabled: true
+                    unlock: hold
+                    color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:engine
+                  name: Start
+                  tap_action: 
+                    action: call-service
+                    service: rest_command.start_truck
+                
+                - type: "custom:button-card"
+                  color: rgb(255, 255, 255)
+                  icon: mdi:engine-off
+                  name: Stop
+                  tap_action: 
+                    action: call-service
+                    service: rest_command.stop_truck
+

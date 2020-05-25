@@ -429,23 +429,12 @@
   trigger:
   - platform: state
     entity_id: sensor.generator_status
-    to: 'Idle'    
+    to: 'Standby'    
   action:
   - service: notify.mobile_app_shawn_7t
     data:
       title: Generator Stopped
-      message: The generator has stopped.         
-
-- alias: Notify Genset Running
-  trigger:
-  - platform: state
-    entity_id: sensor.generator_status
-    to: 'Testing'   
-  action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Generator Testing
-      message: The generator is performing a test cycle.    
+      message: The generator has stopped.           
 
 - alias: Notify Genset Trouble
   trigger:
@@ -506,3 +495,17 @@
     data:
       title: Shack UPS Replace Battery
       message: The shack UPS battery has failed.  Replace immediately.      
+
+- alias: Notify AdGuard Offline
+  trigger:
+  - platform: state
+    entity_id: device_tracker.adguard
+    from: 'home'
+    to: 'not_home'    
+    for:
+      minutes: 5
+  action:
+  - service: notify.mobile_app_shawn_7t
+    data:
+      title: Device Offline
+      message: The AdGuard server has been offline for 5 minutes.      

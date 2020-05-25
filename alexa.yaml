@@ -63,6 +63,7 @@ smart_home:
       - switch.shack_lamp
       - switch.master_bedroom_lamps
       - switch.water_projector
+      - switch.manual_timer_lights
 
       #INPUT BOOLEAN
       - input_boolean.server_blinds_open
@@ -90,6 +91,11 @@ smart_home:
       - input_boolean.kitchen_blinds_close
       - input_boolean.master_blinds_open
       - input_boolean.master_blinds_close
+      - input_boolean.leaving_trigger
+      - input_boolean.start_truck
+      - input_boolean.stop_truck
+      - input_boolean.unlock_truck
+      - input_boolean.lock_truck
 
       #LOCK
       - lock.front_door
@@ -208,3 +214,5 @@ smart_home:
       name: Shack Lamp
     switch.master_bedroom_lamps:
       name: Master Lamps
+    switch.manual_timer_lights:
+      name: Timer Lights

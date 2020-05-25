@@ -1,0 +1,11 @@
+rest_command:
+  lock_truck:
+    url: !secret ar_lock_truck
+  unlock_truck:
+    url: !secret ar_unlock_truck
+  start_truck:
+    url: !secret ar_start_truck
+  stop_truck:
+    url: !secret ar_stop_truck
+  load_audiobook:
+    url: !secret ar_load_audiobook
