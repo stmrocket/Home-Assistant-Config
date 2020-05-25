@@ -56,6 +56,7 @@
         - switch.master_bedroom_fan
     - service: input_boolean.turn_off
       entity_id: input_boolean.bedtime_trigger
+    - service: rest_command.load_audiobook
 
 - alias: Alexa Good Morning
   trigger:
@@ -71,3 +72,84 @@
       entity_id: input_boolean.elk_night_off
     - service: input_boolean.turn_off
       entity_id: input_boolean.morning_trigger      
+
+- alias: Alexa Leaving House
+  trigger:
+    - platform: state
+      entity_id: input_boolean.leaving_trigger
+      to: 'on'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: disarmed
+  action:
+    - service: rest_command.unlock_truck
+    - service: lock.unlock
+      entity_id: lock.front_door
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.elk_away_on
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.leaving_trigger  
+
+- alias: Alexa Unlock Truck
+  trigger:
+    - platform: state
+      entity_id: input_boolean.unlock_truck
+      to: 'on'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: disarmed
+  action:
+    - service: rest_command.unlock_truck
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.unlock_truck
+
+- alias: Alexa Lock Truck
+  trigger:
+    - platform: state
+      entity_id: input_boolean.lock_truck
+      to: 'on'
+  action:
+    - service: rest_command.lock_truck
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.lock_truck
+
+- alias: Alexa Start Truck
+  trigger:
+    - platform: state
+      entity_id: input_boolean.start_truck
+      to: 'on'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: disarmed
+  action:
+    - service: rest_command.start_truck
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.start_truck
+
+- alias: Alexa Stop Truck
+  trigger:
+    - platform: state
+      entity_id: input_boolean.stop_truck
+      to: 'on'
+  action:
+    - service: rest_command.stop_truck
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.stop_truck

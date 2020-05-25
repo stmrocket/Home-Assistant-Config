@@ -1,0 +1,6 @@
+#Device Tracking
+device_tracker:
+  - platform: aprs
+    username: !secret my_callsign
+    callsigns:
+      - !secret truck_callsign

@@ -199,22 +199,7 @@ input_boolean:
 
   timer_lights:
     name: Timer Lights
-    icon: mdi:lightbulb
-
-  goodnight_trigger:
-    name: Alexa Good Night Trigger
-    initial: off
-    icon: mdi:amazon-alexa
-
-  bedtime_trigger:
-    name: Alexa Bedtime Trigger
-    initial: off
-    icon: mdi:amazon-alexa
-
-  morning_trigger:
-    name: Alexa Morning Trigger
-    initial: off
-    icon: mdi:amazon-alexa    
+    icon: mdi:lightbulb  
 
   outside_timer_lights:
     name: Outside Timer Lights
@@ -223,26 +208,6 @@ input_boolean:
   master_lamp_timer:
     name: Master Lamp Timer
     icon: mdi:timer
-
-  elk_night_on:
-    name: Elk Night Mode On Trigger
-    icon: mdi:alarm-bell
-
-  elk_night_off:
-    name: Elk Night Mode Off Trigger
-    icon: mdi:alarm-bell  
-
-  elk_stay_on:
-    name: Elk Stay Mode On Trigger
-    icon: mdi:alarm-bell
-
-  elk_stay_off:
-    name: Elk Stay Mode Off Trigger
-    icon: mdi:alarm-bell
-
-  elk_away_on:
-    name: Elk Away Mode On Trigger
-    icon: mdi:alarm-bell
 
 light:
 
@@ -353,13 +318,6 @@ elkm1:
 # Alexa Integration
 api:
 alexa: !include alexa.yaml
-
-#Device Tracking
-device_tracker:
-  - platform: aprs
-    username: !secret my_callsign
-    callsigns:
-      - !secret truck_callsign
 
 #Kodi Media Player
 media_player:
