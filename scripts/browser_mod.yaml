@@ -3637,7 +3637,7 @@ popup_truck:
     - service: browser_mod.popup
       data_template:
         deviceID: ["{{ ','.join(deviceID) }}"]
-        title: Truck COntrol
+        title: Truck Control
         card:
           type: vertical-stack
           cards:
