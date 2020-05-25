@@ -1817,6 +1817,7 @@ cards:
 
           - type: horizontal-stack
             cards:
+              - type: "custom:gap-card"
               - type: "custom:button-card"
                 entity: sensor.shack_ups_status
                 color_type: icon
@@ -1855,8 +1856,16 @@ cards:
                     color: rgb(228, 94, 101)
                 name: Generator
               
-              - type: "custom:gap-card"
-              - type: "custom:gap-card"
+              - type: "custom:button-card"
+                entity: device_tracker.adguard
+                color_type: icon
+                icon: mdi:shield-check
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: AdGuard
               - type: "custom:gap-card" 
 
   - type: vertical-stack
@@ -1868,7 +1877,7 @@ cards:
             elements:
               - entity: sensor.blank
                 hold-action: none
-                prefix: Ad Guard
+                prefix: AdGuard
                 style:
                   bottom: 20%
                   font-size: 150%

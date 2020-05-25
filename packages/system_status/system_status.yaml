@@ -18,6 +18,7 @@ device_tracker:
       office_ups: !secret office_ups_ip
       generator: !secret generator_ip
       rainmachine: !secret rainmachine_ip
+      adguard: !secret adguard_ip
 
 
 #################################################################
