@@ -74,7 +74,6 @@
                 action: more-info
         - type: horizontal-stack
           cards:
-            - type: "custom:gap-card"
             - type: "custom:button-card"
               entity: switch.back_porch_light
               color_type: icon
@@ -99,6 +98,23 @@
               name: Back Porch
               hold_action: 
                 action: more-info
+            - type: "custom:button-card"
+              color_type: icon
+              color: rgb(255, 255, 255)
+              icon: mdi:car-pickup
+              name: Truck
+              tap_action:  
+                action: call-service
+                service: script.popup_truck
+                service_data:
+                  deviceID: 
+                    - this
+              hold_action:  
+                action: call-service
+                service: script.popup_truck
+                service_data:
+                  deviceID: 
+                    - this
             - type: "custom:gap-card"
 
         - type: custom:mini-media-player

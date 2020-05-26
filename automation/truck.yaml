@@ -1,0 +1,23 @@
+- alias: Send Lock Notification When at Work
+  trigger:
+    - platform: state
+      entity_id: person.shawn_mccoy
+      to: 'work'
+  action:
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Lock Truck
+        message: "You are at work.  Would you like to lock your truck?"
+        data:
+          actions:
+            - action: "lock_truck" # The key you are sending for the event
+              title: "Lock" # The button title
+
+- alias: Lock Truck from Notification
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: lock_truck
+  action:              
+    - service: rest_command.lock_truck

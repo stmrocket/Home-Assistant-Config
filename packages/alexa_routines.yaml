@@ -1,0 +1,66 @@
+input_boolean:
+
+  goodnight_trigger:
+    name: Alexa Good Night Trigger
+    initial: off
+    icon: mdi:amazon-alexa
+
+  bedtime_trigger:
+    name: Alexa Bedtime Trigger
+    initial: off
+    icon: mdi:amazon-alexa
+
+  morning_trigger:
+    name: Alexa Morning Trigger
+    initial: off
+    icon: mdi:amazon-alexa    
+
+  leaving_trigger:
+    name: Alexa Leaving Trigger
+    initial: off
+    icon: mdi:amazon-alexa    
+
+  elk_night_on:
+    name: Elk Night Mode On Trigger
+    initial: off
+    icon: mdi:alarm-bell
+
+  elk_night_off:
+    name: Elk Night Mode Off Trigger
+    initial: off
+    icon: mdi:alarm-bell  
+
+  elk_stay_on:
+    name: Elk Stay Mode On Trigger
+    initial: off
+    icon: mdi:alarm-bell
+
+  elk_stay_off:
+    name: Elk Stay Mode Off Trigger
+    initial: off
+    icon: mdi:alarm-bell
+
+  elk_away_on:
+    name: Elk Away Mode On Trigger
+    initial: off
+    icon: mdi:alarm-bell
+
+  start_truck:
+    name: Alexa Start Truck
+    initial: off
+    icon: mdi:car-pickup
+
+  stop_truck:
+    name: Alexa Stop Truck
+    initial: off
+    icon: mdi:car-pickup
+
+  unlock_truck:
+    name: Alexa Unlock Truck
+    initial: off
+    icon: mdi:car-pickup
+
+  lock_truck:
+    name: Alexa Lock Truck
+    initial: off
+    icon: mdi:car-pickup

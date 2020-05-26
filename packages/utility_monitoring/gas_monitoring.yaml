@@ -118,7 +118,7 @@ sensor:
   - platform: average
     name: Average Neighborhood Gas Use This Hour
     entities:
-      - sensor.gas_monthly
+      - sensor.gas_hourly
       - sensor.n1_gas_hourly
       - sensor.n2_gas_hourly
       - sensor.n3_gas_hourly
