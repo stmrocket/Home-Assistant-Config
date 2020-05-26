@@ -504,9 +504,9 @@ popup_hacs:
           entity: sensor.hacs            
           feed_attribute: repositories
           columns:
-            - {field: name, title: 'Name'}
-            - {field: installed version, title: 'Installed'}
-            - {field: available version, title: 'Latest'}              
+            - {field: display_name, title: 'Name'}
+            - {field: installed_version, title: 'Installed'}
+            - {field: available_version, title: 'Latest'}   
 
 popup_christmas_outdoor:
   sequence:
