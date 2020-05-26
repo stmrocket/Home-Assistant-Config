@@ -96,6 +96,7 @@ smart_home:
       - input_boolean.stop_truck
       - input_boolean.unlock_truck
       - input_boolean.lock_truck
+      - input_boolean.frigate_enabled
 
       #LOCK
       - lock.front_door
@@ -216,3 +217,5 @@ smart_home:
       name: Master Lamps
     switch.manual_timer_lights:
       name: Timer Lights
+    input_boolean.frigate_enabled:
+      name: Frigate
