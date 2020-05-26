@@ -1,48 +1,62 @@
-- alias: Lock Front Door When Leaving or Going to Bed
+- alias: Lock Front Door When Away or Going to Bed
   trigger:
-  - entity_id: alarm_control_panel.house
-    from: arming
-    platform: state
-    to: armed_night
-  - entity_id: alarm_control_panel.house
-    from: arming
-    platform: state
-    to: armed_away
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: arming
+      to: armed_night
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: arming
+      to: armed_away
   condition:
-  - condition: state
-    entity_id: lock.front_door
-    state: unlocked
-  action:
-  - data:
+    - condition: state
       entity_id: lock.front_door
-    service: lock.lock
+      state: unlocked
+  action:
+    - service: lock.lock
+      entity_id: lock.front_door
+
 - alias: Front Door Lock Timer Trigger
   trigger:
-  - entity_id: sensor.elk_front_door
-    from: Normal
-    to: Violated
-    platform: state
-  - entity_id: lock.front_door
-    from: locked
-    platform: state
-    to: unlocked
+    - platform: state
+      entity_id: sensor.elk_front_door
+      from: Normal
+      to: Violated
+    - platform: state
+      entity_id: lock.front_door
+      from: locked
+      to: unlocked
   action:
-    service: timer.start
-    entity_id: timer.front_door
+    - service: timer.start
+      entity_id: timer.front_door
+
 - alias: Front Door Left Unlocked
   trigger:
-  - event_data:
-      entity_id: timer.front_door
-    event_type: timer.finished
-    platform: event
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.front_door      
   condition:
-  - condition: state
-    entity_id: sensor.elk_front_door
-    state: Normal
-  - condition: state
-    entity_id: lock.front_door
-    state: unlocked
-  action:
-  - data:
+    - condition: state
+      entity_id: sensor.elk_front_door
+      state: Normal
+    - condition: state
       entity_id: lock.front_door
-    service: lock.lock
+      state: unlocked
+  action:
+    - service: lock.lock
+      entity_id: lock.front_door
+
+- alias: Lock Front Door When Leaving
+  trigger:
+    - platform: state
+      entity_id: sensor.elk_front_door
+      from: Violated
+      to: Normal
+  condition:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      state: arming
+  action:
+    - service: lock.lock
+      entity_id: lock.front_door
