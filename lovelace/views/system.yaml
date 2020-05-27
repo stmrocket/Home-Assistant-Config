@@ -193,7 +193,7 @@ cards:
             - type: custom:vertical-stack-in-card
               cards:
               - type: custom:bar-card
-                name: Disk (Videos)
+                name: Disk
                 entity: sensor.synology_volume_used_volume_1
                 decimal: 1
                 entity_row: true
@@ -250,7 +250,7 @@ cards:
                   }                    
 
               - type: custom:bar-card
-                name: Temperature (Videos)
+                name: Temperature
                 entity: sensor.synology_maximum_disk_temp_volume_1
                 decimal: 1
                 entity_row: true
@@ -422,122 +422,6 @@ cards:
                   bar-card-divider {
                     display: none;
                   }                         
-              
-            - type: custom:vertical-stack-in-card
-              cards:
-              - type: custom:bar-card
-                name: Disk (Files)
-                entity: sensor.synology_volume_used_volume_2
-                decimal: 1
-                entity_row: true
-                positions:
-                  icon: 'off'
-                  name: inside
-                  value: inside
-                padding: 4px
-                card_style: 
-                  border-radius: 5px
-                max: 100
-                severity:
-                - from: 0
-                  to: 79
-                  color: '#1db954'
-                - from: 80
-                  to: 94
-                  color: '#bf9540'
-                - from: 95
-                  to: 100
-                  color: '#ff0000'  
-                style: |-
-                  .contentbar-direction-right {
-                    flex-direction: column;
-                  }
-                  .min-direction-right {
-                    margin: 0px;
-                    margin-bottom: -20px;
-                    bottom: 10px;
-                  }
-                    bar-card-value {
-                    margin: 0px;
-                    font-size: 13px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    font-weight: bold;
-                    text-shadow: 1px 1px #0005;
-                  }
-                  bar-card-name {
-                    margin: 0px;
-                    margin-top: 5px;
-                    font-size: 14px;
-                    font-weight: bold;
-                    text-shadow: 1px 1px #0005;              
-                  }
-                  bar-card-max {
-                    margin: 0px;
-                    margin-left: auto;
-                    margin-top: -20px;
-                    top: 10px;
-                  }
-                  bar-card-divider {
-                    display: none;
-                  } 
-
-              - type: custom:bar-card
-                name: Temperature (Files)
-                entity: sensor.synology_maximum_disk_temp_volume_2
-                decimal: 1
-                entity_row: true
-                positions:
-                  icon: 'off'
-                  name: inside
-                  value: inside
-                padding: 4px
-                card_style: 
-                  border-radius: 5px
-                max: 200
-                severity:
-                - from: 0
-                  to: 130
-                  color: '#1db954'
-                - from: 131
-                  to: 140
-                  color: '#bf9540'
-                - from: 141
-                  to: 150
-                  color: '#bf4040'  
-                style: |-
-                  .contentbar-direction-right {
-                    flex-direction: column;
-                  }
-                  .min-direction-right {
-                    margin: 0px;
-                    margin-bottom: -20px;
-                    bottom: 10px;
-                  }
-                    bar-card-value {
-                    margin: 0px;
-                    font-size: 13px;
-                    margin-left: auto;
-                    margin-right: auto;
-                    font-weight: bold;
-                    text-shadow: 1px 1px #0005;
-                  }
-                  bar-card-name {
-                    margin: 0px;
-                    margin-top: 5px;
-                    font-size: 14px;
-                    font-weight: bold;
-                    text-shadow: 1px 1px #0005;              
-                  }
-                  bar-card-max {
-                    margin: 0px;
-                    margin-left: auto;
-                    margin-top: -20px;
-                    top: 10px;
-                  }
-                  bar-card-divider {
-                    display: none;
-                  }           
 
 #################################################################
 #                                                               #
