@@ -94,62 +94,78 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.elk_away_on
     - service: input_boolean.turn_off
-      entity_id: input_boolean.leaving_trigger  
+      entity_id: input_boolean.leaving_trigger
 
-- alias: Alexa Unlock Truck
+- alias: Leaving Clear Trigger if State Disallowed
   trigger:
     - platform: state
-      entity_id: input_boolean.unlock_truck
+      entity_id: input_boolean.leaving_trigger
       to: 'on'
   condition:
+    - condition: not
+      conditions:
+      - condition: state
+        entity_id: alarm_control_panel.house
+        state: armed_home
+      - condition: state
+        entity_id: alarm_control_panel.house
+        state: disarmed
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.leaving_trigger
+
+- alias: Alexa Returning Home
+  trigger:
+    - platform: state
+      entity_id: input_boolean.returning_trigger
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: sensor.shawn_7t_wifi_connection
+      state: !secret home_wifi_ssid
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: pending
+    - condition: state
+      entity_id: input_boolean.vacation_mode
+      state: 'off'
     - condition: or
+      conditions:
+        - condition: template
+          value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
+        - condition: template
+          value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.elk_stay_mode_off
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.returning_trigger      
+
+- alias: Arrriving Clear Trigger if Disallowed
+  trigger:
+    - platform: state
+      entity_id: input_boolean.returning_trigger
+      to: 'on'
+  condition:
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: sensor.shawn_7t_wifi_connection
+          state: !secret home_wifi_ssid
+    - condition: not
       conditions:
         - condition: state
           entity_id: alarm_control_panel.house
-          state: armed_home
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: disarmed
-  action:
-    - service: rest_command.unlock_truck
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.unlock_truck
-
-- alias: Alexa Lock Truck
-  trigger:
-    - platform: state
-      entity_id: input_boolean.lock_truck
-      to: 'on'
-  action:
-    - service: rest_command.lock_truck
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.lock_truck
-
-- alias: Alexa Start Truck
-  trigger:
-    - platform: state
-      entity_id: input_boolean.start_truck
-      to: 'on'
-  condition:
-    - condition: or
+          state: pending
+    - condition: state
+      entity_id: input_boolean.vacation_mode
+      state: 'on'
+    - condition: not
       conditions:
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_home
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: disarmed
+        - condition: template
+          value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
+        - condition: template
+          value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
   action:
-    - service: rest_command.start_truck
     - service: input_boolean.turn_off
-      entity_id: input_boolean.start_truck
-
-- alias: Alexa Stop Truck
-  trigger:
-    - platform: state
-      entity_id: input_boolean.stop_truck
-      to: 'on'
-  action:
-    - service: rest_command.stop_truck
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.stop_truck
+      entity_id: input_boolean.returning_trigger            

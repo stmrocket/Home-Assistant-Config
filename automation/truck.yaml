@@ -1,3 +1,84 @@
+- alias: Alexa Unlock Truck
+  trigger:
+    - platform: state
+      entity_id: input_boolean.unlock_truck
+      to: 'on'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: disarmed
+  action:
+    - service: rest_command.unlock_truck
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.unlock_truck
+
+- alias: Alexa Lock Truck
+  trigger:
+    - platform: state
+      entity_id: input_boolean.lock_truck
+      to: 'on'
+  action:
+    - service: rest_command.lock_truck
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.lock_truck
+
+- alias: Alexa Start Truck
+  trigger:
+    - platform: state
+      entity_id: input_boolean.start_truck
+      to: 'on'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: disarmed
+  action:
+    - service: rest_command.start_truck
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.start_truck
+
+- alias: Alexa Stop Truck
+  trigger:
+    - platform: state
+      entity_id: input_boolean.stop_truck
+      to: 'on'
+  action:
+    - service: rest_command.stop_truck
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.stop_truck
+
+- alias: Truck Clear Trigger if State Disallowed
+  trigger:
+    - platform: state
+      entity_id: input_boolean.start_truck
+      to: 'on'
+    - platform: state
+      entity_id: input_boolean.unlock_truck
+      to: 'on'
+  condition:
+    - condition: not
+      conditions:
+      - condition: state
+        entity_id: alarm_control_panel.house
+        state: armed_home
+      - condition: state
+        entity_id: alarm_control_panel.house
+        state: disarmed
+  action:
+    - service: input_boolean.turn_off
+      entity_id: 
+        - input_boolean.start_truck
+        - input_boolean.unlock_truck   
+      
 - alias: Send Lock Notification When at Work
   trigger:
     - platform: state
@@ -21,3 +102,49 @@
         action: lock_truck
   action:              
     - service: rest_command.lock_truck
+
+- alias: Send Unock or Start Notification When at Work
+  trigger:
+    - platform: time
+      at: "15:50:00"
+  condition:
+    - condition: state
+      entity_id: person.shawn_mccoy
+      state: 'work'
+  action:
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Heading Home
+        message: "It's about that time.  Would you like to start or unlock your truck?"
+        data:
+          actions:
+            - action: "start_truck" # The key you are sending for the event
+              title: "Start" # The button title    
+            - action: "unlock_truck" # The key you are sending for the event
+              title: "Unlock" # The button title   
+
+- alias: Start Truck from Notification
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: start_truck
+  action:              
+    - service: rest_command.start_truck   
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Heading Home
+        message: "The truck is running.  Would you like to unlock your truck?"
+        data:
+          actions:   
+            - action: "unlock_truck" # The key you are sending for the event
+              title: "Unlock" # The button title              
+
+- alias: Unlock Truck from Notification
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: unlock_truck
+  action:              
+    - service: rest_command.unlock_truck              
