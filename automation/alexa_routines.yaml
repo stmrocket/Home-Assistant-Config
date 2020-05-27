@@ -147,25 +147,27 @@
       entity_id: input_boolean.returning_trigger
       to: 'on'
   condition:
-    - condition: not
+    - condition: or
       conditions:
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id: sensor.shawn_7t_wifi_connection
+              state: !secret home_wifi_ssid
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id: alarm_control_panel.house
+              state: pending
         - condition: state
-          entity_id: sensor.shawn_7t_wifi_connection
-          state: !secret home_wifi_ssid
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: pending
-    - condition: state
-      entity_id: input_boolean.vacation_mode
-      state: 'on'
-    - condition: not
-      conditions:
-        - condition: template
-          value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
-        - condition: template
-          value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
+          entity_id: input_boolean.vacation_mode
+          state: 'on'
+        - condition: not
+          conditions:
+            - condition: template
+              value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
+            - condition: template
+              value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.returning_trigger            
