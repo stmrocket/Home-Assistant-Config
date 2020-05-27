@@ -92,6 +92,7 @@ smart_home:
       - input_boolean.master_blinds_open
       - input_boolean.master_blinds_close
       - input_boolean.leaving_trigger
+      - input_boolean.returning_trigger
       - input_boolean.start_truck
       - input_boolean.stop_truck
       - input_boolean.unlock_truck

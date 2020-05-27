@@ -18,7 +18,12 @@ input_boolean:
   leaving_trigger:
     name: Alexa Leaving Trigger
     initial: off
-    icon: mdi:amazon-alexa    
+    icon: mdi:amazon-alexa        
+
+  returning_trigger:
+    name: Alexa Returning Trigger
+    initial: off
+    icon: mdi:amazon-alexa   
 
   elk_night_on:
     name: Elk Night Mode On Trigger
