@@ -463,7 +463,7 @@ cards:
             elements:
               - entity: sensor.blank
                 hold-action: none
-                prefix: Den
+                prefix: Master Bedroom
                 style:
                   bottom: 20%
                   font-size: 150%
