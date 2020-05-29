@@ -419,21 +419,21 @@ media_player:
       volume_up:
         service: remote.send_command
         service_data:
-          entity_id: remote.harmony_den
+          entity_id: remote.harmony_master_bedroom
           command:
             - VolumeUp
           device: 35113962
       volume_down:
         service: remote.send_command
         service_data:
-          entity_id: remote.harmony_den
+          entity_id: remote.harmony_master_bedroom
           command:
             - VolumeDown
           device: 35113962
       volume_mute:
         service: remote.send_command
         service_data:
-          entity_id: remote.harmony_den
+          entity_id: remote.harmony_master_bedroom
           command:
             - Mute
           device: 35113962             
@@ -446,21 +446,21 @@ media_player:
       volume_up:
         service: remote.send_command
         service_data:
-          entity_id: remote.harmony_den
+          entity_id: remote.harmony_master_bedroom
           command:
             - VolumeUp
           device: 35113962
       volume_down:
         service: remote.send_command
         service_data:
-          entity_id: remote.harmony_den
+          entity_id: remote.harmony_master_bedroom
           command:
             - VolumeDown
           device: 35113962
       volume_mute:
         service: remote.send_command
         service_data:
-          entity_id: remote.harmony_den
+          entity_id: remote.harmony_master_bedroom
           command:
             - Mute
           device: 35113962  
