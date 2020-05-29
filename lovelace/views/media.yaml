@@ -378,7 +378,7 @@ cards:
 
           - type: conditional
             conditions:
-              - entity_id: sensor.den_harmony_activity
+              - entity: sensor.den_harmony_activity
                 state: "Watch PVR"
             card:
               - type: custom:mini-media-player
@@ -393,7 +393,7 @@ cards:
 
           - type: conditional
             conditions:
-              - entity_id: sensor.den_harmony_activity
+              - entity: sensor.den_harmony_activity
                 state: "Watch Roku"
             card:
               - type: custom:mini-media-player
@@ -408,9 +408,9 @@ cards:
 
           - type: conditional
             conditions:
-              - entity_id: sensor.den_harmony_activity
+              - entity: sensor.den_harmony_activity
                 state: "Listen to WHA"
-              - entity_id: sensor.nuvo_zone_7_source
+              - entity: sensor.nuvo_zone_7_source
                 state: "5"
             card:
               - type: custom:mini-media-player
@@ -431,9 +431,9 @@ cards:
 
           - type: conditional
             conditions:
-              - entity_id: sensor.den_harmony_activity
+              - entity: sensor.den_harmony_activity
                 state: "Listen to WHA"
-              - entity_id: sensor.nuvo_zone_7_source
+              - entity: sensor.nuvo_zone_7_source
                 state_not: "5"
             card:
               - type: custom:mini-media-player
@@ -576,7 +576,7 @@ cards:
 
           - type: conditional
             conditions:
-              - entity_id: sensor.master_harmony_activity
+              - entity: sensor.master_harmony_activity
                 state: "Watch PVR"
             card:
               - type: custom:mini-media-player
@@ -591,7 +591,7 @@ cards:
 
           - type: conditional
             conditions:
-              - entity_id: sensor.master_harmony_activity
+              - entity: sensor.master_harmony_activity
                 state: "Watch Roku"
             card:
               - type: custom:mini-media-player
@@ -606,9 +606,9 @@ cards:
 
           - type: conditional
             conditions:
-              - entity_id: sensor.master_harmony_activity
+              - entity: sensor.master_harmony_activity
                 state: "Listen to WHA"
-              - entity_id: sensor.nuvo_zone_4_source
+              - entity: sensor.nuvo_zone_4_source
                 state: "5"
             card:
               - type: custom:mini-media-player
@@ -629,9 +629,9 @@ cards:
 
           - type: conditional
             conditions:
-              - entity_id: sensor.master_harmony_activity
+              - entity: sensor.master_harmony_activity
                 state: "Listen to WHA"
-              - entity_id: sensor.nuvo_zone_4_source
+              - entity: sensor.nuvo_zone_4_source
                 state_not: "5"
             card:
               - type: custom:mini-media-player
