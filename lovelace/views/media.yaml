@@ -380,6 +380,10 @@ cards:
             conditions:
               - entity: sensor.den_harmony_activity
                 state: "Watch PVR"
+              - entity: media_player.den_kodi
+                state_not: "idle"
+              - entity: media_player.den_kodi
+                state_not: "off"
             card:
               type: custom:mini-media-player
               entity: media_player.den_kodi_harmony
@@ -396,6 +400,8 @@ cards:
             conditions:
               - entity: sensor.den_harmony_activity
                 state: "Watch Roku"
+              - entity: media_player.roku_living_room
+                state_not: "home"
             card:
               type: custom:mini-media-player
               entity: media_player.den_roku_harmony
@@ -581,6 +587,10 @@ cards:
             conditions:
               - entity: sensor.master_harmony_activity
                 state: "Watch PVR"
+              - entity: media_player.den_kodi
+                state_not: "idle"
+              - entity: media_player.den_kodi
+                state_not: "off"
             card:
               type: custom:mini-media-player
               entity: media_player.master_kodi_harmony
@@ -597,6 +607,8 @@ cards:
             conditions:
               - entity: sensor.master_harmony_activity
                 state: "Watch Roku"
+              - entity: media_player.roku_master_bedroom
+                state_not: "home"
             card:
               type: custom:mini-media-player
               entity: media_player.master_roku_harmony
