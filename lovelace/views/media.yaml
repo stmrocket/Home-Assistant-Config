@@ -253,3 +253,402 @@ cards:
             service_data:
               deviceID: 
                 - this
+
+  - type: vertical-stack
+    cards:  
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Den
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap_action: none
+                hold_action: none
+                type: state-label    
+
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:gap-card"
+                height: 10
+
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "PowerOff"
+                    color: rgb(228, 94, 101)
+                  - value: "PowerOff"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:remote-tv-off
+                name: "Off"
+                tap_action:
+                  action: call-service
+                  service: remote.turn_off
+                  service_data:
+                    entity_id: remote.harmony_master_bedroom
+              
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch PVR"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch PVR"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:kodi
+                name: Kodi
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_master_bedroom     
+                    activity: "Watch PVR"            
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch Roku"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch Roku"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:youtube-tv
+                name: Roku
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_master_bedroom     
+                    activity: "Watch Roku"            
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "ChromeCast"
+                    color: rgb(228, 94, 101)
+                  - value: "ChromeCast"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:cast
+                name: Cast
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_master_bedroom     
+                    activity: "ChromeCast"           
+
+              - type: "custom:button-card"
+                entity: sensor.master_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Listen to WHA"
+                    color: rgb(228, 94, 101)
+                  - value: "Listen to WHA"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:music
+                name: Music
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_master_bedroom     
+                    activity: "Listen to WHA"   
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:gap-card"
+                height: 10
+
+          - type: conditional
+            conditions:
+              - entity_id: sensor.den_harmony_activity
+                state: "Watch PVR"
+            card:
+              - type: custom:mini-media-player
+                entity: media_player.den_kodi_harmony
+                icon: mdi:blank
+                group: true
+                info: scroll
+                volume_stateless: true
+                hide:
+                  name: true
+                  power: true
+
+          - type: conditional
+            conditions:
+              - entity_id: sensor.den_harmony_activity
+                state: "Watch Roku"
+            card:
+              - type: custom:mini-media-player
+                entity: media_player.den_roku_harmony
+                icon: mdi:blank
+                group: true
+                info: scroll
+                volume_stateless: true
+                hide:
+                  name: true
+                  power: true
+
+          - type: conditional
+            conditions:
+              - entity_id: sensor.den_harmony_activity
+                state: "Listen to WHA"
+              - entity_id: sensor.nuvo_zone_7_source
+                state: "5"
+            card:
+              - type: custom:mini-media-player
+                entity: media_player.den_stereo
+                icon: mdi:blank
+                group: true
+                info: scroll
+                volume_stateless: true
+                hide:
+                  name: true
+                  power: true
+                tap_action:
+                  action: call-service
+                  service: script.popup_media_den
+                  service_data:
+                    deviceID: 
+                      - this
+
+          - type: conditional
+            conditions:
+              - entity_id: sensor.den_harmony_activity
+                state: "Listen to WHA"
+              - entity_id: sensor.nuvo_zone_7_source
+                state_not: "5"
+            card:
+              - type: custom:mini-media-player
+                entity: media_player.den_stereo
+                name: Den
+                icon: mdi:speaker
+                group: true
+                artwork: none
+                volume_stateless: true
+                hide:
+                  source: true
+                  controls: true
+                  info: true
+                tap_action:
+                  action: call-service
+                  service: script.popup_media_den
+                  service_data:
+                    deviceID: 
+                      - this
+
+  - type: vertical-stack
+    cards:  
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: Den
+                style:
+                  bottom: 20%
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                tap_action: none
+                hold_action: none
+                type: state-label    
+
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:gap-card"
+                height: 10
+
+          - type: horizontal-stack
+            cards:                  
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "PowerOff"
+                    color: rgb(228, 94, 101)
+                  - value: "PowerOff"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:remote-tv-off
+                name: "Off"
+                tap_action:
+                  action: call-service
+                  service: remote.turn_off
+                  service_data:
+                    entity_id: remote.harmony_den
+              
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch PVR"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch PVR"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:kodi
+                name: Kodi
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_den     
+                    activity: "Watch PVR"            
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Watch Roku"
+                    color: rgb(228, 94, 101)
+                  - value: "Watch Roku"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:youtube-tv
+                name: Roku
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_den     
+                    activity: "Watch Roku"            
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "ChromeCast"
+                    color: rgb(228, 94, 101)
+                  - value: "ChromeCast"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:cast
+                name: Cast
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_den     
+                    activity: "ChromeCast"           
+
+              - type: "custom:button-card"
+                entity: sensor.den_harmony_activity
+                color_type: icon
+                state:
+                  - value: "Listen to WHA"
+                    color: rgb(228, 94, 101)
+                  - value: "Listen to WHA"
+                    operator: '!='
+                    color: rgb(255, 255, 255)
+                icon: mdi:music
+                name: Music
+                tap_action:
+                  action: call-service
+                  service: remote.turn_on
+                  service_data:
+                    entity_id: remote.harmony_den     
+                    activity: "Listen to WHA"                  
+          - type: horizontal-stack
+            cards:
+
+              - type: "custom:gap-card"
+                height: 10
+
+          - type: conditional
+            conditions:
+              - entity_id: sensor.master_harmony_activity
+                state: "Watch PVR"
+            card:
+              - type: custom:mini-media-player
+                entity: media_player.master_kodi_harmony
+                icon: mdi:blank
+                group: true
+                info: scroll
+                volume_stateless: true
+                hide:
+                  name: true
+                  power: true
+
+          - type: conditional
+            conditions:
+              - entity_id: sensor.master_harmony_activity
+                state: "Watch Roku"
+            card:
+              - type: custom:mini-media-player
+                entity: media_player.master_roku_harmony
+                icon: mdi:blank
+                group: true
+                info: scroll
+                volume_stateless: true
+                hide:
+                  name: true
+                  power: true
+
+          - type: conditional
+            conditions:
+              - entity_id: sensor.master_harmony_activity
+                state: "Listen to WHA"
+              - entity_id: sensor.nuvo_zone_4_source
+                state: "5"
+            card:
+              - type: custom:mini-media-player
+                entity: media_player.master_bedroom_stereo
+                icon: mdi:blank
+                group: true
+                info: scroll
+                volume_stateless: true
+                hide:
+                  name: true
+                  power: true
+                tap_action:
+                  action: call-service
+                  service: script.popup_media_master_bed
+                  service_data:
+                    deviceID: 
+                      - this
+
+          - type: conditional
+            conditions:
+              - entity_id: sensor.master_harmony_activity
+                state: "Listen to WHA"
+              - entity_id: sensor.nuvo_zone_4_source
+                state_not: "5"
+            card:
+              - type: custom:mini-media-player
+                entity: media_player.master_bedroom_stereo
+                icon: mdi:speaker
+                group: true
+                artwork: none
+                volume_stateless: true
+                hide:
+                  source: true
+                  controls: true
+                  info: true
+                tap_action:
+                  action: call-service
+                  service: script.popup_media_master_bed
+                  service_data:
+                    deviceID: 
+                      - this

@@ -206,23 +206,28 @@ media_player:
         data:
           entity_id: switch.nuvo_zone_7_power
       volume_up:
-        service: mqtt.publish
-        data:
-          topic: nuvo/command/set/zone/volup
-          payload: 7
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeUp
+          device: 34014570
       volume_down:
-        service: mqtt.publish
-        data:
-          topic: nuvo/command/set/zone/voldn
-          payload: 7
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeDown
+          device: 34014570
       volume_mute:
-        service: mqtt.publish
-        data:
-          topic: nuvo/command/set/zone/mute
-          payload: 7
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - Mute
+          device: 34014570
     attributes:
       state: switch.nuvo_zone_7_power
-      is_volume_muted: switch.nuvo_zone_7_mute
 
   - platform: universal
     name: Dining Room Stereo
@@ -351,3 +356,111 @@ media_player:
     attributes:
       state: switch.nuvo_zone_12_power
       is_volume_muted: switch.nuvo_zone_12_mute
+
+  - platform: universal
+    name: Den Kodi Harmony
+    children:
+      - media_player.den_kodi
+    commands:
+      volume_up:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeUp
+          device: 34014570
+      volume_down:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeDown
+          device: 34014570
+      volume_mute:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - Mute
+          device: 34014570    
+
+  - platform: universal
+    name: Den Roku Harmony
+    children:
+      - media_player.roku_living_room
+    commands:
+      volume_up:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeUp
+          device: 34014570
+      volume_down:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeDown
+          device: 34014570
+      volume_mute:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - Mute
+          device: 34014570   
+
+  - platform: universal
+    name: Master Kodi Harmony
+    children:
+      - media_player.master_kodi
+    commands:
+      volume_up:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeUp
+          device: 35113962
+      volume_down:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeDown
+          device: 35113962
+      volume_mute:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - Mute
+          device: 35113962             
+
+  - platform: universal
+    name: Master Roku Harmony
+    children:
+      - media_player.roku_master_bedroom
+    commands:
+      volume_up:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeUp
+          device: 35113962
+      volume_down:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeDown
+          device: 35113962
+      volume_mute:
+        service: remote.send_command
+        service_data:
+          entity_id: remote.harmony_den
+          command:
+            - Mute
+          device: 35113962  
