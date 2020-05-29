@@ -283,7 +283,7 @@ cards:
             cards:                  
 
               - type: "custom:button-card"
-                entity: sensor.master_harmony_activity
+                entity: sensor.den_harmony_activity
                 color_type: icon
                 state:
                   - value: "PowerOff"
@@ -297,10 +297,10 @@ cards:
                   action: call-service
                   service: remote.turn_off
                   service_data:
-                    entity_id: remote.harmony_master_bedroom
+                    entity_id: remote.harmony_den
               
               - type: "custom:button-card"
-                entity: sensor.master_harmony_activity
+                entity: sensor.den_harmony_activity
                 color_type: icon
                 state:
                   - value: "Watch PVR"
@@ -314,11 +314,11 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_master_bedroom     
+                    entity_id: remote.harmony_den     
                     activity: "Watch PVR"            
 
               - type: "custom:button-card"
-                entity: sensor.master_harmony_activity
+                entity: sensor.den_harmony_activity
                 color_type: icon
                 state:
                   - value: "Watch Roku"
@@ -332,11 +332,11 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_master_bedroom     
+                    entity_id: remote.harmony_den     
                     activity: "Watch Roku"            
 
               - type: "custom:button-card"
-                entity: sensor.master_harmony_activity
+                entity: sensor.den_harmony_activity
                 color_type: icon
                 state:
                   - value: "ChromeCast"
@@ -350,11 +350,11 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_master_bedroom     
+                    entity_id: remote.harmony_den     
                     activity: "ChromeCast"           
 
               - type: "custom:button-card"
-                entity: sensor.master_harmony_activity
+                entity: sensor.den_harmony_activity
                 color_type: icon
                 state:
                   - value: "Listen to WHA"
@@ -368,8 +368,8 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_master_bedroom     
-                    activity: "Listen to WHA"   
+                    entity_id: remote.harmony_den     
+                    activity: "Listen to WHA"      
           - type: horizontal-stack
             cards:
 
@@ -381,30 +381,32 @@ cards:
               - entity: sensor.den_harmony_activity
                 state: "Watch PVR"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.den_kodi_harmony
-                icon: mdi:blank
-                group: true
-                info: scroll
-                volume_stateless: true
-                hide:
-                  name: true
-                  power: true
+              type: custom:mini-media-player
+              entity: media_player.den_kodi_harmony
+              icon: mdi:blank
+              artwork: cover
+              group: true
+              info: scroll
+              volume_stateless: true
+              hide:
+                name: true
+                power: true
 
           - type: conditional
             conditions:
               - entity: sensor.den_harmony_activity
                 state: "Watch Roku"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.den_roku_harmony
-                icon: mdi:blank
-                group: true
-                info: scroll
-                volume_stateless: true
-                hide:
-                  name: true
-                  power: true
+              type: custom:mini-media-player
+              entity: media_player.den_roku_harmony
+              icon: mdi:blank
+              artwork: cover
+              group: true
+              info: scroll
+              volume_stateless: true
+              hide:
+                name: true
+                power: true
 
           - type: conditional
             conditions:
@@ -413,21 +415,22 @@ cards:
               - entity: sensor.nuvo_zone_7_source
                 state: "5"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.den_stereo
-                icon: mdi:blank
-                group: true
-                info: scroll
-                volume_stateless: true
-                hide:
-                  name: true
-                  power: true
-                tap_action:
-                  action: call-service
-                  service: script.popup_media_den
-                  service_data:
-                    deviceID: 
-                      - this
+              type: custom:mini-media-player
+              entity: media_player.den_stereo
+              icon: mdi:blank
+              artwork: cover
+              group: true
+              info: scroll
+              volume_stateless: true
+              hide:
+                name: true
+                power: true
+              tap_action:
+                action: call-service
+                service: script.popup_media_den
+                service_data:
+                  deviceID: 
+                    - this
 
           - type: conditional
             conditions:
@@ -436,23 +439,23 @@ cards:
               - entity: sensor.nuvo_zone_7_source
                 state_not: "5"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.den_stereo
-                name: Den
-                icon: mdi:speaker
-                group: true
-                artwork: none
-                volume_stateless: true
-                hide:
-                  source: true
-                  controls: true
-                  info: true
-                tap_action:
-                  action: call-service
-                  service: script.popup_media_den
-                  service_data:
-                    deviceID: 
-                      - this
+              type: custom:mini-media-player
+              entity: media_player.den_stereo
+              name: Den
+              icon: mdi:speaker
+              group: true
+              artwork: none
+              volume_stateless: true
+              hide:
+                source: true
+                controls: true
+                info: true
+              tap_action:
+                action: call-service
+                service: script.popup_media_den
+                service_data:
+                  deviceID: 
+                    - this
 
       - type: custom:vertical-stack-in-card
         cards:
@@ -579,30 +582,32 @@ cards:
               - entity: sensor.master_harmony_activity
                 state: "Watch PVR"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.master_kodi_harmony
-                icon: mdi:blank
-                group: true
-                info: scroll
-                volume_stateless: true
-                hide:
-                  name: true
-                  power: true
+              type: custom:mini-media-player
+              entity: media_player.master_kodi_harmony
+              icon: mdi:blank
+              artwork: cover
+              group: true
+              info: scroll
+              volume_stateless: true
+              hide:
+                name: true
+                power: true
 
           - type: conditional
             conditions:
               - entity: sensor.master_harmony_activity
                 state: "Watch Roku"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.master_roku_harmony
-                icon: mdi:blank
-                group: true
-                info: scroll
-                volume_stateless: true
-                hide:
-                  name: true
-                  power: true
+              type: custom:mini-media-player
+              entity: media_player.master_roku_harmony
+              icon: mdi:blank
+              artwork: cover
+              group: true
+              info: scroll
+              volume_stateless: true
+              hide:
+                name: true
+                power: true
 
           - type: conditional
             conditions:
@@ -611,21 +616,22 @@ cards:
               - entity: sensor.nuvo_zone_4_source
                 state: "5"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.master_bedroom_stereo
-                icon: mdi:blank
-                group: true
-                info: scroll
-                volume_stateless: true
-                hide:
-                  name: true
-                  power: true
-                tap_action:
-                  action: call-service
-                  service: script.popup_media_master_bed
-                  service_data:
-                    deviceID: 
-                      - this
+              type: custom:mini-media-player
+              entity: media_player.master_bedroom_stereo
+              icon: mdi:blank
+              artwork: cover
+              group: true
+              info: scroll
+              volume_stateless: true
+              hide:
+                name: true
+                power: true
+              tap_action:
+                action: call-service
+                service: script.popup_media_master_bed
+                service_data:
+                  deviceID: 
+                    - this
 
           - type: conditional
             conditions:
@@ -634,19 +640,19 @@ cards:
               - entity: sensor.nuvo_zone_4_source
                 state_not: "5"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.master_bedroom_stereo
-                icon: mdi:speaker
-                group: true
-                artwork: none
-                volume_stateless: true
-                hide:
-                  source: true
-                  controls: true
-                  info: true
-                tap_action:
-                  action: call-service
-                  service: script.popup_media_master_bed
-                  service_data:
-                    deviceID: 
-                      - this
+              type: custom:mini-media-player
+              entity: media_player.master_bedroom_stereo
+              icon: mdi:speaker
+              group: true
+              artwork: none
+              volume_stateless: true
+              hide:
+                source: true
+                controls: true
+                info: true
+              tap_action:
+                action: call-service
+                service: script.popup_media_master_bed
+                service_data:
+                  deviceID: 
+                    - this
