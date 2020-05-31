@@ -129,17 +129,16 @@
     - condition: state
       entity_id: input_boolean.vacation_mode
       state: 'off'
-    - condition: or
-      conditions:
-        - condition: template
-          value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
-        - condition: template
-          value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
+    - condition: state
+      entity_id: input_boolean.returning_door_unlocked
+      state: 'on'
   action:
     - service: switch.turn_on
       entity_id: switch.elk_stay_mode_off
     - service: input_boolean.turn_off
-      entity_id: input_boolean.returning_trigger      
+      entity_id: 
+        - input_boolean.returning_trigger      
+        - input_boolean.returning_door_unlocked
 
 - alias: Arrriving Clear Trigger if Disallowed
   trigger:
@@ -162,12 +161,37 @@
         - condition: state
           entity_id: input_boolean.vacation_mode
           state: 'on'
-        - condition: not
-          conditions:
-            - condition: template
-              value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
-            - condition: template
-              value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
+        - condition: state
+          entity_id: input_boolean.returning_door_unlocked
+          state: 'off'
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.returning_trigger            
+      entity_id: 
+        - input_boolean.returning_trigger     
+        - input_boolean.returning_door_unlocked       
+
+- alias: Returning Home Lock Trigger
+  trigger:
+    - platform: template
+      value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
+    - platform: template
+      value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: pending
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: armed_away
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.returning_door_unlocked     
+
+- alias: Clear Returning Home Lock Trigger
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: disarmed
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.returning_door_unlocked  
