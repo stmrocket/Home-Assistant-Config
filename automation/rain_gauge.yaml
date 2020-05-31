@@ -16,6 +16,7 @@
         - counter.rain_day
         - counter.rain_month
         - counter.rain_year
+        - counter.rain_total
     - service: input_number.set_value
       data_template:
         entity_id: >

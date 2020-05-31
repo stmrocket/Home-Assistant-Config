@@ -127,3 +127,4 @@ influxdb:
       - sensor.acurite_wind_speed
       - sensor.acurite_wind_direction
       - sensor.acurite_cumulative_rainfall
+      - sensor.rain_total
