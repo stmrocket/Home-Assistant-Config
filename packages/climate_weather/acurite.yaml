@@ -25,6 +25,18 @@ sensor:
     state_topic: rtl_433/2381/rain_in
     unit_of_measurement: "in"
 
+  - platform: statistics
+    name: AcuRite Hourly Total Rain Statistics
+    entity_id: sensor.acurite_cumulative_rainfall
+    sampling_size: 4000
+    max_age:
+      minutes: 60
+  
+  - platform: template
+    sensors:
+      acurite_rain_last_60_minutes:
+        value_template: "{{ state_attr('sensor.acurite_hourly_total_rain_statistics','change') }}"
+
 utility_meter:
 
   acurite_rain_daily:

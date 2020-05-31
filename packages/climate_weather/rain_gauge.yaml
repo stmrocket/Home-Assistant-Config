@@ -9,6 +9,8 @@ counter:
     step: 1
   rain_year:
     step: 1
+  rain_total:
+    step: 1
 
 sensor:
   
@@ -34,6 +36,13 @@ sensor:
       rain_year:
         value_template: "{{ (states('counter.rain_year') |int / 100) | round(2) }}"
         unit_of_measurement: 'in'
+
+      rain_total:
+        value_template: "{{ (states('counter.rain_total') |int / 100) | round(2) }}"
+        unit_of_measurement: 'in'
+      
+      rain_last_60_minutes:
+        value_template: "{{ state_attr('sensor.hourly_total_rain_statistics','change') }}"
 
       rain_rate:
         value_template: >
@@ -99,6 +108,12 @@ sensor:
              states('input_number.rain_minute_59') | float) | round(2) }}
         unit_of_measurement: 'in/hr'
           
+  - platform: statistics
+    name: Hourly Total Rain Statistics
+    entity_id: sensor.rain_total
+    sampling_size: 4000
+    max_age:
+      minutes: 60
 
 
 input_number:
