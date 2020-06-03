@@ -121,8 +121,8 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: sensor.shawn_7t_wifi_connection
-      state: !secret home_wifi_ssid
+      entity_id: device_tracker.oneplus7t
+      state: home
     - condition: state
       entity_id: alarm_control_panel.house
       state: pending
@@ -148,11 +148,9 @@
   condition:
     - condition: or
       conditions:
-        - condition: not
-          conditions:
-            - condition: state
-              entity_id: sensor.shawn_7t_wifi_connection
-              state: !secret home_wifi_ssid
+        - condition: state
+          entity_id: device_tracker.oneplus7t
+          state: not_home
         - condition: not
           conditions:
             - condition: state
