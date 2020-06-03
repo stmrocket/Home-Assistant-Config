@@ -71,6 +71,6 @@ input_boolean:
     icon: mdi:car-pickup
 
   returning_door_unlocked:
-    name: Alexa Reruening Door Unlocked
+    name: Alexa Returning Door Unlocked
     initial: off
     icon: mdi:lock-open
