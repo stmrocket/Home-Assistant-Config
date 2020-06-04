@@ -2,7 +2,7 @@
 
 type: 'custom:dark-sky-weather-card'
 entity_current_conditions: sensor.dark_sky_icon
-entity_temperature: sensor.acurity_temperature
+entity_temperature: sensor.acurite_ws_temperature
 entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
 entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2d
 entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3d
@@ -28,7 +28,7 @@ entity_sun: sun.sun
 entity_visibility: sensor.dark_sky_visibility
 entity_wind_bearing: sensor.acurite_ws_wind_direction
 entity_wind_speed: sensor.acurite_ws_wind_speed
-entity_humidity: sensor.acurity_humidity
+entity_humidity: sensor.acurite_ws_humidity
 entity_pressure: sensor.aquara_den_pressure
 entity_daily_summary: sensor.dark_sky_daily_summary
 entity_pop_intensity: sensor.dark_sky_precip_intensity
