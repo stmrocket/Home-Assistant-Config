@@ -122,9 +122,9 @@ influxdb:
       - sensor.energy_used
       - counter.litter_robot_cycle_count
       - sensor.gas_meter
-      - sensor.acurite_temperature
-      - sensor.acurite_humidity
-      - sensor.acurite_wind_speed
-      - sensor.acurite_wind_direction
-      - sensor.acurite_cumulative_rainfall
+      - sensor.acurite_ws_temperature
+      - sensor.acurite_ws_humidity
+      - sensor.acurite_ws_wind_speed
+      - sensor.acurite_ws_wind_direction
+      - sensor.acurite_ws_cumulative_rainfall
       - sensor.rain_total
