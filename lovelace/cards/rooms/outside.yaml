@@ -5,7 +5,7 @@
         - type: picture-elements
           image: /local/lovelace/room.png
           elements:
-            - entity: sensor.aquara_outside_temperature
+            - entity: sensor.acurite_ws_temperature
               style:
                 bottom: 20%
                 right: 5%

@@ -1,14 +1,14 @@
 - alias: Update Alexa Outside Temperature
   trigger:
   - platform: state
-    entity_id: sensor.aquara_outside_temperature
+    entity_id: sensor.acurite_ws_temperature
   action:
   - service: rest_command.update_alexa_outside_temp
 
 - alias: Update Alexa Outside Humidity
   trigger:
   - platform: state
-    entity_id: sensor.aquara_outside_humidity
+    entity_id: sensor.acurite_ws_humidity
   action:
   - service: rest_command.update_alexa_outside_humidity
 

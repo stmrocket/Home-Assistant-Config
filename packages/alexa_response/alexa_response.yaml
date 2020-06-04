@@ -10,13 +10,13 @@ rest_command:
     url: "{{ states('sensor.alexa_speech_url') }}OUTSIDETEMP"
     content_type: 'application/json'
     method: post
-    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current outside temperature is {{ states("sensor.aquara_outside_temperature") }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Temperature",      "content": "{{ states("sensor.aquara_outside_temperature") }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current outside temperature is {{ states("sensor.acurite_ws_temperature") }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Temperature",      "content": "{{ states("sensor.acurite_ws_temperature") }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
   
   update_alexa_outside_humidity:
     url: "{{ states('sensor.alexa_speech_url') }}OUTSIDEHUM"
     content_type: 'application/json'
     method: post
-    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current outside humidity is {{ states("sensor.aquara_outside_humidity") }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Humidity",      "content": "{{ states("sensor.aquara_outside_humidity") }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current outside humidity is {{ states("sensor.acurite_ws_humidity") }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Humidity",      "content": "{{ states("sensor.acurite_ws_humidity") }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
   
   update_alexa_attic_temp:
     url: "{{ states('sensor.alexa_speech_url') }}ATTICTEMP"
@@ -58,13 +58,13 @@ rest_command:
     url: "{{ states('sensor.alexa_speech_url') }}MASTERTEMP"
     content_type: 'application/json'
     method: post
-    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current master bedroom temperature is {{ states("sensor.aquara_master_bedroom_temperature") }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Temperature",      "content": "{{ states("sensor.aquara_outside_temperature") }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current master bedroom temperature is {{ states("sensor.aquara_master_bedroom_temperature") }} degrees. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Temperature",      "content": "{{ states("sensor.acurite_ws_temperature") }} degrees"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
   
   update_alexa_master_humidity:
     url: "{{ states('sensor.alexa_speech_url') }}MASTERHUM"
     content_type: 'application/json'
     method: post
-    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current master bedroom humidity is {{ states("sensor.aquara_master_bedroom_humidity") }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Humidity",      "content": "{{ states("sensor.aquara_outside_humidity") }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The current master bedroom humidity is {{ states("sensor.aquara_master_bedroom_humidity") }} percent. </speak>"    },    "card": {      "type": "Simple",      "title": "Outside Humidity",      "content": "{{ states("sensor.acurite_ws_humidity") }}%"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
   
   update_alexa_office_temp:
     url: "{{ states('sensor.alexa_speech_url') }}OFFICETEMP"

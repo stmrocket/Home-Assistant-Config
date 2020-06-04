@@ -5,8 +5,8 @@ sensor:
   - platform: dewpoint
     sensors:
       dewpoint_outside:
-        temperature: sensor.aquara_outside_temperature
-        rel_hum: sensor.aquara_outside_humidity
+        temperature: sensor.acurite_ws_temperature
+        rel_hum: sensor.acurite_ws_humidity
         
   - platform: template
     sensors:
@@ -15,7 +15,7 @@ sensor:
 
       press_in:
         unit_of_measurement: in
-        value_template: "{{ (states('sensor.aquara_outside_pressure') | float * 0.02953) | round(2) }}"
+        value_template: "{{ (states('sensor.aquara_den_pressure') | float * 0.02953) | round(2) }}"
 
       sunlight_pct:
         entity_id:
@@ -87,7 +87,7 @@ sensor:
 
 rest_command:
   update_wunderground:
-    url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.aquara_outside_temperature') }}&humidity={{ states('sensor.aquara_outside_humidity') }}&dewptf={{ states('sensor.dewpoint_outside') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&winddir={{ states('sensor.acurite_wind_direction') }}&windspeedmph={{ states('sensor.acurite_wind_speed') }}&action=updateraw"
+    url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.acurite_ws_temperature') }}&humidity={{ states('sensor.acurite_ws_humidity') }}&dewptf={{ states('sensor.dewpoint_outside') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&winddir={{ states('sensor.acurite_ws_wind_direction') }}&windspeedmph={{ states('sensor.acurite_ws_wind_speed') }}&action=updateraw"
 
 input_boolean:
   is_raining:
