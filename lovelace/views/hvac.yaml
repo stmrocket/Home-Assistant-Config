@@ -123,6 +123,11 @@ cards:
               name: Server
         
         - type: horizontal-stack
+          cards:
+            - type: custom:gap-card
+              height: 10
+                      
+        - type: horizontal-stack
           cards:          
 
             - type: custom:bar-card
