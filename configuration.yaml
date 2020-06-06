@@ -77,6 +77,8 @@ lovelace:
     - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
       type: module   
     - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
+      type: module    
+    - url: /hacsfiles/roku-card/roku-card.js
       type: module 
 
 lovelace_gen:
