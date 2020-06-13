@@ -181,9 +181,9 @@
 - alias: Master Wake Work Snooze Start
   trigger:
     - platform: mqtt
-      topic: zigbee2mqtt/button_1
+      topic: zigbee2mqtt/snooze_button_1
     - platform: mqtt
-      topic: zigbee2mqtt/button_2
+      topic: zigbee2mqtt/snooze_button_2
   condition:
     - condition: template
       value_template: "{{ trigger.payload_json['click'] == 'single' }}"
@@ -229,9 +229,9 @@
 - alias: Master Wake Manual Snooze Start
   trigger:
     - platform: mqtt
-      topic: zigbee2mqtt/button_1
+      topic: zigbee2mqtt/snooze_button_1
     - platform: mqtt
-      topic: zigbee2mqtt/button_2
+      topic: zigbee2mqtt/snooze_button_2
   condition:
     - condition: template
       value_template: "{{ trigger.payload_json['click'] == 'single' }}"
@@ -319,9 +319,9 @@
 - alias: Master Wake Work Off
   trigger:
     - platform: mqtt
-      topic: zigbee2mqtt/button_1
+      topic: zigbee2mqtt/snooze_button_1
     - platform: mqtt
-      topic: zigbee2mqtt/button_2
+      topic: zigbee2mqtt/snooze_button_2
   condition:
     - condition: template
       value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
@@ -347,9 +347,9 @@
 - alias: Master Wake Manual Off Single
   trigger:
     - platform: mqtt
-      topic: zigbee2mqtt/button_1
+      topic: zigbee2mqtt/snooze_button_1
     - platform: mqtt
-      topic: zigbee2mqtt/button_2
+      topic: zigbee2mqtt/snooze_button_2
   condition:
     - condition: template
       value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
@@ -379,9 +379,9 @@
 - alias: Master Wake Manual Off Repeat
   trigger:
     - platform: mqtt
-      topic: zigbee2mqtt/button_1
+      topic: zigbee2mqtt/snooze_button_1
     - platform: mqtt
-      topic: zigbee2mqtt/button_2
+      topic: zigbee2mqtt/snooze_button_2
   condition:
     - condition: template
       value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
@@ -430,9 +430,9 @@
 - alias: Master Wake Manual Disable Button
   trigger:
     - platform: mqtt
-      topic: zigbee2mqtt/button_1
+      topic: zigbee2mqtt/snooze_button_1
     - platform: mqtt
-      topic: zigbee2mqtt/button_2
+      topic: zigbee2mqtt/snooze_button_2
   condition:
     - condition: template
       value_template: "{{ trigger.payload_json['click'] == 'quadruple' }}"
