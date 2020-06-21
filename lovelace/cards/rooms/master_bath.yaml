@@ -68,9 +68,13 @@
                 action: more-info
 
             - type: "custom:button-card"
-              entity: switch.shower_light_and_fan
+              entity: sensor.master_shower_light_a
               color_type: icon
-              color: rgb(228, 94, 101)
+              state:
+                - value: 0
+                  color: rgb(255, 255, 255)
+                - value: 255
+                  color: rgb(228, 94, 101)
               icon: mdi:shower-head
               name: Take Shower
               tap_action: 
