@@ -121,7 +121,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: device_tracker.oneplus7t
+      entity_id: device_tracker.shawn_7t
       state: home
     - condition: state
       entity_id: alarm_control_panel.house
@@ -149,7 +149,7 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: device_tracker.oneplus7t
+          entity_id: device_tracker.shawn_7t
           state: not_home
         - condition: not
           conditions:
