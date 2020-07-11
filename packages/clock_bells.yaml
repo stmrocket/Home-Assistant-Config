@@ -1,0 +1,13 @@
+input_boolean:
+
+  clock_bells_enabled:
+    name: Enable Clock Bells
+    icon: mdi:bell
+
+  clock_bells_quarter_chime:
+    name: Quarter Chimes
+    icon: mdi:music-note
+
+  clock_bells_hour_chime:
+    name: Hourly Chimes
+    icon: mdi:music-note
