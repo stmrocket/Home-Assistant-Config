@@ -52,6 +52,13 @@
     - service: media_player.play_media
       data:
         entity_id: media_player.alexa_master_bedroom
+        media_content_id: "reset master bedroom echo"
+        media_content_type: "routine"
+    - delay:
+        seconds: 5
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.alexa_master_bedroom
         media_content_id: "today's worship"
         media_content_type: "PANDORA"
     - service: light.turn_on
