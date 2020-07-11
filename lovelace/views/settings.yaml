@@ -276,7 +276,16 @@ cards:
         entities:
         - entity: input_boolean.zigbee_permit_join
         - entity: timer.zigbee_permit_join
-        - entity: sensor.bridge_state                        
+        - entity: sensor.bridge_state      
+
+      - type: entities
+        show_header_toggle: false
+        title: Clock Bells
+        entities:          
+          - entity: input_boolean.clock_bells_enabled
+            name: Enabled
+          - input_boolean.clock_bells_quarter_chime
+          - input_boolean.clock_bells_hour_chime   
 
       - type: horizontal-stack
         cards:
