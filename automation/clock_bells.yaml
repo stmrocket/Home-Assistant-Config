@@ -25,7 +25,7 @@
     - service: mqtt.publish
       data:
         topic: parrot/command/set/play
-        payload: 15,1
+        payload: 5,1
 
 - alias: Clock 30 Minute Chime
   trigger:
@@ -54,7 +54,7 @@
     - service: mqtt.publish
       data:
         topic: parrot/command/set/play
-        payload: 15,2     
+        payload: 5,2     
 
 - alias: Clock 45 Minute Chime
   trigger:
@@ -83,7 +83,7 @@
     - service: mqtt.publish
       data:
         topic: parrot/command/set/play
-        payload: 15,3
+        payload: 5,3
 
 - alias: Clock Hourly Chime
   trigger:
