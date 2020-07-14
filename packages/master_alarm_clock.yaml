@@ -54,3 +54,11 @@ sensor:
       - 'time_date'
       - 'time_utc'
       - 'beat'
+  
+binary_sensor:
+  - platform: template
+    sensors:
+      work_holiday:
+        friendly_name: Work Calendar Holiday
+        value_template: >-
+          {{ states('sensor.date_time') > (state_attr('calendar.work_holidays','start_time') | timestamp_custom('%Y-%m-%d, %H:%M', True)) and (states('sensor.date_time') < (state_attr('calendar.work_holidays','end_time') | timestamp_custom('%Y-%m-%d, %H:%M', True))) }}
