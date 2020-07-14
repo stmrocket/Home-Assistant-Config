@@ -12,7 +12,7 @@
           entity_id: input_boolean.work_alarm_enabled
           state: 'on'
         - condition: state
-          entity_id: calendar.work_holidays
+          entity_id: binary_sensor.work_holiday
           state: 'off'
         - condition: time
           weekday:
