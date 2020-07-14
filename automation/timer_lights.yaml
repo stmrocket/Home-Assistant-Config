@@ -15,7 +15,7 @@
         - condition: and
           conditions:
             - condition: state
-              entity_id: calendar.work_holidays
+              entity_id: binary_sensor.work_holiday
               state: 'off'
             - condition: state
               entity_id: input_boolean.work_alarm_enabled
@@ -82,7 +82,7 @@
         - condition: or
           conditions:
             - condition: state
-              entity_id: calendar.work_holidays
+              entity_id: binary_sensor.work_holiday
               state: 'on'
             - condition: time
               weekday:
