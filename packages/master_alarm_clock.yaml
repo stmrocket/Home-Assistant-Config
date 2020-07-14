@@ -48,4 +48,9 @@ input_datetime:
 sensor:
   - platform: time_date
     display_options:
-      - 'time'    
+      - 'time'   
+      - 'date' 
+      - 'date_time'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
