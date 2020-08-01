@@ -10,7 +10,6 @@ https://community.home-assistant.io/t/echo-devices-alexa-as-media-player-testers
 import logging
 from typing import List  # noqa pylint: disable=unused-import
 
-from homeassistant.components.switch import SwitchDevice
 from homeassistant.exceptions import ConfigEntryNotReady, NoEntitySpecifiedError
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 
@@ -24,6 +23,11 @@ from . import (
     hide_serial,
 )
 from .helpers import _catch_login_errors, add_devices, retry_async
+
+try:
+    from homeassistant.components.switch import SwitchEntity as SwitchDevice
+except ImportError:
+    from homeassistant.components.switch import SwitchDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -219,7 +223,15 @@ class AlexaMediaSwitch(SwitchDevice):
     @property
     def available(self):
         """Return the availabilty of the switch."""
-        return getattr(self._client, self._switch_property) is not None
+        return (
+            self._client.available
+            and getattr(self._client, self._switch_property) is not None
+        )
+
+    @property
+    def assumed_state(self):
+        """Return whether the state is an assumed_state."""
+        return self._client.assumed_state
 
     @property
     def unique_id(self):

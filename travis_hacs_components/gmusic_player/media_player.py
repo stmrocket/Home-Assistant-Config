@@ -29,7 +29,7 @@ from homeassistant.const import (
 )
 
 from homeassistant.components.media_player import (
-    MediaPlayerDevice,
+    MediaPlayerEntity,
     PLATFORM_SCHEMA,
     SERVICE_TURN_ON,
     SERVICE_TURN_OFF,
@@ -66,7 +66,6 @@ DOMAIN = "gmusic_player"
 SUPPORT_GMUSIC_PLAYER = (
     SUPPORT_TURN_ON
     | SUPPORT_TURN_OFF
-    | SUPPORT_PLAY_MEDIA
     | SUPPORT_PLAY
     | SUPPORT_PAUSE
     | SUPPORT_STOP
@@ -121,7 +120,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     add_devices([GmusicComponent(hass, config)])
     return True
 
-class GmusicComponent(MediaPlayerDevice):
+class GmusicComponent(MediaPlayerEntity):
     def __init__(self, hass, config):
         from gmusicapi import Mobileclient
         # https://github.com/simon-weber/gmusicapi/issues/424
@@ -572,7 +571,8 @@ class GmusicComponent(MediaPlayerDevice):
         """ Get the stream URL and play on media_player """
         try:
             if not self._gmusicproxy:
-                _url = self._api.get_stream_url(uid)
+                #_url = self._api.get_stream_url(uid)
+                _url = self._api.get_stream_url("{}".format(uid))
             else:
                 _url = self._gmusicproxy + "/get_song?id=" + uid
         except Exception as err:
