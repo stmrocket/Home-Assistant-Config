@@ -126,10 +126,12 @@ class Packet(object):
             assert len(s) >= 7
             s = s[:7]
             payload = MAKE_CMD(cmd_type, b2)
-        else:
-            assert len(s) >= b2 + 4
+        elif len(s) >= b2 + 4:
             s = s[: b2 + 4]
             payload = s[5:-2]
+        else:
+            log.error("Invalid packet: %s", bytes_to_hex(s))
+            return None
 
         cs_remote = (s[-2] << 8) | s[-1]
         cs_local = checksum_from_bytes(s[:-2])
@@ -372,6 +374,8 @@ class Dongle(object):
             except OSError as e:
                 log.error(e)
                 break
+            except:
+                log.exception("Ignoring non-OSError in worker thread. Please share the error logs with the developers.")
 
     def _DoCommand(self, pkt, handler, timeout=_CMD_TIMEOUT):
         e = threading.Event()

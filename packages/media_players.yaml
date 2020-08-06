@@ -464,3 +464,7 @@ media_player:
           command:
             - Mute
           device: 35113962  
+
+spotify:
+  client_id: !secret spotify_client
+  client_secret: !secret spotify_secret                
