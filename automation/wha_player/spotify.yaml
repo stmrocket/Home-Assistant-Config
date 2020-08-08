@@ -47,6 +47,9 @@
       value_template: "{{ not state_attr('media_player.spotify_home', 'media_artist') ==  None }}"
     - condition: template
       value_template: "{{ not state_attr('media_player.spotify_home', 'media_album_name') ==  None }}"
+    - condition: state
+      entity_id: input_boolean.nuvo_spotify_in_menu
+      state: 'off'
   action:
     - service: mqtt.publish
       data:
