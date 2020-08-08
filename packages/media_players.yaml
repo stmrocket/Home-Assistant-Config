@@ -1,4 +1,20 @@
 media_player:
+  - platform: custom_universal
+    name: Spotify
+    children:
+        - media_player.spotify_shawn_mccoy
+    commands:
+      media_next_track:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 1
+      media_previous_track:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 1
+          
   - platform: universal
     name: Office Stereo
     children:
