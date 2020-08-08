@@ -640,7 +640,8 @@ cards:
           artwork: cover
           hide:
             source: true
-            power: true
+            power: true  
+            progress: true
           tap_action:
             action: call-service
             service: script.popup_media_wha
