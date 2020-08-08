@@ -20,7 +20,7 @@ cards:
     cards:
       - type: entities
         show_header_toggle: false
-        title: Google Music
+        title: Spotify
         entities:
         - entity: input_select.spotify_playlist
         - entity: script.spotify_change_playlist
@@ -28,221 +28,12 @@ cards:
         - type: custom:mini-media-player
           entity: media_player.spotify
           icon: mdi:spotify
-          #group: true
           artwork: cover
-
-#################################################################
-#                                                               #
-#                      Media  - NuVo Players                    #
-#                                                               #
-#################################################################
-    
-  - type: vertical-stack
-    cards:
-      - type: entities
-        show_header_toggle: false
-        title: Whole House Audio
-        entities:
-        - type: custom:mini-media-player
-          entity: media_player.office_stereo
-          name: Office
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
           hide:
             source: true
-            controls: true
-            info: true
-          tap_action: 
-            action: call-service
-            service: script.popup_media_office
-            service_data:
-              deviceID: 
-                - this               
-        
-        - type: custom:mini-media-player
-          entity: media_player.guest_bedroom_stereo
-          name: Guest Bedroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_guest_bed
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.server_room_stereo
-          name: Server Room
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_server
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.master_bedroom_stereo
-          name: Master Bedroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_master_bed
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.master_bathroom_stereo
-          name: Master Bathroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_master_bath
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.garage_stereo
-          name: Garage
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_garage
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.den_stereo
-          name: Den
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_den
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.dining_room_stereo
-          name: Ham Shack
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_dining
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.kitchen_stereo
-          name: Kitchen
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_kitchen
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.back_porch_stereo
-          name: Back Porch
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_porch
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.guest_bathroom_stereo
-          name: Guest Bathroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_guest_bath
-            service_data:
-              deviceID: 
-                - this
-
-  - type: vertical-stack
-    cards:  
+            progress: true
+            name: true
+ 
       - type: custom:vertical-stack-in-card
         cards:
           - type: picture-elements
@@ -654,4 +445,226 @@ cards:
                 service: script.popup_media_master_bed
                 service_data:
                   deviceID: 
-                    - this
+                    - this            
+
+
+#################################################################
+#                                                               #
+#                      Media  - NuVo Players                    #
+#                                                               #
+#################################################################
+    
+  - type: vertical-stack
+    cards:
+      - type: entities
+        show_header_toggle: false
+        title: Whole House Audio
+        entities:
+        - type: custom:mini-media-player
+          entity: media_player.office_stereo
+          name: Office
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action: 
+            action: call-service
+            service: script.popup_media_office
+            service_data:
+              deviceID: 
+                - this               
+        
+        - type: custom:mini-media-player
+          entity: media_player.guest_bedroom_stereo
+          name: Guest Bedroom
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_guest_bed
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.server_room_stereo
+          name: Server Room
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_server
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.master_bedroom_stereo
+          name: Master Bedroom
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_master_bed
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.master_bathroom_stereo
+          name: Master Bathroom
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_master_bath
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.garage_stereo
+          name: Garage
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_garage
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.den_stereo
+          name: Den
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_den
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.dining_room_stereo
+          name: Ham Shack
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_dining
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.kitchen_stereo
+          name: Kitchen
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_kitchen
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.back_porch_stereo
+          name: Back Porch
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_porch
+            service_data:
+              deviceID: 
+                - this
+        
+        - type: custom:mini-media-player
+          entity: media_player.guest_bathroom_stereo
+          name: Guest Bathroom
+          icon: mdi:speaker
+          group: true
+          artwork: none
+          volume_stateless: true
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+          tap_action:
+            action: call-service
+            service: script.popup_media_guest_bath
+            service_data:
+              deviceID: 
+                - this

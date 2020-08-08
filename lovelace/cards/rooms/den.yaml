@@ -236,7 +236,8 @@
           hide:
             source: true
             controls: true
-            info: true             
+            info: true  
+            progress: true           
           tap_action:
             action: call-service
             service: script.popup_media_den
