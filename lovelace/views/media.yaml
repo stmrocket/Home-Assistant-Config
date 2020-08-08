@@ -210,6 +210,7 @@ cards:
                 name: true
                 power: true
                 progress: true
+                source: true
               tap_action:
                 action: call-service
                 service: script.popup_media_den
@@ -419,6 +420,7 @@ cards:
                 name: true
                 power: true
                 progress: true
+                source: true
               tap_action:
                 action: call-service
                 service: script.popup_media_master_bed
