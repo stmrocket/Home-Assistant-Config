@@ -1,24 +1,9 @@
 media_player:
-  - platform: custom_universal
-    name: Spotify
-    children:
-        - media_player.spotify_shawn_mccoy
-    commands:
-      media_next_track:
-        service: mqtt.publish
-        data:
-          topic: nuvo/command/set/zone/volup
-          payload: 1
-      media_previous_track:
-        service: mqtt.publish
-        data:
-          topic: nuvo/command/set/zone/voldn
-          payload: 1
-          
+
   - platform: universal
     name: Office Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -50,7 +35,7 @@ media_player:
   - platform: universal
     name: Guest Bedroom Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -82,7 +67,7 @@ media_player:
   - platform: universal
     name: Server Room Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -114,7 +99,7 @@ media_player:
   - platform: universal
     name: Master Bedroom Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -146,7 +131,7 @@ media_player:
   - platform: universal
     name: Master Bathroom Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -178,7 +163,7 @@ media_player:
   - platform: universal
     name: Garage Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -211,7 +196,7 @@ media_player:
   - platform: universal
     name: Den Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -248,7 +233,7 @@ media_player:
   - platform: universal
     name: Dining Room Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -280,7 +265,7 @@ media_player:
   - platform: universal
     name: Kitchen Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -312,7 +297,7 @@ media_player:
   - platform: universal
     name: Back Porch Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -344,7 +329,7 @@ media_player:
   - platform: universal
     name: Guest Bathroom Stereo
     children:
-      - media_player.gmusic_player
+      - media_player.spotify
     commands:
       turn_on:
         service: switch.turn_on
@@ -480,7 +465,3 @@ media_player:
           command:
             - Mute
           device: 35113962  
-
-spotify:
-  client_id: !secret spotify_client
-  client_secret: !secret spotify_secret                
