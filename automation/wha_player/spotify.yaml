@@ -618,7 +618,7 @@
       data_template:
         entity_id: timer.spotify_refresh
         duration: >-
-          {{ state_attr('media_player.spotify_home','media_doration') | float - state_attr('media_player.spotify_home','media_position') | float + 0.1 }}
+          {{ (state_attr('media_player.spotify_home','media_duration') | float - state_attr('media_player.spotify_home','media_position') | float) | round (0) }}
 
 - alias: Spotify Refresh Info
   trigger:
@@ -631,6 +631,8 @@
       entity_id: media_player.spotify_home
       state: playing
   action:
+    - delay:
+        milliseconds: 200
     - service: homeassistant.update_entity
       entity_id: media_player.spotify_home
     - delay:
