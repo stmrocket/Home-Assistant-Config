@@ -22,27 +22,14 @@ cards:
         show_header_toggle: false
         title: Google Music
         entities:
-        - entity: input_select.gmusic_player_speakers
-        - entity: input_select.gmusic_player_source
-        - entity: input_select.gmusic_player_playlist
-        - entity: input_select.gmusic_player_station
+        - entity: input_select.spotify_playlist
+        - entity: script.spotify_change_playlist
+          name: Change Playlist
         - type: custom:mini-media-player
-          entity: media_player.gmusic_player
-          icon: mdi:google-play
+          entity: media_player.spotify
+          icon: mdi:spotify
           #group: true
           artwork: cover
-          hide:
-            source: true
-
-        - type: custom:mini-media-player
-          entity: media_player.whole_house_audio
-          icon: mdi:cast
-          #group: true
-          artwork: cover
-          volume_stateless: true
-          hide:
-            source: true
-            volume: true
 
 #################################################################
 #                                                               #

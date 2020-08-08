@@ -586,8 +586,8 @@ popup_media_office:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -607,8 +607,8 @@ popup_media_office:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -628,8 +628,8 @@ popup_media_office:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -651,7 +651,7 @@ popup_media_office:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -671,8 +671,8 @@ popup_media_office:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -692,8 +692,8 @@ popup_media_office:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -762,8 +762,8 @@ popup_media_guest_bed:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -783,8 +783,8 @@ popup_media_guest_bed:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -804,8 +804,8 @@ popup_media_guest_bed:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -827,7 +827,7 @@ popup_media_guest_bed:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -847,8 +847,8 @@ popup_media_guest_bed:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -868,8 +868,8 @@ popup_media_guest_bed:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux	
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -938,8 +938,8 @@ popup_media_server:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -959,8 +959,8 @@ popup_media_server:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -980,8 +980,8 @@ popup_media_server:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1003,7 +1003,7 @@ popup_media_server:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1023,8 +1023,8 @@ popup_media_server:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1044,8 +1044,8 @@ popup_media_server:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux	
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1114,8 +1114,8 @@ popup_media_master_bed:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1135,8 +1135,8 @@ popup_media_master_bed:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1156,8 +1156,8 @@ popup_media_master_bed:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1179,7 +1179,7 @@ popup_media_master_bed:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1199,8 +1199,8 @@ popup_media_master_bed:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1220,8 +1220,8 @@ popup_media_master_bed:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux	
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1290,8 +1290,8 @@ popup_media_master_bath:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1311,8 +1311,8 @@ popup_media_master_bath:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1332,8 +1332,8 @@ popup_media_master_bath:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1355,7 +1355,7 @@ popup_media_master_bath:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1375,8 +1375,8 @@ popup_media_master_bath:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1396,8 +1396,8 @@ popup_media_master_bath:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1466,8 +1466,8 @@ popup_media_garage:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1487,8 +1487,8 @@ popup_media_garage:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1508,8 +1508,8 @@ popup_media_garage:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1531,7 +1531,7 @@ popup_media_garage:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1551,8 +1551,8 @@ popup_media_garage:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1572,8 +1572,8 @@ popup_media_garage:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux	
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1642,8 +1642,8 @@ popup_media_den:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1663,8 +1663,8 @@ popup_media_den:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1684,8 +1684,8 @@ popup_media_den:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1707,7 +1707,7 @@ popup_media_den:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1727,8 +1727,8 @@ popup_media_den:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1748,8 +1748,8 @@ popup_media_den:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux		
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1818,8 +1818,8 @@ popup_media_dining:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1839,8 +1839,8 @@ popup_media_dining:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1860,8 +1860,8 @@ popup_media_dining:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1883,7 +1883,7 @@ popup_media_dining:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1903,8 +1903,8 @@ popup_media_dining:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1924,8 +1924,8 @@ popup_media_dining:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux		
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1994,8 +1994,8 @@ popup_media_kitchen:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2015,8 +2015,8 @@ popup_media_kitchen:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2036,8 +2036,8 @@ popup_media_kitchen:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2059,7 +2059,7 @@ popup_media_kitchen:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2079,8 +2079,8 @@ popup_media_kitchen:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2100,8 +2100,8 @@ popup_media_kitchen:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux	
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2170,8 +2170,8 @@ popup_media_porch:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2191,8 +2191,8 @@ popup_media_porch:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2212,8 +2212,8 @@ popup_media_porch:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2235,7 +2235,7 @@ popup_media_porch:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2255,8 +2255,8 @@ popup_media_porch:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2276,8 +2276,8 @@ popup_media_porch:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2346,8 +2346,8 @@ popup_media_guest_bath:
                     - value: 1
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 1
+                  icon: mdi:spotify
+                  name: Spotify
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2367,8 +2367,8 @@ popup_media_guest_bath:
                     - value: 2
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 2
+                  icon: mdi:cast-audio
+                  name: Cast
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2388,8 +2388,8 @@ popup_media_guest_bath:
                     - value: 3
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:server
-                  name: Server 3
+                  icon: mdi:amazon-alexa
+                  name: Alexa
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2411,7 +2411,7 @@ popup_media_guest_bath:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:server
-                  name: Server 4
+                  name: Server 1
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2431,8 +2431,8 @@ popup_media_guest_bath:
                     - value: 5
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:google-play
-                  name: Google
+                  icon: mdi:server
+                  name: Server 2
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2452,8 +2452,8 @@ popup_media_guest_bath:
                     - value: 6
                       operator: >
                       color: rgb(255, 255, 255)
-                  icon: mdi:cast
-                  name: Cast
+                  icon: mdi:video-input-component
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish

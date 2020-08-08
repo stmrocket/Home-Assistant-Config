@@ -634,8 +634,8 @@ cards:
     - type: vertical-stack
       cards: 
         - type: custom:mini-media-player
-          entity: media_player.gmusic_player
-          icon: mdi:google-play
+          entity: media_player.spotify
+          icon: mdi:spotify
           volume_stateless: true
           artwork: cover
           hide:

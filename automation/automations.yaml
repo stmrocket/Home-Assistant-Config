@@ -40,7 +40,7 @@
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/zone/src
-        payload: 4,6
+        payload: 4,2
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/zone/vol

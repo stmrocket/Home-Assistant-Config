@@ -154,7 +154,15 @@
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/zone/src
-        payload: 4,5
+        payload: 4,1
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/zone/src
+        payload: 5,1
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/zone/src
+        payload: 10,1
     - service: switch.turn_on
       data:
         entity_id: switch.nuvo_zone_4_power
