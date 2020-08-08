@@ -869,7 +869,7 @@ popup_media_guest_bed:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:video-input-component
-                  name: Aux	
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1045,7 +1045,7 @@ popup_media_server:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:video-input-component
-                  name: Aux	
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1221,7 +1221,7 @@ popup_media_master_bed:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:video-input-component
-                  name: Aux	
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1573,7 +1573,7 @@ popup_media_garage:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:video-input-component
-                  name: Aux	
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1749,7 +1749,7 @@ popup_media_den:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:video-input-component
-                  name: Aux		
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -1925,7 +1925,7 @@ popup_media_dining:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:video-input-component
-                  name: Aux		
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
@@ -2101,7 +2101,7 @@ popup_media_kitchen:
                       operator: >
                       color: rgb(255, 255, 255)
                   icon: mdi:video-input-component
-                  name: Aux	
+                  name: Aux
                   tap_action: 
                     action: call-service
                     service: mqtt.publish
