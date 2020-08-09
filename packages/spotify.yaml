@@ -132,11 +132,23 @@ script:
             entity_id: input_select.spotify_playlist
             state: "Top Christian"
           sequence:
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: false
             - service: media_player.play_media
               data:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DXcb6CQIjdqKy
+            - delay:
+                milliseconds: 20
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
             - delay:
                 milliseconds: 150
             - service: homeassistant.update_entity
