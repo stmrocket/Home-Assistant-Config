@@ -105,7 +105,7 @@ script:
       - service: media_player.select_source
         data:
           entity_id: media_player.spotify_home
-          source: raspotify (raspotify)
+          source: HomeAssistant
       - delay:
           milliseconds: 50
       - service: media_player.media_play
