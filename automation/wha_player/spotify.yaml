@@ -250,7 +250,7 @@
       entity_id: input_boolean.nuvo_spotify_in_menu
     - service: input_select.select_option
       data_template:
-        entity_id: input_select.spotify_source
+        entity_id: input_select.spotify_playlist
         option: "{{ state_attr('media_player.spotify_home','media_playlist') }}"    
     - service: mqtt.publish
       data:
