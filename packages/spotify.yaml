@@ -68,8 +68,6 @@ script:
         default:
           - service: media_player.media_play
             entity_id: media_player.spotify_home
-          - delay:
-              milliseconds: 150
           - service: homeassistant.update_entity
             entity_id: media_player.spotify_home
       
@@ -77,8 +75,6 @@ script:
     sequence:
       - service: media_player.media_pause
         entity_id: media_player.spotify_home
-      - delay:
-          milliseconds: 150
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -86,8 +82,6 @@ script:
     sequence:
       - service: media_player.media_next_track
         entity_id: media_player.spotify_home
-      - delay:
-          milliseconds: 150
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -95,8 +89,6 @@ script:
     sequence:
       - service: media_player.media_previous_track
         entity_id: media_player.spotify_home
-      - delay:
-          milliseconds: 150
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -106,12 +98,13 @@ script:
         data:
           entity_id: media_player.spotify_home
           source: HomeAssistant
-      - delay:
-          milliseconds: 50
       - service: media_player.media_play
         entity_id: media_player.spotify_home
-      - delay:
-          milliseconds: 150
+      - service: media_player.shuffle_set
+        data:
+          entity_id: media_player.spotify_home
+          shuffle: true
+      - service: media_player.media_next_track
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -119,8 +112,6 @@ script:
     sequence:
       - service: media_player.media_pause
         entity_id: media_player.spotify_home
-      - delay:
-          milliseconds: 150
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -137,14 +128,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DXcb6CQIjdqKy
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -156,14 +147,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DX5SzTPIoCKiv
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -175,14 +166,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DWVYgpMbMPJMz
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -194,14 +185,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:2BdKasaYAwvSYviEsz214Y
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -213,14 +204,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -232,14 +223,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:0vW1PaZHXiamxAgdRD1loI
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -251,14 +242,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DWViXqZVTGO3Z
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -270,14 +261,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:7J8HlMdOq82WJAU6JmhR5d
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -289,14 +280,14 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
@@ -308,12 +299,12 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DX5OrO2Jxuvdn
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
+            - service: media_player.media_next_track
+              entity_id: media_player.spotify_home
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
 
