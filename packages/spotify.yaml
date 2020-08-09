@@ -149,8 +149,6 @@ script:
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - delay:
                 milliseconds: 150
             - service: homeassistant.update_entity
