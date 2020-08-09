@@ -146,7 +146,7 @@ script:
                 entity_id: media_player.spotify_home
                 shuffle: false
             - delay:
-                milliseconds: 500
+                milliseconds: 2000
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
