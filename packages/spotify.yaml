@@ -160,6 +160,10 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
         - conditions:
           - condition: state
@@ -175,6 +179,10 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
         - conditions:
           - condition: state
@@ -190,6 +198,10 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
         - conditions:
           - condition: state
@@ -205,6 +217,10 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
         - conditions:
           - condition: state
@@ -220,6 +236,10 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
         - conditions:
           - condition: state
@@ -235,6 +255,10 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
         - conditions:
           - condition: state
@@ -250,6 +274,10 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
         - conditions:
           - condition: state
@@ -265,6 +293,10 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
         - conditions:
           - condition: state
@@ -280,4 +312,8 @@ script:
                 milliseconds: 150
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
+            - service: media_player.shuffle_set
+              data:
+                entity_id: media_player.spotify_home
+                shuffle: true
 
