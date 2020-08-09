@@ -138,21 +138,19 @@ script:
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DXcb6CQIjdqKy
             - delay:
-                milliseconds: 50
+                milliseconds: 150
+            - service: homeassistant.update_entity
+              entity_id: media_player.spotify_home
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: false
             - delay:
-                milliseconds: 50
+                milliseconds: 500
             - service: media_player.shuffle_set
               data:
                 entity_id: media_player.spotify_home
                 shuffle: true
-            - delay:
-                milliseconds: 150
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
         - conditions:
           - condition: state
