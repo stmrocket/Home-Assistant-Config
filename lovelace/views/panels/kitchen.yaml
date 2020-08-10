@@ -59,29 +59,29 @@ cards:
               - entity: sensor.nuvo_zone_10_source
                 state: "1"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.kitchen_stereo
-                icon: mdi:speaker
-                artwork: cover
-                volume_stateless: true
-                hide:
-                  source: true  
-                  progress: true
+              type: custom:mini-media-player
+              entity: media_player.kitchen_stereo
+              icon: mdi:speaker
+              artwork: cover
+              volume_stateless: true
+              hide:
+                source: true  
+                progress: true
           - type: conditional
             conditions:
               - entity: sensor.nuvo_zone_10_source
                 state_not: "1"
             card:
-              - type: custom:mini-media-player
-                entity: media_player.kitchen_stereo
-                icon: mdi:speaker
-                artwork: cover
-                volume_stateless: true
-                hide:
-                  source: true
-                  controls: true
-                  info: true
-                  progress: true
+              type: custom:mini-media-player
+              entity: media_player.kitchen_stereo
+              icon: mdi:speaker
+              artwork: cover
+              volume_stateless: true
+              hide:
+                source: true
+                controls: true
+                info: true
+                progress: true
             
               
 
