@@ -3,18 +3,18 @@
       type: custom:vertical-stack-in-card
       cards:
         - type: picture-elements
-          image: /local/lovelace/room.png
+          image: /local/lovelace/room_sm.png
           elements:
             - entity: lock.back_door
               style:
-                bottom: 20%
+                bottom: -5%
                 font-weight: bold
                 right: 5%
                 transform: initial
               type: state-icon
             - entity: binary_sensor.kitchen_leak_detectors
               style:
-                bottom: 20%
+                bottom: -5%
                 font-weight: bold
                 right: 12%
                 transform: initial
@@ -25,12 +25,11 @@
                 service_data:
                   deviceID: 
                     - this
-              type: state-icon
             - entity: sensor.blank
               hold-action: none
               prefix: Kitchen
               style:
-                bottom: 20%
+                bottom: -5%
                 font-size: 150%
                 left: 5%
                 transform: initial

@@ -3,18 +3,18 @@
       type: custom:vertical-stack-in-card
       cards:
         - type: picture-elements
-          image: /local/lovelace/room.png
+          image: /local/lovelace/room_sm.png
           elements:
             - entity: cover.18606_tanglerose
               style:
-                bottom: 20%
+                bottom: -5%
                 font-weight: bold
                 right: 17%
                 transform: initial
               type: state-icon
             - entity: sensor.garage_temperature_owfs
               style:
-                bottom: 20%
+                bottom: -5%
                 right: 5%
                 transform: initial
               type: state-label
@@ -22,7 +22,7 @@
               hold-action: none
               prefix: Garage
               style:
-                bottom: 20%
+                bottom: -5%
                 font-size: 150%
                 left: 5%
                 transform: initial

@@ -10,13 +10,13 @@
         type: custom:vertical-stack-in-card
         cards:
           - type: picture-elements
-            image: /local/lovelace/room.png
+            image: /local/lovelace/room_sm.png
             elements:
               - entity: sensor.blank
                 hold-action: none
                 prefix: Christmas
                 style:
-                  bottom: 20%
+                  bottom: -5%
                   font-size: 150%
                   left: 5%
                   transform: initial
