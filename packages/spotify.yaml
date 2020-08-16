@@ -68,6 +68,8 @@ script:
         default:
           - service: media_player.media_play
             entity_id: media_player.spotify_home
+          - delay:
+              milliseconds: 100
           - service: homeassistant.update_entity
             entity_id: media_player.spotify_home
       
@@ -75,6 +77,8 @@ script:
     sequence:
       - service: media_player.media_pause
         entity_id: media_player.spotify_home
+      - delay:
+          milliseconds: 100
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -82,6 +86,8 @@ script:
     sequence:
       - service: media_player.media_next_track
         entity_id: media_player.spotify_home
+      - delay:
+          milliseconds: 100
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -89,6 +95,8 @@ script:
     sequence:
       - service: media_player.media_previous_track
         entity_id: media_player.spotify_home
+      - delay:
+          milliseconds: 100
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -97,7 +105,7 @@ script:
       - service: media_player.select_source
         data:
           entity_id: media_player.spotify_home
-          source: HomeAssistant
+          source: raspotify (raspotify)
       - service: media_player.media_play
         entity_id: media_player.spotify_home
       - service: media_player.shuffle_set
@@ -105,6 +113,8 @@ script:
           entity_id: media_player.spotify_home
           shuffle: true
       - service: media_player.media_next_track
+      - delay:
+          milliseconds: 100
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -112,6 +122,8 @@ script:
     sequence:
       - service: media_player.media_pause
         entity_id: media_player.spotify_home
+      - delay:
+          milliseconds: 100
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -134,6 +146,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -153,6 +167,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -172,6 +188,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -191,6 +209,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -210,6 +230,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -229,6 +251,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -248,6 +272,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -267,6 +293,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -286,6 +314,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -305,6 +335,8 @@ script:
                 shuffle: true
             - service: media_player.media_next_track
               entity_id: media_player.spotify_home
+            - delay:
+                milliseconds: 100
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
