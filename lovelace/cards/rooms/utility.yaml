@@ -3,25 +3,25 @@
       type: custom:vertical-stack-in-card
       cards:
         - type: picture-elements
-          image: /local/lovelace/room.png
+          image: /local/lovelace/room_sm.png
           elements:
             - entity: binary_sensor.utility_leak_dry
               style:
-                bottom: 20%
+                bottom: -5%
                 front-weight: bold
                 right: 24%
                 transform: initial
               type: state-icon
             - entity: lock.garage_entry
               style:
-                bottom: 20%
+                bottom: -5%
                 font-weight: bold
                 right: 17%
                 transform: initial
               type: state-icon
             - entity: sensor.dryer_vent_temperature_owfs
               style:
-                bottom: 20%
+                bottom: -5%
                 right: 5%
                 transform: initial
               type: state-label
@@ -29,7 +29,7 @@
               hold-action: none
               prefix: Laundry
               style:
-                bottom: 20%
+                bottom: -5%
                 font-size: 150%
                 left: 5%
                 transform: initial

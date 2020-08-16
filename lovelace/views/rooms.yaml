@@ -9,19 +9,26 @@ id: 1
 icon: mdi:lightbulb-on
 name: Rooms
 cards:
-            
+  - type: vertical-stack
+    cards:
       - !include /config/lovelace/cards/rooms/outside.yaml
       - !include /config/lovelace/cards/rooms/garage.yaml
+      - !include /config/lovelace/cards/rooms/office.yaml
+      - !include /config/lovelace/cards/rooms/server.yaml
+  - type: vertical-stack
+    cards:
       - !include /config/lovelace/cards/rooms/entry.yaml
-      - !include /config/lovelace/cards/rooms/utility.yaml
+      - !include /config/lovelace/cards/rooms/kitchen.yaml
+      - !include /config/lovelace/cards/rooms/guest_bed.yaml
+      - !include /config/lovelace/cards/rooms/guest_bath.yaml
+  - type: vertical-stack
+    cards:
+      - !include /config/lovelace/cards/rooms/hall.yaml
       - !include /config/lovelace/cards/rooms/den.yaml
       - !include /config/lovelace/cards/rooms/shack.yaml
-      - !include /config/lovelace/cards/rooms/kitchen.yaml
-      - !include /config/lovelace/cards/rooms/office.yaml
-      - !include /config/lovelace/cards/rooms/guest_bed.yaml
-      - !include /config/lovelace/cards/rooms/server.yaml
-      - !include /config/lovelace/cards/rooms/guest_bath.yaml
+      - !include /config/lovelace/cards/rooms/christmas.yaml
+  - type: vertical-stack
+    cards:
+      - !include /config/lovelace/cards/rooms/utility.yaml
       - !include /config/lovelace/cards/rooms/master_bed.yaml
       - !include /config/lovelace/cards/rooms/master_bath.yaml
-      - !include /config/lovelace/cards/rooms/christmas.yaml
-      - !include /config/lovelace/cards/rooms/hall.yaml
