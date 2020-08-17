@@ -97,14 +97,9 @@ script:
       - service: media_player.select_source
         data:
           entity_id: media_player.spotify_home
-          source: HomeAssistant
+          source: Echo Dot-0SJ Speaker
       - service: media_player.media_play
         entity_id: media_player.spotify_home
-      - service: media_player.shuffle_set
-        data:
-          entity_id: media_player.spotify_home
-          shuffle: true
-      - service: media_player.media_next_track
       - service: homeassistant.update_entity
         entity_id: media_player.spotify_home
 
@@ -128,12 +123,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DXcb6CQIjdqKy
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -147,12 +136,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DX5SzTPIoCKiv
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -166,12 +149,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DWVYgpMbMPJMz
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -185,12 +162,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:2BdKasaYAwvSYviEsz214Y
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -204,12 +175,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -223,12 +188,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:0vW1PaZHXiamxAgdRD1loI
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -242,12 +201,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DWViXqZVTGO3Z
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -261,12 +214,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:7J8HlMdOq82WJAU6JmhR5d
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -280,12 +227,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
@@ -299,12 +240,6 @@ script:
                 entity_id: media_player.spotify_home
                 media_content_type: playlist
                 media_content_id: spotify:playlist:37i9dQZF1DX5OrO2Jxuvdn
-            - service: media_player.shuffle_set
-              data:
-                entity_id: media_player.spotify_home
-                shuffle: true
-            - service: media_player.media_next_track
-              entity_id: media_player.spotify_home
             - service: homeassistant.update_entity
               entity_id: media_player.spotify_home
 
