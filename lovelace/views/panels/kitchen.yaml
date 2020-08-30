@@ -242,7 +242,7 @@ cards:
                 state:
                   - value: "Ready"
                     color: rgb(255, 255, 255)
-                    name: Ready
+                    name: '[[[ return `Ready - ${states[''sensor.litter_robot_drawer_level''].state}%` ]]]'
                   - value: "Clean"
                     color: rgb(255, 255, 255)
                     name: Clean
