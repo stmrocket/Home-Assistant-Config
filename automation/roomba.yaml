@@ -32,3 +32,12 @@
   action:
     - service: script.turn_on
       entity_id: script.roomba_dock
+
+- alias: Reset Dust Bin From NFC
+  trigger:
+    - platform: event
+      event_type: tag_scanned
+      event_data:
+        tag_id: !secret roomba_nfc
+  action:
+    - service: script.reset_roomba_counter
