@@ -2887,6 +2887,15 @@ popup_filter:
                 card:
                   entity: script.furnace_filter_date   
                   name: Reset Filter    
+              - entity: sensor.furnace_last_bleached  
+              - type: "custom:restriction-card"
+                row: true
+                restrictions:
+                  confirm: true
+                  text: "Reset bleach timer?"
+                card:
+                  entity: script.furnace_bleach_date   
+                  name: Reset Bleach    
 
 popup_blind_network:
   sequence:

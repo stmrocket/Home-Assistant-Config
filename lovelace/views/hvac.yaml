@@ -85,14 +85,17 @@ cards:
                   service: script.hvac_dump_zone_3
 
               - type: "custom:button-card"
-                entity: binary_sensor.hvac_filter_needs_replacement
+                entity: sensor.furnace_service_required
                 color_type: icon
                 icon: mdi:air-filter
                 state:
-                  - value: "on"
+                  - value: "Filter"
                     color: rgb(228, 94, 101)
                     name: Replace
-                  - value: "off"
+                  - value: "Bleach"
+                    color: rgb(228, 94, 101)
+                    name: Bleach
+                  - value: "OK"
                     color: rgb(255, 255, 255)
                     name: OK                   
                 tap_action:
