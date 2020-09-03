@@ -27,7 +27,7 @@ automation:
         event_data:
           tag_id: !secret hvac_bleach_nfc
     action:
-      - service: script.furnace_filter_date
+      - service: script.furnace_bleach_date
 
 binary_sensor:
   - platform:   template
