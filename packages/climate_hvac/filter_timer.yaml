@@ -11,6 +11,24 @@ automation:
       data_template:
         value: "{{ ((states('sensor.furnace_filter_life') | float) + (states('sensor.hvac_runtime_yesterday') | float)) | round(1) }}"
 
+  - alias: Reset Filter Timer From NFC
+    trigger:
+      - platform: event
+        event_type: tag_scanned
+        event_data:
+          tag_id: !secret hvac_filter_nfc
+    action:
+      - service: script.furnace_filter_date
+
+  - alias: Reset Bleach Timer From NFC
+    trigger:
+      - platform: event
+        event_type: tag_scanned
+        event_data:
+          tag_id: !secret hvac_bleach_nfc
+    action:
+      - service: script.furnace_filter_date
+
 binary_sensor:
   - platform:   template
     sensors:
@@ -19,8 +37,13 @@ binary_sensor:
         value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') }}"
       
       hvac_filter_needs_replacement:
-        friendly_name: HVAC FIlter Needs Replacement
+        friendly_name: HVAC Filter Needs Replacement
         value_template: "{{ states('sensor.furnace_filter_life') | int > states('input_number.replacement_threshold') | int }}"
+
+      hvac_needs_bleach:
+        friendly_name: HVAC Needs Bleach
+        value_template: '{{ (((as_timestamp(now()) - (as_timestamp(states.input_text.furnace_filter.state))) | int /60/1440) | round(0)) > 30 }}'
+
 
 sensor:
 # Runtime yesterday (for use in storing runtime each night)
@@ -96,6 +119,21 @@ sensor:
         friendly_name: Last Replaced
         value_template: "{{ states('input_text.furnace_filter')[:10] }}"
 
+      furnace_last_bleached:
+        friendly_name: Last Bleached
+        value_template: "{{ states('input_text.furnace_bleach')[:10] }}"
+      
+      furnace_service_required:
+        friendly_name: HVAC Service Required
+        value_template: >-
+          {% if is_state('binary_sensor.hvac_needs_bleach', 'on') -%}
+            Bleach
+          {% elif is_state('binary_sensor.hvac_filter_needs_replacement', 'on') -%}
+            Filter
+          {% else -%}
+            OK
+          {% endif -%}
+
 
 script:
 # Reset filter change date and set total runtime to zero
@@ -113,11 +151,22 @@ script:
             {% set active = (states('sensor.hvac_runtime_before_last_filter_change') | float) %}
             {{ 0 - active }}
 
+  furnace_bleach_date:
+    alias: Furnace filter change date
+    sequence:
+      - service: input_text.set_value
+        entity_id: input_text.furnace_bleach
+        data_template:
+          value: '{{ now() }}'
+
 
 input_text:
 # Store furnace filter change date
   furnace_filter:
-    name: Furnace filter change date
+    name: Furnace Filter Change Date
+
+  furnace_bleach:
+    name: Furnace Last Bleach
 
 
 input_number:
@@ -127,13 +176,13 @@ input_number:
     icon: mdi:clock-outline
     mode: box
     min: -1000
-    max: 1000
+    max: 10000
     unit_of_measurement: 'h'
 
 # Used to set max number of hours of filter runtime to calculate days until filter change required
   replacement_threshold:
     name: Threshold
     min: 0
-    max: 1000
+    max: 10000
     mode: box
     unit_of_measurement: 'h'
