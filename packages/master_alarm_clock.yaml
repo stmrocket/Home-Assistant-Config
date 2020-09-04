@@ -2,28 +2,28 @@ input_boolean:
 
   work_alarm_enabled:
     name: Work Alarm Clock Enabled
-    icon: mdi:timer
+    icon: mdi:timer_outline
   manual_alarm_enabled:
     name: Manual Alarm Clock Enabled
-    icon: mdi:timer
+    icon: mdi:timer_outline
   work_alarm_ringing:
     name: Work Alarm Clock Ringing
-    icon: mdi:timer
+    icon: mdi:timer_outline
   manual_alarm_ringing:
     name: Manual Alarm Clock Ringing
-    icon: mdi:timer
+    icon: mdi:timer_outline
   manual_alarm_repeat:
     name: Manual Alarm Clock Repeat
-    icon: mdi:timer
+    icon: mdi:timer_outline
   manual_alarm_horn:
     name: Manual Alarm Clock Use Horn
-    icon: mdi:timer
+    icon: mdi:timer_outline
   manual_alarm_hvac:
     name: Manual Alarm Resume HVAC
-    icon: mdi:timer
+    icon: mdi:timer_outline
   alarm_clock_ringing:
     name: Alarm Clock Ringing
-    icon: mdi:timer
+    icon: mdi:timer_outline
 
 counter:
   master_snooze:
