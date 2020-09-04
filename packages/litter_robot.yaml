@@ -198,3 +198,12 @@ automation:
     action:
       - service: counter.increment
         entity_id: counter.litter_robot_cycle_count
+
+  - alias: Empty Drawer From NFC
+    trigger:
+      - platform: event
+        event_type: tag_scanned
+        event_data:
+          tag_id: !secret pooper_nfc
+    action:
+      - service: script.litter_robot_empty
