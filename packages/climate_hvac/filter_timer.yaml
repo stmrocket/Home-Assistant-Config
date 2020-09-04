@@ -7,7 +7,7 @@ automation:
       at: '00:00:01'
     action:
     - service: homeassistant.update_entity
-      entiyy_id: 
+      entity_id: 
         - sensor.hvac_runtime_resterday
         - sensor.hcac_runtime_today
     - service: input_number.set_value
@@ -148,6 +148,8 @@ script:
         entity_id: input_text.furnace_filter
         data_template:
           value: '{{ now() }}'
+      - service: homeassistant.update_entity
+        entity_id: sensor.hvac_runtime_before_last_filter_change
       - service: input_number.set_value
         entity_id: input_number.hvac_runtime
         data_template:
