@@ -6,6 +6,10 @@ automation:
     - platform: time
       at: '00:00:01'
     action:
+    - service: homeassistant.update_entity
+      entiyy_id: 
+        - sensor.hvac_runtime_resterday
+        - sensor.hcac_runtime_today
     - service: input_number.set_value
       entity_id: input_number.hvac_runtime
       data_template:
