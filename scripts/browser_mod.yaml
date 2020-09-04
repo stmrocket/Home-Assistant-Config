@@ -3305,7 +3305,7 @@ popup_pooper:
                 - type: "custom:button-card"
                   entity: sensor.litter_robot_cycle_wait_time
                   color_type: icon
-                  icon: mdi:timer
+                  icon: mdi:timer_outline
                   state:
                     - value: '3'
                       color: rgb(228, 94, 101)
@@ -3323,7 +3323,7 @@ popup_pooper:
                 - type: "custom:button-card"
                   entity: sensor.litter_robot_cycle_wait_time
                   color_type: icon
-                  icon: mdi:timer
+                  icon: mdi:timer_outline
                   state:
                     - value: '7'
                       color: rgb(228, 94, 101)
@@ -3341,7 +3341,7 @@ popup_pooper:
                 - type: "custom:button-card"
                   entity: sensor.litter_robot_cycle_wait_time
                   color_type: icon
-                  icon: mdi:timer
+                  icon: mdi:timer_outline
                   state:
                     - value: '15'
                       color: rgb(228, 94, 101)
@@ -3389,19 +3389,19 @@ popup_generator_genset:
                     icon: mdi:thermometer
                   - entity: sensor.generator_total_engine_hours
                     name: Total
-                    icon: mdi:timer
+                    icon: mdi:timer_outline
                   - entity: sensor.generator_loaded_engine_hours
                     name: Loaded
-                    icon: mdi:timer
+                    icon: mdi:timer_outline
                   - entity: sensor.generator_time_since_service
                     name: Since Last Service
-                    icon: mdi:timer
+                    icon: mdi:timer_outline
                   - entity: sensor.generator_engine_starts
                     name: Engine Starts
                     icon: mdi:engine
                   - entity: sensor.generator_clock
                     name: Controller Time
-                    icon: mdi:timer
+                    icon: mdi:timer_outline
 
             - type: conditional
               conditions:
@@ -3448,13 +3448,13 @@ popup_generator_genset:
                     icon: mdi:thermometer
                   - entity: sensor.generator_total_engine_hours
                     name: Total 
-                    icon: mdi:timer
+                    icon: mdi:timer_outline
                   - entity: sensor.generator_time_since_service
                     name: Since Last Service
-                    icon: mdi:timer
+                    icon: mdi:timer_outline
                   - entity: sensor.generator_clock
                     name: Controller Time
-                    icon: mdi:timer
+                    icon: mdi:timer_outline
 
 popup_generator_utility:
   sequence:
@@ -3496,10 +3496,10 @@ popup_generator_load:
                   icon: mdi:engine
                 - entity: sensor.generator_exercise_interval
                   name: Exercise Interval
-                  icon: mdi:timer
+                  icon: mdi:timer_outline
                 - entity: sensor.generator_exercise_duration
                   name: Exercise Duration
-                  icon: mdi:timer
+                  icon: mdi:timer_outline
                 - entity: sensor.generator_next_exercise_start
                   name: Next Exercise
                   icon: mdi:calendar                
