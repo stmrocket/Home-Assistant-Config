@@ -9,7 +9,7 @@ automation:
     - service: homeassistant.update_entity
       entity_id: 
         - sensor.hvac_runtime_resterday
-        - sensor.hcac_runtime_today
+        - sensor.hvac_runtime_today
     - service: input_number.set_value
       entity_id: input_number.hvac_runtime
       data_template:
