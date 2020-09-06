@@ -56,7 +56,7 @@ script:
       - choose:
         - conditions:
           - condition: state
-            entity_id: switch.every_3_days
+            entity_id: switch.irrigation_program_3_days
             state: 'on'
           sequence:
             - service: rainmachine.start_program
@@ -64,7 +64,7 @@ script:
                 program_id: 1
         - conditions:
           - condition: state
-            entity_id: switch.every_2_days
+            entity_id: switch.irrigation_program_2_days
             state: 'on'
           sequence:
             - service: rainmachine.start_program
