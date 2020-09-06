@@ -36,16 +36,26 @@ cards:
               - type: "custom:button-card"
                 entity: switch.irrigation_program_2_days
                 color_type: icon
-                color: rgb(228, 94, 101)
-                icon: mdi:alarm-check
+                state:
+                  - value: 'on'
+                    color: rgb(228, 94, 101)
+                    icon: mdi:alarm-check
+                  - value: 'off'
+                    color: rgb(255, 255, 255)
+                    icon: mdi:alarm-off
                 name: Every 2 Days
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"
                 entity: switch.irrigation_program_3_days
                 color_type: icon
-                color: rgb(228, 94, 101)
-                icon: mdi:alarm-check
+                state:
+                  - value: 'on'
+                    color: rgb(228, 94, 101)
+                    icon: mdi:alarm-check
+                  - value: 'off'
+                    color: rgb(255, 255, 255)
+                    icon: mdi:alarm-off
                 name: Every 3 Days
                 hold_action: 
                   action: more-info
@@ -53,7 +63,7 @@ cards:
                 entity: switch.irrigation_run_program
                 color_type: icon
                 color: rgb(228, 94, 101)
-                icon: mdi:weather-pouring
+                icon: mdi:sprinkler-variant
                 name: Run Program
                 hold_action: 
                   action: more-info
