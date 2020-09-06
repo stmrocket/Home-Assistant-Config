@@ -34,11 +34,19 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: switch.irrigation_program
+                entity: switch.irrigation_program_2_days
                 color_type: icon
                 color: rgb(228, 94, 101)
                 icon: mdi:alarm-check
-                name: Program Enable
+                name: Every 2 Days
+                hold_action: 
+                  action: more-info
+              - type: "custom:button-card"
+                entity: switch.irrigation_program_3_days
+                color_type: icon
+                color: rgb(228, 94, 101)
+                icon: mdi:alarm-check
+                name: Every 3 Days
                 hold_action: 
                   action: more-info
               - type: "custom:button-card"

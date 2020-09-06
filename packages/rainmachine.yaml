@@ -1,0 +1,72 @@
+switch:
+
+  - platform: template
+    switches:
+
+      irrigation_program_3_days:
+        friendly_name: "Irrigation Schedule Every 3 Days Enabled"
+        value_template: "{{ not is_state('switch.every_3_days', 'unavailable') }}"
+        turn_on:
+          service: script.rainmachine_program_1_on
+        turn_off:
+          service: rainmachine.disable_program
+          data:
+            program_id: 1
+      
+      irrigation_program_2_days:
+        friendly_name: "Irrigation Schedule Every 2 Days Enabled"
+        value_template: "{{ not is_state('switch.every_2_days', 'unavailable') }}"
+        turn_on:
+          service: script.rainmachine_program_2_on
+        turn_off:
+          service: rainmachine.disable_program
+          data:
+            program_id: 2
+
+      irrigation_run_program:
+        friendly_name: "Run Irrigation Program"
+        value_template: "{{ is_state('switch.every_3_days', 'on') or is_state('switch.every_2_days', 'on') }}"
+        turn_on:
+          service: script.rainmachine_start_program
+
+        turn_off:
+          service: rainmachine.stop_all
+script:
+
+  rainmachine_program_1_on:
+    sequence:
+      - service: rainmachine.enable_program
+        data:
+          program_id: 1
+      - service: rainmachine.disable_program
+        data:
+          program_id: 2
+
+  rainmachine_program_2_on:
+    sequence:
+      - service: rainmachine.enable_program
+        data:
+          program_id: 2
+      - service: rainmachine.disable_program
+        data:
+          program_id: 1
+  
+  rainmachine_start_program:
+    sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: switch.every_3_days
+            state: 'on'
+          sequence:
+            - service: rainmachine.start_program
+              data:
+                program_id: 1
+        - conditions:
+          - condition: state
+            entity_id: switch.every_2_days
+            state: 'on'
+          sequence:
+            - service: rainmachine.start_program
+              data:
+                program_id: 2
