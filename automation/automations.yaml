@@ -149,4 +149,43 @@
     - delay:
         seconds: 2
     - service: switch.turn_off
-      entity_id: switch.elk_garage_door    
+      entity_id: switch.elk_garage_door 
+
+- alias: Tvheadend Post Started
+  trigger:
+    - platform: webhook
+      webhook_id: !secret webhook_tvh_post
+  action:
+    - service: notify.den_kodi
+      data:
+        title: "TV Headend"
+        message: "Recording postprosser started."
+        data:
+          displaytime: 5000
+          icon: "info"         
+
+- alias: Tvheadend Subtitles Done
+  trigger:
+    - platform: webhook
+      webhook_id: !secret webhook_tvh_subs
+  action:
+    - service: notify.den_kodi
+      data:
+        title: "TV Headend"
+        message: "Subtitle encoding complete."
+        data:
+          displaytime: 5000
+          icon: "info"
+
+- alias: Tvheadend Commercials Done
+  trigger:
+    - platform: webhook
+      webhook_id: !secret webhook_tvh_comm
+  action:
+    - service: notify.den_kodi
+      data:
+        title: "TV Headend"
+        message: "Commercial detection complete."
+        data:
+          displaytime: 5000
+          icon: "info"          
