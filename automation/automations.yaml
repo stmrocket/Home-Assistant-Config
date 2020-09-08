@@ -157,8 +157,8 @@
       webhook_id: !secret webhook_tvh_post
   action:
     - service: notify.den_kodi
-      data:
-        title: "TV Headend"
+      data_template:
+        title: "{{ trigger.query.title }}"
         message: "Recording postprosser started."
         data:
           displaytime: 5000
@@ -170,8 +170,8 @@
       webhook_id: !secret webhook_tvh_subs
   action:
     - service: notify.den_kodi
-      data:
-        title: "TV Headend"
+      data_template:
+        title: "{{ trigger.query.title }}"
         message: "Subtitle encoding complete."
         data:
           displaytime: 5000
@@ -183,8 +183,8 @@
       webhook_id: !secret webhook_tvh_comm
   action:
     - service: notify.den_kodi
-      data:
-        title: "TV Headend"
+      data_template:
+        title: "{{ trigger.query.title }}"
         message: "Commercial detection complete."
         data:
           displaytime: 5000
