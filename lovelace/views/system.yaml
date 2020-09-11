@@ -1299,7 +1299,7 @@ cards:
               - type: "custom:button-card"
                 entity: binary_sensor.git_update_ready
                 color_type: icon
-                icon: mdi:github-circle
+                icon: mdi:github
                 state:
                   - value: "on"
                     color: rgb(228, 94, 101)
@@ -1424,7 +1424,7 @@ cards:
               - type: "custom:button-card"
                 entity: device_tracker.core_router
                 color_type: icon
-                icon: mdi:network-router
+                icon: mdi:router-network
                 state:
                   - value: "home"
                     color: rgb(94, 228, 101)
