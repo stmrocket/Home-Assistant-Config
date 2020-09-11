@@ -32,6 +32,16 @@ automation:
           tag_id: !secret hvac_bleach_nfc
     action:
       - service: script.furnace_bleach_date
+  - alias: Record Last HVAC Cool Cycle
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.hvac_system_cool
+        to: 'on'
+    action:
+      - service: input_text.set_value
+        entity_id: input_text.furnace_last_cool
+        data_template:
+          value: '{{ now() }}'
 
 binary_sensor:
   - platform:   template
@@ -46,7 +56,7 @@ binary_sensor:
 
       hvac_needs_bleach:
         friendly_name: HVAC Needs Bleach
-        value_template: '{{ (((as_timestamp(now()) - (as_timestamp(states.input_text.furnace_bleach.state))) | int /60/1440) | round(0)) > 30 }}'
+        value_template: '{{ ((((as_timestamp(now()) - (as_timestamp(states.input_text.furnace_bleach.state))) | int /60/1440) | round(0)) > 30) or ( (((as_timestamp(now()) - (as_timestamp(states.input_text.furnace_last_cool.state))) | int /60/1440) | round(0)) <= 30 )}}'
 
 
 sensor:
@@ -173,6 +183,9 @@ input_text:
 
   furnace_bleach:
     name: Furnace Last Bleach
+
+  furnace_last_cool:
+    name: Furnace Last Cooling
 
 
 input_number:
