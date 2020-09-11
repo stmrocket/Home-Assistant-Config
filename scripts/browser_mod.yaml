@@ -429,7 +429,7 @@ popup_github:
                       color: rgb(228, 94, 101)
                     - value: 'off'
                       color: rgb(255, 255, 255)
-                  icon: mdi:github-circle
+                  icon: mdi:github
                   name: Pull
                   tap_action: 
                     action: call-service
@@ -443,7 +443,7 @@ popup_github:
                       color: rgb(228, 94, 101)
                     - value: 'off'
                       color: rgb(255, 255, 255)
-                  icon: mdi:github-circle
+                  icon: mdi:github
                   name: Restart
                   tap_action: 
                     action: call-service
