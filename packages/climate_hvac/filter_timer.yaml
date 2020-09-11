@@ -46,7 +46,7 @@ binary_sensor:
 
       hvac_needs_bleach:
         friendly_name: HVAC Needs Bleach
-        value_template: '{{ (((as_timestamp(now()) - (as_timestamp(states.input_text.furnace_filter.state))) | int /60/1440) | round(0)) > 30 }}'
+        value_template: '{{ (((as_timestamp(now()) - (as_timestamp(states.input_text.furnace_bleach.state))) | int /60/1440) | round(0)) > 30 }}'
 
 
 sensor:
