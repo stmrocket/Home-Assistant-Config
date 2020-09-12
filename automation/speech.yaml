@@ -326,18 +326,6 @@
       platform: event
   action:
     - service: browser_mod.close_popup
-
-- alias: Timer Alert
-  trigger:
-    - platform: event
-      event_type: ifttt_webhook_received
-      event_data:
-        action: echotimer
-  action:
-    - service: mqtt.publish
-      data:
-        topic: parrot/command/set/play
-        payload: 3,2
           
 - alias: Remote Wake
   trigger:
