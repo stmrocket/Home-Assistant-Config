@@ -77,7 +77,7 @@ input_boolean:
 
   roomba_auto:
     name: Schedule Enabled
-    icon: mdi:timer_outline      
+    icon: mdi:timer-outline      
 
 counter:
   roomba_cycles:
