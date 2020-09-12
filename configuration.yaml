@@ -171,7 +171,7 @@ input_boolean:
 
   guest_mode:
     name: Guest Mode
-    icon: mdi:timer_outline
+    icon: mdi:timer-outline
 
   timer_lights:
     name: Timer Lights
@@ -179,11 +179,11 @@ input_boolean:
 
   outside_timer_lights:
     name: Outside Timer Lights
-    icon: mdi:timer_outline
+    icon: mdi:timer-outline
   
   master_lamp_timer:
     name: Master Lamp Timer
-    icon: mdi:timer_outline
+    icon: mdi:timer-outline
 
 light:
 
