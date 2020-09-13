@@ -1,7 +1,7 @@
 - alias: Auto Guest Mode On
   trigger:
     - platform: state
-      entity_id: device_tracker.karen
+      entity_id: device_tracker.karen_oneplus7t
       to: home
   action:
     - service: input_boolean.turn_on
@@ -10,7 +10,7 @@
 - alias: Auto Guest Mode Off
   trigger:
     - platform: state
-      entity_id: device_tracker.karen
+      entity_id: device_tracker.karen_oneplus7t
       to: not_home
   condition:
     - condition: state
