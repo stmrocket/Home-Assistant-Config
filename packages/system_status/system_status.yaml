@@ -41,7 +41,6 @@ binary_sensor:
       updater_supervisor:
         friendly_name: 'Updater - Supervisor'
         device_class: problem
-        entity_id: sensor.supervisor_updates
         value_template: "{{ state_attr('sensor.supervisor_updates', 'current_version') != state_attr('sensor.supervisor_updates', 'newest_version') }}"
         availability_template: "{{ (states('sensor.supervisor_updates') | int(-1)) > -1 }}"
 
@@ -49,7 +48,6 @@ binary_sensor:
       updater_addons:
         friendly_name: 'Updater - Addons'
         device_class: problem
-        entity_id: sensor.supervisor_updates
         value_template: "{{ states('sensor.supervisor_updates') | int > 0 }}"
 
 #################################################################
@@ -499,18 +497,14 @@ sensor:
     sensors:
       wan_in_mbps:
         value_template: "{{ (state_attr('sensor.erl_wan_in_stats','change_rate')|float*8*(state_attr('sensor.erl_wan_in_stats', 'sampling_size')-1)/1000000)|round(2) }}"
-        unit_of_measurement: 'MBps'
-        entity_id: sensor.erl_wan_in_stats
+        unit_of_measurement: 'Mbps'
 
       wan_out_mbps:
         value_template: "{{ (state_attr('sensor.erl_wan_out_stats','change_rate')|float*8*(state_attr('sensor.erl_wan_out_stats', 'sampling_size')-1)/1000000)|round(2) }}"
-        unit_of_measurement: 'MBps'
-        entity_id: sensor.erl_wan_out_stats
+        unit_of_measurement: 'Mbps'
       
       wan_ping:
           friendly_name: 'WAN Ping'
-          entity_id:
-            - binary_sensor.wan_ping
           value_template: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2) }}"
           unit_of_measurement: "ms"
       
