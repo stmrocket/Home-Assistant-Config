@@ -1,6 +1,4 @@
 sensor:
-    # Weather prediction
-  - platform: yr
 
   - platform: dewpoint
     sensors:
