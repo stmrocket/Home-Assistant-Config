@@ -294,15 +294,6 @@ elkm1:
 # Alexa Integration
 api:
 alexa: !include alexa.yaml
-
-#Kodi Media Player
-media_player:
-  - name: den_kodi
-    platform: kodi
-    host: !secret den_kodi_host
-  - name: master_kodi
-    platform: kodi
-    host: !secret master_kodi_host
       
 #Google Calendar
 google:
