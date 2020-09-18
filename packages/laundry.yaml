@@ -1,7 +1,5 @@
 # Sensors
 sensor:
-  # Weather prediction
-  - platform: yr
 #Sonoff Washer Monitor
   - platform: mqtt
     name: "Washer State"
