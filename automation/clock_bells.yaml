@@ -1,8 +1,7 @@
 - alias: Clock 15 Minute Chime
   trigger:
     - platform: time_pattern
-      minutes: "15"        
-      seconds: "0"
+      minutes: 15
   condition:
     - condition: or
       conditions:
@@ -30,8 +29,7 @@
 - alias: Clock 30 Minute Chime
   trigger:
     - platform: time_pattern
-      minutes: "30"        
-      seconds: "0"
+      minutes: 30
   condition:
     - condition: or
       conditions:
@@ -59,8 +57,7 @@
 - alias: Clock 45 Minute Chime
   trigger:
     - platform: time_pattern
-      minutes: "45"        
-      seconds: "0"
+      minutes: 45
   condition:
     - condition: or
       conditions:
@@ -88,9 +85,7 @@
 - alias: Clock Hourly Chime
   trigger:
     - platform: time_pattern
-      hours: "*"
-      minutes: "0"        
-      seconds: "0"
+      minutes: "0"
   condition:
     - condition: or
       conditions:
