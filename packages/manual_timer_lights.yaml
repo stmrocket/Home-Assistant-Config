@@ -60,3 +60,62 @@ script:
           - light.hall_lamp
       - service: input_boolean.turn_off
         entity_id: input_boolean.manual_timer_lights         
+
+automation:
+  - alias: Manual Timer Lights On from Keypad
+    trigger:
+      - platform: state
+        entity_id: switch.timer_lights
+        from: 'off'
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: switch.manual_timer_lights
+        state: 'off'
+    action:
+      - service: switch.turn_on
+        data:
+          entity_id: switch.manual_timer_lights
+
+  - alias: Manual Timer Lights Off from Keypad
+    trigger:
+      - platform: state
+        entity_id: switch.timer_lights
+        from: 'on'
+        to: 'off'
+    condition:
+      - condition: state
+        entity_id: switch.manual_timer_lights
+        state: 'on'
+    action:
+      - service: switch.turn_off
+        data:
+          entity_id: switch.manual_timer_lights
+
+  - alias: Manual Timer Lights Keypad On
+    trigger:
+      - platform: state
+        entity_id: switch.manual_timer_lights
+        from: 'off'
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: switch.hall_timer_lights
+        state:  'off'
+    action:
+      - service: switch.turn_on
+        entity_id: switch.hall_timer_lights
+
+  - alias: Manual Timer Lights Keypad Off
+    trigger:
+      - platform: state
+        entity_id: switch.manual_timer_lights
+        from: 'on'
+        to: 'off'
+    condition:
+      - condition: state
+        entity_id: switch.hall_timer_lights
+        state:  'on'
+    action:
+      - service: switch.turn_off
+        entity_id: switch.hall_timer_lights
