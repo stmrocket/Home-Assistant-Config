@@ -27,8 +27,8 @@ entity_summary_5: sensor.dark_sky_summary_5d
 entity_sun: sun.sun
 entity_visibility: sensor.dark_sky_visibility
 entity_wind_bearing: sensor.dark_sky_wind_bearing
-entity_wind_speed: sensor.acurite_ws_wind_speed
-entity_humidity: sensor.dark_sky_wind_speed
+entity_wind_speed: sensor.dark_sky_wind_speed
+entity_humidity: sensor.acurite_outside_humidity
 entity_pressure: sensor.aquara_den_pressure
 entity_daily_summary: sensor.dark_sky_daily_summary
 entity_pop_intensity: sensor.dark_sky_precip_intensity
