@@ -128,7 +128,7 @@
 - alias: Display Rainfall on Elk Keypads
   trigger:
     - platform: state
-      entity_id: sensor.elk_mechanical_rain
+      entity_id: sensor.rain_day
     - platform: state
       entity_id: alarm_control_panel.house
       to: disarmed
