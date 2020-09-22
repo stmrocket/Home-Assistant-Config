@@ -3,8 +3,8 @@ sensor:
   - platform: dewpoint
     sensors:
       dewpoint_outside:
-        temperature: sensor.acurite_ws_temperature
-        rel_hum: sensor.acurite_ws_humidity
+        temperature: sensor.acurite_outside_temperature
+        rel_hum: sensor.acurite_outside_humidity
         
   - platform: template
     sensors:
@@ -82,7 +82,7 @@ sensor:
 
 rest_command:
   update_wunderground:
-    url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.acurite_ws_temperature') }}&humidity={{ states('sensor.acurite_ws_humidity') }}&dewptf={{ states('sensor.dewpoint_outside') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&winddir={{ states('sensor.acurite_ws_wind_direction') }}&windspeedmph={{ states('sensor.acurite_ws_wind_speed') }}&action=updateraw"
+    url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.acurite_outside_temperature') }}&humidity={{ states('sensor.acurite_outside_humidity') }}&dewptf={{ states('sensor.dewpoint_outside') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&action=updateraw"
 
 input_boolean:
   is_raining:
