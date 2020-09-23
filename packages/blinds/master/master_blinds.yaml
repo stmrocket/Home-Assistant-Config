@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "Master Blinds"
+    device_class: blind
     command_topic: "habc/master/command/set/state"
     set_position_topic: "habc/master/command/set/positionpct"
     position_topic: "habc/master/tele/currentpct"
@@ -9,18 +10,6 @@ cover:
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
-
-input_boolean:
-
-  master_blinds_open:
-    name: Cover Master Open
-    initial: off
-    icon: mdi:blinds
-
-  master_blinds_close:
-    name: Cover Master Close
-    initial: off
-    icon: mdi:blinds
 
 sensor:
   platform: average

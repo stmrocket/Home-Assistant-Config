@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "Left Master Blind"
+    device_class: blind
     command_topic: "habc/master_l/command/set/state"
     set_position_topic: "habc/master_l/command/set/positionpct"
     position_topic: "habc/master_l/tele/currentpct"

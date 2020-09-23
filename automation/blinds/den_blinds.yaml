@@ -55,28 +55,6 @@
     - service: switch.turn_off
       entity_id: switch.den_blinds
 
-- alias: Alexa Open Den Blinds
-  trigger:
-    - platform: state
-      entity_id: input_boolean.den_blinds_open
-      to: 'on'
-  action:
-    - service: cover.open_cover
-      entity_id: cover.den_blinds
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.den_blinds_open
-
-- alias: Alexa Close Den Blinds
-  trigger:
-    - platform: state
-      entity_id: input_boolean.den_blinds_close
-      to: 'on'
-  action:
-    - service: cover.close_cover
-      entity_id: cover.den_blinds
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.den_blinds_close
-
 - alias: Den Windows Same Position
   trigger:
     - platform: state

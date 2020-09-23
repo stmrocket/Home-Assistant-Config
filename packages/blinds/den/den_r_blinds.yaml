@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "Right Den Blind"
+    device_class: blind
     command_topic: "habc/den_r/command/set/state"
     set_position_topic: "habc/den_r/command/set/positionpct"
     position_topic: "habc/den_r/tele/currentpct"

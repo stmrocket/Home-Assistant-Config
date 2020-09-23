@@ -73,28 +73,6 @@
         - switch.kitchen_blinds
         - switch.dining_room_blinds
 
-- alias: Alexa Open Kitchen Blinds
-  trigger:
-    - platform: state
-      entity_id: input_boolean.kitchen_blinds_open
-      to: 'on'
-  action:
-    - service: cover.open_cover
-      entity_id: cover.kitchen_blinds
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.kitchen_blinds_open
-
-- alias: Alexa Close Kitchen Blinds
-  trigger:
-    - platform: state
-      entity_id: input_boolean.kitchen_blinds_close
-      to: 'on'
-  action:
-    - service: cover.close_cover
-      entity_id: cover.kitchen_blinds
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.kitchen_blinds_close
-
 - alias: Kitchen Windows Same Position
   trigger:
     - platform: state

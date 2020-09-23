@@ -66,31 +66,15 @@ smart_home:
       - switch.manual_timer_lights
 
       #INPUT BOOLEAN
-      - input_boolean.server_blinds_open
-      - input_boolean.server_blinds_close
-      - input_boolean.guest_blinds_open
-      - input_boolean.guest_blinds_close
       - input_boolean.bedtime_trigger
       - input_boolean.morning_trigger
       - input_boolean.goodnight_trigger
       - input_boolean.guest_mode
-      - input_boolean.office_blinds_open
-      - input_boolean.office_blinds_close
-      - input_boolean.house_blinds_open
-      - input_boolean.house_blinds_close
       - input_boolean.elk_night_on
       - input_boolean.elk_night_off
       - input_boolean.elk_stay_on
       - input_boolean.elk_stay_off
       - input_boolean.elk_away_on
-      - input_boolean.den_blinds_open
-      - input_boolean.den_blinds_close
-      - input_boolean.shack_blinds_open
-      - input_boolean.shack_blinds_close
-      - input_boolean.kitchen_blinds_open
-      - input_boolean.kitchen_blinds_close
-      - input_boolean.master_blinds_open
-      - input_boolean.master_blinds_close
       - input_boolean.leaving_trigger
       - input_boolean.returning_trigger
       - input_boolean.start_truck
@@ -104,21 +88,16 @@ smart_home:
       - lock.garage_entry
       - lock.back_door
 
-    exclude_domains:
-      - automation
-      - script
-      - alert
-      - fan
-      - group
-      - light
-      - scene
-      - sensor
-      - switch
-      - cover
-      - binary_sensor
-      - media_player
-      - input_boolean
-      - climate      
+      #COVER
+      - cover.house_blinds
+      - cover.den_blinds
+      - cover.kitchen_blinds
+      - cover.master_blinds
+      - cover.shack_blinds
+      - cover.office_blinds
+      - cover.guest_blind
+      - cover.server_room_blind
+
 
   entity_config:
     lock.front_door:
@@ -220,3 +199,8 @@ smart_home:
       name: Timer Lights
     input_boolean.frigate_enabled:
       name: Frigate
+    cover.guest_blind:
+      name: Guest Blinds
+    cover.server_room_blind:
+      name: Server Room Blinds
+    

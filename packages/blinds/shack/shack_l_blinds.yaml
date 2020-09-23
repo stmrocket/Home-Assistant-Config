@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "Left Shack Blind"
+    device_class: blind
     command_topic: "habc/shack_l/command/set/state"
     set_position_topic: "habc/shack_l/command/set/positionpct"
     position_topic: "habc/shack_l/tele/currentpct"

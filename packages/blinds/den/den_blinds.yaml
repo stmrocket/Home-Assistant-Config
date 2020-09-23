@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "Den Blinds"
+    device_class: blind
     command_topic: "habc/den/command/set/state"
     set_position_topic: "habc/den/command/set/positionpct"
     position_topic: "habc/den/tele/currentpct"
@@ -9,19 +10,7 @@ cover:
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
-
-input_boolean:
-
-  den_blinds_open:
-    name: Cover Den Open
-    initial: off
-    icon: mdi:blinds
-
-  den_blinds_close:
-    name: Cover Den Close
-    initial: off
-    icon: mdi:blinds
-
+    
 sensor:
   platform: average
   name: Den Blinds Average Light Level

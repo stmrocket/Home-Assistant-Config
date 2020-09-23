@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "Office Blinds"
+    device_class: blind
     command_topic: "habc/office/command/set/state"
     set_position_topic: "habc/office/command/set/positionpct"
     position_topic: "habc/office/tele/currentpct"
@@ -9,18 +10,6 @@ cover:
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
-
-input_boolean:
-
-  office_blinds_open:
-    name: Cover Office Open
-    initial: off
-    icon: mdi:blinds
-
-  office_blinds_close:
-    name: Cover Office Close
-    initial: off
-    icon: mdi:blinds
 
 sensor:
   platform: average
