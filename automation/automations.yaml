@@ -19,6 +19,9 @@
       data:
         message: The alarm is fully armed in away mode and all doors are secure.
         title: House Secure
+        data:
+          ttl: 0
+          priority: high
     
 - alias: Master Going To Bed
   trigger:

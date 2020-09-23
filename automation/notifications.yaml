@@ -8,6 +8,9 @@
       data:
         message: The alarm has been triggered.
         title: Alarm!        
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Garage Opened While Away
   trigger:
@@ -22,4 +25,7 @@
     - service: notify.mobile_app_shawn_7t
       data:
         message: The garage door was opened while the alarm was armed.
-        title: Garage Door        
+        title: Garage Door  
+        data:
+          ttl: 0
+          priority: high      

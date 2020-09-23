@@ -90,6 +90,8 @@
         title: Lock Truck
         message: "You are at work.  Would you like to lock your truck?"
         data:
+          ttl: 0
+          priority: high
           actions:
             - action: "lock_truck" # The key you are sending for the event
               title: "Lock" # The button title
@@ -117,6 +119,8 @@
         title: Heading Home
         message: "It's about that time.  Would you like to start or unlock your truck?"
         data:
+          ttl: 0
+          priority: high
           actions:
             - action: "start_truck" # The key you are sending for the event
               title: "Start" # The button title    
@@ -136,6 +140,8 @@
         title: Heading Home
         message: "The truck is running.  Would you like to unlock your truck?"
         data:
+          ttl: 0
+          priority: high
           actions:   
             - action: "unlock_truck" # The key you are sending for the event
               title: "Unlock" # The button title              

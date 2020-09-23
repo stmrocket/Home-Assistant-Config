@@ -135,6 +135,9 @@
       data:
         message: The dryer has stopped.
         title: Laundry Update
+        data:
+          ttl: 0
+          priority: high
     - service: notify.den_kodi
       data:
         title: "Laundry Update"
@@ -199,6 +202,9 @@
       data:
         message: The washer has stopped.
         title: Laundry Update
+        data:
+          ttl: 0
+          priority: high
     - service: notify.den_kodi
       data:
         title: "Laundry Update"

@@ -212,6 +212,9 @@
       data:
         message: Frigate has been restarted due to unresponsiveness.
         title: Frigate CCTV
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Start Reset Timer When Frigate Disabled
   trigger:
