@@ -107,6 +107,9 @@
       data:
         message: It is now raining.
         title: Weather
+        data:
+          ttl: 0
+          priority: high
     - service: browser_mod.toast
       data:
         message: "It is now raining."
@@ -131,6 +134,9 @@
       data:
         message: It has stopped raining.
         title: Weather
+        data:
+          ttl: 0
+          priority: high
     - service: browser_mod.toast
       data:
         message: "It has stopped raining."

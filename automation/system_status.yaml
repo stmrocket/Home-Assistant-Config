@@ -11,6 +11,9 @@
     data:
       title: Device Offline
       message: A blind controller has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify LED Controller Offline
   trigger:
@@ -25,6 +28,9 @@
     data:
       title: Device Offline
       message: An LED controller has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify NAS Offline
   trigger:
@@ -39,6 +45,9 @@
     data:
       title: Device Offline
       message: The NAS has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify HDHomeRun Offline
   trigger:
@@ -53,6 +62,9 @@
     data:
       title: Device Offline
       message: The HDHomeRun has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify MusicPort Offline
   trigger:
@@ -67,6 +79,9 @@
     data:
       title: Device Offline
       message: The MusicPort server has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify OWFS Offline
   trigger:
@@ -81,6 +96,9 @@
     data:
       title: Device Offline
       message: The OWFS server has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Core Switch Offline
   trigger:
@@ -95,6 +113,9 @@
     data:
       title: Device Offline
       message: The Core switch has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify POE Switch Offline
   trigger:
@@ -109,6 +130,9 @@
     data:
       title: Device Offline
       message: The POE switch has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify ISY Offline
   trigger:
@@ -123,6 +147,9 @@
     data:
       title: Device Offline
       message: The ISY has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify ELK Offline
   trigger:
@@ -137,6 +164,9 @@
     data:
       title: Device Offline
       message: The alarm panel has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Front AP Offline
   trigger:
@@ -151,6 +181,9 @@
     data:
       title: Device Offline
       message: The front AP has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify den AP Offline
   trigger:
@@ -165,6 +198,9 @@
     data:
       title: Device Offline
       message: The den AP has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Redlink Offline
   trigger:
@@ -179,6 +215,9 @@
     data:
       title: Device Offline
       message: The Redlink bridge has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Server UPS Offline
   trigger:
@@ -193,6 +232,9 @@
     data:
       title: Device Offline
       message: The server room UPS has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Office UPS Offline
   trigger:
@@ -207,6 +249,9 @@
     data:
       title: Device Offline
       message: The office UPS has been offline for 5 minutes.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Server UPS On Battery
   trigger:
@@ -218,6 +263,9 @@
     data:
       title: Server UPS On Battery Power
       message: The server room is running on battery power.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Server UPS On Utility
   trigger:
@@ -230,6 +278,9 @@
     data:
       title: Server UPS Power Restored
       message: Power has been restored to the server closet.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Server UPS Battery Low
   trigger:
@@ -241,6 +292,9 @@
     data:
       title: Server UPS Battery Low
       message: The server room UPS battery is low.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Server UPS Battery Fail
   trigger:
@@ -252,6 +306,9 @@
     data:
       title: Server UPS Replace Battery
       message: The server room UPS battery has failed.  Replace immediately.
+      data:
+        ttl: 0
+        priority: high
   - service: persistent_notification.create
     data:
       title: Server UPS Replace Battery
@@ -267,6 +324,9 @@
     data:
       title: Office UPS On Battery Power
       message: The office is running on battery power.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Office UPS On Utility
   trigger:
@@ -279,6 +339,9 @@
     data:
       title: Office UPS Power Restored
       message: Power has been restored to the office.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Office UPS Battery Low
   trigger:
@@ -290,6 +353,9 @@
     data:
       title: Office UPS Battery Low
       message: The office UPS battery is low.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Office UPS Battery Fail
   trigger:
@@ -301,6 +367,9 @@
     data:
       title: Office UPS Replace Battery
       message: The office UPS battery has failed.  Replace immediately.
+      data:
+        ttl: 0
+        priority: high
   - service: persistent_notification.create
     data:
       title: Office UPS Replace Battery
@@ -317,7 +386,10 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Container Down
-      message: The Frigate Docker container is down.     
+      message: The Frigate Docker container is down.    
+      data:
+        ttl: 0
+        priority: high 
 
 - alias: Notify Docker MySQL Down
   trigger:
@@ -330,7 +402,10 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Container Down
-      message: The MySQL Docker container is down.      
+      message: The MySQL Docker container is down.  
+      data:
+        ttl: 0
+        priority: high    
 
 - alias: Notify TV Headend Down
   trigger:
@@ -343,7 +418,10 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Container Down
-      message: The TV Headend Docker container is down.          
+      message: The TV Headend Docker container is down.   
+      data:
+        ttl: 0
+        priority: high       
 
 - alias: Notify Docker Eagle MQTT Down
   trigger:
@@ -356,7 +434,10 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Container Down
-      message: The Eagle MQTT Docker container is down.        
+      message: The Eagle MQTT Docker container is down.   
+      data:
+        ttl: 0
+        priority: high     
 
 - alias: Notify Parrot Offline
   trigger:
@@ -370,7 +451,10 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Device Offline
-      message: The MQTT Parrot has been offline for 5 minutes.      
+      message: The MQTT Parrot has been offline for 5 minutes.  
+      data:
+        ttl: 0
+        priority: high    
 
 - alias: Notify Clock Horn Offline
   trigger:
@@ -384,7 +468,10 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Device Offline
-      message: The clock horn has been offline for 5 minutes.      
+      message: The clock horn has been offline for 5 minutes.   
+      data:
+        ttl: 0
+        priority: high   
 
 - alias: Notify RainMachine Offline
   trigger:
@@ -399,6 +486,9 @@
     data:
       title: Device Offline
       message: The RainMachine has been offline for 5 minutes.    
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Genset Offline
   trigger:
@@ -412,7 +502,10 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Device Offline
-      message: The standby generator has been offline for 5 minutes.        
+      message: The standby generator has been offline for 5 minutes. 
+      data:
+        ttl: 0
+        priority: high       
 
 - alias: Notify Genset Running
   trigger:
@@ -423,18 +516,25 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Generator Running
-      message: The generator is supplying power to the house.           
+      message: The generator is supplying power to the house. 
+      data:
+        ttl: 0
+        priority: high          
 
 - alias: Notify Genset Stopped
   trigger:
   - platform: state
     entity_id: sensor.generator_status
+    from: 'Running'
     to: 'Standby'    
   action:
   - service: notify.mobile_app_shawn_7t
     data:
       title: Generator Stopped
-      message: The generator has stopped.           
+      message: The generator has stopped.      
+      data:
+        ttl: 0
+        priority: high     
 
 - alias: Notify Genset Trouble
   trigger:
@@ -445,7 +545,10 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Generator Fault
-      message: The generator is reporting an error.              
+      message: The generator is reporting an error. 
+      data:
+        ttl: 0
+        priority: high             
 
 - alias: Notify Shack UPS On Battery
   trigger:
@@ -457,6 +560,9 @@
     data:
       title: Shack UPS On Battery Power
       message: The shack is running on battery power.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Shack UPS On Utility
   trigger:
@@ -469,6 +575,9 @@
     data:
       title: Shack UPS Power Restored
       message: Power has been restored to the shack.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Shack UPS Battery Low
   trigger:
@@ -480,6 +589,9 @@
     data:
       title: Shack UPS Battery Low
       message: The shack UPS battery is low.
+      data:
+        ttl: 0
+        priority: high
 
 - alias: Notify Shack UPS Battery Fail
   trigger:
@@ -491,6 +603,9 @@
     data:
       title: Shack UPS Replace Battery
       message: The shack UPS battery has failed.  Replace immediately.
+      data:
+        ttl: 0
+        priority: high
   - service: persistent_notification.create
     data:
       title: Shack UPS Replace Battery
@@ -508,4 +623,7 @@
   - service: notify.mobile_app_shawn_7t
     data:
       title: Device Offline
-      message: The AdGuard server has been offline for 5 minutes.      
+      message: The AdGuard server has been offline for 5 minutes.  
+      data:
+        ttl: 0
+        priority: high    

@@ -293,12 +293,15 @@
         title: Doorbell
         message: Someone is at the front door.
         data:
+          ttl: 0
+          priority: high
           image: "{{ states('sensor.external_url') }}/local/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
           data:
-          actions:
-            - action: URI
-              title: "Open Image"
-              uri: "{{ states('sensor.external_url') }}/local/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+            actions:
+              - action: URI
+                title: "Open Image"
+                uri: "{{ states('sensor.external_url') }}/local/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg"
+
     - service: notify.den_kodi
       data:
         title: "Doorbell"

@@ -82,6 +82,9 @@
     - service: notify.mobile_app_shawn_7t
       data:
         message: The donation box has been opened.
-        title: Donation Box      
+        title: Donation Box
+        data:
+          ttl: 0
+          priority: high
     - service: input_boolean.turn_on
       entity_id: input_boolean.donation_box
