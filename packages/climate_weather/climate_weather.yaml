@@ -33,6 +33,17 @@ sensor:
         unit_of_measurement: '%'
         device_class: 'illuminance'
 
+      weather_description:
+        value_template: >-
+          {% if is_state('input_boolean.is_raining','on') -%}
+            Rain now.  {{ states('sensor.dark_sky_daily_summary') }}
+          {% else -%}
+            {{ states('sensor.dark_sky_daily_summary') }}
+          {% endif -%}
+
+      clean_precip_intensity:
+        value_template: "{{ states('sensor.dark_sky_precip_intensity') | round(2) }}"
+
 # Darksky
   - platform: darksky
     api_key: !secret ds_key

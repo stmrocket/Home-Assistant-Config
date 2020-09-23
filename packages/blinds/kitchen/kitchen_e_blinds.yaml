@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "East Kitchen Blind"
+    device_class: blind
     command_topic: "habc/kitchen_e/command/set/state"
     set_position_topic: "habc/kitchen_e/command/set/positionpct"
     position_topic: "habc/kitchen_e/tele/currentpct"

@@ -53,25 +53,3 @@
   action:
     - service: switch.turn_off
       entity_id: switch.guest_blinds
-
-- alias: Alexa Open Guest Blinds
-  trigger:
-    - platform: state
-      entity_id: input_boolean.guest_blinds_open
-      to: 'on'
-  action:
-    - service: cover.open_cover
-      entity_id: cover.guest_blind
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.guest_blinds_open
-
-- alias: Alexa Close Guest Blinds
-  trigger:
-    - platform: state
-      entity_id: input_boolean.guest_blinds_close
-      to: 'on'
-  action:
-    - service: cover.close_cover
-      entity_id: cover.guest_blind
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.guest_blinds_close

@@ -73,28 +73,6 @@
         - switch.master_bedroom_blinds
         - switch.master_bathroom_blinds
 
-- alias: Alexa Open Master Blinds
-  trigger:
-    - platform: state
-      entity_id: input_boolean.master_blinds_open
-      to: 'on'
-  action:
-    - service: cover.open_cover
-      entity_id: cover.master_blinds
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.master_blinds_open
-
-- alias: Alexa Close Master Blinds
-  trigger:
-    - platform: state
-      entity_id: input_boolean.master_blinds_close
-      to: 'on'
-  action:
-    - service: cover.close_cover
-      entity_id: cover.master_blinds
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.master_blinds_close
-
 - alias: Master Windows Same Position
   trigger:
     - platform: state

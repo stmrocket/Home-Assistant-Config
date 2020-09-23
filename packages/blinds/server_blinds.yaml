@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "Server Room Blind"
+    device_class: blind
     command_topic: "habc/server/command/set/state"
     set_position_topic: "habc/server/command/set/positionpct"
     position_topic: "habc/server/tele/currentpct"
@@ -12,17 +13,6 @@ cover:
     position_closed: 0
     payload_available: "Online"
     payload_not_available: "Offline"
-
-input_boolean:
-  server_blinds_open:
-    name: Cover Server Open
-    initial: off
-    icon: mdi:blinds
-
-  server_blinds_close:
-    name: Cover Server Close
-    initial: off
-    icon: mdi:blinds
 
 sensor:
   - platform: mqtt

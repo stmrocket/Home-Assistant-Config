@@ -1,6 +1,7 @@
 cover:
   - platform: mqtt
     name: "Guest Blind"
+    device_class: blind
     command_topic: "habc/guest/command/set/state"
     set_position_topic: "habc/guest/command/set/positionpct"
     position_topic: "habc/guest/tele/currentpct"
@@ -12,17 +13,6 @@ cover:
     position_closed: 0
     payload_available: "Online"
     payload_not_available: "Offline"
-
-input_boolean:
-  guest_blinds_open:
-    name: Cover Guest Open
-    initial: off
-    icon: mdi:blinds
-
-  guest_blinds_close:
-    name: Cover Guest Close
-    initial: off
-    icon: mdi:blinds
 
 sensor:
   - platform: mqtt
