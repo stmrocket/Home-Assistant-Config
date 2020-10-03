@@ -245,10 +245,7 @@ sensor:
         unit_of_measurement: 'FPS'
       frigate_coral_inference:
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["inference_speed"] }}' 
-        unit_of_measurement: 'ms'   
-      frigate_coral_queue_length:
-        value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["detection_queue"] }}' 
-        unit_of_measurement: 'frames'       
+        unit_of_measurement: 'ms'
 
 input_boolean:
 
