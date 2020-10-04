@@ -180,8 +180,11 @@ sensor:
       frigate_west_front_detection_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["detection_fps"] }}'
         unit_of_measurement: 'FPS'
+      frigate_west_front_process_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["process_fps"] }}'
+        unit_of_measurement: 'FPS'
       frigate_west_front_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["camera_fps] }}'
         unit_of_measurement: 'FPS'
       frigate_west_front_skipped_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["skipped_fps"] }}'
@@ -189,8 +192,11 @@ sensor:
       frigate_east_front_detection_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["detection_fps"] }}'
         unit_of_measurement: 'FPS'
+      frigate_east_front_process_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["process_fps"] }}'
+        unit_of_measurement: 'FPS'
       frigate_east_front_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["camera_fps] }}'
         unit_of_measurement: 'FPS'
       frigate_east_front_skipped_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["skipped_fps"] }}'
@@ -198,8 +204,11 @@ sensor:
       frigate_west_side_detection_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["detection_fps"] }}'
         unit_of_measurement: 'FPS'
+      frigate_west_side_process_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["process_fps"] }}'
+        unit_of_measurement: 'FPS'
       frigate_west_side_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["camera_fps] }}'
         unit_of_measurement: 'FPS'
       frigate_west_side_skipped_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["skipped_fps"] }}'
@@ -207,8 +216,11 @@ sensor:
       frigate_east_side_detection_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["detection_fps"] }}'
         unit_of_measurement: 'FPS'
+      frigate_east_side_process_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["process_fps"] }}'
+        unit_of_measurement: 'FPS'
       frigate_east_side_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["camera_fps] }}'
         unit_of_measurement: 'FPS'
       frigate_east_side_skipped_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["skipped_fps"] }}'
@@ -216,8 +228,11 @@ sensor:
       frigate_back_yard_detection_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["detection_fps"] }}'
         unit_of_measurement: 'FPS'
+      frigate_back_yard_process_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["process_fps"] }}'
+        unit_of_measurement: 'FPS'
       frigate_back_yard_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["camera_fps] }}'
         unit_of_measurement: 'FPS'
       frigate_back_yard_skipped_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["skipped_fps"] }}'
@@ -225,8 +240,11 @@ sensor:
       frigate_back_porch_detection_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["detection_fps"] }}'
         unit_of_measurement: 'FPS'
+      frigate_back_porch_process_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["process_fps"] }}'
+        unit_of_measurement: 'FPS'
       frigate_back_porch_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["camera_fps] }}'
         unit_of_measurement: 'FPS'
       frigate_back_porch_skipped_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["skipped_fps"] }}'
@@ -234,14 +252,17 @@ sensor:
       frigate_front_porch_detection_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["detection_fps"] }}'
         unit_of_measurement: 'FPS'
+      frigate_front_porch_process_fps: 
+        value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["process_fps"] }}'
+        unit_of_measurement: 'FPS'
       frigate_front_porch_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["camera_fps] }}'
         unit_of_measurement: 'FPS'
       frigate_front_porch_skipped_fps: 
         value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["skipped_fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_coral_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps"] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps] }}'
         unit_of_measurement: 'FPS'
       frigate_coral_inference:
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["inference_speed"] }}' 
