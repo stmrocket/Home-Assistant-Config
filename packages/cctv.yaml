@@ -262,7 +262,7 @@ sensor:
         value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["skipped_fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_coral_fps: 
-        value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps] }}'
+        value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps"] }}'
         unit_of_measurement: 'FPS'
       frigate_coral_inference:
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["inference_speed"] }}' 
