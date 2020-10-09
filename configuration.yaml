@@ -23,6 +23,12 @@ frontend:
 lovelace:
   mode: yaml
 
+  dashboards:
+    lovelace-kitchen:
+      mode: yaml
+      filename: lovelace-kitchen.yaml
+      show_in_sidebar: false
+
   resources:
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
@@ -33,8 +39,6 @@ lovelace:
     - url: /hacsfiles/lovelace-card-tools/card-tools.js
       type: js
     - url: /hacsfiles/circle-sensor-card/circle-sensor-card.js
-      type: module
-    - url: /hacsfiles/custom-header/custom-header.js
       type: module
     - url: /hacsfiles/dark-sky-weather-card/dark-sky-weather-card.js
       type: module
