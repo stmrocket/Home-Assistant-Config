@@ -26,6 +26,7 @@ lovelace:
   dashboards:
     lovelace-kitchen:
       mode: yaml
+      title: "Kitchen Tablet"
       filename: lovelace-kitchen.yaml
       show_in_sidebar: false
 
