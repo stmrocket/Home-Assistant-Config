@@ -7,6 +7,35 @@ preload_cards:
   - picture-entity
   - conditional
 
+#################################################################
+#                                                               #
+#                    Compact Header Config                      #
+#                                                               #
+################################################################# 
+
+custom_header:
+  background: 'rgba(150, 150, 150, 0.2)'
+  compact_mode: true
+  hide_config: true
+  hide_unused: true
+  hide_help: true
+  button_text:
+    options: '{{ time }}<br>{{ date }}'
+  hide_tabs: '7'
+  default_tab: '0'
+  exceptions:
+    - conditions:
+        user_agent: fully-kitchen
+      config:
+        menu_dropdown: true
+        hide_tabs: '0 to 6'
+        default_tab: '7'
+    # - conditions:
+    #     user_agent: Android
+    #   config:
+    #     options_hide: true
+    #     hide_tabs: '3, 8'
+
 #############################################################################################################################################
 #                                                                                                                                           # 
 #                                                                BEGIN VIEWS                                                                #
@@ -22,4 +51,5 @@ views:
   - !include /config/lovelace/views/media.yaml
   - !include /config/lovelace/views/utilities.yaml
   - !include /config/lovelace/views/system.yaml    
-  - !include /config/lovelace/views/settings.yaml
+  - !include /config/lovelace/views/settings.yaml       
+  - !include /config/lovelace/views/panels/kitchen.yaml

@@ -4,24 +4,6 @@
 #
 midnight:
   card-mod-theme: midnight
-  
-  card-mod-root: |
-    # ha-app-layout {
-    #   background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTR-Hllcy5CR5U90nMlW8bZA_VM7w4VlP2lZg&usqp=CAU");
-    # }
-    app-header {
-      background: rgba(0,0,0,0.5) !important;
-    }
-    app-toolbar {
-      background: none !important;
-      display: none;
-    }
-  card-mod-root-yaml: |
-    paper-tabs$: |
-      .not-visible {
-        display: none;
-      }
-
   accent-color: "#E45E65"
   card-background-color: "var(--primary-background-color)"
   dark-primary-color: "var(--accent-color)"
