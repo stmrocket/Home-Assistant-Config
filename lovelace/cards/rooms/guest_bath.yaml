@@ -1,4 +1,4 @@
-#lovelace_gen
+
 # Guest Bathroom      
       type: custom:vertical-stack-in-card
       cards:

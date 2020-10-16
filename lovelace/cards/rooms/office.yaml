@@ -1,4 +1,4 @@
-#lovelace_gen
+
 # Office      
       type: custom:vertical-stack-in-card
       cards:

@@ -1,4 +1,4 @@
-#lovelace_gen
+
 # Server Room      
       type: custom:vertical-stack-in-card
       cards:

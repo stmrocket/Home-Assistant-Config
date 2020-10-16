@@ -300,7 +300,7 @@
   trigger:
   - platform: state
     entity_id: sensor.server_ups_battery_status
-    to: '2'
+    to: 2
   action:
   - service: notify.mobile_app_shawn_7t
     data:
@@ -361,7 +361,7 @@
   trigger:
   - platform: state
     entity_id: sensor.office_ups_battery_status
-    to: '2'
+    to: 2
   action:
   - service: notify.mobile_app_shawn_7t
     data:
@@ -597,7 +597,7 @@
   trigger:
   - platform: state
     entity_id: sensor.shack_ups_battery_status
-    to: '2'
+    to: 2
   action:
   - service: notify.mobile_app_shawn_7t
     data:

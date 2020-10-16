@@ -1,4 +1,4 @@
-#lovelace_gen
+
 # Garage          
       type: custom:vertical-stack-in-card
       cards:
