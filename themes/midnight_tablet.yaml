@@ -2,24 +2,15 @@
 #
 # Midnight Theme
 #
-midnight:
-  card-mod-theme: midnight
+midnight-tablet:
+  card-mod-theme: midnight-tablet
   card-mod-root-yaml: |
-    paper-tabs$: |
-      .not-visible {
-        display: none;
-      }
-    .: |
-      ha-app-layout {
-        background: center / cover no-repeat url("/local/lovelace/background_19.png") fixed;
-      }
-      app-header {
-        background: rgba(150,150,150,0.2) !important;
-      }
-      app-toolbar {
-        display: none;
-        background: none !important;
-      }
+    app-header {
+      display: none;
+    }
+    app-toolbar {
+      display: none;
+    }
       
   accent-color: "#E45E65"
   card-background-color: "var(--primary-background-color)"
