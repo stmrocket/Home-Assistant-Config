@@ -4,10 +4,7 @@
 #
 midnight-tablet:
   card-mod-theme: midnight-tablet
-  card-mod-root-yaml: |
-    app-header {
-      display: none;
-    }
+  card-mod-root: |
     app-toolbar {
       display: none;
     }

@@ -1,4 +1,4 @@
-#lovelace_gen
+
 
 type: 'custom:dark-sky-weather-card'
 entity_current_conditions: sensor.dark_sky_icon
