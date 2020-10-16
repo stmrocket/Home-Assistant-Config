@@ -14,14 +14,5 @@ preload_cards:
 #############################################################################################################################################  
  
 background: center / cover no-repeat url("/local/lovelace/background_19.png") fixed
-views: 
-
-  - !include /config/lovelace/views/home.yaml
-  - !include /config/lovelace/views/rooms.yaml  
-  - !include /config/lovelace/views/hvac.yaml
-  - !include /config/lovelace/views/media.yaml
-  - !include /config/lovelace/views/utilities.yaml
-  - !include /config/lovelace/views/system.yaml    
-  - !include /config/lovelace/views/settings.yaml       
-  - !include /config/lovelace/views/panels/kitchen.yaml
+views:   
   - !include /config/lovelace/views/panels/office.yaml
