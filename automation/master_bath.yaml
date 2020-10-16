@@ -32,7 +32,7 @@
   condition:
   - condition: state
     entity_id: sensor.master_shower_light_a
-    state: 255
+    state: '255'
   action:
   - service: mqtt.publish
     data:

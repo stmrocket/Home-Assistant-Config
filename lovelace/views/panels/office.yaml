@@ -322,7 +322,7 @@ cards:
           - type: conditional
             conditions:
               - entity: sensor.nuvo_zone_1_source
-                state: 1
+                state: "1"
             card:
               type: custom:mini-media-player
               entity: media_player.office_stereo
@@ -336,7 +336,7 @@ cards:
           - type: conditional
             conditions:
               - entity: sensor.nuvo_zone_1_source
-                state_not: 1
+                state_not: "1"
             card:
               type: custom:mini-media-player
               entity: media_player.office_stereo

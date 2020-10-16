@@ -197,7 +197,7 @@ cards:
               - entity: sensor.den_harmony_activity
                 state: "Listen to WHA"
               - entity: sensor.nuvo_zone_7_source
-                state: 1
+                state: "1"
             card:
               type: custom:mini-media-player
               entity: media_player.den_stereo
@@ -223,7 +223,7 @@ cards:
               - entity: sensor.den_harmony_activity
                 state: "Listen to WHA"
               - entity: sensor.nuvo_zone_7_source
-                state_not: 1
+                state_not: "1"
             card:
               type: custom:mini-media-player
               entity: media_player.den_stereo
@@ -407,7 +407,7 @@ cards:
               - entity: sensor.master_harmony_activity
                 state: "Listen to WHA"
               - entity: sensor.nuvo_zone_4_source
-                state: 1
+                state: "1"
             card:
               type: custom:mini-media-player
               entity: media_player.master_bedroom_stereo
@@ -433,7 +433,7 @@ cards:
               - entity: sensor.master_harmony_activity
                 state: "Listen to WHA"
               - entity: sensor.nuvo_zone_4_source
-                state_not: 1
+                state_not: "1"
             card:
               type: custom:mini-media-player
               entity: media_player.master_bedroom_stereo
