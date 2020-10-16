@@ -2,8 +2,8 @@
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
-      from: '0'
-      to: '255'
+      from: 0
+      to: 255
   action:
     - service: mqtt.publish
       data:
@@ -16,8 +16,8 @@
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
-      from: '255'
-      to: '0'
+      from: 255
+      to: 0
   action:
     - service: mqtt.publish
       data:
@@ -32,7 +32,7 @@
   condition:
   - condition: state
     entity_id: sensor.master_shower_light_a
-    state: '255'
+    state: 255
   action:
   - service: mqtt.publish
     data:
@@ -47,8 +47,8 @@
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
-      from: '255'      
-      to: '0'
+      from: 255      
+      to: 0
       for: 00:01:00
     - event_data:
         entity_id: timer.blinds_after_shower_repeat

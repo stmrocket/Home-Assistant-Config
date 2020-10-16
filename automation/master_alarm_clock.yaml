@@ -106,7 +106,7 @@
   trigger:
     - platform: state
       entity_id: counter.master_snooze
-      to: '1'
+      to: 1
   condition:
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
@@ -135,7 +135,7 @@
   trigger:
     - platform: state
       entity_id: counter.master_snooze
-      to: '2'
+      to: 2
   condition:
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
@@ -184,7 +184,7 @@
   trigger:
     - platform: state
       entity_id: counter.master_snooze
-      to: '3'
+      to: 3
   condition:
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
