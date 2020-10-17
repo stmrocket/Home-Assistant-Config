@@ -727,7 +727,6 @@ popup_media_office_spotify:
           cards:
             - type: entities
               show_header_toggle: false
-              title: Spotify
               entities:
               - entity: input_select.spotify_playlist
               - entity: script.spotify_change_playlist
@@ -2143,7 +2142,6 @@ popup_media_dining_spotify:
           cards:
             - type: entities
               show_header_toggle: false
-              title: Spotify
               entities:
               - entity: input_select.spotify_playlist
               - entity: script.spotify_change_playlist
@@ -2502,7 +2500,6 @@ popup_media_kitchen_spotify:
           cards:
             - type: entities
               show_header_toggle: false
-              title: Spotify
               entities:
               - entity: input_select.spotify_playlist
               - entity: script.spotify_change_playlist
