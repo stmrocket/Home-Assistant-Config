@@ -45,8 +45,10 @@ cards:
                 - entity: camera.front_porch
                 - entity: camera.east_front
                 - entity: camera.west_front
-                - entity: camera.back_yard           
-
+                - entity: camera.back_yard     
+          
+          - type: "custom:gap-card"
+            height: 100
 #################################################################
 #                                                               #
 #                         Home - Media                          #
@@ -57,7 +59,7 @@ cards:
           - type: conditional
             conditions:
               - entity: sensor.nuvo_zone_10_source
-                state: 1
+                state: "1"
             card:
               type: custom:mini-media-player
               entity: media_player.kitchen_stereo
@@ -67,10 +69,16 @@ cards:
               hide:
                 source: true  
                 progress: true
+              tap_action:
+                action: call-service
+                service: script.popup_media_kitchen_spotify
+                service_data:
+                  deviceID: 
+                    - this
           - type: conditional
             conditions:
               - entity: sensor.nuvo_zone_10_source
-                state_not: 1
+                state_not: "1"
             card:
               type: custom:mini-media-player
               entity: media_player.kitchen_stereo
@@ -82,6 +90,12 @@ cards:
                 controls: true
                 info: true
                 progress: true
+              tap_action:
+                action: call-service
+                service: script.popup_media_kitchen
+                service_data:
+                  deviceID: 
+                    - this
             
               
 

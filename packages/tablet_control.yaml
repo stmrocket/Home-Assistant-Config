@@ -1,0 +1,50 @@
+rest_command:
+  kitchen_tablet_on:
+    url: !secret kitchen_tablet_on
+  kitchen_tablet_off:
+    url: !secret kitchen_tablet_off
+  kitchen_tablet_reload:
+    url: !secret kitchen_tablet_reload
+  kitchen_tablet_restart:
+    url: !secret kitchen_tablet_restart
+  office_tablet_on:
+    url: !secret office_tablet_on
+  office_tablet_off:
+    url: !secret office_tablet_off
+  office_tablet_reload:
+    url: !secret office_tablet_reload
+  office_tablet_restart:
+    url: !secret office_tablet_restart
+  shack_tablet_on:
+    url: !secret shack_tablet_on
+  shack_tablet_off:
+    url: !secret shack_tablet_off
+  shack_tablet_reload:
+    url: !secret shack_tablet_reload
+  shack_tablet_restart:
+    url: !secret shack_tablet_restart
+
+script:
+  tablets_on:
+    sequence:
+      - service: rest_command.kitchen_tablet_on
+      - service: rest_command.office_tablet_on
+      - service: rest_command.shack_tablet_on
+
+  tablets_off:
+    sequence:
+      - service: rest_command.kitchen_tablet_off
+      - service: rest_command.office_tablet_off
+      - service: rest_command.shack_tablet_off
+
+  tablets_reload:
+    sequence:
+      - service: rest_command.kitchen_tablet_reload
+      - service: rest_command.office_tablet_reload
+      - service: rest_command.shack_tablet_reload
+
+  tablets_restart:
+    sequence:
+      - service: rest_command.kitchen_tablet_restart
+      - service: rest_command.office_tablet_restart
+      - service: rest_command.shack_tablet_restart
