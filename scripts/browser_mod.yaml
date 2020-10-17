@@ -492,6 +492,21 @@ popup_github:
                   tap_action: 
                     action: call-service
                     service: script.reload_all_helpers
+            - type: horizontal-stack
+              cards:
+
+                - type: 'custom:gap-card'
+
+                - type: "custom:button-card"
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:web
+                  name: Lovelace
+                  tap_action: 
+                    action: call-service
+                    service: browser_mod.lovelace_reload
+
+                - type: 'custom:gap-card'
 
 popup_hacs:
   sequence:
