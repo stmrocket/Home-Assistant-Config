@@ -22,6 +22,4 @@ views:
   - !include /config/lovelace/views/media.yaml
   - !include /config/lovelace/views/utilities.yaml
   - !include /config/lovelace/views/system.yaml    
-  - !include /config/lovelace/views/settings.yaml       
-  - !include /config/lovelace/views/panels/kitchen.yaml
-  - !include /config/lovelace/views/panels/office.yaml
+  - !include /config/lovelace/views/settings.yaml
