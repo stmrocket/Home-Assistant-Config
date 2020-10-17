@@ -716,6 +716,190 @@ popup_media_office:
                       topic: nuvo/command/set/zone/src
                       payload: 1,6                      
 
+popup_media_office_spotify:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Office NuVo
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              show_header_toggle: false
+              title: Spotify
+              entities:
+              - entity: input_select.spotify_playlist
+              - entity: script.spotify_change_playlist
+                name: Change Playlist
+
+            - type: horizontal-stack
+              cards:
+                - type: "custom:gap-card"
+
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:skip-backward
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/prev
+                      payload: 1
+                
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:play-pause
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/play
+                      payload: 1
+
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:skip-forward
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/next
+                      payload: 1
+
+                - type: "custom:gap-card"
+
+            - type: horizontal-stack
+              cards:
+                #- type: "custom:gap-card"
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_1_source
+                  color_type: icon
+                  state:
+                    - value: 1
+                      color: rgb(228, 94, 101)
+                    - value: 1
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:spotify
+                  name: Spotify
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 1,1
+                
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_1_source
+                  color_type: icon
+                  state:
+                    - value: 2
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 2
+                      color: rgb(228, 94, 101)
+                    - value: 2
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:cast-audio
+                  name: Cast
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 1,2
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_1_source
+                  color_type: icon
+                  state:
+                    - value: 3
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 3
+                      color: rgb(228, 94, 101)
+                    - value: 3
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:amazon-alexa
+                  name: Alexa
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 1,3
+            - type: horizontal-stack
+              cards:
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_1_source
+                  color_type: icon
+                  state:
+                    - value: 4
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 4
+                      color: rgb(228, 94, 101)
+                    - value: 4
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:server
+                  name: Server 1
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 1,4      
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_1_source
+                  color_type: icon
+                  state:
+                    - value: 5
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 5
+                      color: rgb(228, 94, 101)
+                    - value: 5
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:server
+                  name: Server 2
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 1,5
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_1_source
+                  color_type: icon
+                  state:
+                    - value: 6
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 6
+                      color: rgb(228, 94, 101)
+                    - value: 6
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:video-input-component
+                  name: Aux
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 1,6     
+                      
 popup_media_guest_bed:
   sequence:
     - service: browser_mod.popup
@@ -1948,6 +2132,189 @@ popup_media_dining:
                       topic: nuvo/command/set/zone/src
                       payload: 9,6    
 
+popup_media_dining_spotify:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]     
+        title: Ham Shack NuVo
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              show_header_toggle: false
+              title: Spotify
+              entities:
+              - entity: input_select.spotify_playlist
+              - entity: script.spotify_change_playlist
+                name: Change Playlist
+            - type: horizontal-stack
+              cards:
+                - type: "custom:gap-card"
+
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:skip-backward
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/prev
+                      payload: 9
+                
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:play-pause
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/play
+                      payload: 9
+
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:skip-forward
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/next
+                      payload: 9
+
+                - type: "custom:gap-card"
+
+            - type: horizontal-stack
+              cards:
+                #- type: "custom:gap-card"
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_9_source
+                  color_type: icon
+                  state:
+                    - value: 1
+                      color: rgb(228, 94, 101)
+                    - value: 1
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:spotify
+                  name: Spotify
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 9,1
+                
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_9_source
+                  color_type: icon
+                  state:
+                    - value: 2
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 2
+                      color: rgb(228, 94, 101)
+                    - value: 2
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:cast-audio
+                  name: Cast
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 9,2
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_9_source
+                  color_type: icon
+                  state:
+                    - value: 3
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 3
+                      color: rgb(228, 94, 101)
+                    - value: 3
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:amazon-alexa
+                  name: Alexa
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 9,3
+            - type: horizontal-stack
+              cards:
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_9_source
+                  color_type: icon
+                  state:
+                    - value: 4
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 4
+                      color: rgb(228, 94, 101)
+                    - value: 4
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:server
+                  name: Server 1
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 9,4      
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_9_source
+                  color_type: icon
+                  state:
+                    - value: 5
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 5
+                      color: rgb(228, 94, 101)
+                    - value: 5
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:server
+                  name: Server 2
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 9,5
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_9_source
+                  color_type: icon
+                  state:
+                    - value: 6
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 6
+                      color: rgb(228, 94, 101)
+                    - value: 6
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:video-input-component
+                  name: Aux
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 9,6                          
+
 popup_media_kitchen:
   sequence:
     - service: browser_mod.popup
@@ -1957,6 +2324,190 @@ popup_media_kitchen:
         card:
           type: vertical-stack
           cards:
+            - type: horizontal-stack
+              cards:
+                - type: "custom:gap-card"
+
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:skip-backward
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/prev
+                      payload: 10
+                
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:play-pause
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/play
+                      payload: 10
+
+                - type: "custom:button-card"                
+                  color_type: icon
+                  color: rgb(255, 255, 255)
+                  icon: mdi:skip-forward
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/next
+                      payload: 10
+
+                - type: "custom:gap-card"
+
+            - type: horizontal-stack
+              cards:
+                #- type: "custom:gap-card"
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_10_source
+                  color_type: icon
+                  state:
+                    - value: 1
+                      color: rgb(228, 94, 101)
+                    - value: 1
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:spotify
+                  name: Spotify
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 10,1
+                
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_10_source
+                  color_type: icon
+                  state:
+                    - value: 2
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 2
+                      color: rgb(228, 94, 101)
+                    - value: 2
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:cast-audio
+                  name: Cast
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 10,2
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_10_source
+                  color_type: icon
+                  state:
+                    - value: 3
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 3
+                      color: rgb(228, 94, 101)
+                    - value: 3
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:amazon-alexa
+                  name: Alexa
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 10,3
+            - type: horizontal-stack
+              cards:
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_10_source
+                  color_type: icon
+                  state:
+                    - value: 4
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 4
+                      color: rgb(228, 94, 101)
+                    - value: 4
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:server
+                  name: Server 1
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 10,4      
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_10_source
+                  color_type: icon
+                  state:
+                    - value: 5
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 5
+                      color: rgb(228, 94, 101)
+                    - value: 5
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:server
+                  name: Server 2
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 10,5
+
+                - type: "custom:button-card"
+                  entity: sensor.nuvo_zone_10_source
+                  color_type: icon
+                  state:
+                    - value: 6
+                      operator: <
+                      color: rgb(255, 255, 255)
+                    - value: 6
+                      color: rgb(228, 94, 101)
+                    - value: 6
+                      operator: >
+                      color: rgb(255, 255, 255)
+                  icon: mdi:video-input-component
+                  name: Aux
+                  tap_action: 
+                    action: call-service
+                    service: mqtt.publish
+                    service_data:
+                      topic: nuvo/command/set/zone/src
+                      payload: 10,6                          
+
+popup_media_kitchen_spotify:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"] 
+        title: Kitchen NuVo
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              show_header_toggle: false
+              title: Spotify
+              entities:
+              - entity: input_select.spotify_playlist
+              - entity: script.spotify_change_playlist
+                name: Change Playlist
+                
             - type: horizontal-stack
               cards:
                 - type: "custom:gap-card"
