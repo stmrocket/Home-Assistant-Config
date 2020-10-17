@@ -326,6 +326,7 @@ cards:
             card:
               type: custom:mini-media-player
               entity: media_player.dining_room_stereo
+              name: Shack Stereo
               icon: mdi:speaker
               artwork: cover
               volume_stateless: true
@@ -346,6 +347,7 @@ cards:
             card:
               type: custom:mini-media-player
               entity: media_player.dining_room_stereo
+              name: Shack Stereo
               icon: mdi:speaker
               artwork: cover
               volume_stateless: true
