@@ -325,7 +325,7 @@ cards:
                 state: "1"
             card:
               type: custom:mini-media-player
-              entity: media_player.office_stereo
+              entity: media_player.dining_room_stereo
               icon: mdi:speaker
               artwork: cover
               volume_stateless: true
@@ -345,7 +345,7 @@ cards:
                 state_not: "1"
             card:
               type: custom:mini-media-player
-              entity: media_player.office_stereo
+              entity: media_player.dining_room_stereo
               icon: mdi:speaker
               artwork: cover
               volume_stateless: true
