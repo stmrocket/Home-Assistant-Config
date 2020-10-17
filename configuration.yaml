@@ -33,6 +33,11 @@ lovelace:
       filename: lovelace-office.yaml
       title: Office Tablet
       show_in_sidebar: false
+    lovelace-shack:
+      mode: yaml
+      filename: lovelace-shack.yaml
+      title: Shack Tablet
+      show_in_sidebar: false
   resources:
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
@@ -327,6 +332,10 @@ browser_mod:
       name: shawn_office
     !secret shawn_n6_browser:
       name: shawn_n6
+    !secret office_tablet_browser:
+      name: office_tablet
+    !secret shack_tablet_browser:
+      name: shack_tablet
   disable: 
     - all
     
