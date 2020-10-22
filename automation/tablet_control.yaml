@@ -15,16 +15,11 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
-      from: armed_night
       to: disarmed
     - platform: state
       entity_id: alarm_control_panel.house
       from: armed_night
       to: armed_home
-    - platform: state
-      entity_id: alarm_control_panel.house
-      from: armed_away
-      to: disarmed
   action:
     - service: script.tablets_on
       
