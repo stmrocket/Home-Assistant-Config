@@ -93,6 +93,8 @@ lovelace:
       type: module    
     - url: /hacsfiles/roku-card/roku-card.js
       type: module 
+    - url: /local/custom_ui/mm2-clock-card.js
+      type: module
 
 # Discover some devices automatically
 discovery:
