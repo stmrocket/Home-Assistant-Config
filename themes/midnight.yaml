@@ -9,7 +9,7 @@ midnight:
       background: rgba(150,150,150,0.2) !important;
     }
     app-toolbar {
-      background: rgba(150,150,150,0.2) !important;
+      background: none !important;
     }
       
   header-height: 48px      
