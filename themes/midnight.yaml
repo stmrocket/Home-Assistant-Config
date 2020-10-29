@@ -4,23 +4,15 @@
 #
 midnight:
   card-mod-theme: midnight
-  card-mod-root-yaml: |
-    paper-tabs$: |
-      .not-visible {
-        display: none;
-      }
-    .: |
-      ha-app-layout {
-        background: center / cover no-repeat url("/local/lovelace/background_19.png") fixed;
-      }
-      app-header {
-        background: rgba(150,150,150,0.2) !important;
-      }
-      app-toolbar {
-        display: none;
-        background: none !important;
-      }
+  card-mod-root: |
+    app-header {
+      background: rgba(150,150,150,0.2) !important;
+    }
+    app-toolbar {
+      background: rgba(150,150,150,0.2) !important;
+    }
       
+  header-height: 48px      
   accent-color: "#E45E65"
   card-background-color: "var(--primary-background-color)"
   dark-primary-color: "var(--accent-color)"
