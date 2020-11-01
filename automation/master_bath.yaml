@@ -2,13 +2,13 @@
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
-      from: '0'
-      to: '255'
+      from: "0"
+      to: "255"
   action:
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/zone/vol
-        payload_template: '5,40'
+        payload_template: "5,40"
     - service: cover.close_cover
       entity_id: cover.master_blinds
 
@@ -16,39 +16,39 @@
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
-      from: '255'
-      to: '0'
+      from: "255"
+      to: "0"
   action:
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/zone/vol
-        payload_template: '5,60'
-      
+        payload_template: "5,60"
+
 - alias: Master Shower Fan Timer
   trigger:
-  - platform: state
-    entity_id: light.master_shower_light
-    to: 'off'
+    - platform: state
+      entity_id: light.master_shower_light
+      to: "off"
   condition:
-  - condition: state
-    entity_id: sensor.master_shower_light_a
-    state: '255'
+    - condition: state
+      entity_id: sensor.master_shower_light_a
+      state: "255"
   action:
-  - service: mqtt.publish
-    data:
-      topic: nuvo/command/set/zone/vol
-      payload_template: '5,60'
-  - delay: 00:10:00
-  - service: switch.turn_off
-    data:
-      entity_id: switch.shower_light_and_fan
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/zone/vol
+        payload_template: "5,60"
+    - delay: 00:10:00
+    - service: switch.turn_off
+      data:
+        entity_id: switch.shower_light_and_fan
 
 - alias: Alexa Prompt to Open Blinds After Shower
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
-      from: '255'     
-      to: '0'
+      from: "255"
+      to: "0"
       for: 00:01:00
     - event_data:
         entity_id: timer.blinds_after_shower_repeat
@@ -64,9 +64,9 @@
   action:
     - service: script.activate_alexa_actionable_notification
       data_template:
-        text: 'Now that you are out of the shower, would you like me to open the blinds?'
-        event_id: 'actionable_notification_open_master_blinds'
-        alexa_device: 'media_player.alexa_master_bedroom' 
+        text: "Now that you are out of the shower, would you like me to open the blinds?"
+        event_id: "actionable_notification_open_master_blinds"
+        alexa_device: "media_player.alexa_master_bedroom"
 
 - alias: Open Master Blinds via Actionable Notificaiton
   trigger:
@@ -77,7 +77,7 @@
       event_response: ResponseYes
   action:
     - service: cover.open_cover
-      entity_id: cover.master_blinds       
+      entity_id: cover.master_blinds
 
 - alias: Repeat Master Blinds via Actionable Notificaiton
   trigger:
@@ -88,4 +88,4 @@
       event_response: ResponseNone
   action:
     - service: timer.start
-      entity_id: timer.blinds_after_shower_repeat           
+      entity_id: timer.blinds_after_shower_repeat

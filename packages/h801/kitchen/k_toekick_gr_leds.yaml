@@ -17,44 +17,43 @@ light:
 automation:
   - alias: k_toekick_gr report on
     trigger:
-    - platform: state
-      entity_id: light.kitchen_led_1_rgb
-      to: 'on'
-    - platform: state
-      entity_id: light.kitchen_led_2_rgb
-      to: 'on'
-    - platform: state
-      entity_id: light.kitchen_led_3_rgb
-      to: 'on'
+      - platform: state
+        entity_id: light.kitchen_led_1_rgb
+        to: "on"
+      - platform: state
+        entity_id: light.kitchen_led_2_rgb
+        to: "on"
+      - platform: state
+        entity_id: light.kitchen_led_3_rgb
+        to: "on"
     action:
-    - service: mqtt.publish
-      data:
-        topic: h801/k_toekick/ha/state
-        payload_template: "ON"
+      - service: mqtt.publish
+        data:
+          topic: h801/k_toekick/ha/state
+          payload_template: "ON"
   - alias: k_toekick_gr report off
     trigger:
-    - platform: state
-      entity_id: light.kitchen_led_1_rgb
-      to: 'off'
-    - platform: state
-      entity_id: light.kitchen_led_2_rgb
-      to: 'off'
-    - platform: state
-      entity_id: light.kitchen_led_3_rgb
-      to: 'off'
+      - platform: state
+        entity_id: light.kitchen_led_1_rgb
+        to: "off"
+      - platform: state
+        entity_id: light.kitchen_led_2_rgb
+        to: "off"
+      - platform: state
+        entity_id: light.kitchen_led_3_rgb
+        to: "off"
     condition:
-    - condition: state
-      entity_id: light.kitchen_led_1_rgb
-      state: 'off'
-    - condition: state
-      entity_id: light.kitchen_led_2_rgb
-      state: 'off'
-    - condition: state
-      entity_id: light.kitchen_led_3_rgb
-      state: 'off'
+      - condition: state
+        entity_id: light.kitchen_led_1_rgb
+        state: "off"
+      - condition: state
+        entity_id: light.kitchen_led_2_rgb
+        state: "off"
+      - condition: state
+        entity_id: light.kitchen_led_3_rgb
+        state: "off"
     action:
-    - service: mqtt.publish
-      data:
-        topic: h801/k_toekick/ha/state
-        payload_template: "OFF"
-
+      - service: mqtt.publish
+        data:
+          topic: h801/k_toekick/ha/state
+          payload_template: "OFF"

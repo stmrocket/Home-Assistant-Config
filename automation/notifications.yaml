@@ -2,12 +2,12 @@
   trigger:
     - platform: state
       entity_id: switch.elk_intruder_alarm_tripped
-      to: 'on'
+      to: "on"
   action:
     - service: notify.mobile_app_shawn_7t
       data:
         message: The alarm has been triggered.
-        title: Alarm!        
+        title: Alarm!
         data:
           ttl: 0
           priority: high
@@ -25,7 +25,7 @@
     - service: notify.mobile_app_shawn_7t
       data:
         message: The garage door was opened while the alarm was armed.
-        title: Garage Door  
+        title: Garage Door
         data:
           ttl: 0
-          priority: high      
+          priority: high

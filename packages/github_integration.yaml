@@ -3,7 +3,7 @@ sensor:
   - platform: github
     access_token: !secret github_access_token
     repositories:
-      - path: 'stmrocket/home-assistant-config'
+      - path: "stmrocket/home-assistant-config"
   - platform: travisci
     api_key: !secret travis_access_token
     branch: dev
@@ -11,7 +11,7 @@ sensor:
 input_text:
   prev_git_version:
     name: Previous Git Version
-    
+
 binary_sensor:
   - platform: template
     sensors:
@@ -39,7 +39,7 @@ script:
           entity_id: input_text.prev_git_version
           value: "{{ states('sensor.home_assistant_config') }}"
       - service: shell_command.get_latest_config
-  
+
   clear_config_update_flag:
     sequence:
       - service: input_text.set_value
@@ -48,12 +48,12 @@ script:
           value: "{{ states('sensor.home_assistant_config') }}"
 
   reload_all_helpers:
-      sequence:
-        - service: input_boolean.reload
-        - service: input_datetime.reload
-        - service: input_number.reload
-        - service: input_select.reload
-        - service: input_text.reload
-        - service: group.reload
-        - service: timer.reload
-        - service: scene.reload
+    sequence:
+      - service: input_boolean.reload
+      - service: input_datetime.reload
+      - service: input_number.reload
+      - service: input_select.reload
+      - service: input_text.reload
+      - service: group.reload
+      - service: timer.reload
+      - service: scene.reload

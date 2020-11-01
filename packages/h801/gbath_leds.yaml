@@ -18,10 +18,10 @@ light:
     optimistic: false
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
 sensor:
   #Driver Status Messages
-  
+
   - platform: mqtt
     name: "Guest Bathroom LED Version"
     state_topic: "h801/gbath/tele/status"
@@ -73,8 +73,7 @@ sensor:
   - platform: mqtt
     name: "Guest Bathroom LED Core Version"
     state_topic: "h801/gbath/tele/status"
-    value_template: "{{value_json['espCore']}}" 
+    value_template: "{{value_json['espCore']}}"
     availability_topic: "h801/gbath/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-

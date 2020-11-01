@@ -20,13 +20,13 @@ automation:
     trigger:
       - platform: state
         entity_id: light.den_led_2_cct
-        to: 'on'
+        to: "on"
       - platform: state
         entity_id: light.den_led_3_cct
-        to: 'on'
+        to: "on"
       - platform: state
         entity_id: light.den_led_4_cct
-        to: 'on'
+        to: "on"
     action:
       - service: mqtt.publish
         data:
@@ -37,23 +37,23 @@ automation:
     trigger:
       - platform: state
         entity_id: light.den_led_2_cct
-        to: 'off'
+        to: "off"
       - platform: state
         entity_id: light.den_led_3_cct
-        to: 'off'
+        to: "off"
       - platform: state
         entity_id: light.den_led_4_cct
-        to: 'off'
+        to: "off"
     condition:
       - condition: state
         entity_id: light.den_led_2_cct
-        state: 'off'
+        state: "off"
       - condition: state
         entity_id: light.den_led_3_cct
-        state: 'off'
+        state: "off"
       - condition: state
         entity_id: light.den_led_4_cct
-        state: 'off'
+        state: "off"
     action:
       - service: mqtt.publish
         data:

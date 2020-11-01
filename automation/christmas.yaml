@@ -47,7 +47,7 @@
       to: "on"
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
         - switch.office_lamps
@@ -63,7 +63,7 @@
       to: "off"
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
     - service: input_boolean.turn_on

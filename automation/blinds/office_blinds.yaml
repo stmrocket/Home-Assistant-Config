@@ -2,12 +2,12 @@
   trigger:
     - platform: state
       entity_id: switch.office_blinds
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: cover.office_blinds
-      state: 'closed'
+      state: "closed"
   action:
     - service: cover.open_cover
       entity_id: cover.office_blinds
@@ -16,12 +16,12 @@
   trigger:
     - platform: state
       entity_id: switch.office_blinds
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: cover.office_blinds
-      state: 'open'
+      state: "open"
   action:
     - service: cover.close_cover
       entity_id: cover.office_blinds
@@ -30,27 +30,26 @@
   trigger:
     - platform: state
       entity_id: cover.office_blinds
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
   condition:
     - condition: state
       entity_id: switch.office_blinds
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.office_blinds
-    
 
 - alias: Office Blind Keypad off if all Closed
   trigger:
     - platform: state
       entity_id: cover.office_blinds
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: state
       entity_id: switch.office_blinds
-      state: 'on'
+      state: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.office_blinds
@@ -62,15 +61,15 @@
         - cover.center_office_blind
         - cover.right_office_blind
         - cover.left_office_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
       entity_id:
         - cover.center_office_blind
         - cover.right_office_blind
         - cover.left_office_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ states('cover.center_office_blind') == states('cover.right_office_blind') == states('cover.left_office_blind') }}"
@@ -85,7 +84,7 @@
       data:
         payload_template: "{{ state_attr('cover.center_office_blind', 'current_position') }}"
         topic: habc/office/tele/currentpct
-        retain: 'true'
+        retain: "true"
 
 - alias: Office Windows Various Positions
   trigger:
@@ -94,15 +93,15 @@
         - cover.center_office_blind
         - cover.right_office_blind
         - cover.left_office_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
       entity_id:
         - cover.center_office_blind
         - cover.right_office_blind
         - cover.left_office_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ not states('cover.center_office_blind') == states('cover.right_office_blind') == states('cover.left_office_blind') }}"
@@ -117,4 +116,4 @@
       data:
         payload: 95
         topic: habc/office/tele/currentpct
-        retain: 'true'
+        retain: "true"

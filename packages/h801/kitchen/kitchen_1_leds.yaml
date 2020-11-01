@@ -29,7 +29,7 @@ sensor:
     availability_topic: "h801/kitchen_1/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Kitchen LED 1 Uptime"
     state_topic: "h801/kitchen_1/tele/status"
@@ -69,7 +69,7 @@ sensor:
   - platform: mqtt
     name: "Kitchen LED 1 Core Version"
     state_topic: "h801/kitchen_1/tele/status"
-    value_template: "{{value_json['espCore']}}" 
+    value_template: "{{value_json['espCore']}}"
     availability_topic: "h801/kitchen_1/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"

@@ -5,7 +5,7 @@ sensor:
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
   - platform: mqtt
-    name: N1 Gas Meter 
+    name: N1 Gas Meter
     state_topic: !secret n1_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
@@ -219,7 +219,6 @@ sensor:
       - sensor.n13_gas_yearly
 
 utility_meter:
-
   gas_hourly:
     source: sensor.gas_meter
     cycle: hourly
@@ -238,7 +237,7 @@ utility_meter:
 
   gas_yearly:
     source: sensor.gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n1_gas_hourly:
     source: sensor.n1_gas_meter
@@ -258,7 +257,7 @@ utility_meter:
 
   n1_gas_yearly:
     source: sensor.n1_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n2_gas_hourly:
     source: sensor.n2_gas_meter
@@ -278,7 +277,7 @@ utility_meter:
 
   n2_gas_yearly:
     source: sensor.n2_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n3_gas_hourly:
     source: sensor.n3_gas_meter
@@ -298,7 +297,7 @@ utility_meter:
 
   n3_gas_yearly:
     source: sensor.n3_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n4_gas_hourly:
     source: sensor.n4_gas_meter
@@ -318,7 +317,7 @@ utility_meter:
 
   n4_gas_yearly:
     source: sensor.n4_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n5_gas_hourly:
     source: sensor.n5_gas_meter
@@ -338,7 +337,7 @@ utility_meter:
 
   n5_gas_yearly:
     source: sensor.n5_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n6_gas_hourly:
     source: sensor.n6_gas_meter
@@ -358,7 +357,7 @@ utility_meter:
 
   n6_gas_yearly:
     source: sensor.n6_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n7_gas_hourly:
     source: sensor.n7_gas_meter
@@ -378,7 +377,7 @@ utility_meter:
 
   n7_gas_yearly:
     source: sensor.n7_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n8_gas_hourly:
     source: sensor.n8_gas_meter
@@ -398,7 +397,7 @@ utility_meter:
 
   n8_gas_yearly:
     source: sensor.n8_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n9_gas_hourly:
     source: sensor.n9_gas_meter
@@ -418,7 +417,7 @@ utility_meter:
 
   n9_gas_yearly:
     source: sensor.n9_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n10_gas_hourly:
     source: sensor.n10_gas_meter
@@ -438,7 +437,7 @@ utility_meter:
 
   n10_gas_yearly:
     source: sensor.n10_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n11_gas_hourly:
     source: sensor.n11_gas_meter
@@ -458,7 +457,7 @@ utility_meter:
 
   n11_gas_yearly:
     source: sensor.n11_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n12_gas_hourly:
     source: sensor.n12_gas_meter
@@ -478,7 +477,7 @@ utility_meter:
 
   n12_gas_yearly:
     source: sensor.n12_gas_meter
-    cycle: yearly    
+    cycle: yearly
 
   n13_gas_hourly:
     source: sensor.n13_gas_meter
@@ -498,4 +497,4 @@ utility_meter:
 
   n13_gas_yearly:
     source: sensor.n13_gas_meter
-    cycle: yearly    
+    cycle: yearly

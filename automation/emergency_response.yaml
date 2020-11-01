@@ -2,12 +2,12 @@
   trigger:
     - platform: state
       entity_id: switch.elk_fire_alarm
-      to: 'on'
+      to: "on"
   action:
     - service: notify.mobile_app_shawn_7t
       data:
         message: The fire alarm has been triggered.
-        title: Alarm!  
+        title: Alarm!
         data:
           ttl: 0
           priority: high
@@ -81,36 +81,36 @@
         - switch.back_porch_light
         - switch.outside_lights
         - switch.garage_lights
-        - switch.master_closet_light    
+        - switch.master_closet_light
     - service: mqtt.publish
       data:
         topic: horn/command/set/fire
-        payload: 'ON'
+        payload: "ON"
 
 - alias: Fire Alarm Restored
   trigger:
     - platform: state
       entity_id: switch.elk_fire_alarm
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   action:
     - service: scene.turn_on
       entity_id: scene.fire_alarm_restore
     - service: mqtt.publish
       data:
         topic: horn/command/set/fire
-        payload: 'OFF'
+        payload: "OFF"
 
 - alias: CO Alarm Tripped
   trigger:
     - platform: state
       entity_id: switch.elk_co_alarm
-      to: 'on'
+      to: "on"
   action:
     - service: notify.mobile_app_shawn_7t
       data:
         message: The CO alarm has been triggered.
-        title: Alarm! 
+        title: Alarm!
         data:
           ttl: 0
           priority: high
@@ -184,22 +184,22 @@
         - switch.back_porch_light
         - switch.outside_lights
         - switch.garage_lights
-        - switch.master_closet_light    
+        - switch.master_closet_light
     - service: mqtt.publish
       data:
         topic: horn/command/set/gas
-        payload: 'ON'
+        payload: "ON"
 
 - alias: CO Alarm Restored
   trigger:
     - platform: state
       entity_id: switch.elk_co_alarm
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   action:
     - service: scene.turn_on
       entity_id: scene.gas_alarm_restore
     - service: mqtt.publish
       data:
         topic: horn/command/set/gas
-        payload: 'OFF'
+        payload: "OFF"

@@ -22,7 +22,7 @@
       to: armed_home
   action:
     - service: script.tablets_on
-      
+
 - alias: Tablet when Away
   trigger:
     - platform: state

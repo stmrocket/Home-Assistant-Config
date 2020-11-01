@@ -2,12 +2,12 @@
   trigger:
     - platform: state
       entity_id: switch.entry_lamp
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: light.entry_lamp
-      state: 'off'
+      state: "off"
   action:
     - service: light.turn_on
       data:
@@ -18,12 +18,12 @@
   trigger:
     - platform: state
       entity_id: switch.entry_lamp
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: light.entry_lamp
-      state: 'on'
+      state: "on"
   action:
     - service: light.turn_off
       entity_id: light.entry_lamp
@@ -32,11 +32,11 @@
   trigger:
     - platform: state
       entity_id: light.entry_lamp
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: switch.entry_lamp
-      state:  'off'
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.entry_lamp
@@ -45,11 +45,11 @@
   trigger:
     - platform: state
       entity_id: light.entry_lamp
-      to: 'off'
+      to: "off"
   condition:
     - condition: state
       entity_id: switch.entry_lamp
-      state:  'on'
+      state: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.entry_lamp

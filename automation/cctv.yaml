@@ -2,14 +2,14 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.west_front_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.frigate_enabled_christmas
-      state: 'on'
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -23,7 +23,7 @@
       data:
         title: "CCTV Alarm: West Front - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "A person was detected on the west front camera at {{now().strftime('%H:%M:%S') }}."
-        data: 
+        data:
           images:
             - /config/www/cctv/west_front_person.jpg
             - /config/www/cctv/west_front_full.jpg
@@ -32,14 +32,14 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.east_front_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.frigate_enabled_christmas
-      state: 'on'
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -53,23 +53,23 @@
       data:
         title: "CCTV Alarm: East Front - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "A person was detected on the east front camera at {{now().strftime('%H:%M:%S') }}."
-        data: 
+        data:
           images:
             - /config/www/cctv/east_front_person.jpg
-            - /config/www/cctv/east_front_full.jpg            
+            - /config/www/cctv/east_front_full.jpg
 
 - alias: CCTV West Side Person Detected
   trigger:
     - platform: state
       entity_id: binary_sensor.west_side_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.frigate_enabled_christmas
-      state: 'on'
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -83,7 +83,7 @@
       data:
         title: "CCTV Alarm: West Side - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "A person was detected on the west side camera at {{now().strftime('%H:%M:%S') }}."
-        data: 
+        data:
           images:
             - /config/www/cctv/west_side_person.jpg
             - /config/www/cctv/west_side_full.jpg
@@ -92,11 +92,11 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.east_side_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'on'
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -110,20 +110,20 @@
       data:
         title: "CCTV Alarm: East Side - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "A person was detected on the east side camera at {{now().strftime('%H:%M:%S') }}."
-        data: 
+        data:
           images:
             - /config/www/cctv/east_side_person.jpg
-            - /config/www/cctv/east_side_full.jpg            
+            - /config/www/cctv/east_side_full.jpg
 
 - alias: CCTV Back Yard Person Detected
   trigger:
     - platform: state
       entity_id: binary_sensor.back_yard_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'on'
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -137,20 +137,20 @@
       data:
         title: "CCTV Alarm: Back Yard - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "A person was detected on the back yard camera at {{now().strftime('%H:%M:%S') }}."
-        data: 
+        data:
           images:
             - /config/www/cctv/back_yard_person.jpg
-            - /config/www/cctv/back_yard_full.jpg        
+            - /config/www/cctv/back_yard_full.jpg
 
 - alias: CCTV Back Porch Person Detected
   trigger:
     - platform: state
       entity_id: binary_sensor.back_porch_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'on'
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -164,23 +164,23 @@
       data:
         title: "CCTV Alarm: Back Porch - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "A person was detected on the back porch camera at {{now().strftime('%H:%M:%S') }}."
-        data: 
+        data:
           images:
             - /config/www/cctv/back_porch_person.jpg
-            - /config/www/cctv/back_porch_full.jpg                    
+            - /config/www/cctv/back_porch_full.jpg
 
 - alias: CCTV Front Porch Person Detected
   trigger:
     - platform: state
       entity_id: binary_sensor.front_porch_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.frigate_enabled_christmas
-      state: 'on'
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -194,16 +194,16 @@
       data:
         title: "CCTV Alarm: Front Porch - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "A person was detected on the front porch camera at {{now().strftime('%H:%M:%S') }}."
-        data: 
+        data:
           images:
             - /config/www/cctv/front_porch_person.jpg
-            - /config/www/cctv/front_porch_full.jpg   
+            - /config/www/cctv/front_porch_full.jpg
 
 - alias: Start Reset Timer When Frigate Disabled
   trigger:
     - platform: state
       entity_id: input_boolean.frigate_enabled
-      to: 'off'
+      to: "off"
   action:
     - service: timer.start
       data_template:
@@ -219,7 +219,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
-      state: 'off'
+      state: "off"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.frigate_enabled
@@ -228,11 +228,11 @@
   trigger:
     - platform: state
       entity_id: input_boolean.frigate_enabled
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: timer.frigate_disable
-      state: 'active'
+      state: "active"
   action:
     - service: timer.cancel
       entity_id: timer.frigate_disable
@@ -240,6 +240,6 @@
 - alias: Clean Up Temporary Camera Images
   trigger:
     - platform: time
-      at: '00:00:00'
+      at: "00:00:00"
   action:
     - service: shell_command.clear_temp_images

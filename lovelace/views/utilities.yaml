@@ -1,11 +1,10 @@
-
 #############################################################################################################################################
-#                                                                                                                                           # 
+#                                                                                                                                           #
 #                                                          VIEW 7 - SYSTEM STATUS                                                          #
 #                                                                                                                                           #
 #############################################################################################################################################
 
-id: 4  
+id: 4
 icon: mdi:transmission-tower
 name: System Status
 cards:
@@ -29,22 +28,22 @@ cards:
                 type: state-label
 
           - type: custom:mini-graph-card
-            entities: 
+            entities:
               - entity: sensor.eagle_current_power
                 show_points: false
               - entity: sensor.energy_daily
                 show_state: true
                 show_legend: false
                 show_graph: false
-                color: '#e45e65'
+                color: "#e45e65"
             name: Electricity Usage
             line_width: 2
             font_size: 65
             hours_to_show: 24
-            points_per_hour: 60     
+            points_per_hour: 60
             show:
-              icon: false   
-              
+              icon: false
+
           - type: entities
             entities:
               - type: custom:multiple-entity-row
@@ -94,11 +93,11 @@ cards:
                   left: 16%
                   top: 33%
                   width: 30%
-                tap_action:  
+                tap_action:
                   action: call-service
                   service: script.popup_generator_genset
                   service_data:
-                    deviceID: 
+                    deviceID:
                       - this
                 hold_action: none
 
@@ -112,11 +111,11 @@ cards:
                   left: 84%
                   top: 33%
                   width: 30%
-                tap_action:  
+                tap_action:
                   action: call-service
                   service: script.popup_generator_utility
                   service_data:
-                    deviceID: 
+                    deviceID:
                       - this
                 hold_action: none
 
@@ -130,11 +129,11 @@ cards:
                   left: 50%
                   top: 67%
                   width: 30%
-                tap_action:  
+                tap_action:
                   action: call-service
                   service: script.popup_generator_load
                   service_data:
-                    deviceID: 
+                    deviceID:
                       - this
                 hold_action: none
 
@@ -149,11 +148,11 @@ cards:
                   left: 50%
                   top: 30%
                   width: 40%
-                tap_action:  
+                tap_action:
                   action: call-service
                   service: script.popup_generator_ats
                   service_data:
-                    deviceID: 
+                    deviceID:
                       - this
                 hold_action: none
 
@@ -163,11 +162,11 @@ cards:
                   left: 50%
                   top: 9%
                   font-size: 170%
-                tap_action:  
+                tap_action:
                   action: call-service
                   service: script.popup_generator_control
                   service_data:
-                    deviceID: 
+                    deviceID:
                       - this
                 hold_action: none
 
@@ -205,7 +204,7 @@ cards:
               - type: conditional
                 conditions:
                   - entity: binary_sensor.generator_running
-                    state: 'on'
+                    state: "on"
                 elements:
                   - type: state-label
                     entity: sensor.generator_source_2_voltage
@@ -244,7 +243,7 @@ cards:
                 tap_action: none
                 hold_action: none
                 type: state-label
-          - type: 'custom:mini-graph-card'
+          - type: "custom:mini-graph-card"
             font_size: 65
             hours_to_show: 24
             line_width: 2
@@ -264,20 +263,20 @@ cards:
                 show_points: true
                 show_state: false
                 aggregate_func: max
-                color: '#e45e65'
+                color: "#e45e65"
               - entity: sensor.gas_last_hour
                 name: House
                 show_legend: true
                 show_points: true
                 show_state: false
                 aggregate_func: max
-                color: '#0091ff'
-            
+                color: "#0091ff"
+
             points_per_hour: 1
             show:
               icon: false
 
-          - type: 'custom:mini-graph-card'
+          - type: "custom:mini-graph-card"
             name: Daily Gas Use
             entities:
               - entity: sensor.average_neighborhood_gas_use_today
@@ -285,13 +284,13 @@ cards:
                 show_legend: true
                 show_points: true
                 show_state: true
-                color: '#e45e65'
+                color: "#e45e65"
               - entity: sensor.gas_daily
                 name: House
                 show_legend: true
                 show_points: true
                 show_state: true
-                color: '#0091ff'
+                color: "#0091ff"
             font_size: 65
             hours_to_show: 24
             line_width: 2
@@ -299,7 +298,7 @@ cards:
             show:
               icon: false
             smoothing: true
-          
+
           - type: entities
             entities:
               - type: custom:multiple-entity-row

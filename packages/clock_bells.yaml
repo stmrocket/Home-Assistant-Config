@@ -1,5 +1,4 @@
 input_boolean:
-
   clock_bells_enabled:
     name: Enable Clock Bells
     icon: mdi:bell

@@ -1,6 +1,6 @@
 language: python
 python:
-  - "3.7"
+  - "3.8"
 before_install:
   - mv travis_secrets.yaml secrets.yaml
   - mv travis_zones.yaml zones.yaml

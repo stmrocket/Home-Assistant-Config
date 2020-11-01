@@ -12,10 +12,10 @@
   trigger:
     - platform: state
       entity_id: sensor.roomba_status
-      to: 'cleaning'
+      to: "cleaning"
   action:
     - service: counter.increment
-      entity_id: counter.roomba_cycles    
+      entity_id: counter.roomba_cycles
 
 - alias: Roomba Return if House Disarmed
   trigger:
@@ -28,7 +28,7 @@
       state: cleaning
     - condition: state
       entity_id: input_boolean.roomba_auto
-      state: 'on'
+      state: "on"
   action:
     - service: script.turn_on
       entity_id: script.roomba_dock

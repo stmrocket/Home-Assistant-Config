@@ -17,35 +17,34 @@ light:
 automation:
   - alias: k_upper_gr report on
     trigger:
-    - platform: state
-      entity_id: light.kitchen_led_7_rgb
-      to: 'on'
-    - platform: state
-      entity_id: light.kitchen_led_8_rgb
-      to: 'on'
+      - platform: state
+        entity_id: light.kitchen_led_7_rgb
+        to: "on"
+      - platform: state
+        entity_id: light.kitchen_led_8_rgb
+        to: "on"
     action:
-    - service: mqtt.publish
-      data:
-        topic: h801/k_upper/ha/state
-        payload_template: "ON"
+      - service: mqtt.publish
+        data:
+          topic: h801/k_upper/ha/state
+          payload_template: "ON"
   - alias: k_upper_gr report off
     trigger:
-    - platform: state
-      entity_id: light.kitchen_led_7_rgb
-      to: 'off'
-    - platform: state
-      entity_id: light.kitchen_led_8_rgb
-      to: 'off'
+      - platform: state
+        entity_id: light.kitchen_led_7_rgb
+        to: "off"
+      - platform: state
+        entity_id: light.kitchen_led_8_rgb
+        to: "off"
     condition:
-    - condition: state
-      entity_id: light.kitchen_led_7_rgb
-      state: 'off'
-    - condition: state
-      entity_id: light.kitchen_led_8_rgb
-      state: 'off'
+      - condition: state
+        entity_id: light.kitchen_led_7_rgb
+        state: "off"
+      - condition: state
+        entity_id: light.kitchen_led_8_rgb
+        state: "off"
     action:
-    - service: mqtt.publish
-      data:
-        topic: h801/k_upper/ha/state
-        payload_template: "OFF"
-
+      - service: mqtt.publish
+        data:
+          topic: h801/k_upper/ha/state
+          payload_template: "OFF"

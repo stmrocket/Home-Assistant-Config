@@ -10,10 +10,10 @@
           state: armed_night
         - condition: state
           entity_id: input_boolean.work_alarm_enabled
-          state: 'on'
+          state: "on"
         - condition: state
           entity_id: binary_sensor.work_holiday
-          state: 'off'
+          state: "off"
         - condition: time
           weekday:
             - mon
@@ -25,9 +25,9 @@
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'ON'
+        payload: "ON"
     - service: input_boolean.turn_on
-      entity_id: 
+      entity_id:
         - input_boolean.master_lamp_timer
         - input_boolean.work_alarm_ringing
         - input_boolean.alarm_clock_ringing
@@ -44,10 +44,10 @@
       state: armed_night
     - condition: state
       entity_id: input_boolean.manual_alarm_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.manual_alarm_horn
-      state: 'off'
+      state: "off"
   action:
     - service: media_player.play_media
       data:
@@ -66,7 +66,7 @@
         entity_id: light.master_bedroom_lamps
         brightness: 64
     - service: input_boolean.turn_on
-      entity_id: 
+      entity_id:
         - input_boolean.manual_alarm_ringing
         - input_boolean.alarm_clock_ringing
     - service: counter.increment
@@ -82,21 +82,21 @@
       state: armed_night
     - condition: state
       entity_id: input_boolean.manual_alarm_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.manual_alarm_horn
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'ON'
+        payload: "ON"
     - service: light.turn_on
       data:
         entity_id: light.master_bedroom_lamps
         brightness: 64
     - service: input_boolean.turn_on
-      entity_id: 
+      entity_id:
         - input_boolean.manual_alarm_ringing
         - input_boolean.alarm_clock_ringing
     - service: counter.increment
@@ -106,14 +106,14 @@
   trigger:
     - platform: state
       entity_id: counter.master_snooze
-      to: '1'
+      to: "1"
   condition:
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.manual_alarm_hvac
-      state: 'on'
+      state: "on"
   action:
     - service: climate.set_temperature
       data:
@@ -129,17 +129,17 @@
       data:
         entity_id: climate.master_suite
         target_temp_high: 79
-        target_temp_low: 68     
+        target_temp_low: 68
 
 - alias: Master Wake Work First Snooze
   trigger:
     - platform: state
       entity_id: counter.master_snooze
-      to: '2'
+      to: "2"
   condition:
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
-      state: 'on'
+      state: "on"
   action:
     - service: light.turn_on
       data:
@@ -179,16 +179,16 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.master_lamp_timer
-      
+
 - alias: Master Wake Work Second Snooze
   trigger:
     - platform: state
       entity_id: counter.master_snooze
-      to: '3'
+      to: "3"
   condition:
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
-      state: 'on'
+      state: "on"
   action:
     - service: switch.turn_on
       entity_id: switch.master_bedroom_lamps
@@ -204,15 +204,15 @@
       value_template: "{{ trigger.payload_json['click'] == 'single' }}"
     - condition: state
       entity_id: input_boolean.alarm_clock_ringing
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: timer.start
       entity_id: timer.master_snooze
     - service: input_boolean.turn_off
@@ -223,19 +223,19 @@
     - platform: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.master_snooze      
+        entity_id: timer.master_snooze
   condition:
-      - condition: state
-        entity_id: input_boolean.alarm_clock_ringing
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.work_alarm_ringing
-        state: 'on'
+    - condition: state
+      entity_id: input_boolean.alarm_clock_ringing
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.work_alarm_ringing
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'ON'
+        payload: "ON"
     - service: input_boolean.turn_on
       entity_id: input_boolean.alarm_clock_ringing
     - service: counter.increment
@@ -252,15 +252,15 @@
       value_template: "{{ trigger.payload_json['click'] == 'single' }}"
     - condition: state
       entity_id: input_boolean.alarm_clock_ringing
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: media_player.turn_off
       entity_id: media_player.alexa_master_bedroom
     - service: light.turn_off
@@ -275,17 +275,17 @@
     - platform: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.master_snooze      
+        entity_id: timer.master_snooze
   condition:
-      - condition: state
-        entity_id: input_boolean.alarm_clock_ringing
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.manual_alarm_ringing
-        state: 'on'
-      - condition: state
-        entity_id: input_boolean.manual_alarm_horn
-        state: 'off'
+    - condition: state
+      entity_id: input_boolean.alarm_clock_ringing
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.manual_alarm_ringing
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.manual_alarm_horn
+      state: "off"
   action:
     - service: media_player.play_media
       data:
@@ -297,7 +297,7 @@
         entity_id: light.master_bedroom_lamps
         brightness: 64
     - service: input_boolean.turn_on
-      entity_id: input_boolean.alarm_clock_ringing   
+      entity_id: input_boolean.alarm_clock_ringing
     - service: counter.increment
       entity_id: counter.master_snooze
 
@@ -306,30 +306,30 @@
     - platform: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.master_snooze      
+        entity_id: timer.master_snooze
   condition:
-      - condition: state
-        entity_id: input_boolean.alarm_clock_ringing
-        state: 'off'
-      - condition: state
-        entity_id: input_boolean.manual_alarm_ringing
-        state: 'on'
-      - condition: state
-        entity_id: input_boolean.manual_alarm_horn
-        state: 'on'
+    - condition: state
+      entity_id: input_boolean.alarm_clock_ringing
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.manual_alarm_ringing
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.manual_alarm_horn
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'ON'
+        payload: "ON"
     - service: light.turn_on
       data:
         entity_id: light.master_bedroom_lamps
         brightness: 64
     - service: input_boolean.turn_on
-      entity_id: input_boolean.alarm_clock_ringing     
+      entity_id: input_boolean.alarm_clock_ringing
     - service: counter.increment
-      entity_id: counter.master_snooze       
+      entity_id: counter.master_snooze
 
 - alias: Master Wake Work Off
   trigger:
@@ -342,22 +342,22 @@
       value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
       entity_id: counter.master_snooze
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.alarm_clock_ringing
-        - input_boolean.work_alarm_ringing     
+        - input_boolean.work_alarm_ringing
     - service: switch.turn_on
-      entity_id: switch.master_bedroom_lamps 
+      entity_id: switch.master_bedroom_lamps
 
 - alias: Master Wake Manual Off Single
   trigger:
@@ -370,15 +370,15 @@
       value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.manual_alarm_repeat
-      state: 'off'
+      state: "off"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: media_player.turn_off
       entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
@@ -386,10 +386,10 @@
     - service: counter.reset
       entity_id: counter.master_snooze
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.alarm_clock_ringing
         - input_boolean.manual_alarm_ringing
-        - input_boolean.manual_alarm_enabled        
+        - input_boolean.manual_alarm_enabled
 
 - alias: Master Wake Manual Off Repeat
   trigger:
@@ -402,15 +402,15 @@
       value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.manual_alarm_repeat
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: media_player.turn_off
       entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
@@ -418,7 +418,7 @@
     - service: counter.reset
       entity_id: counter.master_snooze
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.alarm_clock_ringing
         - input_boolean.manual_alarm_ringing
 
@@ -426,19 +426,19 @@
   trigger:
     - platform: state
       entity_id: input_boolean.work_alarm_enabled
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
       entity_id: counter.master_snooze
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.alarm_clock_ringing
         - input_boolean.work_alarm_ringing
 
@@ -453,15 +453,15 @@
       value_template: "{{ trigger.payload_json['click'] == 'quadruple' }}"
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.manual_alarm_enabled
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: media_player.turn_off
       entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
@@ -469,26 +469,26 @@
     - service: counter.reset
       entity_id: counter.master_snooze
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.alarm_clock_ringing
-        - input_boolean.manual_alarm_ringing 
-        - input_boolean.manual_alarm_enabled          
+        - input_boolean.manual_alarm_ringing
+        - input_boolean.manual_alarm_enabled
 
 - alias: Master Wake Manual Disable
   trigger:
     - platform: state
       entity_id: input_boolean.manual_alarm_enabled
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: media_player.turn_off
       entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
@@ -496,16 +496,16 @@
     - service: counter.reset
       entity_id: counter.master_snooze
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.alarm_clock_ringing
-        - input_boolean.manual_alarm_ringing     
+        - input_boolean.manual_alarm_ringing
 
 - alias: Master Wake Work On from Keypad
   trigger:
     - platform: state
       entity_id: switch.master_clock_work
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.work_alarm_enabled
@@ -514,8 +514,8 @@
   trigger:
     - platform: state
       entity_id: switch.master_clock_work
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.work_alarm_enabled
@@ -524,12 +524,12 @@
   trigger:
     - platform: state
       entity_id: input_boolean.work_alarm_enabled
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: switch.master_clock_work
-      state:  'off'
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.master_clock_work
@@ -538,22 +538,22 @@
   trigger:
     - platform: state
       entity_id: input_boolean.work_alarm_enabled
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: switch.master_clock_work
-      state:  'on'
+      state: "on"
   action:
     - service: switch.turn_off
-      entity_id: switch.master_clock_work        
+      entity_id: switch.master_clock_work
 
 - alias: Master Wake Manual On from Keypad
   trigger:
     - platform: state
       entity_id: switch.master_clock_manual
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.manual_alarm_enabled
@@ -562,8 +562,8 @@
   trigger:
     - platform: state
       entity_id: switch.master_clock_manual
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.manual_alarm_enabled
@@ -572,12 +572,12 @@
   trigger:
     - platform: state
       entity_id: input_boolean.manual_alarm_enabled
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: switch.master_clock_manual
-      state:  'off'
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.master_clock_manual
@@ -586,15 +586,15 @@
   trigger:
     - platform: state
       entity_id: input_boolean.manual_alarm_enabled
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: switch.master_clock_manual
-      state:  'on'
+      state: "on"
   action:
     - service: switch.turn_off
-      entity_id: switch.master_clock_manual      
+      entity_id: switch.master_clock_manual
 
 - alias: Master Wake Manual Disable if Awake and No Repeat
   trigger:
@@ -611,10 +611,10 @@
           state: disarmed
     - condition: state
       entity_id: input_boolean.manual_alarm_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.manual_alarm_repeat
-      state: 'off'
+      state: "off"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.manual_alarm_enabled

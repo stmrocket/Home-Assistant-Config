@@ -1,5 +1,4 @@
 input_boolean:
-
   work_alarm_enabled:
     name: Work Alarm Clock Enabled
     icon: mdi:timer-outline
@@ -33,7 +32,7 @@ counter:
 timer:
   master_snooze:
     name: Master Snooze Timer
-    duration: '00:09:00'
+    duration: "00:09:00"
 
 input_datetime:
   master_manual_alarm:
@@ -48,13 +47,13 @@ input_datetime:
 sensor:
   - platform: time_date
     display_options:
-      - 'time'   
-      - 'date' 
-      - 'date_time'
-      - 'time_date'
-      - 'time_utc'
-      - 'beat'
-  
+      - "time"
+      - "date"
+      - "date_time"
+      - "time_date"
+      - "time_utc"
+      - "beat"
+
 binary_sensor:
   - platform: template
     sensors:

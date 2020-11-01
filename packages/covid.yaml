@@ -1,6 +1,6 @@
 #COVID-19 Tracking
 
-input_number:  
+input_number:
   covid_us_yesterday_new:
     name: US New COVID-19 Cases yesterday
     icon: mdi:biohazard
@@ -14,7 +14,7 @@ input_number:
     mode: box
     min: 0
     max: 100000000
-  
+
   covid_world_yesterday_new:
     name: World New COVID-19 Cases yesterday
     icon: mdi:biohazard
@@ -41,7 +41,7 @@ sensor:
         value_template: "{{ states('input_number.covid_us_yesterday_new') | int }}"
 
       covid_us_total:
-        friendly_name: US total COVID-19 Cases 
+        friendly_name: US total COVID-19 Cases
         value_template: "{{ states('sensor.us_coronavirus_confirmed') | int }}"
 
       covid_world_today_new:
@@ -53,14 +53,14 @@ sensor:
         value_template: "{{ states('input_number.covid_world_yesterday_new') | int }}"
 
       covid_world_total:
-        friendly_name: World total COVID-19 Cases 
+        friendly_name: World total COVID-19 Cases
         value_template: "{{ states('sensor.worldwide_coronavirus_confirmed') | int }}"
 
 automation:
   - alias: Update COVID Sensors at Midnight
     trigger:
       - platform: time
-        at: '00:00:00'
+        at: "00:00:00"
     action:
       - service: input_number.set_value
         data_template:

@@ -30,7 +30,7 @@
 - alias: Reset Minute Rain
   trigger:
     - platform: time_pattern
-      minutes: "*"        
+      minutes: "*"
       seconds: "0"
   action:
     - service: input_number.set_value
@@ -51,7 +51,7 @@
   trigger:
     - platform: time_pattern
       hours: "*"
-      minutes: "0"        
+      minutes: "0"
       seconds: "0"
   action:
     - service: counter.reset
@@ -60,7 +60,7 @@
 - alias: Reset Day Rain
   trigger:
     - platform: time
-      at: '00:00:00'
+      at: "00:00:00"
   action:
     - service: counter.reset
       entity_id: counter.rain_day
@@ -68,7 +68,7 @@
 - alias: Reset Month Rain
   trigger:
     - platform: time
-      at: '00:00:00'
+      at: "00:00:00"
   condition:
     - condition: template
       value_template: "{{ now().day == 1 }}"
@@ -79,7 +79,7 @@
 - alias: Reset Year Rain
   trigger:
     - platform: time
-      at: '00:00:00'
+      at: "00:00:00"
   condition:
     - condition: template
       value_template: "{{ now().month == 1 }}"
@@ -95,7 +95,7 @@
       entity_id: sensor.elk_optical_rain
       to: Violated
   condition:
-    - condition: state 
+    - condition: state
       entity_id: input_boolean.is_raining
       state: "off"
   action:
@@ -122,7 +122,7 @@
       for:
         minutes: 10
   condition:
-    - condition: state 
+    - condition: state
       entity_id: input_boolean.is_raining
       state: "on"
   action:
@@ -158,17 +158,17 @@
       to: armed_night
   condition:
     - condition: template
-      value_template: "{{ states('sensor.rain_day') | float > 0 }}"  
+      value_template: "{{ states('sensor.rain_day') | float > 0 }}"
   action:
     - service: elkm1.alarm_display_message
       data_template:
         entity_id: alarm_control_panel.house
         line1: 'Rain: {{ states("sensor.rain_day") }}"'
-  
+
 - alias: Clear Rainfall on Elk Keypads
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.rain_day') | float == 0 }}"  
+      value_template: "{{ states('sensor.rain_day') | float == 0 }}"
   action:
     - service: elkm1.alarm_display_message
       data_template:

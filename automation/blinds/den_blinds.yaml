@@ -2,12 +2,12 @@
   trigger:
     - platform: state
       entity_id: switch.den_blinds
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: cover.den_blinds
-      state: 'closed'
+      state: "closed"
   action:
     - service: cover.open_cover
       entity_id: cover.den_blinds
@@ -16,12 +16,12 @@
   trigger:
     - platform: state
       entity_id: switch.den_blinds
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: cover.den_blinds
-      state: 'open'
+      state: "open"
   action:
     - service: cover.close_cover
       entity_id: cover.den_blinds
@@ -30,27 +30,26 @@
   trigger:
     - platform: state
       entity_id: cover.den_blinds
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
   condition:
     - condition: state
       entity_id: switch.den_blinds
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.den_blinds
-    
 
 - alias: Den Blind Keypad off if all Closed
   trigger:
     - platform: state
       entity_id: cover.den_blinds
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: state
       entity_id: switch.den_blinds
-      state: 'on'
+      state: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.den_blinds
@@ -62,30 +61,30 @@
         - cover.center_den_blind
         - cover.right_den_blind
         - cover.left_den_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
       entity_id:
         - cover.center_den_blind
         - cover.right_den_blind
         - cover.left_den_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ states('cover.center_den_blind') == states('cover.right_den_blind') == states('cover.left_den_blind') }}"
     - condition: template
       value_template: "{{ not is_state('cover.center_den_blind', 'unavailable') }}"
     - condition: template
-      value_template:  "{{ not is_state('cover.left_den_blind', 'unavailable') }}"
+      value_template: "{{ not is_state('cover.left_den_blind', 'unavailable') }}"
     - condition: template
-      value_template:  "{{ not is_state('cover.right_den_blind', 'unavailable') }}"
+      value_template: "{{ not is_state('cover.right_den_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:
         payload_template: "{{ state_attr('cover.center_den_blind', 'current_position') }}"
         topic: habc/den/tele/currentpct
-        retain: 'true'
+        retain: "true"
 
 - alias: Den Windows Various Positions
   trigger:
@@ -94,27 +93,27 @@
         - cover.center_den_blind
         - cover.right_den_blind
         - cover.left_den_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
       entity_id:
         - cover.center_den_blind
         - cover.right_den_blind
         - cover.left_den_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ not states('cover.center_den_blind') == states('cover.right_den_blind') == states('cover.left_den_blind') }}"
     - condition: template
       value_template: "{{ not is_state('cover.center_den_blind', 'unavailable') }}"
     - condition: template
-      value_template:  "{{ not is_state('cover.left_den_blind', 'unavailable') }}"
+      value_template: "{{ not is_state('cover.left_den_blind', 'unavailable') }}"
     - condition: template
-      value_template:  "{{ not is_state('cover.right_den_blind', 'unavailable') }}"
+      value_template: "{{ not is_state('cover.right_den_blind', 'unavailable') }}"
   action:
     - service: mqtt.publish
       data:
         payload: 95
         topic: habc/den/tele/currentpct
-        retain: 'true'
+        retain: "true"

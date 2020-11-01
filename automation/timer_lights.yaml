@@ -10,22 +10,22 @@
         - wed
         - thu
         - fri
-    - condition: or 
+    - condition: or
       conditions:
         - condition: and
           conditions:
             - condition: state
               entity_id: binary_sensor.work_holiday
-              state: 'off'
+              state: "off"
             - condition: state
               entity_id: input_boolean.work_alarm_enabled
-              state: 'on'
+              state: "on"
         - condition: state
           entity_id: alarm_control_panel.house
           state: armed_away
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -41,10 +41,10 @@
   trigger:
     - platform: sun
       event: sunset
-      offset: '-00:30:00'   
+      offset: "-00:30:00"
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -65,7 +65,7 @@
     - platform: state
       entity_id: alarm_control_panel.house
       from: armed_night
-      to: armed_home    
+      to: armed_home
   condition:
     - condition: and #Weekend or Holiday if up before sunrise
       conditions:
@@ -83,17 +83,17 @@
           conditions:
             - condition: state
               entity_id: binary_sensor.work_holiday
-              state: 'on'
+              state: "on"
             - condition: time
               weekday:
                 - sat
                 - sun
             - condition: state
               entity_id: input_boolean.work_alarm_enabled
-              state: 'off'
+              state: "off"
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -109,14 +109,14 @@
 - alias: Timer Lights Off Main Night Away
   trigger:
     - platform: time
-      at: '23:30:00'
+      at: "23:30:00"
   condition:
     - condition: state
       entity_id: alarm_control_panel.house
       state: armed_away
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -127,7 +127,7 @@
     - service: light.turn_off
       entity_id: light.entry_lamp
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.timer_lights
         - input_boolean.manual_timer_lights
 
@@ -135,10 +135,10 @@
   trigger:
     - platform: sun
       event: sunrise
-      offset: '+00:30:00'
+      offset: "+00:30:00"
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -149,7 +149,7 @@
     - service: light.turn_off
       entity_id: light.entry_lamp
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.timer_lights
         - input_boolean.manual_timer_lights
 
@@ -162,10 +162,10 @@
     - platform: state
       entity_id: alarm_control_panel.house
       from: armed_home
-      to: armed_night 
+      to: armed_night
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -175,7 +175,7 @@
     - service: light.turn_off
       entity_id: light.entry_lamp
     - service: input_boolean.turn_off
-      entity_id: 
+      entity_id:
         - input_boolean.timer_lights
         - input_boolean.manual_timer_lights
 
@@ -190,7 +190,7 @@
       conditions:
         - condition: state
           entity_id: input_boolean.guest_mode
-          state: 'off'
+          state: "off"
         - condition: state
           entity_id: alarm_control_panel.house
           state: armed_away
@@ -203,11 +203,11 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: automation.timer_lights_off_main_night_mode 
+        entity_id: automation.timer_lights_off_main_night_mode
   condition:
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_off
       entity_id: switch.guest_room_lamp
@@ -259,7 +259,7 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: automation.timer_lights_off_main_night_mode 
+        entity_id: automation.timer_lights_off_main_night_mode
   condition:
     - condition: or
       conditions:
@@ -282,12 +282,12 @@
   trigger:
     - platform: sun
       event: sunset
-      offset: '-00:30:00'
+      offset: "-00:30:00"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.outside_timer_lights
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
 
@@ -295,12 +295,12 @@
   trigger:
     - platform: sun
       event: sunrise
-      offset: '+00:30:00'
+      offset: "+00:30:00"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.outside_timer_lights
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
 
@@ -314,7 +314,7 @@
       to: armed_home
     - platform: state
       entity_id: input_boolean.timer_lights
-      to: 'on'
+      to: "on"
     - platform: event
       event_type: automation_triggered
       event_data:
@@ -330,10 +330,10 @@
   condition:
     - condition: state
       entity_id: input_boolean.timer_lights
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: light.house_leds_rgb
-      state: 'off'
+      state: "off"
     - condition: or
       conditions:
         - condition: state
@@ -344,10 +344,10 @@
           state: armed_home
   action:
     - service: light.turn_on
-      entity_id: 
+      entity_id:
         - light.house_leds_rgb
         - light.hall_lamp
-  
+
 - alias: Timer LEDs Off House Away
   trigger:
     - platform: state
@@ -356,7 +356,7 @@
       to: armed_away
   action:
     - service: light.turn_off
-      entity_id: 
+      entity_id:
         - light.house_leds_rgb
         - light.hall_lamp
 
@@ -373,10 +373,10 @@
     - platform: event
       event_type: automation_triggered
       event_data:
-        entity_id: automation.timer_lights_off_main_night_mode 
+        entity_id: automation.timer_lights_off_main_night_mode
   action:
     - service: light.turn_off
-      entity_id: 
+      entity_id:
         - light.kitchen_leds_rgb
         - light.den_leds_rgb
         - light.guest_bathroom_led_rgb
@@ -387,7 +387,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.timer_lights
-      to: 'off'
+      to: "off"
     - platform: event
       event_type: automation_triggered
       event_data:
@@ -403,7 +403,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.timer_lights
-      state: 'off'
+      state: "off"
     - condition: or
       conditions:
         - condition: state
@@ -413,8 +413,8 @@
           entity_id: alarm_control_panel.house
           state: armed_home
   action:
-  - service: light.turn_off
-    entity_id: light.master_suite_leds_rgb
+    - service: light.turn_off
+      entity_id: light.master_suite_leds_rgb
 
 - alias: Master Suite Off if Sleeping
   trigger:
@@ -422,22 +422,22 @@
       entity_id: alarm_control_panel.house
       from: arming
       to: armed_night
-      for: '00:45:00'
+      for: "00:45:00"
   condition:
     - condition: or
       conditions:
         - condition: state
           entity_id: switch.master_bedroom_lamps
-          state: 'on'
+          state: "on"
         - condition: state
           entity_id: light.master_suite_leds_rgb
-          state: 'on'
+          state: "on"
   action:
     - service: light.turn_off
       data:
         entity_id: light.master_suite_leds_rgb
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.master_bedroom_lamps
         - switch.water_projector
     - service: input_boolean.turn_off

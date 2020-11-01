@@ -8,7 +8,7 @@
       data:
         topic: parrot/command/set/play
         payload: 1,7
-    
+
 - alias: Elk Speak Back Door
   trigger:
     - entity_id: sensor.elk_back_door
@@ -177,7 +177,7 @@
   trigger:
     - entity_id: switch.elk_ahu_disable
       platform: state
-      to: 'on'
+      to: "on"
   action:
     - service: mqtt.publish
       data:
@@ -211,7 +211,7 @@
       data:
         topic: parrot/command/set/play
         payload: 2,5
-    - delay: '00:00:48'
+    - delay: "00:00:48"
     - service: mqtt.publish
       data:
         topic: parrot/command/set/play
@@ -226,11 +226,11 @@
       data:
         topic: parrot/command/set/play
         payload: 2,14
-    - delay: '00:00:48'
+    - delay: "00:00:48"
     - service: mqtt.publish
       data:
         topic: parrot/command/set/play
-        payload: 2,13      
+        payload: 2,13
 
 - alias: Elk Speak Armed Night
   trigger:
@@ -309,7 +309,7 @@
         data:
           displaytime: 20000
           icon: "info"
-          
+
     - service: browser_mod.toast
       data:
         message: "Someone is at the door."
@@ -317,7 +317,7 @@
       data_template:
         title: "CCTV Alarm: Front Porch - Doorbell Pressed {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
         message: "The doorbell was rung at {{now().strftime('%H:%M:%S') }}."
-        data: 
+        data:
           images:
             - /config/www/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
 
@@ -329,7 +329,7 @@
       platform: event
   action:
     - service: browser_mod.close_popup
-          
+
 - alias: Remote Wake
   trigger:
     - platform: webhook
@@ -347,7 +347,7 @@
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'ON'
+        payload: "ON"
     - service: light.turn_on
       entity_id: light.den_light
     - service: mqtt.publish
@@ -358,6 +358,6 @@
     - service: mqtt.publish
       data:
         topic: horn/command/set/clock
-        payload: 'OFF'
+        payload: "OFF"
     - service: light.turn_off
       entity_id: light.den_light

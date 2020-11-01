@@ -1,5 +1,4 @@
 input_boolean:
-
   goodnight_trigger:
     name: Alexa Good Night Trigger
     initial: off
@@ -13,17 +12,17 @@ input_boolean:
   morning_trigger:
     name: Alexa Morning Trigger
     initial: off
-    icon: mdi:amazon-alexa    
+    icon: mdi:amazon-alexa
 
   leaving_trigger:
     name: Alexa Leaving Trigger
     initial: off
-    icon: mdi:amazon-alexa        
+    icon: mdi:amazon-alexa
 
   returning_trigger:
     name: Alexa Returning Trigger
     initial: off
-    icon: mdi:amazon-alexa   
+    icon: mdi:amazon-alexa
 
   elk_night_on:
     name: Elk Night Mode On Trigger
@@ -33,7 +32,7 @@ input_boolean:
   elk_night_off:
     name: Elk Night Mode Off Trigger
     initial: off
-    icon: mdi:alarm-bell  
+    icon: mdi:alarm-bell
 
   elk_stay_on:
     name: Elk Stay Mode On Trigger

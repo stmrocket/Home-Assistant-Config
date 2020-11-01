@@ -2,11 +2,11 @@
   trigger:
     - platform: state
       entity_id: input_boolean.hvac_geofence
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: alarm_control_panel.house
-      state: armed_away   
+      state: armed_away
   action:
     - service: climate.set_temperature
       data:
@@ -28,12 +28,12 @@
   trigger:
     - platform: state
       entity_id: input_boolean.hvac_geofence
-      to: 'on'
+      to: "on"
       for: 00:20:00
   condition:
     - condition: state
       entity_id: alarm_control_panel.house
-      state: armed_away   
+      state: armed_away
   action:
     - service: climate.set_temperature
       data:
@@ -64,7 +64,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'off'   
+      state: "off"
   action:
     - service: climate.set_temperature
       data:
@@ -95,7 +95,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'on'   
+      state: "on"
   action:
     - service: climate.set_temperature
       data:
@@ -134,7 +134,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.vacation_mode
-      state: 'off'
+      state: "off"
   action:
     - service: climate.set_temperature
       data:
@@ -150,7 +150,7 @@
       data:
         entity_id: climate.master_suite
         target_temp_high: 79
-        target_temp_low: 68     
+        target_temp_low: 68
 
 - alias: HVAC When Away
   trigger:
@@ -188,10 +188,10 @@
         - fri
     - condition: state
       entity_id: binary_sensor.work_holiday
-      state: 'off'
+      state: "off"
     - condition: state
       entity_id: input_boolean.work_alarm_enabled
-      state: 'on'
+      state: "on"
   action:
     - service: climate.set_temperature
       data:

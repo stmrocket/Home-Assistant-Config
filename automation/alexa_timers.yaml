@@ -5,13 +5,15 @@
       entity_id: sensor.alexa_den_next_timer
   condition:
     - condition: template
-      value_template: '{{ trigger.to_state.state not in [''None'', ''unknown'', ''unavailable'']
-        and trigger.from_state.state != trigger.to_state.state }}'
+      value_template:
+        "{{ trigger.to_state.state not in ['None', 'unknown', 'unavailable']
+        and trigger.from_state.state != trigger.to_state.state }}"
   action:
     - service: script.alexa_den_timer_announce
       data_template:
-        duration: '{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom(''%H:%M:%S'', false) }}'
+        duration:
+          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Entry Timer Announcement
   mode: parallel
@@ -20,13 +22,15 @@
       entity_id: sensor.alexa_entry_next_timer
   condition:
     - condition: template
-      value_template: '{{ trigger.to_state.state not in [''None'', ''unknown'', ''unavailable'']
-        and trigger.from_state.state != trigger.to_state.state }}'
+      value_template:
+        "{{ trigger.to_state.state not in ['None', 'unknown', 'unavailable']
+        and trigger.from_state.state != trigger.to_state.state }}"
   action:
     - service: script.alexa_entry_timer_announce
       data_template:
-        duration: '{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom(''%H:%M:%S'', false) }}'         
+        duration:
+          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Guest Timer Announcement
   mode: parallel
@@ -35,13 +39,15 @@
       entity_id: sensor.alexa_guest_room_next_timer
   condition:
     - condition: template
-      value_template: '{{ trigger.to_state.state not in [''None'', ''unknown'', ''unavailable'']
-        and trigger.from_state.state != trigger.to_state.state }}'
+      value_template:
+        "{{ trigger.to_state.state not in ['None', 'unknown', 'unavailable']
+        and trigger.from_state.state != trigger.to_state.state }}"
   action:
     - service: script.alexa_guest_timer_announce
       data_template:
-        duration: '{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom(''%H:%M:%S'', false) }}'   
+        duration:
+          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Master Timer Announcement
   mode: parallel
@@ -50,13 +56,15 @@
       entity_id: sensor.alexa_master_bedroom_next_timer
   condition:
     - condition: template
-      value_template: '{{ trigger.to_state.state not in [''None'', ''unknown'', ''unavailable'']
-        and trigger.from_state.state != trigger.to_state.state }}'
+      value_template:
+        "{{ trigger.to_state.state not in ['None', 'unknown', 'unavailable']
+        and trigger.from_state.state != trigger.to_state.state }}"
   action:
     - service: script.alexa_master_timer_announce
       data_template:
-        duration: '{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom(''%H:%M:%S'', false) }}'  
+        duration:
+          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Office Timer Announcement
   mode: parallel
@@ -65,13 +73,15 @@
       entity_id: sensor.alexa_office_next_timer
   condition:
     - condition: template
-      value_template: '{{ trigger.to_state.state not in [''None'', ''unknown'', ''unavailable'']
-        and trigger.from_state.state != trigger.to_state.state }}'
+      value_template:
+        "{{ trigger.to_state.state not in ['None', 'unknown', 'unavailable']
+        and trigger.from_state.state != trigger.to_state.state }}"
   action:
     - service: script.alexa_office_timer_announce
       data_template:
-        duration: '{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom(''%H:%M:%S'', false) }}'  
+        duration:
+          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Server Timer Announcement
   mode: parallel
@@ -80,10 +90,12 @@
       entity_id: sensor.alexa_server_room_next_timer
   condition:
     - condition: template
-      value_template: '{{ trigger.to_state.state not in [''None'', ''unknown'', ''unavailable'']
-        and trigger.from_state.state != trigger.to_state.state }}'
+      value_template:
+        "{{ trigger.to_state.state not in ['None', 'unknown', 'unavailable']
+        and trigger.from_state.state != trigger.to_state.state }}"
   action:
     - service: script.alexa_server_timer_announce
       data_template:
-        duration: '{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom(''%H:%M:%S'', false) }}'  
+        duration:
+          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false) }}"

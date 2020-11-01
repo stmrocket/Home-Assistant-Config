@@ -107,4 +107,3 @@ sensor:
     unit_of_measurement: "°C"
     device_class: "temperature"
     value_template: "{{ value | round(1) }}"
-  

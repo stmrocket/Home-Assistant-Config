@@ -1,15 +1,15 @@
 - alias: Open Master Blinds
   trigger:
     - platform: state
-      entity_id: 
+      entity_id:
         - switch.master_bedroom_blinds
         - switch.master_bathroom_blinds
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: cover.master_blinds
-      state: 'closed'
+      state: "closed"
   action:
     - service: cover.open_cover
       entity_id: cover.master_blinds
@@ -17,15 +17,15 @@
 - alias: Close Master Blinds
   trigger:
     - platform: state
-      entity_id: 
+      entity_id:
         - switch.master_bedroom_blinds
         - switch.master_bathroom_blinds
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: cover.master_blinds
-      state: 'open'
+      state: "open"
   action:
     - service: cover.close_cover
       entity_id: cover.master_blinds
@@ -34,42 +34,41 @@
   trigger:
     - platform: state
       entity_id: cover.master_blinds
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
   condition:
     - condition: or
       conditions:
         - condition: state
           entity_id: switch.master_bedroom_blinds
-          state: 'off'
+          state: "off"
         - condition: state
           entity_id: switch.master_bathroom_blinds
-          state: 'off'
+          state: "off"
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.master_bedroom_blinds
         - switch.master_bathroom_blinds
-    
 
 - alias: Master Blind Keypad off if all Closed
   trigger:
     - platform: state
       entity_id: cover.master_blinds
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: or
       conditions:
         - condition: state
           entity_id: switch.master_bedroom_blinds
-          state: 'on'
+          state: "on"
         - condition: state
           entity_id: switch.master_bathroom_blinds
-          state: 'on'
+          state: "on"
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.master_bedroom_blinds
         - switch.master_bathroom_blinds
 
@@ -81,16 +80,16 @@
         - cover.right_master_blind
         - cover.left_master_blind
         - cover.west_master_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
       entity_id:
         - cover.center_master_blind
         - cover.right_master_blind
         - cover.left_master_blind
         - cover.west_master_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ states('cover.center_master_blind') == states('cover.right_master_blind') == states('cover.left_master_blind') == states('cover.west_master_blind') }}"
@@ -107,7 +106,7 @@
       data:
         payload_template: "{{ state_attr('cover.center_master_blind', 'current_position') }}"
         topic: habc/master/tele/currentpct
-        retain: 'true'
+        retain: "true"
 
 - alias: Master Windows Various Positions
   trigger:
@@ -117,16 +116,16 @@
         - cover.right_master_blind
         - cover.left_master_blind
         - cover.west_master_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
       entity_id:
         - cover.center_master_blind
         - cover.right_master_blind
         - cover.left_master_blind
         - cover.west_master_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ not states('cover.center_master_blind') == states('cover.right_master_blind') == states('cover.left_master_blind') == states('cover.west_master_blind') }}"
@@ -143,4 +142,4 @@
       data:
         payload: 95
         topic: habc/master/tele/currentpct
-        retain: 'true'
+        retain: "true"

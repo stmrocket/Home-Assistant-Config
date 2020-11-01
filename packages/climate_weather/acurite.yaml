@@ -41,14 +41,13 @@ sensor:
     sampling_size: 4000
     max_age:
       minutes: 60
-  
+
   - platform: template
     sensors:
       acurite_ws_rain_last_60_minutes:
         value_template: "{{ state_attr('sensor.acurite_ws_hourly_total_rain_statistics','change') }}"
 
 utility_meter:
-
   acurite_ws_rain_daily:
     source: sensor.acurite_ws_cumulative_rainfall
     cycle: daily
@@ -63,4 +62,4 @@ utility_meter:
 
   acurite_ws_rain_yearly:
     source: sensor.acurite_ws_cumulative_rainfall
-    cycle: yearly    
+    cycle: yearly

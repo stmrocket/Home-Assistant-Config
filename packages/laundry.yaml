@@ -1,6 +1,6 @@
 # Sensors
 sensor:
-#Sonoff Washer Monitor
+  #Sonoff Washer Monitor
   - platform: mqtt
     name: "Washer State"
     state_topic: "hass/state/washer"
@@ -10,7 +10,7 @@ sensor:
     state_topic: "tele/SNF-Washer/SENSOR"
     value_template: "{{value_json['ENERGY'].Power }}"
     qos: 2
-    unit_of_measurement : "W"
+    unit_of_measurement: "W"
     icon: mdi:flash-circle
     availability_topic: "tele/SNF-Washer/LWT"
     payload_available: "Online"
@@ -20,7 +20,7 @@ sensor:
     state_topic: "tele/SNF-Washer/SENSOR"
     value_template: "{{value_json['ENERGY'].Voltage }}"
     qos: 2
-    unit_of_measurement : "V"
+    unit_of_measurement: "V"
     icon: mdi:flash-circle
     availability_topic: "tele/SNF-Washer/LWT"
     payload_available: "Online"
@@ -30,7 +30,7 @@ sensor:
     state_topic: "tele/SNF-Washer/SENSOR"
     value_template: "{{value_json['ENERGY'].Current }}"
     qos: 2
-    unit_of_measurement : "A"
+    unit_of_measurement: "A"
     icon: mdi:flash-circle
     availability_topic: "tele/SNF-Washer/LWT"
     payload_available: "Online"
@@ -40,7 +40,7 @@ sensor:
     state_topic: "tele/SNF-Washer/SENSOR"
     value_template: "{{value_json['ENERGY'].Today }}"
     qos: 2
-    unit_of_measurement : "kWh"
+    unit_of_measurement: "kWh"
     availability_topic: "tele/SNF-Washer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
@@ -49,7 +49,7 @@ sensor:
     state_topic: "tele/SNF-Washer/SENSOR"
     value_template: "{{value_json['ENERGY'].Yesterday }}"
     qos: 2
-    unit_of_measurement : "kWh"
+    unit_of_measurement: "kWh"
     availability_topic: "tele/SNF-Washer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
@@ -64,7 +64,7 @@ sensor:
     payload_available: "Online"
     payload_not_available: "Offline"
 
-#Sonoff Dryer Monitor
+  #Sonoff Dryer Monitor
   - platform: mqtt
     name: "Dryer State"
     state_topic: "hass/state/dryer"
@@ -75,7 +75,7 @@ sensor:
     state_topic: "tele/SNF-Dryer/SENSOR"
     value_template: "{{value_json['ENERGY'].Power }}"
     qos: 2
-    unit_of_measurement : "W"
+    unit_of_measurement: "W"
     icon: mdi:flash-circle
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
@@ -86,7 +86,7 @@ sensor:
     state_topic: "tele/SNF-Dryer/SENSOR"
     value_template: "{{value_json['ENERGY'].Voltage }}"
     qos: 2
-    unit_of_measurement : "V"
+    unit_of_measurement: "V"
     icon: mdi:flash-circle
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
@@ -97,7 +97,7 @@ sensor:
     state_topic: "tele/SNF-Dryer/SENSOR"
     value_template: "{{value_json['ENERGY'].Current }}"
     qos: 2
-    unit_of_measurement : "A"
+    unit_of_measurement: "A"
     icon: mdi:flash-circle
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
@@ -108,7 +108,7 @@ sensor:
     state_topic: "tele/SNF-Dryer/SENSOR"
     value_template: "{{value_json['ENERGY'].Today }}"
     qos: 2
-    unit_of_measurement : "kWh"
+    unit_of_measurement: "kWh"
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
@@ -118,7 +118,7 @@ sensor:
     state_topic: "tele/SNF-Dryer/SENSOR"
     value_template: "{{value_json['ENERGY'].Yesterday }}"
     qos: 2
-    unit_of_measurement : "kWh"
+    unit_of_measurement: "kWh"
     availability_topic: "tele/SNF-Dryer/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
@@ -132,7 +132,7 @@ sensor:
     qos: 1
     payload_available: "Online"
     payload_not_available: "Offline"
-  
+
   - platform: template
     sensors:
       washer_status:
@@ -142,7 +142,7 @@ sensor:
           {% else -%}
             {{ states('sensor.washer_state')}}
           {% endif -%}
-          
+
       dryer_status:
         value_template: >-
           {% if is_state('input_boolean.dryer_end', 'on')  -%}
@@ -152,7 +152,6 @@ sensor:
           {% endif -%}
 
 input_boolean:
-
   washer_end:
     name: Washer Finished
     initial: off
@@ -165,14 +164,13 @@ input_boolean:
 
 # Timers
 timer:
-
   washer_alert:
     name: Washer Announcement Timer
-    duration: '00:05:00'
+    duration: "00:05:00"
 
   dryer_alert:
     name: Dryer Announcement Timer
-    duration: '00:05:00'        
+    duration: "00:05:00"
 
 #Counters
 counter:
@@ -181,4 +179,4 @@ counter:
     step: 1
   washer_alert:
     initial: 0
-    step: 1    
+    step: 1

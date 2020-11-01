@@ -29,85 +29,85 @@ light:
 automation:
   - alias: k_counter_gr report on
     trigger:
-    - platform: state
-      entity_id: light.kitchen_led_4_rgb
-      to: 'on'
-    - platform: state
-      entity_id: light.kitchen_led_5_rgb
-      to: 'on'
-    - platform: state
-      entity_id: light.kitchen_led_6_rgb
-      to: 'on'
+      - platform: state
+        entity_id: light.kitchen_led_4_rgb
+        to: "on"
+      - platform: state
+        entity_id: light.kitchen_led_5_rgb
+        to: "on"
+      - platform: state
+        entity_id: light.kitchen_led_6_rgb
+        to: "on"
     action:
-    - service: mqtt.publish
-      data:
-        topic: h801/k_counter/ha/state
-        payload_template: "ON"
+      - service: mqtt.publish
+        data:
+          topic: h801/k_counter/ha/state
+          payload_template: "ON"
   - alias: k_counter_gr report off
     trigger:
-    - platform: state
-      entity_id: light.kitchen_led_4_rgb
-      to: 'off'
-    - platform: state
-      entity_id: light.kitchen_led_5_rgb
-      to: 'off'
-    - platform: state
-      entity_id: light.kitchen_led_6_rgb
-      to: 'off'
+      - platform: state
+        entity_id: light.kitchen_led_4_rgb
+        to: "off"
+      - platform: state
+        entity_id: light.kitchen_led_5_rgb
+        to: "off"
+      - platform: state
+        entity_id: light.kitchen_led_6_rgb
+        to: "off"
     condition:
-    - condition: state
-      entity_id: light.kitchen_led_4_rgb
-      state: 'off'
-    - condition: state
-      entity_id: light.kitchen_led_5_rgb
-      state: 'off'
-    - condition: state
-      entity_id: light.kitchen_led_6_rgb
-      state: 'off'
+      - condition: state
+        entity_id: light.kitchen_led_4_rgb
+        state: "off"
+      - condition: state
+        entity_id: light.kitchen_led_5_rgb
+        state: "off"
+      - condition: state
+        entity_id: light.kitchen_led_6_rgb
+        state: "off"
     action:
-    - service: mqtt.publish
-      data:
-        topic: h801/k_counter/ha/state
-        payload_template: "OFF"
+      - service: mqtt.publish
+        data:
+          topic: h801/k_counter/ha/state
+          payload_template: "OFF"
   - alias: k_counter_gr white report on
     trigger:
-    - platform: state
-      entity_id: light.kitchen_led_4_w2
-      to: 'on'
-    - platform: state
-      entity_id: light.kitchen_led_5_w2
-      to: 'on'
-    - platform: state
-      entity_id: light.kitchen_led_6_w2
-      to: 'on'
+      - platform: state
+        entity_id: light.kitchen_led_4_w2
+        to: "on"
+      - platform: state
+        entity_id: light.kitchen_led_5_w2
+        to: "on"
+      - platform: state
+        entity_id: light.kitchen_led_6_w2
+        to: "on"
     action:
-    - service: mqtt.publish
-      data:
-        topic: h801/k_counter/ha/wstate
-        payload_template: "ON"
+      - service: mqtt.publish
+        data:
+          topic: h801/k_counter/ha/wstate
+          payload_template: "ON"
   - alias: k_counter_gr white report off
     trigger:
-    - platform: state
-      entity_id: light.kitchen_led_4_w2
-      to: 'off'
-    - platform: state
-      entity_id: light.kitchen_led_5_w2
-      to: 'off'
-    - platform: state
-      entity_id: light.kitchen_led_6_w2
-      to: 'off'
+      - platform: state
+        entity_id: light.kitchen_led_4_w2
+        to: "off"
+      - platform: state
+        entity_id: light.kitchen_led_5_w2
+        to: "off"
+      - platform: state
+        entity_id: light.kitchen_led_6_w2
+        to: "off"
     condition:
-    - condition: state
-      entity_id: light.kitchen_led_4_w2
-      state: 'off'
-    - condition: state
-      entity_id: light.kitchen_led_5_w2
-      state: 'off'
-    - condition: state
-      entity_id: light.kitchen_led_6_w2
-      state: 'off'
+      - condition: state
+        entity_id: light.kitchen_led_4_w2
+        state: "off"
+      - condition: state
+        entity_id: light.kitchen_led_5_w2
+        state: "off"
+      - condition: state
+        entity_id: light.kitchen_led_6_w2
+        state: "off"
     action:
-    - service: mqtt.publish
-      data:
-        topic: h801/k_counter/ha/wstate
-        payload_template: "OFF"
+      - service: mqtt.publish
+        data:
+          topic: h801/k_counter/ha/wstate
+          payload_template: "OFF"

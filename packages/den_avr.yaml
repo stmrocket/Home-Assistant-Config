@@ -15,8 +15,8 @@ rest_command:
 
   den_avr_40:
     url: "{{ states('sensor.den_avr_url') }}081VL"
-    method: get 
+    method: get
 
   den_avr_mute:
     url: "{{ states('sensor.den_avr_url') }}MO"
-    method: get  
+    method: get

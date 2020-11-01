@@ -22,7 +22,7 @@ sensor:
     availability_topic: "habc/kitchen_r/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Right Kitchen Blind Uptime"
     state_topic: "habc/kitchen_r/tele/status"
@@ -66,7 +66,7 @@ sensor:
   - platform: mqtt
     name: "Right Kitchen Blind Core Version"
     state_topic: "habc/kitchen_r/tele/status"
-    value_template: "{{value_json['espCore']}}" 
+    value_template: "{{value_json['espCore']}}"
     availability_topic: "habc/kitchen_r/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
@@ -74,7 +74,7 @@ sensor:
   - platform: mqtt
     name: "Right Kitchen Blind Light Level"
     state_topic: "habc/kitchen_r/tele/light"
-    unit_of_measurement: '%'
+    unit_of_measurement: "%"
     availability_topic: "habc/kitchen_r/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"

@@ -1,5 +1,4 @@
 sensor:
-
   - platform: mqtt
     name: Litter Robot Power Status
     state_topic: "pooper/status"
@@ -8,44 +7,42 @@ sensor:
   - platform: mqtt
     name: Litter Robot Sleep Mode Start Time
     state_topic: "pooper/status"
-    value_template: "{{value_json['sleepModeStartTime']}}"  
+    value_template: "{{value_json['sleepModeStartTime']}}"
 
   - platform: mqtt
     name: Litter Robot Sleep Mode End Time
     state_topic: "pooper/status"
-    value_template: "{{value_json['sleepModeEndTime']}}"  
+    value_template: "{{value_json['sleepModeEndTime']}}"
 
   - platform: mqtt
     name: Litter Robot DFI Cycle Count
     state_topic: "pooper/status"
-    value_template: "{{value_json['DFICycleCount']}}"  
+    value_template: "{{value_json['DFICycleCount']}}"
 
   - platform: mqtt
     name: Litter Robot Cycle Wait Time
     state_topic: "pooper/status"
-    value_template: "{{value_json['cleanCycleWaitTimeMinutes']}}"  
+    value_template: "{{value_json['cleanCycleWaitTimeMinutes']}}"
 
   - platform: mqtt
     name: Litter Robot Status
     state_topic: "pooper/status"
-    value_template: "{{value_json['unitStatus']}}" 
+    value_template: "{{value_json['unitStatus']}}"
 
   - platform: mqtt
     name: Litter Robot Cycle Count
     state_topic: "pooper/status"
-    value_template: "{{value_json['cycleCount']}}" 
+    value_template: "{{value_json['cycleCount']}}"
 
   - platform: mqtt
     name: Litter Robot Cycles After Full
     state_topic: "pooper/status"
-    value_template: "{{value_json['cyclesAfterDrawerFull']}}" 
+    value_template: "{{value_json['cyclesAfterDrawerFull']}}"
 
   - platform: mqtt
     name: Litter Robot Reported Cycle Capacity
     state_topic: "pooper/status"
-    value_template: "{{value_json['cycleCapacity']}}" 
-
-
+    value_template: "{{value_json['cycleCapacity']}}"
 
   - platform: template
     sensors:
@@ -99,14 +96,14 @@ binary_sensor:
   - platform: mqtt
     name: Litter Robot Online
     state_topic: "pooper/status"
-    value_template: '{{value_json.didNotifyOffline}}'
+    value_template: "{{value_json.didNotifyOffline}}"
     payload_on: false
     payload_off: true
 
   - platform: mqtt
     name: Litter Robot Drawer Full
     state_topic: "pooper/status"
-    value_template: '{{value_json.isDFITriggered}}'
+    value_template: "{{value_json.isDFITriggered}}"
     payload_on: "1"
     payload_off: "0"
 
@@ -119,7 +116,7 @@ switch:
     payload_off: "OFF"
     state_on: "1"
     state_off: "0"
-    value_template: "{{value_json['sleepModeActive']}}" 
+    value_template: "{{value_json['sleepModeActive']}}"
 
   - platform: mqtt
     name: Litter Robot Power
@@ -129,7 +126,7 @@ switch:
     payload_off: "OFF"
     state_on: "ON"
     state_off: "OFF"
-    value_template: "{{value_json['unitPower']}}" 
+    value_template: "{{value_json['unitPower']}}"
 
   - platform: mqtt
     name: Litter Robot Lock
@@ -139,7 +136,7 @@ switch:
     payload_off: "OFF"
     state_on: "1"
     state_off: "0"
-    value_template: "{{value_json['panelLockActive']}}" 
+    value_template: "{{value_json['panelLockActive']}}"
 
   - platform: mqtt
     name: Litter Robot Light
@@ -149,10 +146,9 @@ switch:
     payload_off: "OFF"
     state_on: "1"
     state_off: "0"
-    value_template: "{{value_json['nightLightActive']}}" 
+    value_template: "{{value_json['nightLightActive']}}"
 
 input_number:
-
   litter_robot_cycle_count:
     name: Litter Robot Total Cycles
     mode: box
@@ -169,7 +165,7 @@ input_number:
 
 counter:
   litter_robot_cycle_count:
-    step: 1    
+    step: 1
 
 script:
   litter_robot_empty:
@@ -177,7 +173,7 @@ script:
       - service: input_number.set_value
         data_template:
           entity_id: input_number.litter_robot_cycle_count
-          value: "{{ states('input_number.litter_robot_cycle_count') | int + states('counter.litter_robot_cycle_count') | int }}"        
+          value: "{{ states('input_number.litter_robot_cycle_count') | int + states('counter.litter_robot_cycle_count') | int }}"
       - service: input_number.increment
         entity_id: input_number.litter_robot_empty_count
       - service: counter.reset
@@ -185,7 +181,7 @@ script:
       - service: mqtt.publish
         data_template:
           topic: "pooper/command/empty"
-          payload: "{{ states('sensor.litter_robot_average_cycle_capacity') }}"    
+          payload: "{{ states('sensor.litter_robot_average_cycle_capacity') }}"
 
 automation:
   - alias: Update Litter Robot Cycle Count

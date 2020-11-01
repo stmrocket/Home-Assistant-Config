@@ -13,13 +13,13 @@
           state: disarmed
     - condition: state
       entity_id: input_boolean.clock_bells_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.clock_bells_quarter_chime
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: sensor.den_harmony_activity
-      state: 'PowerOff'
+      state: "PowerOff"
   action:
     - service: mqtt.publish
       data:
@@ -41,18 +41,18 @@
           state: disarmed
     - condition: state
       entity_id: input_boolean.clock_bells_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.clock_bells_quarter_chime
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: sensor.den_harmony_activity
-      state: 'PowerOff'
+      state: "PowerOff"
   action:
     - service: mqtt.publish
       data:
         topic: parrot/command/set/play
-        payload: 5,2     
+        payload: 5,2
 
 - alias: Clock 45 Minute Chime
   trigger:
@@ -69,13 +69,13 @@
           state: disarmed
     - condition: state
       entity_id: input_boolean.clock_bells_enabled
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: input_boolean.clock_bells_quarter_chime
-      state: 'on'
+      state: "on"
     - condition: state
       entity_id: sensor.den_harmony_activity
-      state: 'PowerOff'
+      state: "PowerOff"
   action:
     - service: mqtt.publish
       data:
@@ -97,7 +97,7 @@
           state: disarmed
     - condition: state
       entity_id: input_boolean.clock_bells_enabled
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data_template:
@@ -175,4 +175,4 @@
             {% else -%}
               5,26
             {% endif -%}
-          {% endif -%}       
+          {% endif -%}
