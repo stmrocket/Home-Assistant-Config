@@ -6,7 +6,7 @@ media_player:
   - platform: custom_universal
     name: Spotify
     children:
-        - media_player.spotify_home
+      - media_player.spotify_home
     commands:
       turn_on:
         service: script.spotify_power_on
@@ -26,7 +26,7 @@ media_player:
 input_boolean:
   nuvo_spotify_in_menu:
     name: Nuvo Spotify in menu
-    initial: off      
+    initial: off
 
 binary_sensor:
   - platform: template
@@ -47,6 +47,7 @@ input_select:
       - Harry Potter Movie Soundtracks
       - Christian Christmas
       - A Soft Piano Christmas
+      - Christmas Hits
       - Hot Country
       - Country Workout
 
@@ -59,18 +60,18 @@ script:
   spotify_play:
     sequence:
       - choose:
-        - conditions:
-          - condition: state
-            entity_id: media_player.spotify_home
-            state: 'idle'
-          sequence:
-            - service: script.spotify_power_on
+          - conditions:
+              - condition: state
+                entity_id: media_player.spotify_home
+                state: "idle"
+            sequence:
+              - service: script.spotify_power_on
         default:
           - service: media_player.media_play
             entity_id: media_player.spotify_home
           - service: homeassistant.update_entity
             entity_id: media_player.spotify_home
-      
+
   spotify_pause:
     sequence:
       - service: media_player.media_pause
@@ -113,133 +114,145 @@ script:
   spotify_change_playlist:
     sequence:
       - choose:
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "Top Christian"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Top Christian"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:37i9dQZF1DXcb6CQIjdqKy
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:37i9dQZF1DXcb6CQIjdqKy
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "Christian Mix"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Christian Mix"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:37i9dQZF1DX5SzTPIoCKiv
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:37i9dQZF1DX5SzTPIoCKiv
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "WorshipNow"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "WorshipNow"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:37i9dQZF1DWVYgpMbMPJMz
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:37i9dQZF1DWVYgpMbMPJMz
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "The Carnival Steel Drum Band"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "The Carnival Steel Drum Band"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:2BdKasaYAwvSYviEsz214Y
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:2BdKasaYAwvSYviEsz214Y
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "Epic Film Scores for Studying"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Epic Film Scores for Studying"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "Harry Potter Movie Soundtracks"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Harry Potter Movie Soundtracks"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:0vW1PaZHXiamxAgdRD1loI
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:0vW1PaZHXiamxAgdRD1loI
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "Christian Christmas"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Christian Christmas"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:37i9dQZF1DWViXqZVTGO3Z
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:37i9dQZF1DWViXqZVTGO3Z
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "A Soft Piano Christmas"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "A Soft Piano Christmas"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:7J8HlMdOq82WJAU6JmhR5d
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:7J8HlMdOq82WJAU6JmhR5d
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "Hot Country"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Hot Country"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
-        - conditions:
-          - condition: state
-            entity_id: input_select.spotify_playlist
-            state: "Country Workout"
-          sequence:
-            - service: media_player.play_media
-              data:
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Country Workout"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:37i9dQZF1DX5OrO2Jxuvdn
+              - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
-                media_content_type: playlist
-                media_content_id: spotify:playlist:37i9dQZF1DX5OrO2Jxuvdn
-            - service: homeassistant.update_entity
-              entity_id: media_player.spotify_home
 
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Christmas Hits"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
+              - service: homeassistant.update_entity
+                entity_id: media_player.spotify_home
