@@ -1,629 +1,629 @@
 - alias: Notify Blind Controller Offline
   trigger:
-  - platform: state
-    entity_id: group.blinds
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: group.blinds
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: A blind controller has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: A blind controller has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify LED Controller Offline
   trigger:
-  - platform: state
-    entity_id: group.leds
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: group.leds
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: An LED controller has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: An LED controller has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify NAS Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.nas
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.nas
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The NAS has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The NAS has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify HDHomeRun Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.hdhomerun
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.hdhomerun
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The HDHomeRun has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The HDHomeRun has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify MusicPort Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.musicport
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.musicport
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The MusicPort server has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The MusicPort server has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify OWFS Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.owfs_pi
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.owfs_pi
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The OWFS server has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The OWFS server has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Core Switch Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.core_switch
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.core_switch
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The Core switch has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The Core switch has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify POE Switch Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.poe_switch
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.poe_switch
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The POE switch has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The POE switch has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify ISY Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.isy_994
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.isy_994
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The ISY has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The ISY has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify ELK Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.alarm_panel
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.alarm_panel
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The alarm panel has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The alarm panel has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Front AP Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.unifi_front
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.unifi_front
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The front AP has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The front AP has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify den AP Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.unifi_front
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.unifi_front
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The den AP has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The den AP has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Redlink Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.redlink
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.redlink
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The Redlink bridge has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The Redlink bridge has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Server UPS Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.server_ups
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.server_ups
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The server room UPS has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The server room UPS has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Office UPS Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.server_ups
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.server_ups
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The office UPS has been offline for 5 minutes.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The office UPS has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Server UPS On Battery
   trigger:
-  - platform: state
-    entity_id: sensor.server_ups_status
-    to: 'Battery'    
+    - platform: state
+      entity_id: sensor.server_ups_status
+      to: "Battery"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Server UPS On Battery Power
-      message: The server room is running on battery power.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Server UPS On Battery Power
+        message: The server room is running on battery power.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Server UPS On Utility
   trigger:
-  - platform: state
-    entity_id: sensor.server_ups_status
-    from: 'Battery'
-    to: 'Utility'    
+    - platform: state
+      entity_id: sensor.server_ups_status
+      from: "Battery"
+      to: "Utility"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Server UPS Power Restored
-      message: Power has been restored to the server closet.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Server UPS Power Restored
+        message: Power has been restored to the server closet.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Server UPS Battery Low
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.server_ups_remaining_runtime
-    below: 11  
+    - platform: numeric_state
+      entity_id: sensor.server_ups_remaining_runtime
+      below: 11
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Server UPS Battery Low
-      message: The server room UPS battery is low.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Server UPS Battery Low
+        message: The server room UPS battery is low.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Server UPS Battery Fail
   trigger:
-  - platform: state
-    entity_id: sensor.server_ups_battery_status
-    to: '2'
+    - platform: state
+      entity_id: sensor.server_ups_battery_status
+      to: "2"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Server UPS Replace Battery
-      message: The server room UPS battery has failed.  Replace immediately.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
-  - service: persistent_notification.create
-    data:
-      title: Server UPS Replace Battery
-      message: The server room UPS battery has failed.  Replace immediately.
+        title: Server UPS Replace Battery
+        message: The server room UPS battery has failed.  Replace immediately.
+        data:
+          ttl: 0
+          priority: high
+    - service: persistent_notification.create
+      data:
+        title: Server UPS Replace Battery
+        message: The server room UPS battery has failed.  Replace immediately.
 
 - alias: Notify Office UPS On Battery
   trigger:
-  - platform: state
-    entity_id: sensor.office_ups_status
-    to: 'Battery'    
+    - platform: state
+      entity_id: sensor.office_ups_status
+      to: "Battery"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Office UPS On Battery Power
-      message: The office is running on battery power.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Office UPS On Battery Power
+        message: The office is running on battery power.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Office UPS On Utility
   trigger:
-  - platform: state
-    entity_id: sensor.office_ups_status
-    from: 'Battery'
-    to: 'Utility'    
+    - platform: state
+      entity_id: sensor.office_ups_status
+      from: "Battery"
+      to: "Utility"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Office UPS Power Restored
-      message: Power has been restored to the office.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Office UPS Power Restored
+        message: Power has been restored to the office.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Office UPS Battery Low
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.office_ups_remaining_runtime
-    below: 11  
+    - platform: numeric_state
+      entity_id: sensor.office_ups_remaining_runtime
+      below: 11
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Office UPS Battery Low
-      message: The office UPS battery is low.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Office UPS Battery Low
+        message: The office UPS battery is low.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Office UPS Battery Fail
   trigger:
-  - platform: state
-    entity_id: sensor.office_ups_battery_status
-    to: '2'
+    - platform: state
+      entity_id: sensor.office_ups_battery_status
+      to: "2"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Office UPS Replace Battery
-      message: The office UPS battery has failed.  Replace immediately.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
-  - service: persistent_notification.create
-    data:
-      title: Office UPS Replace Battery
-      message: The office UPS battery has failed.  Replace immediately.
+        title: Office UPS Replace Battery
+        message: The office UPS battery has failed.  Replace immediately.
+        data:
+          ttl: 0
+          priority: high
+    - service: persistent_notification.create
+      data:
+        title: Office UPS Replace Battery
+        message: The office UPS battery has failed.  Replace immediately.
 
 - alias: Notify Docker Frigate Down
   trigger:
-  - platform: state
-    entity_id: switch.frigate
-    to: 'off'    
-    for:
-      minutes: 2
+    - platform: state
+      entity_id: switch.frigate
+      to: "off"
+      for:
+        minutes: 2
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Container Down
-      message: The Frigate Docker container is down.    
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high 
+        title: Container Down
+        message: The Frigate Docker container is down.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Docker MySQL Down
   trigger:
-  - platform: state
-    entity_id: switch.mysql
-    to: 'off'    
-    for:
-      minutes: 2
+    - platform: state
+      entity_id: switch.mysql
+      to: "off"
+      for:
+        minutes: 2
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Container Down
-      message: The MySQL Docker container is down.  
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high    
+        title: Container Down
+        message: The MySQL Docker container is down.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify TV Headend Down
   trigger:
-  - platform: state
-    entity_id: switch.tv_headend
-    to: 'off'    
-    for:
-      minutes: 2
+    - platform: state
+      entity_id: switch.tv_headend
+      to: "off"
+      for:
+        minutes: 2
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Container Down
-      message: The TV Headend Docker container is down.   
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high       
+        title: Container Down
+        message: The TV Headend Docker container is down.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Docker Eagle MQTT Down
   trigger:
-  - platform: state
-    entity_id: switch.eagle_mqtt
-    to: 'off'    
-    for:
-      minutes: 2
+    - platform: state
+      entity_id: switch.eagle_mqtt
+      to: "off"
+      for:
+        minutes: 2
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Container Down
-      message: The Eagle MQTT Docker container is down.   
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high     
+        title: Container Down
+        message: The Eagle MQTT Docker container is down.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Parrot Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.parrot
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.parrot
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The MQTT Parrot has been offline for 5 minutes.  
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high    
+        title: Device Offline
+        message: The MQTT Parrot has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Clock Horn Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.horn
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.horn
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The clock horn has been offline for 5 minutes.   
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high   
+        title: Device Offline
+        message: The clock horn has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify RainMachine Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.rainmachine
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.rainmachine
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The RainMachine has been offline for 5 minutes.    
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Device Offline
+        message: The RainMachine has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Genset Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.generator
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.generator
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The standby generator has been offline for 5 minutes. 
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high       
+        title: Device Offline
+        message: The standby generator has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Genset Running
   trigger:
-  - platform: state
-    entity_id: sensor.generator_status
-    to: 'Running'    
+    - platform: state
+      entity_id: sensor.generator_status
+      to: "Running"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Generator Running
-      message: The generator is supplying power to the house. 
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high          
+        title: Generator Running
+        message: The generator is supplying power to the house.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Genset Stopped
   trigger:
-  - platform: state
-    entity_id: sensor.generator_status
-    from: 'Running'
-    to: 'Standby'    
+    - platform: state
+      entity_id: sensor.generator_status
+      from: "Running"
+      to: "Standby"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Generator Stopped
-      message: The generator has stopped.      
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high     
+        title: Generator Stopped
+        message: The generator has stopped.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Genset Trouble
   trigger:
-  - platform: state
-    entity_id: sensor.generator_status
-    to: 'Error'  
+    - platform: state
+      entity_id: sensor.generator_status
+      to: "Error"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Generator Fault
-      message: The generator is reporting an error. 
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high             
+        title: Generator Fault
+        message: The generator is reporting an error.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Shack UPS On Battery
   trigger:
-  - platform: state
-    entity_id: sensor.shack_ups_status
-    to: 'Battery'    
+    - platform: state
+      entity_id: sensor.shack_ups_status
+      to: "Battery"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Shack UPS On Battery Power
-      message: The shack is running on battery power.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Shack UPS On Battery Power
+        message: The shack is running on battery power.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Shack UPS On Utility
   trigger:
-  - platform: state
-    entity_id: sensor.shack_ups_status
-    from: 'Battery'
-    to: 'Utility'    
+    - platform: state
+      entity_id: sensor.shack_ups_status
+      from: "Battery"
+      to: "Utility"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Shack UPS Power Restored
-      message: Power has been restored to the shack.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Shack UPS Power Restored
+        message: Power has been restored to the shack.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Shack UPS Battery Low
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.shack_ups_remaining_runtime
-    below: 11  
+    - platform: numeric_state
+      entity_id: sensor.shack_ups_remaining_runtime
+      below: 11
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Shack UPS Battery Low
-      message: The shack UPS battery is low.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
+        title: Shack UPS Battery Low
+        message: The shack UPS battery is low.
+        data:
+          ttl: 0
+          priority: high
 
 - alias: Notify Shack UPS Battery Fail
   trigger:
-  - platform: state
-    entity_id: sensor.shack_ups_battery_status
-    to: '2'
+    - platform: state
+      entity_id: sensor.shack_ups_battery_status
+      to: "2"
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Shack UPS Replace Battery
-      message: The shack UPS battery has failed.  Replace immediately.
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high
-  - service: persistent_notification.create
-    data:
-      title: Shack UPS Replace Battery
-      message: The shack UPS battery has failed.  Replace immediately.      
+        title: Shack UPS Replace Battery
+        message: The shack UPS battery has failed.  Replace immediately.
+        data:
+          ttl: 0
+          priority: high
+    - service: persistent_notification.create
+      data:
+        title: Shack UPS Replace Battery
+        message: The shack UPS battery has failed.  Replace immediately.
 
 - alias: Notify AdGuard Offline
   trigger:
-  - platform: state
-    entity_id: device_tracker.adguard
-    from: 'home'
-    to: 'not_home'    
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: device_tracker.adguard
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
   action:
-  - service: notify.mobile_app_shawn_7t
-    data:
-      title: Device Offline
-      message: The AdGuard server has been offline for 5 minutes.  
+    - service: notify.mobile_app_shawn_7t
       data:
-        ttl: 0
-        priority: high    
+        title: Device Offline
+        message: The AdGuard server has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high

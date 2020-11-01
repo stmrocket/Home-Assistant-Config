@@ -15,7 +15,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'on'
+      state: "on"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.guest_mode
@@ -24,8 +24,8 @@
   trigger:
     - platform: state
       entity_id: switch.guest_mode_led
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.guest_mode
@@ -34,8 +34,8 @@
   trigger:
     - platform: state
       entity_id: switch.guest_mode_led
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.guest_mode
@@ -44,12 +44,12 @@
   trigger:
     - platform: state
       entity_id: input_boolean.guest_mode
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: switch.guest_mode_led
-      state:  'off'
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.guest_mode_led
@@ -58,12 +58,12 @@
   trigger:
     - platform: state
       entity_id: input_boolean.guest_mode
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: switch.guest_mode_led
-      state:  'on'
+      state: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.guest_mode_led

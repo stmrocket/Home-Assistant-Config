@@ -49,7 +49,7 @@
       value_template: "{{ not state_attr('media_player.spotify_home', 'media_album_name') ==  None }}"
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'off'
+      state: "off"
   action:
     - service: mqtt.publish
       data:
@@ -72,14 +72,14 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'PLAY'
+      payload: "PLAY"
   condition:
     - condition: state
       entity_id: media_player.spotify_home
       state: playing
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'off'
+      state: "off"
   action:
     - service: script.spotify_pause
 
@@ -87,19 +87,19 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'PLAY'
+      payload: "PLAY"
   condition:
     - condition: or
       conditions:
-      - condition: state
-        entity_id: media_player.spotify_home
-        state: paused
-      - condition: state
-        entity_id: media_player.spotify_home
-        state: 'idle'
+        - condition: state
+          entity_id: media_player.spotify_home
+          state: paused
+        - condition: state
+          entity_id: media_player.spotify_home
+          state: "idle"
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'off'
+      state: "off"
   action:
     - service: script.spotify_play
 
@@ -107,14 +107,14 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'NEXT'
+      payload: "NEXT"
   condition:
     - condition: state
       entity_id: media_player.spotify_home
       state: playing
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'off'
+      state: "off"
   action:
     - service: script.spotify_next
 
@@ -122,14 +122,14 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'PREV'
+      payload: "PREV"
   condition:
     - condition: state
       entity_id: media_player.spotify_home
       state: playing
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'off'
+      state: "off"
   action:
     - service: script.spotify_previous
 
@@ -139,11 +139,11 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'PLAY'
+      payload: "PLAY"
   condition:
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'on'
+      state: "on"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.nuvo_spotify_in_menu
@@ -153,18 +153,18 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'HPLAY'
+      payload: "HPLAY"
   condition:
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'off'
+      state: "off"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.nuvo_spotify_in_menu
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/line
-        payload_template: '1,1,Select a Playliast'
+        payload_template: "1,1,Select a Playliast"
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/line
@@ -182,18 +182,18 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'NEXT'
+      payload: "NEXT"
   condition:
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'on'
+      state: "on"
   action:
     - service: input_select.select_next
       entity_id: input_select.spotify_playlist
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/line
-        payload_template: '1,1,Select a Playlist'
+        payload_template: "1,1,Select a Playlist"
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/line
@@ -211,18 +211,18 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'PREV'
+      payload: "PREV"
   condition:
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'on'
+      state: "on"
   action:
     - service: input_select.select_previous
       entity_id: input_select.spotify_playlist
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/line
-        payload_template: '1,1,Select a Playlist'
+        payload_template: "1,1,Select a Playlist"
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/line
@@ -240,18 +240,18 @@
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
-      payload: 'HPLAY'
+      payload: "HPLAY"
   condition:
     - condition: state
       entity_id: input_boolean.nuvo_spotify_in_menu
-      state: 'on'
+      state: "on"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.nuvo_spotify_in_menu
     - service: input_select.select_option
       data_template:
         entity_id: input_select.spotify_playlist
-        option: "{{ state_attr('media_player.spotify_home','media_playlist') }}"    
+        option: "{{ state_attr('media_player.spotify_home','media_playlist') }}"
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/line
@@ -285,162 +285,162 @@
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_1_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_1_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_2_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_2_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_3_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_3_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_4_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_4_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_5_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_5_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_6_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_6_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_7_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_7_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_8_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_8_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_9_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_9_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_10_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_10_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_11_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_11_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_12_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_12_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_13_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_13_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_14_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_14_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_15_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_15_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_16_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_16_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_17_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_17_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_18_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_18_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_19_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_19_source
-              state: '1'
+              state: "1"
         - condition: and
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_20_power
-              state: 'on'
+              state: "on"
             - condition: state
               entity_id: sensor.nuvo_zone_20_source
-              state: '1'
+              state: "1"
   action:
     - service: script.spotify_play
 
@@ -458,142 +458,142 @@
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_1_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_1_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_2_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_2_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_3_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_3_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_4_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_4_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_5_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_5_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_6_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_6_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_7_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_7_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_8_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_8_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_9_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_9_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_10_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_10_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_11_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_11_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_12_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_12_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_13_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_13_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_14_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_14_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_15_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_15_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_16_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_16_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_17_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_17_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_18_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_18_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_19_power
-              state: 'off'
+              state: "off"
             - condition: template
               value_template: "{{ not states('sensor.nuvo_zone_19_source') | int == 1 }}"
         - condition: or
           conditions:
             - condition: state
               entity_id: switch.nuvo_zone_20_power
-              state: 'off'
+              state: "off"
             - condition: template
-              value_template: "{{ not states('sensor.nuvo_zone_20_source') | int == 1 }}"     
+              value_template: "{{ not states('sensor.nuvo_zone_20_source') | int == 1 }}"
   action:
     - service: script.spotify_pause
 
@@ -628,7 +628,7 @@
     - platform: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.spotify_refresh      
+        entity_id: timer.spotify_refresh
   condition:
     - condition: state
       entity_id: media_player.spotify_home

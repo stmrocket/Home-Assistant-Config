@@ -13,7 +13,7 @@
   condition:
     - condition: state
       entity_id: switch.garage_light
-      state: 'off'    
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.garage_lights
@@ -35,7 +35,7 @@
   condition:
     - condition: state
       entity_id: switch.garage_lights
-      state: 'on'    
+      state: "on"
   action:
     - service: timer.start
       entity_id: timer.garage_light
@@ -45,7 +45,7 @@
     - event_data:
         entity_id: timer.garage_light
       event_type: timer.finished
-      platform: event  
+      platform: event
   action:
     - service: switch.turn_off
       entity_id: switch.garage_lights
@@ -66,7 +66,7 @@
           light.turn_off
         {% endif %}
       entity_id: light.attic_light
-      
+
 - alias: Auto Guest Closet Light
   trigger:
     - entity_id: sensor.elk_guest_closet_door
@@ -133,8 +133,8 @@
         {% else %}
           switch.turn_off
         {% endif %}
-      entity_id: switch.shed_inside_light      
-    
+      entity_id: switch.shed_inside_light
+
 - alias: Master Closet Light Auto On
   trigger:
     - entity_id: sensor.elk_master_closet_motion
@@ -153,7 +153,7 @@
         minutes: 2
   action:
     - service: switch.turn_off
-      entity_id: switch.master_closet_light    
+      entity_id: switch.master_closet_light
 
 - alias: Utility Room Light Auto On
   trigger:
@@ -196,7 +196,7 @@
       to: Normal
   action:
     - service: scene.turn_on
-      entity_id: scene.entry_closet_restore  
+      entity_id: scene.entry_closet_restore
 
 - alias: Auto Hall Closet Light On
   trigger:
@@ -219,4 +219,4 @@
       to: Normal
   action:
     - service: scene.turn_on
-      entity_id: scene.hall_closet_restore        
+      entity_id: scene.hall_closet_restore

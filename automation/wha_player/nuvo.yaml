@@ -6,7 +6,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_1_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -21,7 +21,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_2_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -36,7 +36,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_3_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -51,7 +51,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_4_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -66,7 +66,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_5_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -81,7 +81,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_6_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -96,7 +96,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_7_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -111,7 +111,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_8_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -126,7 +126,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_9_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -141,7 +141,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_10_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -156,7 +156,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_11_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -171,7 +171,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_12_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -186,7 +186,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_13_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -201,7 +201,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_14_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -216,7 +216,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_15_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -231,7 +231,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_16_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -246,7 +246,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_17_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -261,7 +261,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_18_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -276,7 +276,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_19_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:
@@ -291,7 +291,7 @@
   condition:
     - condition: state
       entity_id: switch.nuvo_zone_20_power
-      state: 'on'
+      state: "on"
   action:
     - service: mqtt.publish
       data:

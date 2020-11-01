@@ -10,7 +10,7 @@
       to: armed_away
     - platform: numeric_state
       entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
+      value_template: "{{ state.attributes.elevation }}"
       below: -2.5
   action:
     - service: cover.close_cover
@@ -28,30 +28,30 @@
       to: armed_home
     - platform: numeric_state
       entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
+      value_template: "{{ state.attributes.elevation }}"
       above: 0
   condition:
     - condition: state
       entity_id: switch.shower_light_and_fan
-      state: 'off'
+      state: "off"
     - condition: numeric_state
       entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
+      value_template: "{{ state.attributes.elevation }}"
       above: 0
     - condition: state
       entity_id: input_boolean.vacation_mode
-      state: 'off'
+      state: "off"
     - condition: state
       entity_id: input_boolean.blinds_manual
-      state: 'off'
+      state: "off"
     - condition: or
       conditions:
         - condition: state
           entity_id: alarm_control_panel.house
-          state:  disarmed
+          state: disarmed
         - condition: state
           entity_id: alarm_control_panel.house
-          state:  armed_home
+          state: armed_home
   action:
     - service: cover.open_cover
       entity_id: cover.house_blinds
@@ -68,33 +68,33 @@
       to: armed_home
     - platform: numeric_state
       entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
+      value_template: "{{ state.attributes.elevation }}"
       above: 0
   condition:
     - condition: state
       entity_id: switch.shower_light_and_fan
-      state: 'on'
+      state: "on"
     - condition: numeric_state
       entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
+      value_template: "{{ state.attributes.elevation }}"
       above: 0
     - condition: state
       entity_id: input_boolean.vacation_mode
-      state: 'off'
+      state: "off"
     - condition: state
       entity_id: input_boolean.blinds_manual
-      state: 'off'
+      state: "off"
     - condition: or
       conditions:
         - condition: state
           entity_id: alarm_control_panel.house
-          state:  disarmed
+          state: disarmed
         - condition: state
           entity_id: alarm_control_panel.house
-          state:  armed_home
+          state: armed_home
   action:
     - service: cover.open_cover
-      entity_id: 
+      entity_id:
         - cover.office_blinds
         - cover.guest_blind
         - cover.server_room_blind
@@ -107,7 +107,7 @@
 - alias: All Windows Same Position
   trigger:
     - platform: state
-      entity_id: 
+      entity_id:
         - cover.office_blinds
         - cover.den_blinds
         - cover.kitchen_blinds
@@ -115,10 +115,10 @@
         - cover.master_blinds
         - cover.server_room_blind
         - cover.guest_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
-      entity_id: 
+      entity_id:
         - cover.office_blinds
         - cover.den_blinds
         - cover.kitchen_blinds
@@ -126,8 +126,8 @@
         - cover.master_blinds
         - cover.server_room_blind
         - cover.guest_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ states('cover.office_blinds') == states('cover.den_blinds') == states('cover.kitchen_blinds') == states('cover.guest_blind') == states('cover.server_room_blind') == states('cover.shack_blinds') == states('cover.master_blinds') }}"
@@ -140,12 +140,12 @@
       data:
         payload_template: "{{ state_attr('cover.center_office_blind', 'current_position') }}"
         topic: habc/all/tele/currentpct
-        retain: 'true'
+        retain: "true"
 
 - alias: All Windows Various Positions
   trigger:
     - platform: state
-      entity_id: 
+      entity_id:
         - cover.office_blinds
         - cover.den_blinds
         - cover.kitchen_blinds
@@ -153,10 +153,10 @@
         - cover.master_blinds
         - cover.server_room_blind
         - cover.guest_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
-      entity_id: 
+      entity_id:
         - cover.office_blinds
         - cover.den_blinds
         - cover.kitchen_blinds
@@ -164,8 +164,8 @@
         - cover.master_blinds
         - cover.server_room_blind
         - cover.guest_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ not states('cover.office_blinds') == states('cover.den_blinds') == states('cover.kitchen_blinds') == states('cover.guest_blind') == states('cover.server_room_blind') == states('cover.shack_blinds') == states('cover.master_blinds') }}"
@@ -178,33 +178,32 @@
       data:
         payload: 95
         topic: habc/all/tele/currentpct
-        retain: 'true'
+        retain: "true"
 
 - alias: Open House Blinds
   trigger:
     - platform: state
       entity_id: switch.house_blinds
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: cover.house_blinds
-      state: 'closed'
+      state: "closed"
   action:
     - service: cover.open_cover
       entity_id: cover.house_blinds
-      
 
 - alias: Close House Blinds
   trigger:
     - platform: state
       entity_id: switch.house_blinds
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: cover.house_blinds
-      state: 'open'
+      state: "open"
   action:
     - service: cover.close_cover
       entity_id: cover.house_blinds
@@ -213,12 +212,12 @@
   trigger:
     - platform: state
       entity_id: cover.house_blinds
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
   condition:
     - condition: state
       entity_id: switch.house_blinds
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.house_blinds
@@ -227,12 +226,12 @@
   trigger:
     - platform: state
       entity_id: cover.house_blinds
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: state
       entity_id: switch.house_blinds
-      state: 'on'
+      state: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.house_blinds

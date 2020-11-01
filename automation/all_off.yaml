@@ -25,7 +25,7 @@
       to: armed_night
   action:
     - service: light.turn_off
-      entity_id: 
+      entity_id:
         - light.dining_room_light
         - light.entry_light
         - light.foyer_light
@@ -39,7 +39,7 @@
         - light.den_light
         - light.shack_desk_light
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.den_fireplace
         - switch.den_fan
         - switch.warmer
@@ -55,7 +55,7 @@
         - switch.lava_lamp
         - switch.popper
         - switch.shack_fan
-        - switch.back_porch_light  
+        - switch.back_porch_light
         - switch.shack_light
         - switch.office_peripherals
 
@@ -67,7 +67,7 @@
       to: armed_away
   action:
     - service: light.turn_off
-      entity_id: 
+      entity_id:
         - light.guest_bedroom_light
         - light.guest_bathroom_light
         - light.master_bedroom_light
@@ -82,7 +82,7 @@
         - switch.guest_bedroom_fan
         - switch.master_bedroom_fan
         - switch.water_projector
-  
+
 - alias: All Off Timer Lights
   trigger:
     - platform: event
@@ -92,10 +92,10 @@
   condition:
     - condition: state
       entity_id: input_boolean.timer_lights
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -112,15 +112,15 @@
   condition:
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'off'
+      state: "off"
   action:
     - service: light.turn_off
-      entity_id: 
+      entity_id:
         - light.guest_bedroom_light
         - light.guest_bathroom_light
         - light.hall_light
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.guest_bedroom_fan
         - switch.guest_bathroom_fan
 
@@ -133,7 +133,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.guest_mode
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_off
       entity_id: switch.nuvo_zone_2_power
@@ -150,7 +150,7 @@
       to: armed_night
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.nuvo_zone_1_power
         - switch.nuvo_zone_3_power
         - switch.nuvo_zone_6_power
@@ -169,10 +169,10 @@
   condition:
     - condition: state
       entity_id: input_boolean.outside_timer_lights
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
 
@@ -185,7 +185,7 @@
   condition:
     - condition: state
       entity_id: input_boolean.master_lamp_timer
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_off
       entity_id: switch.master_bedroom_lamps

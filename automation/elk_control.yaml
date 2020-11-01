@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.elk_night_on
-      to: 'on'
+      to: "on"
   condition:
     - condition: template
       value_template: "{{ is_state_attr('alarm_control_panel.house', 'alarm_state', 'no_alarm_active') }}"
@@ -18,7 +18,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.elk_night_off
-      to: 'on'
+      to: "on"
   condition:
     - condition: template
       value_template: "{{ is_state_attr('alarm_control_panel.house', 'alarm_state', 'no_alarm_active') }}"
@@ -28,13 +28,13 @@
     - service: switch.turn_on
       entity_id: switch.elk_night_mode_off
     - service: input_boolean.turn_off
-      entity_id: input_boolean.elk_night_off  
+      entity_id: input_boolean.elk_night_off
 
 - alias: Elk Stay Mode On from Trigger
   trigger:
     - platform: state
       entity_id: input_boolean.elk_stay_on
-      to: 'on'
+      to: "on"
   condition:
     - condition: template
       value_template: "{{ is_state_attr('alarm_control_panel.house', 'alarm_state', 'no_alarm_active') }}"
@@ -50,7 +50,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.elk_stay_off
-      to: 'on'
+      to: "on"
   condition:
     - condition: template
       value_template: "{{ is_state_attr('alarm_control_panel.house', 'alarm_state', 'no_alarm_active') }}"
@@ -60,13 +60,13 @@
     - service: switch.turn_on
       entity_id: switch.elk_stay_mode_off
     - service: input_boolean.turn_off
-      entity_id: input_boolean.elk_stay_off      
+      entity_id: input_boolean.elk_stay_off
 
 - alias: Elk Away Mode On from Trigger
   trigger:
     - platform: state
       entity_id: input_boolean.elk_away_on
-      to: 'on'
+      to: "on"
   condition:
     - condition: template
       value_template: "{{ is_state_attr('alarm_control_panel.house', 'alarm_state', 'no_alarm_active') }}"
@@ -76,37 +76,37 @@
     - service: switch.turn_on
       entity_id: switch.elk_away_mode_on
     - service: input_boolean.turn_off
-      entity_id: input_boolean.elk_away_on    
+      entity_id: input_boolean.elk_away_on
 
 - alias: Elk Clear Trigger if State Disallowed
   trigger:
     - platform: state
       entity_id: input_boolean.elk_night_on
-      to: 'on'
+      to: "on"
     - platform: state
       entity_id: input_boolean.elk_night_off
-      to: 'on'
+      to: "on"
     - platform: state
       entity_id: input_boolean.elk_stay_on
-      to: 'on'
+      to: "on"
     - platform: state
       entity_id: input_boolean.elk_stay_off
-      to: 'on'
+      to: "on"
     - platform: state
       entity_id: input_boolean.elk_away_on
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
-      - condition: template
-        value_template: "{{ not is_state_attr('alarm_control_panel.house', 'alarm_state', 'no_alarm_active') }}"
-      - condition: template
-        value_template: "{{ is_state('alarm_control_panel.house', 'armed_away') }}"
+        - condition: template
+          value_template: "{{ not is_state_attr('alarm_control_panel.house', 'alarm_state', 'no_alarm_active') }}"
+        - condition: template
+          value_template: "{{ is_state('alarm_control_panel.house', 'armed_away') }}"
   action:
     - service: input_boolean.turn_off
-      entity_id: 
-        - input_boolean.elk_night_on   
+      entity_id:
+        - input_boolean.elk_night_on
         - input_boolean.elk_night_off
-        - input_boolean.elk_stay_on     
+        - input_boolean.elk_stay_on
         - input_boolean.elk_stay_off
         - input_boolean.elk_away_on

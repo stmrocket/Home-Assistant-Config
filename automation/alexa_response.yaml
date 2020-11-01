@@ -1,196 +1,196 @@
 - alias: Update Alexa Outside Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.acurite_ws_temperature
+    - platform: state
+      entity_id: sensor.acurite_ws_temperature
   action:
-  - service: rest_command.update_alexa_outside_temp
+    - service: rest_command.update_alexa_outside_temp
 
 - alias: Update Alexa Outside Humidity
   trigger:
-  - platform: state
-    entity_id: sensor.acurite_ws_humidity
+    - platform: state
+      entity_id: sensor.acurite_ws_humidity
   action:
-  - service: rest_command.update_alexa_outside_humidity
+    - service: rest_command.update_alexa_outside_humidity
 
 - alias: Update Alexa Attic Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.attic_temperature_owfs
+    - platform: state
+      entity_id: sensor.attic_temperature_owfs
   action:
-  - service: rest_command.update_alexa_attic_temp
+    - service: rest_command.update_alexa_attic_temp
 
 - alias: Update Alexa Den Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.aquara_den_temperature
+    - platform: state
+      entity_id: sensor.aquara_den_temperature
   action:
-  - service: rest_command.update_alexa_den_temp
+    - service: rest_command.update_alexa_den_temp
 
 - alias: Update Alexa Den Humidity
   trigger:
-  - platform: state
-    entity_id: sensor.aquara_den_humidity
+    - platform: state
+      entity_id: sensor.aquara_den_humidity
   action:
-  - service: rest_command.update_alexa_den_humidity
+    - service: rest_command.update_alexa_den_humidity
 
 - alias: Update Alexa Dining Room Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.dining_room_temperature_owfs
+    - platform: state
+      entity_id: sensor.dining_room_temperature_owfs
   action:
-  - service: rest_command.update_alexa_dining_temp
+    - service: rest_command.update_alexa_dining_temp
 
 - alias: Update Alexa Garage Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.garage_temperature_owfs
+    - platform: state
+      entity_id: sensor.garage_temperature_owfs
   action:
-  - service: rest_command.update_alexa_garage_temp
+    - service: rest_command.update_alexa_garage_temp
 
 - alias: Update Alexa Guest Room Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.guest_bedroom_temperature_owfs
+    - platform: state
+      entity_id: sensor.guest_bedroom_temperature_owfs
   action:
-  - service: rest_command.update_alexa_guest_temp
+    - service: rest_command.update_alexa_guest_temp
 
 - alias: Update Alexa Master Bedroom Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.aquara_master_bedroom_temperature
+    - platform: state
+      entity_id: sensor.aquara_master_bedroom_temperature
   action:
-  - service: rest_command.update_alexa_master_temp
+    - service: rest_command.update_alexa_master_temp
 
 - alias: Update Alexa Master Bedroom Humidity
   trigger:
-  - platform: state
-    entity_id: sensor.aquara_master_bedroom_humidity
+    - platform: state
+      entity_id: sensor.aquara_master_bedroom_humidity
   action:
-  - service: rest_command.update_alexa_master_humidity
+    - service: rest_command.update_alexa_master_humidity
 
 - alias: Update Alexa Office Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.aquara_office_temperature
+    - platform: state
+      entity_id: sensor.aquara_office_temperature
   action:
-  - service: rest_command.update_alexa_office_temp
+    - service: rest_command.update_alexa_office_temp
 
 - alias: Update Alexa Office Humidity
   trigger:
-  - platform: state
-    entity_id: sensor.aquara_office_humidity
+    - platform: state
+      entity_id: sensor.aquara_office_humidity
   action:
-  - service: rest_command.update_alexa_office_humidity
+    - service: rest_command.update_alexa_office_humidity
 
 - alias: Update Alexa Server Closet Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.aquara_server_closet_temperature
+    - platform: state
+      entity_id: sensor.aquara_server_closet_temperature
   action:
-  - service: rest_command.update_alexa_server_temp
+    - service: rest_command.update_alexa_server_temp
 
 - alias: Update Alexa Server Closet Humidity
   trigger:
-  - platform: state
-    entity_id: sensor.aquara_server_closet_humidity
+    - platform: state
+      entity_id: sensor.aquara_server_closet_humidity
   action:
-  - service: rest_command.update_alexa_server_humidity
+    - service: rest_command.update_alexa_server_humidity
 
 - alias: Update Alexa Work Room Temperature
   trigger:
-  - platform: state
-    entity_id: sensor.work_room_temperature_owfs
+    - platform: state
+      entity_id: sensor.work_room_temperature_owfs
   action:
-  - service: rest_command.update_alexa_workroom_temp
+    - service: rest_command.update_alexa_workroom_temp
 
 - alias: Update Alexa When Rain Starts
   trigger:
-  - platform: state
-    entity_id: input_boolean.is_raining
-    to: "on"
+    - platform: state
+      entity_id: input_boolean.is_raining
+      to: "on"
   action:
-  - service: rest_command.update_alexa_is_raining
+    - service: rest_command.update_alexa_is_raining
 
 - alias: Update Alexa When Rain Stops
   trigger:
-  - platform: state
-    entity_id: input_boolean.is_raining
-    to: "off"
+    - platform: state
+      entity_id: input_boolean.is_raining
+      to: "off"
   action:
-  - service: rest_command.update_alexa_not_raining
+    - service: rest_command.update_alexa_not_raining
 
 - alias: Update Alexa Daily Rain
   trigger:
-  - platform: state
-    entity_id: sensor.rain_day
+    - platform: state
+      entity_id: sensor.rain_day
   action:
-  - service: rest_command.update_alexa_daily_rain  
+    - service: rest_command.update_alexa_daily_rain
 
 - alias: Update Alexa Monthly Rain
   trigger:
-  - platform: state
-    entity_id: sensor.rain_month
+    - platform: state
+      entity_id: sensor.rain_month
   action:
-  - service: rest_command.update_alexa_monthly_rain    
+    - service: rest_command.update_alexa_monthly_rain
 
 - alias: Update Alexa Yearly Rain
   trigger:
-  - platform: state
-    entity_id: sensor.rain_year
+    - platform: state
+      entity_id: sensor.rain_year
   action:
-  - service: rest_command.update_alexa_yearly_rain  
+    - service: rest_command.update_alexa_yearly_rain
 
 - alias: Update Alexa Rain Rate
   trigger:
-  - platform: state
-    entity_id: sensor.rain_rate
+    - platform: state
+      entity_id: sensor.rain_rate
   action:
-  - service: rest_command.update_alexa_rain_rate  
+    - service: rest_command.update_alexa_rain_rate
 
 - alias: Update Alexa Power Usage
   trigger:
-  - platform: time_pattern
-    minutes: "*"        
-    seconds: "0"
+    - platform: time_pattern
+      minutes: "*"
+      seconds: "0"
   action:
-  - service: rest_command.update_alexa_power_usage 
+    - service: rest_command.update_alexa_power_usage
 
 - alias: Update Alexa When Garage Open
   trigger:
-  - platform: state
-    entity_id: sensor.elk_garage_door
-    to: Violated
+    - platform: state
+      entity_id: sensor.elk_garage_door
+      to: Violated
   action:
-  - service: rest_command.update_alexa_garage_open
+    - service: rest_command.update_alexa_garage_open
 
 - alias: Update Alexa When Garage Closed
   trigger:
-  - platform: state
-    entity_id: sensor.elk_garage_door
-    to: Normal
+    - platform: state
+      entity_id: sensor.elk_garage_door
+      to: Normal
   action:
-  - service: rest_command.update_alexa_garage_closed  
+    - service: rest_command.update_alexa_garage_closed
 
 - alias: Update Alexa When Alarm Armed Night
   trigger:
-  - platform: state
-    entity_id: alarm_control_panel.house
-    to: armed_night
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: armed_night
   action:
-  - service: rest_command.update_alexa_alarm_night  
+    - service: rest_command.update_alexa_alarm_night
 
 - alias: Update Alexa When Alarm Armed Stay
   trigger:
-  - platform: state
-    entity_id: alarm_control_panel.house
-    to: armed_home
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: armed_home
   action:
-  - service: rest_command.update_alexa_alarm_stay
+    - service: rest_command.update_alexa_alarm_stay
 
 - alias: Update Alexa When Alarm Disarmed
   trigger:
-  - platform: state
-    entity_id: alarm_control_panel.house
-    to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: disarmed
   action:
-  - service: rest_command.update_alexa_alarm_disarmed     
+    - service: rest_command.update_alexa_alarm_disarmed

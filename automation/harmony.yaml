@@ -2,21 +2,21 @@
   trigger:
     - platform: state
       entity_id: switch.nuvo_zone_4_power
-      to: 'on'
+      to: "on"
   condition:
     - condition: template
       value_template: "{{ not is_state('sensor.master_harmony_activity', 'None') }}"
   action:
     - service: remote.turn_on
       data:
-        entity_id: remote.harmony_master_bedroom     
+        entity_id: remote.harmony_master_bedroom
         activity: "Listen to WHA"
 
 - alias: Master Bedroom Harmony Off With NuVo
   trigger:
     - platform: state
       entity_id: switch.nuvo_zone_4_power
-      to: 'off'
+      to: "off"
       for:
         seconds: 15
   condition:
@@ -27,24 +27,24 @@
       state: "Listen to WHA"
   action:
     - service: remote.turn_off
-      entity_id: remote.harmony_master_bedroom       
+      entity_id: remote.harmony_master_bedroom
 
 - alias: Den Harmony On With NuVo
   trigger:
     - platform: state
       entity_id: switch.nuvo_zone_7_power
-      to: 'on'
+      to: "on"
   action:
     - service: remote.turn_on
       data:
-        entity_id: remote.harmony_den   
+        entity_id: remote.harmony_den
         activity: "Listen to WHA"
 
 - alias: Den Mute Amp When NuVo Off
   trigger:
     - platform: state
       entity_id: switch.nuvo_zone_7_power
-      to: 'off'
+      to: "off"
   condition:
     - condition: state
       entity_id: sensor.den_harmony_activity
@@ -56,7 +56,7 @@
   trigger:
     - platform: state
       entity_id: switch.nuvo_zone_7_power
-      to: 'off'
+      to: "off"
       for:
         seconds: 15
   condition:
@@ -65,7 +65,7 @@
       state: "Listen to WHA"
   action:
     - service: remote.turn_off
-      entity_id: remote.harmony_den      
+      entity_id: remote.harmony_den
 
 - alias: Control Living Area Blinds from Den Harmony
   trigger:
@@ -77,10 +77,10 @@
         key: Left
   action:
     - service: cover.toggle
-      entity_id: 
+      entity_id:
         - cover.den_blinds
         - cover.kitchen_blinds
-        - cover.shack_blinds           
+        - cover.shack_blinds
 
 - alias: Control Den Fan from Den Harmony
   trigger:
@@ -92,4 +92,4 @@
         key: Right
   action:
     - service: switch.toggle
-      entity_id: switch.den_fan         
+      entity_id: switch.den_fan

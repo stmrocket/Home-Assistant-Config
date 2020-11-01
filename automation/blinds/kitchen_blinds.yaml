@@ -1,15 +1,15 @@
 - alias: Open Kitchen Blinds
   trigger:
     - platform: state
-      entity_id: 
+      entity_id:
         - switch.kitchen_blinds
         - switch.dining_room_blinds
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: cover.kitchen_blinds
-      state: 'closed'
+      state: "closed"
   action:
     - service: cover.open_cover
       entity_id: cover.kitchen_blinds
@@ -17,15 +17,15 @@
 - alias: Close Kitchen Blinds
   trigger:
     - platform: state
-      entity_id: 
+      entity_id:
         - switch.kitchen_blinds
         - switch.dining_room_blinds
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: cover.kitchen_blinds
-      state: 'open'
+      state: "open"
   action:
     - service: cover.close_cover
       entity_id: cover.kitchen_blinds
@@ -34,42 +34,41 @@
   trigger:
     - platform: state
       entity_id: cover.kitchen_blinds
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
   condition:
     - condition: or
       conditions:
-      - condition: state
-        entity_id: switch.kitchen_blinds
-        state: 'off'
-      - condition: state
-        entity_id: switch.dining_room_blinds
-        state: 'off'
+        - condition: state
+          entity_id: switch.kitchen_blinds
+          state: "off"
+        - condition: state
+          entity_id: switch.dining_room_blinds
+          state: "off"
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.kitchen_blinds
         - switch.dining_room_blinds
-    
 
 - alias: Kitchen Blind Keypad off if all Closed
   trigger:
     - platform: state
       entity_id: cover.kitchen_blinds
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: or
       conditions:
-      - condition: state
-        entity_id: switch.kitchen_blinds
-        state: 'on'
-      - condition: state
-        entity_id: switch.dining_room_blinds
-        state: 'on'
+        - condition: state
+          entity_id: switch.kitchen_blinds
+          state: "on"
+        - condition: state
+          entity_id: switch.dining_room_blinds
+          state: "on"
   action:
     - service: switch.turn_off
-      entity_id: 
+      entity_id:
         - switch.kitchen_blinds
         - switch.dining_room_blinds
 
@@ -80,15 +79,15 @@
         - cover.east_kitchen_blind
         - cover.right_kitchen_blind
         - cover.left_kitchen_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
       entity_id:
         - cover.east_kitchen_blind
         - cover.right_kitchen_blind
         - cover.left_kitchen_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ states('cover.east_kitchen_blind') == states('cover.right_kitchen_blind') == states('cover.left_kitchen_blind') }}"
@@ -103,7 +102,7 @@
       data:
         payload_template: "{{ state_attr('cover.east_kitchen_blind', 'current_position') }}"
         topic: habc/kitchen/tele/currentpct
-        retain: 'true'
+        retain: "true"
 
 - alias: Kitchen Windows Various Positions
   trigger:
@@ -112,15 +111,15 @@
         - cover.east_kitchen_blind
         - cover.right_kitchen_blind
         - cover.left_kitchen_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
     - platform: state
       entity_id:
         - cover.east_kitchen_blind
         - cover.right_kitchen_blind
         - cover.left_kitchen_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: template
       value_template: "{{ not states('cover.east_kitchen_blind') == states('cover.right_kitchen_blind') == states('cover.left_kitchen_blind') }}"
@@ -135,4 +134,4 @@
       data:
         payload: 95
         topic: habc/kitchen/tele/currentpct
-        retain: 'true'
+        retain: "true"

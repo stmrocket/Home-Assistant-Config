@@ -22,7 +22,7 @@
         data:
           ttl: 0
           priority: high
-    
+
 - alias: Master Going To Bed
   trigger:
     - platform: state
@@ -35,7 +35,7 @@
       to: armed_night
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.master_bedroom_fan
         - switch.nuvo_zone_4_power
     - service: light.turn_off
@@ -70,19 +70,19 @@
   trigger:
     - platform: state
       entity_id: input_boolean.hvac_geofence
-      to: 'on'
+      to: "on"
     - platform: state
       entity_id: device_tracker.shawn_n6_wifi
-      to: 'home'
+      to: "home"
   condition:
     - condition: state
       entity_id: input_boolean.vacation_mode
-      state: 'on'
+      state: "on"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.vacation_mode
 
-- id: 'sonoffstart'
+- id: "sonoffstart"
   alias: Power State Sonoff on HA Start-Up
   trigger:
     - event: start
@@ -92,20 +92,20 @@
         minutes: 1
     - service: mqtt.publish
       data:
-        payload: ''
+        payload: ""
         topic: cmnd/fireplace/state
     - service: mqtt.publish
       data:
-        payload: ''
-        topic: christmas/indoor/decorations/cmnd/state    
+        payload: ""
+        topic: christmas/indoor/decorations/cmnd/state
 
 - alias: Refresh Entity Counters
   trigger:
     - platform: time_pattern
-      minutes: "/15"  
+      minutes: "/15"
   action:
     - service: homeassistant.update_entity
-      entity_id: 
+      entity_id:
         - sensor.automation_count
         - sensor.binary_sensor_count
         - sensor.switch_count
@@ -116,20 +116,20 @@
         - sensor.script_count
         - sensor.sensor_count
 
-- alias: 'Set Theme to Midnight'
-  initial_state: 'on'
+- alias: "Set Theme to Midnight"
+  initial_state: "on"
   trigger:
     - platform: homeassistant
       event: start
   action:
     - service: frontend.set_theme
       data:
-        name: midnight        
+        name: midnight
 
 - alias: Update OpenUV every 30 minutes during the daytime
   trigger:
     platform: time_pattern
-    minutes: '/30'
+    minutes: "/30"
   condition:
     condition: and
     conditions:
@@ -152,7 +152,7 @@
     - delay:
         seconds: 2
     - service: switch.turn_off
-      entity_id: switch.elk_garage_door 
+      entity_id: switch.elk_garage_door
 
 - alias: Tvheadend Post Started
   trigger:
@@ -165,7 +165,7 @@
         message: "Recording postprosser started."
         data:
           displaytime: 5000
-          icon: "info"         
+          icon: "info"
 
 - alias: Tvheadend Subtitles Done
   trigger:
@@ -191,4 +191,4 @@
         message: "Commercial detection complete."
         data:
           displaytime: 5000
-          icon: "info"          
+          icon: "info"

@@ -1,32 +1,32 @@
 - alias: Set Den AVR Volume to -25
   trigger:
-  - platform: state
-    entity_id: sensor.den_harmony_activity
-    to: 'Watch PVR'
-  - platform: state
-    entity_id: sensor.den_harmony_activity
-    to: 'Watch Roku'
+    - platform: state
+      entity_id: sensor.den_harmony_activity
+      to: "Watch PVR"
+    - platform: state
+      entity_id: sensor.den_harmony_activity
+      to: "Watch Roku"
   action:
-  - service: rest_command.den_avr_25
+    - service: rest_command.den_avr_25
 
 - alias: Set Den AVR Volume to -33
   trigger:
-  - platform: state
-    entity_id: sensor.den_harmony_activity
-    to: 'Play PS3'
+    - platform: state
+      entity_id: sensor.den_harmony_activity
+      to: "Play PS3"
   action:
-  - service: rest_command.den_avr_33
+    - service: rest_command.den_avr_33
 
 - alias: Set Den AVR Volume to -40
   trigger:
-  - platform: state
-    entity_id: sensor.den_harmony_activity
-    to: 'ChromeCast'
-  - platform: state
-    entity_id: sensor.den_harmony_activity
-    to: 'Listen to WHA'
-  - platform: state
-    entity_id: sensor.den_harmony_activity
-    to: "Play Wii"
+    - platform: state
+      entity_id: sensor.den_harmony_activity
+      to: "ChromeCast"
+    - platform: state
+      entity_id: sensor.den_harmony_activity
+      to: "Listen to WHA"
+    - platform: state
+      entity_id: sensor.den_harmony_activity
+      to: "Play Wii"
   action:
-  - service: rest_command.den_avr_40  
+    - service: rest_command.den_avr_40

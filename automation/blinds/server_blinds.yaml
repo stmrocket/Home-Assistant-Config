@@ -2,12 +2,12 @@
   trigger:
     - platform: state
       entity_id: switch.server_blinds
-      from: 'off'
-      to: 'on'
+      from: "off"
+      to: "on"
   condition:
     - condition: state
       entity_id: cover.server_room_blind
-      state: 'closed'
+      state: "closed"
   action:
     - service: cover.open_cover
       entity_id: cover.server_room_blind
@@ -16,12 +16,12 @@
   trigger:
     - platform: state
       entity_id: switch.server_blinds
-      from: 'on'
-      to: 'off'
+      from: "on"
+      to: "off"
   condition:
     - condition: state
       entity_id: cover.server_room_blind
-      state: 'open'
+      state: "open"
   action:
     - service: cover.close_cover
       entity_id: cover.server_room_blind
@@ -30,12 +30,12 @@
   trigger:
     - platform: state
       entity_id: cover.server_room_blind
-      from: 'closed'
-      to: 'open'
+      from: "closed"
+      to: "open"
   condition:
     - condition: state
       entity_id: switch.server_room_blinds
-      state: 'off'
+      state: "off"
   action:
     - service: switch.turn_on
       entity_id: switch.server_room_blinds
@@ -44,12 +44,12 @@
   trigger:
     - platform: state
       entity_id: cover.server_room_blind
-      from: 'open'
-      to: 'closed'
+      from: "open"
+      to: "closed"
   condition:
     - condition: state
       entity_id: switch.server_room_blinds
-      state: 'on'
+      state: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.server_room_blinds

@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.goodnight_trigger
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -24,7 +24,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.goodnight_trigger
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -48,10 +48,10 @@
   trigger:
     - platform: state
       entity_id: input_boolean.bedtime_trigger
-      to: 'on'
+      to: "on"
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.elk_night_mode_on
         - switch.master_bedroom_fan
     - service: input_boolean.turn_off
@@ -62,7 +62,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.morning_trigger
-      to: 'on'
+      to: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.master_bedroom_fan
@@ -71,13 +71,13 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.elk_night_off
     - service: input_boolean.turn_off
-      entity_id: input_boolean.morning_trigger      
+      entity_id: input_boolean.morning_trigger
 
 - alias: Alexa Leaving House
   trigger:
     - platform: state
       entity_id: input_boolean.leaving_trigger
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -100,16 +100,16 @@
   trigger:
     - platform: state
       entity_id: input_boolean.leaving_trigger
-      to: 'on'
+      to: "on"
   condition:
     - condition: not
       conditions:
-      - condition: state
-        entity_id: alarm_control_panel.house
-        state: armed_home
-      - condition: state
-        entity_id: alarm_control_panel.house
-        state: disarmed
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: disarmed
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.leaving_trigger
@@ -118,7 +118,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.returning_trigger
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: device_tracker.shawn_7t
@@ -128,23 +128,23 @@
       state: pending
     - condition: state
       entity_id: input_boolean.vacation_mode
-      state: 'off'
+      state: "off"
     - condition: state
       entity_id: input_boolean.returning_door_unlocked
-      state: 'on'
+      state: "on"
   action:
     - service: switch.turn_on
       entity_id: switch.elk_stay_mode_off
     - service: input_boolean.turn_off
-      entity_id: 
-        - input_boolean.returning_trigger      
+      entity_id:
+        - input_boolean.returning_trigger
         - input_boolean.returning_door_unlocked
 
 - alias: Arrriving Clear Trigger if Disallowed
   trigger:
     - platform: state
       entity_id: input_boolean.returning_trigger
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -158,15 +158,15 @@
               state: pending
         - condition: state
           entity_id: input_boolean.vacation_mode
-          state: 'on'
+          state: "on"
         - condition: state
           entity_id: input_boolean.returning_door_unlocked
-          state: 'off'
+          state: "off"
   action:
     - service: input_boolean.turn_off
-      entity_id: 
-        - input_boolean.returning_trigger     
-        - input_boolean.returning_door_unlocked       
+      entity_id:
+        - input_boolean.returning_trigger
+        - input_boolean.returning_door_unlocked
 
 - alias: Returning Home Lock Trigger
   trigger:
@@ -185,7 +185,7 @@
           state: armed_away
   action:
     - service: input_boolean.turn_on
-      entity_id: input_boolean.returning_door_unlocked     
+      entity_id: input_boolean.returning_door_unlocked
 
 - alias: Clear Returning Home Lock Trigger
   trigger:
@@ -194,4 +194,4 @@
       to: disarmed
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.returning_door_unlocked  
+      entity_id: input_boolean.returning_door_unlocked

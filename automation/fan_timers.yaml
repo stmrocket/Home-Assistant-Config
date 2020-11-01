@@ -1,28 +1,28 @@
 - alias: Guest Bathroom Fan Auto Off
   trigger:
-  - platform: state
-    entity_id: light.guest_bathroom_light
-    to: 'off'
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: light.guest_bathroom_light
+      to: "off"
+      for:
+        minutes: 5
   action:
-  - service: switch.turn_off
-    entity_id: switch.guest_bathroom_fan
+    - service: switch.turn_off
+      entity_id: switch.guest_bathroom_fan
 
 - alias: Master Bathroom Fan Auto Off
   trigger:
-  - platform: state
-    entity_id: light.master_toilet_light
-    to: 'off'
-    for:
-      minutes: 5
+    - platform: state
+      entity_id: light.master_toilet_light
+      to: "off"
+      for:
+        minutes: 5
   condition:
-  - condition: state
-    entity_id: switch.shower_light_and_fan
-    state: 'off'
-  - condition: state
-    entity_id: switch.master_bath_fans
-    state: 'off'    
+    - condition: state
+      entity_id: switch.shower_light_and_fan
+      state: "off"
+    - condition: state
+      entity_id: switch.master_bath_fans
+      state: "off"
   action:
-  - service: switch.turn_off
-    entity_id: switch.master_bathroom_fan 
+    - service: switch.turn_off
+      entity_id: switch.master_bathroom_fan

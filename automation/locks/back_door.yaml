@@ -1,48 +1,48 @@
 - alias: Lock Back Door When Leaving or Going to Bed
   trigger:
-  - entity_id: alarm_control_panel.house
-    from: arming
-    platform: state
-    to: armed_night
-  - entity_id: alarm_control_panel.house
-    from: arming
-    platform: state
-    to: armed_away
+    - entity_id: alarm_control_panel.house
+      from: arming
+      platform: state
+      to: armed_night
+    - entity_id: alarm_control_panel.house
+      from: arming
+      platform: state
+      to: armed_away
   condition:
-  - condition: state
-    entity_id: lock.back_door
-    state: unlocked
-  action:
-  - data:
+    - condition: state
       entity_id: lock.back_door
-    service: lock.lock
+      state: unlocked
+  action:
+    - data:
+        entity_id: lock.back_door
+      service: lock.lock
 - alias: Back Door Lock Timer Trigger
   trigger:
-  - entity_id: sensor.elk_back_door
-    from: Normal
-    to: Violated
-    platform: state
-  - entity_id: lock.back_door
-    from: locked
-    platform: state
-    to: unlocked
+    - entity_id: sensor.elk_back_door
+      from: Normal
+      to: Violated
+      platform: state
+    - entity_id: lock.back_door
+      from: locked
+      platform: state
+      to: unlocked
   action:
     service: timer.start
     entity_id: timer.back_door
 - alias: Back Door Left Unlocked
   trigger:
-  - event_data:
-      entity_id: timer.back_door
-    event_type: timer.finished
-    platform: event
+    - event_data:
+        entity_id: timer.back_door
+      event_type: timer.finished
+      platform: event
   condition:
-  - condition: state
-    entity_id: sensor.elk_back_door
-    state: Normal
-  - condition: state
-    entity_id: lock.back_door
-    state: unlocked
-  action:
-  - data:
+    - condition: state
+      entity_id: sensor.elk_back_door
+      state: Normal
+    - condition: state
       entity_id: lock.back_door
-    service: lock.lock
+      state: unlocked
+  action:
+    - data:
+        entity_id: lock.back_door
+      service: lock.lock
