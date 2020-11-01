@@ -2,13 +2,13 @@ hvac_dump_zone_1:
   sequence:
     - condition: state
       entity_id: binary_sensor.hvac_running
-      state: "off"
-      for:
+      state: 'off'
+      for: 
         minutes: 5
     - service: switch.turn_on
-      entity_id: switch.elk_hvac_zone_1_dump
+      entity_id: switch.elk_hvac_zone_1_dump 
     - service: switch.turn_off
-      entity_id:
+      entity_id: 
         - switch.elk_hvac_zone_2_dump
         - switch.elk_hvac_zone_3_dump
 
@@ -16,26 +16,26 @@ hvac_dump_zone_2:
   sequence:
     - condition: state
       entity_id: binary_sensor.hvac_running
-      state: "off"
-      for:
+      state: 'off'
+      for: 
         minutes: 5
     - service: switch.turn_on
       entity_id: switch.elk_hvac_zone_2_dump
     - service: switch.turn_off
-      entity_id:
+      entity_id: 
         - switch.elk_hvac_zone_1_dump
-        - switch.elk_hvac_zone_3_dump
+        - switch.elk_hvac_zone_3_dump  
 
 hvac_dump_zone_3:
   sequence:
     - condition: state
       entity_id: binary_sensor.hvac_running
-      state: "off"
-      for:
+      state: 'off'
+      for: 
         minutes: 5
     - service: switch.turn_on
       entity_id: switch.elk_hvac_zone_3_dump
     - service: switch.turn_off
-      entity_id:
+      entity_id: 
         - switch.elk_hvac_zone_1_dump
-        - switch.elk_hvac_zone_2_dump
+        - switch.elk_hvac_zone_2_dump  

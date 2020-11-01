@@ -1,3 +1,4 @@
+
 reset_all_entity_counters:
   sequence:
     - service: input_number.set_value
