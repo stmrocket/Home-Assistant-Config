@@ -8,7 +8,7 @@ midnight-tablet:
     app-toolbar {
       display: none;
     }
-      
+
   accent-color: "#E45E65"
   card-background-color: "var(--primary-background-color)"
   dark-primary-color: "var(--accent-color)"
@@ -79,5 +79,5 @@ midnight-tablet:
   table-row-background-color: "#353840"
   text-primary-color: "var(--primary-text-color)"
   toggle-button-color: "var(--primary-color)"
-  ha-card-border-radius: '13px'   
-  ha-card-background: 'rgba(150, 150, 150, 0.1)'
+  ha-card-border-radius: "13px"
+  ha-card-background: "rgba(150, 150, 150, 0.1)"

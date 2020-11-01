@@ -1,6 +1,6 @@
 switch:
   - platform: template
-    switches:      
+    switches:
       manual_timer_lights:
         friendly_name: "Manual Timer Lights"
         value_template: "{{ is_state('input_boolean.timer_lights', 'on') or is_state('input_boolean.manual_timer_lights', 'on') }}"
@@ -16,12 +16,12 @@ input_boolean:
 
 script:
   timer_lights_manual_on:
-    sequence:    
+    sequence:
       - condition: state
         entity_id: input_boolean.timer_lights
-        state:  'off'
+        state: "off"
       - service: switch.turn_on
-        entity_id: 
+        entity_id:
           - switch.kitchen_lamp
           - switch.server_room_lamp
           - switch.office_lamps
@@ -31,20 +31,20 @@ script:
           - switch.guest_room_lamp
           - switch.master_bedroom_lamps
       - service: light.turn_on
-        entity_id: 
-          - light.entry_lamp 
+        entity_id:
+          - light.entry_lamp
           - light.house_leds_rgb
           - light.hall_lamp
       - service: input_boolean.turn_on
-        entity_id: input_boolean.manual_timer_lights          
-      
+        entity_id: input_boolean.manual_timer_lights
+
   timer_lights_manual_off:
-    sequence:    
+    sequence:
       - condition: state
         entity_id: input_boolean.timer_lights
-        state:  'off'
+        state: "off"
       - service: switch.turn_off
-        entity_id: 
+        entity_id:
           - switch.kitchen_lamp
           - switch.server_room_lamp
           - switch.office_lamps
@@ -54,24 +54,24 @@ script:
           - switch.guest_room_lamp
           - switch.master_bedroom_lamps
       - service: light.turn_off
-        entity_id: 
-          - light.entry_lamp 
+        entity_id:
+          - light.entry_lamp
           - light.house_leds_rgb
           - light.hall_lamp
       - service: input_boolean.turn_off
-        entity_id: input_boolean.manual_timer_lights         
+        entity_id: input_boolean.manual_timer_lights
 
 automation:
   - alias: Manual Timer Lights On from Keypad
     trigger:
       - platform: state
         entity_id: switch.timer_lights
-        from: 'off'
-        to: 'on'
+        from: "off"
+        to: "on"
     condition:
       - condition: state
         entity_id: switch.manual_timer_lights
-        state: 'off'
+        state: "off"
     action:
       - service: switch.turn_on
         data:
@@ -81,12 +81,12 @@ automation:
     trigger:
       - platform: state
         entity_id: switch.timer_lights
-        from: 'on'
-        to: 'off'
+        from: "on"
+        to: "off"
     condition:
       - condition: state
         entity_id: switch.manual_timer_lights
-        state: 'on'
+        state: "on"
     action:
       - service: switch.turn_off
         data:
@@ -96,12 +96,12 @@ automation:
     trigger:
       - platform: state
         entity_id: switch.manual_timer_lights
-        from: 'off'
-        to: 'on'
+        from: "off"
+        to: "on"
     condition:
       - condition: state
         entity_id: switch.hall_timer_lights
-        state:  'off'
+        state: "off"
     action:
       - service: switch.turn_on
         entity_id: switch.hall_timer_lights
@@ -110,12 +110,12 @@ automation:
     trigger:
       - platform: state
         entity_id: switch.manual_timer_lights
-        from: 'on'
-        to: 'off'
+        from: "on"
+        to: "off"
     condition:
       - condition: state
         entity_id: switch.hall_timer_lights
-        state:  'on'
+        state: "on"
     action:
       - service: switch.turn_off
         entity_id: switch.hall_timer_lights

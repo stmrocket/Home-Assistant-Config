@@ -10,7 +10,7 @@ cover:
     payload_stop: "STOP"
     position_open: 100
     position_closed: 0
-    
+
 sensor:
   platform: average
   name: Den Blinds Average Light Level

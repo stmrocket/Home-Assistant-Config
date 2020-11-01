@@ -1,39 +1,37 @@
-
 #############################################################################################################################################
-#                                                                                                                                           # 
+#                                                                                                                                           #
 #                                                                 VIEW 5 - Media                                                            #
 #                                                                                                                                           #
-############################################################################################################################################# 
+#############################################################################################################################################
 
 id: 3
 icon: mdi:music
-name: Google Music                   
+name: Google Music
 cards:
+  #################################################################
+  #                                                               #
+  #                      Media  - Gmusic Status                   #
+  #                                                               #
+  #################################################################
 
-#################################################################
-#                                                               #
-#                      Media  - Gmusic Status                   #
-#                                                               #
-#################################################################
-    
   - type: vertical-stack
     cards:
       - type: entities
         show_header_toggle: false
         title: Spotify
         entities:
-        - entity: input_select.spotify_playlist
-        - entity: script.spotify_change_playlist
-          name: Change Playlist
-        - type: custom:mini-media-player
-          entity: media_player.spotify
-          icon: mdi:spotify
-          artwork: cover
-          hide:
-            source: true
-            progress: true
-            name: true
- 
+          - entity: input_select.spotify_playlist
+          - entity: script.spotify_change_playlist
+            name: Change Playlist
+          - type: custom:mini-media-player
+            entity: media_player.spotify
+            icon: mdi:spotify
+            artwork: cover
+            hide:
+              source: true
+              progress: true
+              name: true
+
       - type: custom:vertical-stack-in-card
         cards:
           - type: picture-elements
@@ -49,17 +47,15 @@ cards:
                   transform: initial
                 tap_action: none
                 hold_action: none
-                type: state-label    
+                type: state-label
 
           - type: horizontal-stack
             cards:
-
               - type: "custom:gap-card"
                 height: 10
 
           - type: horizontal-stack
-            cards:                  
-
+            cards:
               - type: "custom:button-card"
                 entity: sensor.den_harmony_activity
                 color_type: icon
@@ -67,7 +63,7 @@ cards:
                   - value: "PowerOff"
                     color: rgb(228, 94, 101)
                   - value: "PowerOff"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:remote-tv-off
                 name: "Off"
@@ -76,7 +72,7 @@ cards:
                   service: remote.turn_off
                   service_data:
                     entity_id: remote.harmony_den
-              
+
               - type: "custom:button-card"
                 entity: sensor.den_harmony_activity
                 color_type: icon
@@ -84,7 +80,7 @@ cards:
                   - value: "Watch PVR"
                     color: rgb(228, 94, 101)
                   - value: "Watch PVR"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:kodi
                 name: Kodi
@@ -92,8 +88,8 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_den     
-                    activity: "Watch PVR"            
+                    entity_id: remote.harmony_den
+                    activity: "Watch PVR"
 
               - type: "custom:button-card"
                 entity: sensor.den_harmony_activity
@@ -102,7 +98,7 @@ cards:
                   - value: "Watch Roku"
                     color: rgb(228, 94, 101)
                   - value: "Watch Roku"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:youtube-tv
                 name: Roku
@@ -110,8 +106,8 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_den     
-                    activity: "Watch Roku"            
+                    entity_id: remote.harmony_den
+                    activity: "Watch Roku"
 
               - type: "custom:button-card"
                 entity: sensor.den_harmony_activity
@@ -120,7 +116,7 @@ cards:
                   - value: "ChromeCast"
                     color: rgb(228, 94, 101)
                   - value: "ChromeCast"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:cast
                 name: Cast
@@ -128,8 +124,8 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_den     
-                    activity: "ChromeCast"           
+                    entity_id: remote.harmony_den
+                    activity: "ChromeCast"
 
               - type: "custom:button-card"
                 entity: sensor.den_harmony_activity
@@ -138,7 +134,7 @@ cards:
                   - value: "Listen to WHA"
                     color: rgb(228, 94, 101)
                   - value: "Listen to WHA"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:music
                 name: Music
@@ -146,11 +142,10 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_den     
-                    activity: "Listen to WHA"      
+                    entity_id: remote.harmony_den
+                    activity: "Listen to WHA"
           - type: horizontal-stack
             cards:
-
               - type: "custom:gap-card"
                 height: 10
 
@@ -215,7 +210,7 @@ cards:
                 action: call-service
                 service: script.popup_media_den
                 service_data:
-                  deviceID: 
+                  deviceID:
                     - this
 
           - type: conditional
@@ -241,7 +236,7 @@ cards:
                 action: call-service
                 service: script.popup_media_den
                 service_data:
-                  deviceID: 
+                  deviceID:
                     - this
 
       - type: custom:vertical-stack-in-card
@@ -259,17 +254,15 @@ cards:
                   transform: initial
                 tap_action: none
                 hold_action: none
-                type: state-label    
+                type: state-label
 
           - type: horizontal-stack
             cards:
-
               - type: "custom:gap-card"
                 height: 10
 
           - type: horizontal-stack
-            cards:                  
-
+            cards:
               - type: "custom:button-card"
                 entity: sensor.master_harmony_activity
                 color_type: icon
@@ -277,7 +270,7 @@ cards:
                   - value: "PowerOff"
                     color: rgb(228, 94, 101)
                   - value: "PowerOff"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:remote-tv-off
                 name: "Off"
@@ -286,7 +279,7 @@ cards:
                   service: remote.turn_off
                   service_data:
                     entity_id: remote.harmony_master_bedroom
-              
+
               - type: "custom:button-card"
                 entity: sensor.master_harmony_activity
                 color_type: icon
@@ -294,7 +287,7 @@ cards:
                   - value: "Watch PVR"
                     color: rgb(228, 94, 101)
                   - value: "Watch PVR"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:kodi
                 name: Kodi
@@ -302,8 +295,8 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_master_bedroom     
-                    activity: "Watch PVR"            
+                    entity_id: remote.harmony_master_bedroom
+                    activity: "Watch PVR"
 
               - type: "custom:button-card"
                 entity: sensor.master_harmony_activity
@@ -312,7 +305,7 @@ cards:
                   - value: "Watch Roku"
                     color: rgb(228, 94, 101)
                   - value: "Watch Roku"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:youtube-tv
                 name: Roku
@@ -320,8 +313,8 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_master_bedroom     
-                    activity: "Watch Roku"            
+                    entity_id: remote.harmony_master_bedroom
+                    activity: "Watch Roku"
 
               - type: "custom:button-card"
                 entity: sensor.master_harmony_activity
@@ -330,7 +323,7 @@ cards:
                   - value: "ChromeCast"
                     color: rgb(228, 94, 101)
                   - value: "ChromeCast"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:cast
                 name: Cast
@@ -338,8 +331,8 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_master_bedroom     
-                    activity: "ChromeCast"           
+                    entity_id: remote.harmony_master_bedroom
+                    activity: "ChromeCast"
 
               - type: "custom:button-card"
                 entity: sensor.master_harmony_activity
@@ -348,7 +341,7 @@ cards:
                   - value: "Listen to WHA"
                     color: rgb(228, 94, 101)
                   - value: "Listen to WHA"
-                    operator: '!='
+                    operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:music
                 name: Music
@@ -356,11 +349,10 @@ cards:
                   action: call-service
                   service: remote.turn_on
                   service_data:
-                    entity_id: remote.harmony_master_bedroom     
-                    activity: "Listen to WHA"                        
+                    entity_id: remote.harmony_master_bedroom
+                    activity: "Listen to WHA"
           - type: horizontal-stack
             cards:
-
               - type: "custom:gap-card"
                 height: 10
 
@@ -425,7 +417,7 @@ cards:
                 action: call-service
                 service: script.popup_media_master_bed
                 service_data:
-                  deviceID: 
+                  deviceID:
                     - this
 
           - type: conditional
@@ -450,227 +442,226 @@ cards:
                 action: call-service
                 service: script.popup_media_master_bed
                 service_data:
-                  deviceID: 
-                    - this            
+                  deviceID:
+                    - this
 
+  #################################################################
+  #                                                               #
+  #                      Media  - NuVo Players                    #
+  #                                                               #
+  #################################################################
 
-#################################################################
-#                                                               #
-#                      Media  - NuVo Players                    #
-#                                                               #
-#################################################################
-    
   - type: vertical-stack
     cards:
       - type: entities
         show_header_toggle: false
         title: Whole House Audio
         entities:
-        - type: custom:mini-media-player
-          entity: media_player.office_stereo
-          name: Office
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action: 
-            action: call-service
-            service: script.popup_media_office
-            service_data:
-              deviceID: 
-                - this               
-        
-        - type: custom:mini-media-player
-          entity: media_player.guest_bedroom_stereo
-          name: Guest Bedroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_guest_bed
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.server_room_stereo
-          name: Server Room
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_server
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.master_bedroom_stereo
-          name: Master Bedroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_master_bed
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.master_bathroom_stereo
-          name: Master Bathroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_master_bath
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.garage_stereo
-          name: Garage
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_garage
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.den_stereo
-          name: Den
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_den
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.dining_room_stereo
-          name: Ham Shack
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_dining
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.kitchen_stereo
-          name: Kitchen
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_kitchen
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.back_porch_stereo
-          name: Back Porch
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_porch
-            service_data:
-              deviceID: 
-                - this
-        
-        - type: custom:mini-media-player
-          entity: media_player.guest_bathroom_stereo
-          name: Guest Bathroom
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_guest_bath
-            service_data:
-              deviceID: 
-                - this
+          - type: custom:mini-media-player
+            entity: media_player.office_stereo
+            name: Office
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_office
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.guest_bedroom_stereo
+            name: Guest Bedroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_guest_bed
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.server_room_stereo
+            name: Server Room
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_server
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.master_bedroom_stereo
+            name: Master Bedroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_master_bed
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.master_bathroom_stereo
+            name: Master Bathroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_master_bath
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.garage_stereo
+            name: Garage
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_garage
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.den_stereo
+            name: Den
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_den
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.dining_room_stereo
+            name: Ham Shack
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_dining
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_stereo
+            name: Kitchen
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_kitchen
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.back_porch_stereo
+            name: Back Porch
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_porch
+              service_data:
+                deviceID:
+                  - this
+
+          - type: custom:mini-media-player
+            entity: media_player.guest_bathroom_stereo
+            name: Guest Bathroom
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            volume_stateless: true
+            hide:
+              source: true
+              controls: true
+              info: true
+              progress: true
+            tap_action:
+              action: call-service
+              service: script.popup_media_guest_bath
+              service_data:
+                deviceID:
+                  - this

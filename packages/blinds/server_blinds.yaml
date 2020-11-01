@@ -22,7 +22,7 @@ sensor:
     availability_topic: "habc/server/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Server Room Blind Uptime"
     state_topic: "habc/server/tele/status"
@@ -66,7 +66,7 @@ sensor:
   - platform: mqtt
     name: "Server Room Blind Core Version"
     state_topic: "habc/server/tele/status"
-    value_template: "{{value_json['espCore']}}" 
+    value_template: "{{value_json['espCore']}}"
     availability_topic: "habc/server/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
@@ -74,7 +74,7 @@ sensor:
   - platform: mqtt
     name: "Server Room Blind Light Level"
     state_topic: "habc/server/tele/light"
-    unit_of_measurement: '%'
+    unit_of_measurement: "%"
     availability_topic: "habc/server/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"

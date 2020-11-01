@@ -24,12 +24,11 @@ vacuum:
         return_to_base:
           service: script.turn_on
           data:
-            entity_id: script.roomba_dock   
+            entity_id: script.roomba_dock
 
 # Roomba Sensors
 
 sensor:
-
   - platform: "mqtt"
     name: "Roomba Battery Level"
     state_topic: "roomba/tele/battery"
@@ -46,16 +45,15 @@ sensor:
 
   - platform: template
     sensors:
-
       roomba_status:
-        friendly_name: 'Roomba Status'
+        friendly_name: "Roomba Status"
         value_template: >-
           {% if is_state('vacuum.roomba', 'docked') and states('counter.roomba_cycles') | int >= 5 -%}
             full
           {% else -%}
             {{ states('vacuum.roomba') }}
           {% endif -%}
-        
+
 # Roomba Switches
 
 switch:
@@ -71,13 +69,12 @@ switch:
         turn_off:
           service: script.turn_on
           data:
-            entity_id: script.roomba_dock   
+            entity_id: script.roomba_dock
 
 input_boolean:
-
   roomba_auto:
     name: Schedule Enabled
-    icon: mdi:timer-outline      
+    icon: mdi:timer-outline
 
 counter:
   roomba_cycles:
@@ -86,21 +83,20 @@ counter:
 # Roomba Scripts
 
 script:
-
   roomba_dock:
     sequence:
       - service: mqtt.publish
         data:
           topic: roomba/command/set
           payload: stop
-      - delay: 
+      - delay:
           milliseconds: 500
       - service: mqtt.publish
         data:
           topic: roomba/command/set
-          payload: dock            
+          payload: dock
 
   reset_roomba_counter:
     sequence:
       - service: counter.reset
-        entity_id: counter.roomba_cycles   
+        entity_id: counter.roomba_cycles

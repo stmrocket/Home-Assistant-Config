@@ -1,5 +1,4 @@
 switch:
-
   - platform: mqtt
     name: "Dining Room Decor"
     state_topic: "christmas/indoor/dining/stat/POWER"
@@ -124,7 +123,7 @@ sensor:
     availability_topic: "christmas/indoor/dining/tele/LWT"
     qos: 1
     payload_available: "Online"
-    payload_not_available: "Offline"    
+    payload_not_available: "Offline"
 
   - platform: mqtt
     state_topic: "christmas/indoor/entry/tele/STATE"
@@ -134,7 +133,7 @@ sensor:
     availability_topic: "christmas/indoor/entry/tele/LWT"
     qos: 1
     payload_available: "Online"
-    payload_not_available: "Offline" 
+    payload_not_available: "Offline"
 
   - platform: mqtt
     state_topic: "christmas/indoor/village/tele/STATE"
@@ -144,7 +143,7 @@ sensor:
     availability_topic: "christmas/indoor/village/tele/LWT"
     qos: 1
     payload_available: "Online"
-    payload_not_available: "Offline" 
+    payload_not_available: "Offline"
 
   - platform: mqtt
     state_topic: "christmas/indoor/snowman/tele/STATE"
@@ -154,7 +153,7 @@ sensor:
     availability_topic: "christmas/indoor/snowman/tele/LWT"
     qos: 1
     payload_available: "Online"
-    payload_not_available: "Offline" 
+    payload_not_available: "Offline"
 
   - platform: mqtt
     state_topic: "christmas/indoor/tree/tele/STATE"
@@ -164,7 +163,7 @@ sensor:
     availability_topic: "christmas/indoor/tree/tele/LWT"
     qos: 1
     payload_available: "Online"
-    payload_not_available: "Offline" 
+    payload_not_available: "Offline"
 
   - platform: mqtt
     state_topic: "christmas/indoor/garland/tele/STATE"
@@ -174,7 +173,7 @@ sensor:
     availability_topic: "christmas/indoor/garland/tele/LWT"
     qos: 1
     payload_available: "Online"
-    payload_not_available: "Offline" 
+    payload_not_available: "Offline"
 
   - platform: mqtt
     state_topic: "christmas/indoor/master/tele/STATE"
@@ -184,7 +183,7 @@ sensor:
     availability_topic: "christmas/indoor/master/tele/LWT"
     qos: 1
     payload_available: "Online"
-    payload_not_available: "Offline" 
+    payload_not_available: "Offline"
 
   - platform: mqtt
     state_topic: "christmas/indoor/kitchen/tele/STATE"
@@ -227,7 +226,6 @@ sensor:
     name: "FPP Master Status"
 
 input_boolean:
-
   christmas_show:
     name: Christmas Show
     icon: mdi:pine-tree

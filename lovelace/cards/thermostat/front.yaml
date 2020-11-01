@@ -1,4 +1,3 @@
-
 #Front Rooms HVAC Card
 type: custom:vertical-stack-in-card
 cards:
@@ -8,31 +7,29 @@ cards:
     step_size: 1
     decimals: 0
     sensors:
-    - attribute: current_humidity
-      name: Humidity
-      unit: "%"
-    - entity: sensor.hvac_zone_2_state
-      name: State
+      - attribute: current_humidity
+        name: Humidity
+        unit: "%"
+      - entity: sensor.hvac_zone_2_state
+        name: State
     hide:
       state: true
     control:
       - hvac:
           mode: none
 
-
   - type: horizontal-stack
-    cards:          
-
+    cards:
       - type: custom:bar-card
-        name: 'Heat:'
+        name: "Heat:"
         entity: sensor.hvac_zone_2_heat_runtime
         entity_row: true
         positions:
-          icon: 'off'
+          icon: "off"
           name: inside
           value: inside
         padding: 4px
-        card_style: 
+        card_style:
           border-radius: 5px
         max: 24
         color: red
@@ -70,17 +67,17 @@ cards:
           bar-card-divider {
             display: none;
           }
-        
+
       - type: custom:bar-card
-        name: 'Cool:'
+        name: "Cool:"
         entity: sensor.hvac_zone_2_cool_runtime
         entity_row: true
         positions:
-          icon: 'off'
+          icon: "off"
           name: inside
           value: inside
         padding: 4px
-        card_style: 
+        card_style:
           border-radius: 5px
         max: 24
         color: blue
@@ -120,18 +117,17 @@ cards:
           }
 
   - type: horizontal-stack
-    cards:          
-
+    cards:
       - type: custom:bar-card
-        name: 'Fan:'
+        name: "Fan:"
         entity: sensor.hvac_zone_2_fan_runtime
         entity_row: true
         positions:
-          icon: 'off'
+          icon: "off"
           name: inside
           value: inside
         padding: 4px
-        card_style: 
+        card_style:
           border-radius: 5px
         max: 24
         color: green
@@ -169,17 +165,17 @@ cards:
           bar-card-divider {
             display: none;
           }
-        
+
       - type: custom:bar-card
-        name: 'Total:'
+        name: "Total:"
         entity: sensor.hvac_zone_2_runtime
         entity_row: true
         positions:
-          icon: 'off'
+          icon: "off"
           name: inside
           value: inside
         padding: 4px
-        card_style: 
+        card_style:
           border-radius: 5px
         max: 24
         decimal: 2

@@ -18,7 +18,7 @@ light:
     optimistic: false
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Kitchen LED 6 W2"
     state_topic: "h801/kitchen_6/tele/current"
@@ -35,10 +35,10 @@ light:
     optimistic: false
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
 sensor:
   #Driver Status Messages
-  
+
   - platform: mqtt
     name: "Kitchen LED 6 Version"
     state_topic: "h801/kitchen_6/tele/status"
@@ -90,7 +90,7 @@ sensor:
   - platform: mqtt
     name: "Kitchen LED 6 Core Version"
     state_topic: "h801/kitchen_6/tele/status"
-    value_template: "{{value_json['espCore']}}" 
+    value_template: "{{value_json['espCore']}}"
     availability_topic: "h801/kitchen_6/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"

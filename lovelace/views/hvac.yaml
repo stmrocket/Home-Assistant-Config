@@ -1,26 +1,24 @@
-
 #############################################################################################################################################
-#                                                                                                                                           # 
+#                                                                                                                                           #
 #                                                                 VIEW 2 - HVAC                                                             #
 #                                                                                                                                           #
-############################################################################################################################################# 
+#############################################################################################################################################
 id: 2
 icon: mdi:thermostat
 name: HVAC
 cards:
-
-#################################################################
-#                                                               #
-#                       HVAC - System                           #
-#                                                               #
-################################################################# 
+  #################################################################
+  #                                                               #
+  #                       HVAC - System                           #
+  #                                                               #
+  #################################################################
   - type: vertical-stack
     cards:
       - type: custom:vertical-stack-in-card
         title: System
         cards:
-        - type: horizontal-stack
-          cards:
+          - type: horizontal-stack
+            cards:
               - type: "custom:button-card"
                 entity: sensor.hvac_zone_2_damper_position
                 color_type: icon
@@ -38,7 +36,7 @@ cards:
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-closed
                 name: Front
-                tap_action: 
+                tap_action:
                   action: call-service
                   service: script.hvac_dump_zone_2
 
@@ -59,7 +57,7 @@ cards:
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-closed
                 name: Living
-                tap_action: 
+                tap_action:
                   action: call-service
                   service: script.hvac_dump_zone_1
 
@@ -80,7 +78,7 @@ cards:
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-closed
                 name: Master
-                tap_action: 
+                tap_action:
                   action: call-service
                   service: script.hvac_dump_zone_3
 
@@ -97,299 +95,296 @@ cards:
                     name: Bleach
                   - value: "OK"
                     color: rgb(255, 255, 255)
-                    name: OK                   
+                    name: OK
                 tap_action:
                   action: call-service
                   service: script.popup_filter
                   service_data:
-                    deviceID: 
-                      - this              
-                hold_action: 
+                    deviceID:
+                      - this
+                hold_action:
                   action: call-service
                   service: script.popup_filter
                   service_data:
-                    deviceID: 
-                      - this     
-        - type: glance
-          columns: 5
-          show_icon: false
-          entities:
-            - entity: sensor.hvac_supply_temperature_owfs
-              name: Supply
-            - entity: sensor.plenum_hvac_return_temperature_owfs
-              name: Return
-            - entity: sensor.front_hvac_return_temperature_owfs
-              name: Hall
-            - entity: sensor.back_hvac_return_temperature_owfs
-              name: Master
-            - entity: sensor.server_room_hvac_return_temperature_owfs
-              name: Server
-        
-        - type: horizontal-stack
-          cards:
-            - type: custom:gap-card
-              height: 10
-                      
-        - type: horizontal-stack
-          cards:          
+                    deviceID:
+                      - this
+          - type: glance
+            columns: 5
+            show_icon: false
+            entities:
+              - entity: sensor.hvac_supply_temperature_owfs
+                name: Supply
+              - entity: sensor.plenum_hvac_return_temperature_owfs
+                name: Return
+              - entity: sensor.front_hvac_return_temperature_owfs
+                name: Hall
+              - entity: sensor.back_hvac_return_temperature_owfs
+                name: Master
+              - entity: sensor.server_room_hvac_return_temperature_owfs
+                name: Server
 
-            - type: custom:bar-card
-              name: 'Heat:'
-              entity: sensor.hvac_system_heat_runtime
-              entity_row: true
-              positions:
-                icon: 'off'
-                indicator: 'off'
-                name: inside
-                value: inside
-              padding: 4px
-              card_style: 
-                border-radius: 5px
-              max: 24
-              color: red
-              decimal: 2
-              style: |-
-                .contentbar-direction-right {
-                  flex-direction: column;
-                }
-                .min-direction-right {
-                  margin: 0px;
-                  margin-bottom: -20px;
-                  bottom: 10px;
-                }
-                  bar-card-value {
-                  margin: 0px;
-                  font-size: 13px;
-                  margin-left: auto;
-                  margin-right: auto;
-                  font-weight: bold;
-                  text-shadow: 1px 1px #0005;
-                }
-                bar-card-name {
-                  margin: 0px;
-                  margin-top: 5px;
-                  font-size: 14px;
-                  font-weight: bold;
-                  text-shadow: 1px 1px #0005;              
-                }
-                bar-card-max {
-                  margin: 0px;
-                  margin-left: auto;
-                  margin-top: -20px;
-                  top: 10px;
-                }
-                bar-card-divider {
-                  display: none;
-                }
-                              
-            - type: custom:bar-card
-              name: 'Cool:'
-              entity: sensor.hvac_system_cool_runtime
-              entity_row: true
-              positions:
-                icon: 'off'
-                name: inside
-                value: inside
-              padding: 4px
-              card_style: 
-                border-radius: 5px
-              max: 24
-              color: blue
-              decimal: 2
-              style: |-
-                .contentbar-direction-right {
-                  flex-direction: column;
-                }
-                .min-direction-right {
-                  margin: 0px;
-                  margin-bottom: -20px;
-                  bottom: 10px;
-                }
-                  bar-card-value {
-                  margin: 0px;
-                  font-size: 13px;
-                  margin-left: auto;
-                  margin-right: auto;
-                  font-weight: bold;
-                  text-shadow: 1px 1px #0005;
-                }
-                bar-card-name {
-                  margin: 0px;
-                  margin-top: 5px;
-                  font-size: 14px;
-                  font-weight: bold;
-                  text-shadow: 1px 1px #0005;              
-                }
-                bar-card-max {
-                  margin: 0px;
-                  margin-left: auto;
-                  margin-top: -20px;
-                  top: 10px;
-                }
-                bar-card-divider {
-                  display: none;
-                }
+          - type: horizontal-stack
+            cards:
+              - type: custom:gap-card
+                height: 10
 
-        - type: horizontal-stack
-          cards:          
+          - type: horizontal-stack
+            cards:
+              - type: custom:bar-card
+                name: "Heat:"
+                entity: sensor.hvac_system_heat_runtime
+                entity_row: true
+                positions:
+                  icon: "off"
+                  indicator: "off"
+                  name: inside
+                  value: inside
+                padding: 4px
+                card_style:
+                  border-radius: 5px
+                max: 24
+                color: red
+                decimal: 2
+                style: |-
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
 
-            - type: custom:bar-card
-              name: 'Fan:'
-              entity: sensor.hvac_system_fan_runtime
-              entity_row: true
-              positions:
-                icon: 'off'
-                name: inside
-                value: inside
-              padding: 4px
-              card_style: 
-                border-radius: 5px
-              max: 24
-              color: green
-              decimal: 2
-              style: |-
-                .contentbar-direction-right {
-                  flex-direction: column;
-                }
-                .min-direction-right {
-                  margin: 0px;
-                  margin-bottom: -20px;
-                  bottom: 10px;
-                }
-                  bar-card-value {
-                  margin: 0px;
-                  font-size: 13px;
-                  margin-left: auto;
-                  margin-right: auto;
-                  font-weight: bold;
-                  text-shadow: 1px 1px #0005;
-                }
-                bar-card-name {
-                  margin: 0px;
-                  margin-top: 5px;
-                  font-size: 14px;
-                  font-weight: bold;
-                  text-shadow: 1px 1px #0005;              
-                }
-                bar-card-max {
-                  margin: 0px;
-                  margin-left: auto;
-                  margin-top: -20px;
-                  top: 10px;
-                }
-                bar-card-divider {
-                  display: none;
-                }
-              
-            - type: custom:bar-card
-              name: 'Total:'
-              entity: sensor.hvac_system_runtime
-              entity_row: true
-              positions:
-                icon: 'off'
-                name: inside
-                value: inside
-              padding: 4px
-              card_style: 
-                border-radius: 5px
-              max: 24
-              decimal: 2
-              style: |-
-                .contentbar-direction-right {
-                  flex-direction: column;
-                }
-                .min-direction-right {
-                  margin: 0px;
-                  margin-bottom: -20px;
-                  bottom: 10px;
-                }
-                  bar-card-value {
-                  margin: 0px;
-                  font-size: 13px;
-                  margin-left: auto;
-                  margin-right: auto;
-                  font-weight: bold;
-                  text-shadow: 1px 1px #0005;
-                }
-                bar-card-name {
-                  margin: 0px;
-                  margin-top: 5px;
-                  font-size: 14px;
-                  font-weight: bold;
-                  text-shadow: 1px 1px #0005;              
-                }
-                bar-card-max {
-                  margin: 0px;
-                  margin-left: auto;
-                  margin-top: -20px;
-                  top: 10px;
-                }
-                bar-card-divider {
-                  display: none;
-                }
+              - type: custom:bar-card
+                name: "Cool:"
+                entity: sensor.hvac_system_cool_runtime
+                entity_row: true
+                positions:
+                  icon: "off"
+                  name: inside
+                  value: inside
+                padding: 4px
+                card_style:
+                  border-radius: 5px
+                max: 24
+                color: blue
+                decimal: 2
+                style: |-
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
 
-#################################################################
-#                                                               #
-#                    HVAC - Temperatures                        #
-#                                                               #
-################################################################# 
+          - type: horizontal-stack
+            cards:
+              - type: custom:bar-card
+                name: "Fan:"
+                entity: sensor.hvac_system_fan_runtime
+                entity_row: true
+                positions:
+                  icon: "off"
+                  name: inside
+                  value: inside
+                padding: 4px
+                card_style:
+                  border-radius: 5px
+                max: 24
+                color: green
+                decimal: 2
+                style: |-
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+
+              - type: custom:bar-card
+                name: "Total:"
+                entity: sensor.hvac_system_runtime
+                entity_row: true
+                positions:
+                  icon: "off"
+                  name: inside
+                  value: inside
+                padding: 4px
+                card_style:
+                  border-radius: 5px
+                max: 24
+                decimal: 2
+                style: |-
+                  .contentbar-direction-right {
+                    flex-direction: column;
+                  }
+                  .min-direction-right {
+                    margin: 0px;
+                    margin-bottom: -20px;
+                    bottom: 10px;
+                  }
+                    bar-card-value {
+                    margin: 0px;
+                    font-size: 13px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;
+                  }
+                  bar-card-name {
+                    margin: 0px;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-shadow: 1px 1px #0005;              
+                  }
+                  bar-card-max {
+                    margin: 0px;
+                    margin-left: auto;
+                    margin-top: -20px;
+                    top: 10px;
+                  }
+                  bar-card-divider {
+                    display: none;
+                  }
+
+      #################################################################
+      #                                                               #
+      #                    HVAC - Temperatures                        #
+      #                                                               #
+      #################################################################
 
       - type: glance
         columns: 4
         show_icon: false
         entities:
-        - entity: sensor.attic_temperature_owfs
-          name: Attic
-        - entity: sensor.aquara_den_temperature
-          name: Den
-        - entity: sensor.dining_room_temperature_owfs
-          name: Dining
-        - entity: sensor.front_hall_temperature_owfs
-          name: Hall
-        - entity: sensor.garage_temperature_owfs
-          name: Garage
-        - entity: sensor.guest_bedroom_temperature_owfs
-          name: Guest
-        - entity: sensor.aquara_master_bedroom_temperature
-          name: Master
-        - entity: sensor.aquara_office_temperature
-          name: Office
-        - entity: sensor.aquara_server_closet_temperature
-          name: Server
-        - entity: sensor.acurite_outside_temperature
-          name: Outside
-        - entity: sensor.shed_temperature_owfs
-          name: Shed
-        - entity: sensor.work_room_temperature_owfs
-          name: Work              
+          - entity: sensor.attic_temperature_owfs
+            name: Attic
+          - entity: sensor.aquara_den_temperature
+            name: Den
+          - entity: sensor.dining_room_temperature_owfs
+            name: Dining
+          - entity: sensor.front_hall_temperature_owfs
+            name: Hall
+          - entity: sensor.garage_temperature_owfs
+            name: Garage
+          - entity: sensor.guest_bedroom_temperature_owfs
+            name: Guest
+          - entity: sensor.aquara_master_bedroom_temperature
+            name: Master
+          - entity: sensor.aquara_office_temperature
+            name: Office
+          - entity: sensor.aquara_server_closet_temperature
+            name: Server
+          - entity: sensor.acurite_outside_temperature
+            name: Outside
+          - entity: sensor.shed_temperature_owfs
+            name: Shed
+          - entity: sensor.work_room_temperature_owfs
+            name: Work
 
-#################################################################
-#                                                               #
-#                       HVAC - Front Rooms                      #
-#                                                               #
-#################################################################
-    
+  #################################################################
+  #                                                               #
+  #                       HVAC - Front Rooms                      #
+  #                                                               #
+  #################################################################
+
   - type: vertical-stack
     cards:
-      - !include /config/lovelace/cards/thermostat/front.yaml      
+      - !include /config/lovelace/cards/thermostat/front.yaml
 
-#################################################################
-#                                                               #
-#                       HVAC - Living Areas                     #
-#                                                               #
-#################################################################
-    
+  #################################################################
+  #                                                               #
+  #                       HVAC - Living Areas                     #
+  #                                                               #
+  #################################################################
+
   - type: vertical-stack
     cards:
-    - !include /config/lovelace/cards/thermostat/living.yaml  
+      - !include /config/lovelace/cards/thermostat/living.yaml
 
-#################################################################
-#                                                               #
-#                       HVAC - Master Suite                     #
-#                                                               #
-#################################################################
-    
+  #################################################################
+  #                                                               #
+  #                       HVAC - Master Suite                     #
+  #                                                               #
+  #################################################################
+
   - type: vertical-stack
     cards:
-      - !include /config/lovelace/cards/thermostat/master.yaml  
-      
+      - !include /config/lovelace/cards/thermostat/master.yaml

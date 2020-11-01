@@ -72,7 +72,7 @@ lovelace:
     - url: /hacsfiles/waze-card/waze-card.js
       type: js
     - url: /hacsfiles/config-template-card/config-template-card.js
-      type: module 
+      type: module
     - url: /hacsfiles/simple-thermostat/simple-thermostat.js
       type: module
     - url: /hacsfiles/flex-horseshoe-card/flex-horseshoe-card.js
@@ -84,15 +84,15 @@ lovelace:
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/restriction-card/restriction-card.js
-      type: module  
+      type: module
     - url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
-      type: module    
+      type: module
     - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
-      type: module   
+      type: module
     - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
-      type: module    
+      type: module
     - url: /hacsfiles/roku-card/roku-card.js
-      type: module 
+      type: module
     - url: /local/custom_ui/mm2-clock-card.js
       type: module
 
@@ -109,7 +109,6 @@ cover:
 
 # Sensors
 sensor:
-
   #Fireplace
 
   - platform: mqtt
@@ -132,31 +131,28 @@ sensor:
     availability_topic: "warmer/tele/LWT"
     qos: 1
     payload_available: "Online"
-    payload_not_available: "Offline"    
+    payload_not_available: "Offline"
 
-#Template Sensors
+  #Template Sensors
   - platform: template
     sensors:
-      
       #Blank
       blank:
-        value_template: ''
-        friendly_name: ''
+        value_template: ""
+        friendly_name: ""
 
       external_url:
         value_template: !secret ext_url
 
 binary_sensor:
-
   - platform: wyzesense
     device: "/dev/hidraw0"
   - platform: template
     sensors:
       is_dst:
         value_template: "{{ now().timetuple().tm_isdst > 0 }}"
-    
-switch:
 
+switch:
   - platform: mqtt
     name: "Fireplace"
     state_topic: "stat/fireplace/POWER"
@@ -177,28 +173,26 @@ switch:
     payload_on: "ON"
     payload_off: "OFF"
     payload_available: "Online"
-    payload_not_available: "Offline"    
+    payload_not_available: "Offline"
 
 input_boolean:
-
   guest_mode:
     name: Guest Mode
     icon: mdi:timer-outline
 
   timer_lights:
     name: Timer Lights
-    icon: mdi:lightbulb  
+    icon: mdi:lightbulb
 
   outside_timer_lights:
     name: Outside Timer Lights
     icon: mdi:timer-outline
-  
+
   master_lamp_timer:
     name: Master Lamp Timer
     icon: mdi:timer-outline
 
 light:
-
   - platform: mqtt
     schema: json
     name: "Hall Lamp"
@@ -223,46 +217,44 @@ light:
         name: build_light
 # Timers
 timer:
-
   garage:
     name: Garage Light Timer
-    duration: '00:10:00'
+    duration: "00:10:00"
 
   front_door:
     name: Front Door Lock Timer
-    duration: '00:05:00'
+    duration: "00:05:00"
 
   back_door:
     name: Back Door Lock Timer
-    duration: '00:05:00'
+    duration: "00:05:00"
 
   laundry_room:
     name: Laundry Room Light Timer
-    duration: '00:02:00'
+    duration: "00:02:00"
 
   master_closet:
     name: Master Closet Light Timer
-    duration: '00:02:00'
+    duration: "00:02:00"
 
   garage_entry:
     name: Garage Entry Lock Timer
-    duration: '00:05:00'
+    duration: "00:05:00"
 
   garage_light:
     name: Garage Lighting Timer
-    duration: '00:10:00'
+    duration: "00:10:00"
 
   doorbell_popup:
     name: Garage Lighting Timer
-    duration: '00:01:00'
+    duration: "00:01:00"
 
   blinds_after_shower_repeat:
     name: Repeat Prompt to Open Blinds After Shower
-    duration: '00:05:00'
+    duration: "00:05:00"
 
 # Text to speech
 tts:
-
   - platform: google_translate
     service_name: google_say
 
@@ -275,8 +267,6 @@ script: !include_dir_merge_named scripts
 scene: !include_dir_merge_named scenes
 
 zone: !include zones.yaml
-
-
 
 #Elk M1 Integration
 elkm1:
@@ -302,11 +292,10 @@ elkm1:
   zone:
     exclude: [16, 35-36, 38-39, 54-64, 73-78, 81-196, 198-207]
 
-
 # Alexa Integration
 api:
 alexa: !include alexa.yaml
-      
+
 #Google Calendar
 google:
   client_id: !secret gcal_client_id
@@ -338,15 +327,15 @@ browser_mod:
       name: office_tablet
     !secret shack_tablet_browser:
       name: shack_tablet
-  disable: 
+  disable:
     - all
-    
+
 input_select:
   doorbell_tone:
     name: Doorbell Sound
     options:
       - Alexa Speak
-      - Wish Upon A Star    
+      - Wish Upon A Star
       - Christmas
     icon: mdi:music
 

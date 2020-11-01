@@ -1,11 +1,10 @@
 sensor:
-
   - platform: dewpoint
     sensors:
       dewpoint_outside:
         temperature: sensor.acurite_outside_temperature
         rel_hum: sensor.acurite_outside_humidity
-        
+
   - platform: template
     sensors:
       pws_url:
@@ -30,8 +29,8 @@ sensor:
           {%- set adjusted_elevation = adjusted_elevation * 100 %}
           {%- set brightness = adjusted_elevation * cloud_factor %}
           {{ brightness | round }}
-        unit_of_measurement: '%'
-        device_class: 'illuminance'
+        unit_of_measurement: "%"
+        device_class: "illuminance"
 
       weather_description:
         value_template: >-
@@ -44,7 +43,7 @@ sensor:
       clean_precip_intensity:
         value_template: "{{ states('sensor.dark_sky_precip_intensity') | round(2) }}"
 
-# Darksky
+  # Darksky
   - platform: darksky
     api_key: !secret ds_key
     forecast:
@@ -76,7 +75,7 @@ sensor:
       - uv_index
       - daily_summary
       - pressure
-      - visibility        
+      - visibility
 
   - platform: mqtt
     name: Bear Creek Elevation

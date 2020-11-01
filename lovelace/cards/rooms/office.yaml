@@ -1,118 +1,117 @@
-
-# Office      
-      type: custom:vertical-stack-in-card
-      cards:
-        - type: picture-elements
-          image: /local/lovelace/room_sm.png
-          elements:
-            - entity: sensor.aquara_office_temperature
-              style:
-                bottom: -5%
-                right: 5%
-                transform: initial
-              type: state-label
-            - entity: sensor.blank
-              hold-action: none
-              prefix: Office
-              style:
-                bottom: -5%
-                font-size: 150%
-                left: 5%
-                transform: initial
-              tap_action: none
-              hold_action: none
-              type: state-label
-        - type: horizontal-stack
-          cards:
-            - type: "custom:button-card"
-              entity: cover.office_blinds
-              color_type: icon
-              state:
-                - value: "open"
-                  color: rgb(228, 94, 101)
-                  icon: mdi:blinds-open
-                - value: "closed"
-                  color: rgb(255, 255, 255)
-                  icon: mdi:blinds
-                - value: "unavailable"
-                  color: rgb(228, 94, 101)
-                  icon: mdi:exclamation
-              name: Blinds
-              tap_action:
-                action: toggle
-              hold_action:  
-                action: call-service
-                service: script.popup_office_blinds
-                service_data:
-                  deviceID: 
-                    - this
-            - type: "custom:button-card"
-              entity: light.office_light
-              color_type: icon
-              color: rgb(228, 94, 101)
-              state:
-                - value: "on"
-                  icon: mdi:lightbulb-on-outline
-                - value: "off"
-                  icon: mdi:lightbulb-outline
-              name: Light
-              hold_action: 
-                action: more-info
-            - type: "custom:button-card"
-              entity: switch.office_fan
-              color_type: icon
-              color: rgb(228, 94, 101)
-              state:
-                - value: "on"
-                  icon: mdi:fan
-                - value: "off"
-                  icon: mdi:fan-off
-              name: Fan
-              hold_action: 
-                action: more-info
-            - type: "custom:button-card"
-              entity: switch.office_lamps
-              color_type: icon
-              color: rgb(228, 94, 101)
-              icon: mdi:lamp
-              name: Lamps
-              hold_action: 
-                action: more-info
-        - type: horizontal-stack
-          cards:
-            - type: "custom:gap-card"
-            - type: "custom:button-card"
-              entity: switch.office_peripherals
-              color_type: icon
-              color: rgb(228, 94, 101)
-              icon: mdi:desktop-tower-monitor
-              name: Desk
-              hold_action: 
-                action: more-info
-            - type: "custom:button-card"
-              entity: switch.lava_lamp
-              color_type: icon
-              color: rgb(228, 94, 101)
-              icon: mdi:lava-lamp
-              name: Lava Lamp
-              hold_action: 
-                action: more-info
-            - type: "custom:gap-card"
-        - type: custom:mini-media-player
-          entity: media_player.office_stereo
-          name: Office
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true  
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_office
-            service_data:
-              deviceID: 
-                - this
+# Office
+type: custom:vertical-stack-in-card
+cards:
+  - type: picture-elements
+    image: /local/lovelace/room_sm.png
+    elements:
+      - entity: sensor.aquara_office_temperature
+        style:
+          bottom: -5%
+          right: 5%
+          transform: initial
+        type: state-label
+      - entity: sensor.blank
+        hold-action: none
+        prefix: Office
+        style:
+          bottom: -5%
+          font-size: 150%
+          left: 5%
+          transform: initial
+        tap_action: none
+        hold_action: none
+        type: state-label
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        entity: cover.office_blinds
+        color_type: icon
+        state:
+          - value: "open"
+            color: rgb(228, 94, 101)
+            icon: mdi:blinds-open
+          - value: "closed"
+            color: rgb(255, 255, 255)
+            icon: mdi:blinds
+          - value: "unavailable"
+            color: rgb(228, 94, 101)
+            icon: mdi:exclamation
+        name: Blinds
+        tap_action:
+          action: toggle
+        hold_action:
+          action: call-service
+          service: script.popup_office_blinds
+          service_data:
+            deviceID:
+              - this
+      - type: "custom:button-card"
+        entity: light.office_light
+        color_type: icon
+        color: rgb(228, 94, 101)
+        state:
+          - value: "on"
+            icon: mdi:lightbulb-on-outline
+          - value: "off"
+            icon: mdi:lightbulb-outline
+        name: Light
+        hold_action:
+          action: more-info
+      - type: "custom:button-card"
+        entity: switch.office_fan
+        color_type: icon
+        color: rgb(228, 94, 101)
+        state:
+          - value: "on"
+            icon: mdi:fan
+          - value: "off"
+            icon: mdi:fan-off
+        name: Fan
+        hold_action:
+          action: more-info
+      - type: "custom:button-card"
+        entity: switch.office_lamps
+        color_type: icon
+        color: rgb(228, 94, 101)
+        icon: mdi:lamp
+        name: Lamps
+        hold_action:
+          action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: "custom:gap-card"
+      - type: "custom:button-card"
+        entity: switch.office_peripherals
+        color_type: icon
+        color: rgb(228, 94, 101)
+        icon: mdi:desktop-tower-monitor
+        name: Desk
+        hold_action:
+          action: more-info
+      - type: "custom:button-card"
+        entity: switch.lava_lamp
+        color_type: icon
+        color: rgb(228, 94, 101)
+        icon: mdi:lava-lamp
+        name: Lava Lamp
+        hold_action:
+          action: more-info
+      - type: "custom:gap-card"
+  - type: custom:mini-media-player
+    entity: media_player.office_stereo
+    name: Office
+    icon: mdi:speaker
+    group: true
+    artwork: none
+    volume_stateless: true
+    hide:
+      source: true
+      controls: true
+      info: true
+      progress: true
+    tap_action:
+      action: call-service
+      service: script.popup_media_office
+      service_data:
+        deviceID:
+          - this

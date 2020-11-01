@@ -98,7 +98,6 @@ smart_home:
       - cover.guest_blind
       - cover.server_room_blind
 
-
   entity_config:
     lock.front_door:
       name: Front Door
@@ -203,4 +202,3 @@ smart_home:
       name: Guest Blinds
     cover.server_room_blind:
       name: Server Room Blinds
-    

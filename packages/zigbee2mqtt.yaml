@@ -21,12 +21,12 @@ automation:
     trigger:
       - platform: state
         entity_id: input_boolean.zigbee_permit_join
-        to: 'on'
+        to: "on"
     action:
       - service: mqtt.publish
         data:
           topic: zigbee2mqtt/bridge/config/permit_join
-          payload: 'true'
+          payload: "true"
       - service: timer.start
         entity_id: timer.zigbee_permit_join
 
@@ -35,15 +35,15 @@ automation:
     trigger:
       - platform: state
         entity_id: input_boolean.zigbee_permit_join
-        to: 'off'
+        to: "off"
     action:
       - service: mqtt.publish
         data:
-          payload: 'false'
+          payload: "false"
           topic: zigbee2mqtt/bridge/config/permit_join
       - service: timer.cancel
         entity_id: timer.zigbee_permit_join
-      
+
   - id: disable_zigbee_join_timer
     alias: Disable Zigbee joining by timer
     trigger:
@@ -55,6 +55,6 @@ automation:
       - service: mqtt.publish
         data:
           topic: zigbee2mqtt/bridge/config/permit_join
-          payload: 'false'
+          payload: "false"
       - service: input_boolean.turn_off
         entity_id: input_boolean.zigbee_permit_join

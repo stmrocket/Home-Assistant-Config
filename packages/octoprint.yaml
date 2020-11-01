@@ -4,12 +4,12 @@ octoprint:
     name: prusa_mk3
     number_of_tools: 1
     bed: true
-    
+
 camera:
   - platform: mjpeg
     name: Prusa MK3
     still_image_url: !secret octoprint_still
-    mjpeg_url: !secret octoprint_camera 
+    mjpeg_url: !secret octoprint_camera
 
 binary_sensor:
   - platform: octoprint
@@ -17,7 +17,6 @@ binary_sensor:
 sensor:
   - platform: template
     sensors:
-      
       nozzle_temp_actual:
         value_template: "{{ (((states.sensor.prusa_mk3_actual_tool0_temp.state | float) - 32) * 5/9) | round(1) }}"
 

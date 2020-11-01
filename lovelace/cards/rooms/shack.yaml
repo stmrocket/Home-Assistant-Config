@@ -1,120 +1,119 @@
-
 # Shack
-      type: custom:vertical-stack-in-card
-      cards:
-        - type: picture-elements
-          image: /local/lovelace/room_sm.png
-          elements:
-            - entity: sensor.dining_room_temperature_owfs
-              style:
-                bottom: -5%
-                right: 5%
-                transform: initial
-              type: state-label
-            - entity: sensor.blank
-              hold-action: none
-              prefix: Shack
-              style:
-                bottom: -5%
-                font-size: 150%
-                left: 5%
-                transform: initial
-              tap_action: none
-              hold_action: none
-              type: state-label
-        - type: horizontal-stack
-          cards:                  
-            - type: "custom:button-card"
-              entity: cover.shack_blinds
-              color_type: icon
-              state:
-                - value: "open"
-                  color: rgb(228, 94, 101)
-                  icon: mdi:blinds-open
-                - value: "closed"
-                  color: rgb(255, 255, 255)
-                  icon: mdi:blinds
-                - value: "unavailable"
-                  color: rgb(228, 94, 101)
-                  icon: mdi:exclamation
-              name: Blinds
-              tap_action:
-                action: toggle
-              hold_action:  
-                action: call-service
-                service: script.popup_shack_blinds
-                service_data:
-                  deviceID: 
-                    - this
+type: custom:vertical-stack-in-card
+cards:
+  - type: picture-elements
+    image: /local/lovelace/room_sm.png
+    elements:
+      - entity: sensor.dining_room_temperature_owfs
+        style:
+          bottom: -5%
+          right: 5%
+          transform: initial
+        type: state-label
+      - entity: sensor.blank
+        hold-action: none
+        prefix: Shack
+        style:
+          bottom: -5%
+          font-size: 150%
+          left: 5%
+          transform: initial
+        tap_action: none
+        hold_action: none
+        type: state-label
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        entity: cover.shack_blinds
+        color_type: icon
+        state:
+          - value: "open"
+            color: rgb(228, 94, 101)
+            icon: mdi:blinds-open
+          - value: "closed"
+            color: rgb(255, 255, 255)
+            icon: mdi:blinds
+          - value: "unavailable"
+            color: rgb(228, 94, 101)
+            icon: mdi:exclamation
+        name: Blinds
+        tap_action:
+          action: toggle
+        hold_action:
+          action: call-service
+          service: script.popup_shack_blinds
+          service_data:
+            deviceID:
+              - this
 
-            - type: "custom:button-card"
-              entity: switch.shack_light
-              color_type: icon
-              color: rgb(228, 94, 101)
-              state:
-                - value: "on"
-                  icon: mdi:lightbulb-on-outline
-                - value: "off"
-                  icon: mdi:lightbulb-outline
-              name: Light
-              hold_action: 
-                action: more-info
+      - type: "custom:button-card"
+        entity: switch.shack_light
+        color_type: icon
+        color: rgb(228, 94, 101)
+        state:
+          - value: "on"
+            icon: mdi:lightbulb-on-outline
+          - value: "off"
+            icon: mdi:lightbulb-outline
+        name: Light
+        hold_action:
+          action: more-info
 
-            - type: "custom:button-card"
-              entity: switch.shack_lamp
-              color_type: icon
-              color: rgb(228, 94, 101)
-              icon: mdi:lamp
-              name: Lamp
-              hold_action: 
-                action: more-info
-            
-            - type: "custom:button-card"
-              entity: light.shack_desk_light
-              color_type: icon
-              color: rgb(228, 94, 101)
-              icon: mdi:radio-tower
-              name: Desk
-              hold_action: 
-                action: more-info
+      - type: "custom:button-card"
+        entity: switch.shack_lamp
+        color_type: icon
+        color: rgb(228, 94, 101)
+        icon: mdi:lamp
+        name: Lamp
+        hold_action:
+          action: more-info
 
-        - type: horizontal-stack
-          cards:
-            - type: "custom:button-card"
-              entity: switch.shack_fan
-              color_type: icon
-              state:
-                - value: "on"
-                  color: rgb(228, 94, 101)
-                  icon: mdi:fan
-                - value: "off"
-                  color: rgb(255, 255, 255)
-                  icon: mdi:fan-off
-              name: "Fan"
-              hold_action: 
-                action: more-info
-            
-            - type: "custom:gap-card"
+      - type: "custom:button-card"
+        entity: light.shack_desk_light
+        color_type: icon
+        color: rgb(228, 94, 101)
+        icon: mdi:radio-tower
+        name: Desk
+        hold_action:
+          action: more-info
 
-            - type: "custom:gap-card"
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        entity: switch.shack_fan
+        color_type: icon
+        state:
+          - value: "on"
+            color: rgb(228, 94, 101)
+            icon: mdi:fan
+          - value: "off"
+            color: rgb(255, 255, 255)
+            icon: mdi:fan-off
+        name: "Fan"
+        hold_action:
+          action: more-info
 
-            - type: "custom:gap-card"
+      - type: "custom:gap-card"
 
-        - type: custom:mini-media-player
-          entity: media_player.dining_room_stereo
-          name: Ham Shack
-          icon: mdi:speaker
-          group: true
-          artwork: none
-          volume_stateless: true
-          hide:
-            source: true
-            controls: true
-            info: true  
-            progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_dining
-            service_data:
-              deviceID: 
-                - this
+      - type: "custom:gap-card"
+
+      - type: "custom:gap-card"
+
+  - type: custom:mini-media-player
+    entity: media_player.dining_room_stereo
+    name: Ham Shack
+    icon: mdi:speaker
+    group: true
+    artwork: none
+    volume_stateless: true
+    hide:
+      source: true
+      controls: true
+      info: true
+      progress: true
+    tap_action:
+      action: call-service
+      service: script.popup_media_dining
+      service_data:
+        deviceID:
+          - this

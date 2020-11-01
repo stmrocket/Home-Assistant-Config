@@ -11,7 +11,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Paging
   - platform: mqtt
     name: "Nuvo Page Mode"
@@ -24,7 +24,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Zone Power
   - platform: mqtt
     name: "Nuvo Zone 1 Power"
@@ -37,7 +37,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 2 Power"
     state_topic: "nuvo/tele/zone/2/power"
@@ -49,7 +49,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 3 Power"
     state_topic: "nuvo/tele/zone/3/power"
@@ -61,7 +61,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 4 Power"
     state_topic: "nuvo/tele/zone/4/power"
@@ -73,7 +73,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 5 Power"
     state_topic: "nuvo/tele/zone/5/power"
@@ -85,7 +85,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 6 Power"
     state_topic: "nuvo/tele/zone/6/power"
@@ -97,7 +97,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 7 Power"
     state_topic: "nuvo/tele/zone/7/power"
@@ -109,7 +109,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 8 Power"
     state_topic: "nuvo/tele/zone/8/power"
@@ -121,7 +121,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 9 Power"
     state_topic: "nuvo/tele/zone/9/power"
@@ -133,7 +133,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 10 Power"
     state_topic: "nuvo/tele/zone/10/power"
@@ -145,7 +145,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 11 Power"
     state_topic: "nuvo/tele/zone/11/power"
@@ -157,7 +157,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 12 Power"
     state_topic: "nuvo/tele/zone/12/power"
@@ -169,7 +169,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 13 Power"
     state_topic: "nuvo/tele/zone/13/power"
@@ -181,7 +181,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 14 Power"
     state_topic: "nuvo/tele/zone/14/power"
@@ -193,7 +193,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 15 Power"
     state_topic: "nuvo/tele/zone/15/power"
@@ -205,7 +205,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 16 Power"
     state_topic: "nuvo/tele/zone/16/power"
@@ -217,7 +217,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 17 Power"
     state_topic: "nuvo/tele/zone/17/power"
@@ -229,7 +229,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 18 Power"
     state_topic: "nuvo/tele/zone/18/power"
@@ -241,7 +241,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 19 Power"
     state_topic: "nuvo/tele/zone/19/power"
@@ -253,7 +253,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 20 Power"
     state_topic: "nuvo/tele/zone/20/power"
@@ -265,7 +265,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Zone Mute
   - platform: mqtt
     name: "Nuvo Zone 1 Mute"
@@ -279,7 +279,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 2 Mute"
     state_topic: "nuvo/tele/zone/2"
@@ -292,7 +292,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 3 Mute"
     state_topic: "nuvo/tele/zone/3"
@@ -305,7 +305,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 4 Mute"
     state_topic: "nuvo/tele/zone/4"
@@ -318,7 +318,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 5 Mute"
     state_topic: "nuvo/tele/zone/5"
@@ -331,7 +331,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 6 Mute"
     state_topic: "nuvo/tele/zone/6"
@@ -344,7 +344,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 7 Mute"
     state_topic: "nuvo/tele/zone/7"
@@ -357,7 +357,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 8 Mute"
     state_topic: "nuvo/tele/zone/8"
@@ -370,7 +370,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 9 Mute"
     state_topic: "nuvo/tele/zone/9"
@@ -383,7 +383,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 10 Mute"
     state_topic: "nuvo/tele/zone/10"
@@ -396,7 +396,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 11 Mute"
     state_topic: "nuvo/tele/zone/11"
@@ -409,7 +409,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 12 Mute"
     state_topic: "nuvo/tele/zone/12"
@@ -422,7 +422,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 13 Mute"
     state_topic: "nuvo/tele/zone/13"
@@ -435,7 +435,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 14 Mute"
     state_topic: "nuvo/tele/zone/14"
@@ -448,7 +448,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 15 Mute"
     state_topic: "nuvo/tele/zone/15"
@@ -461,7 +461,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 16 Mute"
     state_topic: "nuvo/tele/zone/16"
@@ -474,7 +474,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 17 Mute"
     state_topic: "nuvo/tele/zone/17"
@@ -487,7 +487,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 18 Mute"
     state_topic: "nuvo/tele/zone/18"
@@ -500,7 +500,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 19 Mute"
     state_topic: "nuvo/tele/zone/19"
@@ -513,7 +513,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 20 Mute"
     state_topic: "nuvo/tele/zone/20"
@@ -526,7 +526,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Zone DND
   - platform: mqtt
     name: "Nuvo Zone 1 DND"
@@ -540,7 +540,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 2 DND"
     state_topic: "nuvo/tele/zone/2"
@@ -553,7 +553,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 3 DND"
     state_topic: "nuvo/tele/zone/3"
@@ -566,7 +566,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 4 DND"
     state_topic: "nuvo/tele/zone/4"
@@ -579,7 +579,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 5 DND"
     state_topic: "nuvo/tele/zone/5"
@@ -592,7 +592,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 6 DND"
     state_topic: "nuvo/tele/zone/6"
@@ -605,7 +605,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 7 DND"
     state_topic: "nuvo/tele/zone/7"
@@ -618,7 +618,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 8 DND"
     state_topic: "nuvo/tele/zone/8"
@@ -631,7 +631,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 9 DND"
     state_topic: "nuvo/tele/zone/9"
@@ -644,7 +644,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 10 DND"
     state_topic: "nuvo/tele/zone/10"
@@ -657,7 +657,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 11 DND"
     state_topic: "nuvo/tele/zone/11"
@@ -670,7 +670,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 12 DND"
     state_topic: "nuvo/tele/zone/12"
@@ -683,7 +683,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 13 DND"
     state_topic: "nuvo/tele/zone/13"
@@ -696,7 +696,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 14 DND"
     state_topic: "nuvo/tele/zone/14"
@@ -709,7 +709,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 15 DND"
     state_topic: "nuvo/tele/zone/15"
@@ -722,7 +722,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 16 DND"
     state_topic: "nuvo/tele/zone/16"
@@ -735,7 +735,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 17 DND"
     state_topic: "nuvo/tele/zone/17"
@@ -748,7 +748,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 18 DND"
     state_topic: "nuvo/tele/zone/18"
@@ -761,7 +761,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 19 DND"
     state_topic: "nuvo/tele/zone/19"
@@ -774,7 +774,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 20 DND"
     state_topic: "nuvo/tele/zone/20"
@@ -787,7 +787,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Zone Party Host
   - platform: mqtt
     name: "Nuvo Zone 1 Party"
@@ -800,7 +800,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 2 Party"
     state_topic: "nuvo/tele/zone/2/party"
@@ -812,7 +812,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 2 Party"
     state_topic: "nuvo/tele/zone/3/party"
@@ -824,7 +824,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 4 Party"
     state_topic: "nuvo/tele/zone/4/party"
@@ -836,7 +836,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 5 Party"
     state_topic: "nuvo/tele/zone/5/party"
@@ -848,7 +848,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 6 Party"
     state_topic: "nuvo/tele/zone/6/party"
@@ -860,7 +860,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 7 Party"
     state_topic: "nuvo/tele/zone/7/party"
@@ -872,7 +872,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 8 Party"
     state_topic: "nuvo/tele/zone/8/party"
@@ -884,7 +884,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 9 Party"
     state_topic: "nuvo/tele/zone/9/party"
@@ -896,7 +896,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 10 Party"
     state_topic: "nuvo/tele/zone/10/party"
@@ -908,7 +908,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 11 Party"
     state_topic: "nuvo/tele/zone/11/party"
@@ -920,7 +920,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 12 Party"
     state_topic: "nuvo/tele/zone/12/party"
@@ -932,7 +932,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 13 Party"
     state_topic: "nuvo/tele/zone/13/party"
@@ -944,7 +944,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 14 Party"
     state_topic: "nuvo/tele/zone/14/party"
@@ -956,7 +956,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 15 Party"
     state_topic: "nuvo/tele/zone/15/party"
@@ -968,7 +968,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 16 Party"
     state_topic: "nuvo/tele/zone/16/party"
@@ -980,7 +980,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 17 Party"
     state_topic: "nuvo/tele/zone/17/party"
@@ -992,7 +992,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 18 Party"
     state_topic: "nuvo/tele/zone/18/party"
@@ -1004,7 +1004,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 19 Party"
     state_topic: "nuvo/tele/zone/19/party"
@@ -1016,7 +1016,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 20 Party"
     state_topic: "nuvo/tele/zone/20/party"
@@ -1028,7 +1028,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Zone Lock
   - platform: mqtt
     name: "Nuvo Zone 1 Lock"
@@ -1042,7 +1042,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 2 Lock"
     state_topic: "nuvo/tele/zone/2"
@@ -1055,7 +1055,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 3 Lock"
     state_topic: "nuvo/tele/zone/3"
@@ -1068,7 +1068,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 4 Lock"
     state_topic: "nuvo/tele/zone/4"
@@ -1081,7 +1081,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 5 Lock"
     state_topic: "nuvo/tele/zone/5"
@@ -1094,7 +1094,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 6 Lock"
     state_topic: "nuvo/tele/zone/6"
@@ -1107,7 +1107,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 7 Lock"
     state_topic: "nuvo/tele/zone/7"
@@ -1120,7 +1120,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 8 Lock"
     state_topic: "nuvo/tele/zone/8"
@@ -1133,7 +1133,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 9 Lock"
     state_topic: "nuvo/tele/zone/9"
@@ -1146,7 +1146,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 10 Lock"
     state_topic: "nuvo/tele/zone/10"
@@ -1159,7 +1159,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 11 Lock"
     state_topic: "nuvo/tele/zone/11"
@@ -1172,7 +1172,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 12 Lock"
     state_topic: "nuvo/tele/zone/12"
@@ -1185,7 +1185,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 13 Lock"
     state_topic: "nuvo/tele/zone/13"
@@ -1198,7 +1198,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 14 Lock"
     state_topic: "nuvo/tele/zone/14"
@@ -1211,7 +1211,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 15 Lock"
     state_topic: "nuvo/tele/zone/15"
@@ -1224,7 +1224,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 16 Lock"
     state_topic: "nuvo/tele/zone/16"
@@ -1237,7 +1237,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 17 Lock"
     state_topic: "nuvo/tele/zone/17"
@@ -1250,7 +1250,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 18 Lock"
     state_topic: "nuvo/tele/zone/18"
@@ -1263,7 +1263,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 19 Lock"
     state_topic: "nuvo/tele/zone/19"
@@ -1276,7 +1276,7 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 20 Lock"
     state_topic: "nuvo/tele/zone/20"
@@ -1289,10 +1289,10 @@ switch:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
 sensor:
   #Bridge Status Messages
-    
+
   - platform: mqtt
     name: "Nuvo Bridge Version"
     state_topic: "nuvo/tele/status"
@@ -1300,7 +1300,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Bridge Uptime"
     state_topic: "nuvo/tele/status"
@@ -1308,7 +1308,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Bridge RSSI"
     state_topic: "nuvo/tele/status"
@@ -1316,7 +1316,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Bridge IP"
     state_topic: "nuvo/tele/status"
@@ -1324,7 +1324,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Bridge Free Heap"
     state_topic: "nuvo/tele/status"
@@ -1332,7 +1332,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Bridge Heap Fragmentation"
     state_topic: "nuvo/tele/status"
@@ -1340,15 +1340,15 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Bridge Core Version"
     state_topic: "nuvo/tele/status"
-    value_template: "{{value_json['espCore']}}" 
+    value_template: "{{value_json['espCore']}}"
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 1
   - platform: mqtt
     name: "Nuvo Zone 1 Source"
@@ -1357,7 +1357,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 1 Volume"
     state_topic: "nuvo/tele/zone/1"
@@ -1365,7 +1365,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 2
   - platform: mqtt
     name: "Nuvo Zone 2 Source"
@@ -1374,7 +1374,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 2 Volume"
     state_topic: "nuvo/tele/zone/2"
@@ -1382,7 +1382,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 3
   - platform: mqtt
     name: "Nuvo Zone 3 Source"
@@ -1391,7 +1391,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 3 Volume"
     state_topic: "nuvo/tele/zone/3"
@@ -1399,7 +1399,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 4
   - platform: mqtt
     name: "Nuvo Zone 4 Source"
@@ -1408,7 +1408,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 4 Volume"
     state_topic: "nuvo/tele/zone/4"
@@ -1416,7 +1416,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 5
   - platform: mqtt
     name: "Nuvo Zone 5 Source"
@@ -1425,7 +1425,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 5 Volume"
     state_topic: "nuvo/tele/zone/5"
@@ -1433,7 +1433,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 6
   - platform: mqtt
     name: "Nuvo Zone 6 Source"
@@ -1442,7 +1442,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 6 Volume"
     state_topic: "nuvo/tele/zone/6"
@@ -1450,7 +1450,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 7
   - platform: mqtt
     name: "Nuvo Zone 7 Source"
@@ -1459,7 +1459,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 7 Volume"
     state_topic: "nuvo/tele/zone/7"
@@ -1467,7 +1467,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 8
   - platform: mqtt
     name: "Nuvo Zone 8 Source"
@@ -1476,7 +1476,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 8 Volume"
     state_topic: "nuvo/tele/zone/8"
@@ -1484,7 +1484,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 9
   - platform: mqtt
     name: "Nuvo Zone 9 Source"
@@ -1493,7 +1493,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 9 Volume"
     state_topic: "nuvo/tele/zone/9"
@@ -1501,7 +1501,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 10
   - platform: mqtt
     name: "Nuvo Zone 10 Source"
@@ -1510,7 +1510,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 10 Volume"
     state_topic: "nuvo/tele/zone/10"
@@ -1518,7 +1518,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 11
   - platform: mqtt
     name: "Nuvo Zone 11 Source"
@@ -1527,7 +1527,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 11 Volume"
     state_topic: "nuvo/tele/zone/11"
@@ -1535,7 +1535,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 12
   - platform: mqtt
     name: "Nuvo Zone 12 Source"
@@ -1544,7 +1544,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 12 Volume"
     state_topic: "nuvo/tele/zone/12"
@@ -1552,7 +1552,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 13
   - platform: mqtt
     name: "Nuvo Zone 13 Source"
@@ -1561,7 +1561,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 13 Volume"
     state_topic: "nuvo/tele/zone/13"
@@ -1569,7 +1569,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 14
   - platform: mqtt
     name: "Nuvo Zone 14 Source"
@@ -1578,7 +1578,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 14 Volume"
     state_topic: "nuvo/tele/zone/14"
@@ -1586,7 +1586,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 15
   - platform: mqtt
     name: "Nuvo Zone 15 Source"
@@ -1595,7 +1595,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 15 Volume"
     state_topic: "nuvo/tele/zone/15"
@@ -1603,7 +1603,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 16
   - platform: mqtt
     name: "Nuvo Zone 16 Source"
@@ -1612,7 +1612,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 16 Volume"
     state_topic: "nuvo/tele/zone/16"
@@ -1620,7 +1620,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 17
   - platform: mqtt
     name: "Nuvo Zone 17 Source"
@@ -1629,7 +1629,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 17 Volume"
     state_topic: "nuvo/tele/zone/17"
@@ -1637,7 +1637,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 18
   - platform: mqtt
     name: "Nuvo Zone 18 Source"
@@ -1646,7 +1646,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 18 Volume"
     state_topic: "nuvo/tele/zone/18"
@@ -1654,7 +1654,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 19
   - platform: mqtt
     name: "Nuvo Zone 19 Source"
@@ -1663,7 +1663,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 19 Volume"
     state_topic: "nuvo/tele/zone/19"
@@ -1671,7 +1671,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   #Source 20
   - platform: mqtt
     name: "Nuvo Zone 20 Source"
@@ -1680,7 +1680,7 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    
+
   - platform: mqtt
     name: "Nuvo Zone 20 Volume"
     state_topic: "nuvo/tele/zone/20"
@@ -1688,4 +1688,3 @@ sensor:
     availability_topic: "nuvo/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
-    

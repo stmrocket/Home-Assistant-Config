@@ -1,8 +1,6 @@
 switch:
-
   - platform: template
     switches:
-
       irrigation_program_3_days:
         friendly_name: "Irrigation Schedule Every 3 Days Enabled"
         value_template: "{{ not is_state('switch.every_3_days', 'unavailable') }}"
@@ -12,7 +10,7 @@ switch:
           service: rainmachine.disable_program
           data:
             program_id: 1
-      
+
       irrigation_program_2_days:
         friendly_name: "Irrigation Schedule Every 2 Days Enabled"
         value_template: "{{ not is_state('switch.every_2_days', 'unavailable') }}"
@@ -32,7 +30,6 @@ switch:
         turn_off:
           service: rainmachine.stop_all
 script:
-
   rainmachine_program_1_on:
     sequence:
       - service: rainmachine.enable_program
@@ -50,23 +47,23 @@ script:
       - service: rainmachine.disable_program
         data:
           program_id: 1
-  
+
   rainmachine_start_program:
     sequence:
       - choose:
-        - conditions:
-          - condition: state
-            entity_id: switch.irrigation_program_3_days
-            state: 'on'
-          sequence:
-            - service: rainmachine.start_program
-              data:
-                program_id: 1
-        - conditions:
-          - condition: state
-            entity_id: switch.irrigation_program_2_days
-            state: 'on'
-          sequence:
-            - service: rainmachine.start_program
-              data:
-                program_id: 2
+          - conditions:
+              - condition: state
+                entity_id: switch.irrigation_program_3_days
+                state: "on"
+            sequence:
+              - service: rainmachine.start_program
+                data:
+                  program_id: 1
+          - conditions:
+              - condition: state
+                entity_id: switch.irrigation_program_2_days
+                state: "on"
+            sequence:
+              - service: rainmachine.start_program
+                data:
+                  program_id: 2

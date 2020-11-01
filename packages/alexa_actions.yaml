@@ -19,7 +19,7 @@ script:
     #     description: 'The text you would like alexa to speak.'
     #   event_id:
     #     description: 'Correlation ID for event responses'
-    #   alexa_device: 
+    #   alexa_device:
     #     description: 'Alexa device you want to trigger'
     sequence:
       - service: input_text.set_value

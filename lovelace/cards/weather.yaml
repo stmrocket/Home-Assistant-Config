@@ -1,6 +1,4 @@
-
-
-type: 'custom:dark-sky-weather-card'
+type: "custom:dark-sky-weather-card"
 entity_current_conditions: sensor.dark_sky_icon
 entity_temperature: sensor.acurite_outside_temperature
 entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
