@@ -235,5 +235,5 @@ input_boolean:
     icon: mdi:door-closed
 
   frigate_enabled_christmas:
-    name: Firgate Enabled Christmas
+    name: Frigate Enabled Christmas
     icon: mdi:cctv
