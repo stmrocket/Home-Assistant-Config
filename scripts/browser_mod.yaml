@@ -4243,8 +4243,9 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
 
                 - type: "custom:button-card"
                   color: rgb(255, 255, 255)
@@ -4253,8 +4254,9 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
 
                 - type: "custom:button-card"
                   color: rgb(255, 255, 255)
@@ -4263,8 +4265,9 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE7887"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE7887"}'
 
             - type: horizontal-stack
               cards:
@@ -4275,8 +4278,9 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE20DF"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE20DF"}'
 
                 - type: "custom:button-card"
                   color: rgb(0, 255, 0)
@@ -4285,8 +4289,9 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FEA05F"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FEA05F"}'
 
                 - type: "custom:button-card"
                   color: rgb(0, 0, 255)
@@ -4295,8 +4300,9 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE609F"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE609F"}'
 
             - type: horizontal-stack
               cards:
@@ -4307,8 +4313,9 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE50AF"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE50AF"}'
 
                 - type: "custom:button-card"
                   color: rgb(255, 165, 0)
@@ -4317,8 +4324,9 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FEE01F"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FEE01F"}'
 
                 - type: "custom:button-card"
                   color: rgb(255, 255, 255)
@@ -4327,5 +4335,6 @@ popup_candle:
                   tap_action:
                     action: call-service
                     service: mqtt.publish
-                    topic: ir/all/cmnd/irsend
-                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE30CF"}'
+                    service_data:
+                      topic: ir/all/cmnd/irsend
+                      payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE30CF"}'

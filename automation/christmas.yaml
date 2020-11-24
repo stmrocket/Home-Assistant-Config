@@ -21,6 +21,10 @@
   action:
     - service: switch.turn_off
       entity_id: switch.indoor_christmas
+    - service: mqtt.publish
+      data:
+        topic: ir/all/cmnd/irsend
+        payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
 
 - alias: MQTT Christmas Show On
   trigger:
@@ -88,3 +92,39 @@
           priority: high
     - service: input_boolean.turn_on
       entity_id: input_boolean.donation_box
+
+- alias: Candles On at Dark When Home
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "00:30:00"
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: disarmed
+  action:
+    - service: mqtt.publish
+      data:
+        topic: ir/all/cmnd/irsend
+        payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
+
+- alias: Candles On at When Returning After Dark
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: pending
+      to: disarmed
+  condition:
+    - condition: sun
+      after: sunset
+      after_offset: "00:30:00"
+  action:
+    - service: mqtt.publish
+      data:
+        topic: ir/all/cmnd/irsend
+        payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
