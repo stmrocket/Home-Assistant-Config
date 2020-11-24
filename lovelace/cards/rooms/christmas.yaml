@@ -154,6 +154,7 @@ card:
         - type: custom:button-card
           color_type: icon
           icon: mdi:candle
+          name: candles
           tap_action:
             action: call-service
             service: mqtt.publish
@@ -171,7 +172,7 @@ card:
               deviceID:
                 - this
 
-        - type: custon:gap-card
+        - type: custom:gap-card
 
     - type: horizontal-stack
       cards:
