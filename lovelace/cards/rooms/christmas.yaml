@@ -184,10 +184,7 @@ card:
           color: rgb(228, 94, 101)
           icon: mdi:pine-tree
           name: Show
-          lock:
-            enabled: true
-            unlock: hold
-          hold_action:
+          tap_action:
             action: call-service
             service: script.popup_christmas_outdoor
             service_data:
