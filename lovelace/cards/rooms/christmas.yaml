@@ -37,9 +37,9 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Tree
           hold_action:
             action: more-info
@@ -50,9 +50,9 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Garland
           hold_action:
             action: more-info
@@ -63,9 +63,9 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Village
           hold_action:
             action: more-info
@@ -78,9 +78,9 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Dining
           hold_action:
             action: more-info
@@ -91,9 +91,9 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Entry
           hold_action:
             action: more-info
@@ -104,9 +104,9 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Master
           hold_action:
             action: more-info
@@ -117,9 +117,9 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Snowman
           hold_action:
             action: more-info
@@ -131,9 +131,9 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Kitchen
           hold_action:
             action: more-info
@@ -144,19 +144,46 @@ card:
           color: rgb(228, 94, 101)
           state:
             - value: "on"
-              icon: mdi:lightbulb-on-outline
+              icon: mdi:string-lights
             - value: "off"
-              icon: mdi:lightbulb-outline
+              icon: mdi:string-lights-off
           name: Hall
           hold_action:
             action: more-info
 
+        - type: custom:button-card
+          color_type: icon
+          icon: mdi:candle
+          tap_action:
+            action: call-service
+            service: mqtt.publish
+            topic: ir/all/cmnd/irsend
+            payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
+          double_tap_action:
+            action: call-service
+            service: mqtt.publish
+            topic: ir/all/cmnd/irsend
+            payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
+          hold_action:
+            action: call-service
+            service: script.popup_candles
+            service_data:
+              deviceID:
+                - this
+
+        - type: custon:gap-card
+
+    - type: horizontal-stack
+      cards:
         - type: "custom:button-card"
           entity: input_boolean.christmas_show
           color_type: icon
           color: rgb(228, 94, 101)
           icon: mdi:pine-tree
           name: Show
+          lock:
+            enabled: true
+            unlock: hold
           hold_action:
             action: call-service
             service: script.popup_christmas_outdoor
@@ -176,3 +203,6 @@ card:
           name: Donation
           hold_action:
             action: more-info
+
+        - type: custom:gap-card
+        - type: custom:gap-card

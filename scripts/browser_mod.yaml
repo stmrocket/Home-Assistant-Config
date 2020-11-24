@@ -4224,3 +4224,108 @@ popup_truck:
                   tap_action:
                     action: call-service
                     service: rest_command.stop_truck
+
+popup_candle:  
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: ["{{ ','.join(deviceID) }}"]
+        title: Candles
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: "custom:button-card"
+                  color: rgb(255, 255, 255)
+                  icon: mdi:power
+                  name: 'On'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
+
+                - type: "custom:button-card"
+                  color: rgb(255, 255, 255)
+                  icon: mdi:power-off
+                  name: 'Off'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
+
+                - type: "custom:button-card"
+                  color: rgb(255, 255, 255)
+                  icon: mdi:cog
+                  name: 'Mode'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE7887"}'
+
+            - type: horizontal-stack
+              cards:
+                - type: "custom:button-card"
+                  color: rgb(255, 0, 0)
+                  icon: mdi:fire
+                  name: 'Red'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE20DF"}'
+
+                - type: "custom:button-card"
+                  color: rgb(0, 255, 0)
+                  icon: mdi:fire
+                  name: 'Green'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FEA05F"}'
+
+                - type: "custom:button-card"
+                  color: rgb(0, 0, 255)
+                  icon: mdi:fire
+                  name: 'Blue'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE609F"}'
+
+            - type: horizontal-stack
+              cards:
+                - type: "custom:button-card"
+                  color: rgb(255, 255, 0)
+                  icon: mdi:fire
+                  name: 'Yellow'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE50AF"}'
+
+                - type: "custom:button-card"
+                  color: rgb(255, 165, 0)
+                  icon: mdi:fire
+                  name: 'Orange'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FEE01F"}'
+
+                - type: "custom:button-card"
+                  color: rgb(255, 255, 255)
+                  icon: mdi:fire
+                  name: 'White'
+                  tap_action:
+                    action: call-service
+                    service: mqtt.publish
+                    topic: ir/all/cmnd/irsend
+                    payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE30CF"}'
