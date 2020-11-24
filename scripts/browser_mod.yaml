@@ -4225,7 +4225,7 @@ popup_truck:
                     action: call-service
                     service: rest_command.stop_truck
 
-popup_candle:  
+popup_candles:
   sequence:
     - service: browser_mod.popup
       data_template:
@@ -4239,7 +4239,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(255, 255, 255)
                   icon: mdi:power
-                  name: 'On'
+                  name: "On"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
@@ -4250,7 +4250,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(255, 255, 255)
                   icon: mdi:power-off
-                  name: 'Off'
+                  name: "Off"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
@@ -4261,7 +4261,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(255, 255, 255)
                   icon: mdi:cog
-                  name: 'Mode'
+                  name: "Mode"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
@@ -4274,7 +4274,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(255, 0, 0)
                   icon: mdi:fire
-                  name: 'Red'
+                  name: "Red"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
@@ -4285,7 +4285,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(0, 255, 0)
                   icon: mdi:fire
-                  name: 'Green'
+                  name: "Green"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
@@ -4296,7 +4296,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(0, 0, 255)
                   icon: mdi:fire
-                  name: 'Blue'
+                  name: "Blue"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
@@ -4309,7 +4309,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(255, 255, 0)
                   icon: mdi:fire
-                  name: 'Yellow'
+                  name: "Yellow"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
@@ -4320,7 +4320,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(255, 165, 0)
                   icon: mdi:fire
-                  name: 'Orange'
+                  name: "Orange"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
@@ -4331,7 +4331,7 @@ popup_candle:
                 - type: "custom:button-card"
                   color: rgb(255, 255, 255)
                   icon: mdi:fire
-                  name: 'White'
+                  name: "White"
                   tap_action:
                     action: call-service
                     service: mqtt.publish
