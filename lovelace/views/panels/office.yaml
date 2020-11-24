@@ -44,7 +44,25 @@ cards:
       - type: "custom:mm2-clock-card"
         timezone: America/Chicago
         displaySeconds: false
-
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.aquara_office_temperature
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 24
+        points_per_hour: 1
+        show:
+          icon: false
+          extrema: false
+          name: false
+        color_thresholds:
+          - value: 80
+            color: "#e74c3c"
+          - value: 75
+            color: "#1db954"
+          - value: 70
+            color: "#3498db"
       - type: conditional
         conditions:
           - entity: sensor.nuvo_zone_1_source
