@@ -173,11 +173,6 @@ card:
             service_data:
               deviceID:
                 - this
-
-        - type: custom:gap-card
-
-    - type: horizontal-stack
-      cards:
         - type: "custom:button-card"
           entity: input_boolean.christmas_show
           color_type: icon
@@ -191,18 +186,21 @@ card:
               deviceID:
                 - this
 
-        - type: "custom:button-card"
-          entity: input_boolean.donation_box
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:door-open
-            - value: "off"
-              icon: mdi:door-closed
-          name: Donation
-          hold_action:
-            action: more-info
+    # - type: horizontal-stack
+    #   cards:
 
-        - type: custom:gap-card
-        - type: custom:gap-card
+    #     - type: "custom:button-card"
+    #       entity: input_boolean.donation_box
+    #       color_type: icon
+    #       color: rgb(228, 94, 101)
+    #       state:
+    #         - value: "on"
+    #           icon: mdi:door-open
+    #         - value: "off"
+    #           icon: mdi:door-closed
+    #       name: Donation
+    #       hold_action:
+    #         action: more-info
+
+    #     - type: custom:gap-card
+    #     - type: custom:gap-card
