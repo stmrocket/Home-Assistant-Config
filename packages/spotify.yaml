@@ -51,6 +51,51 @@ input_select:
       - Hot Country
       - Country Workout
 
+  spotify_work_alarm_playlist:
+    name: Playlist
+    options:
+      - Top Christian
+      - Christian Mix
+      - WorshipNow
+      - The Carnival Steel Drum Band
+      - Epic Film Scores for Studying
+      - Harry Potter Movie Soundtracks
+      - Christian Christmas
+      - A Soft Piano Christmas
+      - Christmas Hits
+      - Hot Country
+      - Country Workout
+
+  spotify_manual_alarm_playlist:
+    name: Playlist
+    options:
+      - Top Christian
+      - Christian Mix
+      - WorshipNow
+      - The Carnival Steel Drum Band
+      - Epic Film Scores for Studying
+      - Harry Potter Movie Soundtracks
+      - Christian Christmas
+      - A Soft Piano Christmas
+      - Christmas Hits
+      - Hot Country
+      - Country Workout
+
+spotify_restore_playlist:
+  name: Playlist
+  options:
+    - Top Christian
+    - Christian Mix
+    - WorshipNow
+    - The Carnival Steel Drum Band
+    - Epic Film Scores for Studying
+    - Harry Potter Movie Soundtracks
+    - Christian Christmas
+    - A Soft Piano Christmas
+    - Christmas Hits
+    - Hot Country
+    - Country Workout
+
 timer:
   spotify_refresh:
     name: Spotify Refresh
@@ -256,3 +301,13 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+
+  spotify_restore_playlist:
+    sequence:
+      - condition: template
+        value_template: "{{ not states('input_select.spotify_playlist') == states('input_select.spotify_restore_playlist')}}"
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.spotify_playlist
+          option: "{{ states('input_select.spotify_restore_playlist')}}"
+      - service: script.spotify_change_playlist

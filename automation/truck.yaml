@@ -154,3 +154,67 @@
         action: unlock_truck
   action:
     - service: rest_command.unlock_truck
+
+- alias: Alexa Prompt to Start Truck When Cold
+  trigger:
+    - platform: time
+      at: "06:20:00"
+  condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.work_alarm_enabled
+          state: "on"
+        - condition: state
+          entity_id: binary_sensor.work_holiday
+          state: "off"
+        - condition: time
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+        - condition: numeric_state
+          entity_id: sensor.acurite_outside_temperature
+          below: 45
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: alarm_control_panel.house
+              state: armed_home
+            - condition: state
+              entity_id: alarm_control_panel.house
+              state: disarmed
+  action:
+    - service: script.activate_alexa_actionable_notification
+      data_template:
+        text: "The temperature is below 45 degrees.  Would you like to start your truck?"
+        event_id: "actionable_notification_start_truck"
+        alexa_device: "media_player.alexa_master_den"
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Heading Home
+        message: "The temperature is below 45 degrees.  Would you like to start your truck?"
+        data:
+          ttl: 0
+          priority: high
+          actions:
+            - action: "start_truck_cold" # The key you are sending for the event
+              title: "Yes" # The button title
+            - action: "no" # The key you are sending for the event
+              title: "N0" # The button title
+
+- alias: Start Truck via Actionable Notificaiton
+  trigger:
+    - platform: event
+      event_type: alexa_actionable_notification
+      event_data:
+        event_id: actionable_notification_start_truck
+        event_response: ResponseYes
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: start_truck_cold
+  action:
+    - service: rest_command.start_truck

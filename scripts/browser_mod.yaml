@@ -3344,7 +3344,7 @@ popup_manual_alarm:
         deviceID: ["{{ ','.join(deviceID) }}"]
         title: Manual Alarm Clock
         card:
-          type: vertical-stack
+          type: custom:vertical-stack-in-card
           cards:
             - type: horizontal-stack
               cards:
@@ -3402,7 +3402,11 @@ popup_manual_alarm:
                     action: more-info
 
                 - type: "custom:gap-card"
-
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - entity: input_select.spotify_manual_alarm_playlist
+                  name: "Playlist"
             - type: "custom:time-picker-card"
               entity: input_datetime.master_manual_alarm
               name: Wake Time
@@ -3651,15 +3655,15 @@ popup_work_alarm:
         deviceID: ["{{ ','.join(deviceID) }}"]
         title: Work Alarm
         card:
-          type: vertical-stack
+          type: custom:vertical-stack-in-card
           cards:
             - type: entities
               show_header_toggle: false
               entities:
                 - entity: input_boolean.work_alarm_enabled
                   name: Enabled
-                - entity: input_datetime.master_work_alarm
-                  name: "Alarm Time"
+                - entity: input_select.spotify_work_alarm_playlist
+                  name: "Playlist"
             - type: "custom:time-picker-card"
               entity: input_datetime.master_work_alarm
               name: Wake Time
