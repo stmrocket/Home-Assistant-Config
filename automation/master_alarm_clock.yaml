@@ -49,18 +49,30 @@
       entity_id: input_boolean.manual_alarm_horn
       state: "off"
   action:
-    - service: media_player.play_media
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ not states('input_select.spotify_playlist') == states('input_select.spotify_manual_alarm_playlist')}}"
+          sequence:
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.spotify_restore_playlist
+                option: "{{ states('input_select.spotify_playlist')}}"
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.spotify_playlist
+                option: "{{ states('input_select.spotify_manual_alarm_playlist')}}"
+            - service: script.spotify_change_playlist
+    - service: mqtt.publish
       data:
-        entity_id: media_player.alexa_master_bedroom
-        media_content_id: "reset master bedroom echo"
-        media_content_type: "routine"
+        topic: nuvo/command/set/zone/vol
+        payload: 4,60
     - delay:
-        seconds: 5
-    - service: media_player.play_media
+        milliseconds: 500
+    - service: mqtt.publish
       data:
-        entity_id: media_player.alexa_master_bedroom
-        media_content_id: "today's worship"
-        media_content_type: "PANDORA"
+        topic: nuvo/command/set/zone/src
+        payload: 4,1
     - service: light.turn_on
       data:
         entity_id: light.master_bedroom_lamps
@@ -141,6 +153,20 @@
       entity_id: input_boolean.work_alarm_ringing
       state: "on"
   action:
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ not states('input_select.spotify_playlist') == states('input_select.spotify_work_alarm_playlist')}}"
+          sequence:
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.spotify_restore_playlist
+                option: "{{ states('input_select.spotify_playlist')}}"
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.spotify_playlist
+                option: "{{ states('input_select.spotify_work_alarm_playlist')}}"
+            - service: script.spotify_change_playlist
     - service: light.turn_on
       data:
         entity_id: light.master_bedroom_lamps
@@ -261,8 +287,8 @@
       data:
         topic: horn/command/set/clock
         payload: "OFF"
-    - service: media_player.turn_off
-      entity_id: media_player.alexa_master_bedroom
+    - service: media_player.media_pause
+      entity_id: media_player.spotify_home
     - service: light.turn_off
       entity_id: light.master_bedroom_lamps
     - service: timer.start
@@ -287,11 +313,8 @@
       entity_id: input_boolean.manual_alarm_horn
       state: "off"
   action:
-    - service: media_player.play_media
-      data:
-        entity_id: media_player.alexa_master_bedroom
-        media_content_id: "today's worship"
-        media_content_type: "PANDORA"
+    - service: media_player.media_play
+      entity_id: media_player.spotify_home
     - service: light.turn_on
       data:
         entity_id: light.master_bedroom_lamps
@@ -379,8 +402,6 @@
       data:
         topic: horn/command/set/clock
         payload: "OFF"
-    - service: media_player.turn_off
-      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
@@ -411,8 +432,6 @@
       data:
         topic: horn/command/set/clock
         payload: "OFF"
-    - service: media_player.turn_off
-      entity_id: media_player.alexa_master_bedroom
     - service: timer.cancel
       entity_id: timer.master_snooze
     - service: counter.reset
