@@ -493,10 +493,10 @@ popup_github:
                   color_type: icon
                   color: rgb(255, 255, 255)
                   icon: mdi:web
-                  name: Lovelace
+                  name: Tablets
                   tap_action:
                     action: call-service
-                    service: browser_mod.lovelace_reload
+                    service: script.tablets_reload
 
                 - type: "custom:gap-card"
 
