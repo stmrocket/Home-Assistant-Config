@@ -81,20 +81,20 @@ input_select:
       - Hot Country
       - Country Workout
 
-spotify_restore_playlist:
-  name: Playlist
-  options:
-    - Top Christian
-    - Christian Mix
-    - WorshipNow
-    - The Carnival Steel Drum Band
-    - Epic Film Scores for Studying
-    - Harry Potter Movie Soundtracks
-    - Christian Christmas
-    - A Soft Piano Christmas
-    - Christmas Hits
-    - Hot Country
-    - Country Workout
+  spotify_restore_playlist:
+    name: Playlist
+    options:
+      - Top Christian
+      - Christian Mix
+      - WorshipNow
+      - The Carnival Steel Drum Band
+      - Epic Film Scores for Studying
+      - Harry Potter Movie Soundtracks
+      - Christian Christmas
+      - A Soft Piano Christmas
+      - Christmas Hits
+      - Hot Country
+      - Country Workout
 
 timer:
   spotify_refresh:
