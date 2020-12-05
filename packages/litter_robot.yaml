@@ -75,6 +75,8 @@ sensor:
             Full
           {% elif  is_state('switch.litter_robot_sleep', 'on') -%}
             Sleep
+          {% elif  is_state('switch.litter_robot_sleep', 'NETWORK') -%}
+            Network
           {% else -%}
             Error
           {% endif -%}
