@@ -130,10 +130,15 @@ cards:
         state:
           - value: "on"
             color: rgb(228, 94, 101)
-            name: "[[[ return `${states['sensor.us_metar_mode'].state}%` ]]]"
+            name: "[[[ return `${states['sensor.us_metar_mode_clean'].state}` ]]]"
           - value: "off"
             color: rgb(255, 255, 255)
-            name: "[[[ return `${states['sensor.us_metar_mode'].state}%` ]]]"
+            name: Map
+        double_tap_action:
+          action: call-service
+          service: input_boolean.toggle
+          service_data:
+            entity_id: input_boolean.us_metar_mode
         hold_action:
           action: more-info
 

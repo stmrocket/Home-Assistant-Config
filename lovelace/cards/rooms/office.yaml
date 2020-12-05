@@ -95,17 +95,23 @@ cards:
         name: Lava Lamp
         hold_action:
           action: more-info
+
       - type: "custom:button-card"
-        entity: switch.texas_metar_map_power
+        entity: switch.tx_metar_map_power
         color_type: icon
         icon: mdi:map
         state:
           - value: "on"
             color: rgb(228, 94, 101)
-            name: "[[[ return `${states['sensor.tx_metar_mode'].state}%` ]]]"
+            name: "[[[ return `${states['sensor.tx_metar_mode_clean'].state}` ]]]"
           - value: "off"
             color: rgb(255, 255, 255)
-            name: "[[[ return `${states['sensor.tx_metar_mode'].state}%` ]]]"
+            name: Map
+        double_tap_action:
+          action: call-service
+          service: input_boolean.toggle
+          service_data:
+            entity_id: input_boolean.tx_metar_mode
         hold_action:
           action: more-info
       - type: "custom:gap-card"

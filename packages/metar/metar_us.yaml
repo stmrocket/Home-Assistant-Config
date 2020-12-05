@@ -82,6 +82,17 @@ sensor:
     payload_available: "Online"
     payload_not_available: "Offline"
 
+  - platform: template
+    sensors:
+      us_metar_mode_clean:
+        friendly_name: TX METAR Mode Clean Name
+        value_template: >-
+          {% if is_state('sensor.us_metar_mode', 'TEMP') -%}
+            Temperature
+          {% elif is_state('sensor.us_metar_mode', 'METAR') -%}
+            METAR
+          {% endif -%}
+
 automation:
   - alias: Update US METAR Map Display Mode
     trigger:
