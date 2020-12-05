@@ -123,7 +123,19 @@ cards:
         hold_action:
           action: more-info
 
-      - type: "custom:gap-card"
+      - type: "custom:button-card"
+        entity: switch.us_metar_map_power
+        color_type: icon
+        icon: mdi:map
+        state:
+          - value: "on"
+            color: rgb(228, 94, 101)
+            name: "[[[ return `${states['sensor.us_metar_mode'].state}%` ]]]"
+          - value: "off"
+            color: rgb(255, 255, 255)
+            name: "[[[ return `${states['sensor.us_metar_mode'].state}%` ]]]"
+        hold_action:
+          action: more-info
 
   - type: horizontal-stack
     cards:

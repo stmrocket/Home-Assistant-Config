@@ -199,11 +199,12 @@
         data:
           ttl: 0
           priority: high
+          tag: truck_start_cold
           actions:
             - action: "start_truck_cold" # The key you are sending for the event
               title: "Yes" # The button title
             - action: "no" # The key you are sending for the event
-              title: "N0" # The button title
+              title: "No" # The button title
 
 - alias: Start Truck via Actionable Notificaiton
   trigger:
@@ -218,3 +219,22 @@
         action: start_truck_cold
   action:
     - service: rest_command.start_truck
+
+- alias: Clear Truck Phone Notification if Alexa Responds
+  trigger:
+    - platform: event
+      event_type: alexa_actionable_notification
+      event_data:
+        event_id: actionable_notification_start_truck
+        event_response: ResponseYes
+    - platform: event
+      event_type: alexa_actionable_notification
+      event_data:
+        event_id: actionable_notification_start_truck
+        event_response: ResponseNo
+  action:
+    - service: notify.mobile_app_shawn_7t
+      data:
+        message: clear_notification
+        data:
+          tag: truck_start_cold

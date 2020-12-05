@@ -103,6 +103,12 @@ cards:
           - value: "off"
             icon: mdi:alarm-off
         name: Work
+        tap_action:
+          action: call-service
+          service: script.popup_work_alarm
+          service_data:
+            deviceID:
+              - this
         hold_action:
           action: call-service
           service: script.popup_work_alarm
@@ -120,6 +126,12 @@ cards:
           - value: "off"
             icon: mdi:alarm-off
         name: Manual
+        tap_action:
+          action: call-service
+          service: script.popup_manual_alarm
+          service_data:
+            deviceID:
+              - this
         hold_action:
           action: call-service
           service: script.popup_manual_alarm
