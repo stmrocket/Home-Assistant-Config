@@ -79,7 +79,6 @@ cards:
           action: more-info
   - type: horizontal-stack
     cards:
-      - type: "custom:gap-card"
       - type: "custom:button-card"
         entity: switch.office_peripherals
         color_type: icon
@@ -94,6 +93,19 @@ cards:
         color: rgb(228, 94, 101)
         icon: mdi:lava-lamp
         name: Lava Lamp
+        hold_action:
+          action: more-info
+      - type: "custom:button-card"
+        entity: switch.texas_metar_map_power
+        color_type: icon
+        icon: mdi:map
+        state:
+          - value: "on"
+            color: rgb(228, 94, 101)
+            name: "[[[ return `${states['sensor.tx_metar_mode'].state}%` ]]]"
+          - value: "off"
+            color: rgb(255, 255, 255)
+            name: "[[[ return `${states['sensor.tx_metar_mode'].state}%` ]]]"
         hold_action:
           action: more-info
       - type: "custom:gap-card"
