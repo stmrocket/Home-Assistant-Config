@@ -30,3 +30,10 @@
       to: armed_away
   action:
     - service: script.tablets_off
+
+- alias: Reload Tablets When HA Starts
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: script.tablets_reload
