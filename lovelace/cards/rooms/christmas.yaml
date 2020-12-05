@@ -120,7 +120,7 @@ card:
               icon: mdi:string-lights
             - value: "off"
               icon: mdi:string-lights-off
-          name: Snowman
+          name: Snow an
           hold_action:
             action: more-info
     - type: horizontal-stack

@@ -85,7 +85,7 @@ sensor:
   - platform: template
     sensors:
       us_metar_mode_clean:
-        friendly_name: TX METAR Mode Clean Name
+        friendly_name: US METAR Mode Clean Name
         value_template: >-
           {% if is_state('sensor.us_metar_mode', 'TEMP') -%}
             Temperature

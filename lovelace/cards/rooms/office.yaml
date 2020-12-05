@@ -97,7 +97,7 @@ cards:
           action: more-info
 
       - type: "custom:button-card"
-        entity: switch.tx_metar_map_power
+        entity: switch.texas_metar_map_power
         color_type: icon
         icon: mdi:map
         state:
