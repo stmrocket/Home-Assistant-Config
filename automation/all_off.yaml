@@ -58,6 +58,8 @@
         - switch.back_porch_light
         - switch.shack_light
         - switch.office_peripherals
+        - switch.texas_metar_map_power
+        - switch.us_metar_map_power
 
 - alias: All Off Away
   trigger:
