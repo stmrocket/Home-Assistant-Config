@@ -137,10 +137,10 @@ automation:
     trigger:
       - platform: state
         entity_id: alarm_control_panel.house
-        to: disarmed
+        to: armed_away
       - platform: state
         entity_id: alarm_control_panel.house
-        to: armed_home
+        to: armed_night
     action:
       - service: switch.turn_off
         entity_id: switch.us_metar_map_power
