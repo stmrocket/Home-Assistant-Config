@@ -131,16 +131,16 @@ automation:
         to: armed_home
     action:
       - service: switch.turn_on
-        entity_id: switch.tx_metar_map_power
+        entity_id: switch.texas_metar_map_power
 
   - alias: Texas Map Off When Home and Awake
     trigger:
       - platform: state
         entity_id: alarm_control_panel.house
-        to: disarmed
+        to: armed_away
       - platform: state
         entity_id: alarm_control_panel.house
-        to: armed_home
+        to: armed_night
     action:
       - service: switch.turn_off
-        entity_id: switch.tx_metar_map_power
+        entity_id: switch.texas_metar_map_power
