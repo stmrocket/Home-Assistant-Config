@@ -120,3 +120,27 @@ automation:
                   topic: metar/tx/command/set/mode
                   payload: METAR
                   retain: true
+
+  - alias: Texas Map On When Home and Awake
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: disarmed
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: armed_home
+    action:
+      - service: switch.turn_on
+        entity_id: switch.tx_metar_map_power
+
+  - alias: Texas Map Off When Home and Awake
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: disarmed
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: armed_home
+    action:
+      - service: switch.turn_off
+        entity_id: switch.tx_metar_map_power
