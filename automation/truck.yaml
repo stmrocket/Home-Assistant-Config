@@ -235,6 +235,8 @@
   action:
     - service: notify.mobile_app_shawn_7t
       data:
+        ttl: 0
+        priority: high
         message: clear_notification
         data:
           tag: truck_start_cold
