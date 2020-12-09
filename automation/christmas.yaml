@@ -14,6 +14,7 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
+      from: arming
       to: armed_away
     - platform: state
       entity_id: alarm_control_panel.house
