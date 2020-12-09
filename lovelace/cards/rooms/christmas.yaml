@@ -151,28 +151,19 @@ card:
           hold_action:
             action: more-info
 
-        - type: custom:button-card
+        - type: "custom:button-card"
+          entity: switch.office_decor
           color_type: icon
-          icon: mdi:candle
-          name: Candles
-          tap_action:
-            action: call-service
-            service: mqtt.publish
-            service_data:
-              topic: ir/all/cmnd/irsend
-              payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
-          double_tap_action:
-            action: call-service
-            service: mqtt.publish
-            service_data:
-              topic: ir/all/cmnd/irsend
-              payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
+          color: rgb(228, 94, 101)
+          state:
+            - value: "on"
+              icon: mdi:string-lights
+            - value: "off"
+              icon: mdi:string-lights-off
+          name: Office
           hold_action:
-            action: call-service
-            service: script.popup_candles
-            service_data:
-              deviceID:
-                - this
+            action: more-info
+
         - type: "custom:button-card"
           entity: input_boolean.christmas_show
           color_type: icon
