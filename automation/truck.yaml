@@ -157,8 +157,8 @@
 
 - alias: Alexa Prompt to Start Truck When Cold
   trigger:
-    - platform: time
-      at: "06:20:00"
+    - platform: template
+      value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.work_leave_time' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false)) }}"
   condition:
     - condition: and
       conditions:
@@ -168,6 +168,9 @@
         - condition: state
           entity_id: binary_sensor.work_holiday
           state: "off"
+        - condition: state
+          entity_id: light.kitchen_light
+          state: "on"
         - condition: time
           weekday:
             - mon

@@ -3672,6 +3672,14 @@ popup_work_alarm:
                 name: inside
                 align_controls: right
                 hour_mode: single
+            - type: "custom:time-picker-card"
+              entity: input_datetime.work_leave_time
+              name: Leave Time
+              hour_mode: 12
+              layout:
+                name: inside
+                align_controls: right
+                hour_mode: single
 
 popup_kitchen_leak:
   sequence:
