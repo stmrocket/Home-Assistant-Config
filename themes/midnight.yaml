@@ -3,15 +3,8 @@
 # Midnight Theme
 #
 midnight:
-  card-mod-theme: midnight
-  card-mod-root: |
-    app-header {
-      background: rgba(150,150,150,0.2) !important;
-    }
-    app-toolbar {
-      background: none !important;
-    }
-
+  app-header-background-color: "rgba(150,150,150,0.2)"
+  app-toolbar-background-color: none
   header-height: 48px
   accent-color: "#E45E65"
   card-background-color: "var(--primary-background-color)"

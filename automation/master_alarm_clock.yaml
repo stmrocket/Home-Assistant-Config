@@ -73,6 +73,8 @@
       data:
         topic: nuvo/command/set/zone/src
         payload: 4,1
+    - service: media_player.media_play
+      entity_id: media_player.spotify_home
     - service: light.turn_on
       data:
         entity_id: light.master_bedroom_lamps
@@ -202,6 +204,8 @@
     - service: switch.turn_on
       data:
         entity_id: switch.nuvo_zone_10_power
+    - service: media_player.media_play
+      entity_id: media_player.spotify_home
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.master_lamp_timer

@@ -43,6 +43,10 @@ input_datetime:
     name: Work Alarm Clock Setting
     has_date: false
     has_time: true
+  work_leave_time:
+    name: Work Leave Time
+    has_date: false
+    has_time: true
 
 sensor:
   - platform: time_date
