@@ -627,3 +627,13 @@
         data:
           ttl: 0
           priority: high
+
+- alias: Record HA Shutdown Time
+  trigger:
+    - platform: homeassistant
+      event: shutdown
+  action:
+    - service: input_datetime.set_datetime
+      entity_id: input_datetime.ha_shutdown
+      data:
+        time: "{{ now().strftime('%H:%M:%S') }}"
