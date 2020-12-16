@@ -633,7 +633,7 @@
     - platform: homeassistant
       event: shutdown
   action:
-    - service: input_datetime.set_datetime
-      entity_id: input_datetime.ha_shutdown
-      data:
-        time: "{{ now()) }}"
+    - service: input_text.set_value
+      entity_id: input_text.ha_shutdown
+      data_template:
+        value: "{{ now() }}"
