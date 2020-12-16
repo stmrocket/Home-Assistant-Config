@@ -636,4 +636,4 @@
     - service: input_datetime.set_datetime
       entity_id: input_datetime.ha_shutdown
       data:
-        time: "{{ now().strftime('%H:%M:%S') }}"
+        time: "{{ now()) }}"
