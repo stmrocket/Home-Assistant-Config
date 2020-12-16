@@ -987,5 +987,3 @@ group:
 input_text:
   ha_shutdown:
     name: Home Assistant Last Shutdown
-    has_date: true
-    has_time: true
