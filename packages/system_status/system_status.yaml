@@ -742,7 +742,7 @@ sensor:
       hass_restart:
         friendly_name: Home Assistant Restart Time
         value_template: >-
-          {% set time = (as_timestamp(states('sensor.time_online'))) - (as_timestamp(states('input_text.ha_shutddown'))) | int %}
+          {% set time = (as_timestamp(states('sensor.time_online'))) - (as_timestamp(states('sensor.ha_shutddown'))) | int %}
             {% set seconds = ((time % 60) ) | int%}
             {% set minutes = (time / 60) | int %}
               {%- if time == 0 -%}
@@ -868,6 +868,10 @@ sensor:
       - current_version
       - addons
 
+  - platform: mqtt
+    state_topic: "hass/restart"
+    name: "HA Shutdown"
+
 ####################################################
 #                                                  #
 #                  NUMERIC INPUT                   #
@@ -983,7 +987,3 @@ group:
       - switch.mysql
       - switch.tv_headend
       - switch.eagle_mqtt
-
-input_text:
-  ha_shutdown:
-    name: Home Assistant Last Shutdown
