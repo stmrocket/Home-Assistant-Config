@@ -633,6 +633,11 @@
     - platform: homeassistant
       event: shutdown
   action:
+    - service: mqtt.publish
+      data_template:
+        topic: ha/restart
+        payload: "{{ now() }}"
+        retain: true
     - service: input_text.set_value
       entity_id: input_text.ha_shutdown
       data_template:
