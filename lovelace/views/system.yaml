@@ -442,10 +442,18 @@ cards:
                   action: call-service
                   service: script.reset_all_entity_counters
                 type: state-label
+              - entity: sensor.hass_restart
+                prefix: "Last Restart: "
+                style:
+                  bottom: 45%
+                  font-size: 110%
+                  right: 5%
+                  transform: initial
+                type: state-label
               - entity: sensor.hass_uptime
                 prefix: "Uptime: "
                 style:
-                  bottom: 23%
+                  bottom: 0%
                   font-size: 110%
                   right: 5%
                   transform: initial
