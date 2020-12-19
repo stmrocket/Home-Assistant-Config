@@ -32,6 +32,7 @@ cards:
           - entity: camera.east_front
           - entity: camera.west_front
           - entity: camera.back_yard
+      - type: "custom:gap-card"
 
   #################################################################
   #                                                               #
@@ -171,7 +172,7 @@ cards:
               action: more-info
 
           - type: "custom:button-card"
-            entity: light.office_dek_light
+            entity: light.office_desk_light
             color_type: icon
             color: rgb(228, 94, 101)
             state:
