@@ -87,6 +87,20 @@ cards:
         name: Desk
         hold_action:
           action: more-info
+
+      - type: "custom:button-card"
+        entity: light.office_dek_light
+        color_type: icon
+        color: rgb(228, 94, 101)
+        state:
+          - value: "on"
+            icon: mdi:led-on
+          - value: "off"
+            icon: mdi:led-off
+        name: LEDs
+        hold_action:
+          action: more-info
+
       - type: "custom:button-card"
         entity: switch.lava_lamp
         color_type: icon
@@ -114,7 +128,7 @@ cards:
             entity_id: input_boolean.tx_metar_mode
         hold_action:
           action: more-info
-      - type: "custom:gap-card"
+
   - type: custom:mini-media-player
     entity: media_player.office_stereo
     name: Office
