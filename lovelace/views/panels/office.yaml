@@ -32,7 +32,6 @@ cards:
           - entity: camera.east_front
           - entity: camera.west_front
           - entity: camera.back_yard
-      - type: "custom:gap-card"
 
   #################################################################
   #                                                               #
@@ -162,7 +161,6 @@ cards:
               action: more-info
       - type: horizontal-stack
         cards:
-          - type: "custom:gap-card"
           - type: "custom:button-card"
             entity: switch.office_peripherals
             color_type: icon
@@ -171,6 +169,20 @@ cards:
             name: Desk
             hold_action:
               action: more-info
+
+          - type: "custom:button-card"
+            entity: light.office_dek_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:led-on
+              - value: "off"
+                icon: mdi:led-off
+            name: LEDs
+            hold_action:
+              action: more-info
+
           - type: "custom:button-card"
             entity: switch.lava_lamp
             color_type: icon
@@ -179,4 +191,22 @@ cards:
             name: Lava Lamp
             hold_action:
               action: more-info
-          - type: "custom:gap-card"
+
+          - type: "custom:button-card"
+            entity: switch.texas_metar_map_power
+            color_type: icon
+            icon: mdi:map
+            state:
+              - value: "on"
+                color: rgb(228, 94, 101)
+                name: "[[[ return `${states['sensor.tx_metar_mode_clean'].state}` ]]]"
+              - value: "off"
+                color: rgb(255, 255, 255)
+                name: Map
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.tx_metar_mode
+            hold_action:
+              action: more-info
