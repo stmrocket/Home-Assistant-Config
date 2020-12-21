@@ -651,7 +651,9 @@
       to: false
   action:
     - service: media_player.shuffle_set
-      shuffle: true
+      data:
+        entity_id: media_player.spotify_home
+        shuffle: true
 
 - alias: Spotify Enable Repeat
   trigger:
@@ -665,4 +667,6 @@
       to: "one"
   action:
     - service: media_player.repeat_set
-      repeat: "all"
+      data:
+        entity_id: media_player.spotify_home
+        repeat: "all"
