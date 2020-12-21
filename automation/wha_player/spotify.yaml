@@ -642,3 +642,27 @@
         seconds: 1
     - service: homeassistant.update_entity
       entity_id: media_player.spotify_home
+
+- alias: Spotify Enable Shuffle
+  trigger:
+    - platform: state
+      entity_id: media_player.spotify_home
+      attribute: shuffle
+      to: false
+  action:
+    - service: media_player.shuffle_set
+      shuffle: true
+
+- alias: Spotify Enable Repeat
+  trigger:
+    - platform: state
+      entity_id: media_player.spotify_home
+      attribute: repeat
+      to: "off"
+    - platform: state
+      entity_id: media_player.spotify_home
+      attribute: repeat
+      to: "one"
+  action:
+    - service: media_player.repeat_set
+      repeat: "all"
