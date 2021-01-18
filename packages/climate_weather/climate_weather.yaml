@@ -303,6 +303,10 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['day_5'].precip_forecast }}"
     unit_of_measurement: "in"
+  - platform: mqtt
+    name: KTME Current Visibility
+    state_topic: weather/ktme/visibility
+    unit_of_measurement: "mi"
 
 rest_command:
   update_wunderground:
