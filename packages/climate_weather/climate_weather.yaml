@@ -147,12 +147,12 @@ sensor:
   - platform: mqtt
     name: OpenWeatherMap Current Apparent Temperature
     state_topic: openweathermap
-    value_template: "{{value_json['current'].feels_like }}"
+    value_template: "{{value_json['current'].apparent }}"
     unit_of_measurement: "°F"
   - platform: mqtt
     name: OpenWeatherMap Current POP
     state_topic: openweathermap
-    value_template: "{{value_json['current'].pop }}"
+    value_template: "{{value_json['current']precip_chance }}"
     unit_of_measurement: "%"
   - platform: mqtt
     name: OpenWeatherMap Current Precip Forecast
@@ -184,7 +184,7 @@ sensor:
   - platform: mqtt
     name: OpenWeatherMap Day 1 POP
     state_topic: openweathermap
-    value_template: "{{value_json['day_1'].pop }}"
+    value_template: "{{value_json['day_1']precip_chance }}"
     unit_of_measurement: "%"
   - platform: mqtt
     name: OpenWeatherMap Day 1 Precip Forecast
@@ -212,7 +212,7 @@ sensor:
   - platform: mqtt
     name: OpenWeatherMap Day 2 POP
     state_topic: openweathermap
-    value_template: "{{value_json['day_2'].pop }}"
+    value_template: "{{value_json['day_2']precip_chance }}"
     unit_of_measurement: "%"
   - platform: mqtt
     name: OpenWeatherMap Day 2 Precip Forecast
@@ -240,7 +240,7 @@ sensor:
   - platform: mqtt
     name: OpenWeatherMap Day 3 POP
     state_topic: openweathermap
-    value_template: "{{value_json['day_3'].pop }}"
+    value_template: "{{value_json['day_3']precip_chance }}"
     unit_of_measurement: "%"
   - platform: mqtt
     name: OpenWeatherMap Day 3 Precip Forecast
@@ -268,7 +268,7 @@ sensor:
   - platform: mqtt
     name: OpenWeatherMap Day 4 POP
     state_topic: openweathermap
-    value_template: "{{value_json['day_4'].pop }}"
+    value_template: "{{value_json['day_4']precip_chance }}"
     unit_of_measurement: "%"
   - platform: mqtt
     name: OpenWeatherMap Day 4 Precip Forecast
@@ -296,7 +296,7 @@ sensor:
   - platform: mqtt
     name: OpenWeatherMap Day 5 POP
     state_topic: openweathermap
-    value_template: "{{value_json['day_5'].pop }}"
+    value_template: "{{value_json['day_5']precip_chance }}"
     unit_of_measurement: "%"
   - platform: mqtt
     name: OpenWeatherMap Day 5 Precip Forecast
