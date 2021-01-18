@@ -90,6 +90,220 @@ sensor:
     state_topic: "hcfws/rain/last"
     unit_of_measurement: "in"
 
+  #OpenWeatherMap
+  - platform: mqtt
+    name: OpenWeatherMap Current Icon
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].icon }}"
+  - platform: mqtt
+    name: OpenWeatherMap Current Summary
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].summary }}"
+  - platform: mqtt
+    name: OpenWeatherMap Current Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].temperature }}"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: OpenWeatherMap Current Visibility
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].visibility }}"
+    unit_of_measurement: "mi"
+  - platform: mqtt
+    name: OpenWeatherMap Current Maximum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].maxtemp }}"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: OpenWeatherMap Current Minimum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].mintemp }}"
+    unit_of_measurement: "°F"  
+  - platform: mqtt
+    name: OpenWeatherMap Current Wind Bearing
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].wind_dir }}"
+    unit_of_measurement: "°"
+  - platform: mqtt
+    name: OpenWeatherMap Current Wind Speed
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].wind_spd }}"
+    unit_of_measurement: "mi/h"
+  - platform: mqtt
+    name: OpenWeatherMap Current Wind Gust
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].wind_gust }}"
+    unit_of_measurement: "mi/h"
+  - platform: mqtt
+    name: OpenWeatherMap Current Humidity
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].humidity }}"
+    unit_of_measurement: "%"
+  - platform: mqtt
+    name: OpenWeatherMap Current Pressure
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].pressure }}"
+    unit_of_measurement: "hPa"
+  - platform: mqtt
+    name: OpenWeatherMap Current Apparent Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].feels_like }}"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: OpenWeatherMap Current POP
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].pop }}"
+    unit_of_measurement: "%"
+  - platform: mqtt
+    name: OpenWeatherMap Current Precip Forecast
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].precip_forecast }}"
+    unit_of_measurement: "in"
+  - platform: mqtt
+    name: OpenWeatherMap Current UV Index
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].uv_index }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 1 Icon
+    state_topic: openweathermap
+    value_template: "{{value_json['day_1'].icon }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 1 Summary
+    state_topic: openweathermap
+    value_template: "{{value_json['day_1'].summary }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 1 Maximum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_1'].maxtemp }}"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: OpenWeatherMap Day 1 Minimum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_1'].mintemp }}"
+    unit_of_measurement: "°F"  
+  - platform: mqtt
+    name: OpenWeatherMap Day 1 POP
+    state_topic: openweathermap
+    value_template: "{{value_json['day_1'].pop }}"
+    unit_of_measurement: "%"
+  - platform: mqtt
+    name: OpenWeatherMap Day 1 Precip Forecast
+    state_topic: openweathermap
+    value_template: "{{value_json['day_1'].precip_forecast }}"
+    unit_of_measurement: "in"
+  - platform: mqtt
+    name: OpenWeatherMap Day 2 Icon
+    state_topic: openweathermap
+    value_template: "{{value_json['day_2'].icon }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 2 Summary
+    state_topic: openweathermap
+    value_template: "{{value_json['day_2'].summary }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 2 Maximum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_2'].maxtemp }}"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: OpenWeatherMap Day 2 Minimum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_2'].mintemp }}"
+    unit_of_measurement: "°F"  
+  - platform: mqtt
+    name: OpenWeatherMap Day 2 POP
+    state_topic: openweathermap
+    value_template: "{{value_json['day_2'].pop }}"
+    unit_of_measurement: "%"
+  - platform: mqtt
+    name: OpenWeatherMap Day 2 Precip Forecast
+    state_topic: openweathermap
+    value_template: "{{value_json['day_2'].precip_forecast }}"
+    unit_of_measurement: "in"
+  - platform: mqtt
+    name: OpenWeatherMap Day 3 Icon
+    state_topic: openweathermap
+    value_template: "{{value_json['day_3'].icon }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 3 Summary
+    state_topic: openweathermap
+    value_template: "{{value_json['day_3'].summary }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 3 Maximum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_3'].maxtemp }}"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: OpenWeatherMap Day 3 Minimum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_3'].mintemp }}"
+    unit_of_measurement: "°F"  
+  - platform: mqtt
+    name: OpenWeatherMap Day 3 POP
+    state_topic: openweathermap
+    value_template: "{{value_json['day_3'].pop }}"
+    unit_of_measurement: "%"
+  - platform: mqtt
+    name: OpenWeatherMap Day 3 Precip Forecast
+    state_topic: openweathermap
+    value_template: "{{value_json['day_3'].precip_forecast }}"
+    unit_of_measurement: "in"
+  - platform: mqtt
+    name: OpenWeatherMap Day 4 Icon
+    state_topic: openweathermap
+    value_template: "{{value_json['day_4'].icon }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 4 Summary
+    state_topic: openweathermap
+    value_template: "{{value_json['day_4'].summary }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 4 Maximum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_4'].maxtemp }}"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: OpenWeatherMap Day 4 Minimum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_4'].mintemp }}"
+    unit_of_measurement: "°F"  
+  - platform: mqtt
+    name: OpenWeatherMap Day 4 POP
+    state_topic: openweathermap
+    value_template: "{{value_json['day_4'].pop }}"
+    unit_of_measurement: "%"
+  - platform: mqtt
+    name: OpenWeatherMap Day 4 Precip Forecast
+    state_topic: openweathermap
+    value_template: "{{value_json['day_4'].precip_forecast }}"
+    unit_of_measurement: "in"
+  - platform: mqtt
+    name: OpenWeatherMap Day 5 Icon
+    state_topic: openweathermap
+    value_template: "{{value_json['day_5'].icon }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 5 Summary
+    state_topic: openweathermap
+    value_template: "{{value_json['day_5'].summary }}"
+  - platform: mqtt
+    name: OpenWeatherMap Day 5 Maximum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_5'].maxtemp }}"
+    unit_of_measurement: "°F"
+  - platform: mqtt
+    name: OpenWeatherMap Day 5 Minimum Temperature
+    state_topic: openweathermap
+    value_template: "{{value_json['day_5'].mintemp }}"
+    unit_of_measurement: "°F"  
+  - platform: mqtt
+    name: OpenWeatherMap Day 5 POP
+    state_topic: openweathermap
+    value_template: "{{value_json['day_5'].pop }}"
+    unit_of_measurement: "%"
+  - platform: mqtt
+    name: OpenWeatherMap Day 5 Precip Forecast
+    state_topic: openweathermap
+    value_template: "{{value_json['day_5'].precip_forecast }}"
+    unit_of_measurement: "in"
+
 rest_command:
   update_wunderground:
     url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.acurite_outside_temperature') }}&humidity={{ states('sensor.acurite_outside_humidity') }}&dewptf={{ states('sensor.dewpoint_outside') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&action=updateraw"
