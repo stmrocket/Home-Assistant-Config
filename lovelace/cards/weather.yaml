@@ -61,7 +61,7 @@ slot_r4: sun_following
 slot_l5: visibility
 slot_r5: pressure
 slot_l6: precip_current
-slot_rs: precip_current
+slot_r6: precip_intensity_current
 current_data_top_margin: 6em
 current_text_top_margin: 45px
 current_text_alignment: left
