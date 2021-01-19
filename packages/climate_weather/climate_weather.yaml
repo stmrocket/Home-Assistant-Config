@@ -164,6 +164,14 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['current'].uv_index }}"
   - platform: mqtt
+    name: OpenWeatherMap Current UV Risk
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].uv_risk }}"
+  - platform: mqtt
+    name: OpenWeatherMap Current UV Combined
+    state_topic: openweathermap
+    value_template: "{{value_json['current'].uv_combined }}"
+  - platform: mqtt
     name: OpenWeatherMap Day 1 Icon
     state_topic: openweathermap
     value_template: "{{value_json['day_1'].icon }}"
