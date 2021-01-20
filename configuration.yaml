@@ -38,6 +38,11 @@ lovelace:
       filename: lovelace-shack.yaml
       title: Shack Tablet
       show_in_sidebar: false
+    lovelace-mobile:
+      mode: yaml
+      filename: lovelace-mobile.yaml
+      title: Mobile Interface
+      show_in_sidebar: false
   resources:
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
