@@ -97,6 +97,8 @@ lovelace:
       type: module
     - url: /hacsfiles/bom-weather-card/bom-weather-card.js
       type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
 
 # Discover some devices automatically
 discovery:
