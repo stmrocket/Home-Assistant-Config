@@ -1,69 +1,80 @@
-type: 'custom:bom-weather-card'
-title: BOM Weather
-entity_current_conditions: sensor.openweathermap_current_icon
-entity_current_text: sensor.openweathermap_current_summary
-entity_temperature: sensor.acurite_outside_temperature
-entity_forecast_high_temp_1: sensor.openweathermap_day_1_maximum_temperature
-entity_forecast_high_temp_2: sensor.openweathermap_day_2_maximum_temperature
-entity_forecast_high_temp_3: sensor.openweathermap_day_3_maximum_temperature
-entity_forecast_high_temp_4: sensor.openweathermap_day_4_maximum_temperature
-entity_forecast_high_temp_5: sensor.openweathermap_day_5_maximum_temperature
-entity_forecast_icon_1: sensor.openweathermap_day_1_icon
-entity_forecast_icon_2: sensor.openweathermap_day_2_icon
-entity_forecast_icon_3: sensor.openweathermap_day_3_icon
-entity_forecast_icon_4: sensor.openweathermap_day_4_icon
-entity_forecast_icon_5: sensor.openweathermap_day_5_icon
-entity_forecast_low_temp_1: sensor.openweathermap_day_1_minimum_temperature
-entity_forecast_low_temp_2: sensor.openweathermap_day_2_minimum_temperature
-entity_forecast_low_temp_3: sensor.openweathermap_day_3_minimum_temperature
-entity_forecast_low_temp_4: sensor.openweathermap_day_4_minimum_temperature
-entity_forecast_low_temp_5: sensor.openweathermap_day_5_minimum_temperature
-entity_summary_1: sensor.openweathermap_day_1_summary
-entity_summary_2: sensor.openweathermap_day_2_summary
-entity_summary_3: sensor.openweathermap_day_3_summary
-entity_summary_4: sensor.openweathermap_day_4_summary
-entity_summary_5: sensor.openweathermap_day_5_summary
-entity_sun: sun.sun
-entity_daytime_high: sensor.openweathermap_current_maximum_temperature
-entity_daytime_low: sensor.openweathermap_current_minimum_temperature
-entity_wind_bearing: sensor.openweathermap_current_wind_bearing
-entity_wind_speed: sensor.openweathermap_current_wind_speed
-entity_wind_gust: sensor.openweathermap_current_wind_gust
-entity_humidity: sensor.acurite_outside_humidity
-entity_apparent_temp: sensor.openweathermap_current_apparent_temperature
-entity_daily_summary: sensor.weather_description
-entity_pop: sensor.openweathermap_current_pop
-entity_pop_intensity: sensor.openweathermap_current_precip_forecast
-entity_possible_today: sensor.openweathermap_current_precip_forecast
-entity_pos_1: sensor.openweathermap_day_1_precip_forecast
-entity_pos_2: sensor.openweathermap_day_2_precip_forecast
-entity_pos_3: sensor.openweathermap_day_3_precip_forecast
-entity_pos_4: sensor.openweathermap_day_4_precip_forecast
-entity_pos_5: sensor.openweathermap_day_5_precip_forecast
-entity_pop_1: sensor.openweathermap_day_1_pop
-entity_pop_2: sensor.openweathermap_day_2_pop
-entity_pop_3: sensor.openweathermap_day_3_pop
-entity_pop_4: sensor.openweathermap_day_4_pop
-entity_pop_5: sensor.openweathermap_day_5_pop
-entity_uv_alert_summary: sensor.openweathermap_current_uv_combined
-entity_visibility: sensor.ktme_current_visibility
-entity_pressure: sensor.aquara_den_pressure
-entity_precip_current: sensor.rain_day
-entity_precip_intensity_current: sensor.rain_rate
-slot_l1: daytime_low
-slot_r1: daytime_high
-slot_l2: wind
-slot_r2: pop
-slot_l3: humidity
-slot_r3: uv_summary
-slot_l4: visibility
-slot_r4: pressure
-slot_l5: sun_next
-slot_r5: sun_following
-slot_l6: precip_current
-slot_r6: precip_intensity_current
-current_data_top_margin: 6em
-current_text_top_margin: 45px
-current_text_alignment: left
-current_text_left_pos: 5em
-refresh_interval: 5
+type: 'custom:layout-card'
+layout: vertical
+column_width: 100%
+cards:
+  - type: 'custom:layout-card'
+    layout: grid
+    gridrows: auto
+    gridcols: auto 0px
+    cards:
+      - type: 'custom:bom-weather-card'
+        gridrow: 1
+        gridcol: 1
+        title: BOM Weather
+        entity_current_conditions: sensor.openweathermap_current_icon
+        entity_current_text: sensor.openweathermap_current_summary
+        entity_temperature: sensor.acurite_outside_temperature
+        entity_forecast_high_temp_1: sensor.openweathermap_day_1_maximum_temperature
+        entity_forecast_high_temp_2: sensor.openweathermap_day_2_maximum_temperature
+        entity_forecast_high_temp_3: sensor.openweathermap_day_3_maximum_temperature
+        entity_forecast_high_temp_4: sensor.openweathermap_day_4_maximum_temperature
+        entity_forecast_high_temp_5: sensor.openweathermap_day_5_maximum_temperature
+        entity_forecast_icon_1: sensor.openweathermap_day_1_icon
+        entity_forecast_icon_2: sensor.openweathermap_day_2_icon
+        entity_forecast_icon_3: sensor.openweathermap_day_3_icon
+        entity_forecast_icon_4: sensor.openweathermap_day_4_icon
+        entity_forecast_icon_5: sensor.openweathermap_day_5_icon
+        entity_forecast_low_temp_1: sensor.openweathermap_day_1_minimum_temperature
+        entity_forecast_low_temp_2: sensor.openweathermap_day_2_minimum_temperature
+        entity_forecast_low_temp_3: sensor.openweathermap_day_3_minimum_temperature
+        entity_forecast_low_temp_4: sensor.openweathermap_day_4_minimum_temperature
+        entity_forecast_low_temp_5: sensor.openweathermap_day_5_minimum_temperature
+        entity_summary_1: sensor.openweathermap_day_1_summary
+        entity_summary_2: sensor.openweathermap_day_2_summary
+        entity_summary_3: sensor.openweathermap_day_3_summary
+        entity_summary_4: sensor.openweathermap_day_4_summary
+        entity_summary_5: sensor.openweathermap_day_5_summary
+        entity_sun: sun.sun
+        entity_daytime_high: sensor.openweathermap_current_maximum_temperature
+        entity_daytime_low: sensor.openweathermap_current_minimum_temperature
+        entity_wind_bearing: sensor.openweathermap_current_wind_bearing
+        entity_wind_speed: sensor.openweathermap_current_wind_speed
+        entity_wind_gust: sensor.openweathermap_current_wind_gust
+        entity_humidity: sensor.acurite_outside_humidity
+        entity_apparent_temp: sensor.openweathermap_current_apparent_temperature
+        entity_daily_summary: sensor.weather_description
+        entity_pop: sensor.openweathermap_current_pop
+        entity_pop_intensity: sensor.openweathermap_current_precip_forecast
+        entity_possible_today: sensor.openweathermap_current_precip_forecast
+        entity_pos_1: sensor.openweathermap_day_1_precip_forecast
+        entity_pos_2: sensor.openweathermap_day_2_precip_forecast
+        entity_pos_3: sensor.openweathermap_day_3_precip_forecast
+        entity_pos_4: sensor.openweathermap_day_4_precip_forecast
+        entity_pos_5: sensor.openweathermap_day_5_precip_forecast
+        entity_pop_1: sensor.openweathermap_day_1_pop
+        entity_pop_2: sensor.openweathermap_day_2_pop
+        entity_pop_3: sensor.openweathermap_day_3_pop
+        entity_pop_4: sensor.openweathermap_day_4_pop
+        entity_pop_5: sensor.openweathermap_day_5_pop
+        entity_uv_alert_summary: sensor.openweathermap_current_uv_combined
+        entity_visibility: sensor.ktme_current_visibility
+        entity_pressure: sensor.aquara_den_pressure
+        entity_precip_current: sensor.rain_day
+        entity_precip_intensity_current: sensor.rain_rate
+        slot_l1: daytime_low
+        slot_r1: daytime_high
+        slot_l2: wind
+        slot_r2: pop
+        slot_l3: humidity
+        slot_r3: uv_summary
+        slot_l4: visibility
+        slot_r4: pressure
+        slot_l5: sun_next
+        slot_r5: sun_following
+        slot_l6: precip_current
+        slot_r6: precip_intensity_current
+        current_data_top_margin: 6em
+        current_text_top_margin: 45px
+        current_text_alignment: left
+        current_text_left_pos: 5em
+        refresh_interval: 5
