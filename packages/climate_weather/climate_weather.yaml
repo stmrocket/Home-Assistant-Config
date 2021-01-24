@@ -35,9 +35,9 @@ sensor:
       weather_description:
         value_template: >-
           {% if is_state('input_boolean.is_raining','on') -%}
-            {{ states('sensor.openweathermap_current_weather_alerts') }}Rain now.  {{ states('sensor.openweathermap_weekly_summary') }}
+            {{ states('sensor.openweathermap_current_weather_alerts') }}  Rain now.  {{ states('sensor.openweathermap_weekly_summary') }}
           {% else -%}
-          {{ states('sensor.openweathermap_current_weather_alerts') }}{{ states('sensor.openweathermap_weekly_summary') }}
+          {{ states('sensor.openweathermap_current_weather_alerts') }}  {{ states('sensor.openweathermap_weekly_summary') }}
           {% endif -%}
 
       clean_precip_intensity:
