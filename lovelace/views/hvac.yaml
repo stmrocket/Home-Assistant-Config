@@ -122,7 +122,7 @@ cards:
               - entity: sensor.hvac_fan_differential_pressure
                 name: Fan DP
               - entity: sensor.hvac_filter_differential_pressure
-                name: Fan DP
+                name: Filter DP
               - entity: sensor.hvac_manager_ambient_temperature
                 name: Ambient
 

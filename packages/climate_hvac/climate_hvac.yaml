@@ -187,7 +187,7 @@ sensor:
   - platform: mqtt
     name: HVAC Filter Differential Pressure
     state_topic: "hvac/tele/system"
-    value_template: "{{value_json['FinterDP']}}"
+    value_template: "{{value_json['FilterDP']}}"
     availability_topic: "hvac/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
