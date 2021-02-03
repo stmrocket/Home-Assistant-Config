@@ -33,51 +33,69 @@ binary_sensor:
     sensors:
       hvac_system_fan:
         friendly_name: "HVAC System Fan Call"
-        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') and is_state('sensor.elk_hvac_heat_call', 'Normal') and is_state('sensor.elk_hvac_cool_call', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_system_current_state', 'Fan') }}"
 
       hvac_system_heat:
         friendly_name: "HVAC System Heat Call"
-        value_template: "{{ is_state('sensor.elk_hvac_heat_call', 'Violated') }}"
+        value_template: "{{ is_state('sensor.hvac_system_current_state', 'Heat') }}"
 
       hvac_system_cool:
         friendly_name: "HVAC System Cool Call"
-        value_template: "{{ is_state('sensor.elk_hvac_cool_call', 'Violated') }}"
+        value_template: "{{ is_state('sensor.hvac_system_current_state', 'Cool') }}"
 
       hvac_zone_1_fan:
         friendly_name: "HVAC Zone 1 Fan Call"
-        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') and is_state('sensor.elk_hvac_heat_call', 'Normal') and is_state('sensor.elk_hvac_cool_call', 'Normal') and is_state('sensor.elk_hvac_zone_1_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_1_current_state', 'Fan') }}"
 
       hvac_zone_1_heat:
         friendly_name: "HVAC Zone 1 Heat Call"
-        value_template: "{{ is_state('sensor.elk_hvac_heat_call', 'Violated') and is_state('sensor.elk_hvac_zone_1_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_1_current_state', 'Heat') }}"
 
       hvac_zone_1_cool:
         friendly_name: "HVAC Zone 1 Cool Call"
-        value_template: "{{ is_state('sensor.elk_hvac_cool_call', 'Violated') and is_state('sensor.elk_hvac_zone_1_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_1_current_state', 'Cool') }}"
 
       hvac_zone_2_fan:
         friendly_name: "HVAC Zone 2 Fan Call"
-        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') and is_state('sensor.elk_hvac_heat_call', 'Normal') and is_state('sensor.elk_hvac_cool_call', 'Normal') and is_state('sensor.elk_hvac_zone_2_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_2_current_state', 'Fan') }}"
 
       hvac_zone_2_heat:
         friendly_name: "HVAC Zone 2 Heat Call"
-        value_template: "{{ is_state('sensor.elk_hvac_heat_call', 'Violated') and is_state('sensor.elk_hvac_zone_2_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_2_current_state', 'Heat') }}"
 
       hvac_zone_2_cool:
         friendly_name: "HVAC Zone 2 Cool Call"
-        value_template: "{{ is_state('sensor.elk_hvac_cool_call', 'Violated') and is_state('sensor.elk_hvac_zone_2_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_2_current_state', 'Cool') }}"
 
       hvac_zone_3_fan:
         friendly_name: "HVAC Zone 3 Fan Call"
-        value_template: "{{ is_state('sensor.elk_hvac_fan_call', 'Violated') and is_state('sensor.elk_hvac_heat_call', 'Normal') and is_state('sensor.elk_hvac_cool_call', 'Normal') and is_state('sensor.elk_hvac_zone_3_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_3_current_state', 'Fan') }}"
 
       hvac_zone_3_heat:
         friendly_name: "HVAC Zone 3 Heat Call"
-        value_template: "{{ is_state('sensor.elk_hvac_heat_call', 'Violated') and is_state('sensor.elk_hvac_zone_3_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_3_current_state', 'Heat') }}"
 
       hvac_zone_3_cool:
         friendly_name: "HVAC Zone 3 Cool Call"
-        value_template: "{{ is_state('sensor.elk_hvac_cool_call', 'Violated') and is_state('sensor.elk_hvac_zone_3_closed', 'Normal') }}"
+        value_template: "{{ is_state('sensor.hvac_zone_3_current_state', 'Cool') }}"
+  
+  - platform: mqtt
+    name: HVAC Leak Detector 1
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Leak1']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: moisture
+
+  - platform: mqtt
+    name: HVAC Leak Detector 2
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Leak2']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: moisture
 
 #################################################################
 #                                                               #
@@ -86,6 +104,107 @@ binary_sensor:
 #################################################################
 
 sensor:
+  - platform: mqtt
+    name: HVAC System Current State
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['System']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: HVAC Zone 1 Current State
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Zone1']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: HVAC Zone 2 Current State
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Zone2']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: HVAC Zone 3 Current State
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Zone3']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: HVAC Zone 1 Damper Position
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Damper1']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: HVAC Zone 2 Damper Position
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Damper2']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: HVAC Zone 3 Damper Position
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Damper3']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: HVAC Zone 4 Damper Position
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['Damper4']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: HVAC Fan Current
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['FanCurrent']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    unit_of_measurement: "A"
+  - platform: mqtt
+    name: HVAC Fan Differential Pressure
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['FanDP']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    unit_of_measurement: "Pa"
+  - platform: mqtt
+    name: HVAC Fan Differential Pressure Temperature
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['FanDPTemp']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: HVAC Filter Differential Pressure
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['FinterDP']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    unit_of_measurement: "Pa"
+  - platform: mqtt
+    name: HVAC Manager Ambient Temperature
+    state_topic: hvac/tele/system
+    value_template: "{{value_json['BoardTemp']}}"
+    availability_topic: "hvac/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    unit_of_measurement: "°C"
+
+
+
+
+
   ####################################################
   #                                                  #
   #                Sensor - Template                 #
@@ -94,58 +213,7 @@ sensor:
 
   - platform: template
     sensors:
-      hvac_system_state:
-        friendly_name: "HVAC System Current State"
-        value_template: >-
-          {% if is_state("binary_sensor.hvac_system_cool", 'on') -%}
-            Cool
-          {% elif is_state("binary_sensor.hvac_system_heat", 'on') -%}
-            Heat
-          {% elif is_state("binary_sensor.hvac_system_fan", 'on') -%}
-            Fan
-          {%- else -%}
-            Idle
-          {%- endif %}
-
-      hvac_zone_1_state:
-        friendly_name: "HVAC Zone 1 Current State"
-        value_template: >-
-          {% if is_state("binary_sensor.hvac_zone_1_cool", 'on') -%}
-            Cool
-          {% elif is_state("binary_sensor.hvac_zone_1_heat", 'on') -%}
-            Heat
-          {% elif is_state("binary_sensor.hvac_zone_1_fan", 'on') -%}
-            Fan
-          {%- else -%}
-            Idle
-          {%- endif %}
-
-      hvac_zone_2_state:
-        friendly_name: "HVAC Zone 2 Current State"
-        value_template: >-
-          {% if is_state("binary_sensor.hvac_zone_2_cool", 'on') -%}
-            Cool
-          {% elif is_state("binary_sensor.hvac_zone_2_heat", 'on') -%}
-            Heat
-          {% elif is_state("binary_sensor.hvac_zone_2_fan", 'on') -%}
-            Fan
-          {%- else -%}
-            Idle
-          {%- endif %}
-
-      hvac_zone_3_state:
-        friendly_name: "HVAC Zone 3 Current State"
-        value_template: >-
-          {% if is_state("binary_sensor.hvac_zone_3_cool", 'on') -%}
-            Cool
-          {% elif is_state("binary_sensor.hvac_zone_3_heat", 'on') -%}
-            Heat
-          {% elif is_state("binary_sensor.hvac_zone_3_fan", 'on') -%}
-            Fan
-          {%- else -%}
-            Idle
-          {%- endif %}
-
+      
       hvac_system_runtime:
         friendly_name: "HVAC Total System Runtime"
         unit_of_measurement: "h"
@@ -177,45 +245,6 @@ sensor:
           {{ ((states('sensor.hvac_zone_3_fan_runtime') | float) +
           (states('sensor.hvac_zone_3_heat_runtime') | float) +
           (states('sensor.hvac_zone_3_cool_runtime') | float)) | round(2) }}
-
-      hvac_zone_1_damper_position:
-        friendly_name: "HVAC Zone 1 Damper Position"
-        value_template: >-
-          {% if is_state("switch.elk_hvac_zone_1_dump", 'on') and is_state("sensor.elk_hvac_zone_1_closed", 'Normal') -%}
-            Open Bypass
-          {% elif is_state("switch.elk_hvac_zone_1_dump", 'on') and is_state("sensor.elk_hvac_zone_1_closed", 'Violated') -%}
-            Closed Bypass
-          {% elif is_state("switch.elk_hvac_zone_1_dump", 'off') and is_state("sensor.elk_hvac_zone_1_closed", 'Normal') -%}
-            Open
-          {% elif is_state("switch.elk_hvac_zone_1_dump", 'off') and is_state("sensor.elk_hvac_zone_1_closed", 'Violated') -%}
-            Closed
-          {%- endif %}
-
-      hvac_zone_2_damper_position:
-        friendly_name: "HVAC Zone 2 Damper Position"
-        value_template: >-
-          {% if is_state("switch.elk_hvac_zone_2_dump", 'on') and is_state("sensor.elk_hvac_zone_2_closed", 'Normal') -%}
-            Open Bypass
-          {% elif is_state("switch.elk_hvac_zone_2_dump", 'on') and is_state("sensor.elk_hvac_zone_2_closed", 'Violated') -%}
-            Closed Bypass
-          {% elif is_state("switch.elk_hvac_zone_2_dump", 'off') and is_state("sensor.elk_hvac_zone_2_closed", 'Normal') -%}
-            Open
-          {% elif is_state("switch.elk_hvac_zone_2_dump", 'off') and is_state("sensor.elk_hvac_zone_2_closed", 'Violated') -%}
-            Closed
-          {%- endif %}
-
-      hvac_zone_3_damper_position:
-        friendly_name: "HVAC Zone 3 Damper Position"
-        value_template: >-
-          {% if is_state("switch.elk_hvac_zone_3_dump", 'on') and is_state("sensor.elk_hvac_zone_3_closed", 'Normal') -%}
-            Open Bypass
-          {% elif is_state("switch.elk_hvac_zone_3_dump", 'on') and is_state("sensor.elk_hvac_zone_3_closed", 'Violated') -%}
-            Closed Bypass
-          {% elif is_state("switch.elk_hvac_zone_3_dump", 'off') and is_state("sensor.elk_hvac_zone_3_closed", 'Normal') -%}
-            Open
-          {% elif is_state("switch.elk_hvac_zone_3_dump", 'off') and is_state("sensor.elk_hvac_zone_3_closed", 'Violated') -%}
-            Closed
-          {%- endif %}
 
   ####################################################
   #                                                  #

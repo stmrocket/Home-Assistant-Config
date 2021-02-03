@@ -23,12 +23,6 @@ cards:
                 entity: sensor.hvac_zone_2_damper_position
                 color_type: icon
                 state:
-                  - value: "Open Bypass"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:valve-open
-                  - value: "Closed Bypass"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:valve
                   - value: "Open"
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-open
@@ -36,20 +30,13 @@ cards:
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-closed
                 name: Front
-                tap_action:
-                  action: call-service
-                  service: script.hvac_dump_zone_2
+                tap_action: none
+                hold_action: none
 
               - type: "custom:button-card"
                 entity: sensor.hvac_zone_1_damper_position
                 color_type: icon
                 state:
-                  - value: "Open Bypass"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:valve-open
-                  - value: "Closed Bypass"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:valve
                   - value: "Open"
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-open
@@ -57,20 +44,13 @@ cards:
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-closed
                 name: Living
-                tap_action:
-                  action: call-service
-                  service: script.hvac_dump_zone_1
+                tap_action: none
+                hold_action: none
 
               - type: "custom:button-card"
                 entity: sensor.hvac_zone_3_damper_position
                 color_type: icon
                 state:
-                  - value: "Open Bypass"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:valve-open
-                  - value: "Closed Bypass"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:valve
                   - value: "Open"
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-open
@@ -78,9 +58,22 @@ cards:
                     color: rgb(255, 255, 255)
                     icon: mdi:valve-closed
                 name: Master
-                tap_action:
-                  action: call-service
-                  service: script.hvac_dump_zone_3
+                tap_action: none
+                hold_action: none
+
+              - type: "custom:button-card"
+                entity: sensor.hvac_zone_4_damper_position
+                color_type: icon
+                state:
+                  - value: "Open"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:valve-open
+                  - value: "Closed"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:valve-closed
+                name: Server
+                tap_action: none
+                hold_action: none
 
               - type: "custom:button-card"
                 entity: sensor.furnace_service_required
@@ -122,6 +115,17 @@ cards:
                 name: Master
               - entity: sensor.server_room_hvac_return_temperature_owfs
                 name: Server
+          - type: glance
+            columns: 3
+            show_icon: false
+            entities:
+              - entity: sensor.hvac_fan_differential_pressure
+                name: Fan DP
+              - entity: sensor.hvac_filter_differential_pressure
+                name: Fan DP
+              - entity: sensor.hvac_manager_ambient_temperature
+                name: Ambient
+
 
           - type: horizontal-stack
             cards:
