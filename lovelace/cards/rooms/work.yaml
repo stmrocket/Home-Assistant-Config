@@ -1,0 +1,64 @@
+# Work
+type: custom:vertical-stack-in-card
+cards:
+  - type: picture-elements
+    image: /local/lovelace/room_sm.png
+    elements:
+      - entity: sensor.aquara_office_temperature
+        style:
+          bottom: -5%
+          right: 5%
+          transform: initial
+        type: state-label
+      - entity: sensor.blank
+        hold-action: none
+        prefix: Work Maps
+        style:
+          bottom: -5%
+          font-size: 150%
+          left: 5%
+          transform: initial
+        tap_action: none
+        hold_action: none
+        type: state-label
+  - type: horizontal-stack
+    cards:
+      - type: "custom:gap-card"
+
+      - type: "custom:button-card"
+        entity: switch.texas_cell_metar_map_power
+        color_type: icon
+        icon: mdi:map
+        state:
+          - value: "on"
+            color: rgb(228, 94, 101)
+            name: "[[[ return `${states['sensor.tx_cell_metar_mode_clean'].state}` ]]]"
+          - value: "off"
+            color: rgb(255, 255, 255)
+            name: Map
+        double_tap_action:
+          action: call-service
+          service: input_boolean.toggle
+          service_data:
+            entity_id: input_boolean.tx_cell_metar_mode
+        hold_action:
+          action: more-info
+
+      - type: "custom:button-card"
+        entity: switch.hou_cell_metar_map_power
+        color_type: icon
+        icon: mdi:map
+        state:
+          - value: "on"
+            color: rgb(228, 94, 101)
+            name: "[[[ return `${states['sensor.hou_cell_metar_mode_clean'].state}` ]]]"
+          - value: "off"
+            color: rgb(255, 255, 255)
+            name: Map
+        double_tap_action:
+          action: call-service
+          service: input_boolean.toggle
+          service_data:
+            entity_id: input_boolean.hou_cell_metar_mode
+        hold_action:
+          action: more-info
