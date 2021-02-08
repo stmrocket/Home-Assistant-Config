@@ -4,12 +4,6 @@ cards:
   - type: picture-elements
     image: /local/lovelace/room_sm.png
     elements:
-      - entity: sensor.aquara_office_temperature
-        style:
-          bottom: -5%
-          right: 5%
-          transform: initial
-        type: state-label
       - entity: sensor.blank
         hold-action: none
         prefix: Work Maps
@@ -62,3 +56,5 @@ cards:
             entity_id: input_boolean.hou_cell_metar_mode
         hold_action:
           action: more-info
+          
+      - type: "custom:gap-card"
