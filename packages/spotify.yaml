@@ -42,6 +42,7 @@ input_select:
       - Top Christian
       - Christian Mix
       - WorshipNow
+      - Contemporary Christian Instrumentals on Piano
       - The Carnival Steel Drum Band
       - Epic Film Scores for Studying
       - Harry Potter Movie Soundtracks
@@ -57,6 +58,7 @@ input_select:
       - Top Christian
       - Christian Mix
       - WorshipNow
+      - Contemporary Christian Instrumentals on Piano
       - The Carnival Steel Drum Band
       - Epic Film Scores for Studying
       - Harry Potter Movie Soundtracks
@@ -72,6 +74,7 @@ input_select:
       - Top Christian
       - Christian Mix
       - WorshipNow
+      - Contemporary Christian Instrumentals on Piano
       - The Carnival Steel Drum Band
       - Epic Film Scores for Studying
       - Harry Potter Movie Soundtracks
@@ -87,6 +90,7 @@ input_select:
       - Top Christian
       - Christian Mix
       - WorshipNow
+      - Contemporary Christian Instrumentals on Piano
       - The Carnival Steel Drum Band
       - Epic Film Scores for Studying
       - Harry Potter Movie Soundtracks
@@ -299,6 +303,19 @@ script:
                   entity_id: media_player.spotify_home
                   media_content_type: playlist
                   media_content_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
+              - service: homeassistant.update_entity
+                entity_id: media_player.spotify_home
+
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Contemporary Christian Instrumentals on Piano"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:50Yv0e9mTtNO2vJqwwNfbp
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
 

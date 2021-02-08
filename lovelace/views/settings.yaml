@@ -333,6 +333,7 @@ cards:
   #################################################################
   - type: vertical-stack
     cards:
+      - !include /config/lovelace/cards/rooms/work.yaml
       - type: conditional
         conditions:
           - entity: sensor.prusa_mk3_current_state

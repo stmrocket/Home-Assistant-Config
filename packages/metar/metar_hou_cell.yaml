@@ -1,0 +1,81 @@
+switch:
+  - platform: mqtt
+    name: HOU Cell METAR Map Power
+    state_topic: metar/hou-cell/tele/current
+    command_topic: metar/hou-cell/command/set/power
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    retain: true
+    optimistic: false
+
+input_boolean:
+  hou_cell_metar_mode: #Off is METAR and on is temperature...
+    name: HOU Cell METAR Map Display Mode
+
+sensor:
+
+  - platform: mqtt
+    name: HOU Cell METAR Mode
+    state_topic: "metar/hou-cell/tele/mode"
+
+  - platform: template
+    sensors:
+      hou_metar_mode_clean:
+        friendly_name: HOU Cell METAR Mode Clean Name
+        value_template: >-
+          {% if is_state('sensor.hou_cell_metar_mode', 'TEMP') -%}
+            Temperature
+          {% elif is_state('sensor.hou_cell_metar_mode', 'METAR') -%}
+            METAR
+          {% endif -%}
+
+automation:
+  - alias: Update HOU Cell METAR Map Display Mode
+    trigger:
+      - platform: state
+        entity_id: input_boolean.hou_cell_metar_mode
+    action:
+      - choose:
+          - conditions:
+              - condition: state
+                entity_id: input_boolean.hou_cell_metar_mode
+                state: "on"
+            sequence:
+              - service: mqtt.publish
+                data:
+                  topic: metar/hou-cell/command/set/mode
+                  payload: TEMP
+                  retain: true
+          - conditions:
+              - condition: state
+                entity_id: input_boolean.hou_cell_metar_mode
+                state: "off"
+            sequence:
+              - service: mqtt.publish
+                data:
+                  topic: metar/hou-cell/command/set/mode
+                  payload: METAR
+                  retain: true
+
+  - alias: HOU Cell Map On When at work
+    trigger:
+      - platform: state
+        entity_id: person.shawn_mccoy
+        to: "work"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.hou_cell_metar_map_power
+
+  - alias: HOU Cell Map Off When at work
+    trigger:
+      - platform: state
+        entity_id: person.shawn_mccoy
+        from: "work"
+        to: "not_home"
+        for:
+            minutes: 5
+    action:
+      - service: switch.turn_off
+        entity_id: switch.hou_cell_metar_map_power
