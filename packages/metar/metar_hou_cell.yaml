@@ -22,7 +22,7 @@ sensor:
 
   - platform: template
     sensors:
-      hou_metar_mode_clean:
+      hou_cell_metar_mode_clean:
         friendly_name: HOU Cell METAR Mode Clean Name
         value_template: >-
           {% if is_state('sensor.hou_cell_metar_mode', 'TEMP') -%}
