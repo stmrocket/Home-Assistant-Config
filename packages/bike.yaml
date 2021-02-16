@@ -1,0 +1,357 @@
+sensor:
+  - platform: mqtt
+    name: Daily Bike Distance
+    state_topic: bike/tele/status
+    value_template: "{{value_json['daily'].distance }}"
+    unit_of_measurement: mi
+
+  - platform: mqtt
+    name: Daily Bike Duration
+    state_topic: bike/tele/status
+    value_template: "{{value_json['daily'].time }}"
+    unit_of_measurement: s
+
+  - platform: mqtt
+    name: Daily Bike Climb
+    state_topic: bike/tele/status
+    value_template: "{{value_json['daily'].climb }}"
+    unit_of_measurement: ft
+
+  - platform: mqtt
+    name: Daily Bike Calories
+    state_topic: bike/tele/status
+    value_template: "{{value_json['daily'].calories }}"
+    unit_of_measurement: cal
+
+  - platform: mqtt
+    name: Daily Bike Rides
+    state_topic: bike/tele/status
+    value_template: "{{value_json['daily'].rides }}"
+
+  - platform: mqtt
+    name: Weekly Bike Distance
+    state_topic: bike/tele/status
+    value_template: "{{value_json['weekly'].distance }}"
+    unit_of_measurement: mi
+
+  - platform: mqtt
+    name: Weekly Bike Duration
+    state_topic: bike/tele/status
+    value_template: "{{value_json['weekly'].time }}"
+    unit_of_measurement: s
+
+  - platform: mqtt
+    name: Weekly Bike Climb
+    state_topic: bike/tele/status
+    value_template: "{{value_json['weekly'].climb }}"
+    unit_of_measurement: ft
+
+  - platform: mqtt
+    name: Weekly Bike Calories
+    state_topic: bike/tele/status
+    value_template: "{{value_json['weekly'].calories }}"
+    unit_of_measurement: cal
+
+  - platform: mqtt
+    name: Weekly Bike Rides
+    state_topic: bike/tele/status
+    value_template: "{{value_json['weekly'].rides }}"
+
+  - platform: mqtt
+    name: Monthly Bike Distance
+    state_topic: bike/tele/status
+    value_template: "{{value_json['monthly'].distance }}"
+    unit_of_measurement: mi
+
+  - platform: mqtt
+    name: Monthly Bike Duration
+    state_topic: bike/tele/status
+    value_template: "{{value_json['monthly'].time }}"
+    unit_of_measurement: s
+
+  - platform: mqtt
+    name: Monthly Bike Climb
+    state_topic: bike/tele/status
+    value_template: "{{value_json['monthly'].climb }}"
+    unit_of_measurement: ft
+
+  - platform: mqtt
+    name: Monthly Bike Calories
+    state_topic: bike/tele/status
+    value_template: "{{value_json['monthly'].calories }}"
+    unit_of_measurement: cal
+
+  - platform: mqtt
+    name: Monthly Bike Rides
+    state_topic: bike/tele/status
+    value_template: "{{value_json['monthly'].rides }}"
+
+  - platform: mqtt
+    name: Yearly Bike Distance
+    state_topic: bike/tele/status
+    value_template: "{{value_json['yearly'].distance }}"
+    unit_of_measurement: mi
+
+  - platform: mqtt
+    name: Yearly Bike Duration
+    state_topic: bike/tele/status
+    value_template: "{{value_json['yearly'].time }}"
+    unit_of_measurement: s
+
+  - platform: mqtt
+    name: Yearly Bike Climb
+    state_topic: bike/tele/status
+    value_template: "{{value_json['yearly'].climb }}"
+    unit_of_measurement: ft
+
+  - platform: mqtt
+    name: Yearly Bike Calories
+    state_topic: bike/tele/status
+    value_template: "{{value_json['yearly'].calories }}"
+    unit_of_measurement: cal
+
+  - platform: mqtt
+    name: Yearly Bike Rides
+    state_topic: bike/tele/status
+    value_template: "{{value_json['yearly'].rides }}"
+
+  - platform: mqtt
+    name: Career Bike Distance
+    state_topic: bike/tele/status
+    value_template: "{{value_json['career'].distance }}"
+    unit_of_measurement: mi
+
+  - platform: mqtt
+    name: Career Bike Duration
+    state_topic: bike/tele/status
+    value_template: "{{value_json['career'].time }}"
+    unit_of_measurement: s
+
+  - platform: mqtt
+    name: Career Bike Climb
+    state_topic: bike/tele/status
+    value_template: "{{value_json['career'].climb }}"
+    unit_of_measurement: ft
+
+  - platform: mqtt
+    name: Career Bike Calories
+    state_topic: bike/tele/status
+    value_template: "{{value_json['career'].calories }}"
+    unit_of_measurement: cal
+
+  - platform: mqtt
+    name: Career Bike Rides
+    state_topic: bike/tele/status
+    value_template: "{{value_json['career'].rides }}"
+
+  - platform: template
+    sensors:
+      daily_bike_duration_calc:
+        friendly_name: Daily Bike Duration Calculated
+        value_template: >-
+          {% set time = states('sensor.daily_bike_duration') %}
+            {% set minutes = ((time % 60) ) | int%}
+            {% set hours = ((time % 1440) / 60) | int %}
+            {% set days = (time / 1440) | int %}
+              {%- if time == 0 -%}
+                00:00:00
+              {%- else -%}
+                {%- if days == 0 -%}
+                  00
+                {%- endif -%}
+                {%- if days > 0 -%}        
+                  {%- if days < 10 -%}
+                    0{{ days }}
+                  {%- else -%}
+                    {{ days }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if hours == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if hours > 0 -%}        
+                  {%- if hours < 10 -%}
+                    :0{{ hours }}
+                  {%- else -%}
+                    :{{ hours }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if minutes == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if minutes > 0 -%}
+                  {%- if minutes < 10 -%}
+                    :0{{ minutes }}
+                  {%- else -%}
+                    :{{ minutes }}
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endif -%}
+
+      weekly_bike_duration_calc:
+        friendly_name: Weekly Bike Duration Calculated
+        value_template: >-
+          {% set time = states('sensor.weekly_bike_duration') %}
+            {% set minutes = ((time % 60) ) | int%}
+            {% set hours = ((time % 1440) / 60) | int %}
+            {% set days = (time / 1440) | int %}
+              {%- if time == 0 -%}
+                00:00:00
+              {%- else -%}
+                {%- if days == 0 -%}
+                  00
+                {%- endif -%}
+                {%- if days > 0 -%}        
+                  {%- if days < 10 -%}
+                    0{{ days }}
+                  {%- else -%}
+                    {{ days }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if hours == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if hours > 0 -%}        
+                  {%- if hours < 10 -%}
+                    :0{{ hours }}
+                  {%- else -%}
+                    :{{ hours }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if minutes == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if minutes > 0 -%}
+                  {%- if minutes < 10 -%}
+                    :0{{ minutes }}
+                  {%- else -%}
+                    :{{ minutes }}
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endif -%}
+
+      monthly_bike_duration_calc:
+        friendly_name: Monthly Bike Duration Calculated
+        value_template: >-
+          {% set time = states('sensor.monthly_bike_duration') %}
+            {% set minutes = ((time % 60) ) | int%}
+            {% set hours = ((time % 1440) / 60) | int %}
+            {% set days = (time / 1440) | int %}
+              {%- if time == 0 -%}
+                00:00:00
+              {%- else -%}
+                {%- if days == 0 -%}
+                  00
+                {%- endif -%}
+                {%- if days > 0 -%}        
+                  {%- if days < 10 -%}
+                    0{{ days }}
+                  {%- else -%}
+                    {{ days }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if hours == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if hours > 0 -%}        
+                  {%- if hours < 10 -%}
+                    :0{{ hours }}
+                  {%- else -%}
+                    :{{ hours }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if minutes == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if minutes > 0 -%}
+                  {%- if minutes < 10 -%}
+                    :0{{ minutes }}
+                  {%- else -%}
+                    :{{ minutes }}
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endif -%}
+
+      yearly_bike_duration_calc:
+        friendly_name: Yearly Bike Duration Calculated
+        value_template: >-
+          {% set time = states('sensor.yearly_bike_duration') %}
+            {% set minutes = ((time % 60) ) | int%}
+            {% set hours = ((time % 1440) / 60) | int %}
+            {% set days = (time / 1440) | int %}
+              {%- if time == 0 -%}
+                00:00:00
+              {%- else -%}
+                {%- if days == 0 -%}
+                  00
+                {%- endif -%}
+                {%- if days > 0 -%}        
+                  {%- if days < 10 -%}
+                    0{{ days }}
+                  {%- else -%}
+                    {{ days }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if hours == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if hours > 0 -%}        
+                  {%- if hours < 10 -%}
+                    :0{{ hours }}
+                  {%- else -%}
+                    :{{ hours }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if minutes == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if minutes > 0 -%}
+                  {%- if minutes < 10 -%}
+                    :0{{ minutes }}
+                  {%- else -%}
+                    :{{ minutes }}
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endif -%}
+
+      career_bike_duration_calc:
+        friendly_name: Career Bike Duration Calculated
+        value_template: >-
+          {% set time = states('sensor.career_bike_duration') %}
+            {% set minutes = ((time % 60) ) | int%}
+            {% set hours = ((time % 1440) / 60) | int %}
+            {% set days = (time / 1440) | int %}
+              {%- if time == 0 -%}
+                00:00:00
+              {%- else -%}
+                {%- if days == 0 -%}
+                  00
+                {%- endif -%}
+                {%- if days > 0 -%}        
+                  {%- if days < 10 -%}
+                    0{{ days }}
+                  {%- else -%}
+                    {{ days }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if hours == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if hours > 0 -%}        
+                  {%- if hours < 10 -%}
+                    :0{{ hours }}
+                  {%- else -%}
+                    :{{ hours }}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if minutes == 0 -%}
+                  :00
+                {%- endif -%}
+                {%- if minutes > 0 -%}
+                  {%- if minutes < 10 -%}
+                    :0{{ minutes }}
+                  {%- else -%}
+                    :{{ minutes }}
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endif -%}
