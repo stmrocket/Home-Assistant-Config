@@ -703,8 +703,7 @@ cards:
                       display: none;
                     }
                   tap_action:
-                    action: call-service
-                    service: more-info
+                    action: more-info
 
               - type: "custom:config-template-card"
                 entities:
