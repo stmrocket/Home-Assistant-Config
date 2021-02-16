@@ -303,28 +303,6 @@ cards:
           - input_boolean.clock_bells_quarter_chime
           - input_boolean.clock_bells_hour_chime
 
-      - type: horizontal-stack
-        cards:
-          - type: entities
-            title: "US Cases"
-            entities:
-              - entity: sensor.covid_us_total
-                name: Total
-              - entity: sensor.covid_us_today_new
-                name: Today
-              - entity: sensor.covid_us_yesterday_new
-                name: Yesterday
-          - type: horizontal-stack
-            cards:
-              - type: entities
-                title: "Worldwide Cases"
-                entities:
-                  - entity: sensor.covid_world_total
-                    name: Total
-                  - entity: sensor.covid_world_today_new
-                    name: Today
-                  - entity: sensor.covid_world_yesterday_new
-                    name: Yesterday
 
   #################################################################
   #                                                               #
