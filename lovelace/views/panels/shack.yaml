@@ -6,7 +6,9 @@
 
 id: 8
 icon: mdi:castle
-name: Home
+title: Home
+popup_cards:
+  !include /config/lovelace/popup/popup_panel_shack.yaml
 cards:
   #################################################################
   #                                                               #
@@ -61,12 +63,6 @@ cards:
           hide:
             source: true
             progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_dining_spotify
-            service_data:
-              deviceID:
-                - this
       - type: conditional
         conditions:
           - entity: sensor.nuvo_zone_9_source
@@ -83,12 +79,6 @@ cards:
             controls: true
             info: true
             progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_dining
-            service_data:
-              deviceID:
-                - this
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -108,11 +98,7 @@ cards:
             tap_action:
               action: toggle
             hold_action:
-              action: call-service
-              service: script.popup_shack_blinds
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
 
           - type: "custom:button-card"
             entity: switch.shack_light

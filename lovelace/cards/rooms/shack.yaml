@@ -40,11 +40,7 @@ cards:
         tap_action:
           action: toggle
         hold_action:
-          action: call-service
-          service: script.popup_shack_blinds
-          service_data:
-            deviceID:
-              - this
+          action: more-info
 
       - type: "custom:button-card"
         entity: switch.shack_light
@@ -111,9 +107,3 @@ cards:
       controls: true
       info: true
       progress: true
-    tap_action:
-      action: call-service
-      service: script.popup_media_dining
-      service_data:
-        deviceID:
-          - this

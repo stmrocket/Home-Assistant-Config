@@ -7,8 +7,8 @@
 
 id: 6
 icon: mdi:cog
+title: Settings
 
-name: Settings
 cards:
   - type: vertical-stack
     cards:

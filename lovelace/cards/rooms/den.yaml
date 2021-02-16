@@ -41,11 +41,7 @@ cards:
         tap_action:
           action: toggle
         hold_action:
-          action: call-service
-          service: script.popup_den_blinds
-          service_data:
-            deviceID:
-              - this
+          action: more-info
 
       - type: "custom:button-card"
         entity: light.den_light
@@ -250,9 +246,3 @@ cards:
       controls: true
       info: true
       progress: true
-    tap_action:
-      action: call-service
-      service: script.popup_media_den
-      service_data:
-        deviceID:
-          - this

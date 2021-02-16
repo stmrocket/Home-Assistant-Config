@@ -68,9 +68,3 @@ cards:
       controls: true
       info: true
       progress: true
-    tap_action:
-      action: call-service
-      service: script.popup_media_garage
-      service_data:
-        deviceID:
-          - this

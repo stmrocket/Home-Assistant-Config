@@ -6,7 +6,9 @@
 
 id: 8
 icon: mdi:castle
-name: Home
+title: Home
+popup_cards:
+  !include /config/lovelace/popup/popup_panel_office.yaml
 cards:
   #################################################################
   #                                                               #
@@ -77,12 +79,6 @@ cards:
           hide:
             source: true
             progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_office_spotify
-            service_data:
-              deviceID:
-                - this
       - type: conditional
         conditions:
           - entity: sensor.nuvo_zone_1_source
@@ -98,12 +94,6 @@ cards:
             controls: true
             info: true
             progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_office
-            service_data:
-              deviceID:
-                - this
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -123,11 +113,8 @@ cards:
             tap_action:
               action: toggle
             hold_action:
-              action: call-service
-              service: script.popup_office_blinds
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
+              
           - type: "custom:button-card"
             entity: light.office_light
             color_type: icon

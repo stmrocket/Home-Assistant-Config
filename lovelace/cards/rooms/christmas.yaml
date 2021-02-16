@@ -171,11 +171,7 @@ card:
           icon: mdi:pine-tree
           name: Show
           tap_action:
-            action: call-service
-            service: script.popup_christmas_outdoor
-            service_data:
-              deviceID:
-                - this
+            action: more-info
 
     # - type: horizontal-stack
     #   cards:

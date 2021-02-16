@@ -6,7 +6,9 @@
 
 id: 5
 icon: mdi:server-network
-name: System Status
+title: System Status
+popup_cards:
+  !include /config/lovelace/popup/popup_system.yaml
 cards:
   #################################################################
   #                                                               #
@@ -702,10 +704,7 @@ cards:
                     }
                   tap_action:
                     action: call-service
-                    service: script.popup_automation_count
-                    service_data:
-                      deviceID:
-                        - this
+                    service: more-info
 
               - type: "custom:config-template-card"
                 entities:
@@ -770,11 +769,7 @@ cards:
                       display: none;
                     }
                   tap_action:
-                    action: call-service
-                    service: script.popup_binary_sensor_count
-                    service_data:
-                      deviceID:
-                        - this
+                    action: more-info
 
               - type: "custom:config-template-card"
                 entities:
@@ -839,11 +834,7 @@ cards:
                       display: none;
                     }
                   tap_action:
-                    action: call-service
-                    service: script.popup_switch_count
-                    service_data:
-                      deviceID:
-                        - this
+                    action: more-info
 
           - type: horizontal-stack
             cards:
@@ -909,13 +900,8 @@ cards:
                     bar-card-divider {
                       display: none;
                     }
-                  tap_action: service
-                  service_options:
-                    domain: script
-                    service: popup_fan_count
-                    data:
-                      deviceID:
-                        - this
+                  tap_action: 
+                    action: more-info
 
               - type: "custom:config-template-card"
                 entities:
@@ -980,11 +966,7 @@ cards:
                       display: none;
                     }
                   tap_action:
-                    action: call-service
-                    service: script.popup_lights_count
-                    service_data:
-                      deviceID:
-                        - this
+                    action: more-info
 
               - type: "custom:config-template-card"
                 entities:
@@ -1049,11 +1031,7 @@ cards:
                       display: none;
                     }
                   tap_action:
-                    action: call-service
-                    service: script.popup_tracker_count
-                    service_data:
-                      deviceID:
-                        - this
+                    action: more-info
 
           - type: horizontal-stack
             cards:
@@ -1120,11 +1098,7 @@ cards:
                       display: none;
                     }
                   tap_action:
-                    action: call-service
-                    service: script.popup_media_player_count
-                    service_data:
-                      deviceID:
-                        - this
+                    action: more-info
 
               - type: "custom:config-template-card"
                 entities:
@@ -1189,11 +1163,7 @@ cards:
                       display: none;
                     }
                   tap_action:
-                    action: call-service
-                    service: script.popup_script_count
-                    service_data:
-                      deviceID:
-                        - this
+                    action: more-info
 
               - type: "custom:config-template-card"
                 entities:
@@ -1258,11 +1228,7 @@ cards:
                       display: none;
                     }
                   tap_action:
-                    action: call-service
-                    service: script.popup_sensor_count
-                    service_data:
-                      deviceID:
-                        - this
+                    action: more-info
 
   #################################################################
   #                                                               #
@@ -1300,17 +1266,9 @@ cards:
                     color: rgb(255, 255, 255)
                 name: GitHub
                 tap_action:
-                  action: call-service
-                  service: script.popup_github
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action:
-                  action: call-service
-                  service: script.popup_github
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
               - type: "custom:button-card"
                 entity: sensor.hacs
                 color_type: icon
@@ -1323,17 +1281,9 @@ cards:
                     color: rgb(255, 255, 255)
                 name: HACS
                 tap_action:
-                  action: call-service
-                  service: script.popup_hacs
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action:
-                  action: call-service
-                  service: script.popup_hacs
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
               - type: "custom:button-card"
                 entity: binary_sensor.updater_addons
@@ -1346,17 +1296,9 @@ cards:
                     color: rgb(255, 255, 255)
                 name: Add-Ons
                 tap_action:
-                  action: call-service
-                  service: script.popup_addons
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action:
-                  action: call-service
-                  service: script.popup_addons
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
               - type: "custom:button-card"
                 entity: binary_sensor.updater
@@ -1384,17 +1326,9 @@ cards:
                     color: rgb(255, 255, 255)
                 name: Supervisor
                 tap_action:
-                  action: call-service
-                  service: script.popup_supervisor
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action:
-                  action: call-service
-                  service: script.popup_supervisor
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
       - type: custom:vertical-stack-in-card
         cards:
@@ -1563,11 +1497,7 @@ cards:
                     color: rgb(228, 94, 101)
                 name: Blinds
                 tap_action:
-                  action: call-service
-                  service: script.popup_blind_network
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
               - type: "custom:button-card"
                 entity: group.leds
@@ -1580,11 +1510,7 @@ cards:
                     color: rgb(228, 94, 101)
                 name: LEDs
                 tap_action:
-                  action: call-service
-                  service: script.popup_led_network
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
               - type: "custom:button-card"
                 entity: device_tracker.parrot
@@ -1632,11 +1558,7 @@ cards:
                     color: rgb(228, 94, 101)
                 name: Docker
                 tap_action:
-                  action: call-service
-                  service: script.popup_docker
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
               - type: "custom:button-card"
                 entity: sensor.server_ups_status
@@ -1659,11 +1581,7 @@ cards:
                     icon: mdi:power-plug-off
                 name: Server
                 tap_action:
-                  action: call-service
-                  service: script.popup_server_ups
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
               - type: "custom:button-card"
                 entity: sensor.office_ups_status
@@ -1686,11 +1604,7 @@ cards:
                     icon: mdi:power-plug-off
                 name: Office
                 tap_action:
-                  action: call-service
-                  service: script.popup_office_ups
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
           - type: horizontal-stack
             cards:
@@ -1716,11 +1630,7 @@ cards:
                     icon: mdi:power-plug-off
                 name: Shack
                 tap_action:
-                  action: call-service
-                  service: script.popup_shack_ups
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
 
               - type: "custom:button-card"
                 entity: device_tracker.generator
@@ -1752,7 +1662,7 @@ cards:
           - type: picture-elements
             image: /local/lovelace/room.png
             elements:
-              - entity: sensor.blank
+              - entity: sensor.adguard_dummy
                 hold-action: none
                 prefix: AdGuard
                 style:
@@ -1761,11 +1671,7 @@ cards:
                   left: 5%
                   transform: initial
                 tap_action:
-                  action: call-service
-                  service: script.popup_adguard
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action: none
                 type: state-label
 

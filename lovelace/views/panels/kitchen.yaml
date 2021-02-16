@@ -6,7 +6,9 @@
 
 id: 7
 icon: mdi:castle
-name: Home
+title: Home
+popup_cards:
+  !include /config/lovelace/popup/popup_panel_kitchen.yaml
 cards:
   #################################################################
   #                                                               #
@@ -67,12 +69,6 @@ cards:
           hide:
             source: true
             progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_kitchen_spotify
-            service_data:
-              deviceID:
-                - this
       - type: conditional
         conditions:
           - entity: sensor.nuvo_zone_10_source
@@ -88,12 +84,6 @@ cards:
             controls: true
             info: true
             progress: true
-          tap_action:
-            action: call-service
-            service: script.popup_media_kitchen
-            service_data:
-              deviceID:
-                - this
 
       #################################################################
       #                                                               #
@@ -123,11 +113,7 @@ cards:
             tap_action:
               action: toggle
             hold_action:
-              action: call-service
-              service: script.popup_kitchen_blinds
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
           - type: "custom:button-card"
             entity: light.kitchen_light
             color_type: icon
@@ -218,11 +204,7 @@ cards:
               service_data:
                 entity_id: switch.roomba
             hold_action:
-              action: call-service
-              service: script.popup_roomba
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             double_tap_action:
               action: call-service
               service: script.reset_roomba_counter
@@ -287,11 +269,7 @@ cards:
                 color: rgb(228, 94, 101)
                 name: Error
             tap_action:
-              action: call-service
-              service: script.popup_pooper
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
 
           - type: "custom:button-card"
             entity: sensor.washer_status
@@ -308,17 +286,9 @@ cards:
                 color: rgb(255, 255, 255)
                 name: Done
             tap_action:
-              action: call-service
-              service: script.popup_washer
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             hold_action:
-              action: call-service
-              service: script.popup_washer
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             double_tap_action:
               action: call-service
               service: input_boolean.turn_off
@@ -343,17 +313,9 @@ cards:
                 color: rgb(255, 200, 0)
                 name: Door
             tap_action:
-              action: call-service
-              service: script.popup_dryer
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             hold_action:
-              action: call-service
-              service: script.popup_dryer
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             double_tap_action:
               action: call-service
               service: input_boolean.turn_off

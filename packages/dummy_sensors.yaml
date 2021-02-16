@@ -1,0 +1,12 @@
+sensor:
+  - platform: template
+    sensors:
+      adguard_dummy:
+        value_template: ""
+        friendly_name: ""
+      candle_dummy:
+        value_template: ""
+        friendly_name: ""
+      truck_dummy:
+        value_template: ""
+        friendly_name: ""

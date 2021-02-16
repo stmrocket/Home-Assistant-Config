@@ -98,22 +98,15 @@ cards:
         hold_action:
           action: more-info
       - type: "custom:button-card"
+        entity: sensor.truck_dummy
         color_type: icon
         color: rgb(255, 255, 255)
         icon: mdi:car-pickup
         name: Truck
         tap_action:
-          action: call-service
-          service: script.popup_truck
-          service_data:
-            deviceID:
-              - this
+          action: more-info
         hold_action:
-          action: call-service
-          service: script.popup_truck
-          service_data:
-            deviceID:
-              - this
+          action: more-info
       - type: "custom:gap-card"
 
   - type: custom:mini-media-player
@@ -128,9 +121,3 @@ cards:
       controls: true
       info: true
       progress: true
-    tap_action:
-      action: call-service
-      service: script.popup_media_porch
-      service_data:
-        deviceID:
-          - this
