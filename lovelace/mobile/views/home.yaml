@@ -6,7 +6,9 @@
 
 id: 0
 icon: mdi:castle
-name: Home
+title: Home
+popup_cards:
+  !include /config/lovelace/popup/popup_home.yaml
 cards:
   #################################################################
   #                                                               #
@@ -241,21 +243,12 @@ cards:
                 name: "Pooper"
                 unit: "%"
                 tap_action:
-                  action: call-service
-                  service: script.popup_pooper
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
               - entity: sensor.litter_robot_status_short
                 attribute: state
                 decimals: 1
                 tap_action:
-                  action: call-service
-                  service: script.popup_pooper
-                  service_data:
-                    deviceID:
-                      - this
-
+                  action: more-info
             show:
               horseshoe_style: "lineargradient"
             layout:
@@ -403,11 +396,7 @@ cards:
             tap_action:
               action: toggle
             hold_action:
-              action: call-service
-              service: script.popup_blinds
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
 
           - type: "custom:button-card"
             entity: switch.manual_timer_lights
@@ -437,17 +426,9 @@ cards:
                 color: rgb(255, 255, 255)
                 name: Done
             tap_action:
-              action: call-service
-              service: script.popup_washer
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             hold_action:
-              action: call-service
-              service: script.popup_washer
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             double_tap_action:
               action: call-service
               service: input_boolean.turn_off
@@ -472,17 +453,9 @@ cards:
                 color: rgb(255, 200, 0)
                 name: Door
             tap_action:
-              action: call-service
-              service: script.popup_dryer
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             hold_action:
-              action: call-service
-              service: script.popup_dryer
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             double_tap_action:
               action: call-service
               service: input_boolean.turn_off
@@ -529,11 +502,7 @@ cards:
               service_data:
                 entity_id: switch.roomba
             hold_action:
-              action: call-service
-              service: script.popup_roomba
-              service_data:
-                deviceID:
-                  - this
+              action: more-info
             double_tap_action:
               action: call-service
               service: script.reset_roomba_counter
@@ -637,12 +606,6 @@ cards:
           source: true
           power: true
           progress: true
-        tap_action:
-          action: call-service
-          service: script.popup_media_wha
-          service_data:
-            deviceID:
-              - this
 
       #################################################################
       #                                                               #

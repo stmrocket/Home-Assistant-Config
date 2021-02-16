@@ -5,7 +5,9 @@
 #############################################################################################################################################
 id: 2
 icon: mdi:thermostat
-name: HVAC
+title: HVAC
+popup_cards:
+  !include /config/lovelace/popup/popup_hvac.yaml
 cards:
   #################################################################
   #                                                               #
@@ -90,17 +92,9 @@ cards:
                     color: rgb(255, 255, 255)
                     name: OK
                 tap_action:
-                  action: call-service
-                  service: script.popup_filter
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action:
-                  action: call-service
-                  service: script.popup_filter
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
           - type: glance
             columns: 5
             show_icon: false

@@ -40,11 +40,7 @@ cards:
         tap_action:
           action: toggle
         hold_action:
-          action: call-service
-          service: script.popup_master_blinds
-          service_data:
-            deviceID:
-              - this
+          action: more-info
       - type: "custom:button-card"
         entity: light.master_bedroom_light
         color_type: icon
@@ -104,18 +100,10 @@ cards:
             icon: mdi:alarm-off
         name: Work
         tap_action:
-          action: call-service
-          service: script.popup_work_alarm
-          service_data:
-            deviceID:
-              - this
+          action: more-info
         hold_action:
-          action: call-service
-          service: script.popup_work_alarm
-          service_data:
-            deviceID:
-              - this
-
+          action: more-info
+      
       - type: "custom:button-card"
         entity: input_boolean.manual_alarm_enabled
         color_type: icon
@@ -127,17 +115,9 @@ cards:
             icon: mdi:alarm-off
         name: Manual
         tap_action:
-          action: call-service
-          service: script.popup_manual_alarm
-          service_data:
-            deviceID:
-              - this
+          action: more-info
         hold_action:
-          action: call-service
-          service: script.popup_manual_alarm
-          service_data:
-            deviceID:
-              - this
+          action: more-info
 
       - type: "custom:button-card"
         entity: switch.water_projector
@@ -255,9 +235,3 @@ cards:
       controls: true
       info: true
       progress: true
-    tap_action:
-      action: call-service
-      service: script.popup_media_master_bed
-      service_data:
-        deviceID:
-          - this

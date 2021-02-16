@@ -19,11 +19,7 @@ cards:
           transform: initial
         type: state-icon
         tap_action:
-          action: call-service
-          service: script.popup_kitchen_leak
-          service_data:
-            deviceID:
-              - this
+          action: more-info
       - entity: sensor.blank
         hold-action: none
         prefix: Kitchen
@@ -55,11 +51,7 @@ cards:
         tap_action:
           action: toggle
         hold_action:
-          action: call-service
-          service: script.popup_kitchen_blinds
-          service_data:
-            deviceID:
-              - this
+          action: more-info
       - type: "custom:button-card"
         entity: light.kitchen_light
         color_type: icon
@@ -181,9 +173,3 @@ cards:
       controls: true
       info: true
       progress: true
-    tap_action:
-      action: call-service
-      service: script.popup_media_kitchen
-      service_data:
-        deviceID:
-          - this

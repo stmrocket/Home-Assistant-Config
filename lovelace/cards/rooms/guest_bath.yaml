@@ -12,11 +12,7 @@ cards:
           transform: initial
         type: state-icon
         tap_action:
-          action: call-service
-          service: script.popup_guest_leak
-          service_data:
-            deviceID:
-              - this
+          action: more-info
       - entity: sensor.blank
         hold-action: none
         prefix: Guest Bathroom
@@ -79,9 +75,3 @@ cards:
       controls: true
       info: true
       progress: true
-    tap_action:
-      action: call-service
-      service: script.popup_media_guest_bath
-      service_data:
-        deviceID:
-          - this

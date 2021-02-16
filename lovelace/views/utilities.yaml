@@ -6,7 +6,9 @@
 
 id: 4
 icon: mdi:transmission-tower
-name: System Status
+title: Utilities
+popup_cards:
+  !include /config/lovelace/popup/popup_utilities.yaml
 cards:
   - type: vertical-stack
     cards:
@@ -94,11 +96,7 @@ cards:
                   top: 33%
                   width: 30%
                 tap_action:
-                  action: call-service
-                  service: script.popup_generator_genset
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action: none
 
               - type: image
@@ -112,11 +110,7 @@ cards:
                   top: 33%
                   width: 30%
                 tap_action:
-                  action: call-service
-                  service: script.popup_generator_utility
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action: none
 
               - type: image
@@ -130,11 +124,7 @@ cards:
                   top: 67%
                   width: 30%
                 tap_action:
-                  action: call-service
-                  service: script.popup_generator_load
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action: none
 
               - type: image
@@ -149,11 +139,7 @@ cards:
                   top: 30%
                   width: 40%
                 tap_action:
-                  action: call-service
-                  service: script.popup_generator_ats
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action: none
 
               - type: state-label
@@ -163,11 +149,7 @@ cards:
                   top: 9%
                   font-size: 170%
                 tap_action:
-                  action: call-service
-                  service: script.popup_generator_control
-                  service_data:
-                    deviceID:
-                      - this
+                  action: more-info
                 hold_action: none
 
               - type: state-label
