@@ -8,6 +8,8 @@
 id: 6
 icon: mdi:cog
 title: Settings
+popup_cards:
+  !include /config/lovelace/popup/popup_settings.yaml
 
 cards:
   - type: vertical-stack
@@ -312,6 +314,34 @@ cards:
   - type: vertical-stack
     cards:
       - !include /config/lovelace/cards/rooms/work.yaml
+      - type: 'custom:vertical-stack-in-card'
+        cards:
+          - type: picture-elements
+            image: /local/lovelace/room_sm.png
+            elements:
+              - entity: sensor.blank
+                hold-action: none
+                prefix: RideWithGPS
+                style:
+                  bottom: '-5%'
+                  font-size: 150%
+                  left: 5%
+                  transform: initial
+                type: state-label
+          - type: glance
+            show_icon: false
+            entities:
+              - entity: sensor.daily_bike_distance
+                name: Daily
+              - entity: sensor.weekly_bike_distance
+                name: Weekly
+              - entity: sensor.monthly_bike_distance
+                name: Monthly
+              - entity: sensor.yearly_bike_distance
+                name: Yearly
+              - entity: sensor.career_bike_distance
+                name: Career
+
       - type: conditional
         conditions:
           - entity: sensor.prusa_mk3_current_state
