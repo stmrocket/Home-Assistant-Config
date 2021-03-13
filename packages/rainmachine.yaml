@@ -9,6 +9,7 @@ switch:
         turn_off:
           service: rainmachine.disable_program
           data:
+            entity_id: switch.east_front
             program_id: 1
 
       irrigation_program_2_days:
@@ -19,6 +20,7 @@ switch:
         turn_off:
           service: rainmachine.disable_program
           data:
+            entity_id: switch.east_front
             program_id: 2
 
       irrigation_run_program:
@@ -34,18 +36,22 @@ script:
     sequence:
       - service: rainmachine.enable_program
         data:
+          entity_id: switch.east_front
           program_id: 1
       - service: rainmachine.disable_program
         data:
+          entity_id: switch.east_front
           program_id: 2
 
   rainmachine_program_2_on:
     sequence:
       - service: rainmachine.enable_program
         data:
+          entity_id: switch.east_front
           program_id: 2
       - service: rainmachine.disable_program
         data:
+          entity_id: switch.east_front
           program_id: 1
 
   rainmachine_start_program:
@@ -58,6 +64,7 @@ script:
             sequence:
               - service: rainmachine.start_program
                 data:
+                  entity_id: switch.east_front
                   program_id: 1
           - conditions:
               - condition: state
@@ -66,4 +73,5 @@ script:
             sequence:
               - service: rainmachine.start_program
                 data:
+                  entity_id: switch.east_front
                   program_id: 2
