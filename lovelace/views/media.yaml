@@ -25,7 +25,7 @@ cards:
           - entity: input_select.spotify_playlist
           - entity: script.spotify_change_playlist
             name: Change Playlist
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.spotify
             icon: mdi:spotify
             artwork: cover
@@ -160,7 +160,7 @@ cards:
               - entity: media_player.den_kodi
                 state_not: "off"
             card:
-              type: custom:mini-media-player
+              type: 'custom:mini-media-player'
               entity: media_player.den_kodi_harmony
               icon: mdi:blank
               artwork: cover
@@ -178,7 +178,7 @@ cards:
               - entity: media_player.roku_living_room
                 state_not: "home"
             card:
-              type: custom:mini-media-player
+              type: 'custom:mini-media-player'
               entity: media_player.den_roku_harmony
               icon: mdi:blank
               artwork: cover
@@ -196,7 +196,7 @@ cards:
               - entity: sensor.nuvo_zone_7_source
                 state: "1"
             card:
-              type: custom:mini-media-player
+              type: 'custom:mini-media-player'
               entity: media_player.den_stereo
               icon: mdi:blank
               artwork: cover
@@ -216,7 +216,7 @@ cards:
               - entity: sensor.nuvo_zone_7_source
                 state_not: "1"
             card:
-              type: custom:mini-media-player
+              type: 'custom:mini-media-player'
               entity: media_player.den_stereo
               name: Den
               icon: mdi:speaker
@@ -356,7 +356,7 @@ cards:
               - entity: media_player.den_kodi
                 state_not: "off"
             card:
-              type: custom:mini-media-player
+              type: 'custom:mini-media-player'
               entity: media_player.master_kodi_harmony
               icon: mdi:blank
               artwork: cover
@@ -374,7 +374,7 @@ cards:
               - entity: media_player.roku_master_bedroom
                 state_not: "home"
             card:
-              type: custom:mini-media-player
+              type: 'custom:mini-media-player'
               entity: media_player.master_roku_harmony
               icon: mdi:blank
               artwork: cover
@@ -392,7 +392,7 @@ cards:
               - entity: sensor.nuvo_zone_4_source
                 state: "1"
             card:
-              type: custom:mini-media-player
+              type: 'custom:mini-media-player'
               entity: media_player.master_bedroom_stereo
               icon: mdi:blank
               artwork: cover
@@ -412,7 +412,7 @@ cards:
               - entity: sensor.nuvo_zone_4_source
                 state_not: "1"
             card:
-              type: custom:mini-media-player
+              type: 'custom:mini-media-player'
               entity: media_player.master_bedroom_stereo
               icon: mdi:speaker
               group: true

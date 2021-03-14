@@ -161,7 +161,7 @@ cards:
 
       - type: "custom:gap-card"
 
-  - type: custom:mini-media-player
+  - type: 'custom:mini-media-player'
     entity: media_player.kitchen_stereo
     name: Kitchen
     icon: mdi:speaker

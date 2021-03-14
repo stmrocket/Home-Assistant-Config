@@ -234,7 +234,7 @@ cards:
             entity_id: remote.harmony_den
             activity: "Listen to WHA"
 
-  - type: custom:mini-media-player
+  - type: 'custom:mini-media-player'
     entity: media_player.den_stereo
     name: Den
     icon: mdi:speaker

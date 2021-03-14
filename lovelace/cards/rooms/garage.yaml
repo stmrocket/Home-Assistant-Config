@@ -56,7 +56,7 @@ cards:
         hold_action:
           action: more-info
       - type: "custom:gap-card"
-  - type: custom:mini-media-player
+  - type: 'custom:mini-media-player'
     entity: media_player.garage_stereo
     name: Garage
     icon: mdi:speaker
