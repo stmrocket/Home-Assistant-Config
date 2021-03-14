@@ -203,6 +203,7 @@ cards:
               group: true
               info: scroll
               volume_stateless: true
+              toggle_power: false
               hide:
                 name: true
                 power: true
@@ -222,6 +223,7 @@ cards:
               group: true
               artwork: none
               volume_stateless: true
+              toggle_power: false
               hide:
                 source: true
                 controls: true
@@ -416,6 +418,7 @@ cards:
               group: true
               artwork: none
               volume_stateless: true
+              toggle_power: false
               hide:
                 source: true
                 controls: true
@@ -434,143 +437,144 @@ cards:
         show_header_toggle: false
         title: Whole House Audio
         entities:
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.office_stereo
             name: Office
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.guest_bedroom_stereo
             name: Guest Bedroom
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.server_room_stereo
             name: Server Room
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.master_bedroom_stereo
             name: Master Bedroom
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.master_bathroom_stereo
             name: Master Bathroom
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.garage_stereo
             name: Garage
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.den_stereo
             name: Den
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.dining_room_stereo
             name: Ham Shack
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.kitchen_stereo
             name: Kitchen
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.back_porch_stereo
             name: Back Porch
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
               info: true
               progress: true
-
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.guest_bathroom_stereo
             name: Guest Bathroom
-            icon: mdi:speaker
+            icon: 'mdi:speaker'
             group: true
             artwork: none
             volume_stateless: true
+            toggle_power: false
             hide:
               source: true
               controls: true
