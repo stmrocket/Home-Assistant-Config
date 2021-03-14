@@ -102,6 +102,7 @@ cards:
     group: true
     artwork: none
     volume_stateless: true
+    toggle_power: false
     hide:
       source: true
       controls: true

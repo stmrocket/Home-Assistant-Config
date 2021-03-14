@@ -66,6 +66,7 @@ cards:
           icon: mdi:speaker
           artwork: cover
           volume_stateless: true
+          toggle_power: false
           hide:
             source: true
             progress: true
@@ -79,6 +80,7 @@ cards:
           icon: mdi:speaker
           artwork: cover
           volume_stateless: true
+          toggle_power: false
           hide:
             source: true
             controls: true
