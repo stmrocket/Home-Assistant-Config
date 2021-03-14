@@ -93,7 +93,7 @@ cards:
         hold_action:
           action: more-info
       - type: "custom:gap-card"
-  - type: custom:mini-media-player
+  - type: 'custom:mini-media-player'
     entity: media_player.guest_bedroom_stereo
     name: Guest Room
     icon: mdi:speaker

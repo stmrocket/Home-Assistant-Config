@@ -109,7 +109,7 @@ cards:
           action: more-info
       - type: "custom:gap-card"
 
-  - type: custom:mini-media-player
+  - type: 'custom:mini-media-player'
     entity: media_player.back_porch_stereo
     name: Back Porch
     icon: mdi:speaker

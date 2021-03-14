@@ -70,7 +70,7 @@ cards:
           - entity: sensor.nuvo_zone_1_source
             state: "1"
         card:
-          type: custom:mini-media-player
+          type: 'custom:mini-media-player'
           entity: media_player.office_stereo
           icon: mdi:speaker
           artwork: cover
@@ -84,7 +84,7 @@ cards:
           - entity: sensor.nuvo_zone_1_source
             state_not: "1"
         card:
-          type: custom:mini-media-player
+          type: 'custom:mini-media-player'
           entity: media_player.office_stereo
           icon: mdi:speaker
           artwork: cover

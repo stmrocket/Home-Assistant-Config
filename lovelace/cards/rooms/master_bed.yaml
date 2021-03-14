@@ -223,7 +223,7 @@ cards:
             entity_id: remote.harmony_master_bedroom
             activity: "Listen to WHA"
 
-  - type: custom:mini-media-player
+  - type: 'custom:mini-media-player'
     entity: media_player.master_bedroom_stereo
     name: Master Bedroom
     icon: mdi:speaker

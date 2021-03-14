@@ -53,7 +53,7 @@ cards:
           - entity: sensor.nuvo_zone_9_source
             state: "1"
         card:
-          type: custom:mini-media-player
+          type: 'custom:mini-media-player'
           entity: media_player.dining_room_stereo
           name: Shack Stereo
           icon: mdi:speaker
@@ -69,7 +69,7 @@ cards:
           - entity: sensor.nuvo_zone_9_source
             state_not: "1"
         card:
-          type: custom:mini-media-player
+          type: 'custom:mini-media-player'
           entity: media_player.dining_room_stereo
           name: Shack Stereo
           icon: mdi:speaker

@@ -598,7 +598,7 @@ cards:
   #################################################################
   - type: vertical-stack
     cards:
-      - type: custom:mini-media-player
+      - type: 'custom:mini-media-player'
         entity: media_player.spotify
         icon: mdi:spotify
         volume_stateless: true

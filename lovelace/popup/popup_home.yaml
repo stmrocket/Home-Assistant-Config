@@ -503,7 +503,7 @@ media_player.spotify:
           - entity: input_select.spotify_playlist
           - entity: script.spotify_change_playlist
             name: Change Playlist
-          - type: custom:mini-media-player
+          - type: 'custom:mini-media-player'
             entity: media_player.spotify
             icon: mdi:spotify
             artwork: cover

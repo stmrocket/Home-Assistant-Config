@@ -126,7 +126,7 @@ cards:
         hold_action:
           action: more-info
 
-  - type: custom:mini-media-player
+  - type: 'custom:mini-media-player'
     entity: media_player.master_bathroom_stereo
     name: Master Bathroom
     icon: mdi:speaker
