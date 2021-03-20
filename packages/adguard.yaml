@@ -315,7 +315,7 @@ switch:
     switches:
       adguard_protection_combined:
         friendly_name: AdGuard Protection Combined
-        value_template: "{{ is_state('switch.adguard_main_protection', 'on') || is_state('switch.adguard_backup_protection', 'on')}}"
+        value_template: "{{ is_state('switch.adguard_main_protection', 'on') or is_state('switch.adguard_backup_protection', 'on')}}"
         turn_on:
           service: switch.turn_on
           entity_id:
@@ -329,7 +329,7 @@ switch:
 
       adguard_filtering_combined:
         friendly_name: AdGuard Filtering Combined
-        value_template: "{{ is_state('switch.adguard_main_filtering', 'on') || is_state('switch.adguard_backup_filtering', 'on')}}"
+        value_template: "{{ is_state('switch.adguard_main_filtering', 'on') or is_state('switch.adguard_backup_filtering', 'on')}}"
         turn_on:
           service: switch.turn_on
           entity_id:
@@ -343,7 +343,7 @@ switch:
 
       adguard_parental_control_combined:
         friendly_name: AdGuard Parental Control Combined
-        value_template: "{{ is_state('switch.adguard_main_parental_control', 'on') || is_state('switch.adguard_backup_parental_control', 'on')}}"
+        value_template: "{{ is_state('switch.adguard_main_parental_control', 'on') or is_state('switch.adguard_backup_parental_control', 'on')}}"
         turn_on:
           service: switch.turn_on
           entity_id:
@@ -357,7 +357,7 @@ switch:
 
       adguard_safe_browsing_combined:
         friendly_name: AdGuard Safe Browsing Combined
-        value_template: "{{ is_state('switch.adguard_main_safe_browsing', 'on') || is_state('switch.adguard_backup_safe_browsing', 'on')}}"
+        value_template: "{{ is_state('switch.adguard_main_safe_browsing', 'on') or is_state('switch.adguard_backup_safe_browsing', 'on')}}"
         turn_on:
           service: switch.turn_on
           entity_id:
@@ -371,7 +371,7 @@ switch:
 
       adguard_safe_search_combined:
         friendly_name: AdGuard Safe Search Combined
-        value_template: "{{ is_state('switch.adguard_main_safe_search', 'on') || is_state('switch.adguard_backup_safe_search', 'on')}}"
+        value_template: "{{ is_state('switch.adguard_main_safe_search', 'on') or is_state('switch.adguard_backup_safe_search', 'on')}}"
         turn_on:
           service: switch.turn_on
           entity_id:
