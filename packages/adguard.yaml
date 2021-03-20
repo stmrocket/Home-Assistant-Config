@@ -1,27 +1,384 @@
 utility_meter:
-  adguard_queries_hourly:
-    source: sensor.adguard_dns_queries
-    cycle: hourly
-
   adguard_queries_daily:
-    source: sensor.adguard_dns_queries
+    source: sensor.adguard_dns_queries_today_total
     cycle: daily
 
-  adguard_blocked_hourly:
-    source: sensor.adguard_dns_queries_blocked
-    cycle: hourly
-
   adguard_blocked_daily:
-    source: sensor.adguard_dns_queries_blocked
+    source: sensor.adguard_dns_queries_blocked_today_total
     cycle: daily
 
 sensor:
+  - platform: mqtt
+    name: AdGuard Main Average Processing Speed
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['dns'].process_time }}"
+    unit_of_measurement: ms
+
+  - platform: mqtt
+    name: AdGuard Main DNS Queries Today
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['dns'].query_day }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main DNS Queries This Hour
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['dns'].query_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main DNS Queries Last Hour
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['dns'].query_last_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main DNS Block Ratio
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['filter'].block_ratio }}"
+    unit_of_measurement: "%"
+
+  - platform: mqtt
+    name: AdGuard Main DNS Queries Blocked Today
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['filter'].blocked_day }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main DNS Queries Blocked This Hour
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['filter'].blocked_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main DNS Queries Blocked Last Hour
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['filter'].blocked_last_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main Safe Browsing Blocked Today
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['browsing'].blocked_day }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main Safe Browsing Blocked This Hour
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['browsing'].blocked_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main Safe Browsing Blocked Last Hour
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['browsing'].blocked_last_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Main Safe Search Blocked Today
+    state_topic: adguard/main/tele/status
+    value_template: "{{value_json['search'].blocked_day }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup Average Processing Speed
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['dns'].process_time }}"
+    unit_of_measurement: ms
+
+  - platform: mqtt
+    name: AdGuard Backup DNS Queries Today
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['dns'].query_day }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup DNS Queries This Hour
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['dns'].query_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup DNS Queries Last Hour
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['dns'].query_last_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup DNS Block Ratio
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['filter'].block_ratio }}"
+    unit_of_measurement: "%"
+
+  - platform: mqtt
+    name: AdGuard Backup DNS Queries Blocked Today
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['filter'].blocked_day }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup DNS Queries Blocked This Hour
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['filter'].blocked_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup DNS Queries Blocked Last Hour
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['filter'].blocked_last_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup Safe Browsing Blocked Today
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['browsing'].blocked_day }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup Safe Browsing Blocked This Hour
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['browsing'].blocked_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup Safe Browsing Blocked Last Hour
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['browsing'].blocked_last_hour }}"
+    unit_of_measurement: queries
+
+  - platform: mqtt
+    name: AdGuard Backup Safe Search Blocked Today
+    state_topic: adguard/backup/tele/status
+    value_template: "{{value_json['search'].blocked_day }}"
+    unit_of_measurement: queries
+
   - platform: template
     sensors:
-      adguard_queries_last_hour:
-        friendly_name: Ad Guard DNS Queries Last Hour
-        value_template: "{{ state_attr('sensor.adguard_queries_hourly','last_period') }}"
 
-      adguard_blocked_last_hour:
-        friendly_name: Ad Guard Blocked DNS Queries Last Hour
-        value_template: "{{ state_attr('sensor.adguard_blocked_hourly','last_period') }}"
+      adguard_dns_queries_today_total:
+        friendly_name: AdGuard DNS Queries Today Total
+        value_template: "{{ states('sensor.adguard_main_dns_queries_today') | int + states('sensor.adguard_backup_dns_queries_today') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_dns_queries_this_hour_total:
+        friendly_name: AdGuard DNS Queries This Hour Total
+        value_template: "{{ states('sensor.adguard_main_dns_queries_this_hour') | int + states('sensor.adguard_backup_dns_queries_this_hour') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_dns_queries_last_hour_total:
+        friendly_name: AdGuard DNS Queries Last Hour Total
+        value_template: "{{ states('sensor.adguard_main_dns_queries_last_hour') | int + states('sensor.adguard_backup_dns_queries_last_hour') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_dns_block_ratio_total:
+        friendly_name: AdGuard DNS Block Ratio Total
+        value_template: "{{ (((states('sensor.adguard_main_dns_queries_blocked_today') | int + states('sensor.adguard_backup_dns_queries_blocked_today') | int) / (states('sensor.adguard_main_dns_queries_today') | int + states('sensor.adguard_backup_dns_queries_today') | int)) * 100) | round(0) }}"
+        unit_of_measurement: "%"
+    
+      adguard_dns_queries_blocked_today_total:
+        friendly_name: AdGuard DNS Queries Blocked Today Total
+        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_today') | int + states('sensor.adguard_backup_dns_queries_blocked_today') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_dns_queries_blocked_this_hour_total:
+        friendly_name: AdGuard DNS Queries Blocked This Hour Total
+        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_this_hour') | int + states('sensor.adguard_backup_dns_queries_blocked_this_hour') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_dns_queries_blocked_last_hour_total:
+        friendly_name: AdGuard DNS Queries Blocked Last Hour Total
+        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_last_hour') | int + states('sensor.adguard_backup_dns_queries_blocked_last_hour') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_safe_browsing_blocked_today_total:
+        friendly_name: AdGuard Safe Browsing Blocked Today Total
+        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_today') | int + states('sensor.adguard_backup_safe_browsing_blocked_today') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_safe_browsing_blocked_this_hour_total:
+        friendly_name: AdGuard Safe Browsing Blocked This Hour Total
+        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_this_hour') | int + states('sensor.adguard_backup_safe_browsing_blocked_this_hour') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_safe_browsing_blocked_last_hour_total:
+        friendly_name: AdGuard Safe Browsing Blocked Last Hour Total
+        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_last_hour') | int + states('sensor.adguard_backup_safe_browsing_blocked_last_hour') | int }}"
+        unit_of_measurement: queries
+    
+      adguard_safe_search_blocked_today_total:
+        friendly_name: AdGuard Safe Search Blocked Today Total
+        value_template: "{{ states('sensor.adguard_main_safe_search_blocked_today') | int + states('sensor.adguard_backup_safe_search_blocked_today') | int }}"
+        unit_of_measurement: queries
+
+switch:
+  - platform: mqtt
+    name: AdGuard Main Protection
+    state_topic: "adguard/main/tele/status"
+    command_topic: "adguard/main/command/set/protection"
+    value_template: "{{value_json['protection_enabled']}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Backup Protection
+    state_topic: "adguard/backup/tele/status"
+    command_topic: "adguard/backup/command/set/protection"
+    value_template: "{{value_json['protection_enabled']}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Main Filtering
+    state_topic: "adguard/main/tele/status"
+    command_topic: "adguard/main/command/set/filter"
+    value_template: "{{value_json['filter'].enabled}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Backup Filtering
+    state_topic: "adguard/backup/tele/status"
+    command_topic: "adguard/backup/command/set/filter"
+    value_template: "{{value_json['filter'].enabled}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Main Parental Control
+    state_topic: "adguard/main/tele/status"
+    command_topic: "adguard/main/command/set/parental"
+    value_template: "{{value_json['parental'].enabled}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Backup Parental Control
+    state_topic: "adguard/backup/tele/status"
+    command_topic: "adguard/backup/command/set/parental"
+    value_template: "{{value_json['parental'].enabled}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Main Safe Browsing
+    state_topic: "adguard/main/tele/status"
+    command_topic: "adguard/main/command/set/browsing"
+    value_template: "{{value_json['browsing'].enabled}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Backup Safe Browsing
+    state_topic: "adguard/backup/tele/status"
+    command_topic: "adguard/backup/command/set/browsing"
+    value_template: "{{value_json['browsing'].enabled}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Main Safe Search
+    state_topic: "adguard/main/tele/status"
+    command_topic: "adguard/main/command/set/search"
+    value_template: "{{value_json['search'].enabled}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: mqtt
+    name: AdGuard Backup Safe Search
+    state_topic: "adguard/backup/tele/status"
+    command_topic: "adguard/backup/command/set/search"
+    value_template: "{{value_json['search'].enabled}}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "true"
+    state_off: "false"
+  
+  - platform: template
+    switches:
+      adguard_protection_combined:
+        friendly_name: AdGuard Protection Combined
+        value_template: "{{ is_state('switch.adguard_main_protection', 'on') || is_state('switch.adguard_backup_protection', 'on')}}"
+        turn_on:
+          service: switch.turn_on
+          entity_id:
+            - switch.adguard_main_protection
+            - switch.adguard_backup_protection
+        turn_off:
+          service: switch.turn_off
+          entity_id:
+            - switch.adguard_main_protection
+            - switch.adguard_backup_protection
+
+      adguard_filtering_combined:
+        friendly_name: AdGuard Filtering Combined
+        value_template: "{{ is_state('switch.adguard_main_filtering', 'on') || is_state('switch.adguard_backup_filtering', 'on')}}"
+        turn_on:
+          service: switch.turn_on
+          entity_id:
+            - switch.adguard_main_filtering
+            - switch.adguard_backup_filtering
+        turn_off:
+          service: switch.turn_off
+          entity_id:
+            - switch.adguard_main_filtering
+            - switch.adguard_backup_filtering
+
+      adguard_parental_control_combined:
+        friendly_name: AdGuard Parental Control Combined
+        value_template: "{{ is_state('switch.adguard_main_parental_control', 'on') || is_state('switch.adguard_backup_parental_control', 'on')}}"
+        turn_on:
+          service: switch.turn_on
+          entity_id:
+            - switch.adguard_main_parental_control
+            - switch.adguard_backup_parental_control
+        turn_off:
+          service: switch.turn_off
+          entity_id:
+            - switch.adguard_main_parental_control
+            - switch.adguard_backup_parental_control
+
+      adguard_safe_browsing_combined:
+        friendly_name: AdGuard Safe Browsing Combined
+        value_template: "{{ is_state('switch.adguard_main_safe_browsing', 'on') || is_state('switch.adguard_backup_safe_browsing', 'on')}}"
+        turn_on:
+          service: switch.turn_on
+          entity_id:
+            - switch.adguard_main_safe_browsing
+            - switch.adguard_backup_safe_browsing
+        turn_off:
+          service: switch.turn_off
+          entity_id:
+            - switch.adguard_main_safe_browsing
+            - switch.adguard_backup_safe_browsing
+
+      adguard_safe_search_combined:
+        friendly_name: AdGuard Safe Search Combined
+        value_template: "{{ is_state('switch.adguard_main_safe_search', 'on') || is_state('switch.adguard_backup_safe_search', 'on')}}"
+        turn_on:
+          service: switch.turn_on
+          entity_id:
+            - switch.adguard_main_safe_search
+            - switch.adguard_backup_safe_search
+        turn_off:
+          service: switch.turn_off
+          entity_id:
+            - switch.adguard_main_safe_search
+            - switch.adguard_backup_safe_search

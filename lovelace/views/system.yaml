@@ -1682,7 +1682,7 @@ cards:
                     show_state: true
                     show_legend: false
                     show_graph: false
-                  - entity: sensor.adguard_queries_last_hour
+                  - entity: sensor.adguard_dns_queries_last_hour_total
                     aggregate_func: max
                     show_state: false
                     show_legend: false
@@ -1702,7 +1702,7 @@ cards:
                     show_state: true
                     show_legend: false
                     show_graph: false
-                  - entity: sensor.adguard_blocked_last_hour
+                  - entity: sensor.adguard_dns_queries_blocked_last_hour_total
                     aggregate_func: max
                     color: "#e45e65"
                     show_state: false
