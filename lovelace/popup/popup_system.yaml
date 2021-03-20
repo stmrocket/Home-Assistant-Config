@@ -360,7 +360,7 @@ sensor.adguard_dummy:
     cards:
       - type: entities
         entities:
-          - type: custom:multiple_entity_row
+          - type: custom:multiple-entity-row
             entity: sensor.adguard_main_dns_queries_today
             name: Total DNS Queries
             show_state: false
@@ -369,7 +369,7 @@ sensor.adguard_dummy:
                 name: Main
               - entity: sensor.adguard_backup_dns_queries_today
                 name: Backup
-          - type: custom:multiple_entity_row
+          - type: custom:multiple-entity-row
             entity: sensor.adguard_main_dns_queries_today
             name: DNS Queries Blocked
             show_state: false
@@ -378,7 +378,7 @@ sensor.adguard_dummy:
                 name: Main
               - entity: sensor.adguard_backup_dns_queries_blocked_today
                 name: Backup
-          - type: custom:multiple_entity_row
+          - type: custom:multiple-entity-row
             entity: sensor.adguard_main_dns_block_ratio
             name: DNS Block Ratio
             show_state: false
@@ -387,7 +387,7 @@ sensor.adguard_dummy:
                 name: Main
               - entity: sensor.adguard_backup_dns_block_ratio
                 name: Backup
-          - type: custom:multiple_entity_row
+          - type: custom:multiple-entity-row
             entity: sensor.adguard_main_average_processing_speed
             name: DNS Processing Speed
             show_state: false
