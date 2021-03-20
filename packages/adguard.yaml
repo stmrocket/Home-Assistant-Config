@@ -216,100 +216,80 @@ switch:
     state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/protection"
     value_template: "{{value_json['protection_enabled']}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
+    payload_on: "true"
+    payload_off: "false"
   
   - platform: mqtt
     name: AdGuard Backup Protection
     state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/protection"
     value_template: "{{value_json['protection_enabled']}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
+    payload_on: "true"
+    payload_off: "false"
   
   - platform: mqtt
     name: AdGuard Main Filtering
     state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/filter"
     value_template: "{{value_json['filter'].enabled}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
+    payload_on: "true"
+    payload_off: "false"
   
   - platform: mqtt
     name: AdGuard Backup Filtering
     state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/filter"
     value_template: "{{value_json['filter'].enabled}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
+    payload_on: "true"
+    payload_off: "false"
   
   - platform: mqtt
     name: AdGuard Main Parental Control
     state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/parental"
     value_template: "{{value_json['parental'].enabled}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
+    payload_on: "true"
+    payload_off: "false"
   
   - platform: mqtt
     name: AdGuard Backup Parental Control
     state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/parental"
     value_template: "{{value_json['parental'].enabled}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
-  
+    payload_on: "true"
+    payload_off: "false"
+
   - platform: mqtt
     name: AdGuard Main Safe Browsing
     state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/browsing"
     value_template: "{{value_json['browsing'].enabled}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
-  
+    payload_on: "true"
+    payload_off: "false"
+
   - platform: mqtt
     name: AdGuard Backup Safe Browsing
     state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/browsing"
     value_template: "{{value_json['browsing'].enabled}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
+    payload_on: "true"
+    payload_off: "false"
   
   - platform: mqtt
     name: AdGuard Main Safe Search
     state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/search"
     value_template: "{{value_json['search'].enabled}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
+    payload_on: "true"
+    payload_off: "false"
   
   - platform: mqtt
     name: AdGuard Backup Safe Search
     state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/search"
     value_template: "{{value_json['search'].enabled}}"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "true"
-    state_off: "false"
+    payload_on: "true"
+    payload_off: "false"
   
   - platform: template
     switches:
