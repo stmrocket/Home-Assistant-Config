@@ -99,8 +99,8 @@ binary_sensor:
     name: Litter Robot Online
     state_topic: "pooper/status"
     value_template: "{{value_json.didNotifyOffline}}"
-    payload_on: false
-    payload_off: true
+    payload_on: "false"
+    payload_off: "true"
 
   - platform: mqtt
     name: Litter Robot Drawer Full
