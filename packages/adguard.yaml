@@ -10,145 +10,145 @@ utility_meter:
 sensor:
   - platform: mqtt
     name: AdGuard Main Average Processing Speed
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['dns'].process_time }}"
     unit_of_measurement: ms
 
   - platform: mqtt
     name: AdGuard Main DNS Queries Today
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['dns'].query_day }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main DNS Queries This Hour
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['dns'].query_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main DNS Queries Last Hour
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['dns'].query_last_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main DNS Block Ratio
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['filter'].block_ratio }}"
     unit_of_measurement: "%"
 
   - platform: mqtt
     name: AdGuard Main DNS Queries Blocked Today
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['filter'].blocked_day }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main DNS Queries Blocked This Hour
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['filter'].blocked_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main DNS Queries Blocked Last Hour
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['filter'].blocked_last_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main Safe Browsing Blocked Today
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['browsing'].blocked_day }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main Safe Browsing Blocked This Hour
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['browsing'].blocked_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main Safe Browsing Blocked Last Hour
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['browsing'].blocked_last_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Main Safe Search Blocked Today
-    state_topic: adguard/main/tele/status
+    state_topic: adguard/main/tele/stats
     value_template: "{{value_json['search'].blocked_day }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup Average Processing Speed
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['dns'].process_time }}"
     unit_of_measurement: ms
 
   - platform: mqtt
     name: AdGuard Backup DNS Queries Today
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['dns'].query_day }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup DNS Queries This Hour
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['dns'].query_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup DNS Queries Last Hour
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['dns'].query_last_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup DNS Block Ratio
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['filter'].block_ratio }}"
     unit_of_measurement: "%"
 
   - platform: mqtt
     name: AdGuard Backup DNS Queries Blocked Today
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['filter'].blocked_day }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup DNS Queries Blocked This Hour
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['filter'].blocked_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup DNS Queries Blocked Last Hour
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['filter'].blocked_last_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup Safe Browsing Blocked Today
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['browsing'].blocked_day }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup Safe Browsing Blocked This Hour
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['browsing'].blocked_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup Safe Browsing Blocked Last Hour
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['browsing'].blocked_last_hour }}"
     unit_of_measurement: queries
 
   - platform: mqtt
     name: AdGuard Backup Safe Search Blocked Today
-    state_topic: adguard/backup/tele/status
+    state_topic: adguard/backup/tele/stats
     value_template: "{{value_json['search'].blocked_day }}"
     unit_of_measurement: queries
 
@@ -213,7 +213,7 @@ sensor:
 switch:
   - platform: mqtt
     name: AdGuard Main Protection
-    state_topic: "adguard/main/tele/status"
+    state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/protection"
     value_template: "{{value_json['protection_enabled']}}"
     payload_on: "ON"
@@ -223,7 +223,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Backup Protection
-    state_topic: "adguard/backup/tele/status"
+    state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/protection"
     value_template: "{{value_json['protection_enabled']}}"
     payload_on: "ON"
@@ -233,7 +233,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Main Filtering
-    state_topic: "adguard/main/tele/status"
+    state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/filter"
     value_template: "{{value_json['filter'].enabled}}"
     payload_on: "ON"
@@ -243,7 +243,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Backup Filtering
-    state_topic: "adguard/backup/tele/status"
+    state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/filter"
     value_template: "{{value_json['filter'].enabled}}"
     payload_on: "ON"
@@ -253,7 +253,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Main Parental Control
-    state_topic: "adguard/main/tele/status"
+    state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/parental"
     value_template: "{{value_json['parental'].enabled}}"
     payload_on: "ON"
@@ -263,7 +263,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Backup Parental Control
-    state_topic: "adguard/backup/tele/status"
+    state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/parental"
     value_template: "{{value_json['parental'].enabled}}"
     payload_on: "ON"
@@ -273,7 +273,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Main Safe Browsing
-    state_topic: "adguard/main/tele/status"
+    state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/browsing"
     value_template: "{{value_json['browsing'].enabled}}"
     payload_on: "ON"
@@ -283,7 +283,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Backup Safe Browsing
-    state_topic: "adguard/backup/tele/status"
+    state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/browsing"
     value_template: "{{value_json['browsing'].enabled}}"
     payload_on: "ON"
@@ -293,7 +293,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Main Safe Search
-    state_topic: "adguard/main/tele/status"
+    state_topic: "adguard/main/tele/stats"
     command_topic: "adguard/main/command/set/search"
     value_template: "{{value_json['search'].enabled}}"
     payload_on: "ON"
@@ -303,7 +303,7 @@ switch:
   
   - platform: mqtt
     name: AdGuard Backup Safe Search
-    state_topic: "adguard/backup/tele/status"
+    state_topic: "adguard/backup/tele/stats"
     command_topic: "adguard/backup/command/set/search"
     value_template: "{{value_json['search'].enabled}}"
     payload_on: "ON"
