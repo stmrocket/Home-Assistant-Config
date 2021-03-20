@@ -1724,7 +1724,7 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: switch.adguard_protection
+                entity: switch.adguard_protection_combined
                 lock:
                   enabled: true
                   unlock: hold
@@ -1739,7 +1739,7 @@ cards:
                 name: "Master"
 
               - type: "custom:button-card"
-                entity: switch.adguard_filtering
+                entity: switch.adguard_filtering_combined
                 lock:
                   enabled: true
                   unlock: hold
@@ -1754,7 +1754,7 @@ cards:
                 name: "Filter"
 
               - type: "custom:button-card"
-                entity: switch.adguard_parental_control
+                entity: switch.adguard_parental_control_combined
                 lock:
                   enabled: true
                   unlock: hold
@@ -1768,7 +1768,7 @@ cards:
                 name: "Parent"
 
               - type: "custom:button-card"
-                entity: switch.adguard_safe_search
+                entity: switch.adguard_safe_search_combined
                 lock:
                   enabled: true
                   unlock: hold
@@ -1782,7 +1782,7 @@ cards:
                 name: "Search"
 
               - type: "custom:button-card"
-                entity: switch.adguard_safe_browsing
+                entity: switch.adguard_safe_browsing_combined
                 lock:
                   enabled: true
                   unlock: hold
