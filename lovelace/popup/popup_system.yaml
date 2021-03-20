@@ -367,8 +367,10 @@ sensor.adguard_dummy:
             entities:
               - entity: sensor.adguard_main_dns_queries_today
                 name: Main
+                unit: false
               - entity: sensor.adguard_backup_dns_queries_today
                 name: Backup
+                unit: false
           - type: custom:multiple-entity-row
             entity: sensor.adguard_main_dns_queries_today
             name: DNS Queries Blocked
@@ -376,8 +378,10 @@ sensor.adguard_dummy:
             entities:
               - entity: sensor.adguard_main_dns_queries_blocked_today
                 name: Main
+                unit: false
               - entity: sensor.adguard_backup_dns_queries_blocked_today
                 name: Backup
+                unit: false
           - type: custom:multiple-entity-row
             entity: sensor.adguard_main_dns_block_ratio
             name: DNS Block Ratio
