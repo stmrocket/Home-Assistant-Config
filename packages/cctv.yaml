@@ -267,6 +267,8 @@ sensor:
       frigate_coral_inference:
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["inference_speed"] }}'
         unit_of_measurement: "ms"
+      frigate_processing_frame:
+        value_template: '{{ (states.sensor.frigate_debug.attributes["west_front"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["east_front"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["front_porch"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["east_side"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["west_side"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["back_yard"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["back_porch"]["frame_info"]["read"]) / 7}}'
 
 input_boolean:
   frigate_enabled:

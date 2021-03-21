@@ -243,3 +243,18 @@
       at: "00:00:00"
   action:
     - service: shell_command.clear_temp_images
+
+- alias: Restart Frigate if Hung
+  trigger:
+    - platform: state
+      entity_id: sensor.frigate_processing_frame
+      for: "00:05:00"
+  action:
+    - service: rest_command.docker_frigate_restart
+    - service: notify.mobile_app_shawn_7t
+      data:
+        message: Frigate has been restarted due to unresponsiveness.
+        title: Frigate CCTV
+        data:
+          ttl: 0
+          priority: high
