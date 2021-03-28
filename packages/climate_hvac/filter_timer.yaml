@@ -43,6 +43,33 @@ automation:
         data_template:
           value: "{{ now() }}"
 
+  - alias: Record Beginning Filter DP
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.hvac_running
+        to: "on"
+        for: 
+          seconds: 20
+    conditions:
+      - condition: state
+        entity_id: input_boolean.record_beginning_dp
+        state: 'on'
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.record_beginning_dp
+      - service: input_number.set_value
+        entity_id: input_number.beginning_filter_dp
+        value: "{{ states('sensor.hvac_filter_differential_pressure') }}"
+
+  - alias: Record Maximum Filter DP
+    trigger:
+      - platform: template
+        value_template: "{{ states('sensor.hvac_filter_differential_pressure') | float > states('input_number.maximum_filter_dp') | float }}"
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.maximum_filter_dp
+        value: "{{ states('sensor.hvac_filter_differential_pressure') }}"
+
 binary_sensor:
   - platform: template
     sensors:
@@ -148,6 +175,21 @@ sensor:
             OK
           {% endif -%}
 
+      beginning_filter_dp:
+        friendly_name: Beginning Filter Differential Pressure
+        value_template: "{{ states('input_number.beginning_filter_dp') }}"
+        unit_of_measurement: "Pa"
+
+      maximum_filter_dp:
+        friendly_name: Maximum Filter Differential Pressure
+        value_template: "{{ states('input_number.maximum_filter_dp') }}"
+        unit_of_measurement: "Pa"
+
+      filter_dp_increase:
+        friendly_name: Filter Differential Pressure Increase
+        value_template: "{{ (((states('sensor.maximum_filter_dp') | float - states('sensor.beginning_filter_dp') | float) / states('sensor.beginning_filter_dp') | float) * 100) | round(2) }}"
+        unit_of_measurement: "%"
+
 script:
   # Reset filter change date and set total runtime to zero
   furnace_filter_date:
@@ -165,6 +207,14 @@ script:
           value: >
             {% set active = (states('sensor.hvac_runtime_before_last_filter_change') | float) %}
             {{ 0 - active }}
+      - service: input_number.set_value
+        entity_id: input_number.beginning_filter_dp
+        value: 0
+      - service: input_number.set_value
+        entity_id: input_number.maximum_filter_dp
+        value: 0
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.record_beginning_dp
 
   furnace_bleach_date:
     alias: Furnace filter change date
@@ -202,3 +252,21 @@ input_number:
     max: 10000
     mode: box
     unit_of_measurement: "h"
+
+  beginning_filter_dp:
+    name: Beginning Filter Differential
+    min: 0
+    max: 500
+    mode: box
+    unit_of_measurement: "Pa"
+
+  maximum_filter_dp:
+    name: Maximum Filter Differential
+    min: 0
+    max: 500
+    mode: box
+    unit_of_measurement: "Pa"
+
+input_boolean:
+  record_beginning_dp:
+    name: Record Initial Filter Pressure

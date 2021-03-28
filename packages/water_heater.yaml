@@ -1,0 +1,48 @@
+sensor:
+  - platform: template
+    sensors:
+      water_heater_status:
+        friendly_name: "Water Heater Status"
+        value_template: >-
+          {% if states('sensor.thermopile_voltage') | float > 0.15-%}
+            'Idle'
+          {% elif states('sensor.thermopile_voltage') | float > 0.10-%}
+            'Heating'
+          {% elif  states('sensor.thermopile_voltage') | float < 0.10-%}
+            'Pilot Fail'
+          {% else -%}
+            'Error'
+          {% endif -%}
+  - platform: history_stats
+    name: Water Heater Runtime
+    entity_id: sensor.water_heater_status
+    state: "Heating"
+    type: time
+    start: "{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}"
+    end: "{{ now() }}"
+
+alert:
+  water_heater_pilot_fail:
+    name: Water Heater Fault
+    entity_id: sensor.water_heater_status
+    state: "Pilot Fail"
+    repeat: 360
+    can_acknowledge: true
+    skip_first: false
+    title: "Water Heater Fault"
+    message: "The water heater pilot light has failed."
+    done_message: "The water heater pilot light has been re-lit."
+    notifiers:
+      - mobile_app_shawn_7t
+
+automation:
+  - alias: Water Heater Pilot Alert
+    trigger:
+      - platform: state
+        entity_id: sensor.water_heater_status
+        to: "Pilot Fail"
+    action:
+      - service: persistent_notification.create
+        data:
+          title: Water Heater Fault!
+          message: The water heater pilot light has failed.
