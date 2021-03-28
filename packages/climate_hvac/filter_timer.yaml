@@ -59,7 +59,8 @@ automation:
         entity_id: input_boolean.record_beginning_dp
       - service: input_number.set_value
         entity_id: input_number.beginning_filter_dp
-        value: "{{ states('sensor.hvac_filter_differential_pressure') }}"
+        data_template:
+          value: "{{ states('sensor.hvac_filter_differential_pressure') }}"
 
   - alias: Record Maximum Filter DP
     trigger:
@@ -68,7 +69,8 @@ automation:
     action:
       - service: input_number.set_value
         entity_id: input_number.maximum_filter_dp
-        value: "{{ states('sensor.hvac_filter_differential_pressure') }}"
+        data_template:
+          value: "{{ states('sensor.hvac_filter_differential_pressure') }}"
 
 binary_sensor:
   - platform: template
