@@ -50,7 +50,7 @@ automation:
         to: "on"
         for: 
           seconds: 20
-    conditions:
+    condition:
       - condition: state
         entity_id: input_boolean.record_beginning_dp
         state: 'on'
@@ -187,7 +187,12 @@ sensor:
 
       filter_dp_increase:
         friendly_name: Filter Differential Pressure Increase
-        value_template: "{{ (((states('sensor.maximum_filter_dp') | float - states('sensor.beginning_filter_dp') | float) / states('sensor.beginning_filter_dp') | float) * 100) | round(2) }}"
+        value_template: >-
+          {% if (states('sensor.beginning_filter_dp') | float) > 0 %}
+            {{ (((states('sensor.maximum_filter_dp') | float - states('sensor.beginning_filter_dp') | float) / states('sensor.beginning_filter_dp') | float) * 100) | round(2) }}
+          {% else -%}
+            0
+          {% endif -%}
         unit_of_measurement: "%"
 
 script:
@@ -209,10 +214,12 @@ script:
             {{ 0 - active }}
       - service: input_number.set_value
         entity_id: input_number.beginning_filter_dp
-        value: 0
+        data:
+          value: 0
       - service: input_number.set_value
         entity_id: input_number.maximum_filter_dp
-        value: 0
+        data:
+          value: 0
       - service: input_boolean.turn_on
         entity_id: input_boolean.record_beginning_dp
 
