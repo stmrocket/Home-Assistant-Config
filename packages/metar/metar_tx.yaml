@@ -95,6 +95,7 @@ sensor:
 
 automation:
   - alias: Update Texas METAR Map Display Mode
+    id: 0de66101-4b80-4f4e-bdfe-d01516e1808a
     trigger:
       - platform: state
         entity_id: input_boolean.tx_metar_mode
@@ -122,6 +123,7 @@ automation:
                   retain: true
 
   - alias: Texas Map On When Home and Awake
+    id: a40498fe-4af4-4ccb-a5e6-21625911ad64
     trigger:
       - platform: state
         entity_id: alarm_control_panel.house
@@ -134,6 +136,7 @@ automation:
         entity_id: switch.texas_metar_map_power
 
   - alias: Texas Map Off When Home and Awake
+    id: 563d9c9c-155c-4105-b5bd-a7edbdaa5949
     trigger:
       - platform: state
         entity_id: alarm_control_panel.house

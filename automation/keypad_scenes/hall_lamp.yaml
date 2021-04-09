@@ -1,4 +1,5 @@
 - alias: Hall Lamp On from Keypad
+  id: 247156c9-b202-4eed-9c5e-708cadf62b83
   trigger:
     - platform: state
       entity_id: switch.hall_lamp
@@ -14,6 +15,7 @@
         entity_id: light.hall_lamp
 
 - alias: Hall Lamp Off from Keypad
+  id: 78f45525-e399-47a5-9a2b-5061b7ee83ec
   trigger:
     - platform: state
       entity_id: switch.hall_lamp
@@ -28,6 +30,7 @@
       entity_id: light.hall_lamp
 
 - alias: Hall Lamp Keypad On
+  id: 6a9461dd-1a41-4f76-b1df-e1caab1b03fa
   trigger:
     - platform: state
       entity_id: light.hall_lamp
@@ -42,6 +45,7 @@
       entity_id: switch.hall_lamp
 
 - alias: Hall Lamp Keypad Off
+  id: 82cd8892-62b0-4d59-83cd-f5902e819e3b
   trigger:
     - platform: state
       entity_id: light.hall_lamp

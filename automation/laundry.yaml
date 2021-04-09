@@ -1,4 +1,5 @@
 - alias: "Dryer State - Door"
+  id: b20e9fcc-2cf1-4a73-b957-15c9b2a051c9
   trigger:
     - platform: numeric_state
       entity_id: sensor.dryer_watts
@@ -14,6 +15,7 @@
         retain: "true"
 
 - alias: "Dryer State - Drying"
+  id: 207d3e98-175c-414d-aa88-3974301028dc
   trigger:
     - platform: numeric_state
       entity_id: sensor.dryer_watts
@@ -32,6 +34,7 @@
       entity_id: input_boolean.dryer_end
 
 - alias: "Dryer State - Idle"
+  id: 5b860d55-1b30-49b0-87d7-ff953fdc4dd9
   trigger:
     - platform: numeric_state
       entity_id: sensor.dryer_watts
@@ -51,6 +54,7 @@
 #  Washing Machine Start/Finish
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 - alias: "Washer State - Start"
+  id: f2d307d7-23bc-40c7-9626-76cc5fdedad4
   trigger:
     - platform: numeric_state
       entity_id: sensor.washer_watts
@@ -71,6 +75,7 @@
       entity_id: input_boolean.washer_end
 
 - alias: "Washer State - Idle"
+  id: 51f499e7-bda1-44ec-ab06-f082bca8ce9c
   trigger:
     - platform: numeric_state
       entity_id: sensor.washer_watts
@@ -85,6 +90,7 @@
         retain: "true"
 
 - alias: "Dryer Finished"
+  id: 093d5b4d-8ba6-4bf5-a16e-e16f180e76a0
   trigger:
     - platform: state
       entity_id: sensor.dryer_state
@@ -95,6 +101,7 @@
       entity_id: input_boolean.dryer_end
 
 - alias: "Washer Finished"
+  id: 727e74b5-8529-4d51-a43f-50a010567450
   trigger:
     - platform: state
       entity_id: sensor.washer_state
@@ -111,6 +118,7 @@
 #  Announcements
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 - alias: "Announce Dryer Finished"
+  id: 36c0668e-cdc2-4277-96ff-8934a747b48c
   trigger:
     - platform: state
       entity_id: input_boolean.dryer_end
@@ -150,6 +158,7 @@
         message: "The dryer has stopped."
 
 - alias: "Repeat Announce Dryer Finished"
+  id: a51c8c5c-31af-4001-b931-5125204164cc
   trigger:
     - event_data:
         entity_id: timer.dryer_alert
@@ -178,6 +187,7 @@
       entity_id: counter.dryer_alert
 
 - alias: "Announce Washer Finished"
+  id: b6287a47-29d5-4057-ba1f-15db05e026e2
   trigger:
     - platform: state
       entity_id: input_boolean.washer_end
@@ -217,6 +227,7 @@
         message: "The washer has stopped."
 
 - alias: "Repeat Announce Washer Finished"
+  id: 7eef5299-bafb-4bbb-9da0-0d72952edb03
   trigger:
     - event_data:
         entity_id: timer.washer_alert
@@ -246,6 +257,7 @@
 
 #Reset all timers when Laundry Room entered
 - alias: "Reset Laundry Timers on Motion"
+  id: ae5d9e18-2075-493f-8a13-9927b9ece693
   trigger:
     - entity_id: sensor.elk_utility_motion
       platform: state
@@ -266,6 +278,7 @@
 
 #Reset all timers when Not Awake or Home
 - alias: "Reset Laundry Timers on Alarm Status"
+  id: 5d2939de-57a1-48e5-a2c5-914f5d418487
   trigger:
     - entity_id: input_boolean.dryer_end
       platform: state

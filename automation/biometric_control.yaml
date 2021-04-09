@@ -1,4 +1,5 @@
 - alias: Arm from Biometrics
+  id: 04ce0603-a32f-447b-b963-abc994e90eaf
   trigger:
     - platform: state
       entity_id: switch.elk_biometric_trigger
@@ -16,6 +17,7 @@
       entity_id: switch.elk_biometric_trigger
 
 - alias: Disarm from Biometrics
+  id: 1244ea8c-745c-47ab-b2a3-dd52e7cc73ce
   trigger:
     - platform: state
       entity_id: switch.elk_biometric_trigger

@@ -16,6 +16,7 @@ light:
     optimistic: false
 automation:
   - alias: mbed_gr report on
+    id: d0068790-d250-4a50-9437-a562abe444bb
     trigger:
       - platform: state
         entity_id: light.master_bedroom_led_1_rgb
@@ -29,6 +30,7 @@ automation:
           topic: h801/mbed/ha/state
           payload_template: "ON"
   - alias: mbed_gr report off
+    id: cabbbd59-b572-4168-8483-d600dc9cce89
     trigger:
       - platform: state
         entity_id: light.master_bedroom_led_1_rgb

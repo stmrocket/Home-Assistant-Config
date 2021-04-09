@@ -187,6 +187,7 @@ script:
 
 automation:
   - alias: Update Litter Robot Cycle Count
+    id: f656c603-f96b-4127-9059-a0fe410694a6
     trigger:
       - platform: state
         entity_id: sensor.litter_robot_cycle_count
@@ -198,6 +199,7 @@ automation:
         entity_id: counter.litter_robot_cycle_count
 
   - alias: Empty Drawer From NFC
+    id: 96c56a06-b418-4f91-85be-0e9b866d99c8
     trigger:
       - platform: event
         event_type: tag_scanned

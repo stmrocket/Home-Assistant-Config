@@ -1,4 +1,5 @@
 - alias: Open Den Blinds
+  id: 4fe747fe-d220-40c9-9c7d-aaa48765f747
   trigger:
     - platform: state
       entity_id: switch.den_blinds
@@ -13,6 +14,7 @@
       entity_id: cover.den_blinds
 
 - alias: Close Den Blinds
+  id: 98371aed-2ea1-4288-b01c-9e01cf0aad38
   trigger:
     - platform: state
       entity_id: switch.den_blinds
@@ -27,6 +29,7 @@
       entity_id: cover.den_blinds
 
 - alias: Den Blind Keypad on if any Open
+  id: da9cc3ea-0532-4e80-9e87-4354483a7ef9
   trigger:
     - platform: state
       entity_id: cover.den_blinds
@@ -41,6 +44,7 @@
       entity_id: switch.den_blinds
 
 - alias: Den Blind Keypad off if all Closed
+  id: 5d5623e7-b4d1-44ea-ab6b-8aa34edcc96d
   trigger:
     - platform: state
       entity_id: cover.den_blinds
@@ -55,6 +59,7 @@
       entity_id: switch.den_blinds
 
 - alias: Den Windows Same Position
+  id: ea676e54-6733-4259-901f-78d0bbb735b1
   trigger:
     - platform: state
       entity_id:
@@ -87,6 +92,7 @@
         retain: "true"
 
 - alias: Den Windows Various Positions
+  id: a5a9f757-6a02-4004-bd01-7303f7c2ea61
   trigger:
     - platform: state
       entity_id:

@@ -1,4 +1,5 @@
 - alias: Timer Lights On Main Weekday AM
+  id: 9179c7ea-cf4b-401b-b2bc-96bf1f329c91
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_work_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
@@ -38,6 +39,7 @@
       entity_id: input_boolean.timer_lights
 
 - alias: Timer Lights On Main Evenings
+  id: 623a17d8-ac58-4228-8e24-0881028a822e
   trigger:
     - platform: sun
       event: sunset
@@ -58,6 +60,7 @@
       entity_id: input_boolean.timer_lights
 
 - alias: Timer Lights On Main Weekend Holiday AM
+  id: 266d66d7-59d2-4d05-92a8-5be98a3d603b
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -107,6 +110,7 @@
       entity_id: input_boolean.timer_lights
 
 - alias: Timer Lights Off Main Night Away
+  id: 7b1b495b-7df2-4485-ac7e-826814a52022
   trigger:
     - platform: time
       at: "23:30:00"
@@ -132,6 +136,7 @@
         - input_boolean.manual_timer_lights
 
 - alias: Timer Lights Off Main Mornings
+  id: 7bfd1c4d-1de6-4a4b-8243-9fd2da39fd9a
   trigger:
     - platform: sun
       event: sunrise
@@ -154,6 +159,7 @@
         - input_boolean.manual_timer_lights
 
 - alias: Timer Lights Off Main Night Mode
+  id: aa6d3655-9af4-4b2c-a481-2ba631741cc0
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -180,6 +186,7 @@
         - input_boolean.manual_timer_lights
 
 - alias: Timer Lights On Guest
+  id: d830e8bf-54af-4ff1-a83d-f13c6c1a7e25
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -199,6 +206,7 @@
       entity_id: switch.guest_room_lamp
 
 - alias: Timer Lights Off Guest
+  id: a3275f91-7d5b-4adb-b456-945af53716ad
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -213,6 +221,7 @@
       entity_id: switch.guest_room_lamp
 
 - alias: Timer Lights On Master
+  id: eb3b0cb6-84c8-4a0a-9450-533b87f71496
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -247,6 +256,7 @@
         entity_id: input_boolean.master_lamp_timer
 
 - alias: Timer Lights Off Master
+  id: 7b13c5a7-b0ce-42c4-a8ae-1eca4f620d56
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -279,6 +289,7 @@
       entity_id: input_boolean.master_lamp_timer
 
 - alias: Timer Lights On Outside
+  id: 6d6808cd-d3b4-4b63-a6eb-2f559bc57915
   trigger:
     - platform: sun
       event: sunset
@@ -292,6 +303,7 @@
         - switch.shed_outside_light
 
 - alias: Timer Lights Off Outside
+  id: 72a166d5-5c49-49c3-b8ce-3c291d5a155a
   trigger:
     - platform: sun
       event: sunrise
@@ -305,6 +317,7 @@
         - switch.shed_outside_light
 
 - alias: Timer LEDs On House
+  id: 5959d6d3-395d-4830-bc95-cf48745146fd
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -349,6 +362,7 @@
         - light.hall_lamp
 
 - alias: Timer LEDs Off House Away
+  id: 5bf47e48-9e9d-4d72-9ce9-1d95d36b91aa
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -361,6 +375,7 @@
         - light.hall_lamp
 
 - alias: Timer LEDs Off House
+  id: 3f1356fb-b406-4deb-9074-4f84f26ccafb
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -384,6 +399,7 @@
         - light.hall_lamp
 
 - alias: Timer LEDs Off Master
+  id: 60346ca3-6764-402c-8412-496b18b103a6
   trigger:
     - platform: state
       entity_id: input_boolean.timer_lights
@@ -417,6 +433,7 @@
       entity_id: light.master_suite_leds_rgb
 
 - alias: Master Suite Off if Sleeping
+  id: f867c8e4-d417-4037-a481-688e441b0f15
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house

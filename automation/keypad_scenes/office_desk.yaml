@@ -1,4 +1,5 @@
 - alias: Office Desk Light On from Keypad
+  id: 9b58716a-3c08-4e2a-be7a-2e8cd205a7f5
   trigger:
     - platform: state
       entity_id: switch.office_desk_light
@@ -14,6 +15,7 @@
         entity_id: light.office_desk_light
 
 - alias: Office Desk Light Off from Keypad
+  id: 6acb799f-596c-439b-8f78-7882d8bec786
   trigger:
     - platform: state
       entity_id: switch.office_desk_light
@@ -28,6 +30,7 @@
       entity_id: light.office_desk_light
 
 - alias: Office Desk Light Keypad On
+  id: af503ac8-ddba-490b-8de9-684a1077532e
   trigger:
     - platform: state
       entity_id: light.office_desk_light
@@ -42,6 +45,7 @@
       entity_id: switch.office_desk_light
 
 - alias: Office Desk Light Keypad Off
+  id: 82504963-eaf4-4f74-a5d2-c0dc877559e4
   trigger:
     - platform: state
       entity_id: light.office_desk_light

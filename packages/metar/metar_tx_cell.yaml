@@ -33,6 +33,7 @@ sensor:
 
 automation:
   - alias: Update Texas Cell METAR Map Display Mode
+    id: 7a37e5a9-a5b9-40c4-8312-a33a4f3bf75e
     trigger:
       - platform: state
         entity_id: input_boolean.tx_cell_metar_mode
@@ -60,6 +61,7 @@ automation:
                   retain: true
 
   - alias: Texas Cell Map On When at work
+    id: caec31c4-7d2c-42cc-ad0a-e7eda7d34d53
     trigger:
       - platform: state
         entity_id: person.shawn_mccoy
@@ -69,6 +71,7 @@ automation:
         entity_id: switch.texas_cell_metar_map_power
 
   - alias: Texas Cell Map Off When at work
+    id: 16dda682-e1e6-4190-90c3-b41d392d3a02
     trigger:
       - platform: state
         entity_id: person.shawn_mccoy

@@ -1,4 +1,5 @@
 - alias: Set Den AVR Volume to -25
+  id: 29bd4fa2-a2fc-4501-a27f-4556f6ed2f6a
   trigger:
     - platform: state
       entity_id: sensor.den_harmony_activity
@@ -10,6 +11,7 @@
     - service: rest_command.den_avr_25
 
 - alias: Set Den AVR Volume to -33
+  id: c5bb3cb3-4676-4e45-91aa-5f7bfaa36f74
   trigger:
     - platform: state
       entity_id: sensor.den_harmony_activity
@@ -18,6 +20,7 @@
     - service: rest_command.den_avr_33
 
 - alias: Set Den AVR Volume to -40
+  id: c27a3e4e-f63b-43af-b978-02f9366af1d0
   trigger:
     - platform: state
       entity_id: sensor.den_harmony_activity

@@ -1,4 +1,5 @@
 - alias: Shack Desk Light On from Keypad
+  id: f65af43a-d090-4652-bf31-9749aab8c1cc
   trigger:
     - platform: state
       entity_id: switch.shack_desk_light
@@ -14,6 +15,7 @@
         entity_id: light.shack_desk_light
 
 - alias: Shack Desk Light Off from Keypad
+  id: a595df5c-0bd7-4bbf-9974-ccaf99c6bbfc
   trigger:
     - platform: state
       entity_id: switch.shack_desk_light
@@ -28,6 +30,7 @@
       entity_id: light.shack_desk_light
 
 - alias: Shack Desk Light Keypad On
+  id: 16c1d619-6b7e-4f07-9a68-f1030343b07b
   trigger:
     - platform: state
       entity_id: light.shack_desk_light
@@ -42,6 +45,7 @@
       entity_id: switch.shack_desk_light
 
 - alias: Shack Desk Light Keypad Off
+  id: 96636f12-49b5-4a22-ad87-c0f409aaa485
   trigger:
     - platform: state
       entity_id: light.shack_desk_light

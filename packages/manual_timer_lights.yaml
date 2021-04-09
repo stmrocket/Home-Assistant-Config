@@ -63,6 +63,7 @@ script:
 
 automation:
   - alias: Manual Timer Lights On from Keypad
+    id: 36b9bd72-1c15-45b1-8076-984bed02b89a
     trigger:
       - platform: state
         entity_id: switch.timer_lights
@@ -78,6 +79,7 @@ automation:
           entity_id: switch.manual_timer_lights
 
   - alias: Manual Timer Lights Off from Keypad
+    id: 82f2349a-ffd1-40ab-959a-12abdde9860e
     trigger:
       - platform: state
         entity_id: switch.timer_lights
@@ -93,6 +95,7 @@ automation:
           entity_id: switch.manual_timer_lights
 
   - alias: Manual Timer Lights Keypad On
+    id: 928d1653-e419-4ad8-939e-4a822c06e9e0
     trigger:
       - platform: state
         entity_id: switch.manual_timer_lights
@@ -107,6 +110,7 @@ automation:
         entity_id: switch.hall_timer_lights
 
   - alias: Manual Timer Lights Keypad Off
+    id: 7e7673c2-75ab-4ef5-8681-c7577a128657
     trigger:
       - platform: state
         entity_id: switch.manual_timer_lights

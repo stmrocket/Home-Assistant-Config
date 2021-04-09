@@ -1,4 +1,5 @@
 - alias: Open Guest Blinds
+  id: a07de380-2a55-413d-ae75-f245f3868548
   trigger:
     - platform: state
       entity_id: switch.guest_blinds
@@ -13,6 +14,7 @@
       entity_id: cover.guest_blind
 
 - alias: Close Guest Blinds
+  id: 7853e322-9f87-42bb-a0d4-deaa557782fd
   trigger:
     - platform: state
       entity_id: switch.guest_blinds
@@ -27,6 +29,7 @@
       entity_id: cover.guest_blind
 
 - alias: Guest Blind Keypad on if any Open
+  id: 2c2e9135-c29d-42a4-a2b0-ce410517a1bd
   trigger:
     - platform: state
       entity_id: cover.guest_blind
@@ -41,6 +44,7 @@
       entity_id: switch.guest_blinds
 
 - alias: Guest Blind Keypad off if all Closed
+  id: 7a5aaa66-f8c9-448f-9045-945900968a05
   trigger:
     - platform: state
       entity_id: cover.guest_blind

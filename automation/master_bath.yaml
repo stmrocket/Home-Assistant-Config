@@ -1,4 +1,5 @@
 - alias: Master Shower On
+  id: 53adbbbb-bed5-4b4e-8d83-a28b380aa67f
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
@@ -13,6 +14,7 @@
       entity_id: cover.master_blinds
 
 - alias: Master Shower Off
+  id: aa1486e2-48c4-4856-b291-b1a533602a2f
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
@@ -25,6 +27,7 @@
         payload_template: "5,60"
 
 - alias: Master Shower Fan Timer
+  id: e9b7ef63-4fd4-452b-8263-8310b9eaae05
   trigger:
     - platform: state
       entity_id: light.master_shower_light
@@ -44,6 +47,7 @@
         entity_id: switch.shower_light_and_fan
 
 - alias: Alexa Prompt to Open Blinds After Shower
+  id: 4a0e3dd8-e132-430d-b709-15d3b2fb7ffc
   trigger:
     - platform: state
       entity_id: sensor.master_shower_light_a
@@ -69,6 +73,7 @@
         alexa_device: "media_player.alexa_master_bedroom"
 
 - alias: Open Master Blinds via Actionable Notificaiton
+  id: 3124cde5-b0c0-409b-99bb-b1a7e512e29a
   trigger:
     platform: event
     event_type: alexa_actionable_notification
@@ -80,6 +85,7 @@
       entity_id: cover.master_blinds
 
 - alias: Repeat Master Blinds via Actionable Notificaiton
+  id: 307dd1f0-86ed-49de-9d6d-e79d5c821f1b
   trigger:
     platform: event
     event_type: alexa_actionable_notification

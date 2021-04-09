@@ -1,4 +1,5 @@
 - alias: Notify Blind Controller Offline
+  id: 75a160e6-eda8-4abe-a5f9-d61fcf8f1e67
   trigger:
     - platform: state
       entity_id: group.blinds
@@ -16,6 +17,7 @@
           priority: high
 
 - alias: Notify LED Controller Offline
+  id: 2764c705-6fab-47f0-b8f4-a1567b58e661
   trigger:
     - platform: state
       entity_id: group.leds
@@ -33,6 +35,7 @@
           priority: high
 
 - alias: Notify NAS Offline
+  id: 6e40e571-6a5e-45bd-8aed-851d4ccecb01
   trigger:
     - platform: state
       entity_id: device_tracker.nas
@@ -50,6 +53,7 @@
           priority: high
 
 - alias: Notify HDHomeRun Offline
+  id: 1b1d2496-0303-470b-8e88-bfde5492bd2d
   trigger:
     - platform: state
       entity_id: device_tracker.hdhomerun
@@ -67,6 +71,7 @@
           priority: high
 
 - alias: Notify MusicPort Offline
+  id: 3dbb2511-a61f-41a8-ace1-61bf2759d0b4
   trigger:
     - platform: state
       entity_id: device_tracker.musicport
@@ -84,6 +89,7 @@
           priority: high
 
 - alias: Notify OWFS Offline
+  id: 9e30a923-b66c-426f-8294-a84c019e6a27
   trigger:
     - platform: state
       entity_id: device_tracker.owfs_pi
@@ -101,6 +107,7 @@
           priority: high
 
 - alias: Notify Core Switch Offline
+  id: 0157a2e9-86e1-4261-9d0d-d765f6789aa0
   trigger:
     - platform: state
       entity_id: device_tracker.core_switch
@@ -118,6 +125,7 @@
           priority: high
 
 - alias: Notify POE Switch Offline
+  id: fc154bf4-781f-437a-8080-596fca239688
   trigger:
     - platform: state
       entity_id: device_tracker.poe_switch
@@ -135,6 +143,7 @@
           priority: high
 
 - alias: Notify ISY Offline
+  id: cf47c0ca-2520-43bb-9469-c24225be6ec8
   trigger:
     - platform: state
       entity_id: device_tracker.isy_994
@@ -152,6 +161,7 @@
           priority: high
 
 - alias: Notify ELK Offline
+  id: fc2d5a4c-8cbe-4a2a-afa0-db62fa2182ad
   trigger:
     - platform: state
       entity_id: device_tracker.alarm_panel
@@ -169,6 +179,7 @@
           priority: high
 
 - alias: Notify Front AP Offline
+  id: 2e7a674c-1bfe-4bdd-b909-1b9e925d18f2
   trigger:
     - platform: state
       entity_id: device_tracker.unifi_front
@@ -186,6 +197,7 @@
           priority: high
 
 - alias: Notify den AP Offline
+  id: f271795e-7757-4f34-82f7-92fd4f0365c3
   trigger:
     - platform: state
       entity_id: device_tracker.unifi_front
@@ -203,6 +215,7 @@
           priority: high
 
 - alias: Notify Redlink Offline
+  id: 17d3b631-6b39-47dd-a5e5-6c4bc1fd8d92
   trigger:
     - platform: state
       entity_id: device_tracker.redlink
@@ -220,6 +233,7 @@
           priority: high
 
 - alias: Notify Server UPS Offline
+  id: d00534b6-2e5a-43e3-99cd-cba9648a6735
   trigger:
     - platform: state
       entity_id: device_tracker.server_ups
@@ -237,6 +251,7 @@
           priority: high
 
 - alias: Notify Office UPS Offline
+  id: 17079914-1221-429e-9605-4d581c1c5e97
   trigger:
     - platform: state
       entity_id: device_tracker.server_ups
@@ -254,6 +269,7 @@
           priority: high
 
 - alias: Notify Server UPS On Battery
+  id: bb5479d4-08ca-441f-9bcf-637960a96efa
   trigger:
     - platform: state
       entity_id: sensor.server_ups_status
@@ -268,6 +284,7 @@
           priority: high
 
 - alias: Notify Server UPS On Utility
+  id: a7f5dfc2-5b5a-4eb5-bfc2-db6aae56ff53
   trigger:
     - platform: state
       entity_id: sensor.server_ups_status
@@ -283,6 +300,7 @@
           priority: high
 
 - alias: Notify Server UPS Battery Low
+  id: 708b559a-f73b-403e-8e6d-f27436afa8f9
   trigger:
     - platform: numeric_state
       entity_id: sensor.server_ups_remaining_runtime
@@ -297,6 +315,7 @@
           priority: high
 
 - alias: Notify Server UPS Battery Fail
+  id: 09c82226-903c-4e89-b28f-8261ba9c8700
   trigger:
     - platform: state
       entity_id: sensor.server_ups_battery_status
@@ -315,6 +334,7 @@
         message: The server room UPS battery has failed.  Replace immediately.
 
 - alias: Notify Office UPS On Battery
+  id: 6a63eba0-3acf-4368-9010-df100446a9d1
   trigger:
     - platform: state
       entity_id: sensor.office_ups_status
@@ -329,6 +349,7 @@
           priority: high
 
 - alias: Notify Office UPS On Utility
+  id: b7e1c6e1-2657-461b-819f-ee23a53fac1a
   trigger:
     - platform: state
       entity_id: sensor.office_ups_status
@@ -344,6 +365,7 @@
           priority: high
 
 - alias: Notify Office UPS Battery Low
+  id: a1e024a6-80c4-40f1-8f1b-a59cba3c44f4
   trigger:
     - platform: numeric_state
       entity_id: sensor.office_ups_remaining_runtime
@@ -358,6 +380,7 @@
           priority: high
 
 - alias: Notify Office UPS Battery Fail
+  id: 7c0b0336-64ee-4ddb-b185-a780fbba3870
   trigger:
     - platform: state
       entity_id: sensor.office_ups_battery_status
@@ -376,6 +399,7 @@
         message: The office UPS battery has failed.  Replace immediately.
 
 - alias: Notify Docker Frigate Down
+  id: 99bcc0a1-beff-4ef4-9b58-023b14a9913a
   trigger:
     - platform: state
       entity_id: switch.frigate
@@ -392,6 +416,7 @@
           priority: high
 
 - alias: Notify Docker MySQL Down
+  id: e5a1f514-f423-4e3b-9539-f47163f08115
   trigger:
     - platform: state
       entity_id: switch.mysql
@@ -408,6 +433,7 @@
           priority: high
 
 - alias: Notify TV Headend Down
+  id: ffb23f60-307d-48aa-8234-60a85fb3cd6b
   trigger:
     - platform: state
       entity_id: switch.tv_headend
@@ -424,6 +450,7 @@
           priority: high
 
 - alias: Notify Docker Eagle MQTT Down
+  id: 6285f1e3-723f-48d3-abf9-d902a7c8f843
   trigger:
     - platform: state
       entity_id: switch.eagle_mqtt
@@ -440,6 +467,7 @@
           priority: high
 
 - alias: Notify Parrot Offline
+  id: 1fc26e52-63ed-4a51-95b7-b9ab547753b4
   trigger:
     - platform: state
       entity_id: device_tracker.parrot
@@ -457,6 +485,7 @@
           priority: high
 
 - alias: Notify Clock Horn Offline
+  id: fc3f2065-8cee-4298-a20a-a6629246c2ca
   trigger:
     - platform: state
       entity_id: device_tracker.horn
@@ -474,6 +503,7 @@
           priority: high
 
 - alias: Notify RainMachine Offline
+  id: a7b451f4-96c5-4210-9dd7-9f60776ebc90
   trigger:
     - platform: state
       entity_id: device_tracker.rainmachine
@@ -491,6 +521,7 @@
           priority: high
 
 - alias: Notify Genset Offline
+  id: 8ad49430-5684-479f-8e69-72bf2ac47c6f
   trigger:
     - platform: state
       entity_id: device_tracker.generator
@@ -508,6 +539,7 @@
           priority: high
 
 - alias: Notify Genset Running
+  id: 963df59b-a596-4e8b-9685-616ac0e56010
   trigger:
     - platform: state
       entity_id: sensor.generator_status
@@ -522,6 +554,7 @@
           priority: high
 
 - alias: Notify Genset Stopped
+  id: b768bdd5-04c0-45e5-a43f-97b667afad0d
   trigger:
     - platform: state
       entity_id: sensor.generator_status
@@ -537,6 +570,7 @@
           priority: high
 
 - alias: Notify Genset Trouble
+  id: fd05a362-84f8-47d2-b601-c263b4f23380
   trigger:
     - platform: state
       entity_id: sensor.generator_status
@@ -551,6 +585,7 @@
           priority: high
 
 - alias: Notify Shack UPS On Battery
+  id: dc158c04-cd94-4f38-8484-15721101be11
   trigger:
     - platform: state
       entity_id: sensor.shack_ups_status
@@ -565,6 +600,7 @@
           priority: high
 
 - alias: Notify Shack UPS On Utility
+  id: a57e9064-ad4d-49ee-a79c-30e2a15c5616
   trigger:
     - platform: state
       entity_id: sensor.shack_ups_status
@@ -580,6 +616,7 @@
           priority: high
 
 - alias: Notify Shack UPS Battery Low
+  id: 89e49299-21fe-4c4d-b52e-08c4dd291172
   trigger:
     - platform: numeric_state
       entity_id: sensor.shack_ups_remaining_runtime
@@ -594,6 +631,7 @@
           priority: high
 
 - alias: Notify Shack UPS Battery Fail
+  id: 185eb36f-0d8f-42e0-982a-b29d8b4fdbd7
   trigger:
     - platform: state
       entity_id: sensor.shack_ups_battery_status
@@ -612,6 +650,7 @@
         message: The shack UPS battery has failed.  Replace immediately.
 
 - alias: Notify AdGuard Offline
+  id: 697af0e3-92c6-469e-bc4d-a7d1b2203619
   trigger:
     - platform: state
       entity_id: device_tracker.adguard
@@ -629,6 +668,7 @@
           priority: high
 
 - alias: Record HA Shutdown Time
+  id: 425f3da4-c4ee-4eea-b96d-12774639ed5b
   trigger:
     - platform: homeassistant
       event: shutdown

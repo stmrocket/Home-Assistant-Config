@@ -1,4 +1,5 @@
 - alias: Alexa Unlock Truck
+  id: 264efe2c-33ee-439c-b916-5441d885de5d
   trigger:
     - platform: state
       entity_id: input_boolean.unlock_truck
@@ -18,6 +19,7 @@
       entity_id: input_boolean.unlock_truck
 
 - alias: Alexa Lock Truck
+  id: 46ac6916-117c-43cc-a166-266f41e256f1
   trigger:
     - platform: state
       entity_id: input_boolean.lock_truck
@@ -28,6 +30,7 @@
       entity_id: input_boolean.lock_truck
 
 - alias: Alexa Start Truck
+  id: 15b3ac4b-46b0-4fb7-b246-6a99eaf11e94
   trigger:
     - platform: state
       entity_id: input_boolean.start_truck
@@ -47,6 +50,7 @@
       entity_id: input_boolean.start_truck
 
 - alias: Alexa Stop Truck
+  id: ba281226-88a9-4c10-a812-ff2d6f66a0d4
   trigger:
     - platform: state
       entity_id: input_boolean.stop_truck
@@ -57,6 +61,7 @@
       entity_id: input_boolean.stop_truck
 
 - alias: Truck Clear Trigger if State Disallowed
+  id: 261cc247-de90-4e0e-9f3c-fa225ab18473
   trigger:
     - platform: state
       entity_id: input_boolean.start_truck
@@ -80,6 +85,7 @@
         - input_boolean.unlock_truck
 
 - alias: Send Lock Notification When at Work
+  id: d0c7d76c-9da7-475c-a162-ca6596161a8c
   trigger:
     - platform: state
       entity_id: person.shawn_mccoy
@@ -97,6 +103,7 @@
               title: "Lock" # The button title
 
 - alias: Lock Truck from Notification
+  id: e228e90e-1a9c-4a03-89ef-71699703dbc4
   trigger:
     - platform: event
       event_type: mobile_app_notification_action
@@ -106,6 +113,7 @@
     - service: rest_command.lock_truck
 
 - alias: Send Unock or Start Notification When at Work
+  id: 6495a9ff-ca8f-4e46-afef-9c2819812d78
   trigger:
     - platform: time
       at: "15:50:00"
@@ -128,6 +136,7 @@
               title: "Unlock" # The button title
 
 - alias: Start Truck from Notification
+  id: 0bd0ca61-d7f6-4331-8f92-4fd7bbaf9a07
   trigger:
     - platform: event
       event_type: mobile_app_notification_action
@@ -147,6 +156,7 @@
               title: "Unlock" # The button title
 
 - alias: Unlock Truck from Notification
+  id: c200c18c-52f5-4f10-91ff-5119e7f15280
   trigger:
     - platform: event
       event_type: mobile_app_notification_action
@@ -156,6 +166,7 @@
     - service: rest_command.unlock_truck
 
 - alias: Alexa Prompt to Start Truck When Cold
+  id: 0286c6cf-a72d-444d-9509-8f9c4ee6ec1f
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.work_leave_time' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false)) }}"
@@ -210,6 +221,7 @@
               title: "No" # The button title
 
 - alias: Start Truck via Actionable Notificaiton
+  id: 320cd81f-61e2-434f-96b5-d109246b478b
   trigger:
     - platform: event
       event_type: alexa_actionable_notification
@@ -224,6 +236,7 @@
     - service: rest_command.start_truck
 
 - alias: Clear Truck Phone Notification if Alexa Responds
+  id: 08d0789e-053a-49e4-bb4a-f1230b655c71
   trigger:
     - platform: event
       event_type: alexa_actionable_notification

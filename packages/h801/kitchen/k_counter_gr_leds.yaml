@@ -28,6 +28,7 @@ light:
     optimistic: false
 automation:
   - alias: k_counter_gr report on
+    id: 788817b5-e3e8-47bd-a500-1c7b4fca56a3
     trigger:
       - platform: state
         entity_id: light.kitchen_led_4_rgb
@@ -44,6 +45,7 @@ automation:
           topic: h801/k_counter/ha/state
           payload_template: "ON"
   - alias: k_counter_gr report off
+    id: 30aa8cba-b008-4cd1-8787-6a03a28a540a
     trigger:
       - platform: state
         entity_id: light.kitchen_led_4_rgb
@@ -70,6 +72,7 @@ automation:
           topic: h801/k_counter/ha/state
           payload_template: "OFF"
   - alias: k_counter_gr white report on
+    id: c290956d-afc8-4cc8-ae3a-7cef09e1c3ae
     trigger:
       - platform: state
         entity_id: light.kitchen_led_4_w2
@@ -86,6 +89,7 @@ automation:
           topic: h801/k_counter/ha/wstate
           payload_template: "ON"
   - alias: k_counter_gr white report off
+    id: aa628591-96e0-49c5-808f-066aaf188a4b
     trigger:
       - platform: state
         entity_id: light.kitchen_led_4_w2

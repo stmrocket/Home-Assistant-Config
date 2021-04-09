@@ -1,4 +1,5 @@
 - alias: Keep Popcorn Popper Off When Away
+  id: 4e6b9d80-0c79-4a54-9c7e-29a52a356047
   trigger:
     - platform: state
       entity_id: switch.popper

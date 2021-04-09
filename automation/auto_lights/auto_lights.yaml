@@ -1,4 +1,5 @@
 - alias: Garage Light Auto On
+  id: 5638adb3-b7d8-4af8-bd62-8e0a679ea507
   trigger:
     - platform: template
       value_template: "{{ is_state_attr('sensor.elk_garage_entry', 'physical_status', 'open') }}"
@@ -21,6 +22,7 @@
       entity_id: timer.garage_light
 
 - alias: Garage Light Timer Reset
+  id: a59cfbf2-1ee1-4e47-89eb-4590f7694621
   trigger:
     - platform: template
       value_template: "{{ is_state_attr('sensor.elk_garage_entry', 'physical_status', 'open') }}"
@@ -41,6 +43,7 @@
       entity_id: timer.garage_light
 
 - alias: Garage Light Auto Off
+  id: ef137804-aff2-4e5f-80b0-b027f01fa35e
   trigger:
     - event_data:
         entity_id: timer.garage_light
@@ -51,6 +54,7 @@
       entity_id: switch.garage_lights
 
 - alias: Auto Attic Light
+  id: 3b948b84-6748-4737-8644-777c49a124fc
   trigger:
     - entity_id: sensor.elk_attic_door
       platform: state
@@ -68,6 +72,7 @@
       entity_id: light.attic_light
 
 - alias: Auto Guest Closet Light
+  id: 4ec5bf16-a687-4c1b-b7c8-492032e5652d
   trigger:
     - entity_id: sensor.elk_guest_closet_door
       platform: state
@@ -85,6 +90,7 @@
       entity_id: switch.guest_closet_light
 
 - alias: Auto Pantry Light
+  id: b966beb5-213b-4c14-9f6b-ab6f77ce8eca
   trigger:
     - entity_id: sensor.elk_pantry_door
       platform: state
@@ -102,6 +108,7 @@
       entity_id: light.pantry_light
 
 - alias: Auto Server Closet Light
+  id: 1cf39f87-0b4b-432b-afbb-4ae1e2762bd9
   trigger:
     - entity_id: sensor.elk_server_closet_door
       platform: state
@@ -119,6 +126,7 @@
       entity_id: switch.server_closet_light
 
 - alias: Auto Shed Light
+  id: b4686635-3b78-4f4c-8393-7307c63b3b8a
   trigger:
     - entity_id: sensor.elk_shed_door
       platform: state
@@ -136,6 +144,7 @@
       entity_id: switch.shed_inside_light
 
 - alias: Master Closet Light Auto On
+  id: ca0a3cb5-d129-45fe-bb22-339f30fbfa7e
   trigger:
     - entity_id: sensor.elk_master_closet_motion
       platform: state
@@ -145,6 +154,7 @@
       entity_id: switch.master_closet_light
 
 - alias: Master Closet Light Auto Off
+  id: 097553d2-fdb2-4115-b78b-177b44cc1c35
   trigger:
     - entity_id: sensor.elk_master_closet_motion
       platform: state
@@ -156,6 +166,7 @@
       entity_id: switch.master_closet_light
 
 - alias: Utility Room Light Auto On
+  id: e6f302c3-df38-4465-98e6-ad8f613b3cdb
   trigger:
     - entity_id: sensor.elk_utility_motion
       platform: state
@@ -165,6 +176,7 @@
       entity_id: light.utility_room_light
 
 - alias: Uitlity Room Light Auto Off
+  id: cc9187c8-8f14-4ef3-b167-2f08096a4ec3
   trigger:
     - entity_id: sensor.elk_utility_motion
       platform: state
@@ -176,6 +188,7 @@
       entity_id: light.utility_room_light
 
 - alias: Auto Entry Closet Light On
+  id: 3b92d019-1403-4564-823c-53178e7f75d2
   trigger:
     - entity_id: sensor.elk_entry_closet_door
       platform: state
@@ -190,6 +203,7 @@
       entity_id: light.entry_light
 
 - alias: Auto Entry Closet Light Off
+  id: b0203dd0-a305-44ca-ae8d-54a5770fdbaf
   trigger:
     - entity_id: sensor.elk_entry_closet_door
       platform: state
@@ -199,6 +213,7 @@
       entity_id: scene.entry_closet_restore
 
 - alias: Auto Hall Closet Light On
+  id: 2d50cacd-6a33-4612-bfb5-063f53f800d7
   trigger:
     - entity_id: sensor.elk_hall_closet_door
       platform: state
@@ -213,6 +228,7 @@
       entity_id: light.hallway_light
 
 - alias: Auto Hall Closet Light Off
+  id: be293412-9eba-4eea-941b-ef25c0a71862
   trigger:
     - entity_id: sensor.elk_hall_closet_door
       platform: state

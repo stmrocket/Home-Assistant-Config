@@ -16,6 +16,7 @@ light:
     optimistic: false
 automation:
   - alias: kitchen_gr report on
+    id: 7c8086cb-f198-418f-b303-ae58f057f48a
     trigger:
       - platform: state
         entity_id: light.kitchen_led_1_rgb
@@ -47,6 +48,7 @@ automation:
           topic: h801/kitchen/ha/state
           payload_template: "ON"
   - alias: kitchen_gr report off
+    id: e3109bde-b15c-4758-9d25-3791d041fa22
     trigger:
       - platform: state
         entity_id: light.kitchen_led_1_rgb

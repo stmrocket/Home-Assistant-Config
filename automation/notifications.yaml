@@ -1,4 +1,5 @@
 - alias: Notify Alarm Tripped
+  id: 6a73c789-cb0d-4d19-ac13-03d042831959
   trigger:
     - platform: state
       entity_id: switch.elk_intruder_alarm_tripped
@@ -13,6 +14,7 @@
           priority: high
 
 - alias: Notify Garage Opened While Away
+  id: 8965638d-9057-45fc-a070-b2bf5f9c274f
   trigger:
     - platform: state
       entity_id: sensor.elk_garage_door

@@ -1,4 +1,5 @@
 - alias: All Off NuVo Away
+  id: 28e988db-5d87-461b-8b28-70db9b9b6aa0
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -10,6 +11,7 @@
         topic: nuvo/command/set/system/alloff
 
 - alias: All Off Main
+  id: 06be3752-3fd2-4610-9dbd-dfa59f676c1e
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -61,6 +63,7 @@
         - switch.office_peripherals
 
 - alias: All Off Away
+  id: 62b3aa82-b3de-4cdd-82ba-a6ed3f9b9fd8
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -85,6 +88,7 @@
         - switch.water_projector
 
 - alias: All Off Timer Lights
+  id: c13cafc4-6f5c-453f-980f-21f8644f473d
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -105,6 +109,7 @@
         - switch.entry_lamp
 
 - alias: All Off Guest Lights
+  id: 5ade586b-8328-4306-ae1a-59edfd3912a7
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -126,6 +131,7 @@
         - switch.guest_bathroom_fan
 
 - alias: All Off Guest NuVo
+  id: 4d3d2fbf-02bd-41b1-9f54-58d384379cab
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -140,6 +146,7 @@
       entity_id: switch.nuvo_zone_2_power
 
 - alias: All Off NuVo Night
+  id: 4caf7679-5912-41e5-9d39-898691d49fd7
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -162,6 +169,7 @@
         - switch.nuvo_zone_12_power
 
 - alias: All Off Outside Lights
+  id: 9eea3089-6a02-4e3c-8ecd-aa46d380902d
   trigger:
     - platform: event
       event_type: automation_triggered
@@ -178,6 +186,7 @@
         - switch.shed_outside_light
 
 - alias: All Off Timer Lights Master
+  id: 8c9539fa-ffcf-46b8-a206-c60f10d65305
   trigger:
     - platform: event
       event_type: automation_triggered
