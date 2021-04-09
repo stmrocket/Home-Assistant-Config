@@ -1,4 +1,5 @@
 - alias: Fire Alarm Tripped
+  id: 640c80c6-0c26-4b61-b2c4-81a71f1fed65
   trigger:
     - platform: state
       entity_id: switch.elk_fire_alarm
@@ -88,6 +89,7 @@
         payload: "ON"
 
 - alias: Fire Alarm Restored
+  id: 9e400a61-85bc-415e-b2ec-953fd266f87d
   trigger:
     - platform: state
       entity_id: switch.elk_fire_alarm
@@ -102,6 +104,7 @@
         payload: "OFF"
 
 - alias: CO Alarm Tripped
+  id: f00c49dd-39b2-4af4-9c49-6d5b99a9bddf
   trigger:
     - platform: state
       entity_id: switch.elk_co_alarm
@@ -191,6 +194,7 @@
         payload: "ON"
 
 - alias: CO Alarm Restored
+  id: 7f778ade-4695-424d-8c53-ea80d42d2cec
   trigger:
     - platform: state
       entity_id: switch.elk_co_alarm

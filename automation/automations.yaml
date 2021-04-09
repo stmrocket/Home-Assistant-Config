@@ -1,4 +1,5 @@
 - alias: House Armed and Secure
+  id: 8771b836-bb8b-4f13-b185-3ebb8df2e2d4
   trigger:
     - entity_id: alarm_control_panel.house
       from: arming
@@ -24,6 +25,7 @@
           priority: high
 
 - alias: Master Going To Bed
+  id: 9fe67407-db1a-4f53-b556-6c1d798ddd98
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -52,6 +54,7 @@
       entity_id: switch.nuvo_zone_5_power
 
 - alias: Update Wunderground
+  id: 20b122c7-ee12-4734-ac22-092a80502ee0
   trigger:
     - platform: time_pattern
       minutes: "*"
@@ -59,6 +62,7 @@
     - service: rest_command.update_wunderground
 
 - alias: Vacation Mode On
+  id: 196cf690-72dd-4494-bfbf-64027e27e44f
   trigger:
     - platform: template
       value_template: "{{ is_state_attr('alarm_control_panel.house', 'armed_status', 'armed_to_vacation') }}"
@@ -67,6 +71,7 @@
       entity_id: input_boolean.vacation_mode
 
 - alias: Vacation Mode Off
+  id: cf1edc36-5820-4cf3-8c4f-7db5ffb55245
   trigger:
     - platform: state
       entity_id: input_boolean.hvac_geofence
@@ -82,8 +87,8 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.vacation_mode
 
-- id: "sonoffstart"
-  alias: Power State Sonoff on HA Start-Up
+- alias: Power State Sonoff on HA Start-Up
+  id: 90c58c80-a7e1-4e06-acfb-b91432fabf0b
   trigger:
     - event: start
       platform: homeassistant
@@ -100,6 +105,7 @@
         topic: christmas/indoor/decorations/cmnd/state
 
 - alias: Refresh Entity Counters
+  id: 18785331-0fb7-444a-bdda-b9c7c54eff61
   trigger:
     - platform: time_pattern
       minutes: "/15"
@@ -117,6 +123,7 @@
         - sensor.sensor_count
 
 - alias: "Set Theme to Midnight"
+  id: 891cd399-8598-4588-a680-0c3543d92fec
   initial_state: "on"
   trigger:
     - platform: homeassistant
@@ -127,6 +134,7 @@
         name: midnight
 
 - alias: Update OpenUV every 30 minutes during the daytime
+  id: d85f60c2-df57-40b5-8c3e-0a18bb5c1f44
   trigger:
     platform: time_pattern
     minutes: "/30"
@@ -141,6 +149,7 @@
     service: openuv.update_data
 
 - alias: Open Garage Door from NFC
+  id: caf0c347-8e92-4a88-a841-c629d8489958
   trigger:
     - platform: event
       event_type: tag_scanned
@@ -155,6 +164,7 @@
       entity_id: switch.elk_garage_door
 
 - alias: Tvheadend Post Started
+  id: 93fad5bb-a083-485d-8b3a-7db1eb796d1e
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_tvh_post
@@ -168,6 +178,7 @@
           icon: "info"
 
 - alias: Tvheadend Subtitles Done
+  id: 0fbc9091-292b-443f-8ebf-00f1b30312ae
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_tvh_subs
@@ -181,6 +192,7 @@
           icon: "info"
 
 - alias: Tvheadend Commercials Done
+  id: 05350930-668a-4122-86bd-3d075d8e3888
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_tvh_comm

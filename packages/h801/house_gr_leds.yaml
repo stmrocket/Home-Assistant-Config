@@ -17,6 +17,7 @@ light:
 
 automation:
   - alias: house_gr report on
+    id: 205bd136-0b4e-424e-8ddc-88f11c3f6102
     trigger:
       - platform: state
         entity_id: light.kitchen_led_1_rgb
@@ -72,6 +73,7 @@ automation:
           topic: h801/all/ha/state
           payload_template: "ON"
   - alias: house_gr report off
+    id: 5d2a2f66-2f6a-4a79-9e0d-49a516127e68
     trigger:
       - platform: state
         entity_id: light.kitchen_led_1_rgb

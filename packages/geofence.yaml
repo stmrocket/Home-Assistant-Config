@@ -9,6 +9,7 @@ proximity:
 
 automation:
   - alias: Mark 2km Geofence Entered
+    id: ff1b8ae9-ea8c-4881-8963-ce11161cb40a
     trigger:
       - platform: numeric_state
         entity_id: proximity.home
@@ -18,6 +19,7 @@ automation:
         entity_id: input_boolean.hvac_geofence
 
   - alias: Mark 2km Geofence Exited
+    id: ed8de0cb-33ff-455b-9c65-fdfca8ce4e2a
     trigger:
       - platform: numeric_state
         entity_id: proximity.home

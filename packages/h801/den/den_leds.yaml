@@ -17,6 +17,7 @@ light:
 
 automation:
   - alias: den_gr report on
+    id: 4ac32c82-7d4b-4ea7-9c09-77b4b58ce651
     trigger:
       - platform: state
         entity_id: light.den_led_1_rgb
@@ -37,6 +38,7 @@ automation:
           payload_template: "ON"
 
   - alias: den_gr report off
+    id: d5d77452-d9e6-4262-a696-dfe2a9df428c
     trigger:
       - platform: state
         entity_id: light.den_led_1_rgb

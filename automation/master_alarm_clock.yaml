@@ -1,4 +1,5 @@
 - alias: Master Wake Work
+  id: a36059c4-113a-4f4a-afee-f5ac0fae1364
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_work_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
@@ -35,6 +36,7 @@
       entity_id: counter.master_snooze
 
 - alias: Master Wake Manual With Music
+  id: bda07d35-b7c1-4f6a-95f6-0edc9fe0d2ca
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
@@ -89,6 +91,7 @@
       entity_id: counter.master_snooze
 
 - alias: Master Wake Manual With Horn
+  id: 4c15279d-7f86-4ae6-98ce-5fbdfaefc3b6
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
@@ -119,6 +122,7 @@
       entity_id: counter.master_snooze
 
 - alias: Master Wake Manual Resume HVAC
+  id: 901805d0-cf9d-4263-9103-792fc6df5483
   trigger:
     - platform: state
       entity_id: counter.master_snooze
@@ -148,6 +152,7 @@
         target_temp_low: 68
 
 - alias: Master Wake Work First Snooze
+  id: bb609e7d-eed3-4df2-b319-15366d20b86e
   trigger:
     - platform: state
       entity_id: counter.master_snooze
@@ -215,6 +220,7 @@
         entity_id: input_boolean.master_lamp_timer
 
 - alias: Master Wake Work Second Snooze
+  id: 7b143191-0e4d-4b5a-9613-c6e574285d38
   trigger:
     - platform: state
       entity_id: counter.master_snooze
@@ -228,6 +234,7 @@
       entity_id: switch.master_bedroom_lamps
 
 - alias: Master Wake Work Snooze Start
+  id: ee0cda71-bbd3-4bef-abc1-ec2926161526
   trigger:
     - platform: mqtt
       topic: zigbee2mqtt/snooze_button_1
@@ -253,6 +260,7 @@
       entity_id: input_boolean.alarm_clock_ringing
 
 - alias: Master Wake Work Snooze Stop
+  id: ee3dd64e-4ec6-4b79-981e-d9aaf22b214d
   trigger:
     - platform: event
       event_type: timer.finished
@@ -276,6 +284,7 @@
       entity_id: counter.master_snooze
 
 - alias: Master Wake Manual Snooze Start
+  id: e025da73-f859-4a60-89a7-7e8f28419941
   trigger:
     - platform: mqtt
       topic: zigbee2mqtt/snooze_button_1
@@ -305,6 +314,7 @@
       entity_id: input_boolean.alarm_clock_ringing
 
 - alias: Master Wake Manual Snooze Stop Music
+  id: 46ccb577-7889-49be-8e10-36d5b2f027ab
   trigger:
     - platform: event
       event_type: timer.finished
@@ -333,6 +343,7 @@
       entity_id: counter.master_snooze
 
 - alias: Master Wake Manual Snooze Stop Horn
+  id: fe3f6f20-3497-4ec6-87d4-c66d5de4ccfb
   trigger:
     - platform: event
       event_type: timer.finished
@@ -363,6 +374,7 @@
       entity_id: counter.master_snooze
 
 - alias: Master Wake Work Off
+  id: 1f49e9be-0277-4b38-aafd-5ce5028dde2e
   trigger:
     - platform: mqtt
       topic: zigbee2mqtt/snooze_button_1
@@ -391,6 +403,7 @@
       entity_id: switch.master_bedroom_lamps
 
 - alias: Master Wake Manual Off Single
+  id: 9ace932e-3bd1-4b5d-8973-3b15fe17a2db
   trigger:
     - platform: mqtt
       topic: zigbee2mqtt/snooze_button_1
@@ -421,6 +434,7 @@
         - input_boolean.manual_alarm_enabled
 
 - alias: Master Wake Manual Off Repeat
+  id: dffcacb6-c869-4493-a233-e35bd077fcb1
   trigger:
     - platform: mqtt
       topic: zigbee2mqtt/snooze_button_1
@@ -450,6 +464,7 @@
         - input_boolean.manual_alarm_ringing
 
 - alias: Master Wake Work Disable
+  id: 5ff62364-4c7b-455e-b967-5d5a452e1d27
   trigger:
     - platform: state
       entity_id: input_boolean.work_alarm_enabled
@@ -470,6 +485,7 @@
         - input_boolean.work_alarm_ringing
 
 - alias: Master Wake Manual Disable Button
+  id: b5989175-c901-4a9d-8165-bbd1ba84fb98
   trigger:
     - platform: mqtt
       topic: zigbee2mqtt/snooze_button_1
@@ -502,6 +518,7 @@
         - input_boolean.manual_alarm_enabled
 
 - alias: Master Wake Manual Disable
+  id: d2cd47bc-f7e3-4a1f-a0f7-bae3e4ad1530
   trigger:
     - platform: state
       entity_id: input_boolean.manual_alarm_enabled
@@ -528,6 +545,7 @@
         - input_boolean.manual_alarm_ringing
 
 - alias: Master Wake Work On from Keypad
+  id: 05f2aa29-4a90-4c1c-972b-89b52161f609
   trigger:
     - platform: state
       entity_id: switch.master_clock_work
@@ -538,6 +556,7 @@
       entity_id: input_boolean.work_alarm_enabled
 
 - alias: Master Wake Work Off from Keypad
+  id: 06e1f8f5-833d-4c8a-836a-09c07eb85a5e
   trigger:
     - platform: state
       entity_id: switch.master_clock_work
@@ -548,6 +567,7 @@
       entity_id: input_boolean.work_alarm_enabled
 
 - alias: Master Wake Work Keypad On
+  id: d1eb92f3-5bae-4746-b4f8-e14d6e19c5d7
   trigger:
     - platform: state
       entity_id: input_boolean.work_alarm_enabled
@@ -562,6 +582,7 @@
       entity_id: switch.master_clock_work
 
 - alias: Master Wake Work Keypad Off
+  id: 3f4cce0a-2e6c-4b0a-8318-8c1e5c5c56ce
   trigger:
     - platform: state
       entity_id: input_boolean.work_alarm_enabled
@@ -576,6 +597,7 @@
       entity_id: switch.master_clock_work
 
 - alias: Master Wake Manual On from Keypad
+  id: d504c47f-9a93-4b22-bac5-44f66d30a97b
   trigger:
     - platform: state
       entity_id: switch.master_clock_manual
@@ -586,6 +608,7 @@
       entity_id: input_boolean.manual_alarm_enabled
 
 - alias: Master Wake Manual Off from Keypad
+  id: eb15eae0-9430-48a5-9eea-617b46bebfd5
   trigger:
     - platform: state
       entity_id: switch.master_clock_manual
@@ -596,6 +619,7 @@
       entity_id: input_boolean.manual_alarm_enabled
 
 - alias: Master Wake Manual Keypad On
+  id: cdcfaa70-5c9b-4180-8f5f-87538c51c99e
   trigger:
     - platform: state
       entity_id: input_boolean.manual_alarm_enabled
@@ -610,6 +634,7 @@
       entity_id: switch.master_clock_manual
 
 - alias: Master Wake Manual Keypad Off
+  id: 72fba4b2-c477-4ece-80c9-e53690e7f1e4
   trigger:
     - platform: state
       entity_id: input_boolean.manual_alarm_enabled
@@ -624,6 +649,7 @@
       entity_id: switch.master_clock_manual
 
 - alias: Master Wake Manual Disable if Awake and No Repeat
+  id: 244de2b5-706b-435d-b20e-dfbeaf00675b
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"

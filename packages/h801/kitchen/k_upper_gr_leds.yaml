@@ -16,6 +16,7 @@ light:
     optimistic: false
 automation:
   - alias: k_upper_gr report on
+    id: eaf5e0a7-b2e9-497c-8b4e-a0622f4baf54
     trigger:
       - platform: state
         entity_id: light.kitchen_led_7_rgb
@@ -29,6 +30,7 @@ automation:
           topic: h801/k_upper/ha/state
           payload_template: "ON"
   - alias: k_upper_gr report off
+    id: 147be7c7-4843-47f2-9753-99dc708f8315
     trigger:
       - platform: state
         entity_id: light.kitchen_led_7_rgb

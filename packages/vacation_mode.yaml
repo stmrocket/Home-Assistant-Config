@@ -168,6 +168,7 @@ sensor:
 
 automation:
   - alias: Vacation Replay Lights Off in Morning
+    id: 8757403b-1145-471c-be4d-bc48a9bbb12d
     trigger:
       - platform: state
         entity_id: input_boolean.outside_timer_lights

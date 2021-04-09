@@ -1,4 +1,5 @@
 - alias: Indoor Christmas On When Home
+  id: cec759b6-0e2e-4d73-ada2-7b1c3ef78670
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -11,6 +12,7 @@
       entity_id: switch.indoor_christmas
 
 - alias: Indoor Christmas Off When Away or Asleep
+  id: 916d3d2c-5dbc-4e6e-9c2c-2a46082f1f3c
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -28,6 +30,7 @@
         payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
 
 - alias: MQTT Christmas Show On
+  id: e2e0b58e-27e0-4e1a-857e-cbd85d015b86
   trigger:
     - platform: mqtt
       topic: christmas/show
@@ -37,6 +40,7 @@
       entity_id: input_boolean.christmas_show
 
 - alias: MQTT Christmas Show Off
+  id: e9c2cf8b-1ec9-494e-bbc7-bb896f27cfd9
   trigger:
     - platform: mqtt
       topic: christmas/show
@@ -46,6 +50,7 @@
       entity_id: input_boolean.christmas_show
 
 - alias: House Off For Christmas Show
+  id: dc3848ec-9d7a-4f80-8c65-3cb926315859
   trigger:
     - platform: state
       entity_id: input_boolean.christmas_show
@@ -62,6 +67,7 @@
       entity_id: input_boolean.frigate_enabled_christmas
 
 - alias: House On After Christmas Show
+  id: 13cff086-4ed0-45a9-bdb9-79c77cca00a3
   trigger:
     - platform: state
       entity_id: input_boolean.christmas_show
@@ -75,6 +81,7 @@
       entity_id: input_boolean.frigate_enabled_christmas
 
 - alias: Donation Box Opened
+  id: f2226ed0-ef53-48b5-a2f4-5baed7f5668c
   trigger:
     - platform: state
       entity_id: sensor.elk_donation_box
@@ -95,6 +102,7 @@
       entity_id: input_boolean.donation_box
 
 - alias: Candles On at Dark When Home
+  id: 43d4c5d9-071d-4604-9297-715e0251f132
   trigger:
     - platform: sun
       event: sunset
@@ -115,6 +123,7 @@
         payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
 
 - alias: Candles On at When Returning After Dark
+  id: 3f6ccd03-0d72-4e6c-bed7-0d32f338e7fb
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house

@@ -1,4 +1,5 @@
 - alias: CCTV West Front Person Detected
+  id: 222aba6c-afa4-4226-b39e-de3f71662a9a
   trigger:
     - platform: state
       entity_id: binary_sensor.west_front_person
@@ -29,6 +30,7 @@
             - /config/www/cctv/west_front_full.jpg
 
 - alias: CCTV East Front Person Detected
+  id: 0575e725-ee28-48b4-a16d-c1abd1d5df62
   trigger:
     - platform: state
       entity_id: binary_sensor.east_front_person
@@ -59,6 +61,7 @@
             - /config/www/cctv/east_front_full.jpg
 
 - alias: CCTV West Side Person Detected
+  id: 4be4a812-c669-4bb4-a93d-61c838953e73
   trigger:
     - platform: state
       entity_id: binary_sensor.west_side_person
@@ -89,6 +92,7 @@
             - /config/www/cctv/west_side_full.jpg
 
 - alias: CCTV East Side Person Detected
+  id: d6ba9ca2-2ec0-4ef4-8b6a-d8af97842a3f
   trigger:
     - platform: state
       entity_id: binary_sensor.east_side_person
@@ -116,6 +120,7 @@
             - /config/www/cctv/east_side_full.jpg
 
 - alias: CCTV Back Yard Person Detected
+  id: 8fb6c7cd-2915-45b3-83e2-3b12724ca6da
   trigger:
     - platform: state
       entity_id: binary_sensor.back_yard_person
@@ -143,6 +148,7 @@
             - /config/www/cctv/back_yard_full.jpg
 
 - alias: CCTV Back Porch Person Detected
+  id: 74430858-a2a9-45d7-b247-7f604ca3ecc6
   trigger:
     - platform: state
       entity_id: binary_sensor.back_porch_person
@@ -170,6 +176,7 @@
             - /config/www/cctv/back_porch_full.jpg
 
 - alias: CCTV Front Porch Person Detected
+  id: 391c6db8-6e13-4650-a53c-374b69cccaa8
   trigger:
     - platform: state
       entity_id: binary_sensor.front_porch_person
@@ -200,6 +207,7 @@
             - /config/www/cctv/front_porch_full.jpg
 
 - alias: Start Reset Timer When Frigate Disabled
+  id: 891a2380-a10a-43bc-ab05-2a490d6f4f61
   trigger:
     - platform: state
       entity_id: input_boolean.frigate_enabled
@@ -211,6 +219,7 @@
         duration: "{{ states('input_number.frigate_disable_time') | int * 3600}}"
 
 - alias: Restart Frigate When Restart Timer Expires
+  id: 09dab8b7-8a8e-4c40-95ad-006fba733abd
   trigger:
     - event_data:
         entity_id: timer.frigate_disable
@@ -225,6 +234,7 @@
       entity_id: input_boolean.frigate_enabled
 
 - alias: Cancel Frigate Timer if Frigate Manually Enabled
+  id: ffdcc3a3-5cf5-4223-a26d-36c9c304bf94
   trigger:
     - platform: state
       entity_id: input_boolean.frigate_enabled
@@ -238,6 +248,7 @@
       entity_id: timer.frigate_disable
 
 - alias: Clean Up Temporary Camera Images
+  id: f3f92f77-da0e-41e7-975d-fa66c973aba9
   trigger:
     - platform: time
       at: "00:00:00"
@@ -245,6 +256,7 @@
     - service: shell_command.clear_temp_images
 
 - alias: Restart Frigate if Hung
+  id: 689fe128-5271-49ed-9a2f-b2a08844433e
   trigger:
     - platform: state
       entity_id: sensor.frigate_processing_frame

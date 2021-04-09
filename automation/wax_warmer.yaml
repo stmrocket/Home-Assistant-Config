@@ -1,4 +1,5 @@
 - alias: Turn On Wax Warmer
+  id: c017cb77-fb7c-4306-a38a-8eb68caab08d
   trigger:
     - platform: state
       entity_id: switch.warmer
@@ -13,6 +14,7 @@
       entity_id: switch.wax_warmer
 
 - alias: Turn Off Wax Warmer
+  id: 64a1efbb-45d1-4203-adad-20516bbfef36
   trigger:
     - platform: state
       entity_id: switch.warmer
@@ -27,6 +29,7 @@
       entity_id: switch.wax_warmer
 
 - alias: Wax Warmer Keypad On if Warmer On
+  id: eee58a03-62bf-4e9c-a142-ca41bde227ce
   trigger:
     - entity_id: switch.wax_warmer
       platform: state
@@ -41,6 +44,7 @@
       entity_id: switch.warmer
 
 - alias: Wax Warmer Keypad Off if Warmer Off
+  id: 742393ad-3c85-4f1c-bc02-85fee7a3f674
   trigger:
     - entity_id: switch.wax_warmer
       platform: state
@@ -55,6 +59,7 @@
       entity_id: switch.warmer
 
 - alias: Keep Wax Warmer Off When Away
+  id: a757f711-0e6c-482d-a50a-34e4c3bcaa45
   trigger:
     - platform: state
       entity_id: switch.wax_warmer

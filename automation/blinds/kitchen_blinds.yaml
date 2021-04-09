@@ -1,4 +1,5 @@
 - alias: Open Kitchen Blinds
+  id: 16eda4ed-8827-42cf-bbd5-96882d53aebb
   trigger:
     - platform: state
       entity_id:
@@ -15,6 +16,7 @@
       entity_id: cover.kitchen_blinds
 
 - alias: Close Kitchen Blinds
+  id: 7feb5816-0fb0-4766-b887-041477d7a4fc
   trigger:
     - platform: state
       entity_id:
@@ -31,6 +33,7 @@
       entity_id: cover.kitchen_blinds
 
 - alias: Kitchen Blind Keypad on if any Open
+  id: 7c2bc1f0-d7c6-4d24-9041-cf96ff29adc0
   trigger:
     - platform: state
       entity_id: cover.kitchen_blinds
@@ -52,6 +55,7 @@
         - switch.dining_room_blinds
 
 - alias: Kitchen Blind Keypad off if all Closed
+  id: aa78f13f-4081-47db-853d-6d9c49f3a018
   trigger:
     - platform: state
       entity_id: cover.kitchen_blinds
@@ -73,6 +77,7 @@
         - switch.dining_room_blinds
 
 - alias: Kitchen Windows Same Position
+  id: 2e26e804-8298-4c9d-a106-278fd6323812
   trigger:
     - platform: state
       entity_id:
@@ -105,6 +110,7 @@
         retain: "true"
 
 - alias: Kitchen Windows Various Positions
+  id: 18fd4528-7036-423b-8068-ff7237c78313
   trigger:
     - platform: state
       entity_id:

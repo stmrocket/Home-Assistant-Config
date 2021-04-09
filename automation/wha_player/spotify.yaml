@@ -1,6 +1,7 @@
 #All operations expect Nuvo source 1...
 
 - alias: Spotify Update Keypad Dispinfo when Playing
+  id: 3f5ca341-8486-46af-a5a4-aee917513ad0
   trigger:
     - platform: template
       value_template: "{{ state_attr('media_player.spotify_home', 'media_duration') }}"
@@ -19,6 +20,7 @@
         payload_template: "1,{{ (state_attr('media_player.spotify_home', 'media_duration') | float * 10) | float |  round(0)}},{{ (state_attr('media_player.spotify_home', 'media_position') | float * 10) | float |  round(0)}},{% if is_state('media_player.spotify_home', 'playing')  -%}2{%- elif is_state('media_player.spotify_home', 'paused') -%}3{%- else -%}1{%- endif %}"
 
 - alias: Spotify Update Keypad Dispinfo when pausing
+  id: 977dad9d-867e-4026-89ca-d7547a896a6e
   trigger:
     - platform: state
       entity_id: media_player.spotify_home
@@ -30,6 +32,7 @@
         payload_template: "1,{{ (state_attr('media_player.spotify_home', 'media_duration') | float * 10) | float |  round(0)}},{{ (state_attr('media_player.spotify_home', 'media_position') | float * 10) | float |  round(0)}},{% if is_state('media_player.spotify_home', 'playing')  -%}2{%- elif is_state('media_player.spotify_home', 'paused') -%}3{%- else -%}1{%- endif %}"
 
 - alias: Spotify Update Keypad Displine
+  id: 81e2c8e3-3d3e-49c1-af93-96f077533556
   trigger:
     - platform: template
       value_template: "{{ state_attr('media_player.spotify_home', 'media_duration') }}"
@@ -69,6 +72,7 @@
         payload_template: "1,4,{{ state_attr('media_player.spotify_home', 'media_title') }}"
 
 - alias: Spotify Pause from Keypad
+  id: 2c803fe5-d149-4619-8614-ad76c8ea4019
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -84,6 +88,7 @@
     - service: script.spotify_pause
 
 - alias: Spotify Play from Keypad
+  id: 1a8586e7-9633-4462-bb32-6d852689243e
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -104,6 +109,7 @@
     - service: script.spotify_play
 
 - alias: Spotify Next Track from Keypad
+  id: a6186295-a90d-458e-9876-46d6ca5d2794
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -119,6 +125,7 @@
     - service: script.spotify_next
 
 - alias: Spotify Previous Track from Keypad
+  id: 474a4e74-d931-45ed-8c28-f7ad9a6ba089
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -136,6 +143,7 @@
 #Menu Navigation
 
 - alias: Spotify Nuvo Play Selection
+  id: 67a571ee-0276-4521-bb87-ac1827797f68
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -150,6 +158,7 @@
     - service: script.spotify_change_playlist
 
 - alias: Spotify Nuvo Enter Menu
+  id: ca840b37-1f0d-4dc7-b0c2-aef044d8a078
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -179,6 +188,7 @@
         payload_template: '1,4,""'
 
 - alias: Spotify Nuvo Next Playlist
+  id: 954b4e7a-521f-4b63-9825-9671e788d9c1
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -208,6 +218,7 @@
         payload_template: '1,4,""'
 
 - alias: Spotify Nuvo Previous Playlist
+  id: 8e2f9aab-82b2-4b33-9d77-7c6f8b2abe9e
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -237,6 +248,7 @@
         payload_template: '1,4,""'
 
 - alias: Spotify Nuvo Return Without Change
+  id: 34c7ae53-9919-40c2-a465-53f9c473ae4e
   trigger:
     - platform: mqtt
       topic: nuvo/tele/source/1/press
@@ -271,6 +283,7 @@
 
 #Auto Zone Playback Control
 - alias: Spotify Play When Source Selected
+  id: f6869eaf-cfc5-4d0e-9c94-cc3cf608637b
   trigger:
     - platform: mqtt
       topic: nuvo/tele/zone/#
@@ -445,6 +458,7 @@
     - service: script.spotify_play
 
 - alias: Spotify Pause When Source Not In Use
+  id: 975f10fa-3800-423d-8943-87539716f654
   trigger:
     - platform: mqtt
       topic: nuvo/tele/zone/#
@@ -598,6 +612,7 @@
     - service: script.spotify_pause
 
 - alias: Spotify Pause if Alloff
+  id: 4c993f53-aa66-4d32-8299-f7e52bbbbeb6
   trigger:
     - platform: mqtt
       topic: nuvo/tele/system/alloff
@@ -609,6 +624,7 @@
     - service: script.spotify_pause
 
 - alias: Spotify Set Refresh Timer
+  id: 704a9563-1694-4ddd-b667-c7754fc55353
   trigger:
     - platform: state
       entity_id: media_player.spotify_home
@@ -624,6 +640,7 @@
           {{ (state_attr('media_player.spotify_home','media_duration') | float - state_attr('media_player.spotify_home','media_position') | float) | round (0) }}
 
 - alias: Spotify Refresh Info
+  id: bafb5366-066c-4a98-b035-aaff2db0726b
   trigger:
     - platform: event
       event_type: timer.finished
@@ -644,6 +661,7 @@
       entity_id: media_player.spotify_home
 
 - alias: Spotify Enable Shuffle
+  id: 1937e421-0e3b-4ff1-ba66-2cdab093f3fc
   trigger:
     - platform: state
       entity_id: media_player.spotify_home
@@ -656,6 +674,7 @@
         shuffle: true
 
 - alias: Spotify Enable Repeat
+  id: 5953f13d-26a4-4b2d-a62c-73c2a25a9a2d
   trigger:
     - platform: state
       entity_id: media_player.spotify_home

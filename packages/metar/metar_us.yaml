@@ -95,6 +95,7 @@ sensor:
 
 automation:
   - alias: Update US METAR Map Display Mode
+    id: 63265124-5428-4754-9d4f-83626782f6b4
     trigger:
       - platform: state
         entity_id: input_boolean.us_metar_mode
@@ -122,6 +123,7 @@ automation:
                   retain: true
 
   - alias: US Map On When Home and Awake
+    id: fcb8c569-08fb-4904-a38e-70a5446cd21a
     trigger:
       - platform: state
         entity_id: alarm_control_panel.house
@@ -134,6 +136,7 @@ automation:
         entity_id: switch.us_metar_map_power
 
   - alias: US Map Off When Home and Awake
+    id: abfd17a1-651d-4f18-846c-8f0a9fb854e3
     trigger:
       - platform: state
         entity_id: alarm_control_panel.house

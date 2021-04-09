@@ -1,4 +1,5 @@
 - alias: Count Rainfall
+  id: 7da2ee73-f9b2-41a1-b75e-fed26d4de648
   trigger:
     - platform: state
       entity_id: sensor.elk_mechanical_rain
@@ -28,6 +29,7 @@
         value: "{{ states('sensor.rain_minute') }}"
 
 - alias: Reset Minute Rain
+  id: 18532267-5d0d-49da-8cb2-50440c6569ca
   trigger:
     - platform: time_pattern
       minutes: "*"
@@ -48,6 +50,7 @@
       entity_id: counter.rain_minute
 
 - alias: Reset Hour Rain
+  id: 8e6db58a-4e06-4d40-81d3-d0df45583091
   trigger:
     - platform: time_pattern
       hours: "*"
@@ -58,6 +61,7 @@
       entity_id: counter.rain_hour
 
 - alias: Reset Day Rain
+  id: 07cb27b8-3ec2-4da2-a348-b25ea3a265ef
   trigger:
     - platform: time
       at: "00:00:00"
@@ -66,6 +70,7 @@
       entity_id: counter.rain_day
 
 - alias: Reset Month Rain
+  id: bc41d281-ad03-4ebf-8dad-4a62194ee1b4
   trigger:
     - platform: time
       at: "00:00:00"
@@ -77,6 +82,7 @@
       entity_id: counter.rain_month
 
 - alias: Reset Year Rain
+  id: 4e41317a-b7a9-458b-9db5-a3f374491c5d
   trigger:
     - platform: time
       at: "00:00:00"
@@ -90,6 +96,7 @@
       entity_id: counter.rain_year
 
 - alias: Detect Rain Started
+  id: 36234827-f4ba-4b2c-b68f-b27ee354d257
   trigger:
     - platform: state
       entity_id: sensor.elk_optical_rain
@@ -115,6 +122,7 @@
         message: "It is now raining."
 
 - alias: Detect Rain Stopped
+  id: 9ae2b245-b303-4d59-ba85-2be41146bcdd
   trigger:
     - platform: state
       entity_id: sensor.elk_optical_rain
@@ -142,6 +150,7 @@
         message: "It has stopped raining."
 
 - alias: Display Rainfall on Elk Keypads
+  id: aae69df9-96b8-4b41-aac4-ddbc2f3e37db
   trigger:
     - platform: state
       entity_id: sensor.rain_day
@@ -166,6 +175,7 @@
         line1: 'Rain: {{ states("sensor.rain_day") }}"'
 
 - alias: Clear Rainfall on Elk Keypads
+  id: d7ec1407-ccc7-4c86-a807-382bad717c5f
   trigger:
     - platform: template
       value_template: "{{ states('sensor.rain_day') | float == 0 }}"

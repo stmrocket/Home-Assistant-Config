@@ -1,4 +1,5 @@
 - alias: Tablet Night
+  id: ac3d7016-5b0f-42dd-939f-f47e7486618e
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -12,6 +13,7 @@
     - service: script.tablets_off
 
 - alias: Tablet When Home
+  id: ebfd2c16-e7a6-417a-b820-236884d35fe7
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -24,6 +26,7 @@
     - service: script.tablets_on
 
 - alias: Tablet when Away
+  id: afe3db69-fe02-4bc7-8282-0935e4976610
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -32,6 +35,7 @@
     - service: script.tablets_off
 
 - alias: Reload Tablets When HA Starts
+  id: 37809ea5-1069-4fb7-8a84-082d72e77732
   trigger:
     - platform: homeassistant
       event: start

@@ -37,6 +37,7 @@ alert:
 
 automation:
   - alias: Water Heater Pilot Alert
+    id: dd2bc8e5-2cba-44cd-952d-8fda01e93ba9
     trigger:
       - platform: state
         entity_id: sensor.water_heater_status

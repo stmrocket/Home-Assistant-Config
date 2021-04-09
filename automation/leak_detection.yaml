@@ -1,4 +1,5 @@
 - alias: Dishwasher Leak Detected
+  id: 73aff9df-f0bf-4812-ae15-a839f5ffc008
   trigger:
     - platform: state
       entity_id: binary_sensor.dishwasher_leak_dry
@@ -18,6 +19,7 @@
         message: A leak has been detected in the dishwasher.
 
 - alias: Dishwasher Leak Detector Error
+  id: b49829b5-0895-417d-b25c-900603b1e3de
   trigger:
     - platform: state
       entity_id: binary_sensor.dishwasher_leak_heartbeat
@@ -33,6 +35,7 @@
         message: The dishwasher leak detector is not reporting.
 
 - alias: Guest Sink Leak Detected
+  id: 1d20fcc5-6d1a-4318-9e72-9f571d919947
   trigger:
     - platform: state
       entity_id: binary_sensor.guest_sink_leak_dry
@@ -52,6 +55,7 @@
         message: A leak has been detected in the guest bathroom sink.
 
 - alias: Guest Sink Leak Detector Error
+  id: 02b2192a-8850-4b69-91f5-bc96f670e2d6
   trigger:
     - platform: state
       entity_id: binary_sensor.guest_sink_leak_heartbeat
@@ -67,6 +71,7 @@
         message: The guest bathroom sink leak detector is not reporting.
 
 - alias: Guest Toilet Leak Detected
+  id: e87b602c-81a7-4094-8440-b3da9dd2053e
   trigger:
     - platform: state
       entity_id: binary_sensor.guest_toilet_leak_dry
@@ -86,6 +91,7 @@
         message: A leak has been detected in the guest bathroom toilet.
 
 - alias: Guest Toilet Leak Detector Error
+  id: 16024358-9176-4eb9-bd25-f658a07712e4
   trigger:
     - platform: state
       entity_id: binary_sensor.guest_toilet_leak_heartbeat
@@ -101,6 +107,7 @@
         message: The guest toilet leak detector is not reporting.
 
 - alias: Kitchen Sink Leak Detected
+  id: 9e2b06b0-5d8f-4040-90d2-a5d2c196134e
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_sink_leak_dry
@@ -120,6 +127,7 @@
         message: A leak has been detected in the kitchen sink.
 
 - alias: Kitchen Sink Leak Detector Error
+  id: 3276d226-e151-4568-8e23-70f8ee585c5d
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_sink_leak_heartbeat
@@ -135,6 +143,7 @@
         message: The kitchen sink leak detector is not reporting.
 
 - alias: Left Master Sink Leak Detected
+  id: c59d473f-5dee-4b95-893b-45071a74991c
   trigger:
     - platform: state
       entity_id: binary_sensor.left_master_sink_leak_dry
@@ -154,6 +163,7 @@
         message: A leak has been detected in the left master bathroom sink.
 
 - alias: Left Master Sink Leak Detector Error
+  id: 9823b95a-9016-44e0-9b02-89d54c50bd72
   trigger:
     - platform: state
       entity_id: binary_sensor.left_master_sink_leak_heartbe
@@ -176,6 +186,7 @@
         message: The left master sink leak detector is not reporting.
 
 - alias: Master Toilet Leak Detected
+  id: fe7a7ebd-6c36-40b0-81e5-3dd10a670890
   trigger:
     - platform: state
       entity_id: binary_sensor.master_toilet_leak_dry
@@ -195,6 +206,7 @@
         message: A leak has been detected in the master toilet.
 
 - alias: Master Toilet Leak Detector Error
+  id: cb3de57b-53d5-453f-9d1f-d44c63b9f9e1
   trigger:
     - platform: state
       entity_id: binary_sensor.master_toilet_leak_heartbeat
@@ -210,6 +222,7 @@
         message: The master toilet leak detector is not reporting.
 
 - alias: Refrigerator Leak Detected
+  id: 890259d2-35c1-44d2-a323-e0d6a6299aae
   trigger:
     - platform: state
       entity_id: binary_sensor.refrigerator_leak_dry
@@ -229,6 +242,7 @@
         message: A leak has been detected in the refrigerator.
 
 - alias: Refrigerator Leak Detector Error
+  id: 6074dad2-531e-45cf-b6b1-3f1e902c7c3f
   trigger:
     - platform: state
       entity_id: binary_sensor.refrigerator_leak_heartbeat
@@ -244,6 +258,7 @@
         message: The refrigerator leak detector is not reporting.
 
 - alias: Right Master Sink Leak Detected
+  id: 87b718b5-3f1e-4930-8cc3-8385b27fcc7f
   trigger:
     - platform: state
       entity_id: binary_sensor.right_master_sink_leak_dry
@@ -263,6 +278,7 @@
         message: A leak has been detected in the right master bathroom sink.
 
 - alias: Right Master Sink Leak Detector Error
+  id: 4a0eb485-3fcc-4c28-a405-440facae6c1f
   trigger:
     - platform: state
       entity_id: binary_sensor.right_master_sink_leak_heartb
@@ -278,6 +294,7 @@
         message: The right master bathroom sink leak detector is not reporting.
 
 - alias: Utility Leak Detected
+  id: f9ef31b1-b936-4faa-b9df-588bea9127f8
   trigger:
     - platform: state
       entity_id: binary_sensor.utility_leak_dry
@@ -297,6 +314,7 @@
         message: A leak has been detected in the utility room.
 
 - alias: Utility Leak Detector Error
+  id: c338ca1d-5517-45ce-881a-9f669ae8652b
   trigger:
     - platform: state
       entity_id: binary_sensor.utility_leak_heartbeat
@@ -313,6 +331,7 @@
         message: The utility room leak detector is not reporting.
 
 - alias: Turn On Elk Alert When Leak Detected
+  id: d9c5d21d-247b-44ff-8f96-4bd76727f1f6
   trigger:
     - platform: state
       entity_id: binary_sensor.dishwasher_leak_dry
@@ -346,6 +365,7 @@
       entity_id: switch.zone_7
 
 - alias: Turn Off Elk Alert When Leak Detection Cleared
+  id: 74b00168-6991-4eb8-a43c-d470f7800fe8
   trigger:
     - platform: state
       entity_id: binary_sensor.dishwasher_leak_dry

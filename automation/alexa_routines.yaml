@@ -1,4 +1,5 @@
 - alias: Alexa Good Night Armed Night
+  id: 8e432e90-8f2c-459e-824a-6c8fa934bb19
   trigger:
     - platform: state
       entity_id: input_boolean.goodnight_trigger
@@ -21,6 +22,7 @@
       entity_id: input_boolean.goodnight_trigger
 
 - alias: Alexa Good Night Not Armed Night
+  id: 1c503272-fe54-4cc0-a26d-436bbcf600b1
   trigger:
     - platform: state
       entity_id: input_boolean.goodnight_trigger
@@ -45,6 +47,7 @@
       entity_id: input_boolean.goodnight_trigger
 
 - alias: Alexa Bedtime
+  id: 45e4c19f-a346-4d77-aa0c-f6ccc7f15d4e
   trigger:
     - platform: state
       entity_id: input_boolean.bedtime_trigger
@@ -59,6 +62,7 @@
     - service: rest_command.load_audiobook
 
 - alias: Alexa Good Morning
+  id: 3b90e15b-6f41-493a-84ed-0a489068547b
   trigger:
     - platform: state
       entity_id: input_boolean.morning_trigger
@@ -78,6 +82,7 @@
       entity_id: input_boolean.morning_trigger
 
 - alias: Alexa Leaving House
+  id: c6344618-9ac5-41a4-85e9-11bbe1fc0e60
   trigger:
     - platform: state
       entity_id: input_boolean.leaving_trigger
@@ -101,6 +106,7 @@
       entity_id: input_boolean.leaving_trigger
 
 - alias: Leaving Clear Trigger if State Disallowed
+  id: 806a265d-db9c-4df7-ae86-c982d822bb24
   trigger:
     - platform: state
       entity_id: input_boolean.leaving_trigger
@@ -119,6 +125,7 @@
       entity_id: input_boolean.leaving_trigger
 
 - alias: Alexa Returning Home
+  id: befc51a4-a93f-42cf-b3a6-14fcb3897cbb
   trigger:
     - platform: state
       entity_id: input_boolean.returning_trigger
@@ -145,6 +152,7 @@
         - input_boolean.returning_door_unlocked
 
 - alias: Arrriving Clear Trigger if Disallowed
+  id: 595f2462-747b-44d7-ae2e-b89dffb9af8f
   trigger:
     - platform: state
       entity_id: input_boolean.returning_trigger
@@ -173,6 +181,7 @@
         - input_boolean.returning_door_unlocked
 
 - alias: Returning Home Lock Trigger
+  id: 4badea44-bbf6-4661-8b01-bc5fcab00dd6
   trigger:
     - platform: template
       value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
@@ -192,6 +201,7 @@
       entity_id: input_boolean.returning_door_unlocked
 
 - alias: Clear Returning Home Lock Trigger
+  id: 0f130f21-faa4-43e1-af43-8b4cb0e1c113
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house

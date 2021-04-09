@@ -1,4 +1,5 @@
 - alias: HVAC Geofence Entered
+  id: d3489c50-04f0-4a21-849c-f8f43d6544d7
   trigger:
     - platform: state
       entity_id: input_boolean.hvac_geofence
@@ -25,6 +26,7 @@
         target_temp_low: 68
 
 - alias: HVAC Geofence Timeout
+  id: a5049e57-ec49-4b95-9e3a-7fd7fcbbaced
   trigger:
     - platform: state
       entity_id: input_boolean.hvac_geofence
@@ -52,6 +54,7 @@
         target_temp_low: 62
 
 - alias: HVAC Night No Guest
+  id: ab07c0bf-7b1a-416d-bbb1-fdf0c03359a8
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -83,6 +86,7 @@
         target_temp_low: 62
 
 - alias: HVAC Night Guest Mode
+  id: 59240337-065f-4a5f-b495-c4e54f455bda
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -114,6 +118,7 @@
         target_temp_low: 62
 
 - alias: HVAC When Home
+  id: a6b3d056-12d4-4102-bb00-5fe614a64afe
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -153,6 +158,7 @@
         target_temp_low: 68
 
 - alias: HVAC When Away
+  id: d3b52b8f-80da-4a00-b704-635bf4830ab4
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -175,6 +181,7 @@
         target_temp_low: 62
 
 - alias: HVAC Weekday AM
+  id: 97598ddb-9626-4cd2-ab18-5893ab43ef10
   trigger:
     - platform: template
       value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.master_work_alarm' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false)) }}"

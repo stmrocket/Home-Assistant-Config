@@ -1,4 +1,5 @@
 - alias: Lock Front Door When Away or Going to Bed
+  id: 4a9dfa03-292b-4580-8ac6-65eec32c499b
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
@@ -17,6 +18,7 @@
       entity_id: lock.front_door
 
 - alias: Front Door Lock Timer Trigger
+  id: 50900130-1fdc-4c0a-96ae-52d1247296b2
   trigger:
     - platform: state
       entity_id: sensor.elk_front_door
@@ -31,6 +33,7 @@
       entity_id: timer.front_door
 
 - alias: Front Door Left Unlocked
+  id: 2623a192-96d4-483f-8da0-b9de246de1f7
   trigger:
     - platform: event
       event_type: timer.finished
@@ -48,6 +51,7 @@
       entity_id: lock.front_door
 
 - alias: Lock Front Door When Leaving
+  id: f8e7cb5d-6e72-49c0-ae1d-b84f9b8e7176
   trigger:
     - platform: state
       entity_id: sensor.elk_front_door

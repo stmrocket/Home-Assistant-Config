@@ -1,4 +1,5 @@
 - alias: Turn On Fireplace
+  id: cbc71002-7634-4bbc-adf8-f3e49bff626d
   trigger:
     - platform: state
       entity_id: switch.den_fireplace
@@ -13,6 +14,7 @@
       entity_id: switch.fireplace
 
 - alias: Turn Off Fireplace
+  id: daa9ac49-3d31-47f4-be44-75e535ec2562
   trigger:
     - platform: state
       entity_id: switch.den_fireplace
@@ -27,6 +29,7 @@
       entity_id: switch.fireplace
 
 - alias: Fireplace Keypad On if Fire On
+  id: ec2b5822-8588-4a10-8d24-417d0c528a47
   trigger:
     - platform: state
       entity_id: switch.fireplace
@@ -41,6 +44,7 @@
       entity_id: switch.den_fireplace
 
 - alias: Fireplace Keypad Off if Fire Off
+  id: d6e08752-0c81-472a-86d4-bfbb15db8105
   trigger:
     - platform: state
       entity_id: switch.fireplace
@@ -55,6 +59,7 @@
       entity_id: switch.den_fireplace
 
 - alias: Keep Fireplace Off When Away
+  id: 42eb3d10-fd96-4ff4-8994-4263249c6203
   trigger:
     - platform: state
       entity_id: switch.fireplace

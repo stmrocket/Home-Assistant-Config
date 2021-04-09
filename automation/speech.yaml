@@ -1,4 +1,5 @@
 - alias: Elk Speak Front Door
+  id: 49a30713-bae1-463c-9800-5a858a6f7d7b
   trigger:
     - entity_id: sensor.elk_front_door
       platform: state
@@ -10,6 +11,7 @@
         payload: 1,7
 
 - alias: Elk Speak Back Door
+  id: 30a07628-6a6e-4ef0-b1bc-2018eb90ea1c
   trigger:
     - entity_id: sensor.elk_back_door
       platform: state
@@ -21,6 +23,7 @@
         payload: 1,2
 
 - alias: Elk Speak Center Master Window
+  id: 9016ce7a-3543-45bf-ae41-0acb62d2ff20
   trigger:
     - entity_id: sensor.elk_master_bed_window_center
       platform: state
@@ -32,6 +35,7 @@
         payload: 1,3
 
 - alias: Elk Speak Center Office Window
+  id: 84b5cb6f-52c3-4175-a7a8-da7112cff3d3
   trigger:
     - entity_id: sensor.elk_office_window_center
       platform: state
@@ -43,6 +47,7 @@
         payload: 1,4
 
 - alias: Elk Speak East Breakfast Room Window
+  id: 74ffd53a-5628-4964-a9ab-518e61be220c
   trigger:
     - entity_id: sensor.elk_dining_room_window_east
       platform: state
@@ -54,6 +59,7 @@
         payload: 1,6
 
 - alias: Elk Speak Garage Door
+  id: 7d30d0e8-5644-45e4-8150-83523fb1a1eb
   trigger:
     - entity_id: sensor.elk_garage_door
       platform: state
@@ -65,6 +71,7 @@
         payload: 1,9
 
 - alias: Elk Speak Garage Entry
+  id: 8f2ac4e0-7e0b-4280-90db-7ca34fef01fe
   trigger:
     - platform: template
       value_template: "{{ is_state_attr('sensor.elk_garage_entry', 'physical_status', 'open') }}"
@@ -75,6 +82,7 @@
         payload: 1,10
 
 - alias: Elk Speak Guest Window
+  id: 7fe31aaa-9166-4bb8-962d-6e9c828e5d87
   trigger:
     - entity_id: sensor.elk_guest_bed_wildow
       platform: state
@@ -86,6 +94,7 @@
         payload: 1,12
 
 - alias: Elk Speak Left Breakfast Room Window
+  id: 0bde27cf-d1bf-4da7-9f8d-d71ffbe7c01b
   trigger:
     - entity_id: sensor.elk_dining_room_window_left
       platform: state
@@ -97,6 +106,7 @@
         payload: 1,16
 
 - alias: Elk Speak Right Breakfast Room Window
+  id: 0651577e-9493-495f-94c7-e8c5ec638af6
   trigger:
     - entity_id: sensor.elk_dining_room_window_right
       platform: state
@@ -108,6 +118,7 @@
         payload: 1,19
 
 - alias: Elk Speak Left Master Bedroom Window
+  id: 0549e880-c557-4a55-b3a7-11bca96771e7
   trigger:
     - entity_id: sensor.elk_master_bed_window_left
       platform: state
@@ -119,6 +130,7 @@
         payload: 1,17
 
 - alias: Elk Speak Left Office Window
+  id: ee67cf47-5188-4b0d-a483-fba5455b3fcc
   trigger:
     - entity_id: sensor.elk_office_window_left
       platform: state
@@ -130,6 +142,7 @@
         payload: 1,18
 
 - alias: Elk Speak Right Office Window
+  id: 16dff6fe-c224-4049-88cf-4d3e6c087c22
   trigger:
     - entity_id: sensor.elk_office_window_right
       platform: state
@@ -141,6 +154,7 @@
         payload: 1,21
 
 - alias: Elk Speak Right Master Bedroom Window
+  id: 38ea14ff-62c4-4224-956b-6f4b52b52d8a
   trigger:
     - entity_id: sensor.elk_master_bed_window_right
       platform: state
@@ -152,6 +166,7 @@
         payload: 1,20
 
 - alias: Elk Speak Server Room Window
+  id: 22d32149-1147-428e-bdeb-28ea0b27fc61
   trigger:
     - entity_id: sensor.elk_server_room_window
       platform: state
@@ -163,6 +178,7 @@
         payload: 1,22
 
 - alias: Elk Speak West Master Bedroom Window
+  id: dce80877-2591-4d40-a4ed-f275c03321e4
   trigger:
     - entity_id: sensor.elk_master_bed_window_west
       platform: state
@@ -174,6 +190,7 @@
         payload: 1,26
 
 - alias: Elk Speak Air Handler Disabled
+  id: ebcca31c-f16c-41ea-80f4-3f18aeb6ee08
   trigger:
     - entity_id: switch.elk_ahu_disable
       platform: state
@@ -185,6 +202,7 @@
         payload: 2,1
 
 - alias: Elk Speak Armed Stay
+  id: 85570855-032f-4ba6-9160-83255606cd8f
   trigger:
     - entity_id: alarm_control_panel.house
       from: disarmed
@@ -201,6 +219,7 @@
         payload: 2,12
 
 - alias: Elk Speak Armed Away
+  id: 333e8fca-3685-4430-b578-49929806b5b6
   trigger:
     - entity_id: alarm_control_panel.house
       from: disarmed
@@ -218,6 +237,7 @@
         payload: 2,13
 
 - alias: Elk Speak Armed Vacation
+  id: ce06a1f6-0b1f-45f6-aff0-eeee0741b60b
   trigger:
     - platform: template
       value_template: "{{ is_state_attr('alarm_control_panel.house', 'armed_status', 'armed_to_vacation') }}"
@@ -233,6 +253,7 @@
         payload: 2,13
 
 - alias: Elk Speak Armed Night
+  id: 98f6dfbd-7953-40aa-97cc-0dc419ffcd75
   trigger:
     - entity_id: alarm_control_panel.house
       from: disarmed
@@ -249,6 +270,7 @@
         payload: 2,8
 
 - alias: Elk Speak Disarmed
+  id: 9e8bce9f-ffd9-406e-adab-3139450b39e5
   trigger:
     - entity_id: alarm_control_panel.house
       platform: state
@@ -260,6 +282,7 @@
         payload: 2,2
 
 - alias: Doorbell Alert
+  id: 90304552-a927-40b7-98d0-a87a596e1017
   trigger:
     - platform: mqtt
       topic: parrot/tele/doorbell
@@ -322,6 +345,7 @@
             - /config/www/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
 
 - alias: Close Doorbell Popup When Timer Expires
+  id: 7b1e04c9-1a38-4b88-8814-bc730d7c89a3
   trigger:
     - event_data:
         entity_id: timer.doorbell_popup
@@ -331,6 +355,7 @@
     - service: browser_mod.close_popup
 
 - alias: Remote Wake
+  id: e23def72-8db0-46ed-9a8c-b8f7b273ca07
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_wake

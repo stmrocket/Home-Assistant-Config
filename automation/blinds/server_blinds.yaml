@@ -1,4 +1,5 @@
 - alias: Open Server Blinds
+  id: a0221682-6fd2-45bb-98e4-25a8cd24d96e
   trigger:
     - platform: state
       entity_id: switch.server_blinds
@@ -13,6 +14,7 @@
       entity_id: cover.server_room_blind
 
 - alias: Close Server Blinds
+  id: 1cf36418-aa86-4e84-9115-fec35478bf1d
   trigger:
     - platform: state
       entity_id: switch.server_blinds
@@ -27,6 +29,7 @@
       entity_id: cover.server_room_blind
 
 - alias: Server Blind Keypad on if any Open
+  id: c9986927-13a4-467a-9fc2-5ced6642ef03
   trigger:
     - platform: state
       entity_id: cover.server_room_blind
@@ -41,6 +44,7 @@
       entity_id: switch.server_room_blinds
 
 - alias: Server Blind Keypad off if all Closed
+  id: b211d035-1cc2-4fd1-a6a1-c6c74208c1f6
   trigger:
     - platform: state
       entity_id: cover.server_room_blind

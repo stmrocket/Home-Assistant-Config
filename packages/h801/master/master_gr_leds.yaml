@@ -16,6 +16,7 @@ light:
     optimistic: false
 automation:
   - alias: master_gr report on
+    id: 6655d4e6-10ce-433a-9870-52cae71dd3af
     trigger:
       - platform: state
         entity_id: light.master_bedroom_led_1_rgb
@@ -32,6 +33,7 @@ automation:
           topic: h801/master/ha/state
           payload_template: "ON"
   - alias: master_gr report off
+    id: 97a3eaf0-aa1e-46fb-91f5-9d912758a701
     trigger:
       - platform: state
         entity_id: light.master_bedroom_led_1_rgb

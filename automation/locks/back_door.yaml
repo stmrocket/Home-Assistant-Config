@@ -1,4 +1,5 @@
 - alias: Lock Back Door When Leaving or Going to Bed
+  id: 515428c3-afb5-4637-b133-4a46bf40e472
   trigger:
     - entity_id: alarm_control_panel.house
       from: arming
@@ -17,6 +18,7 @@
         entity_id: lock.back_door
       service: lock.lock
 - alias: Back Door Lock Timer Trigger
+  id: f4298aaf-3cee-447e-8c86-01d42993e9c5
   trigger:
     - entity_id: sensor.elk_back_door
       from: Normal
@@ -30,6 +32,7 @@
     service: timer.start
     entity_id: timer.back_door
 - alias: Back Door Left Unlocked
+  id: d26dd228-ad05-47f9-9232-dc3b9f05ef9e
   trigger:
     - event_data:
         entity_id: timer.back_door

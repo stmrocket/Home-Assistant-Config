@@ -1,4 +1,5 @@
 - alias: Auto Guest Mode On
+  id: 28314aa0-56d8-4d2b-8213-1e9209a9ecd5
   trigger:
     - platform: state
       entity_id: device_tracker.karen_oneplus7t
@@ -8,6 +9,7 @@
       entity_id: input_boolean.guest_mode
 
 - alias: Auto Guest Mode Off
+  id: 141808fa-47a9-49a5-8e02-5eff4ff73539
   trigger:
     - platform: state
       entity_id: device_tracker.karen_oneplus7t
@@ -21,6 +23,7 @@
       entity_id: input_boolean.guest_mode
 
 - alias: Guest Mode On from Keypad
+  id: c9369e13-5743-4eed-8ef5-b4f23c26de22
   trigger:
     - platform: state
       entity_id: switch.guest_mode_led
@@ -31,6 +34,7 @@
       entity_id: input_boolean.guest_mode
 
 - alias: Guest Mode Off from Keypad
+  id: 6fbbec59-f12a-4aeb-be9f-52f8eef63f2f
   trigger:
     - platform: state
       entity_id: switch.guest_mode_led
@@ -41,6 +45,7 @@
       entity_id: input_boolean.guest_mode
 
 - alias: Guest Mode Keypad On
+  id: 15e079f8-54b4-4c03-a02e-7134fe7342c7
   trigger:
     - platform: state
       entity_id: input_boolean.guest_mode
@@ -55,6 +60,7 @@
       entity_id: switch.guest_mode_led
 
 - alias: Guest Mode Keypad Off
+  id: b614aec0-94e9-4314-9d5a-49d9d09b9b97
   trigger:
     - platform: state
       entity_id: input_boolean.guest_mode

@@ -33,6 +33,7 @@ sensor:
 
 automation:
   - alias: Update HOU Cell METAR Map Display Mode
+    id: ed5950ba-9d38-4d35-b5be-83883a03a3d5
     trigger:
       - platform: state
         entity_id: input_boolean.hou_cell_metar_mode
@@ -60,6 +61,7 @@ automation:
                   retain: true
 
   - alias: HOU Cell Map On When at work
+    id: c7bef6b1-9f32-49d3-b624-7e5c7ac3f98c
     trigger:
       - platform: state
         entity_id: person.shawn_mccoy
@@ -69,6 +71,7 @@ automation:
         entity_id: switch.hou_cell_metar_map_power
 
   - alias: HOU Cell Map Off When at work
+    id: 4f491d21-7a6a-41eb-b8f5-3a258a7acd82
     trigger:
       - platform: state
         entity_id: person.shawn_mccoy

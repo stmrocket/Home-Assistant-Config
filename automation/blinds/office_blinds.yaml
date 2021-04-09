@@ -1,4 +1,5 @@
 - alias: Open Office Blinds
+  id: 71ef2867-1c93-4520-b9b3-dd69b35a8953
   trigger:
     - platform: state
       entity_id: switch.office_blinds
@@ -13,6 +14,7 @@
       entity_id: cover.office_blinds
 
 - alias: Close Office Blinds
+  id: c882c099-13b4-42fa-b75c-281c2d16d37c
   trigger:
     - platform: state
       entity_id: switch.office_blinds
@@ -27,6 +29,7 @@
       entity_id: cover.office_blinds
 
 - alias: Office Blind Keypad on if any Open
+  id: a8c85d57-a27b-4344-86b1-b1c2a7715ccc
   trigger:
     - platform: state
       entity_id: cover.office_blinds
@@ -41,6 +44,7 @@
       entity_id: switch.office_blinds
 
 - alias: Office Blind Keypad off if all Closed
+  id: 3b53e4ae-22ea-4a44-bb9f-5c2d6b0143b4
   trigger:
     - platform: state
       entity_id: cover.office_blinds
@@ -55,6 +59,7 @@
       entity_id: switch.office_blinds
 
 - alias: Office Windows Same Position
+  id: 28fae926-7207-4d76-a9ae-03ff84c45a32
   trigger:
     - platform: state
       entity_id:
@@ -87,6 +92,7 @@
         retain: "true"
 
 - alias: Office Windows Various Positions
+  id: c1a7e6dd-fcab-4ef2-9550-f790d5211137
   trigger:
     - platform: state
       entity_id:

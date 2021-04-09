@@ -1,4 +1,5 @@
 - alias: Entry Lamp On from Keypad
+  id: 83b0f4f4-d8cb-467f-9ce8-012584d4c015
   trigger:
     - platform: state
       entity_id: switch.entry_lamp
@@ -15,6 +16,7 @@
         brightness: 128
 
 - alias: Entry Lamp Off from Keypad
+  id: f2b1cb87-6f2c-4253-9eb1-07d88657012b
   trigger:
     - platform: state
       entity_id: switch.entry_lamp
@@ -29,6 +31,7 @@
       entity_id: light.entry_lamp
 
 - alias: Entry Lamp Keypad On
+  id: 7e1a0bec-ff77-4c61-a572-6f23b35d2fd9
   trigger:
     - platform: state
       entity_id: light.entry_lamp
@@ -42,6 +45,7 @@
       entity_id: switch.entry_lamp
 
 - alias: Entry Lamp Keypad Off
+  id: da59e9b1-ef47-43cb-8577-6c26254ac01c
   trigger:
     - platform: state
       entity_id: light.entry_lamp

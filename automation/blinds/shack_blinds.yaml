@@ -1,4 +1,5 @@
 - alias: Open Shack Blinds
+  id: 56f11665-d3ef-4b05-b84f-cffd21179fab
   trigger:
     - platform: state
       entity_id: switch.shack_blinds
@@ -13,6 +14,7 @@
       entity_id: cover.shack_blinds
 
 - alias: Close Shack Blinds
+  id: 7aeb2fcf-7486-4c8e-89be-79e974609d61
   trigger:
     - platform: state
       entity_id: switch.shack_blinds
@@ -27,6 +29,7 @@
       entity_id: cover.shack_blinds
 
 - alias: Shack Blind Keypad on if any Open
+  id: acd1edc7-914d-488c-b477-80b588ef6d5e
   trigger:
     - platform: state
       entity_id: cover.shack_blinds
@@ -41,6 +44,7 @@
       entity_id: switch.shack_blinds
 
 - alias: Shack Blind Keypad off if all Closed
+  id: ad298385-90a6-42ad-8093-af1c5347e926
   trigger:
     - platform: state
       entity_id: cover.shack_blinds
@@ -55,6 +59,7 @@
       entity_id: switch.shack_blinds
 
 - alias: Shack Windows Same Position
+  id: e14a7ef9-4a2e-403f-a9c4-d269e585e144
   trigger:
     - platform: state
       entity_id:
@@ -87,6 +92,7 @@
         retain: "true"
 
 - alias: Shack Windows Various Positions
+  id: a6ee8cb1-7ad3-4e16-b0ee-43f721359543
   trigger:
     - platform: state
       entity_id:
