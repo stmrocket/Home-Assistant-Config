@@ -1,4 +1,5 @@
 - alias: Alexa Den Timer Announcement
+  id: d6e6f0b3-6f8b-4123-8c1c-44c0d0bd0a97
   mode: parallel
   trigger:
     - platform: state
@@ -16,6 +17,7 @@
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Entry Timer Announcement
+  id: b1302296-1f3d-4626-bf4a-d983201254db
   mode: parallel
   trigger:
     - platform: state
@@ -33,6 +35,7 @@
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Guest Timer Announcement
+  id: 73a962b7-958d-4a06-9bc2-cd39fda44354
   mode: parallel
   trigger:
     - platform: state
@@ -50,6 +53,7 @@
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Master Timer Announcement
+  id: f73bf3c4-d083-40e1-9674-6e77536683b6
   mode: parallel
   trigger:
     - platform: state
@@ -67,6 +71,7 @@
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Office Timer Announcement
+  id: 977de87a-18b8-4966-a7d6-bc1bcbf9ff71
   mode: parallel
   trigger:
     - platform: state
@@ -84,6 +89,7 @@
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Server Timer Announcement
+  id: 56adc461-f7f0-41a4-98e5-98beb6188219
   mode: parallel
   trigger:
     - platform: state
