@@ -18,7 +18,7 @@ jobs:
       - name: Show Build Pending
         uses: wei/curl@v1
         with:
-          args: ${{ secrets.BUILD_PENDING }}
+          args: -X POST ${{ secrets.BUILD_PENDING }}
       - name: ⤵️ Check out configuration from GitHub
         uses: actions/checkout@v2
       - name: Copy Stubs to Proper Directory
@@ -26,7 +26,7 @@ jobs:
       - name: Show Build Running
         uses: wei/curl@v1
         with:
-          args: ${{ secrets.BUILD_RUNNING }}
+          args: -X POST ${{ secrets.BUILD_RUNNING }}
       - name: 🚀 Run Home Assistant Configuration Check
         uses: frenck/action-home-assistant@v1.0.0
         with:
@@ -40,4 +40,4 @@ jobs:
         uses: wei/curl@v1
         if: ${{ success() }}
         with:
-          args: ${{ secrets.BUILD_PASSING }}
+          args: -X POST ${{ secrets.BUILD_PASSING }}
