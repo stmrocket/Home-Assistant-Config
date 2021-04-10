@@ -10,30 +10,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  yamllint:
-    name: 🧹 yamllint
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out configuration from GitHub
-        uses: actions/checkout@v1
-      - name: 🚀 Run yamllint
-        uses: frenck/action-yamllint@v1.0.1
-
-  remarklint:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: ⤵️ Check out configuration from GitHub
-        uses: actions/checkout@v1
-      - name: Running Remark lint
-        uses: "docker://pipelinecomponents/remark-lint:latest"
-        continue-on-error: true
-        with:
-          args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
 
   home-assistant:
     name: "Home Assistant Core Stable Configuration Check"
     runs-on: ubuntu-latest
-    needs: [yamllint]
     steps:
       - name: Show Build Pending
         uses: wei/curl@v1
