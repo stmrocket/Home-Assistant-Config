@@ -1,0 +1,23 @@
+---
+name: Home Assistant CI
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches: 
+      - dev
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+
+  home-assistant:
+    name: "Home Assistant Core Stable Configuration Check"
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out configuration from GitHub
+        uses: actions/checkout@v2
+      - name: Copy Stubs to Proper Directory
+        run: cp -R ./.stubs/* ./
+      - name: 🚀 Run Home Assistant Configuration Check
+        uses: frenck/action-home-assistant@v1.0.0
