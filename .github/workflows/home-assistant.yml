@@ -13,7 +13,6 @@ jobs:
 
   home-assistant:
     name: "Home Assistant Core ${{ matrix.version }} Configuration Check"
-    needs: [yamllint]
     runs-on: ubuntu-latest
     strategy:
       matrix:
