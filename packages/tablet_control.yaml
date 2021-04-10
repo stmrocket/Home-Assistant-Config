@@ -53,6 +53,7 @@ sensor:
   - platform: rest
     name: Kitchen Tablet Status
     resource: !secret kitchen_tablet_status
+    value_template: "OK"
     json_attributes:
       - batteryLevel
       - isPlugged 
@@ -60,6 +61,7 @@ sensor:
   - platform: rest
     name: Office Tablet Status
     resource: !secret office_tablet_status
+    value_template: "OK"
     json_attributes:
       - batteryLevel
       - isPlugged 
@@ -67,6 +69,7 @@ sensor:
   - platform: rest
     name: Shack Tablet Status
     resource: !secret shack_tablet_status
+    value_template: "OK"
     json_attributes:
       - batteryLevel
       - isPlugged
