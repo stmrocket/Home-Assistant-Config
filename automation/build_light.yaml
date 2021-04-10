@@ -1,27 +1,20 @@
-- alias: Travis Build Created
+- alias: GitHub Build Created
   id: 365b6a29-1553-41b8-afc0-a057c1b01e20
   trigger:
-    - platform: state
-      entity_id: sensor.stmrocket_home_assistant_config_last_build_state
-      to: "created"
-    - platform: state
-      entity_id: sensor.stmrocket_home_assistant_config_state
-      to: "created"
+    - platform: webhook
+      webhook_id: !secret webhook_build_pending
   action:
     - service: light.turn_on
       data:
         entity_id: light.build_light
         brightness: 1
         white_value: 255
-- alias: Travis Build Started
+
+- alias: GitHub Build Started
   id: 11f895f2-b7fb-4362-bc94-a072c9419c21
   trigger:
-    - platform: state
-      entity_id: sensor.stmrocket_home_assistant_config_last_build_state
-      to: "started"
-    - platform: state
-      entity_id: sensor.stmrocket_home_assistant_config_state
-      to: "started"
+    - platform: webhook
+      webhook_id: !secret webhook_build_running
   action:
     - service: light.turn_on
       data:
@@ -29,15 +22,12 @@
         brightness: 255
         rgb_color: [0, 255, 0]
         white_value: 0
-- alias: Travis Build Failed
+
+- alias: GitHub Build Failed
   id: 781bb3c0-b9e4-419a-9754-f065d08fa135
   trigger:
-    - platform: state
-      entity_id: sensor.stmrocket_home_assistant_config_last_build_state
-      to: "failed"
-    - platform: state
-      entity_id: sensor.stmrocket_home_assistant_config_state
-      to: "failed"
+    - platform: webhook
+      webhook_id: !secret webhook_build_failing
   action:
     - service: light.turn_on
       data:
@@ -45,15 +35,12 @@
         brightness: 255
         rgb_color: [255, 0, 0]
         white_value: 0
-- alias: Travis Build Passed
+
+- alias: GitHub Build Passed
   id: 98a61d5c-b97a-47d2-b8c1-1aeecee2aa4b
   trigger:
-    - platform: state
-      entity_id: sensor.stmrocket_home_assistant_config_last_build_state
-      to: "passed"
-    - platform: state
-      entity_id: sensor.stmrocket_home_assistant_config_state
-      to: "passed"
+    - platform: webhook
+      webhook_id: !secret webhook_build_passing
   action:
     - service: light.turn_on
       data:

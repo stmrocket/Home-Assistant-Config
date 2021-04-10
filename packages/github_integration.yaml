@@ -4,9 +4,6 @@ sensor:
     access_token: !secret github_access_token
     repositories:
       - path: "stmrocket/home-assistant-config"
-  - platform: travisci
-    api_key: !secret travis_access_token
-    branch: dev
 
 input_text:
   prev_git_version:

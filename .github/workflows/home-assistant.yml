@@ -15,9 +15,29 @@ jobs:
     name: "Home Assistant Core Stable Configuration Check"
     runs-on: ubuntu-latest
     steps:
+      - name: Show Build Pending
+        uses: wei/curl@v1
+        with:
+          args: ${{ secrets.BUILD_PENDING }}
       - name: ⤵️ Check out configuration from GitHub
         uses: actions/checkout@v2
       - name: Copy Stubs to Proper Directory
         run: cp -R ./.stubs/* ./
+      - name: Show Build Running
+        uses: wei/curl@v1
+        with:
+          args: ${{ secrets.BUILD_RUNNING }}
       - name: 🚀 Run Home Assistant Configuration Check
         uses: frenck/action-home-assistant@v1.0.0
+        with:
+          version: stable
+      - name: Show Build Failing
+        uses: wei/curl@v1
+        if: ${{ failure() }}
+        with:
+          args: ${{ secrets.BUILD_FAILING }}
+      - name: Show Build Passing
+        uses: wei/curl@v1
+        if: ${{ success() }}
+        with:
+          args: ${{ secrets.BUILD_PASSING }}
