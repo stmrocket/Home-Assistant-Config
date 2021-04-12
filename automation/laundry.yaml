@@ -156,6 +156,7 @@
     - service: browser_mod.toast
       data:
         message: "The dryer has stopped."
+        duration: 3000
 
 - alias: "Repeat Announce Dryer Finished"
   id: a51c8c5c-31af-4001-b931-5125204164cc
@@ -225,6 +226,7 @@
     - service: browser_mod.toast
       data:
         message: "The washer has stopped."
+        duration: 3000
 
 - alias: "Repeat Announce Washer Finished"
   id: 7eef5299-bafb-4bbb-9da0-0d72952edb03

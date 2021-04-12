@@ -120,6 +120,7 @@
     - service: browser_mod.toast
       data:
         message: "It is now raining."
+        duration: 3000
 
 - alias: Detect Rain Stopped
   id: 9ae2b245-b303-4d59-ba85-2be41146bcdd
@@ -148,6 +149,7 @@
     - service: browser_mod.toast
       data:
         message: "It has stopped raining."
+        duration: 3000
 
 - alias: Display Rainfall on Elk Keypads
   id: aae69df9-96b8-4b41-aac4-ddbc2f3e37db
