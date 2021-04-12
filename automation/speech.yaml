@@ -336,6 +336,7 @@
     - service: browser_mod.toast
       data:
         message: "Someone is at the door."
+        duration: 3000
     - service: notify.cctv_email
       data_template:
         title: "CCTV Alarm: Front Porch - Doorbell Pressed {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
