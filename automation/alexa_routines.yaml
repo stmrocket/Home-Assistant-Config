@@ -187,6 +187,9 @@
       value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
     - platform: template
       value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
+    - platform: state
+      entity_id: lock.front_door
+      to: 'unlocked'
   condition:
     - condition: or
       conditions:
