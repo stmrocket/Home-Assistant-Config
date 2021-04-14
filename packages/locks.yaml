@@ -132,7 +132,7 @@ automation:
     action:
       - service: input_text.set_value
         data:
-          entity_id: input_text.front_door_lock_status
+          entity_id: input_text.garage_entry_lock_status
           value: >
             {% set userID = trigger.event.data.parameters['userId'] %}
             {% if trigger.event.data.event_label == 'Manual unlock operation' %} Unlocked (Manual)
