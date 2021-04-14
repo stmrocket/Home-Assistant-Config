@@ -183,13 +183,11 @@
 - alias: Returning Home Lock Trigger
   id: 4badea44-bbf6-4661-8b01-bc5fcab00dd6
   trigger:
-    - platform: template
-      value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked with Keypad by user 1') }}"
-    - platform: template
-      value_template: "{{ is_state_attr('lock.front_door', 'lock_status', 'Unlocked by RF') }}"
     - platform: state
-      entity_id: lock.front_door
-      to: 'unlocked'
+      entity_id: sensor.front_door_lock_status
+      to: 
+        - "Unlocked (User 1)"
+        - "Unlocked (RF)"
   condition:
     - condition: or
       conditions:

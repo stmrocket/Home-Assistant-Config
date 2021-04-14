@@ -55,3 +55,91 @@ alert:
     done_message: "The garage entry lock battery has been replaced."
     notifiers:
       - mobile_app_shawn_7t
+
+input_text:
+  front_door_lock_status:
+    name: Front Door Lock Status
+  back_door_lock_status:
+    name: Back Door Lock Status
+  garage_entry_lock_status:
+    name: Garage Entry Lock Status
+
+sensor:
+  - platform: template
+    sensors:
+      front_door_lock_status:
+        friendly_name: Front Door Lock Status
+        value_template: "{{ states('input_text.front_door_lock_status') }}"
+
+      back_door_lock_status:
+        friendly_name: Back Door Lock Status
+        value_template: "{{ states('input_text.back_door_lock_status') }}"
+
+      garage_entry_lock_status:
+        friendly_name: Garage Entry Lock Status
+        value_template: "{{ states('input_text.garage_entry_lock_status') }}"
+
+automation:
+  - alias: 'Front Door Lock Status Update'
+    id: ecaadffb-5b27-436c-b0c6-7ab409f08352
+    trigger:
+      - platform: event
+        event_type: zwave_js_event
+    condition: "{{ trigger.event.data.node_id == 6 and trigger.event.data.event_label.endswith('lock operation') }}"
+    action:
+      - service: input_text.set_value
+        data:
+          entity_id: input_text.front_door_lock_status
+          value: >
+            {% set userID = trigger.event.data.parameters['userId'] %}
+            {% if trigger.event.data.event_label == 'Manual unlock operation' %} Unlocked (Manual)
+            {% elif trigger.event.data.event_label == 'Manual lock operation' %} Locked (Manual)
+            {% elif trigger.event.data.event_label == 'RF unlock operation' %} Unlocked (RF)
+            {% elif trigger.event.data.event_label == 'RF lock operation' %} Locked (RF)
+            {% elif trigger.event.data.event_label == 'Keypad unlock operation' %} Unlocked (User {{ userID }})
+            {% elif trigger.event.data.event_label == 'Keypad lock operation' %} Locked (Keypad)
+            {% else %} Unknown
+            {% endif %}
+
+  - alias: 'Back Door Lock Status Update'
+    id: 79b3e5fa-f37d-4de2-84a2-ba113fed9907
+    trigger:
+      - platform: event
+        event_type: zwave_js_event
+    condition: "{{ trigger.event.data.node_id == 4 and trigger.event.data.event_label.endswith('lock operation') }}"
+    action:
+      - service: input_text.set_value
+        data:
+          entity_id: input_text.back_door_lock_status
+          value: >
+            {% set userID = trigger.event.data.parameters['userId'] %}
+            {% if trigger.event.data.event_label == 'Manual unlock operation' %} Unlocked (Manual)
+            {% elif trigger.event.data.event_label == 'Manual lock operation' %} Locked (Manual)
+            {% elif trigger.event.data.event_label == 'RF unlock operation' %} Unlocked (RF)
+            {% elif trigger.event.data.event_label == 'RF lock operation' %} Locked (RF)
+            {% elif trigger.event.data.event_label == 'Keypad unlock operation' %} Unlocked (User {{ userID }})
+            {% elif trigger.event.data.event_label == 'Keypad lock operation' %} Locked (Keypad)
+            {% else %} Unknown
+            {% endif %}
+
+  - alias: 'Garage Entry Lock Status Update'
+    id: a3395e80-00d6-433b-9b54-d9ff399e696e
+    description: Update garage entry lock status.
+    trigger:
+      - platform: event
+        event_type: zwave_js_event
+    condition: "{{ trigger.event.data.node_id == 5 and trigger.event.data.event_label.endswith('lock operation') }}"
+    action:
+      - service: input_text.set_value
+        data:
+          entity_id: input_text.front_door_lock_status
+          value: >
+            {% set userID = trigger.event.data.parameters['userId'] %}
+            {% if trigger.event.data.event_label == 'Manual unlock operation' %} Unlocked (Manual)
+            {% elif trigger.event.data.event_label == 'Manual lock operation' %} Locked (Manual)
+            {% elif trigger.event.data.event_label == 'RF unlock operation' %} Unlocked (RF)
+            {% elif trigger.event.data.event_label == 'RF lock operation' %} Locked (RF)
+            {% elif trigger.event.data.event_label == 'Keypad unlock operation' %} Unlocked (User {{ userID }})
+            {% elif trigger.event.data.event_label == 'Keypad lock operation' %} Locked (Keypad)
+            {% else %} Unknown
+            {% endif %}
