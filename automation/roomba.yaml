@@ -22,9 +22,9 @@
 - alias: Roomba Return if House Disarmed
   id: 6dba1760-613c-4165-8e41-b54466b7ff1d
   trigger:
-    - entity_id: alarm_control_panel.house
-      platform: state
-      to: disarmed
+    - platform: state
+      entity_id: input_boolean.hvac_geofence
+      to: "on"
   condition:
     - condition: state
       entity_id: sensor.roomba_status
