@@ -354,3 +354,10 @@ input_select:
     icon: mdi:music
 
 circadian_lighting:
+
+# Example configuration.yaml entry
+device_tracker:
+  - platform: aruba
+    host: !secret aruba_host
+    username: !secret aruba_user
+    password: !secret aruba_pass
