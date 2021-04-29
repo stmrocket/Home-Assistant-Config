@@ -1,40 +1,36 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#  SPDX-License-Identifier: Apache-2.0
 """
 Alexa Devices Alarm Control Panel using Guard Mode.
+
+SPDX-License-Identifier: Apache-2.0
 
 For more details about this platform, please refer to the documentation at
 https://community.home-assistant.io/t/echo-devices-alexa-as-media-player-testers-needed/58639
 """
 from asyncio import sleep
 import logging
-from typing import Dict, List, Text  # noqa pylint: disable=unused-import
+from typing import Dict, List, Optional, Text  # noqa pylint: disable=unused-import
 
-from homeassistant import util
+from alexapy import hide_email, hide_serial
 from homeassistant.const import (
+    CONF_EMAIL,
     STATE_ALARM_ARMED_AWAY,
     STATE_ALARM_DISARMED,
     STATE_UNAVAILABLE,
 )
 from homeassistant.exceptions import ConfigEntryNotReady
-from homeassistant.helpers.dispatcher import async_dispatcher_connect
-from homeassistant.helpers.event import async_call_later
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from . import (
-    CONF_EMAIL,
+from .alexa_entity import parse_guard_state_from_coordinator
+from .alexa_media import AlexaMedia
+from .const import (
     CONF_EXCLUDE_DEVICES,
     CONF_INCLUDE_DEVICES,
     CONF_QUEUE_DELAY,
     DATA_ALEXAMEDIA,
     DEFAULT_QUEUE_DELAY,
     DOMAIN as ALEXA_DOMAIN,
-    MIN_TIME_BETWEEN_FORCED_SCANS,
-    MIN_TIME_BETWEEN_SCANS,
-    hide_email,
-    hide_serial,
 )
-from .helpers import _catch_login_errors, add_devices, retry_async
+from .helpers import _catch_login_errors, add_devices
 
 try:
     from homeassistant.components.alarm_control_panel import (
@@ -54,7 +50,7 @@ async def async_setup_platform(
 ) -> bool:
     """Set up the Alexa alarm control panel platform."""
     devices = []  # type: List[AlexaAlarmControlPanel]
-    account = config[CONF_EMAIL]
+    account = config[CONF_EMAIL] if config else discovery_info["config"][CONF_EMAIL]
     include_filter = config.get(CONF_INCLUDE_DEVICES, [])
     exclude_filter = config.get(CONF_EXCLUDE_DEVICES, [])
     account_dict = hass.data[DATA_ALEXAMEDIA]["accounts"][account]
@@ -75,10 +71,14 @@ async def async_setup_platform(
                 "alarm_control_panel"
             ]
         ) = {}
-    alexa_client: AlexaAlarmControlPanel = AlexaAlarmControlPanel(
-        account_dict["login_obj"], guard_media_players
-    )
-    await alexa_client.init()
+    alexa_client: Optional[AlexaAlarmControlPanel] = None
+    guard_entities = account_dict.get("devices", {}).get("guard", [])
+    if guard_entities:
+        alexa_client = AlexaAlarmControlPanel(
+            account_dict["login_obj"], account_dict["coordinator"], guard_entities[0], guard_media_players
+        )
+    else:
+        _LOGGER.debug("%s: No Alexa Guard entity found", account)
     if not (alexa_client and alexa_client.unique_id):
         _LOGGER.debug(
             "%s: Skipping creation of uninitialized device: %s",
@@ -117,172 +117,38 @@ async def async_setup_entry(hass, config_entry, async_add_devices):
 async def async_unload_entry(hass, entry) -> bool:
     """Unload a config entry."""
     account = entry.data[CONF_EMAIL]
+    _LOGGER.debug("Attempting to unload alarm control panel")
     account_dict = hass.data[DATA_ALEXAMEDIA]["accounts"][account]
     for device in account_dict["entities"]["alarm_control_panel"].values():
+        _LOGGER.debug("Removing %s", device)
         await device.async_remove()
     return True
 
 
-class AlexaAlarmControlPanel(AlarmControlPanel):
+class AlexaAlarmControlPanel(AlarmControlPanel, AlexaMedia, CoordinatorEntity):
     """Implementation of Alexa Media Player alarm control panel."""
 
-    def __init__(self, login, media_players=None) -> None:
+    def __init__(self, login, coordinator, guard_entity, media_players=None) -> None:
         # pylint: disable=unexpected-keyword-arg
         """Initialize the Alexa device."""
-        from alexapy import AlexaAPI
-
-        # Class info
-        self._login = login
-        self.alexa_api = AlexaAPI(self, login)
-        self.email = login.email
-        self.account = hide_email(login.email)
-        self._available = None
-        self._assumed_state = None
+        AlexaMedia.__init__(self, None, login)
+        CoordinatorEntity.__init__(self, coordinator)
+        _LOGGER.debug("%s: Initiating alarm control panel", hide_email(login.email))
+        # AlexaAPI requires a AlexaClient object, need to clean this up
 
         # Guard info
-        self._appliance_id = None
-        self._guard_entity_id = None
-        self._friendly_name = "Alexa Guard"
-        self._state = None
-        self._should_poll = False
-        self._attrs: Dict[Text, Text] = {}
+        self._appliance_id = guard_entity["appliance_id"]
+        self._guard_entity_id = guard_entity["id"]
+        self._friendly_name = "Alexa Guard " + self._appliance_id[-5:]
         self._media_players = {} or media_players
-
-    def check_login_changes(self):
-        """Update Login object if it has changed."""
-        try:
-            login = self.hass.data[DATA_ALEXAMEDIA]["accounts"][self.email]["login_obj"]
-        except (AttributeError, KeyError):
-            return
-        if self._login != login or self._login.session != login.session:
-            from alexapy import AlexaAPI
-
-            _LOGGER.debug("Login object has changed; updating")
-            self._login = login
-            self.alexa_api = AlexaAPI(self, login)
-            self.email = login.email
-            self.account = hide_email(login.email)
-
-    async def init(self):
-        """Initialize."""
-        try:
-            from simplejson import JSONDecodeError
-
-            data = await self.alexa_api.get_guard_details(self._login)
-            guard_dict = data["locationDetails"]["locationDetails"]["Default_Location"][
-                "amazonBridgeDetails"
-            ]["amazonBridgeDetails"]["LambdaBridge_AAA/OnGuardSmartHomeBridgeService"][
-                "applianceDetails"
-            ][
-                "applianceDetails"
-            ]
-        except (KeyError, TypeError, JSONDecodeError):
-            guard_dict = {}
-        for _, value in guard_dict.items():
-            if value["modelName"] == "REDROCK_GUARD_PANEL":
-                self._appliance_id = value["applianceId"]
-                self._guard_entity_id = value["entityId"]
-                self._friendly_name += " " + self._appliance_id[-5:]
-                _LOGGER.debug(
-                    "%s: Discovered %s: %s %s",
-                    self.account,
-                    self._friendly_name,
-                    self._appliance_id,
-                    self._guard_entity_id,
-                )
-        if not self._appliance_id:
-            _LOGGER.debug("%s: No Alexa Guard entity found", self.account)
-
-    async def async_added_to_hass(self):
-        """Store register state change callback."""
-        try:
-            if not self.enabled:
-                return
-        except AttributeError:
-            pass
-        # Register event handler on bus
-        self._listener = async_dispatcher_connect(
-            self.hass,
-            f"{ALEXA_DOMAIN}_{hide_email(self._login.email)}"[0:32],
-            self._handle_event,
-        )
-        await self.async_update()
-
-    async def async_will_remove_from_hass(self):
-        """Prepare to remove entity."""
-        # Register event handler on bus
-        self._listener()
-
-    def _handle_event(self, event):
-        """Handle websocket events.
-
-        Used instead of polling.
-        """
-        try:
-            if not self.enabled:
-                return
-        except AttributeError:
-            pass
-        if "push_activity" in event:
-            async_call_later(
-                self.hass,
-                2,
-                lambda _: self.hass.async_create_task(
-                    self.async_update(no_throttle=True)
-                ),
-            )
-
-    @util.Throttle(MIN_TIME_BETWEEN_SCANS, MIN_TIME_BETWEEN_FORCED_SCANS)
-    @_catch_login_errors
-    async def async_update(self):
-        """Update Guard state."""
-        try:
-            if not self.enabled:
-                return
-        except AttributeError:
-            pass
-        import json
-
-        if self._login.session.closed:
-            self._available = False
-            self._assumed_state = True
-            return
-        _LOGGER.debug("%s: Refreshing %s", self.account, self.name)
-        state = None
-        state_json = await self.alexa_api.get_guard_state(
-            self._login, self._appliance_id
-        )
-        # _LOGGER.debug("%s: state_json %s", self.account, state_json)
-        if state_json and "deviceStates" in state_json and state_json["deviceStates"]:
-            cap = state_json["deviceStates"][0]["capabilityStates"]
-            # _LOGGER.debug("%s: cap %s", self.account, cap)
-            for item_json in cap:
-                item = json.loads(item_json)
-                # _LOGGER.debug("%s: item %s", self.account, item)
-                if item["name"] == "armState":
-                    state = item["value"]
-                    # _LOGGER.debug("%s: state %s", self.account, state)
-        elif state_json["errors"]:
-            _LOGGER.debug(
-                "%s: Error refreshing alarm_control_panel %s: %s",
+        self._attrs: Dict[Text, Text] = {}
+        _LOGGER.debug(
+                "%s: Guard Discovered %s: %s %s",
                 self.account,
-                self.name,
-                json.dumps(state_json["errors"]) if state_json else None,
+                self._friendly_name,
+                hide_serial(self._appliance_id),
+                hide_serial(self._guard_entity_id),
             )
-        if state is None:
-            self._available = False
-            self._assumed_state = True
-            return
-        if state == "ARMED_AWAY":
-            self._state = STATE_ALARM_ARMED_AWAY
-        elif state == "ARMED_STAY":
-            self._state = STATE_ALARM_DISARMED
-        else:
-            self._state = STATE_ALARM_DISARMED
-        self._available = True
-        self._assumed_state = False
-        _LOGGER.debug("%s: Alarm State: %s", self.account, self.state)
-        self.async_schedule_update_ha_state()
 
     @_catch_login_errors
     async def _async_alarm_set(self, command: Text = "", code=None) -> None:
@@ -302,6 +168,7 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
         )
         if available_media_players:
             _LOGGER.debug("Sending guard command to: %s", available_media_players[0])
+            available_media_players[0].check_login_changes()
             await available_media_players[0].alexa_api.set_guard_state(
                 self._appliance_id.split("_")[2],
                 command_map[command],
@@ -315,8 +182,7 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
             await self.alexa_api.static_set_guard_state(
                 self._login, self._guard_entity_id, command
             )
-        await self.async_update(no_throttle=True)
-        self.async_schedule_update_ha_state()
+        await self.coordinator.async_request_refresh()
 
     async def async_alarm_disarm(self, code=None) -> None:
         # pylint: disable=unexpected-keyword-arg
@@ -341,19 +207,13 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
     @property
     def state(self):
         """Return the state of the device."""
-        return self._state
-
-    @property
-    def device_state_attributes(self):
-        """Return the state attributes."""
-        return self._attrs
-
-    @property
-    def should_poll(self):
-        """Return the polling state."""
-        return self._should_poll or not (
-            self.hass.data[DATA_ALEXAMEDIA]["accounts"][self._login.email]["websocket"]
-        )
+        _state = parse_guard_state_from_coordinator(self.coordinator, self._guard_entity_id)
+        if _state == "ARMED_AWAY":
+            return STATE_ALARM_ARMED_AWAY
+        elif _state == "ARMED_STAY":
+            return STATE_ALARM_DISARMED
+        else:
+            return STATE_ALARM_DISARMED
 
     @property
     def supported_features(self) -> int:
@@ -367,11 +227,11 @@ class AlexaAlarmControlPanel(AlarmControlPanel):
         return SUPPORT_ALARM_ARM_AWAY
 
     @property
-    def available(self):
-        """Return the availability of the device."""
-        return self._available
+    def assumed_state(self) -> bool:
+        last_refresh_success = self.coordinator.data and self._guard_entity_id in self.coordinator.data
+        return not last_refresh_success
 
     @property
-    def assumed_state(self):
-        """Return whether the state is an assumed_state."""
-        return self._assumed_state
+    def device_state_attributes(self):
+        """Return the state attributes."""
+        return self._attrs

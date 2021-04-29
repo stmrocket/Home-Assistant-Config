@@ -9,5 +9,3 @@ The Average Temperature Sensor.
 For more details about this sensor, please refer to the documentation at
 https://github.com/Limych/ha-average/
 """
-
-from .sensor import VERSION
