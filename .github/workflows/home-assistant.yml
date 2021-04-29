@@ -30,7 +30,7 @@ jobs:
         with:
           args: -X POST ${{ secrets.BUILD_RUNNING }}
       - name: 🚀 Run Home Assistant Configuration Check
-        uses: frenck/action-home-assistant@v1.0.3
+        uses: frenck/action-home-assistant@v1.0.4
         with:
           version: stable
       - name: Show Build Failing
