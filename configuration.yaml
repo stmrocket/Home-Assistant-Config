@@ -108,7 +108,10 @@ lovelace:
     - url: /hacsfiles/bom-weather-card/bom-weather-card.js
       type: module
     - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module    
+    - url: /hacsfiles/our-groceries-card/our-groceries-card.js
       type: module
+    
 
 # Discover some devices automatically
 discovery:
@@ -357,3 +360,7 @@ device_tracker:
     host: !secret aruba_host
     username: !secret aruba_user
     password: !secret aruba_pass
+
+ourgroceries:
+  username: !secret our_groceries_username
+  password: !secret our_groceries_password
