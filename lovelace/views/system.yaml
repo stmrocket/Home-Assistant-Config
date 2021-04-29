@@ -1370,18 +1370,7 @@ cards:
                 name: Core
 
               - type: "custom:button-card"
-                entity: device_tracker.poe_switch
-                color_type: icon
-                icon: mdi:switch
-                state:
-                  - value: "home"
-                    color: rgb(94, 228, 101)
-                  - value: "not_home"
-                    color: rgb(228, 94, 101)
-                name: POE
-
-              - type: "custom:button-card"
-                entity: device_tracker.unifi_front
+                entity: device_tracker.ap_front
                 color_type: icon
                 state:
                   - value: "home"
@@ -1393,7 +1382,7 @@ cards:
                 name: Hall
 
               - type: "custom:button-card"
-                entity: device_tracker.unifi_back
+                entity: device_tracker.ap_den
                 color_type: icon
                 state:
                   - value: "home"
@@ -1404,8 +1393,33 @@ cards:
                     icon: mdi:access-point-network-off
                 name: Den
 
+              - type: "custom:button-card"
+                entity: device_tracker.ap_garage
+                color_type: icon
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                    icon: mdi:access-point-network
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:access-point-network-off
+                name: Garage
+
           - type: horizontal-stack
             cards:
+
+              - type: "custom:button-card"
+                entity: device_tracker.ap_shed
+                color_type: icon
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                    icon: mdi:access-point-network
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:access-point-network-off
+                name: Shed
+
               - type: "custom:button-card"
                 entity: device_tracker.nas
                 color_type: icon
@@ -1427,17 +1441,6 @@ cards:
                   - value: "not_home"
                     color: rgb(228, 94, 101)
                 name: OWFS
-
-              - type: "custom:button-card"
-                entity: device_tracker.musicport
-                color_type: icon
-                icon: mdi:music
-                state:
-                  - value: "home"
-                    color: rgb(94, 228, 101)
-                  - value: "not_home"
-                    color: rgb(228, 94, 101)
-                name: MusicPort
 
               - type: "custom:button-card"
                 entity: device_tracker.isy_994
@@ -1607,7 +1610,6 @@ cards:
 
           - type: horizontal-stack
             cards:
-              - type: "custom:gap-card"
               - type: "custom:button-card"
                 entity: sensor.shack_ups_status
                 color_type: icon
@@ -1652,6 +1654,18 @@ cards:
                   - value: "not_home"
                     color: rgb(228, 94, 101)
                 name: AdGuard
+
+              - type: "custom:button-card"
+                entity: device_tracker.musicport
+                color_type: icon
+                icon: mdi:music
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: MusicPort
+
               - type: "custom:gap-card"
 
   - type: vertical-stack

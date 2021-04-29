@@ -159,8 +159,6 @@ sensor:
         value_template: !secret ext_url
 
 binary_sensor:
-  - platform: wyzesense
-    device: "/dev/hidraw0"
   - platform: template
     sensors:
       is_dst:
@@ -353,9 +351,7 @@ input_select:
       - Christmas
     icon: mdi:music
 
-circadian_lighting:
 
-# Example configuration.yaml entry
 device_tracker:
   - platform: aruba
     host: !secret aruba_host

@@ -182,7 +182,7 @@
   id: 2e7a674c-1bfe-4bdd-b909-1b9e925d18f2
   trigger:
     - platform: state
-      entity_id: device_tracker.unifi_front
+      entity_id: device_tracker.ap_front
       from: "home"
       to: "not_home"
       for:
@@ -196,11 +196,11 @@
           ttl: 0
           priority: high
 
-- alias: Notify den AP Offline
+- alias: Notify Den AP Offline
   id: f271795e-7757-4f34-82f7-92fd4f0365c3
   trigger:
     - platform: state
-      entity_id: device_tracker.unifi_front
+      entity_id: device_tracker.ap_front
       from: "home"
       to: "not_home"
       for:
@@ -210,6 +210,42 @@
       data:
         title: Device Offline
         message: The den AP has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
+
+- alias: Notify Garage AP Offline
+  id: 2ed31c19-f5c8-4dc9-a343-749614b9107f
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ap_garage
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
+  action:
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Device Offline
+        message: The garage AP has been offline for 5 minutes.
+        data:
+          ttl: 0
+          priority: high
+
+- alias: Notify Shed AP Offline
+  id: 64b0f77b-adef-40d5-aa81-bba4365fee10
+  trigger:
+    - platform: state
+      entity_id: device_tracker.ap_shed
+      from: "home"
+      to: "not_home"
+      for:
+        minutes: 5
+  action:
+    - service: notify.mobile_app_shawn_7t
+      data:
+        title: Device Offline
+        message: The shed AP has been offline for 5 minutes.
         data:
           ttl: 0
           priority: high
