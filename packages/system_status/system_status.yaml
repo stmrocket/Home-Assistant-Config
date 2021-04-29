@@ -10,8 +10,10 @@ device_tracker:
       poe_switch: !secret poe_switch_ip
       isy_994: !secret isy_ip
       alarm_panel: !secret alarm_panel_ip
-      unifi_front: !secret unifi_front_ip
-      unifi_back: !secret unifi_back_ip
+      ap_front: !secret ap_front_ip
+      ap_den: !secret ap_den_ip
+      ap_garage: !secret ap_garage_ip
+      ap_shed: !secret ap_shed_ip
       redlink: !secret redlink_ip
       server_ups: !secret server_ups_ip
       shack_ups: !secret shack_ups_ip
