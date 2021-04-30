@@ -25,15 +25,23 @@ cards:
       #                        Home - Waze                            #
       #                                                               #
       #################################################################
-      - type: custom:waze-card
-        title: Travel
-        entities:
-          - entity: sensor.shawn_to_home
-            zone: zone.home
-            name: Home
-          - entity: sensor.shawn_to_work
-            zone: zone.work
-            name: Work
+      # - type: custom:waze-card
+      #   title: Travel
+      #   entities:
+      #     - entity: sensor.shawn_to_home
+      #       zone: zone.home
+      #       name: Home
+      #     - entity: sensor.shawn_to_work
+      #       zone: zone.work
+      #       name: Work
+
+      - type: 'custom:our-groceries-card'
+        title: Shopping Lists
+        show_header: false
+        entity: sensor.our_groceries
+        show_crossed_off: true
+        sort_by_name: true
+        hide_empty_lists: false
 
   #################################################################
   #                                                               #
