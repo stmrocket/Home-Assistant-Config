@@ -408,10 +408,13 @@ device_tracker.ap_front:
     entities:
       - entity: sensor.front_rooms_ap_clients
         name: Clients
+        icon: mdi:account
       - entity: sensor.front_rooms_ap_2_channel
         name: 2.4 GHz Channel
+        icon: mdi:antenna
       - entity: sensor.front_rooms_ap_5_channel
         name: 5.0 GHz Channel
+        icon: mdi:antenna
 
 device_tracker.ap_den:
   title: Den AP
@@ -420,10 +423,13 @@ device_tracker.ap_den:
     entities:
       - entity: sensor.den_ap_clients
         name: Clients
+        icon: mdi:account
       - entity: sensor.den_ap_2_channel
         name: 2.4 GHz Channel
+        icon: mdi:antenna
       - entity: sensor.den_ap_5_channel
         name: 5.0 GHz Channel
+        icon: mdi:antenna
 
 device_tracker.ap_garage:
   title: Garage AP
@@ -432,10 +438,13 @@ device_tracker.ap_garage:
     entities:
       - entity: sensor.garage_ap_clients
         name: Clients
+        icon: mdi:account
       - entity: sensor.garage_ap_2_channel
         name: 2.4 GHz Channel
+        icon: mdi:antenna
       - entity: sensor.garage_ap_5_channel
         name: 5.0 GHz Channel
+        icon: mdi:antenna
 
 device_tracker.ap_shed:
   title: Shed AP
@@ -444,7 +453,10 @@ device_tracker.ap_shed:
     entities:
       - entity: sensor.shed_ap_clients
         name: Clients
+        icon: mdi:account
       - entity: sensor.shed_ap_2_channel
         name: 2.4 GHz Channel
+        icon: mdi:antenna
       - entity: sensor.shed_ap_5_channel
         name: 5.0 GHz Channel
+        icon: mdi:antenna
