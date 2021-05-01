@@ -882,12 +882,12 @@ sensor:
   - platform: mqtt
     name: Front Rooms AP 5 channel
     state_topic: iap
-    value_template: "{{value_json['front'].5channel }}"
+    value_template: "{{value_json['front'].channel5 }}"
 
   - platform: mqtt
     name: Front Rooms AP 2 channel
     state_topic: iap
-    value_template: "{{value_json['front'].2channel }}"
+    value_template: "{{value_json['front'].channel2 }}"
 
   - platform: mqtt
     name: Den AP Clients
@@ -897,12 +897,12 @@ sensor:
   - platform: mqtt
     name: Den AP 5 channel
     state_topic: iap
-    value_template: "{{value_json['den'].5channel }}"
+    value_template: "{{value_json['den'].channel5 }}"
 
   - platform: mqtt
     name: Den AP 2 channel
     state_topic: iap
-    value_template: "{{value_json['den'].2channel }}"
+    value_template: "{{value_json['den'].channel2 }}"
 
   - platform: mqtt
     name: Garage AP Clients
@@ -912,12 +912,12 @@ sensor:
   - platform: mqtt
     name: Garage AP 5 channel
     state_topic: iap
-    value_template: "{{value_json['garage'].5channel }}"
+    value_template: "{{value_json['garage'].channel5 }}"
 
   - platform: mqtt
     name: Garage AP 2 channel
     state_topic: iap
-    value_template: "{{value_json['garage'].2channel }}"
+    value_template: "{{value_json['garage'].channel2 }}"
 
   - platform: mqtt
     name: Shed AP Clients
@@ -927,12 +927,12 @@ sensor:
   - platform: mqtt
     name: Shed AP 5 channel
     state_topic: iap
-    value_template: "{{value_json['shed'].5channel }}"
+    value_template: "{{value_json['shed'].channel5 }}"
 
   - platform: mqtt
     name: Shed AP 2 channel
     state_topic: iap
-    value_template: "{{value_json['shed'].2channel }}"
+    value_template: "{{value_json['shed'].channel2 }}"
 
 ####################################################
 #                                                  #
