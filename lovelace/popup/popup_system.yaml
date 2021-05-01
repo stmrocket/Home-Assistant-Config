@@ -400,3 +400,51 @@ sensor.adguard_dummy:
                 name: Main
               - entity: sensor.adguard_backup_average_processing_speed
                 name: Backup
+
+device_tracker.ap_front:
+  title: Front Rooms AP
+  card:
+    type: entities
+    entities:
+      - entity: sensor.front_room_ap_clients
+        name: Clients
+      - entity: sensor.front_rooms_ap_2_channel
+        name: 2.4 GHz Channel
+      - entity: sensor.front_rooms_ap_5_channel
+        name: 5.0 GHz Channel
+
+device_tracker.ap_den:
+  title: Den AP
+  card:
+    type: entities
+    entities:
+      - entity: sensor.den_ap_clients
+        name: Clients
+      - entity: sensor.den_ap_2_channel
+        name: 2.4 GHz Channel
+      - entity: sensor.den_ap_5_channel
+        name: 5.0 GHz Channel
+
+device_tracker.ap_garage:
+  title: Garage AP
+  card:
+    type: entities
+    entities:
+      - entity: sensor.garage_ap_clients
+        name: Clients
+      - entity: sensor.garage_ap_2_channel
+        name: 2.4 GHz Channel
+      - entity: sensor.garage_ap_5_channel
+        name: 5.0 GHz Channel
+
+device_tracker.ap_shed:
+  title: Shed AP
+  card:
+    type: entities
+    entities:
+      - entity: sensor.shed_ap_clients
+        name: Clients
+      - entity: sensor.shed_ap_2_channel
+        name: 2.4 GHz Channel
+      - entity: sensor.shed_ap_5_channel
+        name: 5.0 GHz Channel

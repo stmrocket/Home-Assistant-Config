@@ -37,7 +37,7 @@ jobs:
         uses: wei/curl@v1.1.1
         if: ${{ failure() }}
         with:
-          args: ${{ secrets.BUILD_FAILING }}
+          args: -X POST ${{ secrets.BUILD_FAILING }}
       - name: Show Build Passing
         uses: wei/curl@v1.1.1
         if: ${{ success() }}

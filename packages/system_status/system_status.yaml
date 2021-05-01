@@ -874,6 +874,66 @@ sensor:
     state_topic: "hass/restart"
     name: "HA Shutdown"
 
+  - platform: mqtt
+    name: Front Rooms AP Clients
+    state_topic: iap
+    value_template: "{{value_json['front'].clients }}"
+
+  - platform: mqtt
+    name: Front Rooms AP 5 channel
+    state_topic: iap
+    value_template: "{{value_json['front'].channel5 }}"
+
+  - platform: mqtt
+    name: Front Rooms AP 2 channel
+    state_topic: iap
+    value_template: "{{value_json['front'].channel2 }}"
+
+  - platform: mqtt
+    name: Den AP Clients
+    state_topic: iap
+    value_template: "{{value_json['den'].clients }}"
+
+  - platform: mqtt
+    name: Den AP 5 channel
+    state_topic: iap
+    value_template: "{{value_json['den'].channel5 }}"
+
+  - platform: mqtt
+    name: Den AP 2 channel
+    state_topic: iap
+    value_template: "{{value_json['den'].channel2 }}"
+
+  - platform: mqtt
+    name: Garage AP Clients
+    state_topic: iap
+    value_template: "{{value_json['garage'].clients }}"
+
+  - platform: mqtt
+    name: Garage AP 5 channel
+    state_topic: iap
+    value_template: "{{value_json['garage'].channel5 }}"
+
+  - platform: mqtt
+    name: Garage AP 2 channel
+    state_topic: iap
+    value_template: "{{value_json['garage'].channel2 }}"
+
+  - platform: mqtt
+    name: Shed AP Clients
+    state_topic: iap
+    value_template: "{{value_json['shed'].clients }}"
+
+  - platform: mqtt
+    name: Shed AP 5 channel
+    state_topic: iap
+    value_template: "{{value_json['shed'].channel5 }}"
+
+  - platform: mqtt
+    name: Shed AP 2 channel
+    state_topic: iap
+    value_template: "{{value_json['shed'].channel2 }}"
+
 ####################################################
 #                                                  #
 #                  NUMERIC INPUT                   #
