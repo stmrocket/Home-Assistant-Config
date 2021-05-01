@@ -406,7 +406,7 @@ device_tracker.ap_front:
   card:
     type: entities
     entities:
-      - entity: sensor.front_room_ap_clients
+      - entity: sensor.front_rooms_ap_clients
         name: Clients
       - entity: sensor.front_rooms_ap_2_channel
         name: 2.4 GHz Channel
