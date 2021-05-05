@@ -1,14 +1,4 @@
 sensor:
-  - platform: waze_travel_time
-    name: "Shawn to Home"
-    origin: sensor.shawn_position
-    destination: zone.home
-    region: "US"
-  - platform: waze_travel_time
-    name: "Shawn to Work"
-    origin: sensor.shawn_position
-    destination: zone.work
-    region: "US"
   - platform: template
     sensors:
       shawn_position:
