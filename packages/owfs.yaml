@@ -25,7 +25,7 @@ sensor:
 
   - platform: "mqtt"
     name: "Plenum HVAC Return Temperature OWFS"
-    state_topic: "ds_master/sensor/hvac_return_plenum"
+    state_topic: "ds_master/sensor/hvac_return_plenum/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
 
