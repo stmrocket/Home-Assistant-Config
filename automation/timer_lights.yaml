@@ -301,6 +301,8 @@
       entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
+        - switch.flagpole
+        - switch.back_landscape
 
 - alias: Timer Lights Off Outside
   id: 72a166d5-5c49-49c3-b8ce-3c291d5a155a
@@ -315,6 +317,8 @@
       entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
+        - switch.flagpole
+        - switch.back_landscape
 
 - alias: Timer LEDs On House
   id: 5959d6d3-395d-4830-bc95-cf48745146fd
