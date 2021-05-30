@@ -23,14 +23,75 @@ switch:
             entity_id: switch.east_front
             program_id: 2
 
+      irrigation_program_drip:
+        friendly_name: "Irrigation Schedule Drip Enabled"
+        value_template: "{{ not is_state('switch.drip', 'unavailable') }}"
+        turn_on:
+          service: rainmachine.enable_program
+          data:
+            entity_id: switch.east_front
+            program_id: 3
+        turn_off:
+          service: rainmachine.disable_program
+          data:
+            entity_id: switch.east_front
+            program_id: 3
+
       irrigation_run_program:
         friendly_name: "Run Irrigation Program"
-        value_template: "{{ is_state('switch.every_3_days', 'on') or is_state('switch.every_2_days', 'on') }}"
+        value_template: "{{ is_state('switch.every_2_days','on') or is_state('switch.every_3_days','on') or is_state('switch.drip','on') }}"
         turn_on:
           service: script.rainmachine_start_program
-
         turn_off:
           service: rainmachine.stop_all
+          data:
+            entity_id: switch.east_front
+
+binary_sensor:
+  - platform: template
+    sensors:
+      rm_zone_1_watering:
+        friendly_name: "Zone 1 watering"
+        value_template: "{{ is_state_attr('switch.east_front','status','Running') }}"
+      rm_zone_2_watering:
+        friendly_name: "Zone 2 watering"
+        value_template: "{{ is_state_attr('switch.east_side','status','Running') }}"
+      rm_zone_3_watering:
+        friendly_name: "Zone 3 watering"
+        value_template: "{{ is_state_attr('switch.back_yard','status','Running') }}"
+      rm_zone_4_watering:
+        friendly_name: "Zone 4 watering"
+        value_template: "{{ is_state_attr('switch.west_side','status','Running') }}"
+      rm_zone_5_watering:
+        friendly_name: "Zone 5 watering"
+        value_template: "{{ is_state_attr('switch.west_front','status','Running') }}"
+      rm_zone_6_watering:
+        friendly_name: "Zone 6 watering"
+        value_template: "{{ is_state_attr('switch.back_drip','status','Running') }}"
+
+automation:
+  - alias: Open Back Drip Valve
+    id: ecfc4d2a-3143-4c34-8b80-b1b2487893bf
+    trigger:
+      - platform: state
+        entity_id: switch.back_drip
+        attribute: status
+        to: "Running"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.back_drip_valve
+
+  - alias: Close Back Drip Valve
+    id: 9b88277a-3a34-4419-b2bc-e4b85c9df096
+    trigger:
+      - platform: state
+        entity_id: switch.back_drip
+        attribute: status
+        to: "Not Running"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.back_drip_valve
+
 script:
   rainmachine_program_1_on:
     sequence:
