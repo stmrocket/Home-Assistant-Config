@@ -295,7 +295,7 @@ elkm1:
   keypad:
     enabled: false
   output:
-    include: [3, 7, 9-16, 177-180, 182-183, 197]
+    include: [3, 7, 9-16, 17-19, 177-180, 182-183, 197]
   setting:
     enabled: false
   task:
