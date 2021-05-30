@@ -52,22 +52,22 @@ binary_sensor:
     sensors:
       rm_zone_1_watering:
         friendly_name: "Zone 1 watering"
-        state: "{{ is_state_attr('switch.east_front','status','Running') }}"
+        value_template: "{{ is_state_attr('switch.east_front','status','Running') }}"
       rm_zone_2_watering:
         friendly_name: "Zone 2 watering"
-        state: "{{ is_state_attr('switch.east_side','status','Running') }}"
+        value_template: "{{ is_state_attr('switch.east_side','status','Running') }}"
       rm_zone_3_watering:
         friendly_name: "Zone 3 watering"
-        state: "{{ is_state_attr('switch.back_yard','status','Running') }}"
+        value_template: "{{ is_state_attr('switch.back_yard','status','Running') }}"
       rm_zone_4_watering:
         friendly_name: "Zone 4 watering"
-        state: "{{ is_state_attr('switch.west_side','status','Running') }}"
+        value_template: "{{ is_state_attr('switch.west_side','status','Running') }}"
       rm_zone_5_watering:
         friendly_name: "Zone 5 watering"
-        state: "{{ is_state_attr('switch.west_front','status','Running') }}"
+        value_template: "{{ is_state_attr('switch.west_front','status','Running') }}"
       rm_zone_6_watering:
         friendly_name: "Zone 6 watering"
-        state: "{{ is_state_attr('switch.back_drip','status','Running') }}"
+        value_template: "{{ is_state_attr('switch.back_drip','status','Running') }}"
 
 automation:
   - alias: Open Back Drip Valve
