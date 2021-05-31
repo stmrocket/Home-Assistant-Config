@@ -98,6 +98,14 @@ cards:
         hold_action:
           action: more-info
       - type: "custom:button-card"
+        entity: group.landscape_lights
+        color_type: icon
+        color: rgb(255, 255, 255)
+        icon: mdi:flower
+        name: Landscape
+        hold_action:
+          action: more-info
+      - type: "custom:button-card"
         entity: sensor.truck_dummy
         color_type: icon
         color: rgb(255, 255, 255)
@@ -107,7 +115,6 @@ cards:
           action: more-info
         hold_action:
           action: more-info
-      - type: "custom:gap-card"
 
   - type: 'custom:mini-media-player'
     entity: media_player.back_porch_stereo
