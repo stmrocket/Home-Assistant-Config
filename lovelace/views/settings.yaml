@@ -351,6 +351,7 @@ cards:
         show_header_toggle: false
         title: CCTV
         entities:
+          - sensor.frigate_status
           - input_boolean.frigate_enabled
           - entity: input_number.frigate_disable_time
             name: Delay

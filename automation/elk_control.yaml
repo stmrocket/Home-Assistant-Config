@@ -116,3 +116,27 @@
         - input_boolean.elk_stay_on
         - input_boolean.elk_stay_off
         - input_boolean.elk_away_on
+
+- alias: Disarm Shed From Lock
+  id: a1103d36-6d86-46f5-9026-089be5f863d6
+  trigger:
+    - platform: state
+      entity_id: lock.shed_door
+      from: locked
+      to: unlocked
+    - platform: state
+      entity_id: sensor.shed_door_lock_status
+      to: "Unlocked (User 1)"
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: disarmed
+    - condition: state
+      entity_id: lock.shed_door
+      state: unlocked
+    - condition: state
+      entity_id: sensor.shed_door_lock_status
+      state: "Unlocked (User 1)"
+  action:
+    service: switch.turn_on
+    entity_id: switch.elk_shed_off
