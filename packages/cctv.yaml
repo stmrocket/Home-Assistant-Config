@@ -272,15 +272,15 @@ sensor:
       frigate_status:
         friendly_name: Frigate Status
         value_template: >-
-          {% if is_state('binary_sensor.frigate_enabled', 'on') and is_state('binary_sensor.frigate_enabled_front', 'on') and is_state('binary_sensor.frigate_enabled_back', 'on') -%}
+          {% if is_state('input_boolean.frigate_enabled', 'on') and is_state('input_boolean.frigate_enabled_front', 'on') and is_state('input_boolean.frigate_enabled_back', 'on') -%}
             All Cameras Enabled
-          {% elif  is_state('binary_sensor.frigate_enabled', 'on') and is_state('binary_sensor.frigate_enabled_front', 'off') and is_state('binary_sensor.frigate_enabled_back', 'on') -%}
+          {% elif  is_state('input_boolean.frigate_enabled', 'on') and is_state('input_boolean.frigate_enabled_front', 'off') and is_state('input_boolean.frigate_enabled_back', 'on') -%}
             Front Cameras Disabled
-          {% elif  is_state('binary_sensor.frigate_enabled', 'on') and is_state('binary_sensor.frigate_enabled_front', 'on') and is_state('binary_sensor.frigate_enabled_back', 'off') -%}
+          {% elif  is_state('input_boolean.frigate_enabled', 'on') and is_state('input_boolean.frigate_enabled_front', 'on') and is_state('input_boolean.frigate_enabled_back', 'off') -%}
             Back Cameras Disabled
-          {% elif  is_state('binary_sensor.frigate_enabled', 'on') and is_state('binary_sensor.frigate_enabled_front', 'off') and is_state('binary_sensor.frigate_enabled_back', 'off') -%}
+          {% elif  is_state('input_boolean.frigate_enabled', 'on') and is_state('input_boolean.frigate_enabled_front', 'off') and is_state('input_boolean.frigate_enabled_back', 'off') -%}
             All Cameras Disabled
-          {% elif  is_state('binary_sensor.frigate_enabled', 'off') -%}
+          {% elif  is_state('input_boolean.frigate_enabled', 'off') -%}
             All Cameras Disabled
           {% else -%}
             Error
