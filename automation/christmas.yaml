@@ -61,6 +61,7 @@
         - switch.outside_lights
         - switch.shed_outside_light
         - switch.office_lamps
+        - group.landscape_lights
     - service: cover.close_cover
       entity_id: cover.office_blinds
     - service: input_boolean.turn_off
@@ -77,6 +78,7 @@
       entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
+        - group.landscape_lights
     - service: input_boolean.turn_on
       entity_id: input_boolean.frigate_enabled_christmas
 

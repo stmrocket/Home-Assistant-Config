@@ -1,0 +1,67 @@
+group:
+  landscape_lights:
+    name: Landscape Lights
+    entities:
+      - switch.flagpole
+      - switch.back_landscape
+
+automation:
+  - alias: Landscape Lights On from Keypad
+    id: efb468b8-6e31-4d75-8f9a-50815845f850
+    trigger:
+      - platform: state
+        entity_id: switch.landscape_lights
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: group.lansdacpe_lights
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: group.landscape_lights
+
+  - alias: Landscape Lights Off from Keypad
+    id: c70268ea-188d-4933-b2f6-0711b84e31ba
+    trigger:
+      - platform: state
+        entity_id: switch.landscape_lights
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: group.landscape_lights
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: group.landscape_lights
+
+  - alias: Landscape Lights Keypad On
+    id: 975defc4-4968-45f5-a709-fd06c59da4c1
+    trigger:
+      - entity_id: group.landscape_lights
+        platform: state
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: switch.landscape_lights
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.landscape_lights
+
+  - alias: Landscape Lights Keypad Off
+    id: Landscape Lights
+    trigger:
+      - entity_id: group.landscape_lights
+        platform: state
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: switch.landscape_lights
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.landscape_lights      
