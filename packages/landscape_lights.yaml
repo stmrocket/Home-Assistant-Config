@@ -15,7 +15,7 @@ automation:
         to: "on"
     condition:
       - condition: state
-        entity_id: group.lansdacpe_lights
+        entity_id: group.landscape_lights
         state: "off"
     action:
       - service: switch.turn_on
