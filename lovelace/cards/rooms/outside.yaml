@@ -100,7 +100,7 @@ cards:
       - type: "custom:button-card"
         entity: group.landscape_lights
         color_type: icon
-        color: rgb(255, 255, 255)
+        color: rgb(228, 94, 101)
         icon: mdi:flower
         name: Landscape
         hold_action:
