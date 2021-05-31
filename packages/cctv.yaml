@@ -271,7 +271,6 @@ sensor:
         value_template: '{{ (states.sensor.frigate_debug.attributes["west_front"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["east_front"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["front_porch"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["east_side"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["west_side"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["back_yard"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["back_porch"]["frame_info"]["read"]) / 7}}'
       frigate_status:
         friendly_name: Frigate Status
-        icon: mdi:cctv
         value_template: >-
           {% if is_state('input_boolean.frigate_enabled', 'on') and is_state('input_boolean.frigate_enabled_front', 'on') and is_state('input_boolean.frigate_enabled_back', 'on') -%}
             All Cameras Enabled
