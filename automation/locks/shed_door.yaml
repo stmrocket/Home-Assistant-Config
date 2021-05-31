@@ -1,0 +1,59 @@
+- alias: Lock Shed Door When Away or Going to Bed
+  id: e6777b0d-f8c9-44d1-8d2f-8090c5a7dd25
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: arming
+      to: armed_night
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: arming
+      to: armed_away
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: arming
+      to: armed_home
+    - platform: state
+      entity_id: alarm_control_panel.shed
+      from: arming
+      to: armed_away
+  condition:
+    - condition: state
+      entity_id: lock.shed_door
+      state: unlocked
+  action:
+    - service: lock.lock
+      entity_id: lock.shed_door
+
+- alias: Shed Door Lock Timer Trigger
+  id: edd190c4-2491-4b1f-8522-27916622fcdd
+  trigger:
+    - platform: state
+      entity_id: sensor.elk_shed_door
+      from: Normal
+      to: Violated
+    - platform: state
+      entity_id: lock.shed_door
+      from: locked
+      to: unlocked
+  action:
+    - service: timer.start
+      entity_id: timer.shed_door
+
+- alias: Shed Door Left Unlocked
+  id: 939bce16-3f37-419a-8a4d-77d886f5ce83
+  trigger:
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.shed_door
+  condition:
+    - condition: state
+      entity_id: sensor.elk_shed_door
+      state: Normal
+    - condition: state
+      entity_id: lock.shed_door
+      state: unlocked
+  action:
+    - service: lock.lock
+      entity_id: lock.shed_door
