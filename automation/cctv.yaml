@@ -281,7 +281,7 @@
           priority: high
 
 - alias: Frigate Disable Back Cameras When Shed is Open
-  id: 
+  id: fb2c489a-f819-4d18-8a99-833b9582794a
   trigger:
     - platform: state
       entity_id: lock.shed_door
@@ -296,7 +296,7 @@
       entity_id: input_boolean.frigate_enabled_back
 
 - alias: Frigate Enable Back Cameras When Shed is Closed
-  id: 
+  id: 1fede986-bf36-4488-adff-14da624fc467
   trigger:
     - platform: state
       entity_id: lock.shed_door
