@@ -2,20 +2,26 @@ binary_sensor:
   - platform: template
     sensors:
       front_door_lock_battery_low:
-        value_template: "{{ states('sensor.front_door_lock_battery_level') | int < 20 }}"
+        value_template: "{{ states('sensor.front_door_lock_battery_level') | int < 40 }}"
         friendly_name: "Front Door Lock Battery Low"
         delay_on:
           minutes: 5
 
       back_door_lock_battery_low:
-        value_template: "{{ states('sensor.back_door_lock_battery_level') | int < 20 }}"
+        value_template: "{{ states('sensor.back_door_lock_battery_level') | int < 40 }}"
         friendly_name: "Back Door Lock Battery Low"
         delay_on:
           minutes: 5
 
       garage_entry_lock_battery_low:
-        value_template: "{{ states('sensor.garage_entry_lock_battery_level') | int < 20 }}"
-        friendly_name: "Front Door Lock Battery Low"
+        value_template: "{{ states('sensor.garage_entry_lock_battery_level') | int < 40 }}"
+        friendly_name: "Garage Entry Lock Battery Low"
+        delay_on:
+          minutes: 5
+
+      shed_door_lock_battery_low:
+        value_template: "{{ states('sensor.shed_door_lock_battery_level') | int < 40 }}"
+        friendly_name: "Shed Door Lock Battery Low"
         delay_on:
           minutes: 5
 
@@ -56,6 +62,18 @@ alert:
     notifiers:
       - mobile_app_shawn_7t
 
+  shed_door_lock_battery_low:
+    name: Low Battery!
+    entity_id: binary_sensor.shed_door_lock_battery_low
+    state: "on"
+    repeat: 1440
+    can_acknowledge: true
+    skip_first: false
+    message: "The shed door lock battery is low."
+    done_message: "The shed door lock battery has been replaced."
+    notifiers:
+      - mobile_app_shawn_7t
+
 input_text:
   front_door_lock_status:
     name: Front Door Lock Status
@@ -63,6 +81,8 @@ input_text:
     name: Back Door Lock Status
   garage_entry_lock_status:
     name: Garage Entry Lock Status
+  shed_door_lock_status:
+    name: Shed Door Lock Status
 
 sensor:
   - platform: template
@@ -79,13 +99,17 @@ sensor:
         friendly_name: Garage Entry Lock Status
         value_template: "{{ states('input_text.garage_entry_lock_status') }}"
 
+      shed_door_lock_status:
+        friendly_name: Shed Door Lock Status
+        value_template: "{{ states('input_text.shed_door_lock_status') }}"
+
 automation:
   - alias: 'Front Door Lock Status Update'
     id: ecaadffb-5b27-436c-b0c6-7ab409f08352
     trigger:
       - platform: event
         event_type: zwave_js_notification
-    condition: "{{ trigger.event.data.node_id == 6 and trigger.event.data.event_label.endswith('lock operation') }}"
+    condition: "{{ trigger.event.data.device_id == 'b436398cd17ea6165a28f7110099c684' and trigger.event.data.event_label.endswith('lock operation') }}"
     action:
       - service: input_text.set_value
         data:
@@ -106,7 +130,7 @@ automation:
     trigger:
       - platform: event
         event_type: zwave_js_notification
-    condition: "{{ trigger.event.data.node_id == 4 and trigger.event.data.event_label.endswith('lock operation') }}"
+    condition: "{{ trigger.event.data.device_id == 'd7bb2208f41fd5bbb5b2395c8ef7c504' and trigger.event.data.event_label.endswith('lock operation') }}"
     action:
       - service: input_text.set_value
         data:
@@ -128,11 +152,32 @@ automation:
     trigger:
       - platform: event
         event_type: zwave_js_notification
-    condition: "{{ trigger.event.data.node_id == 10 and trigger.event.data.event_label.endswith('lock operation') }}"
+    condition: "{{ trigger.event.data.device_id == 'd424052b83428affd03ee5d5ca92fad2' and trigger.event.data.event_label.endswith('lock operation') }}"
     action:
       - service: input_text.set_value
         data:
           entity_id: input_text.garage_entry_lock_status
+          value: >
+            {% set userID = trigger.event.data.parameters['userId'] %}
+            {% if trigger.event.data.event_label == 'Manual unlock operation' %} Unlocked (Manual)
+            {% elif trigger.event.data.event_label == 'Manual lock operation' %} Locked (Manual)
+            {% elif trigger.event.data.event_label == 'RF unlock operation' %} Unlocked (RF)
+            {% elif trigger.event.data.event_label == 'RF lock operation' %} Locked (RF)
+            {% elif trigger.event.data.event_label == 'Keypad unlock operation' %} Unlocked (User {{ userID }})
+            {% elif trigger.event.data.event_label == 'Keypad lock operation' %} Locked (Keypad)
+            {% else %} Unknown
+            {% endif %}
+
+  - alias: 'Shed Door Lock Status Update'
+    id: ec794423-5457-4bb7-ab07-a260c64c0fc1
+    trigger:
+      - platform: event
+        event_type: zwave_js_notification
+    condition: "{{ trigger.event.data.device_id == '673a0dc584394da0162e50c6e9058c43' and trigger.event.data.event_label.endswith('lock operation') }}"
+    action:
+      - service: input_text.set_value
+        data:
+          entity_id: input_text.shed_door_lock_status
           value: >
             {% set userID = trigger.event.data.parameters['userId'] %}
             {% if trigger.event.data.event_label == 'Manual unlock operation' %} Unlocked (Manual)

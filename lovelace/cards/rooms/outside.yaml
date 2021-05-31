@@ -4,7 +4,14 @@ cards:
   - type: picture-elements
     image: /local/lovelace/room_sm.png
     elements:
-      - entity: sensor.acurite_ws_temperature
+      - entity: lock.shed_door
+        style:
+          bottom: -5%
+          font-weight: bold
+          right: 17%
+          transform: initial
+        type: state-icon
+      - entity: sensor.acurite_outside_temperature
         style:
           bottom: -5%
           right: 5%
