@@ -275,6 +275,10 @@ input_boolean:
     name: Enable Frigate
     icon: mdi:cctv
 
+  frigate_enabled_front:
+    name: Frigate Enabled Front
+    icon: mdi:cctv
+
 input_number:
   frigate_disable_time:
     name: Frigate Disable Time

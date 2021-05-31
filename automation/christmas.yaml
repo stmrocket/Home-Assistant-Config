@@ -65,7 +65,7 @@
     - service: cover.close_cover
       entity_id: cover.office_blinds
     - service: input_boolean.turn_off
-      entity_id: input_boolean.frigate_enabled_christmas
+      entity_id: input_boolean.frigate_enabled_front
 
 - alias: House On After Christmas Show
   id: 13cff086-4ed0-45a9-bdb9-79c77cca00a3
@@ -80,7 +80,7 @@
         - switch.shed_outside_light
         - group.landscape_lights
     - service: input_boolean.turn_on
-      entity_id: input_boolean.frigate_enabled_christmas
+      entity_id: input_boolean.frigate_enabled_front
 
 - alias: Donation Box Opened
   id: f2226ed0-ef53-48b5-a2f4-5baed7f5668c
