@@ -103,6 +103,23 @@ sensor:
         friendly_name: Shed Door Lock Status
         value_template: "{{ states('input_text.shed_door_lock_status') }}"
 
+timer:
+  front_door:
+    name: Front Door Lock Timer
+    duration: "00:05:00"
+
+  back_door:
+    name: Back Door Lock Timer
+    duration: "00:05:00"
+
+  garage_entry:
+    name: Garage Entry Lock Timer
+    duration: "00:05:00"
+
+  shed_door:
+    name: Shed Door Lock Timer
+    duration: "04:00:00"
+
 automation:
   - alias: 'Front Door Lock Status Update'
     id: ecaadffb-5b27-436c-b0c6-7ab409f08352

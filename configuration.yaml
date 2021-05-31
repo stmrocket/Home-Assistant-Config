@@ -236,14 +236,6 @@ timer:
     name: Garage Light Timer
     duration: "00:10:00"
 
-  front_door:
-    name: Front Door Lock Timer
-    duration: "00:05:00"
-
-  back_door:
-    name: Back Door Lock Timer
-    duration: "00:05:00"
-
   laundry_room:
     name: Laundry Room Light Timer
     duration: "00:02:00"
@@ -251,10 +243,6 @@ timer:
   master_closet:
     name: Master Closet Light Timer
     duration: "00:02:00"
-
-  garage_entry:
-    name: Garage Entry Lock Timer
-    duration: "00:05:00"
 
   garage_light:
     name: Garage Lighting Timer
