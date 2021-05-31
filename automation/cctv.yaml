@@ -101,6 +101,9 @@
     - condition: state
       entity_id: input_boolean.frigate_enabled
       state: "on"
+    - condition: state
+      entity_id: input_boolean.frigate_enabled_back
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -129,6 +132,9 @@
     - condition: state
       entity_id: input_boolean.frigate_enabled
       state: "on"
+    - condition: state
+      entity_id: input_boolean.frigate_enabled_back
+      state: "on"
   action:
     - service: camera.snapshot
       data:
@@ -156,6 +162,9 @@
   condition:
     - condition: state
       entity_id: input_boolean.frigate_enabled
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.frigate_enabled_back
       state: "on"
   action:
     - service: camera.snapshot
@@ -270,3 +279,30 @@
         data:
           ttl: 0
           priority: high
+
+- alias: Frigate Disable Back Cameras When Shed is Open
+  id: 
+  trigger:
+    - platform: state
+      entity_id: lock.shed_door
+      from: locked
+      to: unlocked
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: disarmed
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.frigate_enabled_back
+
+- alias: Frigate Enable Back Cameras When Shed is Closed
+  id: 
+  trigger:
+    - platform: state
+      entity_id: lock.shed_door
+      from: unlocked
+      to: locked
+      for: "00:02:00"
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.frigate_enabled_back
