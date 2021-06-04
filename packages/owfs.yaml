@@ -13,25 +13,25 @@ sensor:
 
   - platform: "mqtt"
     name: "Front HVAC Return Temperature OWFS"
-    state_topic: "ds_master/sensor/hvac_return_front/state"
+    state_topic: "ds_attic/sensor/hvac_return_front/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
 
   - platform: "mqtt"
     name: "Back HVAC Return Temperature OWFS"
-    state_topic: "ds_master/sensor/hvac_return_back/state"
+    state_topic: "ds_attic/sensor/hvac_return_back/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
 
   - platform: "mqtt"
     name: "Plenum HVAC Return Temperature OWFS"
-    state_topic: "ds_master/sensor/hvac_return_plenum/state"
+    state_topic: "ds_attic/sensor/hvac_return_plenum/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
 
   - platform: "mqtt"
     name: "Dryer Vent Temperature OWFS"
-    state_topic: "ds_secondary/sensor/dryer_vent/state"
+    state_topic: "ds_attic/sensor/dryer_vent/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
 
@@ -43,7 +43,7 @@ sensor:
 
   - platform: "mqtt"
     name: "Server Room HVAC Return Temperature OWFS"
-    state_topic: "ds_master/sensor/hvac_return_server/state"
+    state_topic: "ds_attic/sensor/hvac_return_server/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
 
@@ -79,7 +79,7 @@ sensor:
 
   - platform: "mqtt"
     name: "HVAC Supply Temperature OWFS"
-    state_topic: "ds_master/sensor/hvac_supply/state"
+    state_topic: "ds_attic/sensor/hvac_supply/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
 
@@ -91,7 +91,7 @@ sensor:
 
   - platform: "mqtt"
     name: "Front Hall Temperature OWFS"
-    state_topic: "ds_secondary/sensor/hall/state"
+    state_topic: "ds_attic/sensor/hall/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
 
@@ -103,6 +103,6 @@ sensor:
 
   - platform: "mqtt"
     name: "Attic Temperature OWFS"
-    state_topic: "ds_master/sensor/attic/state"
+    state_topic: "ds_attic/sensor/attic/state"
     unit_of_measurement: "°C"
     device_class: "temperature"
