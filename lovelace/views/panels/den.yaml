@@ -48,7 +48,7 @@ cards:
         displaySeconds: false
       - type: custom:mini-graph-card
         entities:
-          - sensor.aquara_office_temperature
+          - sensor.aquara_den_temperature
         height: 46
         line_width: 2
         font_size: 65
@@ -271,10 +271,6 @@ cards:
               service_data:
                 entity_id: remote.harmony_den
                 activity: "Listen to WHA"
-      - type: horizontal-stack
-        cards:
-          - type: "custom:gap-card"
-            height: 10
       - type: conditional
         conditions:
           - entity: sensor.den_harmony_activity
