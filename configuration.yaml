@@ -48,6 +48,11 @@ lovelace:
       filename: lovelace-den.yaml
       title: Den Tablet
       show_in_sidebar: false
+    lovelace-master:
+      mode: yaml
+      filename: lovelace-master.yaml
+      title: Master Bedroom Tablet
+      show_in_sidebar: false
     lovelace-mobile:
       mode: yaml
       filename: lovelace-mobile.yaml
