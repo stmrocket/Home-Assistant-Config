@@ -23,6 +23,22 @@ rest_command:
     url: !secret shack_tablet_reload
   shack_tablet_restart:
     url: !secret shack_tablet_restart
+  den_tablet_on:
+    url: !secret den_tablet_on
+  den_tablet_off:
+    url: !secret den_tablet_off
+  den_tablet_reload:
+    url: !secret den_tablet_reload
+  den_tablet_restart:
+    url: !secret den_tablet_restart
+  master_tablet_on:
+    url: !secret master_tablet_on
+  master_tablet_off:
+    url: !secret master_tablet_off
+  master_tablet_reload:
+    url: !secret master_tablet_reload
+  master_tablet_restart:
+    url: !secret master_tablet_restart
 
 script:
   tablets_on:
@@ -30,24 +46,32 @@ script:
       - service: rest_command.kitchen_tablet_on
       - service: rest_command.office_tablet_on
       - service: rest_command.shack_tablet_on
+      - service: rest_command.den_tablet_on
+      - service: rest_command.master_tablet_on
 
   tablets_off:
     sequence:
       - service: rest_command.kitchen_tablet_off
       - service: rest_command.office_tablet_off
       - service: rest_command.shack_tablet_off
+      - service: rest_command.den_tablet_off
+      - service: rest_command.master_tablet_off
 
   tablets_reload:
     sequence:
       - service: rest_command.kitchen_tablet_reload
       - service: rest_command.office_tablet_reload
       - service: rest_command.shack_tablet_reload
+      - service: rest_command.den_tablet_reload
+      - service: rest_command.master_tablet_reload
 
   tablets_restart:
     sequence:
       - service: rest_command.kitchen_tablet_restart
       - service: rest_command.office_tablet_restart
       - service: rest_command.shack_tablet_restart
+      - service: rest_command.den_tablet_restart
+      - service: rest_command.master_tablet_restart
 
 sensor: 
   - platform: rest
@@ -74,6 +98,22 @@ sensor:
       - batteryLevel
       - isPlugged
 
+  - platform: rest
+    name: Den Tablet Status
+    resource: !secret den_tablet_status
+    value_template: "OK"
+    json_attributes:
+      - batteryLevel
+      - isPlugged
+
+  - platform: rest
+    name: Master Tablet Status
+    resource: !secret master_tablet_status
+    value_template: "OK"
+    json_attributes:
+      - batteryLevel
+      - isPlugged
+
   - platform: template
     sensors:
       kitchen_tablet_battery:
@@ -91,3 +131,13 @@ sensor:
         unit_of_measurement: "%"
       shack_tablet_plugged:
         value_template: '{{ states.sensor.shack_tablet_status.attributes["isPlugged"] }}'
+      den_tablet_battery:
+        value_template: '{{ states.sensor.den_tablet_status.attributes["batteryLevel"] }}'
+        unit_of_measurement: "%"
+      den_tablet_plugged:
+        value_template: '{{ states.sensor.den_tablet_status.attributes["isPlugged"] }}'
+      master_tablet_battery:
+        value_template: '{{ states.sensor.master_tablet_status.attributes["batteryLevel"] }}'
+        unit_of_measurement: "%"
+      master_tablet_plugged:
+        value_template: '{{ states.sensor.master_tablet_status.attributes["isPlugged"] }}'
