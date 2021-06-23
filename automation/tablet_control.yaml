@@ -10,7 +10,13 @@
       from: armed_home
       to: armed_night
   action:
-    - service: script.tablets_off
+    - service: light.turn_off
+      entity_id:
+        - light.den_tablet_screen
+        - light.kitchen_tablet_screen
+        - light.master_bedroom_tablet_screen
+        - light.office_tablet_screen
+        - light.shack_tablet_screen
 
 - alias: Tablet When Home
   id: ebfd2c16-e7a6-417a-b820-236884d35fe7
@@ -23,7 +29,13 @@
       from: armed_night
       to: armed_home
   action:
-    - service: script.tablets_on
+    - service: light.turn_on
+      entity_id:
+        - light.den_tablet_screen
+        - light.kitchen_tablet_screen
+        - light.master_bedroom_tablet_screen
+        - light.office_tablet_screen
+        - light.shack_tablet_screen
 
 - alias: Tablet when Away
   id: afe3db69-fe02-4bc7-8282-0935e4976610
@@ -32,7 +44,13 @@
       entity_id: alarm_control_panel.house
       to: armed_away
   action:
-    - service: script.tablets_off
+    - service: light.turn_off
+      entity_id:
+        - light.den_tablet_screen
+        - light.kitchen_tablet_screen
+        - light.master_bedroom_tablet_screen
+        - light.office_tablet_screen
+        - light.shack_tablet_screen
 
 - alias: Reload Tablets When HA Starts
   id: 37809ea5-1069-4fb7-8a84-082d72e77732
@@ -40,4 +58,10 @@
     - platform: homeassistant
       event: start
   action:
-    - service: script.tablets_reload
+    - service: fullykiosk.load_start_url
+      entity_id: 
+        - media_player.office_tablet_media_player
+        - media_player.kitchen_tablet_media_player
+        - media_player.den_tablet_media_player
+        - media_player.shack_tablet_media_player
+        - media_player.master_tablet_media_player
