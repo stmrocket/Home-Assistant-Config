@@ -112,7 +112,7 @@ switch:
   - platform: mqtt
     name: "Christmas Amplifier"
     state_topic: "christmas/outdoor/amplifier/stat/POWER"
-    command_topic: "christmas/outdoor/amplifiere/cmnd/POWER"
+    command_topic: "christmas/outdoor/amplifier/cmnd/POWER"
     availability_topic: "christmas/outdoor/amplifier/tele/LWT"
     qos: 1
     payload_on: "ON"
