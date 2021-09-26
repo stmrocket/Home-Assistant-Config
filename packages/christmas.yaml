@@ -109,6 +109,28 @@ switch:
     payload_available: "Online"
     payload_not_available: "Offline"
 
+  - platform: mqtt
+    name: "Christmas Amplifier"
+    state_topic: "christmas/outdoon/amplifier/stat/POWER"
+    command_topic: "christmas/outdoon/amplifiere/cmnd/POWER"
+    availability_topic: "christmas/outdoon/amplifier/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Christmas Security Lights"
+    state_topic: "christmas/outdoor/security/stat/POWER"
+    command_topic: "christmas/outdoor/security/cmnd/POWER"
+    availability_topic: "christmas/outdoor/security/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
   - platform: template
     switches:
       indoor_christmas:
@@ -222,6 +244,26 @@ sensor:
     unit_of_measurement: "%"
     value_template: "{{value_json['Wifi'].RSSI }}"
     availability_topic: "christmas/indoor/office/tele/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    state_topic: "christmas/outdoor/amplifier/tele/STATE"
+    name: "Christmas Amplifier Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "christmas/outdoor/amplifier/tele/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    state_topic: "christmas/outdoor/security/tele/STATE"
+    name: "Christmas Security Lights Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "christmas/outdoor/security/tele/LWT"
     qos: 1
     payload_available: "Online"
     payload_not_available: "Offline"

@@ -30,137 +30,24 @@ card:
           name: Indoor
           hold_action:
             action: more-info
-
-        - type: "custom:button-card"
-          entity: switch.christmas_tree
+        
+        - type: custom:button-card
+          entity: sensor.candle_dummy
           color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Tree
-          hold_action:
-            action: more-info
-
-        - type: "custom:button-card"
-          entity: switch.christmas_garland
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Garland
-          hold_action:
-            action: more-info
-
-        - type: "custom:button-card"
-          entity: switch.christmas_village
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Village
-          hold_action:
-            action: more-info
-
-    - type: horizontal-stack
-      cards:
-        - type: "custom:button-card"
-          entity: switch.dining_room_decor
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Dining
-          hold_action:
-            action: more-info
-
-        - type: "custom:button-card"
-          entity: switch.entry_hall_decor
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Entry
-          hold_action:
-            action: more-info
-
-        - type: "custom:button-card"
-          entity: switch.master_bedroom_decor
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Master
-          hold_action:
-            action: more-info
-
-        - type: "custom:button-card"
-          entity: switch.snowman
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Snow Man
-          hold_action:
-            action: more-info
-    - type: horizontal-stack
-      cards:
-        - type: "custom:button-card"
-          entity: switch.kitchen_garland
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Kitchen
-          hold_action:
-            action: more-info
-
-        - type: "custom:button-card"
-          entity: switch.hall_decor
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Hall
-          hold_action:
-            action: more-info
-
-        - type: "custom:button-card"
-          entity: switch.office_decor
-          color_type: icon
-          color: rgb(228, 94, 101)
-          state:
-            - value: "on"
-              icon: mdi:string-lights
-            - value: "off"
-              icon: mdi:string-lights-off
-          name: Office
+          icon: mdi:candle
+          name: Candles
+          tap_action:
+            action: call-service
+            service: mqtt.publish
+            service_data:
+              topic: ir/all/cmnd/irsend
+              payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
+          double_tap_action:
+            action: call-service
+            service: mqtt.publish
+            service_data:
+              topic: ir/all/cmnd/irsend
+              payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
           hold_action:
             action: more-info
 
@@ -173,21 +60,15 @@ card:
           tap_action:
             action: more-info
 
-    # - type: horizontal-stack
-    #   cards:
-
-    #     - type: "custom:button-card"
-    #       entity: input_boolean.donation_box
-    #       color_type: icon
-    #       color: rgb(228, 94, 101)
-    #       state:
-    #         - value: "on"
-    #           icon: mdi:door-open
-    #         - value: "off"
-    #           icon: mdi:door-closed
-    #       name: Donation
-    #       hold_action:
-    #         action: more-info
-
-    #     - type: custom:gap-card
-    #     - type: custom:gap-card
+        - type: "custom:button-card"
+          entity: input_boolean.donation_box
+          color_type: icon
+          color: rgb(228, 94, 101)
+          state:
+            - value: "on"
+              icon: mdi:door-open
+            - value: "off"
+              icon: mdi:door-closed
+          name: Donation
+          hold_action:
+            action: more-info

@@ -23,6 +23,7 @@ cards:
         type: state-label
   - type: horizontal-stack
     cards:
+      - type: "custom:gap-card"
       - type: "custom:button-card"
         entity: light.hallway_light
         color_type: icon
@@ -33,25 +34,6 @@ cards:
           - value: "off"
             icon: mdi:lightbulb-outline
         name: Light
-        hold_action:
-          action: more-info
-      - type: custom:button-card
-        entity: sensor.candle_dummy
-        color_type: icon
-        icon: mdi:candle
-        name: Candles
-        tap_action:
-          action: call-service
-          service: mqtt.publish
-          service_data:
-            topic: ir/all/cmnd/irsend
-            payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
-        double_tap_action:
-          action: call-service
-          service: mqtt.publish
-          service_data:
-            topic: ir/all/cmnd/irsend
-            payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
         hold_action:
           action: more-info
       - type: "custom:button-card"

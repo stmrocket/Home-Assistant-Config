@@ -10,6 +10,36 @@ input_boolean.christmas_show:
         name: Playlist Section
       - entity: sensor.fpp_master_sequence
         name: Sequence
+      - entity: switch.christmas_amplifier
+        name: Amplifier
+      - entity: switch.christmas_security_lights
+        name: Security Lights
+
+switch.indoor_christmas:
+  title: Indoor Christmas
+  card:
+    type: entities
+    entities:
+      - entity: switch.christmas_tree
+        name: Tree
+      - entity: switch.christmas_garland
+        name: Garland
+      - entity: switch.christmas_village
+        name: Villiage
+      - entity: switch.dining_room_decor
+        name: Dining
+      - entity: switch.entry_hall_decor
+        name: Entry
+      - entity: switch.master_bedroom_decor
+        name: Master
+      - entity: switch.snowman
+        name: Snow Man
+      - entity: switch.kitchen_garland
+        name: Kitchen
+      - entity: switch.hall_decor
+        name: Hall
+      - entity: switch.office_decor
+        name: Office
 
 cover.den_blinds:
   title: Den Blinds
