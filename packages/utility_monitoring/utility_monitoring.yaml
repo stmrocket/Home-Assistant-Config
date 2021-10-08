@@ -4,6 +4,7 @@ sensor:
     state_topic: "power/elec/Home/power"
     value_template: "{{value_json['power']}}"
     unit_of_measurement: W
+    device_class: power
 
   - platform: integration
     source: sensor.eagle_current_power
