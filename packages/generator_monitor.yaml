@@ -32,6 +32,7 @@ sensor:
     state_topic: "genset/tele/status"
     value_template: "{{value_json['coolantTemperature']}}"
     unit_of_measurement: "°F"
+    device_class: temperature
 
   - platform: mqtt
     name: Generator Battery Voltage
@@ -50,24 +51,28 @@ sensor:
     state_topic: "genset/tele/status"
     value_template: "{{value_json['oilTemperature']}}"
     unit_of_measurement: "°F"
+    device_class: temperature
 
   - platform: mqtt
     name: Generator Controller Temperature
     state_topic: "genset/tele/status"
     value_template: "{{value_json['controllerTemperature']}}"
     unit_of_measurement: "°F"
+    device_class: temperature
 
   - platform: mqtt
     name: Generator Intake Air Temperature
     state_topic: "genset/tele/status"
     value_template: "{{value_json['intakeAirTemperature']}}"
     unit_of_measurement: "°F"
+    device_class: temperature
 
   - platform: mqtt
     name: Generator Compartment Temperature
     state_topic: "genset/tele/status"
     value_template: "{{value_json['compartmentTemperature']}}"
     unit_of_measurement: "°F"
+    device_class: temperature
 
   - platform: mqtt
     name: Generator Voltage

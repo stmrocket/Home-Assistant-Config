@@ -184,6 +184,7 @@ sensor:
     payload_available: "Online"
     payload_not_available: "Offline"
     unit_of_measurement: "°C"
+    device_class: temperature
   - platform: mqtt
     name: HVAC Filter Differential Pressure
     state_topic: "hvac/tele/system"
@@ -200,6 +201,7 @@ sensor:
     payload_available: "Online"
     payload_not_available: "Offline"
     unit_of_measurement: "°C"
+    device_class: temperature
   - platform: mqtt
     name: HVAC Manager Ambient Temperature
     state_topic: "hvac/tele/system"
@@ -208,6 +210,7 @@ sensor:
     payload_available: "Online"
     payload_not_available: "Offline"
     unit_of_measurement: "°C"
+    device_class: temperature
 
 
 

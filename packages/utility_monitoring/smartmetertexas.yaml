@@ -3,6 +3,7 @@ sensor:
     name: SMT Current Reading
     state_topic: "smt/reading"
     unit_of_measurement: "kWh"
+    device_class: energy
 
   - platform: template
     sensors:

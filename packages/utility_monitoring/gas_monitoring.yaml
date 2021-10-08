@@ -4,116 +4,144 @@ sensor:
     state_topic: !secret my_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N1 Gas Meter
     state_topic: !secret n1_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N2 Gas Meter
     state_topic: !secret n2_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N3 Gas Meter
     state_topic: !secret n3_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N4 Gas Meter
     state_topic: !secret n4_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N5 Gas Meter
     state_topic: !secret n5_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N6 Gas Meter
     state_topic: !secret n6_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N7 Gas Meter
     state_topic: !secret n7_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N8 Gas Meter
     state_topic: !secret n8_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N9 Gas Meter
     state_topic: !secret n9_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N10 Gas Meter
     state_topic: !secret n10_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N11 Gas Meter
     state_topic: !secret n11_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N12 Gas Meter
     state_topic: !secret n12_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
   - platform: mqtt
     name: N13 Gas Meter
     state_topic: !secret n13_gas_meter
     value_template: "{{ value | float / 100 }}"
     unit_of_measurement: "CCF"
+    device_class: gas
 
   - platform: template
     sensors:
       gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.gas_hourly','last_period') }}"
+        device_class: gas
       n1_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n1_gas_hourly','last_period') }}"
+        device_class: gas
       n2_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n2_gas_hourly','last_period') }}"
+        device_class: gas
       n3_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n3_gas_hourly','last_period') }}"
+        device_class: gas
       n4_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n4_gas_hourly','last_period') }}"
+        device_class: gas
       n5_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n5_gas_hourly','last_period') }}"
+        device_class: gas
       n6_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n6_gas_hourly','last_period') }}"
+        device_class: gas
       n7_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n7_gas_hourly','last_period') }}"
+        device_class: gas
       n8_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n8_gas_hourly','last_period') }}"
+        device_class: gas
       n9_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n9_gas_hourly','last_period') }}"
+        device_class: gas
       n10_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n10_gas_hourly','last_period') }}"
+        device_class: gas
       n11_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n11_gas_hourly','last_period') }}"
+        device_class: gas
       n12_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n12_gas_hourly','last_period') }}"
+        device_class: gas
       n13_gas_last_hour:
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n13_gas_hourly','last_period') }}"
+        device_class: gas
 
   - platform: average
     name: Average Neighborhood Gas Use This Hour
@@ -132,6 +160,7 @@ sensor:
       - sensor.n11_gas_hourly
       - sensor.n12_gas_hourly
       - sensor.n13_gas_hourly
+    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use Last Hour
     entities:
@@ -149,6 +178,7 @@ sensor:
       - sensor.n11_gas_last_hour
       - sensor.n12_gas_last_hour
       - sensor.n13_gas_last_hour
+    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use Today
     entities:
@@ -166,6 +196,7 @@ sensor:
       - sensor.n11_gas_daily
       - sensor.n12_gas_daily
       - sensor.n13_gas_daily
+    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use This Week
     entities:
@@ -183,6 +214,7 @@ sensor:
       - sensor.n11_gas_weekly
       - sensor.n12_gas_weekly
       - sensor.n13_gas_weekly
+    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use This Month
     entities:
@@ -200,6 +232,7 @@ sensor:
       - sensor.n11_gas_monthly
       - sensor.n12_gas_monthly
       - sensor.n13_gas_monthly
+    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use This Year
     entities:
@@ -217,6 +250,7 @@ sensor:
       - sensor.n11_gas_yearly
       - sensor.n12_gas_yearly
       - sensor.n13_gas_yearly
+    device_class: gas
 
 utility_meter:
   gas_hourly:

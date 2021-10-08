@@ -104,6 +104,7 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['current'].temperature }}"
     unit_of_measurement: "°F"
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Current Visibility
     state_topic: openweathermap
@@ -114,11 +115,13 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['current'].maxtemp }}"
     unit_of_measurement: "°F"
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Current Minimum Temperature
     state_topic: openweathermap
     value_template: "{{value_json['current'].mintemp }}"
     unit_of_measurement: "°F"  
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Current Wind Bearing
     state_topic: openweathermap
@@ -149,6 +152,7 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['current'].apparent }}"
     unit_of_measurement: "°F"
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Current POP
     state_topic: openweathermap
@@ -184,11 +188,13 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['day_1'].maxtemp }}"
     unit_of_measurement: "°F"
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Day 1 Minimum Temperature
     state_topic: openweathermap
     value_template: "{{value_json['day_1'].mintemp }}"
-    unit_of_measurement: "°F"  
+    unit_of_measurement: "°F" 
+    device_class: temperature 
   - platform: mqtt
     name: OpenWeatherMap Day 1 POP
     state_topic: openweathermap
@@ -212,11 +218,13 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['day_2'].maxtemp }}"
     unit_of_measurement: "°F"
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Day 2 Minimum Temperature
     state_topic: openweathermap
     value_template: "{{value_json['day_2'].mintemp }}"
-    unit_of_measurement: "°F"  
+    unit_of_measurement: "°F" 
+    device_class: temperature 
   - platform: mqtt
     name: OpenWeatherMap Day 2 POP
     state_topic: openweathermap
@@ -240,11 +248,13 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['day_3'].maxtemp }}"
     unit_of_measurement: "°F"
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Day 3 Minimum Temperature
     state_topic: openweathermap
     value_template: "{{value_json['day_3'].mintemp }}"
     unit_of_measurement: "°F"  
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Day 3 POP
     state_topic: openweathermap
@@ -268,11 +278,13 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['day_4'].maxtemp }}"
     unit_of_measurement: "°F"
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Day 4 Minimum Temperature
     state_topic: openweathermap
     value_template: "{{value_json['day_4'].mintemp }}"
     unit_of_measurement: "°F"  
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Day 4 POP
     state_topic: openweathermap
@@ -296,11 +308,13 @@ sensor:
     state_topic: openweathermap
     value_template: "{{value_json['day_5'].maxtemp }}"
     unit_of_measurement: "°F"
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Day 5 Minimum Temperature
     state_topic: openweathermap
     value_template: "{{value_json['day_5'].mintemp }}"
     unit_of_measurement: "°F"  
+    device_class: temperature
   - platform: mqtt
     name: OpenWeatherMap Day 5 POP
     state_topic: openweathermap
