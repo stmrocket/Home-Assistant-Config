@@ -160,7 +160,6 @@ sensor:
       - sensor.n11_gas_hourly
       - sensor.n12_gas_hourly
       - sensor.n13_gas_hourly
-    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use Last Hour
     entities:
@@ -178,7 +177,6 @@ sensor:
       - sensor.n11_gas_last_hour
       - sensor.n12_gas_last_hour
       - sensor.n13_gas_last_hour
-    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use Today
     entities:
@@ -196,7 +194,6 @@ sensor:
       - sensor.n11_gas_daily
       - sensor.n12_gas_daily
       - sensor.n13_gas_daily
-    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use This Week
     entities:
@@ -214,7 +211,6 @@ sensor:
       - sensor.n11_gas_weekly
       - sensor.n12_gas_weekly
       - sensor.n13_gas_weekly
-    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use This Month
     entities:
@@ -232,7 +228,6 @@ sensor:
       - sensor.n11_gas_monthly
       - sensor.n12_gas_monthly
       - sensor.n13_gas_monthly
-    device_class: gas
   - platform: average
     name: Average Neighborhood Gas Use This Year
     entities:
@@ -250,7 +245,6 @@ sensor:
       - sensor.n11_gas_yearly
       - sensor.n12_gas_yearly
       - sensor.n13_gas_yearly
-    device_class: gas
 
 utility_meter:
   gas_hourly:
