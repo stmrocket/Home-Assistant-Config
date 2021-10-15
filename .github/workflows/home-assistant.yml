@@ -22,7 +22,7 @@ jobs:
         with:
           args: -X POST ${{ secrets.BUILD_PENDING }}
       - name: ⤵️ Check out configuration from GitHub
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - name: Copy Stubs to Proper Directory
         run: cp -R ./.stubs/* ./
       - name: Show Build Running
