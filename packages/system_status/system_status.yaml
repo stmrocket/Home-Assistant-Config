@@ -1046,6 +1046,5 @@ group:
     all: "true"
     entities:
       - switch.frigate
-      - switch.mysql
       - switch.tv_headend
       - switch.eagle_mqtt
