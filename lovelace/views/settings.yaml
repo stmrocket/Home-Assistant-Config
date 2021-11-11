@@ -422,7 +422,7 @@ cards:
       - type: conditional
         conditions:
           - entity: sensor.prusa_mk3_current_state
-            state: "unknown"
+            state: "unavailable"
         card:
           type: picture-elements
           image: /local/lovelace/room.png
@@ -441,7 +441,7 @@ cards:
       - type: conditional
         conditions:
           - entity: sensor.prusa_mk3_current_state
-            state_not: "unknown"
+            state_not: "unavailable"
         card:
           type: "custom:vertical-stack-in-card"
           cards:
