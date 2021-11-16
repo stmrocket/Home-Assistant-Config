@@ -83,7 +83,6 @@ influxdb:
       - sensor.hvac_zone_1_runtime
       - sensor.hvac_zone_2_runtime
       - sensor.hvac_zone_3_runtime
-      - sensor.eagle_current_power
       - utility_meter.energy_daily
       - utility_meter.energy_monthly
       - utility_meter.energy_yearly
@@ -128,3 +127,14 @@ influxdb:
       - sensor.rain_total
       - sensor.acurite_outside_temperature
       - sensor.acurite_outside_humidity
+      - sensor.hem_clamp_1_current
+      - sensor.hem_clamp_1_energy
+      - sensor.hem_clamp_1_power
+      - sensor.hem_clamp_2_current
+      - sensor.hem_clamp_2_energy
+      - sensor.hem_clamp_2_power
+      - sensor.hem_total_current
+      - sensor.hem_total_energy
+      - sensor.hem_total_power
+      - sensor.hem_voltage
+
