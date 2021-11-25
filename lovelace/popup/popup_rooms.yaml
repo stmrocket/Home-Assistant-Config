@@ -20,7 +20,7 @@ switch.indoor_christmas:
   card:
     type: entities
     entities:
-      - entity: switch.Left_christmas_tree
+      - entity: switch.left_christmas_tree
         name: Left Tree
       - entity: switch.christmas_tree
         name: Right Tree
