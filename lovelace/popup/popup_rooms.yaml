@@ -20,8 +20,10 @@ switch.indoor_christmas:
   card:
     type: entities
     entities:
+      - entity: switch.Left_christmas_tree
+        name: Left Tree
       - entity: switch.christmas_tree
-        name: Tree
+        name: Right Tree
       - entity: switch.christmas_garland
         name: Garland
       - entity: switch.christmas_village
@@ -35,7 +37,9 @@ switch.indoor_christmas:
       - entity: switch.snowman
         name: Snow Man
       - entity: switch.kitchen_garland
-        name: Kitchen
+        name: Kitchen Garland
+      - entity: switch.kitchen_christmas_tree
+        name: Kitchen Tree
       - entity: switch.hall_decor
         name: Hall
       - entity: switch.office_decor

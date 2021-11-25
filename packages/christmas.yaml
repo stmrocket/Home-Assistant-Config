@@ -55,6 +55,28 @@ switch:
     payload_not_available: "Offline"
 
   - platform: mqtt
+    name: "Left Christmas Tree"
+    state_topic: "christmas/indoor/l_tree/stat/POWER"
+    command_topic: "christmas/indoor/l_tree/cmnd/POWER"
+    availability_topic: "christmas/indoor/l_tree/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Kitchen Christmas Tree"
+    state_topic: "christmas/indoor/k_tree/stat/POWER"
+    command_topic: "christmas/indoor/k_tree/cmnd/POWER"
+    availability_topic: "christmas/indoor/k_tree/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
     name: "Christmas Garland"
     state_topic: "christmas/indoor/garland/stat/POWER"
     command_topic: "christmas/indoor/garland/cmnd/POWER"
@@ -135,7 +157,7 @@ switch:
     switches:
       indoor_christmas:
         friendly_name: "Indoor Christmas Decor"
-        value_template: "{{ is_state('switch.dining_room_decor', 'on') or is_state('switch.entry_hall_decor', 'on') or is_state('switch.christmas_village', 'on') or is_state('switch.snowman', 'on') or is_state('switch.christmas_tree', 'on') or is_state('switch.christmas_garland', 'on')  or is_state('switch.master_bedroom_decor', 'on') or is_state('switch.kitchen_garland', 'on') or is_state('switch.hall_decor', 'on') or is_state('switch.office_decor', 'on') }}"
+        value_template: "{{ is_state('switch.dining_room_decor', 'on') or is_state('switch.entry_hall_decor', 'on') or is_state('switch.christmas_village', 'on') or is_state('switch.snowman', 'on') or is_state('switch.christmas_tree', 'on') or is_state('switch.left_christmas_tree', 'on') or is_state('switch.kitchen_christmas_tree', 'on') or is_state('switch.christmas_garland', 'on')  or is_state('switch.master_bedroom_decor', 'on') or is_state('switch.kitchen_garland', 'on') or is_state('switch.hall_decor', 'on') or is_state('switch.office_decor', 'on') }}"
         turn_on:
           service: mqtt.publish
           data:
@@ -194,6 +216,26 @@ sensor:
     unit_of_measurement: "%"
     value_template: "{{value_json['Wifi'].RSSI }}"
     availability_topic: "christmas/indoor/tree/tele/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    state_topic: "christmas/indoor/l_tree/tele/STATE"
+    name: "Left Chriatmas Tree Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "christmas/indoor/l_tree/tele/LWT"
+    qos: 1
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    state_topic: "christmas/indoor/k_tree/tele/STATE"
+    name: "Kitchen Chriatmas Tree Signal"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "christmas/indoor/k_tree/tele/LWT"
     qos: 1
     payload_available: "Online"
     payload_not_available: "Offline"
