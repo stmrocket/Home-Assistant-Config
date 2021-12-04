@@ -31,7 +31,7 @@ cards:
 
           - type: custom:mini-graph-card
             entities:
-              - entity: sensor.eagle_current_power
+              - entity: sensor.hem_total_power
                 show_points: false
               - entity: sensor.energy_daily
                 show_state: true
