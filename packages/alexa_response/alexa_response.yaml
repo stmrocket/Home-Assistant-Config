@@ -136,7 +136,7 @@ rest_command:
     url: "{{ states('sensor.alexa_speech_url') }}POWER"
     content_type: "application/json"
     method: post
-    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The house is currently consuming {{ states("sensor.eagle_current_power") }} watts. </speak>"    },    "card": {      "type": "Simple",      "title": "Power Consumption",      "content": "{{ states("sensor.eagle_current_power") }} watts"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
+    payload: '{  "version": null,  "response": {    "outputSpeech": {      "type": "SSML",      "id": null,      "ssml": "<speak>The house is currently consuming {{ states("sensor.hem_total_power") }} watts. </speak>"    },    "card": {      "type": "Simple",      "title": "Power Consumption",      "content": "{{ states("sensor.hem_total_power") }} watts"    },        "shouldEndSession": true  },  "sessionAttributes": null}'
 
   update_alexa_garage_open:
     url: "{{ states('sensor.alexa_speech_url') }}GARAGEDOOR"
