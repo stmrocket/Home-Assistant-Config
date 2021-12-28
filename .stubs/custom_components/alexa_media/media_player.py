@@ -1261,7 +1261,9 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
                 )
             )
         else:
-            await self.alexa_api.send_tts(message, customer_id=self._customer_id, **kwargs)
+            await self.alexa_api.send_tts(
+                message, customer_id=self._customer_id, **kwargs
+            )
 
     @_catch_login_errors
     async def async_send_announcement(self, message, **kwargs):
@@ -1482,7 +1484,7 @@ class AlexaClient(MediaPlayerDevice, AlexaMedia):
             await self.async_update()
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the state attributes."""
         attr = {
             "available": self.available,
