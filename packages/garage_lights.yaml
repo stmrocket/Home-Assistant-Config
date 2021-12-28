@@ -1,0 +1,160 @@
+switch:
+  - platform: mqtt
+    name: "Garage Light 1"
+    state_topic: "garage/t8_1/tele/current"
+    command_topic: "garage/t8_1/command/set/power"
+    availability_topic: "garage/t8_1/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 2"
+    state_topic: "garage/t8_2/tele/current"
+    command_topic: "garage/t8_2/command/set/power"
+    availability_topic: "garage/t8_2/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 3"
+    state_topic: "garage/t8_3/tele/current"
+    command_topic: "garage/t8_3/command/set/power"
+    availability_topic: "garage/t8_3/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 4"
+    state_topic: "garage/t8_4/tele/current"
+    command_topic: "garage/t8_4/command/set/power"
+    availability_topic: "garage/t8_4/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 5"
+    state_topic: "garage/t8_5/tele/current"
+    command_topic: "garage/t8_5/command/set/power"
+    availability_topic: "garage/t8_5/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 6"
+    state_topic: "garage/t8_6/tele/current"
+    command_topic: "garage/t8_6/command/set/power"
+    availability_topic: "garage/t8_6/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 7"
+    state_topic: "garage/t8_7/tele/current"
+    command_topic: "garage/t8_7/command/set/power"
+    availability_topic: "garage/t8_7/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 8"
+    state_topic: "garage/t8_8/tele/current"
+    command_topic: "garage/t8_8/command/set/power"
+    availability_topic: "garage/t8_8/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 9"
+    state_topic: "garage/t8_9/tele/current"
+    command_topic: "garage/t8_9/command/set/power"
+    availability_topic: "garage/t8_9/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 10"
+    state_topic: "garage/t8_10/tele/current"
+    command_topic: "garage/t8_10/command/set/power"
+    availability_topic: "garage/t8_10/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 11"
+    state_topic: "garage/t8_11/tele/current"
+    command_topic: "garage/t8_11/command/set/power"
+    availability_topic: "garage/t8_11/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 12"
+    state_topic: "garage/t8_12/tele/current"
+    command_topic: "garage/t8_12/command/set/power"
+    availability_topic: "garage/t8_12/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 13"
+    state_topic: "garage/t8_13/tele/current"
+    command_topic: "garage/t8_13/command/set/power"
+    availability_topic: "garage/t8_13/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+  - platform: mqtt
+    name: "Garage Light 14"
+    state_topic: "garage/t8_14/tele/current"
+    command_topic: "garage/t8_14/command/set/power"
+    availability_topic: "garage/t8_14/tele/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+group:
+  garage_lights_all:
+    name: All Garage Lights
+    entities:
+      - switch.garage_light_1
+      - switch.garage_light_2
+      - switch.garage_light_3
+      - switch.garage_light_4
+      - switch.garage_light_5
+      - switch.garage_light_6
+      - switch.garage_light_7
+      - switch.garage_light_8
+      - switch.garage_light_9
+      - switch.garage_light_10
+      - switch.garage_light_11
+      - switch.garage_light_12
+      - switch.garage_light_13
+      - switch.garage_light_14
