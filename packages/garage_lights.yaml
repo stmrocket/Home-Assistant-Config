@@ -158,3 +158,8 @@ group:
       - switch.garage_light_12
       - switch.garage_light_13
       - switch.garage_light_14
+  garage_lights_low:
+    name: Low Garage Lights
+    entities:
+      - switch.garage_light_6
+      - switch.garage_light_8
