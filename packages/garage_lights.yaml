@@ -327,6 +327,20 @@ automation:
       - service: switch.turn_off
         entity_id: switch.garage_light
 
+  - alias: Garage Fan Off When Trapdoor Open
+    id: 706f69f6-22fc-4a54-9bab-bea53ab000ca
+    trigger:
+      - platform: state
+        entity_id: sensor.elk_garage_trapdoor
+        to: Violated
+    condition:
+      - condition: state
+        entity_id: switch.garage_fan
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.garage_fan
+
 script:
   garage_lights_off:
     alias: Garage Lights Off
