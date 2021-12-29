@@ -82,26 +82,26 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.frigate_enabled_front
 
-- alias: Donation Box Opened
-  id: f2226ed0-ef53-48b5-a2f4-5baed7f5668c
-  trigger:
-    - platform: state
-      entity_id: sensor.elk_donation_box
-      to: Violated
-  action:
-    - service: mqtt.publish
-      data:
-        topic: parrot/command/set/play
-        payload: 3,4
-    - service: notify.mobile_app_shawn_7t
-      data:
-        message: The donation box has been opened.
-        title: Donation Box
-        data:
-          ttl: 0
-          priority: high
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.donation_box
+# - alias: Donation Box Opened
+#   id: f2226ed0-ef53-48b5-a2f4-5baed7f5668c
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.elk_donation_box
+#       to: Violated
+#   action:
+#     - service: mqtt.publish
+#       data:
+#         topic: parrot/command/set/play
+#         payload: 3,4
+#     - service: notify.mobile_app_shawn_7t
+#       data:
+#         message: The donation box has been opened.
+#         title: Donation Box
+#         data:
+#           ttl: 0
+#           priority: high
+#     - service: input_boolean.turn_on
+#       entity_id: input_boolean.donation_box
 
 - alias: Candles On at Dark When Home
   id: 43d4c5d9-071d-4604-9297-715e0251f132
