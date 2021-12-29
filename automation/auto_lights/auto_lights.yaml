@@ -53,28 +53,39 @@
     - service: switch.turn_off
       entity_id: switch.garage_lights
 
-- alias: Auto Attic Light
+- alias: Auto Attic Light On
   id: 3b948b84-6748-4737-8644-777c49a124fc
   trigger:
     - entity_id: sensor.elk_attic_door
       platform: state
       to: Violated
+    - entity_id: sensor.elk_garage_trapdoor
+      platform: state
+      to: Violated
+  action:
+    - service: light.turn_on
+      entity_id: 
+        - light.attic_light
+        - light.garage_attic_light
+
+- alias: Auto Attic Light Off
+  id: cfe820f0-0ffc-4ba3-8d7f-c9a6e6a5c445
+  trigger:
     - entity_id: sensor.elk_attic_door
       platform: state
       to: Normal
     - entity_id: sensor.elk_garage_trapdoor
       platform: state
-      to: Violated
-    - entity_id: sensor.elk_garage_trapdoor
-      platform: state
       to: Normal
+  condition:
+    - condition: state
+      entity_id: sensor.elk_attic_door
+      state: Normal
+    - condition: state
+      entity_id: sensor.elk_garage_trapdoor
+      state: Normal
   action:
-    - service_template: >
-        {% if states('sensor.elk_attic_door') == "Violated" or states('sensor.elk_garage_trapdoor') == "Violated"%}
-          light.turn_on
-        {% else if states('sensor.elk_attic_door') == "Normal" and states('sensor.elk_garage_trapdoor') == "Normal"%}
-          light.turn_off
-        {% endif %}
+    - service: light.turn_off
       entity_id: 
         - light.attic_light
         - light.garage_attic_light
