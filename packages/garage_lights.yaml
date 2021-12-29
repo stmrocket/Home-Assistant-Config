@@ -241,7 +241,7 @@ automation:
     condition:
       - condition: state
         entity_id: input_boolean.all_garage_lights
-        state: off
+        state: "off"
     action:
       - service: script.garage_lights_off
 
