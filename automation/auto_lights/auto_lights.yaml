@@ -62,6 +62,12 @@
     - entity_id: sensor.elk_attic_door
       platform: state
       to: Normal
+    - entity_id: sensor.elk_garage_trapdoor
+      platform: state
+      to: Violated
+    - entity_id: sensor.elk_garage_trapdoor
+      platform: state
+      to: Normal
   action:
     - service_template: >
         {% if states('sensor.elk_attic_door') == "Violated" or states('sensor.elk_garage_trapdoor') == "Violated"%}
@@ -71,7 +77,7 @@
         {% endif %}
       entity_id: 
         - light.attic_light
-          light.garage_attic_light
+        - light.garage_attic_light
 
 - alias: Auto Guest Closet Light
   id: 4ec5bf16-a687-4c1b-b7c8-492032e5652d
