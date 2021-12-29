@@ -258,8 +258,9 @@ automation:
         state: "on"
     action:
       - service: mqtt.publish
-        topic: garage/front/command/set/power
-        payload: "ON"
+        data:
+          topic: garage/front/command/set/power
+          payload: "ON"
 
   - alias: Front Garage Lights Off With Garage Door
     id: 7003a704-ed48-4424-b465-ce2bbd3b15ab
@@ -274,8 +275,9 @@ automation:
         state: "on"
     action:
       - service: mqtt.publish
-        topic: garage/front/command/set/power
-        payload: "OFF"
+        data:
+          topic: garage/front/command/set/power
+          payload: "OFF"
 
   - alias: Garage Lights On or Change From Keypad
     id: 204113bb-e7e2-4bfe-8561-b5473494aa07
@@ -346,8 +348,9 @@ script:
     alias: Garage Lights Off
     sequence:
       - service: mqtt.publish
-        topic: garage/all/command/set/power
-        payload: "OFF"      
+        data:
+          topic: garage/all/command/set/power
+          payload: "OFF"      
       - service: input_boolean.turn_off
         entity_id: 
           - input_boolean.all_garage_lights
@@ -363,12 +366,14 @@ script:
             state: Violated
           sequence:
             - service: mqtt.publish
-              topic: garage/main/command/set/power
-              payload: "ON"
+              data:
+                topic: garage/main/command/set/power
+                payload: "ON"
         default: 
           - service: mqtt.publish
-            topic: garage/all/command/set/power
-            payload: "ON"
+            data:
+              topic: garage/all/command/set/power
+              payload: "ON"
       - service: input_boolean.turn_on
         entity_id: input_boolean.all_garage_lights
 
@@ -376,8 +381,9 @@ script:
     alias: Low Garage Lights On
     sequence:
       - service: mqtt.publish
-        topic: garage/low/command/set/power
-        payload: "ON"      
+        data:
+          topic: garage/low/command/set/power
+          payload: "ON"      
       - service: input_boolean.turn_on
         entity_id: input_boolean.low_garage_lights      
       - service: timer.start
