@@ -335,6 +335,6 @@ input_boolean:
     name: Christmas Show
     icon: mdi:pine-tree
 
-  donation_box:
-    name: Donation Box
-    icon: mdi:door-closed
+  # donation_box:
+  #   name: Donation Box
+  #   icon: mdi:door-closed
