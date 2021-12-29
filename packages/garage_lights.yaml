@@ -239,9 +239,9 @@ automation:
         event_type: timer.finished
         platform: event
     condition:
-      condition: state
-      entity_id: input_boolean.all_garage_lights
-      state: off
+      - condition: state
+        entity_id: input_boolean.all_garage_lights
+        state: off
     action:
       - service: script.garage_lights_off
 
