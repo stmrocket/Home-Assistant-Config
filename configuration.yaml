@@ -236,16 +236,8 @@ light:
       - Lightning
       - Breathe
 
-  - platform: flux_led
-    devices:
-      192.168.6.3:
-        name: build_light
 # Timers
 timer:
-  garage:
-    name: Garage Light Timer
-    duration: "00:10:00"
-
   laundry_room:
     name: Laundry Room Light Timer
     duration: "00:02:00"

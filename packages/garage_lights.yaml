@@ -140,6 +140,11 @@ switch:
     payload_available: "Online"
     payload_not_available: "Offline"
 
+timer:
+  garage:
+    name: Garage Light Timer
+    duration: "00:10:00"    
+
 group:
   garage_lights_all:
     name: All Garage Lights
@@ -163,3 +168,220 @@ group:
     entities:
       - switch.garage_light_6
       - switch.garage_light_8
+  garage_lights_front:
+    name: Front Garage Lights
+    entities:
+      - switch.garage_light_12
+      - switch.garage_light_13
+      - switch.garage_light_14
+
+input_boolean:
+  all_garage_lights:
+    name: All Garage Lights
+  low_garage_lights:
+    name: Low Garage Lights
+
+automation:
+  - alias: Garage Light Auto On
+    id: 5638adb3-b7d8-4af8-bd62-8e0a679ea507
+    trigger:
+      - platform: template
+        value_template: "{{ is_state_attr('sensor.elk_garage_entry', 'physical_status', 'open') }}"
+      - platform: state
+        entity_id: sensor.elk_garage_motion
+        from: Normal
+        to: Violated
+      - platform: state
+        entity_id: sensor.elk_garage_door
+        from: Normal
+        to: Violated
+    condition:
+      - condition: state
+        entity_id: input_boolean.low_garage_lights
+        state: "off"
+      - condition: state
+        entity_id: input_boolean.all_garage_lights
+        state: "off"
+    action:
+      - service: script.low_garage_lights_on
+
+  - alias: Garage Light Timer Reset
+    id: a59cfbf2-1ee1-4e47-89eb-4590f7694621
+    trigger:
+      - platform: template
+        value_template: "{{ is_state_attr('sensor.elk_garage_entry', 'physical_status', 'open') }}"
+      - platform: state
+        entity_id: sensor.elk_garage_motion
+        from: Normal
+        to: Violated
+      - platform: state
+        entity_id: sensor.elk_garage_door
+        from: Normal
+        to: Violated
+    condition:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_boolean.low_garage_lights
+            state: "on"
+          - condition: state
+            entity_id: input_boolean.all_garage_lights
+            state: "on"
+    action:
+      - service: timer.start
+        entity_id: timer.garage_light
+
+  - alias: Garage Light Auto Off
+    id: ef137804-aff2-4e5f-80b0-b027f01fa35e
+    trigger:
+      - event_data:
+          entity_id: timer.garage_light
+        event_type: timer.finished
+        platform: event
+    condition:
+      condition: state
+      entity_id: input_boolean.all_garage_lights
+      state: off
+    action:
+      - service: script.garage_lights_off
+
+  - alias: Front Garage Lights On With Garage Door
+    id: 7ae49cef-db18-476e-bceb-f712e9ef4c36
+    trigger:
+      - platform: state
+        entity_id: sensor.elk_garage_door
+        from: Violated
+        to: Normal
+    condition:
+      - condition: state
+        entity_id: input_boolean.all_garage_lights
+        state: "on"
+    action:
+      - service: mqtt.publish
+        topic: garage/front/command/set/power
+        payload: "ON"
+
+  - alias: Front Garage Lights Off With Garage Door
+    id: 7003a704-ed48-4424-b465-ce2bbd3b15ab
+    trigger:
+      - platform: state
+        entity_id: sensor.elk_garage_door
+        from: Normal
+        to: Violated
+    condition:
+      - condition: state
+        entity_id: input_boolean.all_garage_lights
+        state: "on"
+    action:
+      - service: mqtt.publish
+        topic: garage/front/command/set/power
+        payload: "OFF"
+
+  - alias: Garage Lights On or Change From Keypad
+    id: 204113bb-e7e2-4bfe-8561-b5473494aa07
+    trigger:
+      - platform: event
+        event_type: isy994_control
+        event_data:
+          entity_id: switch.garage_light
+          control: "DON"
+    action:
+      - service: script.change_garage_lights
+
+  - alias: Garage Lights Off From Keypad
+    id: ce1e3174-10e2-493d-a620-b61ca328dcf4
+    trigger:
+      - platform: event
+        event_type: isy994_control
+        event_data:
+          entity_id: switch.garage_light
+          control: "DOF"
+    action:
+      - service: script.garage_lights_off
+
+  - alias: Garage Light Keypad On
+    id: 7f285fa4-2b44-4a77-a843-6c798af2b9d1
+    trigger:
+      - platform: state
+        entity_id: group.garage_lights_all
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: switch.garage_light
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.garage_light
+
+  - alias: Garage Light Keypad Off
+    id: 8b9376f5-f6bd-417f-bfa9-cf06179b0f77
+    trigger:
+      - platform: state
+        entity_id: group.garage_lights_all
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: switch.garage_light
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.garage_light
+
+script:
+  garage_lights_off:
+    alias: Garage Lights Off
+    sequence:
+      - service: mqtt.publish
+        topic: garage/all/command/set/power
+        payload: "OFF"      
+      - service: input_boolean.turn_off
+        entity_id: 
+          - input_boolean.all_garage_lights
+          - input_boolean.low_garage_lights
+
+  all_garage_lights_on:
+    alias: All Garage Lights On
+    sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: sensor.elk_garage_door
+            state: Violated
+          sequence:
+            - service: mqtt.publish
+              topic: garage/main/command/set/power
+              payload: "ON"
+        default: 
+          - service: mqtt.publish
+            topic: garage/all/command/set/power
+            payload: "ON"
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.all_garage_lights
+
+  low_garage_lights_on:
+    alias: Low Garage Lights On
+    sequence:
+      - service: mqtt.publish
+        topic: garage/low/command/set/power
+        payload: "ON"      
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.low_garage_lights      
+      - service: timer.start
+        entity_id: timer.garage_light
+
+  change_garage_lights:
+    alias: Change Garage Lights
+    sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: input_boolean.low_garage_lights
+            state: "on"
+          sequence:
+            - service: input_boolean.turn_off
+              entity_id: input_boolean.low_garage_lights
+            - service: script.all_garage_lights_on
+        default: 
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.all_garage_lights
+          - service: script.low_garage_lights_on
