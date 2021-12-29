@@ -238,10 +238,6 @@ light:
 
 # Timers
 timer:
-  garage:
-    name: Garage Light Timer
-    duration: "00:10:00"
-
   laundry_room:
     name: Laundry Room Light Timer
     duration: "00:02:00"
