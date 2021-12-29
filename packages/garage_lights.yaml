@@ -328,7 +328,8 @@ automation:
         entity_id: switch.garage_light
 
 script:
-  - alias: Garage Lights Off
+  garage_lights_off:
+    alias: Garage Lights Off
     sequence:
       - service: mqtt.publish
         topic: garage/all/command/set/power
@@ -338,7 +339,8 @@ script:
           - input_boolean.all_garage_lights
           - input_boolean.low_garage_lights
 
-  - alias: All Garage Lights On
+  all_garage_lights_on:
+    alias: All Garage Lights On
     sequence:
       - choose:
         - conditions:
@@ -356,7 +358,8 @@ script:
       - service: input_boolean.turn_on
         entity_id: input_boolean.all_garage_lights
 
-  - alias: Low Garage Lights On
+  low_garage_lights_on:
+    alias: Low Garage Lights On
     sequence:
       - service: mqtt.publish
         topic: garage/low/command/set/power
@@ -366,7 +369,8 @@ script:
       - service: timer.start
         entity_id: timer.garage_light
 
-  - alias: Change Garage Lights
+  change_garage_lights:
+    alias: Change Garage Lights
     sequence:
       - choose:
         - conditions:
