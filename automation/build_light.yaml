@@ -18,9 +18,7 @@
     - service: light.turn_on
       data:
         entity_id: light.build_light
-        brightness: 255
         rgbw_color: [0, 255, 0, 0]
-        white_value: 0
 
 - alias: GitHub Build Failed
   id: 781bb3c0-b9e4-419a-9754-f065d08fa135
@@ -31,9 +29,7 @@
     - service: light.turn_on
       data:
         entity_id: light.build_light
-        brightness: 255
         rgbw_color: [255, 0, 0, 0]
-        white_value: 0
 
 - alias: GitHub Build Passed
   id: 98a61d5c-b97a-47d2-b8c1-1aeecee2aa4b
@@ -44,6 +40,4 @@
     - service: light.turn_on
       data:
         entity_id: light.build_light
-        brightness: 255
         rgbw_color: [0, 0, 255, 0]
-        white_value: 0
