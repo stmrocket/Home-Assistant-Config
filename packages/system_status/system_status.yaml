@@ -468,23 +468,21 @@ sensor:
 
   ####################################################
   #                                                  #
-  #               Sensor - Statistics                #
+  #               Sensor - Derivative                #
   #                                                  #
   ####################################################
 
-  - platform: statistics
-    name: "ERL WAN In Stats"
-    entity_id: sensor.erl_wan_in
-    sampling_size: 4
-    max_age:
-      hours: 24
+  - platform: derivative
+    source: sensor.erl_wan_in
+    unit_time: s
+    unit: B
+    name: erl_wan_in_derivative 
 
-  - platform: statistics
-    name: "ERL WAN Out Stats"
-    entity_id: sensor.erl_wan_out
-    sampling_size: 4
-    max_age:
-      hours: 24
+  - platform: derivative
+    source: sensor.erl_wan_out
+    unit_time: s
+    unit: B
+    name: erl_wan_out_derivative 
 
   #################################################################
   #                                                               #
@@ -495,16 +493,28 @@ sensor:
   - platform: template
     sensors:
       wan_in_mbps:
-        value_template: "{{ (state_attr('sensor.erl_wan_in_stats','change_rate')|float*8*(state_attr('sensor.erl_wan_in_stats', 'sampling_size')-1)/1000000)|round(2) }}"
-        unit_of_measurement: "Mbps"
-
+        value_template:  "{{ [((states('sensor.erl_wan_in_derivative')|float(none)*8)/1000000)|round(2, default=none),0]|max }}"
+        unit_of_measurement: 'Mbps'
+        friendly_name: WAN In
+    
       wan_out_mbps:
-        value_template: "{{ (state_attr('sensor.erl_wan_out_stats','change_rate')|float*8*(state_attr('sensor.erl_wan_out_stats', 'sampling_size')-1)/1000000)|round(2) }}"
-        unit_of_measurement: "Mbps"
+        value_template:  "{{ [((states('sensor.erl_wan_out_derivative')|float(none)*8)/1000000)|round(2, default=none),0]|max }}"
+        unit_of_measurement: 'Mbps'
+        friendly_name: WAN Out
+
+      wan_download_gb:
+        value_template:  "{{ (states('sensor.erl_wan_in')|float(none)/1000000000)|round(2, default=none) }}"
+        unit_of_measurement: 'GB'
+        friendly_name: WAN Download
+    
+      wan_upload_gb:
+        value_template:  "{{ (states('sensor.erl_wan_out')|float(none)/1000000000)|round(2, default=none) }}"
+        unit_of_measurement: 'GB'
+        friendly_name: WAN Upload
 
       wan_ping:
         friendly_name: "WAN Ping"
-        value_template: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2) }}"
+        value_template: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2, default=none) }}"
         unit_of_measurement: "ms"
 
       sensor_count:
@@ -1048,3 +1058,20 @@ group:
       - switch.frigate
       - switch.tv_headend
       - switch.eagle_mqtt
+
+tility_meter:
+  wan_in_monthly:
+    source: sensor.wan_download_gb
+    cycle: monthly 
+    
+  wan_in_daily:
+    source: sensor.wan_download_gb
+    cycle: daily
+    
+  wan_out_monthly:
+    source: sensor.wan_download_gb
+    cycle: monthly 
+    
+  wan_out_daily:
+    source: sensor.wan_download_gb
+    cycle: daily       
