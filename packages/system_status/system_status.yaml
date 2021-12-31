@@ -100,6 +100,7 @@ sensor:
     community: "public"
     version: "1"
     scan_interval: 10
+    device_class: temperature
 
   - platform: snmp
     name: "Server UPS Input Voltage"
@@ -197,6 +198,7 @@ sensor:
     community: "public"
     version: "1"
     scan_interval: 10
+    device_class: temperature
 
   - platform: snmp
     name: "Office UPS Input Voltage"
@@ -294,6 +296,7 @@ sensor:
     community: "public"
     version: "1"
     scan_interval: 10
+    device_class: temperature
 
   - platform: snmp
     name: "Shack UPS Input Voltage"
