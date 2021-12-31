@@ -1059,7 +1059,7 @@ group:
       - switch.tv_headend
       - switch.eagle_mqtt
 
-tility_meter:
+utility_meter:
   wan_in_monthly:
     source: sensor.wan_download_gb
     cycle: monthly 
