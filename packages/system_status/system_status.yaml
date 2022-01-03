@@ -1065,7 +1065,7 @@ utility_meter:
     cycle: monthly 
     
   wan_in_daily:
-    source: sensor.wan_download_gb
+    source: sensor.wan_upload_gb
     cycle: daily
     
   wan_out_monthly:
@@ -1073,5 +1073,5 @@ utility_meter:
     cycle: monthly 
     
   wan_out_daily:
-    source: sensor.wan_download_gb
+    source: sensor.wan_upload_gb
     cycle: daily       
