@@ -5,10 +5,24 @@
       from: arming
       platform: state
       to: armed_night
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: 
+        - disarmed
+        - armed_home
+      to: armed_night
+      for: "00:01:00"
     - entity_id: alarm_control_panel.house
       from: arming
       platform: state
       to: armed_away
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: 
+        - disarmed
+        - armed_home
+      to: armed_away
+      for: "00:01:00"
   condition:
     - condition: state
       entity_id: lock.back_door
