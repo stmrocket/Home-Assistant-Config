@@ -48,7 +48,7 @@ cards:
         displaySeconds: false
       - type: custom:mini-graph-card
         entities:
-          - sensor.aquara_office_temperature
+          - sensor.acurite_outside_temperature
         height: 46
         line_width: 2
         font_size: 65
@@ -118,10 +118,81 @@ cards:
             name: Lamp
             hold_action:
               action: more-info
-      - type: alarm-panel
-        name: House Alarm
-        states:
-          - arm_home
-          - arm_away
-          - arm_night
-        entity: alarm_control_panel.house
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: lock.front_door
+            color_type: icon
+            state:
+              - value: "locked"
+                color: rgb(255, 255, 255)
+                icon: mdi:lock
+              - value: "unlocked"
+                color: rgb(228, 94, 101)
+                icon: mdi:lock-open
+            name: Front
+            tap_action:
+              action: call-service
+              service: lock.lock
+              service_data:
+                entity_id: lock.front_door
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: lock.garage_entry
+            color_type: icon
+            state:
+              - value: "locked"
+                color: rgb(255, 255, 255)
+                icon: mdi:lock
+              - value: "unlocked"
+                color: rgb(228, 94, 101)
+                icon: mdi:lock-open
+            name: Garage
+            tap_action:
+              action: call-service
+              service: lock.lock
+              service_data:
+                entity_id: lock.garage_entry
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: lock.back_door
+            color_type: icon
+            state:
+              - value: "locked"
+                color: rgb(255, 255, 255)
+                icon: mdi:lock
+              - value: "unlocked"
+                color: rgb(228, 94, 101)
+                icon: mdi:lock-open
+            name: Back
+            tap_action:
+              action: call-service
+              service: lock.lock
+              service_data:
+                entity_id: lock.back_door
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: lock.shed_door
+            color_type: icon
+            state:
+              - value: "locked"
+                color: rgb(255, 255, 255)
+                icon: mdi:lock
+              - value: "unlocked"
+                color: rgb(228, 94, 101)
+                icon: mdi:lock-open
+            name: Shed
+            tap_action:
+              action: call-service
+              service: lock.lock
+              service_data:
+                entity_id: lock.shed_door
+            hold_action:
+              action: more-info
