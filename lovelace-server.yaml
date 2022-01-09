@@ -1,0 +1,18 @@
+title: The Geek House
+
+# Preload Cards
+
+preload_cards:
+  - picture-elements
+  - picture-entity
+  - conditional
+
+#############################################################################################################################################
+#                                                                                                                                           #
+#                                                                BEGIN VIEWS                                                                #
+#                                                                                                                                           #
+#############################################################################################################################################
+
+background: center / cover no-repeat url("/local/lovelace/background_19.png") fixed
+views:
+  - !include /config/lovelace/views/panels/server.yaml

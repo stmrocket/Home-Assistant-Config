@@ -1,0 +1,127 @@
+#############################################################################################################################################
+#                                                                                                                                           #
+#                                                              VIEW 9 - Office Tablet                                                       #
+#                                                                                                                                           #
+#############################################################################################################################################
+
+id: 8
+icon: mdi:castle
+title: Home
+popup_cards:
+  !include /config/lovelace/popup/popup_panel_office.yaml
+cards:
+  #################################################################
+  #                                                               #
+  #                      Home - Weather Card                      #
+  #                                                               #
+  #################################################################
+
+  - type: vertical-stack
+    cards:
+      - !include /config/lovelace/cards/weather.yaml
+
+      #################################################################
+      #                                                               #
+      #                        Home - CCTV                            #
+      #                                                               #
+      #################################################################
+      - type: glance
+        columns: 4
+        show_name: true
+        show_state: false
+        entities:
+          - entity: camera.front_porch
+          - entity: camera.east_front
+          - entity: camera.west_front
+          - entity: camera.back_yard
+      - type: "custom:gap-card"
+
+  #################################################################
+  #                                                               #
+  #                         Home - Media                          #
+  #                                                               #
+  #################################################################
+  - type: vertical-stack
+    cards:
+      - type: "custom:mm2-clock-card"
+        timezone: America/Chicago
+        displaySeconds: false
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.aquara_office_temperature
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 24
+        points_per_hour: 1
+        show:
+          icon: false
+          extrema: false
+          name: false
+        color_thresholds:
+          - value: 80
+            color: "#e74c3c"
+          - value: 75
+            color: "#1db954"
+          - value: 70
+            color: "#3498db"
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: cover.house_blinds
+            color_type: icon
+            state:
+              - value: "open"
+                color: rgb(228, 94, 101)
+                icon: mdi:blinds-open
+              - value: "closed"
+                color: rgb(255, 255, 255)
+                icon: mdi:blinds
+              - value: "unavailable"
+                color: rgb(228, 94, 101)
+                icon: mdi:exclamation
+            name: Blinds
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+              
+          - type: "custom:button-card"
+            entity: light.entry_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:lightbulb-on-outline
+              - value: "off"
+                icon: mdi:lightbulb-outline
+            name: Light
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.outside_lights
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:lightbulb-on-outline
+              - value: "off"
+                icon: mdi:lightbulb-outline
+            name: Outside
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.entry_lamp
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lamp
+            name: Lamp
+            hold_action:
+              action: more-info
+      - type: alarm-panel
+        name: House Alarm
+        states:
+          - arm_home
+          - arm_away
+          - arm_night
+        entity: alarm_control_panel.house
