@@ -58,6 +58,16 @@ lovelace:
       filename: lovelace-mobile.yaml
       title: Mobile Interface
       show_in_sidebar: false
+    lovelace-entry:
+      mode: yaml
+      filename: lovelace-entry.yaml
+      title: Entry Tablet
+      show_in_sidebar: false
+    lovelace-server:
+      mode: yaml
+      filename: lovelace-server.yaml
+      title: Entry Tablet
+      show_in_sidebar: false
   resources:
     - url: /hacsfiles/bar-card/bar-card.js
       type: module

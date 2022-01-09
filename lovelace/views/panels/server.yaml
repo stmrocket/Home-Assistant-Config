@@ -1,0 +1,182 @@
+#############################################################################################################################################
+#                                                                                                                                           #
+#                                                              VIEW 9 - Office Tablet                                                       #
+#                                                                                                                                           #
+#############################################################################################################################################
+
+id: 8
+icon: mdi:castle
+title: Home
+popup_cards:
+  !include /config/lovelace/popup/popup_panel_office.yaml
+cards:
+  #################################################################
+  #                                                               #
+  #                      Home - Weather Card                      #
+  #                                                               #
+  #################################################################
+
+  - type: vertical-stack
+    cards:
+      - !include /config/lovelace/cards/weather.yaml
+
+      #################################################################
+      #                                                               #
+      #                        Home - CCTV                            #
+      #                                                               #
+      #################################################################
+      - type: glance
+        columns: 4
+        show_name: true
+        show_state: false
+        entities:
+          - entity: camera.front_porch
+          - entity: camera.east_front
+          - entity: camera.west_front
+          - entity: camera.back_yard
+      - type: "custom:gap-card"
+
+  #################################################################
+  #                                                               #
+  #                         Home - Media                          #
+  #                                                               #
+  #################################################################
+  - type: vertical-stack
+    cards:
+      - type: "custom:mm2-clock-card"
+        timezone: America/Chicago
+        displaySeconds: false
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.aquara_server_closet_temperature
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 24
+        points_per_hour: 1
+        show:
+          icon: false
+          extrema: false
+          name: false
+        color_thresholds:
+          - value: 80
+            color: "#e74c3c"
+          - value: 75
+            color: "#1db954"
+          - value: 70
+            color: "#3498db"
+      - type: conditional
+        conditions:
+          - entity: sensor.nuvo_zone_3_source
+            state: "1"
+        card:
+          type: 'custom:mini-media-player'
+          entity: media_player.server_room_stereo
+          icon: mdi:speaker
+          artwork: cover
+          volume_stateless: true
+          toggle_power: false
+          info: scroll
+          hide:
+            source: true
+            progress: true
+      - type: conditional
+        conditions:
+          - entity: sensor.nuvo_zone_3_source
+            state_not: "1"
+        card:
+          type: 'custom:mini-media-player'
+          entity: media_player.server_room_stereo
+          icon: mdi:speaker
+          artwork: cover
+          volume_stateless: true
+          toggle_power: false
+          hide:
+            source: true
+            controls: true
+            info: true
+            progress: true
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: cover.server_room_blind
+            color_type: icon
+            state:
+              - value: "open"
+                color: rgb(228, 94, 101)
+                icon: mdi:blinds-open
+              - value: "closed"
+                color: rgb(255, 255, 255)
+                icon: mdi:blinds
+              - value: "unavailable"
+                color: rgb(228, 94, 101)
+                icon: mdi:exclamation
+            name: Blinds
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+              
+          - type: "custom:button-card"
+            entity: light.server_room_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:lightbulb-on-outline
+              - value: "off"
+                icon: mdi:lightbulb-outline
+            name: Light
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.server_room_fan
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:fan
+              - value: "off"
+                icon: mdi:fan-off
+            name: Fan
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.server_room_lamp
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lamp
+            name: Lamp
+            hold_action:
+              action: more-info
+      - type: horizontal-stack
+        cards:
+          - type: custom:gap-card
+
+          - type: "custom:button-card"
+            entity: light.server_closet_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:led-on
+              - value: "off"
+                icon: mdi:led-off
+            name: Closet
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: switch.server_closet_fan
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:fan
+              - value: "off"
+                icon: mdi:fan-off
+            name: Closet
+            hold_action:
+              action: more-info
+
+          - type: custom:gap-card
