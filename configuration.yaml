@@ -66,7 +66,7 @@ lovelace:
     lovelace-server:
       mode: yaml
       filename: lovelace-server.yaml
-      title: Entry Tablet
+      title: Server Tablet
       show_in_sidebar: false
   resources:
     - url: /hacsfiles/bar-card/bar-card.js
