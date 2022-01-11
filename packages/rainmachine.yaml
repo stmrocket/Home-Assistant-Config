@@ -84,7 +84,6 @@ script:
 
   rainmachine_program_2_on:
     sequence:
-      sequence:
       - service: switch.turn_off
         entity_id: switch.program_every_3_days_enabled
       - service: switch.turn_on
