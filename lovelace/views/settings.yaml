@@ -60,7 +60,7 @@ cards:
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.irrigation_program_drip
+                entity: switch.program_drip_enabled
                 color_type: icon
                 state:
                   - value: "on"
