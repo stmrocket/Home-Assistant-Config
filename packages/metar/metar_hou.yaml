@@ -1,0 +1,149 @@
+switch:
+  - platform: mqtt
+    name: Houston METAR Map Power
+    state_topic: metar/hou/tele/current
+    command_topic: metar/hou/command/set/power
+    availability_topic: metar/hou/tele/LWT
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+input_boolean:
+  hou_metar_mode: #Off is METAR and on is temperature...
+    name: Houston METAR Map Display Mode
+
+sensor:
+  #Driver Status Messages
+
+  - platform: mqtt
+    name: "Houston METAR Map Version"
+    state_topic: "metar/hou/tele/status"
+    value_template: "{{value_json['espVersion']}}"
+    availability_topic: "metar/hou/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Houston METAR Map Uptime"
+    state_topic: "metar/hou/tele/status"
+    value_template: "{{value_json['espUptime']}}"
+    availability_topic: "metar/hou/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Houston METAR Map RSSI"
+    state_topic: "metar/hou/tele/status"
+    value_template: "{{value_json['signalStrength']}}"
+    availability_topic: "metar/hou/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Houston METAR Map IP"
+    state_topic: "metar/hou/tele/status"
+    value_template: "{{value_json['bridgeIP']}}"
+    availability_topic: "metar/hou/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Houston METAR Map Free Heap"
+    state_topic: "metar/hou/tele/status"
+    value_template: "{{value_json['heapFree']}}"
+    availability_topic: "metar/hou/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Houston METAR Map Heap Fragmentation"
+    state_topic: "metar/hou/tele/status"
+    value_template: "{{value_json['heapFragmentation']}}"
+    availability_topic: "metar/hou/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "Houston METAR Map Core Version"
+    state_topic: "metar/hou/tele/status"
+    value_template: "{{value_json['espCore']}}"
+    availability_topic: "metar/hou/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: HOU METAR Mode
+    state_topic: "metar/hou/tele/mode"
+    availability_topic: "metar/hou/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+  - platform: template
+    sensors:
+      hou_metar_mode_clean:
+        friendly_name: HOU METAR Mode Clean Name
+        value_template: >-
+          {% if is_state('sensor.hou_metar_mode', 'TEMP') -%}
+            Temperature
+          {% elif is_state('sensor.hou_metar_mode', 'METAR') -%}
+            METAR
+          {% endif -%}
+
+automation:
+  - alias: Update Houston METAR Map Display Mode
+    id: 988861e6-36d6-40c8-96bf-d504c96cec44
+    trigger:
+      - platform: state
+        entity_id: input_boolean.hou_metar_mode
+    action:
+      - choose:
+          - conditions:
+              - condition: state
+                entity_id: input_boolean.hou_metar_mode
+                state: "on"
+            sequence:
+              - service: mqtt.publish
+                data:
+                  topic: metar/hou/command/set/mode
+                  payload: TEMP
+                  retain: true
+          - conditions:
+              - condition: state
+                entity_id: input_boolean.hou_metar_mode
+                state: "off"
+            sequence:
+              - service: mqtt.publish
+                data:
+                  topic: metar/hou/command/set/mode
+                  payload: METAR
+                  retain: true
+
+  - alias: Houston Map On When Home and Awake
+    id: 82d352fc-ce44-4e17-8a9c-fcbf8676ab25
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: disarmed
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: armed_home
+    action:
+      - service: switch.turn_on
+        entity_id: switch.houston_metar_map_power
+
+  - alias: Houston Map Off When Home and Awake
+    id: ceab912c-e825-4798-8fa0-ade314881bd5
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: armed_away
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: armed_night
+    action:
+      - service: switch.turn_off
+        entity_id: switch.houston_metar_map_power
