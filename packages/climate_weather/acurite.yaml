@@ -18,7 +18,7 @@ sensor:
   - platform: mqtt
     name: AcuRite WS Wind Speed
     state_topic: rtl_433/2381/wind_avg_km_h
-    value_template: "{{ (value | float * 0.621371) | round (1) }}"
+    value_template: "{{ (value | float(none) * 0.621371) | round (1, default=none) }}"
     unit_of_measurement: "mi/h"
 
   - platform: mqtt

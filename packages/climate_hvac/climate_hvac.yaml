@@ -229,33 +229,33 @@ sensor:
         friendly_name: "HVAC Total System Runtime"
         unit_of_measurement: "h"
         value_template: >-
-          {{ ((states('sensor.hvac_system_fan_runtime') | float) +
-          (states('sensor.hvac_system_heat_runtime') | float) +
-          (states('sensor.hvac_system_cool_runtime') | float)) | round(2) }}
+          {{ ((states('sensor.hvac_system_fan_runtime') | float(none)) +
+          (states('sensor.hvac_system_heat_runtime') | float(none)) +
+          (states('sensor.hvac_system_cool_runtime') | float(none))) | round(2, default=none) }}
 
       hvac_zone_1_runtime:
         friendly_name: "HVAC Zone 1 Total Runtime"
         unit_of_measurement: "h"
         value_template: >-
-          {{ ((states('sensor.hvac_zone_1_fan_runtime') | float) +
-          (states('sensor.hvac_zone_1_heat_runtime') | float) +
-          (states('sensor.hvac_zone_1_cool_runtime') | float)) | round(2) }}
+          {{ ((states('sensor.hvac_zone_1_fan_runtime') | float(none)) +
+          (states('sensor.hvac_zone_1_heat_runtime') | float(none)) +
+          (states('sensor.hvac_zone_1_cool_runtime') | float(none))) | round(2, default=none) }}
 
       hvac_zone_2_runtime:
         friendly_name: "HVAC Zone 2 Total Runtime"
         unit_of_measurement: "h"
         value_template: >-
-          {{ ((states('sensor.hvac_zone_2_fan_runtime') | float) +
-          (states('sensor.hvac_zone_2_heat_runtime') | float) +
-          (states('sensor.hvac_zone_2_cool_runtime') | float)) | round(2) }}
+          {{ ((states('sensor.hvac_zone_2_fan_runtime') | float(none)) +
+          (states('sensor.hvac_zone_2_heat_runtime') | float(none)) +
+          (states('sensor.hvac_zone_2_cool_runtime') | float(none))) | round(2, default=none) }}
 
       hvac_zone_3_runtime:
         friendly_name: "HVAC Zone 3 Total Runtime"
         unit_of_measurement: "h"
         value_template: >-
-          {{ ((states('sensor.hvac_zone_3_fan_runtime') | float) +
-          (states('sensor.hvac_zone_3_heat_runtime') | float) +
-          (states('sensor.hvac_zone_3_cool_runtime') | float)) | round(2) }}
+          {{ ((states('sensor.hvac_zone_3_fan_runtime') | float(none)) +
+          (states('sensor.hvac_zone_3_heat_runtime') | float(none)) +
+          (states('sensor.hvac_zone_3_cool_runtime') | float(none))) | round(2, default=none) }}
 
   ####################################################
   #                                                  #

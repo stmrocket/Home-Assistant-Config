@@ -183,7 +183,7 @@
       for: "00:01:00"
   condition:
     - condition: template
-      value_template: "{{ states('sensor.rain_day') | float > 0 }}"
+      value_template: "{{ states('sensor.rain_day') | float(none) > 0 }}"
   action:
     - service: elkm1.alarm_display_message
       data_template:
@@ -194,7 +194,7 @@
   id: d7ec1407-ccc7-4c86-a807-382bad717c5f
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.rain_day') | float == 0 }}"
+      value_template: "{{ states('sensor.rain_day') | float(none) == 0 }}"
   action:
     - service: elkm1.alarm_display_message
       data_template:

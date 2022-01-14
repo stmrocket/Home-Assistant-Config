@@ -225,7 +225,7 @@
     - service: timer.start
       data_template:
         entity_id: timer.frigate_disable
-        duration: "{{ states('input_number.frigate_disable_time') | int * 3600}}"
+        duration: "{{ states('input_number.frigate_disable_time') | int(none) * 3600}}"
 
 - alias: Restart Frigate When Restart Timer Expires
   id: 09dab8b7-8a8e-4c40-95ad-006fba733abd

@@ -16,27 +16,27 @@ sensor:
   - platform: template
     sensors:
       rain_minute:
-        value_template: "{{ (states('counter.rain_minute') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_minute') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_hour:
-        value_template: "{{ (states('counter.rain_hour') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_hour') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_day:
-        value_template: "{{ (states('counter.rain_day') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_day') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_month:
-        value_template: "{{ (states('counter.rain_month') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_month') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_year:
-        value_template: "{{ (states('counter.rain_year') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_year') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_total:
-        value_template: "{{ (states('counter.rain_total') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_total') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_last_60_minutes:
@@ -44,66 +44,66 @@ sensor:
 
       rain_rate:
         value_template: >
-          {{ (states('input_number.rain_minute_00') | float +
-             states('input_number.rain_minute_01') | float +
-             states('input_number.rain_minute_02') | float +
-             states('input_number.rain_minute_03') | float +
-             states('input_number.rain_minute_04') | float +
-             states('input_number.rain_minute_05') | float +
-             states('input_number.rain_minute_06') | float +
-             states('input_number.rain_minute_07') | float +
-             states('input_number.rain_minute_08') | float +
-             states('input_number.rain_minute_09') | float +
-             states('input_number.rain_minute_10') | float +
-             states('input_number.rain_minute_11') | float +
-             states('input_number.rain_minute_12') | float +
-             states('input_number.rain_minute_13') | float +
-             states('input_number.rain_minute_14') | float +
-             states('input_number.rain_minute_15') | float +
-             states('input_number.rain_minute_16') | float +
-             states('input_number.rain_minute_17') | float +
-             states('input_number.rain_minute_18') | float +
-             states('input_number.rain_minute_19') | float +
-             states('input_number.rain_minute_20') | float +
-             states('input_number.rain_minute_21') | float +
-             states('input_number.rain_minute_22') | float +
-             states('input_number.rain_minute_23') | float +
-             states('input_number.rain_minute_24') | float +
-             states('input_number.rain_minute_25') | float +
-             states('input_number.rain_minute_26') | float +
-             states('input_number.rain_minute_27') | float +
-             states('input_number.rain_minute_28') | float +
-             states('input_number.rain_minute_29') | float +
-             states('input_number.rain_minute_30') | float +
-             states('input_number.rain_minute_31') | float +
-             states('input_number.rain_minute_32') | float +
-             states('input_number.rain_minute_33') | float +
-             states('input_number.rain_minute_34') | float +
-             states('input_number.rain_minute_35') | float +
-             states('input_number.rain_minute_36') | float +
-             states('input_number.rain_minute_37') | float +
-             states('input_number.rain_minute_38') | float +
-             states('input_number.rain_minute_39') | float +
-             states('input_number.rain_minute_40') | float +
-             states('input_number.rain_minute_41') | float +
-             states('input_number.rain_minute_42') | float +
-             states('input_number.rain_minute_43') | float +
-             states('input_number.rain_minute_44') | float +
-             states('input_number.rain_minute_45') | float +
-             states('input_number.rain_minute_46') | float +
-             states('input_number.rain_minute_47') | float +
-             states('input_number.rain_minute_48') | float +
-             states('input_number.rain_minute_49') | float +
-             states('input_number.rain_minute_50') | float +
-             states('input_number.rain_minute_51') | float +
-             states('input_number.rain_minute_52') | float +
-             states('input_number.rain_minute_53') | float +
-             states('input_number.rain_minute_54') | float +
-             states('input_number.rain_minute_55') | float +
-             states('input_number.rain_minute_56') | float +
-             states('input_number.rain_minute_57') | float +
-             states('input_number.rain_minute_58') | float +
-             states('input_number.rain_minute_59') | float) | round(2) }}
+          {{ (states('input_number.rain_minute_00') | float(none) +
+             states('input_number.rain_minute_01') | float(none) +
+             states('input_number.rain_minute_02') | float(none) +
+             states('input_number.rain_minute_03') | float(none) +
+             states('input_number.rain_minute_04') | float(none) +
+             states('input_number.rain_minute_05') | float(none) +
+             states('input_number.rain_minute_06') | float(none) +
+             states('input_number.rain_minute_07') | float(none) +
+             states('input_number.rain_minute_08') | float(none) +
+             states('input_number.rain_minute_09') | float(none) +
+             states('input_number.rain_minute_10') | float(none) +
+             states('input_number.rain_minute_11') | float(none) +
+             states('input_number.rain_minute_12') | float(none) +
+             states('input_number.rain_minute_13') | float(none) +
+             states('input_number.rain_minute_14') | float(none) +
+             states('input_number.rain_minute_15') | float(none) +
+             states('input_number.rain_minute_16') | float(none) +
+             states('input_number.rain_minute_17') | float(none) +
+             states('input_number.rain_minute_18') | float(none) +
+             states('input_number.rain_minute_19') | float(none) +
+             states('input_number.rain_minute_20') | float(none) +
+             states('input_number.rain_minute_21') | float(none) +
+             states('input_number.rain_minute_22') | float(none) +
+             states('input_number.rain_minute_23') | float(none) +
+             states('input_number.rain_minute_24') | float(none) +
+             states('input_number.rain_minute_25') | float(none) +
+             states('input_number.rain_minute_26') | float(none) +
+             states('input_number.rain_minute_27') | float(none) +
+             states('input_number.rain_minute_28') | float(none) +
+             states('input_number.rain_minute_29') | float(none) +
+             states('input_number.rain_minute_30') | float(none) +
+             states('input_number.rain_minute_31') | float(none) +
+             states('input_number.rain_minute_32') | float(none) +
+             states('input_number.rain_minute_33') | float(none) +
+             states('input_number.rain_minute_34') | float(none) +
+             states('input_number.rain_minute_35') | float(none) +
+             states('input_number.rain_minute_36') | float(none) +
+             states('input_number.rain_minute_37') | float(none) +
+             states('input_number.rain_minute_38') | float(none) +
+             states('input_number.rain_minute_39') | float(none) +
+             states('input_number.rain_minute_40') | float(none) +
+             states('input_number.rain_minute_41') | float(none) +
+             states('input_number.rain_minute_42') | float(none) +
+             states('input_number.rain_minute_43') | float(none) +
+             states('input_number.rain_minute_44') | float(none) +
+             states('input_number.rain_minute_45') | float(none) +
+             states('input_number.rain_minute_46') | float(none) +
+             states('input_number.rain_minute_47') | float(none) +
+             states('input_number.rain_minute_48') | float(none) +
+             states('input_number.rain_minute_49') | float(none) +
+             states('input_number.rain_minute_50') | float(none) +
+             states('input_number.rain_minute_51') | float(none) +
+             states('input_number.rain_minute_52') | float(none) +
+             states('input_number.rain_minute_53') | float(none) +
+             states('input_number.rain_minute_54') | float(none) +
+             states('input_number.rain_minute_55') | float(none) +
+             states('input_number.rain_minute_56') | float(none) +
+             states('input_number.rain_minute_57') | float(none) +
+             states('input_number.rain_minute_58') | float(none) +
+             states('input_number.rain_minute_59') | float) | round(2, default=none) }}
         unit_of_measurement: "in/hr"
 
   - platform: statistics

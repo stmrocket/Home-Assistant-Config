@@ -48,7 +48,7 @@ binary_sensor:
       updater_addons:
         friendly_name: "Updater - Addons"
         device_class: problem
-        value_template: "{{ states('sensor.supervisor_updates') | int > 0 }}"
+        value_template: "{{ states('sensor.supervisor_updates') | int(none) > 0 }}"
 
 #################################################################
 #                                                               #
@@ -89,7 +89,7 @@ sensor:
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.3.0
     accept_errors: true
     unit_of_measurement: "minutes"
-    value_template: "{{((value | int) / 6000) | int}}"
+    value_template: "{{((value | int(none)) / 6000) | int(none)}}"
 
   - platform: snmp
     name: "Server UPS Battery Temperature"
@@ -186,7 +186,7 @@ sensor:
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.3.0
     accept_errors: true
     unit_of_measurement: "minutes"
-    value_template: "{{((value | int) / 6000) | int}}"
+    value_template: "{{((value | int(none)) / 6000) | int(none)}}"
 
   - platform: snmp
     name: "Office UPS Battery Temperature"
@@ -283,7 +283,7 @@ sensor:
     baseoid: .1.3.6.1.4.1.318.1.1.1.2.2.3.0
     accept_errors: true
     unit_of_measurement: "minutes"
-    value_template: "{{((value | int) / 6000) | int}}"
+    value_template: "{{((value | int(none)) / 6000) | int(none)}}"
 
   - platform: snmp
     name: "Shack UPS Battery Temperature"
@@ -369,10 +369,10 @@ sensor:
     baseoid: .1.3.6.1.2.1.25.1.1.0
     name: "NAS Uptime"
     value_template: >-
-      {% set time = (value | int) | int %}
-      {% set minutes = ((time % 360000) / 6000) | int%}
-      {% set hours = ((time % 8640000) / 360000) | int %}
-      {% set days = (time / 8640000) | int %}
+      {% set time = (value | int(none)) | int(none) %}
+      {% set minutes = ((time % 360000) / 6000) | int(none)%}
+      {% set hours = ((time % 8640000) / 360000) | int(none) %}
+      {% set days = (time / 8640000) | int(none) %}
         {%- if time < 60-%}
           00:00:00
         {%- else -%}
@@ -413,10 +413,10 @@ sensor:
     baseoid: .1.3.6.1.2.1.25.1.1.0
     name: "Core Router Uptime"
     value_template: >-
-      {% set time = (value | int) | int %}
-      {% set minutes = ((time % 360000) / 6000) | int%}
-      {% set hours = ((time % 8640000) / 360000) | int %}
-      {% set days = (time / 8640000) | int %}
+      {% set time = (value | int(none)) | int(none) %}
+      {% set minutes = ((time % 360000) / 6000) | int(none)%}
+      {% set hours = ((time % 8640000) / 360000) | int(none) %}
+      {% set days = (time / 8640000) | int(none) %}
         {%- if time < 60-%}
           00:00:00
         {%- else -%}
@@ -639,83 +639,83 @@ sensor:
 
       automation_count_high:
         friendly_name: "Automation Count High Limit"
-        value_template: "{{ states('input_number.automation_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.automation_count_expected') |int(none) + 150 }}"
 
       automation_count_low:
         friendly_name: "Automation Count Low Limit"
-        value_template: "{{ states('input_number.automation_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.automation_count_expected') |int(none) - 1 }}"
 
       binary_sensor_count_high:
         friendly_name: "Binary Sensor Count High Limit"
-        value_template: "{{ states('input_number.binary_sensor_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.binary_sensor_count_expected') |int(none) + 150 }}"
 
       binary_sensor_count_low:
         friendly_name: "Binary Sensor Count Low Limit"
-        value_template: "{{ states('input_number.binary_sensor_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.binary_sensor_count_expected') |int(none) - 1 }}"
 
       switch_count_high:
         friendly_name: "Switch Count High Limit"
-        value_template: "{{ states('input_number.switch_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.switch_count_expected') |int(none) + 150 }}"
 
       switch_count_low:
         friendly_name: "Switch Count Low Limit"
-        value_template: "{{ states('input_number.switch_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.switch_count_expected') |int(none) - 1 }}"
 
       fan_count_high:
         friendly_name: "Fan Count High Limit"
-        value_template: "{{ states('input_number.fan_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.fan_count_expected') |int(none) + 150 }}"
 
       fan_count_low:
         friendly_name: "Fan Count Low Limit"
-        value_template: "{{ states('input_number.fan_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.fan_count_expected') |int(none) - 1 }}"
 
       light_count_high:
         friendly_name: "Light Count High Limit"
-        value_template: "{{ states('input_number.light_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.light_count_expected') |int(none) + 150 }}"
 
       light_count_low:
         friendly_name: "Light Count Low Limit"
-        value_template: "{{ states('input_number.light_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.light_count_expected') |int(none) - 1 }}"
 
       tracked_device_count_high:
         friendly_name: "Tracked Device Count High Limit"
-        value_template: "{{ states('input_number.tracked_device_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.tracked_device_count_expected') |int(none) + 150 }}"
 
       tracked_device_count_low:
         friendly_name: "Tracked Device Count Low Limit"
-        value_template: "{{ states('input_number.tracked_device_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.tracked_device_count_expected') |int(none) - 1 }}"
 
       media_player_count_high:
         friendly_name: "Media Player Count High Limit"
-        value_template: "{{ states('input_number.media_player_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.media_player_count_expected') |int(none) + 150 }}"
 
       media_player_count_low:
         friendly_name: "Media Player Count Low Limit"
-        value_template: "{{ states('input_number.media_player_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.media_player_count_expected') |int(none) - 1 }}"
 
       script_count_high:
         friendly_name: "Script Count High Limit"
-        value_template: "{{ states('input_number.script_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.script_count_expected') |int(none) + 150 }}"
 
       script_count_low:
         friendly_name: "Script Count Low Limit"
-        value_template: "{{ states('input_number.script_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.script_count_expected') |int(none) - 1 }}"
 
       sensor_count_high:
         friendly_name: "Sensor Count High Limit"
-        value_template: "{{ states('input_number.sensor_count_expected') |int + 150 }}"
+        value_template: "{{ states('input_number.sensor_count_expected') |int(none) + 150 }}"
 
       sensor_count_low:
         friendly_name: "Sensor Count Low Limit"
-        value_template: "{{ states('input_number.sensor_count_expected') |int - 1 }}"
+        value_template: "{{ states('input_number.sensor_count_expected') |int(none) - 1 }}"
 
       hass_uptime:
         friendly_name: Home Assistant Uptime
         value_template: >-
-          {% set time = (as_timestamp(now()) - as_timestamp(states('sensor.time_online'))) / 60 | int %}
-            {% set minutes = ((time % 60) ) | int%}
-            {% set hours = ((time % 1440) / 60) | int %}
-            {% set days = (time / 1440) | int %}
+          {% set time = (as_timestamp(now(), none) - as_timestamp(states('sensor.time_online'), none)) / 60 | int(default=0) %}
+            {% set minutes = ((time % 60) ) | int(none)%}
+            {% set hours = ((time % 1440) / 60) | int(none) %}
+            {% set days = (time / 1440) | int(none) %}
               {%- if time == 0 -%}
                 00:00:00
               {%- else -%}
@@ -754,9 +754,9 @@ sensor:
       hass_restart:
         friendly_name: Home Assistant Restart Time
         value_template: >-
-          {% set time = (as_timestamp(states('sensor.time_online'))) - (as_timestamp(states('sensor.ha_shutdown'))) | int %}
-            {% set seconds = ((time % 60) ) | int%}
-            {% set minutes = (time / 60) | int %}
+          {% set time = (as_timestamp(states('sensor.time_online'), none)) - (as_timestamp(states('sensor.ha_shutdown'), none)) | int(default=0) %}
+            {% set seconds = ((time % 60) ) | int(none)%}
+            {% set minutes = (time / 60) | int(none) %}
               {%- if time == 0 -%}
                 00:00
               {%- else -%}
@@ -822,9 +822,9 @@ sensor:
             Offline
           {% elif is_state('sensor.office_ups_battery_status', '2') -%}
             Battery Fail
-          {% elif  states('sensor.office_ups_input_voltage') | int > 100 -%}
+          {% elif  states('sensor.office_ups_input_voltage') | int(none) > 100 -%}
             Utility
-          {% elif  states('sensor.office_ups_input_voltage') | int < 100 and states('sensor.office_ups_output_voltage') | int > 100 -%}
+          {% elif  states('sensor.office_ups_input_voltage') | int(none) < 100 and states('sensor.office_ups_output_voltage') | int(none) > 100 -%}
             Battery
           {% else -%}
             Error
@@ -837,9 +837,9 @@ sensor:
             Offline
           {% elif is_state('sensor.server_ups_battery_status', '2') -%}
             Battery Fail
-          {% elif  states('sensor.server_ups_input_voltage') | int > 100 -%}
+          {% elif  states('sensor.server_ups_input_voltage') | int(none) > 100 -%}
             Utility
-          {% elif  states('sensor.server_ups_input_voltage') | int < 100 and states('sensor.server_ups_output_voltage') | int > 100 -%}
+          {% elif  states('sensor.server_ups_input_voltage') | int(none) < 100 and states('sensor.server_ups_output_voltage') | int(none) > 100 -%}
             Battery
           {% else -%}
             Error
@@ -852,9 +852,9 @@ sensor:
             Offline
           {% elif is_state('sensor.shack_ups_battery_status', '2') -%}
             Battery Fail
-          {% elif  states('sensor.shack_ups_input_voltage') | int > 100 -%}
+          {% elif  states('sensor.shack_ups_input_voltage') | int(none) > 100 -%}
             Utility
-          {% elif  states('sensor.shack_ups_input_voltage') | int < 100 and states('sensor.server_ups_output_voltage') | int > 100 -%}
+          {% elif  states('sensor.shack_ups_input_voltage') | int(none) < 100 and states('sensor.server_ups_output_voltage') | int(none) > 100 -%}
             Battery
           {% else -%}
             Error

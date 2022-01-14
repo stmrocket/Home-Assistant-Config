@@ -8,8 +8,8 @@ alexa_den_timer_announce:
           - condition: template
             value_template:
               "{{ states('sensor.alexa_den_next_timer') not in ['None',
-              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_den_next_timer'))
-              < as_timestamp(now()) }}"
+              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_den_next_timer'), none)
+              < as_timestamp(now(), none) }}"
         sequence:
           - service: mqtt.publish
             data:
@@ -28,8 +28,8 @@ alexa_entry_timer_announce:
           - condition: template
             value_template:
               "{{ states('sensor.alexa_entry_next_timer') not in ['None',
-              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_entry_next_timer'))
-              < as_timestamp(now()) }}"
+              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_entry_next_timer'), none)
+              < as_timestamp(now(), none) }}"
         sequence:
           - service: mqtt.publish
             data:
@@ -48,8 +48,8 @@ alexa_guest_timer_announce:
           - condition: template
             value_template:
               "{{ states('sensor.alexa_guest_room_next_timer') not in ['None',
-              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_guest_room_next_timer'))
-              < as_timestamp(now()) }}"
+              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_guest_room_next_timer'), none)
+              < as_timestamp(now(), none) }}"
         sequence:
           - service: mqtt.publish
             data:
@@ -68,8 +68,8 @@ alexa_master_timer_announce:
           - condition: template
             value_template:
               "{{ states('sensor.alexa_master_bedroom_next_timer') not in ['None',
-              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_master_bedroom_next_timer'))
-              < as_timestamp(now()) }}"
+              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_master_bedroom_next_timer'), none)
+              < as_timestamp(now(), none) }}"
         sequence:
           - service: mqtt.publish
             data:
@@ -88,8 +88,8 @@ alexa_office_timer_announce:
           - condition: template
             value_template:
               "{{ states('sensor.alexa_office_next_timer') not in ['None',
-              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_office_next_timer'))
-              < as_timestamp(now()) }}"
+              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_office_next_timer'), none)
+              < as_timestamp(now(), none) }}"
         sequence:
           - service: mqtt.publish
             data:
@@ -108,8 +108,8 @@ alexa_server_timer_announce:
           - condition: template
             value_template:
               "{{ states('sensor.alexa_server_room_next_timer') not in ['None',
-              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_server_room_next_timer'))
-              < as_timestamp(now()) }}"
+              'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_server_room_next_timer'), none)
+              < as_timestamp(now(), none) }}"
         sequence:
           - service: mqtt.publish
             data:

@@ -13,8 +13,8 @@
     - service: script.alexa_den_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          "{{ (as_timestamp(trigger.to_state.state, none) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false, none) }}"
 
 - alias: Alexa Entry Timer Announcement
   id: b1302296-1f3d-4626-bf4a-d983201254db
@@ -31,8 +31,8 @@
     - service: script.alexa_entry_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          "{{ (as_timestamp(trigger.to_state.state, none) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false, none) }}"
 
 - alias: Alexa Guest Timer Announcement
   id: 73a962b7-958d-4a06-9bc2-cd39fda44354
@@ -49,8 +49,8 @@
     - service: script.alexa_guest_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          "{{ (as_timestamp(trigger.to_state.state, none) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false, none) }}"
 
 - alias: Alexa Master Timer Announcement
   id: f73bf3c4-d083-40e1-9674-6e77536683b6
@@ -67,8 +67,8 @@
     - service: script.alexa_master_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          "{{ (as_timestamp(trigger.to_state.state, none) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false, none) }}"
 
 - alias: Alexa Office Timer Announcement
   id: 977de87a-18b8-4966-a7d6-bc1bcbf9ff71
@@ -85,8 +85,8 @@
     - service: script.alexa_office_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          "{{ (as_timestamp(trigger.to_state.state, none) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false, none) }}"
 
 - alias: Alexa Server Timer Announcement
   id: 56adc461-f7f0-41a4-98e5-98beb6188219
@@ -103,5 +103,5 @@
     - service: script.alexa_server_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          "{{ (as_timestamp(trigger.to_state.state, none) - now().timestamp() + 2)
+          | timestamp_custom('%H:%M:%S', false, none) }}"

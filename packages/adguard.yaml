@@ -157,57 +157,57 @@ sensor:
 
       adguard_dns_queries_today_total:
         friendly_name: AdGuard DNS Queries Today Total
-        value_template: "{{ states('sensor.adguard_main_dns_queries_today') | int + states('sensor.adguard_backup_dns_queries_today') | int }}"
+        value_template: "{{ states('sensor.adguard_main_dns_queries_today') | int(none) + states('sensor.adguard_backup_dns_queries_today') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_queries_this_hour_total:
         friendly_name: AdGuard DNS Queries This Hour Total
-        value_template: "{{ states('sensor.adguard_main_dns_queries_this_hour') | int + states('sensor.adguard_backup_dns_queries_this_hour') | int }}"
+        value_template: "{{ states('sensor.adguard_main_dns_queries_this_hour') | int(none) + states('sensor.adguard_backup_dns_queries_this_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_queries_last_hour_total:
         friendly_name: AdGuard DNS Queries Last Hour Total
-        value_template: "{{ states('sensor.adguard_main_dns_queries_last_hour') | int + states('sensor.adguard_backup_dns_queries_last_hour') | int }}"
+        value_template: "{{ states('sensor.adguard_main_dns_queries_last_hour') | int(none) + states('sensor.adguard_backup_dns_queries_last_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_block_ratio_total:
         friendly_name: AdGuard DNS Block Ratio Total
-        value_template: "{{ (((states('sensor.adguard_main_dns_queries_blocked_today') | int + states('sensor.adguard_backup_dns_queries_blocked_today') | int) / (states('sensor.adguard_main_dns_queries_today') | int + states('sensor.adguard_backup_dns_queries_today') | int)) * 100) | round(0) }}"
+        value_template: "{{ (((states('sensor.adguard_main_dns_queries_blocked_today') | int(none) + states('sensor.adguard_backup_dns_queries_blocked_today') | int(none)) / (states('sensor.adguard_main_dns_queries_today') | int(none) + states('sensor.adguard_backup_dns_queries_today') | int(none))) * 100) | round(0, default=none) }}"
         unit_of_measurement: "%"
     
       adguard_dns_queries_blocked_today_total:
         friendly_name: AdGuard DNS Queries Blocked Today Total
-        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_today') | int + states('sensor.adguard_backup_dns_queries_blocked_today') | int }}"
+        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_today') | int(none) + states('sensor.adguard_backup_dns_queries_blocked_today') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_queries_blocked_this_hour_total:
         friendly_name: AdGuard DNS Queries Blocked This Hour Total
-        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_this_hour') | int + states('sensor.adguard_backup_dns_queries_blocked_this_hour') | int }}"
+        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_this_hour') | int(none) + states('sensor.adguard_backup_dns_queries_blocked_this_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_queries_blocked_last_hour_total:
         friendly_name: AdGuard DNS Queries Blocked Last Hour Total
-        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_last_hour') | int + states('sensor.adguard_backup_dns_queries_blocked_last_hour') | int }}"
+        value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_last_hour') | int(none) + states('sensor.adguard_backup_dns_queries_blocked_last_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_safe_browsing_blocked_today_total:
         friendly_name: AdGuard Safe Browsing Blocked Today Total
-        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_today') | int + states('sensor.adguard_backup_safe_browsing_blocked_today') | int }}"
+        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_today') | int(none) + states('sensor.adguard_backup_safe_browsing_blocked_today') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_safe_browsing_blocked_this_hour_total:
         friendly_name: AdGuard Safe Browsing Blocked This Hour Total
-        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_this_hour') | int + states('sensor.adguard_backup_safe_browsing_blocked_this_hour') | int }}"
+        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_this_hour') | int(none) + states('sensor.adguard_backup_safe_browsing_blocked_this_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_safe_browsing_blocked_last_hour_total:
         friendly_name: AdGuard Safe Browsing Blocked Last Hour Total
-        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_last_hour') | int + states('sensor.adguard_backup_safe_browsing_blocked_last_hour') | int }}"
+        value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_last_hour') | int(none) + states('sensor.adguard_backup_safe_browsing_blocked_last_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_safe_search_blocked_today_total:
         friendly_name: AdGuard Safe Search Blocked Today Total
-        value_template: "{{ states('sensor.adguard_main_safe_search_blocked_today') | int + states('sensor.adguard_backup_safe_search_blocked_today') | int }}"
+        value_template: "{{ states('sensor.adguard_main_safe_search_blocked_today') | int(none) + states('sensor.adguard_backup_safe_search_blocked_today') | int(none) }}"
         unit_of_measurement: queries
 
 switch:

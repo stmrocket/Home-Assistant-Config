@@ -149,10 +149,10 @@ sensor:
       daily_bike_duration_calc:
         friendly_name: Daily Bike Duration Calculated
         value_template: >-
-          {% set time = states('sensor.daily_bike_duration') | int %}
-            {% set minutes = ((time % 3600) / 60) | int%}
-            {% set hours = ((time % 86400) / 3600) | int %}
-            {% set days = (time / 86400) | int %}
+          {% set time = states('sensor.daily_bike_duration') | int(none) %}
+            {% set minutes = ((time % 3600) / 60) | int(none)%}
+            {% set hours = ((time % 86400) / 3600) | int(none) %}
+            {% set days = (time / 86400) | int(none) %}
               {%- if time == 0 -%}
                 00:00:00
               {%- else -%}
@@ -191,10 +191,10 @@ sensor:
       weekly_bike_duration_calc:
         friendly_name: Weekly Bike Duration Calculated
         value_template: >-
-          {% set time = states('sensor.weekly_bike_duration') | int %}
-            {% set minutes = ((time % 3600) / 60) | int%}
-            {% set hours = ((time % 86400) / 3600) | int %}
-            {% set days = (time / 86400) | int %}
+          {% set time = states('sensor.weekly_bike_duration') | int(none) %}
+            {% set minutes = ((time % 3600) / 60) | int(none)%}
+            {% set hours = ((time % 86400) / 3600) | int(none) %}
+            {% set days = (time / 86400) | int(none) %}
               {%- if time == 0 -%}
                 00:00:00
               {%- else -%}
@@ -233,10 +233,10 @@ sensor:
       monthly_bike_duration_calc:
         friendly_name: Monthly Bike Duration Calculated
         value_template: >-
-          {% set time = states('sensor.monthly_bike_duration') | int %}
-            {% set minutes = ((time % 3600) / 60) | int%}
-            {% set hours = ((time % 86400) / 3600) | int %}
-            {% set days = (time / 86400) | int %}
+          {% set time = states('sensor.monthly_bike_duration') | int(none) %}
+            {% set minutes = ((time % 3600) / 60) | int(none)%}
+            {% set hours = ((time % 86400) / 3600) | int(none) %}
+            {% set days = (time / 86400) | int(none) %}
               {%- if time == 0 -%}
                 00:00:00
               {%- else -%}
@@ -275,10 +275,10 @@ sensor:
       yearly_bike_duration_calc:
         friendly_name: Yearly Bike Duration Calculated
         value_template: >-
-          {% set time = states('sensor.yearly_bike_duration') | int %}
-            {% set minutes = ((time % 3600) / 60) | int%}
-            {% set hours = ((time % 86400) / 3600) | int %}
-            {% set days = (time / 86400) | int %}
+          {% set time = states('sensor.yearly_bike_duration') | int(none) %}
+            {% set minutes = ((time % 3600) / 60) | int(none)%}
+            {% set hours = ((time % 86400) / 3600) | int(none) %}
+            {% set days = (time / 86400) | int(none) %}
               {%- if time == 0 -%}
                 00:00:00
               {%- else -%}
@@ -317,10 +317,10 @@ sensor:
       career_bike_duration_calc:
         friendly_name: Career Bike Duration Calculated
         value_template: >-
-          {% set time = states('sensor.career_bike_duration') | int %}
-            {% set minutes = ((time % 3600) / 60) | int%}
-            {% set hours = ((time % 86400) / 3600) | int %}
-            {% set days = (time / 86400) | int %}
+          {% set time = states('sensor.career_bike_duration') | int(none) %}
+            {% set minutes = ((time % 3600) / 60) | int(none)%}
+            {% set hours = ((time % 86400) / 3600) | int(none) %}
+            {% set days = (time / 86400) | int(none) %}
               {%- if time == 0 -%}
                 00:00:00
               {%- else -%}

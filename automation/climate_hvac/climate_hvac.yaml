@@ -184,7 +184,7 @@
   id: 97598ddb-9626-4cd2-ab18-5893ab43ef10
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.master_work_alarm' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false)) }}"
+      value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.master_work_alarm' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false, none)) }}"
   condition:
     - condition: time
       weekday:

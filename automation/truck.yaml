@@ -169,7 +169,7 @@
   id: 0286c6cf-a72d-444d-9509-8f9c4ee6ec1f
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.work_leave_time' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false)) }}"
+      value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.work_leave_time' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false, none)) }}"
   condition:
     - condition: and
       conditions:
@@ -203,13 +203,13 @@
   action:
     - service: script.activate_alexa_actionable_notification
       data_template:
-        text: "The temperature is {{states('sensor.acurite_outside_temperature') | int }} degrees.  Would you like to start your truck?"
+        text: "The temperature is {{states('sensor.acurite_outside_temperature') | int(none) }} degrees.  Would you like to start your truck?"
         event_id: "actionable_notification_start_truck"
         alexa_device: "media_player.alexa_den"
     - service: notify.mobile_app_shawn_7t
       data_template:
         title: Heading Home
-        message: "The temperature is {{states('sensor.acurite_outside_temperature') | int }} degrees.  Would you like to start your truck?"
+        message: "The temperature is {{states('sensor.acurite_outside_temperature') | int(none) }} degrees.  Would you like to start your truck?"
         data:
           ttl: 0
           priority: high
