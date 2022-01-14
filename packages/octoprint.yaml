@@ -8,22 +8,22 @@ sensor:
   - platform: template
     sensors:
       nozzle_temp_actual:
-        value_template: "{{ (((states.sensor.prusa_mk3_actual_tool0_temp.state | float(none)) - 32) * 5/9) | round(1) }}"
+        value_template: "{{ (((states.sensor.prusa_mk3_actual_tool0_temp.state | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
       nozzle_temp_target:
-        value_template: "{{ (((states.sensor.prusa_mk3_target_tool0_temp.state | float(none)) - 32) * 5/9) | round(1) }}"
+        value_template: "{{ (((states.sensor.prusa_mk3_target_tool0_temp.state | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
       bed_temp_actual:
-        value_template: "{{ (((states.sensor.prusa_mk3_actual_bed_temp.state | float(none)) - 32) * 5/9) | round(1) }}"
+        value_template: "{{ (((states.sensor.prusa_mk3_actual_bed_temp.state | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
       bed_temp_target:
-        value_template: "{{ (((states.sensor.prusa_mk3_target_bed_temp.state | float(none)) - 32) * 5/9) | round(1) }}"
+        value_template: "{{ (((states.sensor.prusa_mk3_target_bed_temp.state | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
       elapsed_print_time:
         value_template: >-
-          {% set time = states.sensor.prusa_mk3_time_elapsed.state | int %}
-            {% set minutes = ((time / 60) % 60) | int%}
-            {% set hours = (time / 3600) | int %}
+          {% set time = states.sensor.prusa_mk3_time_elapsed.state | int(none) %}
+            {% set minutes = ((time / 60) % 60) | int(none)%}
+            {% set hours = (time / 3600) | int(none) %}
               {%- if time < 60-%}
                 00:00
               {%- else -%}
@@ -52,9 +52,9 @@ sensor:
 
       remaining_print_time:
         value_template: >-
-          {% set time = states.sensor.prusa_mk3_time_remaining.state | int %}
-            {% set minutes = ((time / 60) % 60) | int%}
-            {% set hours = (time / 3600) | int %}
+          {% set time = states.sensor.prusa_mk3_time_remaining.state | int(none) %}
+            {% set minutes = ((time / 60) % 60) | int(none)%}
+            {% set hours = (time / 3600) | int(none) %}
               {%- if time < 60-%}
                 00:00
               {%- else -%}

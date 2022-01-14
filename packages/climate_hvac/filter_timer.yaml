@@ -13,7 +13,7 @@ automation:
       - service: input_number.set_value
         entity_id: input_number.hvac_runtime
         data_template:
-          value: "{{ ((states('sensor.furnace_filter_life') | float(none)) + (states('sensor.hvac_runtime_yesterday') | float(none))) | round(1) }}"
+          value: "{{ ((states('sensor.furnace_filter_life') | float(none)) + (states('sensor.hvac_runtime_yesterday') | float(none))) | round(1, default=none) }}"
 
   - alias: Reset Filter Timer From NFC
     id: 2e8959cf-136f-4d39-b630-67370320cabf
@@ -86,13 +86,13 @@ binary_sensor:
 
       hvac_filter_needs_replacement:
         friendly_name: HVAC Filter Needs Replacement
-        value_template: "{{ states('sensor.furnace_filter_life') | int > states('input_number.replacement_threshold') | int }}"
+        value_template: "{{ states('sensor.furnace_filter_life') | int(none) > states('input_number.replacement_threshold') | int(none) }}"
 
       hvac_needs_bleach:
         friendly_name: HVAC Needs Bleach
         value_template: >
           {% set x = states('sensor.time') %}
-          {{ ((((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_bleach.state, none))) | int /60/1440) | round(0)) > 30) and ( (((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_last_cool.state, none))) | int /60/1440) | round(0)) <= 30 )}}
+          {{ ((((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_bleach.state, none))) | int(none) /60/1440) | round(0, default=none)) > 30) and ( (((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_last_cool.state, none))) | int(none) /60/1440) | round(0, default=none)) <= 30 )}}
 
 sensor:
   # Runtime yesterday (for use in storing runtime each night)
@@ -141,13 +141,13 @@ sensor:
         value_template: >
           {% set active = states('sensor.hvac_runtime_today') | float(none) %}
           {% set runtime = states('input_number.hvac_runtime') | float(none) %}
-          {{ (runtime + active) | round(1) }}
+          {{ (runtime + active) | round(1, default=none) }}
         unit_of_measurement: "h"
 
       # Calculate average runtime in the last 7 days
       average_total_runtime_week:
         friendly_name: "Average total runtime last 7 days"
-        value_template: "{{ ((states('sensor.hvac_runtime_last_7_days') | float(none)) / 7) | round(2) }}"
+        value_template: "{{ ((states('sensor.hvac_runtime_last_7_days') | float(none)) / 7) | round(2, default=none) }}"
         unit_of_measurement: "h"
 
       # Calculate number of days until filter will need to be changed based on replacement threshold and rolling average
@@ -156,10 +156,10 @@ sensor:
         value_template: >
           {% if (states('sensor.average_total_runtime_week') | float(none)) == 0 %}
             > 30
-          {% elif ((((states('input_number.replacement_threshold') | float(none)) - (states('sensor.furnace_filter_life') | float(none))) / (states('sensor.average_total_runtime_week') | float(none))) | round(0)) > 30 %}
+          {% elif ((((states('input_number.replacement_threshold') | float(none)) - (states('sensor.furnace_filter_life') | float(none))) / (states('sensor.average_total_runtime_week') | float(none))) | round(0, default=none)) > 30 %}
             > 30
           {% else %}
-            {{ (((states('input_number.replacement_threshold') | float(none)) - (states('sensor.furnace_filter_life') | float(none))) / (states('sensor.average_total_runtime_week') | float(none))) | round(0) }}
+            {{ (((states('input_number.replacement_threshold') | float(none)) - (states('sensor.furnace_filter_life') | float(none))) / (states('sensor.average_total_runtime_week') | float(none))) | round(0, default=none) }}
           {% endif %}
         unit_of_measurement: "d"
 
@@ -196,7 +196,7 @@ sensor:
         friendly_name: Filter Differential Pressure Increase
         value_template: >-
           {% if (states('sensor.beginning_filter_dp') | float(none)) > 0 %}
-            {{ (((states('sensor.maximum_filter_dp') | float(none) - states('sensor.beginning_filter_dp') | float(none)) / states('sensor.beginning_filter_dp') | float(none)) * 100) | round(2) }}
+            {{ (((states('sensor.maximum_filter_dp') | float(none) - states('sensor.beginning_filter_dp') | float(none)) / states('sensor.beginning_filter_dp') | float(none)) * 100) | round(2, default=none) }}
           {% else -%}
             0
           {% endif -%}

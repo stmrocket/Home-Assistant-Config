@@ -16,27 +16,27 @@ sensor:
   - platform: template
     sensors:
       rain_minute:
-        value_template: "{{ (states('counter.rain_minute') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_minute') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_hour:
-        value_template: "{{ (states('counter.rain_hour') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_hour') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_day:
-        value_template: "{{ (states('counter.rain_day') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_day') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_month:
-        value_template: "{{ (states('counter.rain_month') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_month') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_year:
-        value_template: "{{ (states('counter.rain_year') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_year') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_total:
-        value_template: "{{ (states('counter.rain_total') |int / 100) | round(2) }}"
+        value_template: "{{ (states('counter.rain_total') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_last_60_minutes:
@@ -103,7 +103,7 @@ sensor:
              states('input_number.rain_minute_56') | float(none) +
              states('input_number.rain_minute_57') | float(none) +
              states('input_number.rain_minute_58') | float(none) +
-             states('input_number.rain_minute_59') | float) | round(2) }}
+             states('input_number.rain_minute_59') | float) | round(2, default=none) }}
         unit_of_measurement: "in/hr"
 
   - platform: statistics

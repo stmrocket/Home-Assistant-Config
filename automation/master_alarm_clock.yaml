@@ -94,7 +94,7 @@
   id: 4c15279d-7f86-4ae6-98ce-5fbdfaefc3b6
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int | timestamp_custom('%H:%M', False, none)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int(none) | timestamp_custom('%H:%M', False, none)) }}"
   condition:
     - condition: state
       entity_id: alarm_control_panel.house

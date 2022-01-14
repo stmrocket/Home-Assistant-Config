@@ -5,7 +5,7 @@ vacuum:
     vacuums:
       roomba:
         value_template: "{{ states('sensor.roomba_state') }}"
-        battery_level_template: "{{ states('sensor.roomba_battery_level') | int }}"
+        battery_level_template: "{{ states('sensor.roomba_battery_level') | int(none) }}"
         start:
           service: mqtt.publish
           data:
@@ -48,7 +48,7 @@ sensor:
       roomba_status:
         friendly_name: "Roomba Status"
         value_template: >-
-          {% if is_state('vacuum.roomba', 'docked') and states('counter.roomba_cycles') | int >= 5 -%}
+          {% if is_state('vacuum.roomba', 'docked') and states('counter.roomba_cycles') | int(none) >= 5 -%}
             full
           {% else -%}
             {{ states('vacuum.roomba') }}
