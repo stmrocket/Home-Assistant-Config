@@ -92,7 +92,7 @@ binary_sensor:
         friendly_name: HVAC Needs Bleach
         value_template: >
           {% set x = states('sensor.time') %}
-          {{ ((((as_timestamp(now()) - (as_timestamp(states.input_text.furnace_bleach.state))) | int /60/1440) | round(0)) > 30) and ( (((as_timestamp(now()) - (as_timestamp(states.input_text.furnace_last_cool.state))) | int /60/1440) | round(0)) <= 30 )}}
+          {{ ((((as_timestamp(now(), 0) - (as_timestamp(states.input_text.furnace_bleach.state, 0))) | int /60/1440) | round(0)) > 30) and ( (((as_timestamp(now(), 0) - (as_timestamp(states.input_text.furnace_last_cool.state, 0))) | int /60/1440) | round(0)) <= 30 )}}
 
 sensor:
   # Runtime yesterday (for use in storing runtime each night)
@@ -111,8 +111,8 @@ sensor:
     entity_id: binary_sensor.hvac_running
     state: "on"
     type: time
-    start: "{{ as_timestamp(now().replace(hour=0).replace(minute=0).replace(second=0)) }}"
-    end: "{{ as_timestamp(states('input_text.furnace_filter')) }}"
+    start: "{{ as_timestamp(now().replace(hour=0).replace(minute=0).replace(second=0), 0) }}"
+    end: "{{ as_timestamp(states('input_text.furnace_filter'), 0) }}"
 
   # Today's Runtime
   - platform: history_stats
