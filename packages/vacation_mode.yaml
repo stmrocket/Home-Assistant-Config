@@ -10,7 +10,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -19,7 +19,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -28,7 +28,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -37,7 +37,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -46,7 +46,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -55,7 +55,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -64,7 +64,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -73,7 +73,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -82,7 +82,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -91,7 +91,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -100,7 +100,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -109,7 +109,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -118,7 +118,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -127,7 +127,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -136,7 +136,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -145,7 +145,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -154,7 +154,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
   - platform: history_stats
@@ -163,7 +163,7 @@ sensor:
     state: "on"
     type: count
     start: >
-      {{ as_timestamp(now()) - (7*86400) }}
+      {{ as_timestamp(now(), 0) - (7*86400) }}
     duration: 00:00:30
 
 automation:
