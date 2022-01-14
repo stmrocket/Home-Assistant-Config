@@ -2,7 +2,7 @@
   id: 9179c7ea-cf4b-401b-b2bc-96bf1f329c91
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_work_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_work_alarm', 'timestamp') | timestamp_custom('%H:%M', False, 0)) }}"
   condition:
     - condition: time
       weekday:
