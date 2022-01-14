@@ -17,7 +17,7 @@
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/info
-        payload_template: "1,{{ (state_attr('media_player.spotify_home', 'media_duration') | float * 10) | float |  round(0)}},{{ (state_attr('media_player.spotify_home', 'media_position') | float * 10) | float |  round(0)}},{% if is_state('media_player.spotify_home', 'playing')  -%}2{%- elif is_state('media_player.spotify_home', 'paused') -%}3{%- else -%}1{%- endif %}"
+        payload_template: "1,{{ (state_attr('media_player.spotify_home', 'media_duration') | float(none) * 10) | float(none) |  round(0)}},{{ (state_attr('media_player.spotify_home', 'media_position') | float(none) * 10) | float(none) |  round(0)}},{% if is_state('media_player.spotify_home', 'playing')  -%}2{%- elif is_state('media_player.spotify_home', 'paused') -%}3{%- else -%}1{%- endif %}"
 
 - alias: Spotify Update Keypad Dispinfo when pausing
   id: 977dad9d-867e-4026-89ca-d7547a896a6e
@@ -29,7 +29,7 @@
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/source/info
-        payload_template: "1,{{ (state_attr('media_player.spotify_home', 'media_duration') | float * 10) | float |  round(0)}},{{ (state_attr('media_player.spotify_home', 'media_position') | float * 10) | float |  round(0)}},{% if is_state('media_player.spotify_home', 'playing')  -%}2{%- elif is_state('media_player.spotify_home', 'paused') -%}3{%- else -%}1{%- endif %}"
+        payload_template: "1,{{ (state_attr('media_player.spotify_home', 'media_duration') | float(none) * 10) | float(none) |  round(0)}},{{ (state_attr('media_player.spotify_home', 'media_position') | float(none) * 10) | float(none) |  round(0)}},{% if is_state('media_player.spotify_home', 'playing')  -%}2{%- elif is_state('media_player.spotify_home', 'paused') -%}3{%- else -%}1{%- endif %}"
 
 - alias: Spotify Update Keypad Displine
   id: 81e2c8e3-3d3e-49c1-af93-96f077533556
@@ -637,7 +637,7 @@
       data_template:
         entity_id: timer.spotify_refresh
         duration: >-
-          {{ (state_attr('media_player.spotify_home','media_duration') | float - state_attr('media_player.spotify_home','media_position') | float) | round (0) }}
+          {{ (state_attr('media_player.spotify_home','media_duration') | float(none) - state_attr('media_player.spotify_home','media_position') | float(none)) | round (0) }}
 
 - alias: Spotify Refresh Info
   id: bafb5366-066c-4a98-b035-aaff2db0726b

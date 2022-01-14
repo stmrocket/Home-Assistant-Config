@@ -9,11 +9,11 @@ sensor:
       water_heater_status:
         friendly_name: "Water Heater Status"
         value_template: >-
-          {% if states('sensor.thermopile_voltage') | float > 0.15-%}
+          {% if states('sensor.thermopile_voltage') | float(none) > 0.15-%}
             Idle
-          {% elif states('sensor.thermopile_voltage') | float > 0.10-%}
+          {% elif states('sensor.thermopile_voltage') | float(none) > 0.10-%}
             Heating
-          {% elif  states('sensor.thermopile_voltage') | float < 0.10-%}
+          {% elif  states('sensor.thermopile_voltage') | float(none) < 0.10-%}
             Pilot Fail
           {% else -%}
             Error

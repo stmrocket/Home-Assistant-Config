@@ -169,7 +169,7 @@
   id: 0286c6cf-a72d-444d-9509-8f9c4ee6ec1f
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.work_leave_time' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false, 0)) }}"
+      value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.work_leave_time' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false, none)) }}"
   condition:
     - condition: and
       conditions:

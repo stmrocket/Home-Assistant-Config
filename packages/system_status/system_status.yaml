@@ -712,7 +712,7 @@ sensor:
       hass_uptime:
         friendly_name: Home Assistant Uptime
         value_template: >-
-          {% set time = (as_timestamp(now(), 0) - as_timestamp(states('sensor.time_online'), 0)) / 60 | int(default=0) %}
+          {% set time = (as_timestamp(now(), none) - as_timestamp(states('sensor.time_online'), none)) / 60 | int(default=0) %}
             {% set minutes = ((time % 60) ) | int%}
             {% set hours = ((time % 1440) / 60) | int %}
             {% set days = (time / 1440) | int %}
