@@ -13,7 +13,7 @@
     - service: script.alexa_den_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Entry Timer Announcement
@@ -31,7 +31,7 @@
     - service: script.alexa_entry_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Guest Timer Announcement
@@ -49,7 +49,7 @@
     - service: script.alexa_guest_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Master Timer Announcement
@@ -67,7 +67,7 @@
     - service: script.alexa_master_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Office Timer Announcement
@@ -85,7 +85,7 @@
     - service: script.alexa_office_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
           | timestamp_custom('%H:%M:%S', false) }}"
 
 - alias: Alexa Server Timer Announcement
@@ -103,5 +103,5 @@
     - service: script.alexa_server_timer_announce
       data_template:
         duration:
-          "{{ (as_timestamp(trigger.to_state.state) - now().timestamp() + 2)
+          "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
           | timestamp_custom('%H:%M:%S', false) }}"
