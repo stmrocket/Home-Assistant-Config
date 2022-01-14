@@ -12,7 +12,7 @@ sensor:
 
       press_in:
         unit_of_measurement: in
-        value_template: "{{ (states('sensor.aquara_den_pressure') | (0) * 0.02953) | round(2) }}"
+        value_template: "{{ (states('sensor.aquara_den_pressure') | float(none) * 0.02953) | round(2) }}"
 
       sunlight_pct:
         value_template: >-
