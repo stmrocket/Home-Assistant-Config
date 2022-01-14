@@ -2,7 +2,7 @@
   id: a36059c4-113a-4f4a-afee-f5ac0fae1364
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_work_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_work_alarm', 'timestamp') | timestamp_custom('%H:%M', False, 0)) }}"
   condition:
     - condition: and
       conditions:
@@ -39,7 +39,7 @@
   id: bda07d35-b7c1-4f6a-95f6-0edc9fe0d2ca
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False, 0)) }}"
   condition:
     - condition: state
       entity_id: alarm_control_panel.house
@@ -94,7 +94,7 @@
   id: 4c15279d-7f86-4ae6-98ce-5fbdfaefc3b6
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | int | timestamp_custom('%H:%M', False, 0)) }}"
   condition:
     - condition: state
       entity_id: alarm_control_panel.house
@@ -652,7 +652,7 @@
   id: 244de2b5-706b-435d-b20e-dfbeaf00675b
   trigger:
     - platform: template
-      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False)) }}"
+      value_template: "{{ states('sensor.time') == (state_attr('input_datetime.master_manual_alarm', 'timestamp') | timestamp_custom('%H:%M', False, 0)) }}"
   condition:
     - condition: or
       conditions:
