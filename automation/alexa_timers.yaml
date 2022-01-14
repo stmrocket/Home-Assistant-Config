@@ -14,7 +14,7 @@
       data_template:
         duration:
           "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          | timestamp_custom('%H:%M:%S', false, 0) }}"
 
 - alias: Alexa Entry Timer Announcement
   id: b1302296-1f3d-4626-bf4a-d983201254db
@@ -32,7 +32,7 @@
       data_template:
         duration:
           "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          | timestamp_custom('%H:%M:%S', false, 0) }}"
 
 - alias: Alexa Guest Timer Announcement
   id: 73a962b7-958d-4a06-9bc2-cd39fda44354
@@ -50,7 +50,7 @@
       data_template:
         duration:
           "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          | timestamp_custom('%H:%M:%S', false, 0) }}"
 
 - alias: Alexa Master Timer Announcement
   id: f73bf3c4-d083-40e1-9674-6e77536683b6
@@ -68,7 +68,7 @@
       data_template:
         duration:
           "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          | timestamp_custom('%H:%M:%S', false, 0) }}"
 
 - alias: Alexa Office Timer Announcement
   id: 977de87a-18b8-4966-a7d6-bc1bcbf9ff71
@@ -86,7 +86,7 @@
       data_template:
         duration:
           "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          | timestamp_custom('%H:%M:%S', false, 0) }}"
 
 - alias: Alexa Server Timer Announcement
   id: 56adc461-f7f0-41a4-98e5-98beb6188219
@@ -104,4 +104,4 @@
       data_template:
         duration:
           "{{ (as_timestamp(trigger.to_state.state, 0) - now().timestamp() + 2)
-          | timestamp_custom('%H:%M:%S', false) }}"
+          | timestamp_custom('%H:%M:%S', false, 0) }}"
