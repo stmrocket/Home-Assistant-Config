@@ -6,7 +6,7 @@ conditions:
   - entity: switch.christmas_tree
     state_not: "unknown"
 card:
-  type: custom:vertical-stack-in-card
+  type: custom:stack-in-card
   cards:
     - type: picture-elements
       image: /local/lovelace/room_sm.png

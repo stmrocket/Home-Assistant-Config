@@ -16,7 +16,7 @@ cards:
   #################################################################
   - type: vertical-stack
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         title: System
         cards:
           - type: horizontal-stack

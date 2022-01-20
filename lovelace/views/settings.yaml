@@ -14,7 +14,7 @@ popup_cards:
 cards:
   - type: vertical-stack
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: picture-elements
             image: /local/lovelace/room.png
@@ -391,7 +391,7 @@ cards:
   - type: vertical-stack
     cards:
       - !include /config/lovelace/cards/rooms/work.yaml
-      - type: 'custom:vertical-stack-in-card'
+      - type: 'custom:stack-in-card'
         cards:
           - type: picture-elements
             image: /local/lovelace/room_sm.png
@@ -443,7 +443,7 @@ cards:
           - entity: sensor.prusa_mk3_current_state
             state_not: "unavailable"
         card:
-          type: "custom:vertical-stack-in-card"
+          type: "custom:stack-in-card"
           cards:
             - type: picture-elements
               image: /local/lovelace/room.png

@@ -18,7 +18,7 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: custom:mini-graph-card
             entities:
@@ -159,7 +159,7 @@ cards:
       #                                                               #
       #################################################################
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: picture-elements
             image: /local/lovelace/room.png
@@ -187,7 +187,7 @@ cards:
             cards:
               - type: horizontal-stack
                 cards:
-                  - type: custom:vertical-stack-in-card
+                  - type: custom:stack-in-card
                     cards:
                       - type: custom:bar-card
                         name: Disk
@@ -303,7 +303,7 @@ cards:
                             display: none;
                           }
 
-                  - type: custom:vertical-stack-in-card
+                  - type: custom:stack-in-card
                     cards:
                       - type: custom:bar-card
                         name: CPU
@@ -425,7 +425,7 @@ cards:
       #                                                               #
       #################################################################
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: picture-elements
             image: /local/lovelace/room.png
@@ -1236,7 +1236,7 @@ cards:
   #################################################################
   - type: vertical-stack
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: picture-elements
             image: /local/lovelace/room.png
@@ -1329,7 +1329,7 @@ cards:
                 hold_action:
                   action: more-info
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: picture-elements
             image: /local/lovelace/room.png
@@ -1670,7 +1670,7 @@ cards:
 
   - type: vertical-stack
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: picture-elements
             image: /local/lovelace/room.png
