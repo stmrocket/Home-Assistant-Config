@@ -34,7 +34,7 @@ cards:
               progress: true
               name: true
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: picture-elements
             image: /local/lovelace/room.png
@@ -230,7 +230,7 @@ cards:
                 info: true
                 progress: true
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: picture-elements
             image: /local/lovelace/room.png

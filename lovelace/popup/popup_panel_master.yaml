@@ -89,7 +89,7 @@ cover.master_blinds:
 input_boolean.work_alarm_enabled:
   title: Work Alarm
   card:
-    type: custom:vertical-stack-in-card
+    type: custom:stack-in-card
     cards:
       - type: entities
         show_header_toggle: false
@@ -118,7 +118,7 @@ input_boolean.work_alarm_enabled:
 input_boolean.manual_alarm_enabled:
   title: Manual Alarm Clock
   card:
-    type: custom:vertical-stack-in-card
+    type: custom:stack-in-card
     cards:
       - type: horizontal-stack
         cards:

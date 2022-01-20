@@ -1,6 +1,6 @@
 #Master Suite HVAC Card
 
-type: custom:vertical-stack-in-card
+type: custom:stack-in-card
 cards:
   - type: custom:simple-thermostat
     entity: climate.master_suite

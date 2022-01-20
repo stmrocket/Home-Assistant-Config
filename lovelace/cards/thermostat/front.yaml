@@ -1,5 +1,5 @@
 #Front Rooms HVAC Card
-type: custom:vertical-stack-in-card
+type: custom:stack-in-card
 cards:
   - type: custom:simple-thermostat
     entity: climate.front_rooms
