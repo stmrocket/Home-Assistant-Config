@@ -473,7 +473,7 @@ sensor.wan_in_mbps:
         name: Daily
         icon: mdi:harddisk
       - entity: sensor.wan_in_monthly
-        name: Daily
+        name: Monthly
         icon: mdi:harddisk
 
 sensor.wan_out_mbps:
@@ -483,10 +483,10 @@ sensor.wan_out_mbps:
     entities:
       - entity: sensor.wan_out_mbps
         name: Current
-        icon: mdi:transfer-down
+        icon: mdi:transfer-up
       - entity: sensor.wan_out_daily
         name: Daily
         icon: mdi:harddisk
       - entity: sensor.wan_out_monthly
-        name: Daily
+        name: Monthly
         icon: mdi:harddisk
