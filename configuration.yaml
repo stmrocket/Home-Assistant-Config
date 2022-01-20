@@ -131,6 +131,8 @@ lovelace:
       type: module    
     - url: /hacsfiles/our-groceries-card/our-groceries-card.js
       type: module
+    - url: /hacsfiles/stack-in-card/stack-in-card.js
+      type: module
     
 
 # Discover some devices automatically
