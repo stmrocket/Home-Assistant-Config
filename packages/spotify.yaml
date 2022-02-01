@@ -39,6 +39,7 @@ input_select:
   spotify_playlist:
     name: Playlist
     options:
+      - Top Christian Contemporary
       - Top Christian
       - Christian Mix
       - WorshipNow
@@ -55,6 +56,7 @@ input_select:
   spotify_work_alarm_playlist:
     name: Playlist
     options:
+      - Top Christian Contemporary
       - Top Christian
       - Christian Mix
       - WorshipNow
@@ -71,6 +73,7 @@ input_select:
   spotify_manual_alarm_playlist:
     name: Playlist
     options:
+      - Top Christian Contemporary
       - Top Christian
       - Christian Mix
       - WorshipNow
@@ -87,6 +90,7 @@ input_select:
   spotify_restore_playlist:
     name: Playlist
     options:
+      - Top Christian Contemporary
       - Top Christian
       - Christian Mix
       - WorshipNow
@@ -316,6 +320,19 @@ script:
                   entity_id: media_player.spotify_home
                   media_content_type: playlist
                   media_content_id: spotify:playlist:50Yv0e9mTtNO2vJqwwNfbp
+              - service: homeassistant.update_entity
+                entity_id: media_player.spotify_home
+
+          - conditions:
+              - condition: state
+                entity_id: input_select.spotify_playlist
+                state: "Top Christian Contemporary"
+            sequence:
+              - service: media_player.play_media
+                data:
+                  entity_id: media_player.spotify_home
+                  media_content_type: playlist
+                  media_content_id: spotify:playlist:37i9dQZF1DWUileP28ODwg
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
 
