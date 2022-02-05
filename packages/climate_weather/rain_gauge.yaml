@@ -106,13 +106,6 @@ sensor:
              states('input_number.rain_minute_59') | float) | round(2, default=none) }}
         unit_of_measurement: "in/hr"
 
-  - platform: statistics
-    name: Hourly Total Rain Statistics
-    entity_id: sensor.rain_total
-    sampling_size: 4000
-    max_age:
-      minutes: 60
-
 input_number:
   rain_minute_00:
     min: 0

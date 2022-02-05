@@ -36,14 +36,7 @@ sensor:
     name: AcuRite Outside Humidity
     state_topic: rtl_433/8860/humidity
     unit_of_measurement: "%"
-
-  - platform: statistics
-    name: AcuRite WS Hourly Total Rain Statistics
-    entity_id: sensor.acurite_ws_cumulative_rainfall
-    sampling_size: 4000
-    max_age:
-      minutes: 60
-
+    
   - platform: template
     sensors:
       acurite_ws_rain_last_60_minutes:
