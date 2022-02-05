@@ -11,7 +11,6 @@ from homeassistant.const import (
 )
 
 DOMAIN = "garmin_connect"
-ATTRIBUTION = "connect.garmin.com"
 DATA_COORDINATOR = "coordinator"
 DEFAULT_UPDATE_INTERVAL = timedelta(minutes=5)
 
@@ -348,7 +347,7 @@ GARMIN_ENTITY_LIST = {
     "bmi": ["BMI", "bmi", "mdi:food", None, False],
     "bodyFat": ["Body Fat", PERCENTAGE, "mdi:food", None, False],
     "bodyWater": ["Body Water", PERCENTAGE, "mdi:water-percent", None, False],
-    "bodyMass": ["Body Mass", MASS_KILOGRAMS, "mdi:food", None, False],
+    "boneMass": ["Bone Mass", MASS_KILOGRAMS, "mdi:bone", None, False],
     "muscleMass": ["Muscle Mass", MASS_KILOGRAMS, "mdi:dumbbell", None, False],
     "physiqueRating": ["Physique Rating", None, "mdi:numeric", None, False],
     "visceralFat": ["Visceral Fat", PERCENTAGE, "mdi:food", None, False],

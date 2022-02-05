@@ -138,14 +138,6 @@ lovelace:
 # Discover some devices automatically
 discovery:
 
-#Blinds
-cover:
-  #MyQ
-  - platform: myq
-    username: !secret myq_user
-    password: !secret myq_pass
-    type: chamberlain
-
 # Sensors
 sensor:
   #Fireplace

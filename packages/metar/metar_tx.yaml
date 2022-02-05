@@ -46,7 +46,7 @@ sensor:
   - platform: mqtt
     name: "Texas METAR Map IP"
     state_topic: "metar/tx/tele/status"
-    value_template: "{{value_json['bridgeIP']}}"
+    value_template: "{{value_json['mapIP']}}"
     availability_topic: "metar/tx/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
