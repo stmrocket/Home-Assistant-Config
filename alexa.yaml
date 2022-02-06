@@ -64,6 +64,9 @@ smart_home:
       - switch.master_bedroom_lamps
       - switch.water_projector
       - switch.manual_timer_lights
+      - switch.houston_metar_map_power
+      - switch.texas_metar_map_power
+      - switch.us_metar_map_power
 
       #INPUT BOOLEAN
       - input_boolean.bedtime_trigger
@@ -82,6 +85,9 @@ smart_home:
       - input_boolean.unlock_truck
       - input_boolean.lock_truck
       - input_boolean.frigate_enabled
+      - input_boolean.hou_metar_mode
+      - input_boolean.tx_metar_mode
+      - input_boolean.us_metar_mode
 
       #LOCK
       - lock.front_door
@@ -201,4 +207,10 @@ smart_home:
     cover.guest_blind:
       name: Guest Blinds
     cover.server_room_blind:
-      name: Server Room Blinds
+      name: Server Room Blinds    
+    switch.houston_metar_map_power:
+      name: Houston Map  
+    switch.texas_metar_map_power:
+      name: Texas Map
+    switch.us_metar_map_power:
+      name: US Map
