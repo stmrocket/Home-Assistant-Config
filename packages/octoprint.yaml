@@ -21,7 +21,7 @@ sensor:
 
       elapsed_print_time:
         value_template: >-
-          {% set time = states.sensor.prusa_mk3_time_elapsed.state | int(none) %}
+          {% set time = as_timestamp(now(),0) - as_timestamp(states('sensor.prusa_mk3_start_time'),0) %}
             {% set minutes = ((time / 60) % 60) | int(none)%}
             {% set hours = (time / 3600) | int(none) %}
               {%- if time < 60-%}
@@ -52,7 +52,38 @@ sensor:
 
       remaining_print_time:
         value_template: >-
-          {% set time = states.sensor.prusa_mk3_time_remaining.state | int(none) %}
+          {% set time = as_timestamp(states('sensor.prusa_mk3_estimated_finish_time'),0) - as_timestamp(now(),0) %}
+            {% set minutes = ((time / 60) % 60) | int(none)%}
+            {% set hours = (time / 3600) | int(none) %}
+              {%- if time < 60-%}
+                00:00
+              {%- else -%}
+              {%- if hours == 0 -%}
+                00
+              {%- endif -%}
+              {%- if hours > 0 -%}
+            
+                {%- if hours < 10 -%}
+                  0{{ hours }}
+                {%- else -%}
+                  {{ hours }}
+                {%- endif -%}
+              {%- endif -%}
+              {%- if minutes == 0 -%}
+                :00
+              {%- endif -%}
+              {%- if minutes > 0 -%}
+                {%- if minutes < 10 -%}
+                  :0{{ minutes }}
+                {%- else -%}
+                  :{{ minutes }}
+                {%- endif -%}
+              {%- endif -%}
+              {%- endif -%}
+
+      total_print_time:
+        value_template: >-
+          {% set time = as_timestamp(states('sensor.prusa_mk3_estimated_finish_time'),0) - as_timestamp(states('sensor.prusa_mk3_start_time'),0) %}
             {% set minutes = ((time / 60) % 60) | int(none)%}
             {% set hours = (time / 3600) | int(none) %}
               {%- if time < 60-%}
