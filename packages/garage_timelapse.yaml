@@ -1,0 +1,42 @@
+timer:
+  garage_timelapse:
+    name: Garage Timelapse
+    duration: "00:05:00"
+
+automation:
+  - alias: Start Garage Timelapse
+    id: 8a514d10-66b3-489b-9508-b6549acde1c5
+    trigger:
+      - platform: state
+        entity_id: input_boolean.all_garage_lights
+        to: "on"
+    action:
+      - service: timer.start
+        entity_id: timer.garage_timelapse
+      - service: mqtt.publish
+        data:
+          topic: "timelapse/garage"
+
+  - alias: Repeat Garage Timelapse
+    id: dfbf33f2-2435-4511-a156-1c55712e8c28
+    trigger:
+      - event_type: timer.finished
+        platform: event   
+        event_data:
+          entity_id: timer.garage_timelapse     
+    action:
+      - service: timer.start
+        entity_id: timer.garage_timelapse
+      - service: mqtt.publish
+        data:
+          topic: "timelapse/garage"
+
+  - alias: Clear Garage Timelapse
+    id: 255bc041-d93a-4b2b-a4d9-3c7c17e673ab
+    trigger:
+      - platform: state
+        entity_id: input_boolean.all_garage_lights
+        to: "off"
+    action:
+      - service: timer.cancel
+        entity_id: timer.garage_timelapse
