@@ -13,6 +13,8 @@ automation:
     action:
       - service: timer.start
         entity_id: timer.garage_timelapse
+      - delay:
+          seconds: 30
       - service: mqtt.publish
         data:
           topic: "timelapse/garage"
