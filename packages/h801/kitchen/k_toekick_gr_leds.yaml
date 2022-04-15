@@ -14,6 +14,7 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     optimistic: false
+
 automation:
   - alias: k_toekick_gr report on
     id: 0dc6e9c8-9552-4e71-adfb-0785a5cb266e
@@ -32,6 +33,8 @@ automation:
         data:
           topic: h801/k_toekick/ha/state
           payload_template: "ON"
+          retain: true
+
   - alias: k_toekick_gr report off
     id: a24baf76-ca79-4318-837a-bae17ecf8e74
     trigger:
@@ -59,3 +62,4 @@ automation:
         data:
           topic: h801/k_toekick/ha/state
           payload_template: "OFF"
+          retain: true

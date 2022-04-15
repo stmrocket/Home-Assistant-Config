@@ -14,6 +14,7 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     optimistic: false
+
 automation:
   - alias: master_gr report on
     id: 6655d4e6-10ce-433a-9870-52cae71dd3af
@@ -32,6 +33,8 @@ automation:
         data:
           topic: h801/master/ha/state
           payload_template: "ON"
+          retain: true
+
   - alias: master_gr report off
     id: 97a3eaf0-aa1e-46fb-91f5-9d912758a701
     trigger:
@@ -59,3 +62,4 @@ automation:
         data:
           topic: h801/master/ha/state
           payload_template: "OFF"
+          retain: true

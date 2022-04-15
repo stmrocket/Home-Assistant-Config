@@ -14,6 +14,7 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     optimistic: false
+
 automation:
   - alias: kitchen_gr report on
     id: 7c8086cb-f198-418f-b303-ae58f057f48a
@@ -47,6 +48,8 @@ automation:
         data:
           topic: h801/kitchen/ha/state
           payload_template: "ON"
+          retain: true
+
   - alias: kitchen_gr report off
     id: e3109bde-b15c-4758-9d25-3791d041fa22
     trigger:
@@ -104,3 +107,4 @@ automation:
         data:
           topic: h801/kitchen/ha/state
           payload_template: "OFF"
+          retain: true
