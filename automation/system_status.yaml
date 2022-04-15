@@ -8,7 +8,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: A blind controller has been offline for 5 minutes.
@@ -26,7 +26,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: An LED controller has been offline for 5 minutes.
@@ -44,7 +44,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The NAS has been offline for 5 minutes.
@@ -62,7 +62,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The HDHomeRun has been offline for 5 minutes.
@@ -80,7 +80,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The MusicPort server has been offline for 5 minutes.
@@ -98,7 +98,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The OWFS server has been offline for 5 minutes.
@@ -116,7 +116,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The Core switch has been offline for 5 minutes.
@@ -134,7 +134,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The POE switch has been offline for 5 minutes.
@@ -152,7 +152,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The ISY has been offline for 5 minutes.
@@ -170,7 +170,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The alarm panel has been offline for 5 minutes.
@@ -188,7 +188,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The front AP has been offline for 5 minutes.
@@ -206,7 +206,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The den AP has been offline for 5 minutes.
@@ -224,7 +224,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The garage AP has been offline for 5 minutes.
@@ -242,7 +242,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The shed AP has been offline for 5 minutes.
@@ -260,7 +260,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The Redlink bridge has been offline for 5 minutes.
@@ -278,7 +278,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The server room UPS has been offline for 5 minutes.
@@ -296,7 +296,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The office UPS has been offline for 5 minutes.
@@ -311,7 +311,7 @@
       entity_id: sensor.server_ups_status
       to: "Battery"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Server UPS On Battery Power
         message: The server room is running on battery power.
@@ -327,7 +327,7 @@
       from: "Battery"
       to: "Utility"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Server UPS Power Restored
         message: Power has been restored to the server closet.
@@ -342,7 +342,7 @@
       entity_id: sensor.server_ups_remaining_runtime
       below: 11
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Server UPS Battery Low
         message: The server room UPS battery is low.
@@ -357,7 +357,7 @@
       entity_id: sensor.server_ups_battery_status
       to: "2"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Server UPS Replace Battery
         message: The server room UPS battery has failed.  Replace immediately.
@@ -376,7 +376,7 @@
       entity_id: sensor.office_ups_status
       to: "Battery"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Office UPS On Battery Power
         message: The office is running on battery power.
@@ -392,7 +392,7 @@
       from: "Battery"
       to: "Utility"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Office UPS Power Restored
         message: Power has been restored to the office.
@@ -407,7 +407,7 @@
       entity_id: sensor.office_ups_remaining_runtime
       below: 11
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Office UPS Battery Low
         message: The office UPS battery is low.
@@ -422,7 +422,7 @@
       entity_id: sensor.office_ups_battery_status
       to: "2"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Office UPS Replace Battery
         message: The office UPS battery has failed.  Replace immediately.
@@ -443,7 +443,7 @@
       for:
         minutes: 2
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Container Down
         message: The Frigate Docker container is down.
@@ -460,7 +460,7 @@
       for:
         minutes: 2
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Container Down
         message: The TV Headend Docker container is down.
@@ -477,7 +477,7 @@
       for:
         minutes: 2
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Container Down
         message: The Eagle MQTT Docker container is down.
@@ -495,7 +495,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The MQTT Parrot has been offline for 5 minutes.
@@ -513,7 +513,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The clock horn has been offline for 5 minutes.
@@ -531,7 +531,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The RainMachine has been offline for 5 minutes.
@@ -549,7 +549,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The standby generator has been offline for 5 minutes.
@@ -564,7 +564,7 @@
       entity_id: sensor.generator_status
       to: "Running"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Generator Running
         message: The generator is supplying power to the house.
@@ -580,7 +580,7 @@
       from: "Running"
       to: "Standby"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Generator Stopped
         message: The generator has stopped.
@@ -595,7 +595,7 @@
       entity_id: sensor.generator_status
       to: "Error"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Generator Fault
         message: The generator is reporting an error.
@@ -610,7 +610,7 @@
       entity_id: sensor.shack_ups_status
       to: "Battery"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Shack UPS On Battery Power
         message: The shack is running on battery power.
@@ -626,7 +626,7 @@
       from: "Battery"
       to: "Utility"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Shack UPS Power Restored
         message: Power has been restored to the shack.
@@ -641,7 +641,7 @@
       entity_id: sensor.shack_ups_remaining_runtime
       below: 11
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Shack UPS Battery Low
         message: The shack UPS battery is low.
@@ -656,7 +656,7 @@
       entity_id: sensor.shack_ups_battery_status
       to: "2"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Shack UPS Replace Battery
         message: The shack UPS battery has failed.  Replace immediately.
@@ -678,7 +678,7 @@
       for:
         minutes: 5
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Device Offline
         message: The AdGuard server has been offline for 5 minutes.

@@ -6,7 +6,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the dishwasher.
@@ -42,7 +42,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the guest bathroom sink.
@@ -78,7 +78,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the guest bathroom toilet.
@@ -114,7 +114,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the guest kitchen sink.
@@ -150,7 +150,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the left master bathroom sink.
@@ -173,7 +173,7 @@
       to: "unknown"
       for: "30:00:00"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the Right master bathroom sink.
@@ -193,7 +193,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the master bathroom toilet.
@@ -229,7 +229,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the refrigerator.
@@ -265,7 +265,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the right master bathroom sink.
@@ -301,7 +301,7 @@
       from: "off"
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         title: Leak Detected!
         message: A leak has been detected in the utility room.

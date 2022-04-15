@@ -100,7 +100,7 @@
 #       data:
 #         topic: parrot/command/set/play
 #         payload: 3,4
-#     - service: notify.mobile_app_shawn_7t
+#     - service: notify.mobile_app_shawn_g5
 #       data:
 #         message: The donation box has been opened.
 #         title: Donation Box

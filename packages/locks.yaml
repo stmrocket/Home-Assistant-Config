@@ -36,7 +36,7 @@ alert:
     message: "The front door lock battery is low."
     done_message: "The front door lock battery has been replaced."
     notifiers:
-      - mobile_app_shawn_7t
+      - mobile_app_shawn_g5
 
   back_door_lock_battery_low:
     name: Low Battery!
@@ -48,7 +48,7 @@ alert:
     message: "The back door lock battery is low."
     done_message: "The back door lock battery has been replaced."
     notifiers:
-      - mobile_app_shawn_7t
+      - mobile_app_shawn_g5
 
   garage_entry_lock_battery_low:
     name: Low Battery!
@@ -60,7 +60,7 @@ alert:
     message: "The garage entry lock battery is low."
     done_message: "The garage entry lock battery has been replaced."
     notifiers:
-      - mobile_app_shawn_7t
+      - mobile_app_shawn_g5
 
   shed_door_lock_battery_low:
     name: Low Battery!
@@ -72,7 +72,7 @@ alert:
     message: "The shed door lock battery is low."
     done_message: "The shed door lock battery has been replaced."
     notifiers:
-      - mobile_app_shawn_7t
+      - mobile_app_shawn_g5
 
 input_text:
   front_door_lock_status:
