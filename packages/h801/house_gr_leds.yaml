@@ -72,6 +72,8 @@ automation:
         data:
           topic: h801/all/ha/state
           payload_template: "ON"
+          retain: true
+
   - alias: house_gr report off
     id: 5d2a2f66-2f6a-4a79-9e0d-49a516127e68
     trigger:
@@ -177,3 +179,4 @@ automation:
         data:
           topic: h801/all/ha/state
           payload_template: "OFF"
+          retain: true

@@ -14,6 +14,7 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     optimistic: false
+
   - platform: mqtt
     name: "Kitchen Counter LEDs White"
     state_topic: "h801/k_counter/ha/wstate"
@@ -26,6 +27,7 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     optimistic: false
+
 automation:
   - alias: k_counter_gr report on
     id: 788817b5-e3e8-47bd-a500-1c7b4fca56a3
@@ -44,6 +46,8 @@ automation:
         data:
           topic: h801/k_counter/ha/state
           payload_template: "ON"
+          retain: true
+
   - alias: k_counter_gr report off
     id: 30aa8cba-b008-4cd1-8787-6a03a28a540a
     trigger:
@@ -71,6 +75,8 @@ automation:
         data:
           topic: h801/k_counter/ha/state
           payload_template: "OFF"
+          retain: true
+
   - alias: k_counter_gr white report on
     id: c290956d-afc8-4cc8-ae3a-7cef09e1c3ae
     trigger:
@@ -88,6 +94,8 @@ automation:
         data:
           topic: h801/k_counter/ha/wstate
           payload_template: "ON"
+          retain: true
+
   - alias: k_counter_gr white report off
     id: aa628591-96e0-49c5-808f-066aaf188a4b
     trigger:
@@ -115,3 +123,4 @@ automation:
         data:
           topic: h801/k_counter/ha/wstate
           payload_template: "OFF"
+          retain: true

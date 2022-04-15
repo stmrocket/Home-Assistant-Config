@@ -33,6 +33,7 @@ automation:
         data:
           topic: h801/d_windows/ha/state
           payload_template: "ON"
+          retain: true
 
   - alias: den_window_gr report off
     id: 0e4724a9-c2f2-4935-831f-7dbb7e0eca82
@@ -61,3 +62,4 @@ automation:
         data:
           topic: h801/d_windows/ha/state
           payload_template: "OFF"
+          retain: true

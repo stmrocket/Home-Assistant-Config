@@ -14,6 +14,7 @@ light:
     payload_on: "ON"
     payload_off: "OFF"
     optimistic: false
+
 automation:
   - alias: k_upper_gr report on
     id: eaf5e0a7-b2e9-497c-8b4e-a0622f4baf54
@@ -29,6 +30,8 @@ automation:
         data:
           topic: h801/k_upper/ha/state
           payload_template: "ON"
+          retain: true
+
   - alias: k_upper_gr report off
     id: 147be7c7-4843-47f2-9753-99dc708f8315
     trigger:
@@ -50,3 +53,4 @@ automation:
         data:
           topic: h801/k_upper/ha/state
           payload_template: "OFF"
+          retain: true
