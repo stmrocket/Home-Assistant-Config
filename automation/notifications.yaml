@@ -5,7 +5,7 @@
       entity_id: switch.elk_intruder_alarm_tripped
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         message: The alarm has been triggered.
         title: Alarm!
@@ -24,7 +24,7 @@
       entity_id: alarm_control_panel.house
       state: armed_away
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         message: The garage door was opened while the alarm was armed.
         title: Garage Door

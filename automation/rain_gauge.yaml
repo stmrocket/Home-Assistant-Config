@@ -109,8 +109,8 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.is_raining
     - condition: template
-      value_template: "{{ not is_state('device_tracker.shawn_7t','home') }}"
-    - service: notify.mobile_app_shawn_7t
+      value_template: "{{ not is_state('person.shawn_mccoy','home') }}"
+    - service: notify.mobile_app_shawn_g5
       data:
         message: It is now raining.
         title: Weather
@@ -138,8 +138,8 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.is_raining
     - condition: template
-      value_template: "{{ not is_state('device_tracker.shawn_7t','home') }}"
-    - service: notify.mobile_app_shawn_7t
+      value_template: "{{ not is_state('person.shawn_mccoy','home') }}"
+    - service: notify.mobile_app_shawn_g5
       data:
         message: It has stopped raining.
         title: Weather

@@ -3,7 +3,7 @@ proximity:
     ignored_zones:
       - work
     devices:
-      - device_tracker.shawn_7t
+      - device_tracker.shawn_g5
     tolerance: 50
     unit_of_measurement: km
 

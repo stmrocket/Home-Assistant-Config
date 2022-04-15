@@ -272,7 +272,7 @@
       for: "00:05:00"
   action:
     - service: rest_command.docker_frigate_restart
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_g5
       data:
         message: Frigate has been restarted due to unresponsiveness.
         title: Frigate CCTV
