@@ -91,7 +91,7 @@
       entity_id: person.shawn_mccoy
       to: "work"
   action:
-    - service: notify.mobile_app_shawn_g5
+    - service: notify.mobile_app_shawn_7t
       data:
         title: Lock Truck
         message: "You are at work.  Would you like to lock your truck?"
@@ -122,7 +122,7 @@
       entity_id: person.shawn_mccoy
       state: "work"
   action:
-    - service: notify.mobile_app_shawn_g5
+    - service: notify.mobile_app_shawn_7t
       data:
         title: Heading Home
         message: "It's about that time.  Would you like to start or unlock your truck?"
@@ -144,7 +144,7 @@
         action: start_truck
   action:
     - service: rest_command.start_truck
-    - service: notify.mobile_app_shawn_g5
+    - service: notify.mobile_app_shawn_7t
       data:
         title: Heading Home
         message: "The truck is running.  Would you like to unlock your truck?"
@@ -206,7 +206,7 @@
         text: "The temperature is {{states('sensor.acurite_outside_temperature') | int(none) }} degrees.  Would you like to start your truck?"
         event_id: "actionable_notification_start_truck"
         alexa_device: "media_player.alexa_den"
-    - service: notify.mobile_app_shawn_g5
+    - service: notify.mobile_app_shawn_7t
       data_template:
         title: Heading Home
         message: "The temperature is {{states('sensor.acurite_outside_temperature') | int(none) }} degrees.  Would you like to start your truck?"
@@ -249,7 +249,7 @@
         event_id: actionable_notification_start_truck
         event_response: ResponseNo
   action:
-    - service: notify.mobile_app_shawn_g5
+    - service: notify.mobile_app_shawn_7t
       data:
         ttl: 0
         priority: high

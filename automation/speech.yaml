@@ -311,7 +311,7 @@
       entity_id: camera.front_porch
     - service: timer.start
       entity_id: timer.doorbell_popup
-    - service: notify.mobile_app_shawn_g5
+    - service: notify.mobile_app_shawn_7t
       data_template:
         title: Doorbell
         message: Someone is at the front door.
