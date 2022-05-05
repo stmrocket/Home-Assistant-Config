@@ -7,7 +7,10 @@ from homeassistant.components.device_automation.exceptions import (
     DeviceNotFound,
     InvalidDeviceAutomationConfig,
 )
-from homeassistant.components.device_automation.trigger import TRIGGER_SCHEMA
+from homeassistant.components.device_automation.trigger import (
+    TRIGGER_SCHEMA,
+    DeviceAutomationType,
+)
 from homeassistant.components.websocket_api import (
     async_register_command,
     async_response,
@@ -72,7 +75,7 @@ async def websocket_device_action(hass, connection, msg):
     """Sensor command."""
     context = connection.context(msg)
     platform = await device_automation.async_get_device_automation_platform(
-        hass, msg["action"][CONF_DOMAIN], "action"
+        hass, msg["action"][CONF_DOMAIN], DeviceAutomationType.ACTION
     )
 
     try:
@@ -94,7 +97,7 @@ async def websocket_device_action(hass, connection, msg):
         vol.Required(CONF_SERVER_ID): cv.string,
         vol.Required(CONF_NODE_ID): cv.string,
         vol.Optional(CONF_CONFIG, default={}): dict,
-        vol.Optional(CONF_STATE): vol.Any(bool, str, int, float),
+        vol.Optional(CONF_STATE): vol.Any(bool, str, int, float, None),
         vol.Optional(CONF_ATTRIBUTES): dict,
         vol.Optional(CONF_REMOVE): bool,
         vol.Optional(CONF_DEVICE_INFO): dict,
@@ -116,7 +119,7 @@ def websocket_discovery(hass, connection, msg):
         vol.Required(CONF_TYPE): "nodered/entity",
         vol.Required(CONF_SERVER_ID): cv.string,
         vol.Required(CONF_NODE_ID): cv.string,
-        vol.Required(CONF_STATE): vol.Any(bool, str, int, float),
+        vol.Required(CONF_STATE): vol.Any(bool, str, int, float, None),
         vol.Optional(CONF_ATTRIBUTES, default={}): dict,
     }
 )
