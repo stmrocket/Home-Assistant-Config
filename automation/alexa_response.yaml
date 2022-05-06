@@ -2,7 +2,7 @@
   id: 982e4c6c-e1dc-4827-bbb4-81f0edf0e726
   trigger:
     - platform: state
-      entity_id: sensor.acurite_ws_temperature
+      entity_id: sensor.acurite_outside_temperature
   action:
     - service: rest_command.update_alexa_outside_temp
 
@@ -10,7 +10,7 @@
   id: 10e55f92-803d-4218-9a6a-df2577065336
   trigger:
     - platform: state
-      entity_id: sensor.acurite_ws_humidity
+      entity_id: sensor.acurite_outside_humidity
   action:
     - service: rest_command.update_alexa_outside_humidity
 
