@@ -56,9 +56,8 @@ automation:
     id: ecfc4d2a-3143-4c34-8b80-b1b2487893bf
     trigger:
       - platform: state
-        entity_id: switch.back_drip
-        attribute: status
-        to: "Running"
+        entity_id: binary_sensor.rm_zone_6_watering
+        to: "on"
     action:
       - service: switch.turn_on
         entity_id: switch.back_drip_valve
@@ -67,9 +66,8 @@ automation:
     id: 9b88277a-3a34-4419-b2bc-e4b85c9df096
     trigger:
       - platform: state
-        entity_id: switch.back_drip
-        attribute: status
-        from: "Running"
+        entity_id: binary_sensor.rm_zone_6_watering
+        to: "off"
     action:
       - service: switch.turn_off
         entity_id: switch.back_drip_valve
