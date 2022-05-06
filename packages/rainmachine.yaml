@@ -69,7 +69,7 @@ automation:
       - platform: state
         entity_id: switch.back_drip
         attribute: status
-        to: "Not Running"
+        from: "Running"
     action:
       - service: switch.turn_off
         entity_id: switch.back_drip_valve
