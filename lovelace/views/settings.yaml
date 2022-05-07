@@ -34,42 +34,70 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: switch.irrigation_program_2_days
+                entity: sensor.program_every_2_days_status
                 color_type: icon
                 state:
-                  - value: "on"
+                  - value: "enabled"
                     color: rgb(228, 94, 101)
                     icon: mdi:alarm-check
-                  - value: "off"
+                  - value: "running"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:alarm-check
+                    styles:
+                      icon:
+                        - animation: blink 1s infinite
+                  - value: "disabled"
                     color: rgb(255, 255, 255)
                     icon: mdi:alarm-off
                 name: Every 2 Days
+                tap_action:
+                  action: call-service
+                  service: script.rainmachine_program_2_tap
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.irrigation_program_3_days
+                entity: sensor.program_every_3_days_status
                 color_type: icon
                 state:
-                  - value: "on"
+                  - value: "enabled"
                     color: rgb(228, 94, 101)
                     icon: mdi:alarm-check
-                  - value: "off"
+                  - value: "running"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:alarm-check
+                    styles:
+                      icon:
+                        - animation: blink 1s infinite
+                  - value: "disabled"
                     color: rgb(255, 255, 255)
                     icon: mdi:alarm-off
                 name: Every 3 Days
+                tap_action:
+                  action: call-service
+                  service: script.rainmachine_program_1_tap
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.program_drip_enabled
+                entity: sensor.program_drip_status
                 color_type: icon
                 state:
-                  - value: "on"
+                  - value: "enabled"
                     color: rgb(228, 94, 101)
                     icon: mdi:alarm-check
-                  - value: "off"
+                  - value: "running"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:alarm-check
+                    styles:
+                      icon:
+                        - animation: blink 1s infinite
+                  - value: "disabled"
                     color: rgb(255, 255, 255)
                     icon: mdi:alarm-off
                 name: Drip
+                tap_action:
+                  action: call-service
+                  service: switch.toggle
+                  entity_id: switch.program_drip_enabled
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
