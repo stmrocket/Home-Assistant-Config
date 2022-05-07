@@ -129,29 +129,23 @@ script:
                 entity_id: switch.irrigation_program_3_days
                 state: "on"
             sequence:
-              - service: rainmachine.start_program
-                data:
-                  device_id: a78593b21c1f26a5cbb20983c3f47860
-                  program_id: 1
+              - service: switch.turn_on
+                entity_id: switch.every_3_days
           - conditions:
               - condition: state
                 entity_id: switch.irrigation_program_2_days
                 state: "on"
             sequence:
-              - service: rainmachine.start_program
-                data:
-                  device_id: a78593b21c1f26a5cbb20983c3f47860
-                  program_id: 2
+              - service: switch.turn_on
+                entity_id: switch.every_2_days
       - choose:
           - conditions:
               - condition: state
                 entity_id: switch.program_drip_enabled
                 state: "on"
             sequence:
-              - service: rainmachine.start_program
-                data:
-                  device_id: a78593b21c1f26a5cbb20983c3f47860
-                  program_id: 4
+              - service: switch.turn_on
+                entity_id: switch.drip
 
   rainmachine_program_1_tap:
     sequence:
