@@ -27,7 +27,7 @@ switch:
         turn_off:
           service: rainmachine.stop_all
           data:
-            entity_id: switch.east_front
+            device_id: a78593b21c1f26a5cbb20983c3f47860
 
 binary_sensor:
   - platform: template
@@ -131,7 +131,7 @@ script:
             sequence:
               - service: rainmachine.start_program
                 data:
-                  entity_id: switch.east_front
+                  device_id: a78593b21c1f26a5cbb20983c3f47860
                   program_id: 1
           - conditions:
               - condition: state
@@ -140,7 +140,7 @@ script:
             sequence:
               - service: rainmachine.start_program
                 data:
-                  entity_id: switch.east_front
+                  device_id: a78593b21c1f26a5cbb20983c3f47860
                   program_id: 2
       - choose:
           - conditions:
@@ -150,7 +150,7 @@ script:
             sequence:
               - service: rainmachine.start_program
                 data:
-                  entity_id: switch.east_front
+                  device_id: a78593b21c1f26a5cbb20983c3f47860
                   program_id: 4
 
   rainmachine_program_1_tap:
