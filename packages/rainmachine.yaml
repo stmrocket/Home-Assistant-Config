@@ -82,7 +82,7 @@ sensor:
           {% elif  is_state('switch.program_drip_enabled', 'on') and is_state('switch.drip', 'on') -%}
             running
           {% else -%}
-            diasbled
+            disabled
           {% endif -%}
 
 automation:
