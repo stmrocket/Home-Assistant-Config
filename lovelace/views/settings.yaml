@@ -97,7 +97,8 @@ cards:
                 tap_action:
                   action: call-service
                   service: switch.toggle
-                  entity_id: switch.program_drip_enabled
+                  service_data:
+                    entity_id: switch.program_drip_enabled
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
