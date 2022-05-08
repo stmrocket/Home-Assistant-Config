@@ -2,85 +2,85 @@ sensor:
   - platform: mqtt
     name: Gas Meter
     state_topic: !secret my_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N1 Gas Meter
     state_topic: !secret n1_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N2 Gas Meter
     state_topic: !secret n2_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N3 Gas Meter
     state_topic: !secret n3_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N4 Gas Meter
     state_topic: !secret n4_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N5 Gas Meter
     state_topic: !secret n5_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N6 Gas Meter
     state_topic: !secret n6_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N7 Gas Meter
     state_topic: !secret n7_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N8 Gas Meter
     state_topic: !secret n8_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N9 Gas Meter
     state_topic: !secret n9_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N10 Gas Meter
     state_topic: !secret n10_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N11 Gas Meter
     state_topic: !secret n11_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N12 Gas Meter
     state_topic: !secret n12_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
   - platform: mqtt
     name: N13 Gas Meter
     state_topic: !secret n13_gas_meter
-    value_template: "{{ value | float(none) / 100 }}"
+    value_template: "{{value_json['Consumption'] }}"
     unit_of_measurement: "CCF"
     device_class: gas
 
