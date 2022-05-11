@@ -97,6 +97,56 @@ sensor:
       electricity_cost_last_year_unit:
         friendly_name: Electricity Cost Last Year
         value_template: "${{ (state_attr('sensor.energy_yearly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
+      
+      energy_last_hour:
+        friendly_name: Energy Last Hour
+        unit_of_measurement: "kWh"
+        value_template: "{{ state_attr('sensor.energy_hourly','last_period') | round (0, default=none) }}"
+      
+      energy_yesterday:
+        friendly_name: Energy Yesterday
+        unit_of_measurement: "kWh"
+        value_template: "{{ state_attr('sensor.energy_daily','last_period') | round (0, default=none) }}"
+      
+      energy_last_week:
+        friendly_name: Energy Last Week
+        unit_of_measurement: "kWh"
+        value_template: "{{ state_attr('sensor.energy_weekly','last_period') | round (0, default=none) }}"
+      
+      energy_last_month:
+        friendly_name: Energy Last Month
+        unit_of_measurement: "kWh"
+        value_template: "{{ state_attr('sensor.energy_monthly','last_period') | round (0, default=none) }}"
+      
+      energy_last_year:
+        friendly_name: Energy Last Year
+        unit_of_measurement: "kWh"
+        value_template: "{{ state_attr('sensor.energy_yearly','last_period') | round (0, default=none) }}"
+      
+      energy_this_hour:
+        friendly_name: Energy This Hour
+        unit_of_measurement: "kWh"
+        value_template: "{{ states('sensor.energy_hourly') | round (0, default=none) }}"
+      
+      energy_today:
+        friendly_name: Energy Today
+        unit_of_measurement: "kWh"
+        value_template: "{{ states('sensor.energy_daily') | round (0, default=none) }}"
+      
+      energy_this_week:
+        friendly_name: Energy This Week
+        unit_of_measurement: "kWh"
+        value_template: "{{ states('sensor.energy_weekly') | round (0, default=none) }}"
+      
+      energy_this_month:
+        friendly_name: Energy This Month
+        unit_of_measurement: "kWh"
+        value_template: "{{ states('sensor.energy_monthly') | round (0, default=none) }}"
+      
+      energy_this_year:
+        friendly_name: Energy This Year
+        unit_of_measurement: "kWh"
+        value_template: "{{ states('sensor.energy_yearly') | round (0, default=none) }}"
 
 utility_meter:
   energy_hourly:

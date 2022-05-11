@@ -49,34 +49,34 @@ cards:
           - type: entities
             entities:
               - type: custom:multiple-entity-row
-                entity: sensor.electricity_cost_today_unit
+                entity: sensor.energy_today
                 name: Daily
                 icon: mdi:calendar-today
                 show_state: false
                 entities:
-                  - entity: sensor.electricity_cost_yesterday_unit
+                  - entity: sensor.energy_yesterday
                     name: Yesterday
-                  - entity: sensor.electricity_cost_today_unit
+                  - entity: sensor.energy_today
                     name: Today
               - type: custom:multiple-entity-row
-                entity: sensor.electricity_cost_this_week_unit
+                entity: sensor.energy_this_week
                 name: Weekly
                 icon: mdi:calendar-week
                 show_state: false
                 entities:
-                  - entity: sensor.electricity_cost_last_week_unit
+                  - entity: sensor.energy_last_week
                     name: Previous
-                  - entity: sensor.electricity_cost_this_week_unit
+                  - entity: sensor.energy_this_week
                     name: Current
               - type: custom:multiple-entity-row
-                entity: sensor.electricity_cost_this_month_unit
+                entity: sensor.energy_this_month
                 name: Monthly
                 icon: mdi:calendar-month
                 show_state: false
                 entities:
-                  - entity: sensor.electricity_cost_last_month_unit
+                  - entity: sensor.energy_last_month
                     name: Previous
-                  - entity: sensor.electricity_cost_this_month_unit
+                  - entity: sensor.energy_this_month
                     name: Current
 
           - type: picture-elements
