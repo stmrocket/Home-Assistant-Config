@@ -7,4 +7,4 @@ device_tracker:
 
 sensor:
   - platform: torque
-    email: ram
+    email: ram@ram.com
