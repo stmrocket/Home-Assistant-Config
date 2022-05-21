@@ -4,3 +4,7 @@ device_tracker:
     username: !secret my_callsign
     callsigns:
       - !secret truck_callsign
+
+sensor:
+  - platform: torque
+    email: ram
