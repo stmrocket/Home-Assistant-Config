@@ -8,3 +8,98 @@ device_tracker:
 sensor:
   - platform: torque
     email: ram@ram.com
+
+  - platform: template
+    sensors:
+      truck_fuel_level:
+        friendly_name: Truck Fuel Level
+        unit_of_measurement: "%"
+        value_template: "{{ states('sensor.vehicle_fuel_level_from_engine_ecu') | round (0, default=none) }}"
+      truck_odometer:
+        friendly_name: Truck Odometer
+        unit_of_measurement: "mi"
+        value_template: "{{ (states('sensor.vehicle_distance_travelled_since_codes_cleared') | int(0) * 0.621371) | round (0, default=none) + states('input_number.truck_odometer_offset') }}"
+      truck_oil_distance:
+        friendly_name: Truck Distance Since Last Oil Change
+        unit_of_measurement: "mi"
+        value_template: "{{ states('sensor.truck_odometer') - states('input_number.truck_last_oil') | round (0, default=none)}}"
+      truck_tire_distance:
+        friendly_name: Truck Distance Since Last Oil Change
+        unit_of_measurement: "mi"
+        value_template: "{{ states('sensor.truck_odometer') - states('input_number.truck_last_tire') | round (0, default=none)}}"
+      truck_oil_life:
+        friendly_name: Truck Oil Remaining Life
+        unit_of_measurement: "%"
+        value_template: "{{ (((states('input_number.truck_oil_threshold') - states('sensor.truck_oil_distance')) / states('input_number.truck_oil_threshold')) * 100) | round (0, default=none)}}"
+      truck_tire_life:
+        friendly_name: Truck Tire Rotation Remaining Life
+        unit_of_measurement: "%"
+        value_template: "{{ (((states('input_number.truck_tire_threshold') - states('sensor.truck_tire_distance')) / states('input_number.truck_tire_threshold')) * 100) | round (0, default=none)}}"
+      truck_mileage_yesterday:
+        friendly_name: Truck Mileage Yesterday
+        unit_of_measurement: "mi"
+        value_template: "{{ state_attr('sensor.truck_mileage_daily','last_period') | round (0, default=none) }}"
+      truck_mileage_last_week:
+        friendly_name: Truck Mileage Last Week
+        unit_of_measurement: "mi"
+        value_template: "{{ state_attr('sensor.truck_mileage_weekly','last_period') | round (0, default=none) }}"
+      truck_mileage_last_month:
+        friendly_name: Truck Mileage Last month
+        unit_of_measurement: "mi"
+        value_template: "{{ state_attr('sensor.truck_mileage_monthly','last_period') | round (0, default=none) }}"
+      truck_mileage_last_year:
+        friendly_name: Truck Mileage Last year
+        unit_of_measurement: "mi"
+        value_template: "{{ state_attr('sensor.truck_mileage_yearly','last_period') | round (0, default=none) }}"
+
+
+input_number:
+  truck_last_oil:
+    name: Last Oil Change Mileage
+    min: 0
+    max: 20000
+    unit_of_measurement: mi
+  truck_last_tire:
+    name: Last Tire Rotation Mileage
+    min: 0
+    max: 20000
+    unit_of_measurement: mi
+  truck_oil_threshold:
+    name: Oil Change Threshold
+    min: 0
+    max: 20000
+    unit_of_measurement: mi
+  truck_tire_threshold:
+    name: Tire Rotation Threshold
+    min: 0
+    max: 20000
+    unit_of_measurement: mi
+  truck_odometer_offset:
+    name: Truck Odometer Offset
+    min: 0
+    max: 200000
+    unit_of_measurement: mi
+
+
+input_text:
+  truck_last_oil:
+    name: Last Oil Change Date
+  truck_last_tire:
+    name: Last Tire Rotation Date
+
+utility_meter:
+  truck_mileage_daily:
+    source: sensor.truck_odometer
+    cycle: daily
+
+  truck_mileage_weekly:
+    source: sensor.truck_odometer
+    cycle: weekly
+
+  truck_mileage_monthly:
+    source: sensor.truck_odometer
+    cycle: monthly
+
+  truck_mileage_yearly:
+    source: sensor.truck_odometer
+    cycle: yearly
