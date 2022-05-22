@@ -22,19 +22,19 @@ sensor:
       truck_oil_distance:
         friendly_name: Truck Distance Since Last Oil Change
         unit_of_measurement: "mi"
-        value_template: "{{ (states('sensor.truck_odometer') - states('input_number.truck_last_oil') | int(0)) | round (0, default=none)}}"
+        value_template: "{{ (states('sensor.truck_odometer') | int(0) - states('input_number.truck_last_oil') | int(0)) | round (0, default=none)}}"
       truck_tire_distance:
         friendly_name: Truck Distance Since Last Oil Change
         unit_of_measurement: "mi"
-        value_template: "{{ (states('sensor.truck_odometer') - states('input_number.truck_last_tire') | int(0)) | round (0, default=none)}}"
+        value_template: "{{ (states('sensor.truck_odometer') | int(0) - states('input_number.truck_last_tire') | int(0)) | round (0, default=none)}}"
       truck_oil_life:
         friendly_name: Truck Oil Remaining Life
         unit_of_measurement: "%"
-        value_template: "{{ (((states('input_number.truck_oil_threshold') | int(0) - states('sensor.truck_oil_distance')) / states('input_number.truck_oil_threshold') | int(0)) * 100) | round (0, default=none)}}"
+        value_template: "{{ (((states('input_number.truck_oil_threshold') | int(0) - states('sensor.truck_oil_distance') | int(0)) / states('input_number.truck_oil_threshold') | int(0)) * 100) | round (0, default=none)}}"
       truck_tire_life:
         friendly_name: Truck Tire Rotation Remaining Life
         unit_of_measurement: "%"
-        value_template: "{{ (((states('input_number.truck_tire_threshold') | int(0) - states('sensor.truck_tire_distance')) / states('input_number.truck_tire_threshold') | int(0)) * 100) | round (0, default=none)}}"
+        value_template: "{{ (((states('input_number.truck_tire_threshold') | int(0) - states('sensor.truck_tire_distance') | int(0)) / states('input_number.truck_tire_threshold') | int(0)) * 100) | round (0, default=none)}}"
       truck_mileage_yesterday:
         friendly_name: Truck Mileage Yesterday
         unit_of_measurement: "mi"
@@ -57,12 +57,12 @@ input_number:
   truck_last_oil:
     name: Last Oil Change Mileage
     min: 0
-    max: 20000
+    max: 200000
     unit_of_measurement: mi
   truck_last_tire:
     name: Last Tire Rotation Mileage
     min: 0
-    max: 20000
+    max: 200000
     unit_of_measurement: mi
   truck_oil_threshold:
     name: Oil Change Threshold
