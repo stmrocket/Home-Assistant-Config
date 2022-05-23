@@ -51,6 +51,25 @@ sensor:
         friendly_name: Truck Mileage Last year
         unit_of_measurement: "mi"
         value_template: "{{ state_attr('sensor.truck_mileage_yearly','last_period') | round (0, default=none) }}"
+      truck_trip_distance:
+        friendly_name: Truck Last Trip Distance
+        unit_of_measurement: "mi"
+        value_template: "{{ (states('sensor.vehicle_trip_distance') | float(0) * 0.621371) | round (0, default=none) }}"
+      truck_trip_cost:
+        friendly_name: Truck Last Trip Fuel Cost
+        value_template: "${{ states('sensor.vehicle_fuel_cost_trip') | round (2, default=none) }}"
+      truck_trip_mpg:
+        friendly_name: Truck Last Trip Fuel Economy
+        unit_of_measurement: "mpg"
+        value_template: "${{ states('sensor.vehicle_trip_average_mpg') | round (0, default=none) }}"
+      truck_trip_fuel:
+        friendly_name: Truck Last Trip Fuel Used
+        unit_of_measurement: "gal"
+        value_template: "{{ (states('sensor.vehicle_fuel_used_trip') | float(0) / 0.264172) | round (1, default=none) }}"
+      truck_trip_dte:
+        friendly_name: Truck Last Trip Fuel Economy
+        unit_of_measurement: "mpg"
+        value_template: "${{ states('sensor.vehicle_distance_to_empty_estimated') | round (0, default=none) }}"
 
 
 input_number:
