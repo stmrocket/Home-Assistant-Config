@@ -61,7 +61,7 @@ sensor:
       truck_trip_mpg:
         friendly_name: Truck Last Trip Fuel Economy
         unit_of_measurement: "mpg"
-        value_template: "${{ states('sensor.vehicle_trip_average_mpg') | round (0, default=none) }}"
+        value_template: "{{ states('sensor.vehicle_trip_average_mpg') | round (0, default=none) }}"
       truck_trip_fuel:
         friendly_name: Truck Last Trip Fuel Used
         unit_of_measurement: "gal"
@@ -69,7 +69,7 @@ sensor:
       truck_trip_dte:
         friendly_name: Truck Last Trip Fuel Economy
         unit_of_measurement: "mpg"
-        value_template: "${{ states('sensor.vehicle_distance_to_empty_estimated') | round (0, default=none) }}"
+        value_template: "{{ states('sensor.vehicle_distance_to_empty_estimated') | round (0, default=none) }}"
 
 
 input_number:
