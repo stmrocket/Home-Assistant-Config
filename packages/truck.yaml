@@ -65,7 +65,7 @@ sensor:
       truck_trip_fuel:
         friendly_name: Truck Last Trip Fuel Used
         unit_of_measurement: "gal"
-        value_template: "{{ (states('sensor.vehicle_fuel_used_trip') | float(0) / 0.264172) | round (1, default=none) }}"
+        value_template: "{{ (states('sensor.vehicle_fuel_used_trip') | float(0) * 0.264172) | round (1, default=none) }}"
       truck_trip_dte:
         friendly_name: Truck Last Trip Fuel Economy
         unit_of_measurement: "mpg"
