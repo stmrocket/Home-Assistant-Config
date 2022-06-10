@@ -39,7 +39,7 @@ sensor:
 template:
   - trigger:
       - platform: template
-        value_template: "{{ not is_state('sensor.vehicle_distance_travelled_since_codes_cleared', 'unavailable') }}"
+        value_template: "{{ states('sensor.vehicle_distance_travelled_since_codes_cleared') | int(0) > 0 }}"
     sensor:
       - name: Truck Fuel Level
         unit_of_measurement: "%"
