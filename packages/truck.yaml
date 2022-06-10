@@ -11,22 +11,6 @@ sensor:
 
   - platform: template
     sensors:
-      truck_fuel_level:
-        friendly_name: Truck Fuel Level
-        unit_of_measurement: "%"
-        value_template: "{{ states('sensor.vehicle_fuel_level_from_engine_ecu') | round (0, default=none) }}"
-      truck_odometer:
-        friendly_name: Truck Odometer
-        unit_of_measurement: "mi"
-        value_template: "{{ (states('sensor.vehicle_distance_travelled_since_codes_cleared') | int(0) * 0.621371) | round (0, default=none) + states('input_number.truck_odometer_offset') | int(0)}}"
-      truck_oil_distance:
-        friendly_name: Truck Distance Since Last Oil Change
-        unit_of_measurement: "mi"
-        value_template: "{{ (states('sensor.truck_odometer') | int(0) - states('input_number.truck_last_oil') | int(0)) | round (0, default=none)}}"
-      truck_tire_distance:
-        friendly_name: Truck Distance Since Last Oil Change
-        unit_of_measurement: "mi"
-        value_template: "{{ (states('sensor.truck_odometer') | int(0) - states('input_number.truck_last_tire') | int(0)) | round (0, default=none)}}"
       truck_oil_life:
         friendly_name: Truck Oil Remaining Life
         unit_of_measurement: "%"
@@ -51,26 +35,38 @@ sensor:
         friendly_name: Truck Mileage Last year
         unit_of_measurement: "mi"
         value_template: "{{ state_attr('sensor.truck_mileage_yearly','last_period') | round (0, default=none) }}"
-      truck_trip_distance:
-        friendly_name: Truck Last Trip Distance
-        unit_of_measurement: "mi"
-        value_template: "{{ (states('sensor.vehicle_trip_distance') | float(0) * 0.621371) | round (0, default=none) }}"
-      truck_trip_cost:
-        friendly_name: Truck Last Trip Fuel Cost
-        value_template: "${{ states('sensor.vehicle_fuel_cost_trip') | round (2, default=none) }}"
-      truck_trip_mpg:
-        friendly_name: Truck Last Trip Fuel Economy
-        unit_of_measurement: "mpg"
-        value_template: "{{ states('sensor.vehicle_trip_average_mpg') | round (0, default=none) }}"
-      truck_trip_fuel:
-        friendly_name: Truck Last Trip Fuel Used
-        unit_of_measurement: "gal"
-        value_template: "{{ (states('sensor.vehicle_fuel_used_trip') | float(0) * 0.264172) | round (1, default=none) }}"
-      truck_trip_dte:
-        friendly_name: Truck Last Trip Fuel Economy
-        unit_of_measurement: "mpg"
-        value_template: "{{ states('sensor.vehicle_distance_to_empty_estimated') | round (0, default=none) }}"
 
+template:
+  - trigger:
+      - platform: template
+        value_template: "{{ not is_state('sensor.vehicle_distance_travelled_since_codes_cleared', 'unavailable') }}"
+    sensor:
+      - name: Truck Fuel Level
+        unit_of_measurement: "%"
+        state: "{{ states('sensor.vehicle_fuel_level_from_engine_ecu') | round (0, default=none) }}"
+      - name: Truck Odometer
+        unit_of_measurement: "mi"
+        state: "{{ (states('sensor.vehicle_distance_travelled_since_codes_cleared') | int(0) * 0.621371) | round (0, default=none) + states('input_number.truck_odometer_offset') | int(0)}}"
+      - name: Truck Oil Distance
+        unit_of_measurement: "mi"
+        state: "{{ (states('sensor.truck_odometer') | int(0) - states('input_number.truck_last_oil') | int(0)) | round (0, default=none)}}"
+      - name: Truck Tire Distance
+        unit_of_measurement: "mi"
+        state: "{{ (states('sensor.truck_odometer') | int(0) - states('input_number.truck_last_tire') | int(0)) | round (0, default=none)}}"
+      - name: Truck Trip Distance
+        unit_of_measurement: "mi"
+        state: "{{ (states('sensor.vehicle_trip_distance') | float(0) * 0.621371) | round (0, default=none) }}"
+      - name: Truck Trip Cost
+        state: "${{ states('sensor.vehicle_fuel_cost_trip') | round (2, default=none) }}"
+      - name: Truck Trip MPG
+        unit_of_measurement: "mpg"
+        state: "{{ states('sensor.vehicle_trip_average_mpg') | round (0, default=none) }}"
+      - name: Truck Trip Fuel
+        unit_of_measurement: "gal"
+        state: "{{ (states('sensor.vehicle_fuel_used_trip') | float(0) * 0.264172) | round (1, default=none) }}"
+      - name: Truck Trip DTE
+        unit_of_measurement: "mi"
+        state: "{{ states('sensor.vehicle_distance_to_empty_estimated') | round (0, default=none) }}"
 
 input_number:
   truck_last_oil:
