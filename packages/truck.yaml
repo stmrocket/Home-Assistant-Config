@@ -37,10 +37,7 @@ sensor:
         value_template: "{{ state_attr('sensor.truck_mileage_yearly','last_period') | round (0, default=none) }}"
 
 template:
-  - trigger:
-      - platform: template
-        value_template: "{{ states('sensor.vehicle_distance_travelled_since_codes_cleared') | int(0) > 0 }}"
-    sensor:
+  - sensor:
       - name: Truck Fuel Level
         unit_of_measurement: "%"
         state: "{{ states('sensor.vehicle_fuel_level_from_engine_ecu') | round (0, default=none) }}"
