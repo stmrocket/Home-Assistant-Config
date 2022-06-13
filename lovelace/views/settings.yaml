@@ -675,38 +675,6 @@ cards:
                   '7000': '#FFA40E'
                   '8000': '#FF9C0B'
                   '9000': '#FF8C06'
-          - type: entities
-            entities:
-              - type: custom:multiple-entity-row
-                entity: sensor.truck_mileage_daily
-                name: Daily
-                icon: mdi:calendar-week
-                show_state: false
-                entities:
-                  - entity: sensor.truck_mileage_yesterday
-                    name: Previous
-                  - entity: sensor.truck_mileage_daily
-                    name: Current
-              - type: custom:multiple-entity-row
-                entity: sensor.truck_mileage_weekly
-                name: Weekly
-                icon: mdi:calendar-week
-                show_state: false
-                entities:
-                  - entity: sensor.truck_mileage_last_week
-                    name: Previous
-                  - entity: sensor.truck_mileage_weekly
-                    name: Current
-              - type: custom:multiple-entity-row
-                entity: sensor.truck_mileage_monthly
-                name: Monthly
-                icon: mdi:calendar-week
-                show_state: false
-                entities:
-                  - entity: sensor.truck_mileage_last_month
-                    name: Previous
-                  - entity: sensor.truck_mileage_monthly
-                    name: Current
           - type: glance
             show_name: true
             show_icon: false
