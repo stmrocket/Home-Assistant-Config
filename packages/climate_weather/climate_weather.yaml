@@ -51,7 +51,7 @@ sensor:
           {% set atc = temp + (0.33 * p) - (0.70 * ws) - 4 %}
           {% set at = (atc * (9/5)) + 32 %}
           {{ at }}
-        unit_of_meausrement: "°F"
+        unit_of_measurement: "°F"
         device_class: temperature
 
   # Darksky
