@@ -42,6 +42,17 @@ sensor:
 
       clean_precip_intensity:
         value_template: "{{ states('sensor.dark_sky_precip_intensity') | round(2, default=none) }}"
+      
+      local_apparent_temperature:
+        value_template: >-
+          {% set temp = (states('sensor.acurite_outside_temperature') | float(0) - 32) * (5/9) %}
+          {% set ws = states('sensor.openweathermap_current_wind_speed') | float(0) / 2.237 %}
+          {% set p = (states('sensor.acurite_outside_humidity') | float(0) / 100) * 6.105 * e**((17.27 * temp) / (237.7 + temp)) %}
+          {% set atc = temp + (0.33 * p) - (0.70 * ws) - 4 %}
+          {% set at = (atc * (9/5)) + 32 %}
+          {{ at }}
+        unit_of_meausrement: "°F"
+        device_class: temperature
 
   # Darksky
   - platform: darksky
