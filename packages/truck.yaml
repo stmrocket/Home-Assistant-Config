@@ -72,10 +72,10 @@ template:
         state: "{{ states('input_number.truck_trip_distance') | int(0) }}"
       - name: Truck Trip MPG
         unit_of_measurement: "mpg"
-        state: "{{ states('input_number.truck_mpg') | int(0) }}"
+        state: "{{ states('input_number.truck_trip_mpg') | int(0) }}"
       - name: Truck Trip Fuel
         unit_of_measurement: "gal"
-        state: "{{ states('input_number.truck_fuel') | float(0) }}"
+        state: "{{ states('input_number.truck_trip_fuel') | float(0) }}"
 
 input_number:
   truck_last_oil:
