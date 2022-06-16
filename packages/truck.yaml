@@ -38,7 +38,7 @@ sensor:
 
 template:
   - sensor:
-      - name: Truck Fuel Level
+      - name: Truck Fuel Level Dirty
         unit_of_measurement: "%"
         state: "{{ states('sensor.vehicle_fuel_level_from_engine_ecu') | round (0, default=none) }}"
       - name: Truck Odometer
@@ -61,7 +61,7 @@ template:
       - name: Truck Trip Fuel Dirty
         unit_of_measurement: "gal"
         state: "{{ (states('sensor.vehicle_fuel_used_trip') | float(0) * 0.264172) | round (1, default=none) }}"
-      - name: Truck Trip DTE
+      - name: Truck Trip DTE Dirty
         unit_of_measurement: "mi"
         state: "{{ states('sensor.vehicle_distance_to_empty_estimated') | round (0, default=none) }}"
       - name: Truck Odometer Clean
@@ -76,6 +76,12 @@ template:
       - name: Truck Trip Fuel
         unit_of_measurement: "gal"
         state: "{{ states('input_number.truck_trip_fuel') | float(0) }}"
+      - name: Truck Fuel Level
+        unit_of_measurement: "%"
+        state: "{{ states('input_number.truck_fuel_level') | int(0) }}"
+      - name: Truck Trip DTE
+        unit_of_measurement: "mi"
+        state: "{{ states('input_number.truck_dte') | int(0) }}"
 
 input_number:
   truck_last_oil:
@@ -123,6 +129,16 @@ input_number:
     min: 0
     max: 500
     unit_of_measurement: gal
+  truck_fuel_level:
+    name: Truck Fuel Level
+    min: 0
+    max: 100
+    unit_of_measurement: "%"
+  truck_dte:
+    name: Truck Fuel Level
+    min: 0
+    max: 100
+    unit_of_measurement: "mi"
 
 
 input_text:
@@ -208,3 +224,33 @@ automation:
         entity_id: input_number.truck_trip_fuel
         data_template:
           value: "{{ (states('sensor.truck_trip_fuel_dirty') | float(0)) }}"
+
+  - alias: Update Truck Fuel Level
+    id: 0e5a0c80-1396-4519-9ff6-82a4555bf78b
+    trigger:
+      - platform: state
+        entity_id: sensor.truck_fuel_level_dirty
+    condition:
+      condition: numeric_state
+      entity_id: sensor.truck_fuel_level_dirty
+      above: 0
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.truck_fuel_level
+        data_template:
+          value: "{{ (states('sensor.truck_fuel_level_dirty') | float(0)) }}"
+
+  - alias: Update Truck DTE
+    id: e957831d-85a1-4b68-971a-622b68130d2c
+    trigger:
+      - platform: state
+        entity_id: sensor.truck_trip_dte_dirty
+    condition:
+      condition: numeric_state
+      entity_id: sensor.truck_trip_dte_dirty
+      above: 0
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.truck_dte
+        data_template:
+          value: "{{ (states('sensor.truck_trip_dte_dirty') | float(0)) }}"
