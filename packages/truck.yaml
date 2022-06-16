@@ -50,15 +50,15 @@ template:
       - name: Truck Tire Distance
         unit_of_measurement: "mi"
         state: "{{ (states('sensor.truck_odometer_clean') | int(0) - states('input_number.truck_last_tire') | int(0)) | round (0, default=none)}}"
-      - name: Truck Trip Distance
+      - name: Truck Trip Distance Dirty
         unit_of_measurement: "mi"
         state: "{{ (states('sensor.vehicle_trip_distance') | float(0) * 0.621371) | round (0, default=none) }}"
       - name: Truck Trip Cost
         state: "${{ states('sensor.vehicle_fuel_cost_trip') | round (2, default=none) }}"
-      - name: Truck Trip MPG
+      - name: Truck Trip MPG Dirty
         unit_of_measurement: "mpg"
         state: "{{ states('sensor.vehicle_trip_average_mpg') | round (0, default=none) }}"
-      - name: Truck Trip Fuel
+      - name: Truck Trip Fuel Dirty
         unit_of_measurement: "gal"
         state: "{{ (states('sensor.vehicle_fuel_used_trip') | float(0) * 0.264172) | round (1, default=none) }}"
       - name: Truck Trip DTE
@@ -67,6 +67,15 @@ template:
       - name: Truck Odometer Clean
         unit_of_measurement: mi
         state: "{{ states('input_number.truck_odometer') | int(0) }}"
+      - name: Truck Trip Distance
+        unit_of_measurement: "mi"
+        state: "{{ states('input_number.truck_trip_distance') | int(0) }}"
+      - name: Truck Trip MPG
+        unit_of_measurement: "mpg"
+        state: "{{ states('input_number.truck_mpg') | int(0) }}"
+      - name: Truck Trip Fuel
+        unit_of_measurement: "gal"
+        state: "{{ states('input_number.truck_fuel') | float(0) }}"
 
 input_number:
   truck_last_oil:
@@ -99,6 +108,21 @@ input_number:
     min: 0
     max: 250000
     unit_of_measurement: mi
+  truck_trip_distance:
+    name: Truck Distance Last Trip
+    min: 0
+    max: 10000
+    unit_of_measurement: mi
+  truck_trip_mpg:
+    name: Truck MPG Last Trip
+    min: 0
+    max: 50
+    unit_of_measurement: mpg
+  truck_trip_fuel:
+    name: Truck Fuel Last Trip
+    min: 0
+    max: 500
+    unit_of_measurement: gal
 
 
 input_text:
@@ -138,4 +162,49 @@ automation:
       - service: input_number.set_value
         entity_id: input_number.truck_odometer
         data_template:
-          value: "{{ ((states('sensor.truck_odometer') | int(0)) }}"
+          value: "{{ (states('sensor.truck_odometer') | int(0)) }}"
+
+  - alias: Update Truck Trip Mileage
+    id: 5eb69860-55fb-4762-ae18-397277538f8a
+    trigger:
+      - platform: state
+        entity_id: sensor.truck_trip_distance_dirty
+    condition:
+      condition: numeric_state
+      entity_id: sensor.truck_trip_distance_dirty
+      above: 0
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.truck_trip_distance
+        data_template:
+          value: "{{ (states('sensor.truck_trip_distance_dirty') | int(0)) }}"
+
+  - alias: Update Truck Trip Fuel Economy
+    id: 13a45a50-b33f-4aef-9c72-4a04a1a6a1b4
+    trigger:
+      - platform: state
+        entity_id: sensor.truck_trip_mpg_dirty
+    condition:
+      condition: numeric_state
+      entity_id: sensor.truck_trip_mpg_dirty
+      above: 0
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.truck_trip_mpg
+        data_template:
+          value: "{{ (states('sensor.truck_trip_mpg_dirty') | int(0)) }}"
+
+  - alias: Update Truck Trip Fuel
+    id: cd5b2ff2-dbb5-4b31-abaf-89def15d0f61
+    trigger:
+      - platform: state
+        entity_id: sensor.truck_trip_fuel_dirty
+    condition:
+      condition: numeric_state
+      entity_id: sensor.truck_trip_fuel_dirty
+      above: 0
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.truck_trip_fuel
+        data_template:
+          value: "{{ (states('sensor.truck_trip_fuel_dirty') | float(0)) }}"
