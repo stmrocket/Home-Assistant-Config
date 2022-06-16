@@ -46,10 +46,10 @@ template:
         state: "{{ (states('sensor.vehicle_distance_travelled_since_codes_cleared') | int(0) * 0.621371) | round (0, default=none) + states('input_number.truck_odometer_offset') | int(0)}}"
       - name: Truck Oil Distance
         unit_of_measurement: "mi"
-        state: "{{ (states('sensor.truck_odometer') | int(0) - states('input_number.truck_last_oil') | int(0)) | round (0, default=none)}}"
+        state: "{{ (states('sensor.truck_odometer_clean') | int(0) - states('input_number.truck_last_oil') | int(0)) | round (0, default=none)}}"
       - name: Truck Tire Distance
         unit_of_measurement: "mi"
-        state: "{{ (states('sensor.truck_odometer') | int(0) - states('input_number.truck_last_tire') | int(0)) | round (0, default=none)}}"
+        state: "{{ (states('sensor.truck_odometer_clean') | int(0) - states('input_number.truck_last_tire') | int(0)) | round (0, default=none)}}"
       - name: Truck Trip Distance
         unit_of_measurement: "mi"
         state: "{{ (states('sensor.vehicle_trip_distance') | float(0) * 0.621371) | round (0, default=none) }}"
@@ -64,6 +64,9 @@ template:
       - name: Truck Trip DTE
         unit_of_measurement: "mi"
         state: "{{ states('sensor.vehicle_distance_to_empty_estimated') | round (0, default=none) }}"
+      - name: Truck Odometer Clean
+        unit_of_measurement: mi
+        state: "{{ states('input_number.truck_odometer') | int(0) }}"
 
 input_number:
   truck_last_oil:
@@ -91,6 +94,11 @@ input_number:
     min: 0
     max: 200000
     unit_of_measurement: mi
+  truck_odometer:
+    name: Truck Odometer Total
+    min: 0
+    max: 250000
+    unit_of_measurement: mi
 
 
 input_text:
@@ -101,17 +109,33 @@ input_text:
 
 utility_meter:
   truck_mileage_daily:
-    source: sensor.truck_odometer
+    source: sensor.truck_odometer_clean
     cycle: daily
 
   truck_mileage_weekly:
-    source: sensor.truck_odometer
+    source: sensor.truck_odometer_clean
     cycle: weekly
 
   truck_mileage_monthly:
-    source: sensor.truck_odometer
+    source: sensor.truck_odometer_clean
     cycle: monthly
 
   truck_mileage_yearly:
-    source: sensor.truck_odometer
+    source: sensor.truck_odometer_clean
     cycle: yearly
+
+automation:
+  - alias: Update Truck Odometer
+    id: 7ca37d55-8890-48f5-b9bf-7abc069e18d2
+    trigger:
+      - platform: state
+        entity_id: sensor.truck_odometer
+    condition:
+      condition: numeric_state
+      entity_id: sensor.truck_odometer
+      above: input_number.truck_odometer
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.truck_odometer
+        data_template:
+          value: "{{ ((states('sensor.truck_odometer') | int(0)) }}"
