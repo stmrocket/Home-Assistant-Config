@@ -137,7 +137,7 @@ input_number:
   truck_dte:
     name: Truck Fuel Level
     min: 0
-    max: 100
+    max: 500
     unit_of_measurement: "mi"
 
 
