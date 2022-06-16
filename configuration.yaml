@@ -313,15 +313,6 @@ google:
   client_id: !secret gcal_client_id
   client_secret: !secret gcal_client_secret
 
-
-
-#Alexa Media Player
-alexa_media:
-  accounts:
-    - email: !secret amazon_user
-      password: !secret amazon_password
-      url: amazon.com
-
 #Browser Mod
 browser_mod:
   devices:
