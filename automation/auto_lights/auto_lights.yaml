@@ -45,7 +45,7 @@
       platform: state
       to: Normal
   action:
-    - service_template: >
+    - service: >
         {% if states('sensor.elk_guest_closet_door') == "Violated" %}
           switch.turn_on
         {% else %}
@@ -63,7 +63,7 @@
       platform: state
       to: Normal
   action:
-    - service_template: >
+    - service: >
         {% if states('sensor.elk_pantry_door') == "Violated" %}
           light.turn_on
         {% else %}
@@ -81,7 +81,7 @@
       platform: state
       to: Normal
   action:
-    - service_template: >
+    - service: >
         {% if states('sensor.elk_server_closet_door') == "Violated" %}
           switch.turn_on
         {% else %}
@@ -99,7 +99,7 @@
       platform: state
       to: Normal
   action:
-    - service_template: >
+    - service: >
         {% if states('sensor.elk_shed_door') == "Violated" %}
           switch.turn_on
         {% else %}
