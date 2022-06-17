@@ -1,32 +1,31 @@
-light:
-  - platform: mqtt
-    name: "Kitchen Counter LEDs RGB"
-    state_topic: "h801/k_counter/ha/state"
-    command_topic: "h801/k_counter/command/set/rgb/power"
-    brightness_state_topic: "h801/k_counter/tele/current"
-    brightness_command_topic: "h801/k_counter/command/set/rgb/brightness"
-    rgb_state_topic: "h801/k_counter/tele/current"
-    rgb_command_topic: "h801/k_counter/command/set/rgb/color"
-    brightness_value_template: "{{value_json['rgb_brightness']}}"
-    rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
-    qos: 0
-    retain: false
-    payload_on: "ON"
-    payload_off: "OFF"
-    optimistic: false
+mqtt:
+  light:
+    - name: "Kitchen Counter LEDs RGB"
+      state_topic: "h801/k_counter/ha/state"
+      command_topic: "h801/k_counter/command/set/rgb/power"
+      brightness_state_topic: "h801/k_counter/tele/current"
+      brightness_command_topic: "h801/k_counter/command/set/rgb/brightness"
+      rgb_state_topic: "h801/k_counter/tele/current"
+      rgb_command_topic: "h801/k_counter/command/set/rgb/color"
+      brightness_value_template: "{{value_json['rgb_brightness']}}"
+      rgb_value_template: "{{value_json['rgb_r']}},{{value_json['rgb_g']}},{{value_json['rgb_b']}}"
+      qos: 0
+      retain: false
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
 
-  - platform: mqtt
-    name: "Kitchen Counter LEDs White"
-    state_topic: "h801/k_counter/ha/wstate"
-    command_topic: "h801/k_counter/command/set/w2/power"
-    brightness_state_topic: "h801/k_counter/tele/current"
-    brightness_command_topic: "h801/k_counter/command/set/w2/brightness"
-    brightness_value_template: "{{value_json['w2_brightness']}}"
-    qos: 0
-    retain: false
-    payload_on: "ON"
-    payload_off: "OFF"
-    optimistic: false
+    - name: "Kitchen Counter LEDs White"
+      state_topic: "h801/k_counter/ha/wstate"
+      command_topic: "h801/k_counter/command/set/w2/power"
+      brightness_state_topic: "h801/k_counter/tele/current"
+      brightness_command_topic: "h801/k_counter/command/set/w2/brightness"
+      brightness_value_template: "{{value_json['w2_brightness']}}"
+      qos: 0
+      retain: false
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
 
 automation:
   - alias: k_counter_gr report on

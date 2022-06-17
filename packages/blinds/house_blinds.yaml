@@ -1,15 +1,15 @@
-cover:
-  - platform: mqtt
-    name: "House Blinds"
-    device_class: blind
-    command_topic: "habc/all/command/set/state"
-    set_position_topic: "habc/all/command/set/positionpct"
-    position_topic: "habc/all/tele/currentpct"
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
+mqtt:
+  cover:
+    - name: "House Blinds"
+      device_class: blind
+      command_topic: "habc/all/command/set/state"
+      set_position_topic: "habc/all/command/set/positionpct"
+      position_topic: "habc/all/tele/currentpct"
+      payload_open: "OPEN"
+      payload_close: "CLOSE"
+      payload_stop: "STOP"
+      position_open: 100
+      position_closed: 0
 
 input_boolean:
   blinds_manual:
@@ -17,24 +17,24 @@ input_boolean:
     icon: mdi:blinds
 
 sensor:
-  platform: average
-  name: House Blinds Average Light Level
-  entities:
-    - sensor.left_den_blind_light_level
-    - sensor.center_den_blind_light_level
-    - sensor.right_den_blind_light_level
-    - sensor.left_kitchen_blind_light_level
-    - sensor.east_kitchen_blind_light_level
-    - sensor.right_kitchen_blind_light_level
-    - sensor.left_master_blind_light_level
-    - sensor.center_master_blind_light_level
-    - sensor.right_master_blind_light_level
-    - sensor.west_master_blind_light_level
-    - sensor.left_office_blind_light_level
-    - sensor.center_office_blind_light_level
-    - sensor.right_office_blind_light_level
-    - sensor.left_shack_blind_light_level
-    - sensor.center_shack_blind_light_level
-    - sensor.right_shack_blind_light_level
-    - sensor.guest_blind_light_level
-    - sensor.server_room_blind_light_level
+  - platform: average
+    name: House Blinds Average Light Level
+    entities:
+      - sensor.left_den_blind_light_level
+      - sensor.center_den_blind_light_level
+      - sensor.right_den_blind_light_level
+      - sensor.left_kitchen_blind_light_level
+      - sensor.east_kitchen_blind_light_level
+      - sensor.right_kitchen_blind_light_level
+      - sensor.left_master_blind_light_level
+      - sensor.center_master_blind_light_level
+      - sensor.right_master_blind_light_level
+      - sensor.west_master_blind_light_level
+      - sensor.left_office_blind_light_level
+      - sensor.center_office_blind_light_level
+      - sensor.right_office_blind_light_level
+      - sensor.left_shack_blind_light_level
+      - sensor.center_shack_blind_light_level
+      - sensor.right_shack_blind_light_level
+      - sensor.guest_blind_light_level
+      - sensor.server_room_blind_light_level

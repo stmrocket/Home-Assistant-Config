@@ -1,158 +1,288 @@
+mqtt:
+  switch:
+    - name: "Dining Room Decor"
+      state_topic: "christmas/indoor/dining/stat/POWER"
+      command_topic: "christmas/indoor/dining/cmnd/POWER"
+      availability_topic: "christmas/indoor/dining/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Entry Hall Decor"
+      state_topic: "christmas/indoor/entry/stat/POWER"
+      command_topic: "christmas/indoor/entry/cmnd/POWER"
+      availability_topic: "christmas/indoor/entry/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Christmas Village"
+      state_topic: "christmas/indoor/village/stat/POWER"
+      command_topic: "christmas/indoor/village/cmnd/POWER"
+      availability_topic: "christmas/indoor/village/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Snowman"
+      state_topic: "christmas/indoor/snowman/stat/POWER"
+      command_topic: "christmas/indoor/snowman/cmnd/POWER"
+      availability_topic: "christmas/indoor/snowman/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Christmas Tree"
+      state_topic: "christmas/indoor/tree/stat/POWER"
+      command_topic: "christmas/indoor/tree/cmnd/POWER"
+      availability_topic: "christmas/indoor/tree/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Left Christmas Tree"
+      state_topic: "christmas/indoor/l_tree/stat/POWER"
+      command_topic: "christmas/indoor/l_tree/cmnd/POWER"
+      availability_topic: "christmas/indoor/l_tree/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Kitchen Christmas Tree"
+      state_topic: "christmas/indoor/k_tree/stat/POWER"
+      command_topic: "christmas/indoor/k_tree/cmnd/POWER"
+      availability_topic: "christmas/indoor/k_tree/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Christmas Garland"
+      state_topic: "christmas/indoor/garland/stat/POWER"
+      command_topic: "christmas/indoor/garland/cmnd/POWER"
+      availability_topic: "christmas/indoor/garland/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Master Bedroom Decor"
+      state_topic: "christmas/indoor/master/stat/POWER"
+      command_topic: "christmas/indoor/master/cmnd/POWER"
+      availability_topic: "christmas/indoor/master/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Kitchen Garland"
+      state_topic: "christmas/indoor/kitchen/stat/POWER"
+      command_topic: "christmas/indoor/kitchen/cmnd/POWER"
+      availability_topic: "christmas/indoor/kitchen/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Hall Decor"
+      state_topic: "christmas/indoor/hall/stat/POWER"
+      command_topic: "christmas/indoor/hall/cmnd/POWER"
+      availability_topic: "christmas/indoor/hall/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Office Decor"
+      state_topic: "christmas/indoor/office/stat/POWER"
+      command_topic: "christmas/indoor/office/cmnd/POWER"
+      availability_topic: "christmas/indoor/office/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Christmas Amplifier"
+      state_topic: "christmas/outdoor/amplifier/stat/POWER"
+      command_topic: "christmas/outdoor/amplifier/cmnd/POWER"
+      availability_topic: "christmas/outdoor/amplifier/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Christmas Security Lights"
+      state_topic: "christmas/outdoor/security/stat/POWER"
+      command_topic: "christmas/outdoor/security/cmnd/POWER"
+      availability_topic: "christmas/outdoor/security/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+  sensor:
+    - state_topic: "christmas/indoor/dining/tele/STATE"
+      name: "Dining Room Decor Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/dining/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/entry/tele/STATE"
+      name: "Entry Hall Decor Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/entry/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/village/tele/STATE"
+      name: "Christmas Village Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/village/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/snowman/tele/STATE"
+      name: "Snowman Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/snowman/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/tree/tele/STATE"
+      name: "Chriatmas Tree Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/tree/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/l_tree/tele/STATE"
+      name: "Left Chriatmas Tree Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/l_tree/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/k_tree/tele/STATE"
+      name: "Kitchen Chriatmas Tree Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/k_tree/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/garland/tele/STATE"
+      name: "Chriatmas Garland Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/garland/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/master/tele/STATE"
+      name: "Master Bedroom Decor Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/master/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/kitchen/tele/STATE"
+      name: "Kitchen Garland Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/kitchen/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/hall/tele/STATE"
+      name: "Hall Decor Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/hall/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/indoor/office/tele/STATE"
+      name: "Office Decor Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/indoor/office/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/outdoor/amplifier/tele/STATE"
+      name: "Christmas Amplifier Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/outdoor/amplifier/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/outdoor/security/tele/STATE"
+      name: "Christmas Security Lights Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "christmas/outdoor/security/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - state_topic: "christmas/falcon/player/Master/playlist/name/status"
+      name: "FPP Master Playlist"
+
+    - state_topic: "christmas/falcon/player/Master/playlist/section/status"
+      name: "FPP Master Playlist Section"
+
+    - state_topic: "christmas/falcon/player/Master/playlist/sequence/status"
+      name: "FPP Master Sequence"
+
+    - state_topic: "christmas/falcon/player/Master/version"
+      name: "FPP Master Version"
+
+    - state_topic: "christmas/falcon/player/Master/state/status"
+      name: "FPP Master Status"
+      
 switch:
-  - platform: mqtt
-    name: "Dining Room Decor"
-    state_topic: "christmas/indoor/dining/stat/POWER"
-    command_topic: "christmas/indoor/dining/cmnd/POWER"
-    availability_topic: "christmas/indoor/dining/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Entry Hall Decor"
-    state_topic: "christmas/indoor/entry/stat/POWER"
-    command_topic: "christmas/indoor/entry/cmnd/POWER"
-    availability_topic: "christmas/indoor/entry/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Christmas Village"
-    state_topic: "christmas/indoor/village/stat/POWER"
-    command_topic: "christmas/indoor/village/cmnd/POWER"
-    availability_topic: "christmas/indoor/village/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Snowman"
-    state_topic: "christmas/indoor/snowman/stat/POWER"
-    command_topic: "christmas/indoor/snowman/cmnd/POWER"
-    availability_topic: "christmas/indoor/snowman/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Christmas Tree"
-    state_topic: "christmas/indoor/tree/stat/POWER"
-    command_topic: "christmas/indoor/tree/cmnd/POWER"
-    availability_topic: "christmas/indoor/tree/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Left Christmas Tree"
-    state_topic: "christmas/indoor/l_tree/stat/POWER"
-    command_topic: "christmas/indoor/l_tree/cmnd/POWER"
-    availability_topic: "christmas/indoor/l_tree/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Kitchen Christmas Tree"
-    state_topic: "christmas/indoor/k_tree/stat/POWER"
-    command_topic: "christmas/indoor/k_tree/cmnd/POWER"
-    availability_topic: "christmas/indoor/k_tree/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Christmas Garland"
-    state_topic: "christmas/indoor/garland/stat/POWER"
-    command_topic: "christmas/indoor/garland/cmnd/POWER"
-    availability_topic: "christmas/indoor/garland/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Master Bedroom Decor"
-    state_topic: "christmas/indoor/master/stat/POWER"
-    command_topic: "christmas/indoor/master/cmnd/POWER"
-    availability_topic: "christmas/indoor/master/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Kitchen Garland"
-    state_topic: "christmas/indoor/kitchen/stat/POWER"
-    command_topic: "christmas/indoor/kitchen/cmnd/POWER"
-    availability_topic: "christmas/indoor/kitchen/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Hall Decor"
-    state_topic: "christmas/indoor/hall/stat/POWER"
-    command_topic: "christmas/indoor/hall/cmnd/POWER"
-    availability_topic: "christmas/indoor/hall/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Office Decor"
-    state_topic: "christmas/indoor/office/stat/POWER"
-    command_topic: "christmas/indoor/office/cmnd/POWER"
-    availability_topic: "christmas/indoor/office/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Christmas Amplifier"
-    state_topic: "christmas/outdoor/amplifier/stat/POWER"
-    command_topic: "christmas/outdoor/amplifier/cmnd/POWER"
-    availability_topic: "christmas/outdoor/amplifier/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Christmas Security Lights"
-    state_topic: "christmas/outdoor/security/stat/POWER"
-    command_topic: "christmas/outdoor/security/cmnd/POWER"
-    availability_topic: "christmas/outdoor/security/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
   - platform: template
     switches:
       indoor_christmas:
@@ -168,167 +298,6 @@ switch:
           data:
             topic: christmas/indoor/decorations/cmnd/power
             payload: "OFF"
-
-sensor:
-  - platform: mqtt
-    state_topic: "christmas/indoor/dining/tele/STATE"
-    name: "Dining Room Decor Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/dining/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/entry/tele/STATE"
-    name: "Entry Hall Decor Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/entry/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/village/tele/STATE"
-    name: "Christmas Village Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/village/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/snowman/tele/STATE"
-    name: "Snowman Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/snowman/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/tree/tele/STATE"
-    name: "Chriatmas Tree Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/tree/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/l_tree/tele/STATE"
-    name: "Left Chriatmas Tree Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/l_tree/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/k_tree/tele/STATE"
-    name: "Kitchen Chriatmas Tree Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/k_tree/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/garland/tele/STATE"
-    name: "Chriatmas Garland Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/garland/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/master/tele/STATE"
-    name: "Master Bedroom Decor Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/master/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/kitchen/tele/STATE"
-    name: "Kitchen Garland Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/kitchen/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/hall/tele/STATE"
-    name: "Hall Decor Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/hall/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/indoor/office/tele/STATE"
-    name: "Office Decor Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/indoor/office/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/outdoor/amplifier/tele/STATE"
-    name: "Christmas Amplifier Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/outdoor/amplifier/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/outdoor/security/tele/STATE"
-    name: "Christmas Security Lights Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "christmas/outdoor/security/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    state_topic: "christmas/falcon/player/Master/playlist/name/status"
-    name: "FPP Master Playlist"
-
-  - platform: mqtt
-    state_topic: "christmas/falcon/player/Master/playlist/section/status"
-    name: "FPP Master Playlist Section"
-
-  - platform: mqtt
-    state_topic: "christmas/falcon/player/Master/playlist/sequence/status"
-    name: "FPP Master Sequence"
-
-  - platform: mqtt
-    state_topic: "christmas/falcon/player/Master/version"
-    name: "FPP Master Version"
-
-  - platform: mqtt
-    state_topic: "christmas/falcon/player/Master/state/status"
-    name: "FPP Master Status"
 
 input_boolean:
   christmas_show:

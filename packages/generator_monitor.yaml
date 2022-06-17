@@ -1,210 +1,207 @@
+mqtt:
+  sensor:
+    - name: Generator Current Firmware
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['currentFirmware']}}"
+
+    - name: Generator Latest Firmware
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['latestFirmware']}}"
+
+    - name: Generator Engine Speed
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['engineSpeed']}}"
+      unit_of_measurement: "RPM"
+
+    - name: Generator Engine Speed Target
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['engineSpeedTarget']}}"
+      unit_of_measurement: "RPM"
+
+    - name: Generator Oil Pressure
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['oilPressure']}}"
+      unit_of_measurement: "psi"
+
+    - name: Generator Coolant Temperature
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['coolantTemperature']}}"
+      unit_of_measurement: "°F"
+      device_class: temperature
+
+    - name: Generator Battery Voltage
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['batteryVoltage']}}"
+      unit_of_measurement: "V"
+
+    - name: Generator Fuel Consumption Rate
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['fuelRate']}}"
+      unit_of_measurement: "L/h"
+
+    - name: Generator Oil Temperature
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['oilTemperature']}}"
+      unit_of_measurement: "°F"
+      device_class: temperature
+
+    - name: Generator Controller Temperature
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['controllerTemperature']}}"
+      unit_of_measurement: "°F"
+      device_class: temperature
+
+    - name: Generator Intake Air Temperature
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['intakeAirTemperature']}}"
+      unit_of_measurement: "°F"
+      device_class: temperature
+
+    - name: Generator Compartment Temperature
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['compartmentTemperature']}}"
+      unit_of_measurement: "°F"
+      device_class: temperature
+
+    - name: Generator Voltage
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['generatorVoltage']}}"
+      unit_of_measurement: "V"
+
+    - name: Generator Frequency
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['generatorFrequency']}}"
+      unit_of_measurement: "Hz"
+
+    - name: Generator State
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['generatorState']}}"
+
+    - name: Generator Clock
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['generatorTime']}}"
+
+    - name: Generator Controller Hours
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['controllerHours']}}"
+      unit_of_measurement: "h"
+
+    - name: Generator Total Engine Hours
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['engineHours']}}"
+      unit_of_measurement: "h"
+
+    - name: Generator Loaded Engine Hours
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['engineLoadedHours']}}"
+      unit_of_measurement: "h"
+
+    - name: Generator Engine Starts
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['totalStarts']}}"
+
+    - name: Generator Last Service
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['lastService']}}"
+
+    - name: Generator Time Until Service
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['runtimeUntilService']}}"
+      unit_of_measurement: "h"
+
+    - name: Generator Time Since Service
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['runtimeSinceService']}}"
+      unit_of_measurement: "h"
+
+    - name: Generator ATS Position
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['contactorPosition']}}"
+
+    - name: Generator Available Sources
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['availableSources']}}"
+
+    - name: Generator Source 1 Voltage
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['source1Voltage']}}"
+      unit_of_measurement: "V"
+
+    - name: Generator Source 1 Frequency
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['source1Frequency']}}"
+      unit_of_measurement: "Hz"
+
+    - name: Generator Source 2 Voltage
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['source2Voltage']}}"
+      unit_of_measurement: "V"
+
+    - name: Generator Source 2 Frequency
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['source2Frequency']}}"
+      unit_of_measurement: "Hz"
+
+    - name: Generator Alert
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json['currentAlert']}}"
+
+    - name: Generator Last Exercise Start
+      state_topic: "genset/tele/exercise"
+      value_template: "{{value_json['exerciseStart']}}"
+
+    - name: Generator Last Exercise End
+      state_topic: "genset/tele/exercise"
+      value_template: "{{value_json['lastExercise']}}"
+
+    - name: Generator Next Exercise Start
+      state_topic: "genset/tele/exercise"
+      value_template: "{{value_json['nextExercise']}}"
+
+    - name: Generator Exercise Interval
+      state_topic: "genset/tele/exercise"
+      value_template: "{{value_json['exerciseInterval']}}"
+
+    - name: Generator Exercise Duration
+      state_topic: "genset/tele/exercise"
+      value_template: "{{value_json['exerciseDuration']}}"
+
+    - name: Generator Exercise Mode
+      state_topic: "genset/tele/exercise"
+      value_template: "{{value_json['exerciseMode']}}"
+
+  binary_sensor:
+    - name: Generator Low Oil
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json.lowOil}}"
+      payload_on: "On"
+      payload_off: "Off"
+
+    - name: Generator Network Connected
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json.networkConnected}}"
+      payload_on: "true"
+      payload_off: "false"
+
+    - name: Generator ATS Connected
+      state_topic: "genset/tele/status"
+      value_template: "{{value_json.atsConnected}}"
+      payload_on: "True"
+      payload_off: "False"
+
+    - name: Generator Exercise Scheduled
+      state_topic: "genset/tele/exercise"
+      value_template: "{{value_json.exerciseScheduled}}"
+      payload_on: "True"
+      payload_off: "False"
+
+    - name: Generator Exercise Active
+      state_topic: "genset/tele/exercise"
+      value_template: "{{value_json.exerciseActive}}"
+      payload_on: "True"
+      payload_off: "False"
+
 sensor:
-  - platform: mqtt
-    name: Generator Current Firmware
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['currentFirmware']}}"
-
-  - platform: mqtt
-    name: Generator Latest Firmware
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['latestFirmware']}}"
-
-  - platform: mqtt
-    name: Generator Engine Speed
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['engineSpeed']}}"
-    unit_of_measurement: "RPM"
-
-  - platform: mqtt
-    name: Generator Engine Speed Target
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['engineSpeedTarget']}}"
-    unit_of_measurement: "RPM"
-
-  - platform: mqtt
-    name: Generator Oil Pressure
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['oilPressure']}}"
-    unit_of_measurement: "psi"
-
-  - platform: mqtt
-    name: Generator Coolant Temperature
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['coolantTemperature']}}"
-    unit_of_measurement: "°F"
-    device_class: temperature
-
-  - platform: mqtt
-    name: Generator Battery Voltage
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['batteryVoltage']}}"
-    unit_of_measurement: "V"
-
-  - platform: mqtt
-    name: Generator Fuel Consumption Rate
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['fuelRate']}}"
-    unit_of_measurement: "L/h"
-
-  - platform: mqtt
-    name: Generator Oil Temperature
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['oilTemperature']}}"
-    unit_of_measurement: "°F"
-    device_class: temperature
-
-  - platform: mqtt
-    name: Generator Controller Temperature
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['controllerTemperature']}}"
-    unit_of_measurement: "°F"
-    device_class: temperature
-
-  - platform: mqtt
-    name: Generator Intake Air Temperature
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['intakeAirTemperature']}}"
-    unit_of_measurement: "°F"
-    device_class: temperature
-
-  - platform: mqtt
-    name: Generator Compartment Temperature
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['compartmentTemperature']}}"
-    unit_of_measurement: "°F"
-    device_class: temperature
-
-  - platform: mqtt
-    name: Generator Voltage
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['generatorVoltage']}}"
-    unit_of_measurement: "V"
-
-  - platform: mqtt
-    name: Generator Frequency
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['generatorFrequency']}}"
-    unit_of_measurement: "Hz"
-
-  - platform: mqtt
-    name: Generator State
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['generatorState']}}"
-
-  - platform: mqtt
-    name: Generator Clock
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['generatorTime']}}"
-
-  - platform: mqtt
-    name: Generator Controller Hours
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['controllerHours']}}"
-    unit_of_measurement: "h"
-
-  - platform: mqtt
-    name: Generator Total Engine Hours
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['engineHours']}}"
-    unit_of_measurement: "h"
-
-  - platform: mqtt
-    name: Generator Loaded Engine Hours
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['engineLoadedHours']}}"
-    unit_of_measurement: "h"
-
-  - platform: mqtt
-    name: Generator Engine Starts
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['totalStarts']}}"
-
-  - platform: mqtt
-    name: Generator Last Service
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['lastService']}}"
-
-  - platform: mqtt
-    name: Generator Time Until Service
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['runtimeUntilService']}}"
-    unit_of_measurement: "h"
-
-  - platform: mqtt
-    name: Generator Time Since Service
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['runtimeSinceService']}}"
-    unit_of_measurement: "h"
-
-  - platform: mqtt
-    name: Generator ATS Position
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['contactorPosition']}}"
-
-  - platform: mqtt
-    name: Generator Available Sources
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['availableSources']}}"
-
-  - platform: mqtt
-    name: Generator Source 1 Voltage
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['source1Voltage']}}"
-    unit_of_measurement: "V"
-
-  - platform: mqtt
-    name: Generator Source 1 Frequency
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['source1Frequency']}}"
-    unit_of_measurement: "Hz"
-
-  - platform: mqtt
-    name: Generator Source 2 Voltage
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['source2Voltage']}}"
-    unit_of_measurement: "V"
-
-  - platform: mqtt
-    name: Generator Source 2 Frequency
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['source2Frequency']}}"
-    unit_of_measurement: "Hz"
-
-  - platform: mqtt
-    name: Generator Alert
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json['currentAlert']}}"
-
-  - platform: mqtt
-    name: Generator Last Exercise Start
-    state_topic: "genset/tele/exercise"
-    value_template: "{{value_json['exerciseStart']}}"
-
-  - platform: mqtt
-    name: Generator Last Exercise End
-    state_topic: "genset/tele/exercise"
-    value_template: "{{value_json['lastExercise']}}"
-
-  - platform: mqtt
-    name: Generator Next Exercise Start
-    state_topic: "genset/tele/exercise"
-    value_template: "{{value_json['nextExercise']}}"
-
-  - platform: mqtt
-    name: Generator Exercise Interval
-    state_topic: "genset/tele/exercise"
-    value_template: "{{value_json['exerciseInterval']}}"
-
-  - platform: mqtt
-    name: Generator Exercise Duration
-    state_topic: "genset/tele/exercise"
-    value_template: "{{value_json['exerciseDuration']}}"
-
-  - platform: mqtt
-    name: Generator Exercise Mode
-    state_topic: "genset/tele/exercise"
-    value_template: "{{value_json['exerciseMode']}}"
-
   - platform: template
     sensors:
       generator_status:
@@ -345,41 +342,6 @@ sensor:
           {% endif -%}
 
 binary_sensor:
-  - platform: mqtt
-    name: Generator Low Oil
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json.lowOil}}"
-    payload_on: "On"
-    payload_off: "Off"
-
-  - platform: mqtt
-    name: Generator Network Connected
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json.networkConnected}}"
-    payload_on: "true"
-    payload_off: "false"
-
-  - platform: mqtt
-    name: Generator ATS Connected
-    state_topic: "genset/tele/status"
-    value_template: "{{value_json.atsConnected}}"
-    payload_on: "True"
-    payload_off: "False"
-
-  - platform: mqtt
-    name: Generator Exercise Scheduled
-    state_topic: "genset/tele/exercise"
-    value_template: "{{value_json.exerciseScheduled}}"
-    payload_on: true
-    payload_off: false
-
-  - platform: mqtt
-    name: Generator Exercise Active
-    state_topic: "genset/tele/exercise"
-    value_template: "{{value_json.exerciseActive}}"
-    payload_on: true
-    payload_off: false
-
   - platform: template
     sensors:
       generator_running:

@@ -1,25 +1,24 @@
-switch:
-  - platform: mqtt
-    name: Texas Cell METAR Map Power
-    state_topic: metar/tx-cell/tele/current
-    command_topic: metar/tx-cell/command/set/power
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "ON"
-    state_off: "OFF"
-    retain: true
-    optimistic: false
+mqtt:
+  switch:
+    - name: Texas Cell METAR Map Power
+      state_topic: metar/tx-cell/tele/current
+      command_topic: metar/tx-cell/command/set/power
+      payload_on: "ON"
+      payload_off: "OFF"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: true
+      optimistic: false
+
+  sensor:
+    - name: TX Cell METAR Mode
+      state_topic: "metar/tx-cell/tele/mode"
 
 input_boolean:
   tx_cell_metar_mode: #Off is METAR and on is temperature...
     name: Texas Cell METAR Map Display Mode
 
 sensor:
-
-  - platform: mqtt
-    name: TX Cell METAR Mode
-    state_topic: "metar/tx-cell/tele/mode"
-
   - platform: template
     sensors:
       tx_cell_metar_mode_clean:

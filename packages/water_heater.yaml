@@ -1,9 +1,9 @@
+mqtt:
+  sensor:
+    - name: Thermopile Voltage
+      state_topic: hwh_mon/sensor/thermopile_voltage/state
+      icon: mdi:flame
 sensor:
-  - platform: mqtt
-    name: Thermopile Voltage
-    state_topic: hwh_mon/sensor/thermopile_voltage/state
-    icon: mdi:flame
-    
   - platform: template
     sensors:
       water_heater_status:

@@ -1,79 +1,72 @@
-light:
-  - platform: mqtt
-    name: "Shack Desk Light"
-    state_topic: "h801/shack/tele/current"
-    command_topic: "h801/shack/command/set/w1/power"
-    brightness_state_topic: "h801/shack/tele/current"
-    brightness_command_topic: "h801/shack/command/set/w1/brightness"
-    state_value_template: "{{value_json['w1_power']}}"
-    brightness_value_template: "{{value_json['w1_brightness']}}"
-    color_temp_command_topic: "h801/shack/command/set/w1/temperature"
-    color_temp_state_topic: "h801/shack/tele/current"
-    color_temp_value_template: "{{value_json['temperature']}}"
-    availability_topic: "h801/shack/tele/LWT"
-    qos: 0
-    retain: false
-    payload_on: "ON"
-    payload_off: "OFF"
-    optimistic: false
-    payload_available: "Online"
-    payload_not_available: "Offline"
+mqtt:
+  light:
+    - name: "Shack Desk Light"
+      state_topic: "h801/shack/tele/current"
+      command_topic: "h801/shack/command/set/w1/power"
+      brightness_state_topic: "h801/shack/tele/current"
+      brightness_command_topic: "h801/shack/command/set/w1/brightness"
+      state_value_template: "{{value_json['w1_power']}}"
+      brightness_value_template: "{{value_json['w1_brightness']}}"
+      color_temp_command_topic: "h801/shack/command/set/w1/temperature"
+      color_temp_state_topic: "h801/shack/tele/current"
+      color_temp_value_template: "{{value_json['temperature']}}"
+      availability_topic: "h801/shack/tele/LWT"
+      qos: 0
+      retain: false
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-sensor:
-  #Driver Status Messages
+  sensor:
+    #Driver Status Messages
 
-  - platform: mqtt
-    name: "Shack Desk Light Version"
-    state_topic: "h801/shack/tele/status"
-    value_template: "{{value_json['espVersion']}}"
-    availability_topic: "h801/shack/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Shack Desk Light Version"
+      state_topic: "h801/shack/tele/status"
+      value_template: "{{value_json['espVersion']}}"
+      availability_topic: "h801/shack/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Shack Desk Light Uptime"
-    state_topic: "h801/shack/tele/status"
-    value_template: "{{value_json['espUptime']}}"
-    availability_topic: "h801/shack/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Shack Desk Light Uptime"
+      state_topic: "h801/shack/tele/status"
+      value_template: "{{value_json['espUptime']}}"
+      availability_topic: "h801/shack/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Shack Desk Light RSSI"
-    state_topic: "h801/shack/tele/status"
-    value_template: "{{value_json['signalStrength']}}"
-    availability_topic: "h801/shack/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Shack Desk Light RSSI"
+      state_topic: "h801/shack/tele/status"
+      value_template: "{{value_json['signalStrength']}}"
+      availability_topic: "h801/shack/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Shack Desk Light IP"
-    state_topic: "h801/shack/tele/status"
-    value_template: "{{value_json['bridgeIP']}}"
-    availability_topic: "h801/shack/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Shack Desk Light IP"
+      state_topic: "h801/shack/tele/status"
+      value_template: "{{value_json['bridgeIP']}}"
+      availability_topic: "h801/shack/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Shack Desk Light Free Heap"
-    state_topic: "h801/shack/tele/status"
-    value_template: "{{value_json['heapFree']}}"
-    availability_topic: "h801/shack/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Shack Desk Light Free Heap"
+      state_topic: "h801/shack/tele/status"
+      value_template: "{{value_json['heapFree']}}"
+      availability_topic: "h801/shack/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Shack Desk Light Heap Fragmentation"
-    state_topic: "h801/shack/tele/status"
-    value_template: "{{value_json['heapFragmentation']}}"
-    availability_topic: "h801/shack/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Shack Desk Light Heap Fragmentation"
+      state_topic: "h801/shack/tele/status"
+      value_template: "{{value_json['heapFragmentation']}}"
+      availability_topic: "h801/shack/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Shack Desk Light Core Version"
-    state_topic: "h801/shack/tele/status"
-    value_template: "{{value_json['espCore']}}"
-    availability_topic: "h801/shack/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Shack Desk Light Core Version"
+      state_topic: "h801/shack/tele/status"
+      value_template: "{{value_json['espCore']}}"
+      availability_topic: "h801/shack/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"

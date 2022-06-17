@@ -1,80 +1,72 @@
-cover:
-  - platform: mqtt
-    name: "Server Room Blind"
-    device_class: blind
-    command_topic: "habc/server/command/set/state"
-    set_position_topic: "habc/server/command/set/positionpct"
-    position_topic: "habc/server/tele/currentpct"
-    availability_topic: "habc/server/tele/LWT"
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
-    payload_available: "Online"
-    payload_not_available: "Offline"
+mqtt:
+  cover:
+    - name: "Server Room Blind"
+      device_class: blind
+      command_topic: "habc/server/command/set/state"
+      set_position_topic: "habc/server/command/set/positionpct"
+      position_topic: "habc/server/tele/currentpct"
+      availability_topic: "habc/server/tele/LWT"
+      payload_open: "OPEN"
+      payload_close: "CLOSE"
+      payload_stop: "STOP"
+      position_open: 100
+      position_closed: 0
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-sensor:
-  - platform: mqtt
-    name: "Server Room Blind Version"
-    state_topic: "habc/server/tele/status"
-    value_template: "{{value_json['espVersion']}}"
-    availability_topic: "habc/server/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+  sensor:
+    - name: "Server Room Blind Version"
+      state_topic: "habc/server/tele/status"
+      value_template: "{{value_json['espVersion']}}"
+      availability_topic: "habc/server/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Server Room Blind Uptime"
-    state_topic: "habc/server/tele/status"
-    value_template: "{{value_json['espUptime']}}"
-    availability_topic: "habc/server/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Server Room Blind Uptime"
+      state_topic: "habc/server/tele/status"
+      value_template: "{{value_json['espUptime']}}"
+      availability_topic: "habc/server/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Server Room Blind RSSI"
-    state_topic: "habc/server/tele/status"
-    value_template: "{{value_json['signalStrength']}}"
-    availability_topic: "habc/server/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Server Room Blind RSSI"
+      state_topic: "habc/server/tele/status"
+      value_template: "{{value_json['signalStrength']}}"
+      availability_topic: "habc/server/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Server Room Blind IP"
-    state_topic: "habc/server/tele/status"
-    value_template: "{{value_json['bridgeIP']}}"
-    availability_topic: "habc/server/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Server Room Blind IP"
+      state_topic: "habc/server/tele/status"
+      value_template: "{{value_json['bridgeIP']}}"
+      availability_topic: "habc/server/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Server Room Blind Free Heap"
-    state_topic: "habc/server/tele/status"
-    value_template: "{{value_json['heapFree']}}"
-    availability_topic: "habc/server/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Server Room Blind Free Heap"
+      state_topic: "habc/server/tele/status"
+      value_template: "{{value_json['heapFree']}}"
+      availability_topic: "habc/server/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Server Room Blind Heap Fragmentation"
-    state_topic: "habc/server/tele/status"
-    value_template: "{{value_json['heapFragmentation']}}"
-    availability_topic: "habc/server/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Server Room Blind Heap Fragmentation"
+      state_topic: "habc/server/tele/status"
+      value_template: "{{value_json['heapFragmentation']}}"
+      availability_topic: "habc/server/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Server Room Blind Core Version"
-    state_topic: "habc/server/tele/status"
-    value_template: "{{value_json['espCore']}}"
-    availability_topic: "habc/server/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Server Room Blind Core Version"
+      state_topic: "habc/server/tele/status"
+      value_template: "{{value_json['espCore']}}"
+      availability_topic: "habc/server/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "Server Room Blind Light Level"
-    state_topic: "habc/server/tele/light"
-    unit_of_measurement: "%"
-    availability_topic: "habc/server/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "Server Room Blind Light Level"
+      state_topic: "habc/server/tele/light"
+      unit_of_measurement: "%"
+      availability_topic: "habc/server/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"

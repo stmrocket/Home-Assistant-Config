@@ -879,70 +879,58 @@ sensor:
       - newest_version
       - current_version
       - addons
+mqtt:
+  sensor:
+    - state_topic: "hass/restart"
+      name: "HA Shutdown"
 
-  - platform: mqtt
-    state_topic: "hass/restart"
-    name: "HA Shutdown"
+    - name: Front Rooms AP Clients
+      state_topic: iap
+      value_template: "{{value_json['front'].clients }}"
 
-  - platform: mqtt
-    name: Front Rooms AP Clients
-    state_topic: iap
-    value_template: "{{value_json['front'].clients }}"
+    - name: Front Rooms AP 5 channel
+      state_topic: iap
+      value_template: "{{value_json['front'].channel5 }}"
 
-  - platform: mqtt
-    name: Front Rooms AP 5 channel
-    state_topic: iap
-    value_template: "{{value_json['front'].channel5 }}"
+    - name: Front Rooms AP 2 channel
+      state_topic: iap
+      value_template: "{{value_json['front'].channel2 }}"
 
-  - platform: mqtt
-    name: Front Rooms AP 2 channel
-    state_topic: iap
-    value_template: "{{value_json['front'].channel2 }}"
+    - name: Den AP Clients
+      state_topic: iap
+      value_template: "{{value_json['den'].clients }}"
 
-  - platform: mqtt
-    name: Den AP Clients
-    state_topic: iap
-    value_template: "{{value_json['den'].clients }}"
+    - name: Den AP 5 channel
+      state_topic: iap
+      value_template: "{{value_json['den'].channel5 }}"
 
-  - platform: mqtt
-    name: Den AP 5 channel
-    state_topic: iap
-    value_template: "{{value_json['den'].channel5 }}"
+    - name: Den AP 2 channel
+      state_topic: iap
+      value_template: "{{value_json['den'].channel2 }}"
 
-  - platform: mqtt
-    name: Den AP 2 channel
-    state_topic: iap
-    value_template: "{{value_json['den'].channel2 }}"
+    - name: Garage AP Clients
+      state_topic: iap
+      value_template: "{{value_json['garage'].clients }}"
 
-  - platform: mqtt
-    name: Garage AP Clients
-    state_topic: iap
-    value_template: "{{value_json['garage'].clients }}"
+    - name: Garage AP 5 channel
+      state_topic: iap
+      value_template: "{{value_json['garage'].channel5 }}"
 
-  - platform: mqtt
-    name: Garage AP 5 channel
-    state_topic: iap
-    value_template: "{{value_json['garage'].channel5 }}"
+    - name: Garage AP 2 channel
+      state_topic: iap
+      value_template: "{{value_json['garage'].channel2 }}"
 
-  - platform: mqtt
-    name: Garage AP 2 channel
-    state_topic: iap
-    value_template: "{{value_json['garage'].channel2 }}"
+    - name: Shed AP Clients
+      state_topic: iap
+      value_template: "{{value_json['shed'].clients }}"
 
-  - platform: mqtt
-    name: Shed AP Clients
-    state_topic: iap
-    value_template: "{{value_json['shed'].clients }}"
+    - name: Shed AP 5 channel
+      state_topic: iap
+      value_template: "{{value_json['shed'].channel5 }}"
 
-  - platform: mqtt
-    name: Shed AP 5 channel
-    state_topic: iap
-    value_template: "{{value_json['shed'].channel5 }}"
-
-  - platform: mqtt
-    name: Shed AP 2 channel
-    state_topic: iap
-    value_template: "{{value_json['shed'].channel2 }}"
+    - name: Shed AP 2 channel
+      state_topic: iap
+      value_template: "{{value_json['shed'].channel2 }}"
 
 ####################################################
 #                                                  #
@@ -955,41 +943,49 @@ input_number:
     min: 0
     max: 5000
     mode: box
+
   binary_sensor_count_expected:
     name: Expected Binary Sensors
     min: 0
     max: 5000
     mode: box
+
   switch_count_expected:
     name: Expected Switches
     min: 0
     max: 5000
     mode: box
+
   fan_count_expected:
     name: Expected Fans
     min: 0
     max: 5000
     mode: box
+
   light_count_expected:
     name: Expected Lights
     min: 0
     max: 5000
     mode: box
+
   tracked_device_count_expected:
     name: Expected Tracked Devices
     min: 0
     max: 5000
     mode: box
+
   media_player_count_expected:
     name: Expected Media Players
     min: 0
     max: 5000
     mode: box
+
   script_count_expected:
     name: Expected Scripts
     min: 0
     max: 5000
     mode: box
+
   sensor_count_expected:
     name: Expected Sensors
     min: 0
@@ -1013,7 +1009,7 @@ system_health:
 group:
   leds:
     name: LED Controllers
-    all: "true"
+    all: true
     entities:
       - device_tracker.den_1
       - device_tracker.gbath
@@ -1029,9 +1025,10 @@ group:
       - device_tracker.mbed_1
       - device_tracker.mbed_2
       - device_tracker.shack
+
   blinds:
     name: Blind Controllers
-    all: "true"
+    all: true
     entities:
       - device_tracker.den_c
       - device_tracker.den_l
@@ -1051,9 +1048,10 @@ group:
       - device_tracker.shack_l
       - device_tracker.shack_r
       - device_tracker.server
+
   docker:
     name: Docker
-    all: "true"
+    all: true
     entities:
       - switch.frigate
       - switch.tv_headend
