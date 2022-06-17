@@ -304,11 +304,6 @@ elkm1:
 api:
 alexa: !include alexa.yaml
 
-#Google Calendar
-google:
-  client_id: !secret gcal_client_id
-  client_secret: !secret gcal_client_secret
-
 #Browser Mod
 browser_mod:
   devices:
