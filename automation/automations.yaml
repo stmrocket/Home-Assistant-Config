@@ -131,7 +131,6 @@
 
 - alias: "Set Theme to Midnight"
   id: 891cd399-8598-4588-a680-0c3543d92fec
-  initial_state: "on"
   trigger:
     - platform: homeassistant
       event: start

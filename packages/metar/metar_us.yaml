@@ -1,87 +1,79 @@
-switch:
-  - platform: mqtt
-    name: US METAR Map Power
-    state_topic: metar/usa/tele/current
-    command_topic: metar/usa/command/set/power
-    availability_topic: metar/usa/tele/LWT
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "ON"
-    state_off: "OFF"
-    optimistic: false
-    payload_available: "Online"
-    payload_not_available: "Offline"
+mqtt:
+  switch:
+    - name: US METAR Map Power
+      state_topic: metar/usa/tele/current
+      command_topic: metar/usa/command/set/power
+      availability_topic: metar/usa/tele/LWT
+      payload_on: "ON"
+      payload_off: "OFF"
+      state_on: "ON"
+      state_off: "OFF"
+      optimistic: false
+      payload_available: "Online"
+      payload_not_available: "Offline"
+  sensor:
+    #Driver Status Messages
+
+    - name: "US METAR Map Version"
+      state_topic: "metar/usa/tele/status"
+      value_template: "{{value_json['espVersion']}}"
+      availability_topic: "metar/usa/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "US METAR Map Uptime"
+      state_topic: "metar/usa/tele/status"
+      value_template: "{{value_json['espUptime']}}"
+      availability_topic: "metar/usa/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "US METAR Map RSSI"
+      state_topic: "metar/usa/tele/status"
+      value_template: "{{value_json['signalStrength']}}"
+      availability_topic: "metar/usa/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "US METAR Map IP"
+      state_topic: "metar/usa/tele/status"
+      value_template: "{{value_json['mapIP']}}"
+      availability_topic: "metar/usa/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "US METAR Map Free Heap"
+      state_topic: "metar/usa/tele/status"
+      value_template: "{{value_json['heapFree']}}"
+      availability_topic: "metar/usa/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "US METAR Map Heap Fragmentation"
+      state_topic: "metar/usa/tele/status"
+      value_template: "{{value_json['heapFragmentation']}}"
+      availability_topic: "metar/usa/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "US METAR Map Core Version"
+      state_topic: "metar/usa/tele/status"
+      value_template: "{{value_json['espCore']}}"
+      availability_topic: "metar/usa/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: US METAR Mode
+      state_topic: "metar/usa/tele/mode"
+      availability_topic: "metar/usa/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
 input_boolean:
   us_metar_mode: #Off is METAR and on is temperature...
     name: US METAR Map Display Mode
 
 sensor:
-  #Driver Status Messages
-
-  - platform: mqtt
-    name: "US METAR Map Version"
-    state_topic: "metar/usa/tele/status"
-    value_template: "{{value_json['espVersion']}}"
-    availability_topic: "metar/usa/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "US METAR Map Uptime"
-    state_topic: "metar/usa/tele/status"
-    value_template: "{{value_json['espUptime']}}"
-    availability_topic: "metar/usa/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "US METAR Map RSSI"
-    state_topic: "metar/usa/tele/status"
-    value_template: "{{value_json['signalStrength']}}"
-    availability_topic: "metar/usa/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "US METAR Map IP"
-    state_topic: "metar/usa/tele/status"
-    value_template: "{{value_json['mapIP']}}"
-    availability_topic: "metar/usa/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "US METAR Map Free Heap"
-    state_topic: "metar/usa/tele/status"
-    value_template: "{{value_json['heapFree']}}"
-    availability_topic: "metar/usa/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "US METAR Map Heap Fragmentation"
-    state_topic: "metar/usa/tele/status"
-    value_template: "{{value_json['heapFragmentation']}}"
-    availability_topic: "metar/usa/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "US METAR Map Core Version"
-    state_topic: "metar/usa/tele/status"
-    value_template: "{{value_json['espCore']}}"
-    availability_topic: "metar/usa/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: US METAR Mode
-    state_topic: "metar/usa/tele/mode"
-    availability_topic: "metar/usa/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
   - platform: template
     sensors:
       us_metar_mode_clean:

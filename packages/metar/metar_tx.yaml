@@ -1,87 +1,80 @@
-switch:
-  - platform: mqtt
-    name: Texas METAR Map Power
-    state_topic: metar/tx/tele/current
-    command_topic: metar/tx/command/set/power
-    availability_topic: metar/tx/tele/LWT
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "ON"
-    state_off: "OFF"
-    optimistic: false
-    payload_available: "Online"
-    payload_not_available: "Offline"
+mqtt:
+  switch:
+    - name: Texas METAR Map Power
+      state_topic: metar/tx/tele/current
+      command_topic: metar/tx/command/set/power
+      availability_topic: metar/tx/tele/LWT
+      payload_on: "ON"
+      payload_off: "OFF"
+      state_on: "ON"
+      state_off: "OFF"
+      optimistic: false
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+  sensor:
+    #Driver Status Messages
+
+    - name: "Texas METAR Map Version"
+      state_topic: "metar/tx/tele/status"
+      value_template: "{{value_json['espVersion']}}"
+      availability_topic: "metar/tx/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Texas METAR Map Uptime"
+      state_topic: "metar/tx/tele/status"
+      value_template: "{{value_json['espUptime']}}"
+      availability_topic: "metar/tx/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Texas METAR Map RSSI"
+      state_topic: "metar/tx/tele/status"
+      value_template: "{{value_json['signalStrength']}}"
+      availability_topic: "metar/tx/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Texas METAR Map IP"
+      state_topic: "metar/tx/tele/status"
+      value_template: "{{value_json['mapIP']}}"
+      availability_topic: "metar/tx/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Texas METAR Map Free Heap"
+      state_topic: "metar/tx/tele/status"
+      value_template: "{{value_json['heapFree']}}"
+      availability_topic: "metar/tx/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Texas METAR Map Heap Fragmentation"
+      state_topic: "metar/tx/tele/status"
+      value_template: "{{value_json['heapFragmentation']}}"
+      availability_topic: "metar/tx/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Texas METAR Map Core Version"
+      state_topic: "metar/tx/tele/status"
+      value_template: "{{value_json['espCore']}}"
+      availability_topic: "metar/tx/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: TX METAR Mode
+      state_topic: "metar/tx/tele/mode"
+      availability_topic: "metar/tx/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
 input_boolean:
   tx_metar_mode: #Off is METAR and on is temperature...
     name: Texas METAR Map Display Mode
 
 sensor:
-  #Driver Status Messages
-
-  - platform: mqtt
-    name: "Texas METAR Map Version"
-    state_topic: "metar/tx/tele/status"
-    value_template: "{{value_json['espVersion']}}"
-    availability_topic: "metar/tx/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Texas METAR Map Uptime"
-    state_topic: "metar/tx/tele/status"
-    value_template: "{{value_json['espUptime']}}"
-    availability_topic: "metar/tx/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Texas METAR Map RSSI"
-    state_topic: "metar/tx/tele/status"
-    value_template: "{{value_json['signalStrength']}}"
-    availability_topic: "metar/tx/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Texas METAR Map IP"
-    state_topic: "metar/tx/tele/status"
-    value_template: "{{value_json['mapIP']}}"
-    availability_topic: "metar/tx/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Texas METAR Map Free Heap"
-    state_topic: "metar/tx/tele/status"
-    value_template: "{{value_json['heapFree']}}"
-    availability_topic: "metar/tx/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Texas METAR Map Heap Fragmentation"
-    state_topic: "metar/tx/tele/status"
-    value_template: "{{value_json['heapFragmentation']}}"
-    availability_topic: "metar/tx/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Texas METAR Map Core Version"
-    state_topic: "metar/tx/tele/status"
-    value_template: "{{value_json['espCore']}}"
-    availability_topic: "metar/tx/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: TX METAR Mode
-    state_topic: "metar/tx/tele/mode"
-    availability_topic: "metar/tx/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
   - platform: template
     sensors:
       tx_metar_mode_clean:

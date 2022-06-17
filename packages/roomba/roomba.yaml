@@ -28,21 +28,20 @@ vacuum:
 
 # Roomba Sensors
 
+mqtt:
+  sensor:
+    - name: "Roomba Battery Level"
+      state_topic: "roomba/tele/battery"
+      unit_of_measurement: "%"
+      device_class: "battery"
+
+    - name: "Roomba State"
+      state_topic: "roomba/tele/status"
+
+    - name: "Roomba Scheduler Command"
+      state_topic: "hass/roomba/command"
+
 sensor:
-  - platform: "mqtt"
-    name: "Roomba Battery Level"
-    state_topic: "roomba/tele/battery"
-    unit_of_measurement: "%"
-    device_class: "battery"
-
-  - platform: "mqtt"
-    name: "Roomba State"
-    state_topic: "roomba/tele/status"
-
-  - platform: "mqtt"
-    name: "Roomba Scheduler Command"
-    state_topic: "hass/roomba/command"
-
   - platform: template
     sensors:
       roomba_status:

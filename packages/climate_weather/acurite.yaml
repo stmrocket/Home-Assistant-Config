@@ -1,17 +1,15 @@
-sensor:
-  - platform: mqtt
-    name: AcuRite Outside Temperature
-    state_topic: rtl_433/8860/temperature_C
-    unit_of_measurement: "°C"
-    device_class: temperature
+mqtt:
+  sensor:
+    - name: AcuRite Outside Temperature
+      state_topic: rtl_433/8860/temperature_C
+      unit_of_measurement: "°C"
+      device_class: temperature
 
-  - platform: mqtt
-    name: AcuRite Outside Humidity
-    state_topic: rtl_433/8860/humidity
-    unit_of_measurement: "%"
+    - name: AcuRite Outside Humidity
+      state_topic: rtl_433/8860/humidity
+      unit_of_measurement: "%"
 
-binary_sensor:
-  - platform: mqtt
-    name: AcuRite Battery Low
-    state_topic: rtl_433/8860/battery_ok
-    value_template: "{{ value | int (0) == 0}}"
+  binary_sensor:
+    - name: AcuRite Battery Low
+      state_topic: rtl_433/8860/battery_ok
+      value_template: "{{ value | int (0) == 0}}"

@@ -1,20 +1,20 @@
-cover:
-  - platform: mqtt
-    name: "Shack Blinds"
-    device_class: blind
-    command_topic: "habc/shack/command/set/state"
-    set_position_topic: "habc/shack/command/set/positionpct"
-    position_topic: "habc/shack/tele/currentpct"
-    payload_open: "OPEN"
-    payload_close: "CLOSE"
-    payload_stop: "STOP"
-    position_open: 100
-    position_closed: 0
+mqtt:
+  cover:
+    - name: "Shack Blinds"
+      device_class: blind
+      command_topic: "habc/shack/command/set/state"
+      set_position_topic: "habc/shack/command/set/positionpct"
+      position_topic: "habc/shack/tele/currentpct"
+      payload_open: "OPEN"
+      payload_close: "CLOSE"
+      payload_stop: "STOP"
+      position_open: 100
+      position_closed: 0
 
 sensor:
-  platform: average
-  name: Shack Blinds Average Light Level
-  entities:
-    - sensor.left_shack_blind_light_level
-    - sensor.center_shack_blind_light_level
-    - sensor.right_shack_blind_light_level
+  - platform: average
+    name: Shack Blinds Average Light Level
+    entities:
+      - sensor.left_shack_blind_light_level
+      - sensor.center_shack_blind_light_level
+      - sensor.right_shack_blind_light_level

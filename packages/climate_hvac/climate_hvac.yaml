@@ -78,24 +78,6 @@ binary_sensor:
       hvac_zone_3_cool:
         friendly_name: "HVAC Zone 3 Cool Call"
         value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Cool') }}"
-  
-  - platform: mqtt
-    name: HVAC Leak Detector 1
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Leak1']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    device_class: moisture
-
-  - platform: mqtt
-    name: HVAC Leak Detector 2
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Leak2']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    device_class: moisture
 
 #################################################################
 #                                                               #
@@ -104,118 +86,6 @@ binary_sensor:
 #################################################################
 
 sensor:
-  - platform: mqtt
-    name: HVAC System State
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['System']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: HVAC Zone 1 State
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Zone1']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: HVAC Zone 2 State
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Zone2']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: HVAC Zone 3 State
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Zone3']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: HVAC Zone 1 Damper Position
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Damper1']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: HVAC Zone 2 Damper Position
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Damper2']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: HVAC Zone 3 Damper Position
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Damper3']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: HVAC Zone 4 Damper Position
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['Damper4']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-  - platform: mqtt
-    name: HVAC Fan Current
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['FanCurrent']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    unit_of_measurement: "A"
-  - platform: mqtt
-    name: HVAC Fan Differential Pressure
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['FanDP']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    unit_of_measurement: "Pa"
-  - platform: mqtt
-    name: HVAC Fan Differential Pressure Temperature
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['FanDPTemp']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    unit_of_measurement: "°C"
-    device_class: temperature
-  - platform: mqtt
-    name: HVAC Filter Differential Pressure
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['FilterDP']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    unit_of_measurement: "Pa"
-  - platform: mqtt
-    name: HVAC Filter Differential Pressure Temperature
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['FilterDPTemp']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    unit_of_measurement: "°C"
-    device_class: temperature
-  - platform: mqtt
-    name: HVAC Manager Ambient Temperature
-    state_topic: "hvac/tele/system"
-    value_template: "{{value_json['BoardTemp']}}"
-    availability_topic: "hvac/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    unit_of_measurement: "°C"
-    device_class: temperature
-
-
-
-
-
   ####################################################
   #                                                  #
   #                Sensor - Template                 #
@@ -358,6 +228,118 @@ sensor:
     type: time
     start: "{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}"
     end: "{{ now() }}"
+
+mqtt:
+  sensor:
+    - name: HVAC System State
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['System']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+    - name: HVAC Zone 1 State
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Zone1']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+    - name: HVAC Zone 2 State
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Zone2']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+    - name: HVAC Zone 3 State
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Zone3']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+    - name: HVAC Zone 1 Damper Position
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Damper1']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+    - name: HVAC Zone 2 Damper Position
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Damper2']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+    - name: HVAC Zone 3 Damper Position
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Damper3']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+    - name: HVAC Zone 4 Damper Position
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Damper4']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+    - name: HVAC Fan Current
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['FanCurrent']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      unit_of_measurement: "A"
+    - name: HVAC Fan Differential Pressure
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['FanDP']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      unit_of_measurement: "Pa"
+    - name: HVAC Fan Differential Pressure Temperature
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['FanDPTemp']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      unit_of_measurement: "°C"
+      device_class: temperature
+    - name: HVAC Filter Differential Pressure
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['FilterDP']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      unit_of_measurement: "Pa"
+    - name: HVAC Filter Differential Pressure Temperature
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['FilterDPTemp']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      unit_of_measurement: "°C"
+      device_class: temperature
+    - name: HVAC Manager Ambient Temperature
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['BoardTemp']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      unit_of_measurement: "°C"
+      device_class: temperature
+  binary_sensor:
+      -   name: HVAC Leak Detector 1
+          state_topic: "hvac/tele/system"
+          value_template: "{{value_json['Leak1']}}"
+          availability_topic: "hvac/tele/LWT"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          device_class: moisture
+
+      -   name: HVAC Leak Detector 2
+          state_topic: "hvac/tele/system"
+          value_template: "{{value_json['Leak2']}}"
+          availability_topic: "hvac/tele/LWT"
+          payload_available: "Online"
+          payload_not_available: "Offline"
+          device_class: moisture
 
 #################################################################
 #                                                               #

@@ -1,25 +1,24 @@
-switch:
-  - platform: mqtt
-    name: HOU Cell METAR Map Power
-    state_topic: metar/hou-cell/tele/current
-    command_topic: metar/hou-cell/command/set/power
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "ON"
-    state_off: "OFF"
-    retain: true
-    optimistic: false
+mqtt:
+  switch:
+    - name: HOU Cell METAR Map Power
+      state_topic: metar/hou-cell/tele/current
+      command_topic: metar/hou-cell/command/set/power
+      payload_on: "ON"
+      payload_off: "OFF"
+      state_on: "ON"
+      state_off: "OFF"
+      retain: true
+      optimistic: false
+
+  sensor:
+    - name: HOU Cell METAR Mode
+      state_topic: "metar/hou-cell/tele/mode"
 
 input_boolean:
   hou_cell_metar_mode: #Off is METAR and on is temperature...
     name: HOU Cell METAR Map Display Mode
 
 sensor:
-
-  - platform: mqtt
-    name: HOU Cell METAR Mode
-    state_topic: "metar/hou-cell/tele/mode"
-
   - platform: template
     sensors:
       hou_cell_metar_mode_clean:

@@ -75,11 +75,11 @@ lovelace:
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
     - url: /hacsfiles/bignumber-card/bignumber-card.js
-      type: js
+      type: module
     - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/lovelace-card-tools/card-tools.js
-      type: js
+      type: module
     - url: /hacsfiles/circle-sensor-card/circle-sensor-card.js
       type: module
     - url: /hacsfiles/dark-sky-weather-card/dark-sky-weather-card.js
@@ -87,23 +87,23 @@ lovelace:
     - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
       type: module
     - url: /hacsfiles/lovelace-gap-card/gap-card.js
-      type: js
+      type: module
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
     - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
     - url: /local/custom_ui/moment.js
-      type: js
+      type: module
     - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
-      type: js
+      type: module
     - url: /hacsfiles/text-divider-row/text-divider-row.js
       type: module
     - url: /hacsfiles/upcoming-media-card/upcoming-media-card.js
-      type: js
+      type: module
     - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
-      type: js
+      type: module
     - url: /hacsfiles/waze-card/waze-card.js
-      type: js
+      type: module
     - url: /hacsfiles/config-template-card/config-template-card.js
       type: module
     - url: /hacsfiles/simple-thermostat/simple-thermostat.js
@@ -111,9 +111,9 @@ lovelace:
     - url: /hacsfiles/flex-horseshoe-card/flex-horseshoe-card.js
       type: module
     - url: /hacsfiles/list-card/list-card.js
-      type: js
+      type: module
     - url: /hacsfiles/text-element/text-element.js
-      type: js
+      type: module
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/restriction-card/restriction-card.js
@@ -143,29 +143,6 @@ discovery:
 
 # Sensors
 sensor:
-  #Fireplace
-
-  - platform: mqtt
-    state_topic: "tele/fireplace/STATE"
-    name: "Fireplace Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "tele/fireplace/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  #Wax Warmer
-
-  - platform: mqtt
-    state_topic: "warmer/tele/STATE"
-    name: "Fireplace Signal"
-    unit_of_measurement: "%"
-    value_template: "{{value_json['Wifi'].RSSI }}"
-    availability_topic: "warmer/tele/LWT"
-    qos: 1
-    payload_available: "Online"
-    payload_not_available: "Offline"
 
   #Template Sensors
   - platform: template
@@ -184,29 +161,6 @@ binary_sensor:
       is_dst:
         value_template: "{{ now().timetuple().tm_isdst > 0 }}"
 
-switch:
-  - platform: mqtt
-    name: "Fireplace"
-    state_topic: "stat/fireplace/POWER"
-    command_topic: "cmnd/fireplace/POWER"
-    availability_topic: "tele/fireplace/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Wax Warmer"
-    state_topic: "warmer/stat/POWER"
-    command_topic: "warmer/cmnd/POWER"
-    availability_topic: "warmer/tele/LWT"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
 input_boolean:
   guest_mode:
     name: Guest Mode
@@ -224,24 +178,66 @@ input_boolean:
     name: Master Lamp Timer
     icon: mdi:timer-outline
 
-light:
-  - platform: mqtt
-    schema: json
-    name: "Hall Lamp"
-    state_topic: "esps/hall"
-    command_topic: "esps/hall/set"
-    brightness: true
-    rgb: true
-    effect: true
-    effect_list:
-      - Solid
-      - Blink
-      - Flash
-      - Rainbow
-      - Chase
-      - Fire flicker
-      - Lightning
-      - Breathe
+mqtt:
+  light:
+    - schema: json
+      name: "Hall Lamp"
+      state_topic: "esps/hall"
+      command_topic: "esps/hall/set"
+      brightness: true
+      rgb: true
+      effect: true
+      effect_list:
+        - Solid
+        - Blink
+        - Flash
+        - Rainbow
+        - Chase
+        - Fire flicker
+        - Lightning
+        - Breathe
+  switch:
+    - name: "Fireplace"
+      state_topic: "stat/fireplace/POWER"
+      command_topic: "cmnd/fireplace/POWER"
+      availability_topic: "tele/fireplace/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Wax Warmer"
+      state_topic: "warmer/stat/POWER"
+      command_topic: "warmer/cmnd/POWER"
+      availability_topic: "warmer/tele/LWT"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+  sensor:
+    #Fireplace
+
+    - state_topic: "tele/fireplace/STATE"
+      name: "Fireplace Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "tele/fireplace/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    #Wax Warmer
+
+    - state_topic: "warmer/tele/STATE"
+      name: "Fireplace Signal"
+      unit_of_measurement: "%"
+      value_template: "{{value_json['Wifi'].RSSI }}"
+      availability_topic: "warmer/tele/LWT"
+      qos: 1
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
 # Timers
 timer:
@@ -307,11 +303,6 @@ elkm1:
 # Alexa Integration
 api:
 alexa: !include alexa.yaml
-
-#Google Calendar
-google:
-  client_id: !secret gcal_client_id
-  client_secret: !secret gcal_client_secret
 
 #Browser Mod
 browser_mod:

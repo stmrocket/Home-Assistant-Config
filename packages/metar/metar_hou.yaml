@@ -1,87 +1,80 @@
-switch:
-  - platform: mqtt
-    name: Houston METAR Map Power
-    state_topic: metar/hou/tele/current
-    command_topic: metar/hou/command/set/power
-    availability_topic: metar/hou/tele/LWT
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "ON"
-    state_off: "OFF"
-    optimistic: false
-    payload_available: "Online"
-    payload_not_available: "Offline"
+mqtt:
+  switch:
+    - name: Houston METAR Map Power
+      state_topic: metar/hou/tele/current
+      command_topic: metar/hou/command/set/power
+      availability_topic: metar/hou/tele/LWT
+      payload_on: "ON"
+      payload_off: "OFF"
+      state_on: "ON"
+      state_off: "OFF"
+      optimistic: false
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+  sensor:
+    #Driver Status Messages
+
+    - name: "Houston METAR Map Version"
+      state_topic: "metar/hou/tele/status"
+      value_template: "{{value_json['espVersion']}}"
+      availability_topic: "metar/hou/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Houston METAR Map Uptime"
+      state_topic: "metar/hou/tele/status"
+      value_template: "{{value_json['espUptime']}}"
+      availability_topic: "metar/hou/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Houston METAR Map RSSI"
+      state_topic: "metar/hou/tele/status"
+      value_template: "{{value_json['signalStrength']}}"
+      availability_topic: "metar/hou/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Houston METAR Map IP"
+      state_topic: "metar/hou/tele/status"
+      value_template: "{{value_json['mapIP']}}"
+      availability_topic: "metar/hou/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Houston METAR Map Free Heap"
+      state_topic: "metar/hou/tele/status"
+      value_template: "{{value_json['heapFree']}}"
+      availability_topic: "metar/hou/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Houston METAR Map Heap Fragmentation"
+      state_topic: "metar/hou/tele/status"
+      value_template: "{{value_json['heapFragmentation']}}"
+      availability_topic: "metar/hou/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "Houston METAR Map Core Version"
+      state_topic: "metar/hou/tele/status"
+      value_template: "{{value_json['espCore']}}"
+      availability_topic: "metar/hou/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: HOU METAR Mode
+      state_topic: "metar/hou/tele/mode"
+      availability_topic: "metar/hou/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
 input_boolean:
   hou_metar_mode: #Off is METAR and on is temperature...
     name: Houston METAR Map Display Mode
 
 sensor:
-  #Driver Status Messages
-
-  - platform: mqtt
-    name: "Houston METAR Map Version"
-    state_topic: "metar/hou/tele/status"
-    value_template: "{{value_json['espVersion']}}"
-    availability_topic: "metar/hou/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Houston METAR Map Uptime"
-    state_topic: "metar/hou/tele/status"
-    value_template: "{{value_json['espUptime']}}"
-    availability_topic: "metar/hou/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Houston METAR Map RSSI"
-    state_topic: "metar/hou/tele/status"
-    value_template: "{{value_json['signalStrength']}}"
-    availability_topic: "metar/hou/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Houston METAR Map IP"
-    state_topic: "metar/hou/tele/status"
-    value_template: "{{value_json['mapIP']}}"
-    availability_topic: "metar/hou/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Houston METAR Map Free Heap"
-    state_topic: "metar/hou/tele/status"
-    value_template: "{{value_json['heapFree']}}"
-    availability_topic: "metar/hou/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Houston METAR Map Heap Fragmentation"
-    state_topic: "metar/hou/tele/status"
-    value_template: "{{value_json['heapFragmentation']}}"
-    availability_topic: "metar/hou/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: "Houston METAR Map Core Version"
-    state_topic: "metar/hou/tele/status"
-    value_template: "{{value_json['espCore']}}"
-    availability_topic: "metar/hou/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
-  - platform: mqtt
-    name: HOU METAR Mode
-    state_topic: "metar/hou/tele/mode"
-    availability_topic: "metar/hou/tele/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
   - platform: template
     sensors:
       hou_metar_mode_clean:

@@ -1,7 +1,6 @@
 automation:
   # Add previous day's runtime to input_number each night
   - alias: Store HVAC runtime nightly
-    initial_state: "on"
     trigger:
       - platform: time
         at: "00:00:01"

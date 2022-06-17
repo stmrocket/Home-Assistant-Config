@@ -9,11 +9,11 @@ timer:
     name: Time remaining
     duration: 600 # Updated this to the number of seconds you wish
 
-sensor:
-  - platform: mqtt
-    name: Bridge state
-    state_topic: "zigbee2mqtt/bridge/state"
-    icon: mdi:router-wireless
+mqtt:
+  sensor:
+    - name: Bridge state
+      state_topic: "zigbee2mqtt/bridge/state"
+      icon: mdi:router-wireless
 
 automation:
   - id: enable_zigbee_join

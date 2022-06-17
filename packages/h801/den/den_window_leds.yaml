@@ -1,19 +1,19 @@
-light:
-  - platform: mqtt
-    name: "Den Window LEDs CCT"
-    state_topic: "h801/d_windows/ha/state"
-    command_topic: "h801/d_windows/command/set/rgb/power"
-    brightness_state_topic: "h801/d_windows/tele/current"
-    brightness_command_topic: "h801/d_windows/command/set/rgb/brightness"
-    brightness_value_template: "{{value_json['rgb_brightness']}}"
-    color_temp_command_topic: "h801/d_windows/command/set/w1/temperature"
-    color_temp_state_topic: "h801/d_windows/tele/current"
-    color_temp_value_template: "{{value_json['temperature']}}"
-    qos: 0
-    retain: false
-    payload_on: "ON"
-    payload_off: "OFF"
-    optimistic: false
+mqtt:
+  light:
+    - name: "Den Window LEDs CCT"
+      state_topic: "h801/d_windows/ha/state"
+      command_topic: "h801/d_windows/command/set/rgb/power"
+      brightness_state_topic: "h801/d_windows/tele/current"
+      brightness_command_topic: "h801/d_windows/command/set/rgb/brightness"
+      brightness_value_template: "{{value_json['rgb_brightness']}}"
+      color_temp_command_topic: "h801/d_windows/command/set/w1/temperature"
+      color_temp_state_topic: "h801/d_windows/tele/current"
+      color_temp_value_template: "{{value_json['temperature']}}"
+      qos: 0
+      retain: false
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
 
 automation:
   - alias: den_window_gr report on
