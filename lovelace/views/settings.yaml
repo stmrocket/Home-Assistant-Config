@@ -42,7 +42,7 @@ cards:
                     icon: mdi:alarm-check
                   - value: "running"
                     color: rgb(228, 94, 101)
-                    icon: mdi:mdi:sprinkler
+                    icon: mdi:sprinkler
                     styles:
                       icon:
                         - animation: blink 1s infinite
