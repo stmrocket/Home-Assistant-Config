@@ -21,6 +21,27 @@ mqtt:
     - name: Front Porch Last Person
       topic: frigate/front_porch/person/snapshot
 
+    - name: West Front Last Cat
+      topic: frigate/west_front/cat/snapshot
+
+    - name: East Front Last Cat
+      topic: frigate/east_front/cat/snapshot
+
+    - name: West Side Last Cat
+      topic: frigate/west_side/cat/snapshot
+
+    - name: East Side Last Cat
+      topic: frigate/east_side/cat/snapshot
+
+    - name: Back Yard Last Cat
+      topic: frigate/back_yard/cat/snapshot
+
+    - name: Back Porch Last Cat
+      topic: frigate/back_porch/cat/snapshot
+
+    - name: Front Porch Last Cat
+      topic: frigate/front_porch/cat/snapshot
+
   binary_sensor:
     - name: West Front Person
       state_topic: frigate/west_front/person
@@ -54,6 +75,41 @@ mqtt:
 
     - name: Front Porch Person
       state_topic: frigate/front_porch/person
+      device_class: motion
+      availability_topic: frigate/available
+
+    - name: West Front Cat
+      state_topic: frigate/west_front/cat
+      device_class: motion
+      availability_topic: frigate/available
+
+    - name: East Front Cat
+      state_topic: frigate/east_front/cat
+      device_class: motion
+      availability_topic: frigate/available
+
+    - name: West Side Cat
+      state_topic: frigate/west_side/cat
+      device_class: motion
+      availability_topic: frigate/available
+
+    - name: East Side Cat
+      state_topic: frigate/east_side/cat
+      device_class: motion
+      availability_topic: frigate/available
+
+    - name: Back Yard Cat
+      state_topic: frigate/back_yard/cat
+      device_class: motion
+      availability_topic: frigate/available
+
+    - name: Back Porch Cat
+      state_topic: frigate/back_porch/cat
+      device_class: motion
+      availability_topic: frigate/available
+
+    - name: Front Porch Cat
+      state_topic: frigate/front_porch/cat
       device_class: motion
       availability_topic: frigate/available
 
