@@ -60,7 +60,7 @@
     - service: input_number.set_value
       entity_id: input_number.rain_last_minute
       data_template:
-        value: {{ states('counter.rain_minute') | int(0) }}
+        value: "{{ states('counter.rain_minute') | int(0) }}"
     - service: counter.reset
       entity_id: counter.rain_minute
 
@@ -75,7 +75,7 @@
     - service: input_number.set_value
       entity_id: input_number.rain_last_hour
       data_template:
-        value: {{ states('counter.rain_hour') | int(0) }}
+        value: "{{ states('counter.rain_hour') | int(0) }}"
     - service: counter.reset
       entity_id: counter.rain_hour
 
@@ -88,7 +88,7 @@
     - service: input_number.set_value
       entity_id: input_number.rain_last_day
       data_template:
-        value: {{ states('counter.rain_day') | int(0) }}
+        value: "{{ states('counter.rain_day') | int(0) }}"
     - service: counter.reset
       entity_id: counter.rain_day
 
@@ -104,7 +104,7 @@
     - service: input_number.set_value
       entity_id: input_number.rain_last_week
       data_template:
-        value: {{ states('counter.rain_week') | int(0) }}
+        value: "{{ states('counter.rain_week') | int(0) }}"
     - service: counter.reset
       entity_id: counter.rain_week
 
@@ -120,7 +120,7 @@
     - service: input_number.set_value
       entity_id: input_number.rain_last_month
       data_template:
-        value: {{ states('counter.rain_month') | int(0) }}
+        value: "{{ states('counter.rain_month') | int(0) }}"
     - service: counter.reset
       entity_id: counter.rain_month
 
@@ -138,55 +138,55 @@
     - service: input_number.set_value
       entity_id: input_number.rain_last_year
       data_template:
-        value: {{ states('counter.rain_year') | int(0) }}
+        value: "{{ states('counter.rain_year') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_1
       data_template:
-        value: {{ states('counter.rain_month_1') | int(0) }}
+        value: "{{ states('counter.rain_month_1') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_2
       data_template:
-        value: {{ states('counter.rain_month_2') | int(0) }}
+        value: "{{ states('counter.rain_month_2') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_3
       data_template:
-        value: {{ states('counter.rain_month_3') | int(0) }}
+        value: "{{ states('counter.rain_month_3') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_4
       data_template:
-        value: {{ states('counter.rain_month_4') | int(0) }}
+        value: "{{ states('counter.rain_month_4') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_5
       data_template:
-        value: {{ states('counter.rain_month_5') | int(0) }}
+        value: "{{ states('counter.rain_month_5') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_6
       data_template:
-        value: {{ states('counter.rain_month_6') | int(0) }}
+        value: "{{ states('counter.rain_month_6') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_7
       data_template:
-        value: {{ states('counter.rain_month_7') | int(0) }}
+        value: "{{ states('counter.rain_month_7') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_8
       data_template:
-        value: {{ states('counter.rain_month_8') | int(0) }}
+        value: "{{ states('counter.rain_month_8') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_9
       data_template:
-        value: {{ states('counter.rain_month_9') | int(0) }}
+        value: "{{ states('counter.rain_month_9') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_10
       data_template:
-        value: {{ states('counter.rain_month_10') | int(0) }}
+        value: "{{ states('counter.rain_month_10') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_11
       data_template:
-        value: {{ states('counter.rain_month_11') | int(0) }}
+        value: "{{ states('counter.rain_month_11') | int(0) }}"
     - service: input_number.set_value
       entity_id: input_number.rain_last_month_12
       data_template:
-        value: {{ states('counter.rain_month_12') | int(0) }}
+        value: "{{ states('counter.rain_month_12') | int(0) }}"
     - service: counter.reset
       entity_id: 
         - counter.rain_year
