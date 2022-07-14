@@ -5,11 +5,37 @@ counter:
     step: 1
   rain_day:
     step: 1
+  rain_week:
+    step: 1
   rain_month:
     step: 1
   rain_year:
     step: 1
   rain_total:
+    step: 1
+  rain_month_1:
+    step: 1
+  rain_month_2:
+    step: 1
+  rain_month_3:
+    step: 1
+  rain_month_4:
+    step: 1
+  rain_month_5:
+    step: 1
+  rain_month_6:
+    step: 1
+  rain_month_7:
+    step: 1
+  rain_month_8:
+    step: 1
+  rain_month_9:
+    step: 1
+  rain_month_10:
+    step: 1
+  rain_month_11:
+    step: 1
+  rain_month_12:
     step: 1
 
 sensor:
@@ -27,8 +53,60 @@ sensor:
         value_template: "{{ (states('counter.rain_day') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
+      rain_week:
+        value_template: "{{ (states('counter.rain_week') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
       rain_month:
         value_template: "{{ (states('counter.rain_month') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_1:
+        value_template: "{{ (states('counter.rain_month_1') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_2:
+        value_template: "{{ (states('counter.rain_month_2') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_3:
+        value_template: "{{ (states('counter.rain_month_3') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_4:
+        value_template: "{{ (states('counter.rain_month_4') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_5:
+        value_template: "{{ (states('counter.rain_month_5') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_6:
+        value_template: "{{ (states('counter.rain_month_6') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_7:
+        value_template: "{{ (states('counter.rain_month_7') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_8:
+        value_template: "{{ (states('counter.rain_month_8') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_9:
+        value_template: "{{ (states('counter.rain_month_9') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_10:
+        value_template: "{{ (states('counter.rain_month_10') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_11:
+        value_template: "{{ (states('counter.rain_month_11') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_month_12:
+        value_template: "{{ (states('counter.rain_month_12') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
       rain_year:
@@ -39,8 +117,78 @@ sensor:
         value_template: "{{ (states('counter.rain_total') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
-      rain_last_60_minutes:
-        value_template: "{{ state_attr('sensor.hourly_total_rain_statistics','change') }}"
+      rain_last_minute:
+        value_template: "{{ (states('input_number.rain_last_minute') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_hour:
+        value_template: "{{ (states('input_number.rain_last_hour') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_day:
+        value_template: "{{ (states('input_number.rain_last_day') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_week:
+        value_template: "{{ (states('input_number.rain_last_week') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month:
+        value_template: "{{ (states('input_number.rain_last_month') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_1:
+        value_template: "{{ (states('input_number.rain_last_month_1') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_2:
+        value_template: "{{ (states('input_number.rain_last_month_2') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_3:
+        value_template: "{{ (states('input_number.rain_last_month_3') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_4:
+        value_template: "{{ (states('input_number.rain_last_month_4') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_5:
+        value_template: "{{ (states('input_number.rain_last_month_5') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_6:
+        value_template: "{{ (states('input_number.rain_last_month_6') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_7:
+        value_template: "{{ (states('input_number.rain_last_month_7') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_8:
+        value_template: "{{ (states('input_number.rain_last_month_8') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_9:
+        value_template: "{{ (states('input_number.rain_last_month_9') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_10:
+        value_template: "{{ (states('input_number.rain_last_month_10') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_11:
+        value_template: "{{ (states('input_number.rain_last_month_11') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_month_12:
+        value_template: "{{ (states('input_number.rain_last_month_12') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
+      rain_last_year:
+        value_template: "{{ (states('input_number.rain_last_year') |int(none) / 100) | round(2, default=none) }}"
+        unit_of_measurement: "in"
+
 
       rain_rate:
         value_template: >
@@ -406,3 +554,80 @@ input_number:
     min: 0
     max: 100
     mode: box
+
+  rain_last_minute:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_hour:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_day:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_week:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_year:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_1:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_2:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_3:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_4:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_5:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_6:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_7:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_8:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_9:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_10:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_11:
+    min: 0
+    max: 100000
+    mode: box
+  rain_last_month_12:
+    min: 0
+    max: 100000
+    mode: box
+
+input_text:
+  last_rain:
+    name: Last Rain Date
