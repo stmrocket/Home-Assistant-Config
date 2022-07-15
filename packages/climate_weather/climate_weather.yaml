@@ -55,172 +55,172 @@ sensor:
         device_class: temperature
 
       temp_high_overall:
-        value_template: "{{ states('sensor.temp_high_overall') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_overall') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_overall:
-        value_template: "{{ states('sensor.temp_low_overall') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_overall') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_day:
-        value_template: "{{ states('sensor.temp_high_day') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_day') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_day:
-        value_template: "{{ states('sensor.temp_low_day') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_day') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_week:
-        value_template: "{{ states('sensor.temp_high_week') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_week') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_week:
-        value_template: "{{ states('sensor.temp_low_week') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_week') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month:
-        value_template: "{{ states('sensor.temp_high_month') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month:
-        value_template: "{{ states('sensor.temp_low_month') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_year:
-        value_template: "{{ states('sensor.temp_high_year') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_year') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_year:
-        value_template: "{{ states('sensor.temp_low_year') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_year') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_1:
-        value_template: "{{ states('sensor.temp_high_month_1') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_1') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_1:
-        value_template: "{{ states('sensor.temp_low_month_1') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_1') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_2:
-        value_template: "{{ states('sensor.temp_high_month_2') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_2') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_2:
-        value_template: "{{ states('sensor.temp_low_month_2') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_2') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_3:
-        value_template: "{{ states('sensor.temp_high_month_3') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_3') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_3:
-        value_template: "{{ states('sensor.temp_low_month_3') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_3') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_4:
-        value_template: "{{ states('sensor.temp_high_month_4') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_4') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_4:
-        value_template: "{{ states('sensor.temp_low_month_4') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_4') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_5:
-        value_template: "{{ states('sensor.temp_high_month_5') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_5') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_5:
-        value_template: "{{ states('sensor.temp_low_month_5') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_5') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_6:
-        value_template: "{{ states('sensor.temp_high_month_6') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_6') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_6:
-        value_template: "{{ states('sensor.temp_low_month_6') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_6') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_7:
-        value_template: "{{ states('sensor.temp_high_month_7') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_7') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_7:
-        value_template: "{{ states('sensor.temp_low_month_7') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_7') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_8:
-        value_template: "{{ states('sensor.temp_high_month_8') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_8') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_8:
-        value_template: "{{ states('sensor.temp_low_month_8') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_8') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_9:
-        value_template: "{{ states('sensor.temp_high_month_9') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_9') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_9:
-        value_template: "{{ states('sensor.temp_low_month_9') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_9') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_10:
-        value_template: "{{ states('sensor.temp_high_month_10') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_10') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_10:
-        value_template: "{{ states('sensor.temp_low_month_10') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_10') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_11:
-        value_template: "{{ states('sensor.temp_high_month_11') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_11') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_11:
-        value_template: "{{ states('sensor.temp_low_month_11') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_11') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_high_month_12:
-        value_template: "{{ states('sensor.temp_high_month_12') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_high_month_12') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
       temp_low_month_12:
-        value_template: "{{ states('sensor.temp_low_month_12') |int(float) | round(1, default=none) }}"
+        value_template: "{{ states('input_number.temp_low_month_12') |int(float) | round(1, default=none) }}"
         unit_of_measurement: "°F"
         device_class: temperature
 
