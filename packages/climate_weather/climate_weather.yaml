@@ -54,6 +54,176 @@ sensor:
         unit_of_measurement: "°F"
         device_class: temperature
 
+      temp_high_overall:
+        value_template: "{{ states('sensor.temp_high_overall') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_overall:
+        value_template: "{{ states('sensor.temp_low_overall') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_day:
+        value_template: "{{ states('sensor.temp_high_day') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_day:
+        value_template: "{{ states('sensor.temp_low_day') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_week:
+        value_template: "{{ states('sensor.temp_high_week') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_week:
+        value_template: "{{ states('sensor.temp_low_week') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month:
+        value_template: "{{ states('sensor.temp_high_month') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month:
+        value_template: "{{ states('sensor.temp_low_month') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_year:
+        value_template: "{{ states('sensor.temp_high_year') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_year:
+        value_template: "{{ states('sensor.temp_low_year') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_1:
+        value_template: "{{ states('sensor.temp_high_month_1') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_1:
+        value_template: "{{ states('sensor.temp_low_month_1') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_2:
+        value_template: "{{ states('sensor.temp_high_month_2') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_2:
+        value_template: "{{ states('sensor.temp_low_month_2') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_3:
+        value_template: "{{ states('sensor.temp_high_month_3') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_3:
+        value_template: "{{ states('sensor.temp_low_month_3') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_4:
+        value_template: "{{ states('sensor.temp_high_month_4') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_4:
+        value_template: "{{ states('sensor.temp_low_month_4') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_5:
+        value_template: "{{ states('sensor.temp_high_month_5') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_5:
+        value_template: "{{ states('sensor.temp_low_month_5') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_6:
+        value_template: "{{ states('sensor.temp_high_month_6') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_6:
+        value_template: "{{ states('sensor.temp_low_month_6') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_7:
+        value_template: "{{ states('sensor.temp_high_month_7') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_7:
+        value_template: "{{ states('sensor.temp_low_month_7') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_8:
+        value_template: "{{ states('sensor.temp_high_month_8') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_8:
+        value_template: "{{ states('sensor.temp_low_month_8') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_9:
+        value_template: "{{ states('sensor.temp_high_month_9') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_9:
+        value_template: "{{ states('sensor.temp_low_month_9') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_10:
+        value_template: "{{ states('sensor.temp_high_month_10') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_10:
+        value_template: "{{ states('sensor.temp_low_month_10') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_11:
+        value_template: "{{ states('sensor.temp_high_month_11') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_11:
+        value_template: "{{ states('sensor.temp_low_month_11') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_high_month_12:
+        value_template: "{{ states('sensor.temp_high_month_12') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      temp_low_month_12:
+        value_template: "{{ states('sensor.temp_low_month_12') |int(float) | round(1, default=none) }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
   # Darksky
   - platform: darksky
     api_key: !secret ds_key
@@ -354,3 +524,604 @@ rest_command:
 input_boolean:
   is_raining:
     name: Currently Raining
+
+input_number:
+  temp_high_overall:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_overall:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_day:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_day:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_week:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_week:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_year:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_year:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_1:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_1:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_2:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_2:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_3:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_3:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_4:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_4:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_5:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_5:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_6:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_6:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_7:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_7:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_8:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_8:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_9:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_9:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_10:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_10:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_11:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_11:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_month_12:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_month_12:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_last_day:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_last_day:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_last_week:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_last_week:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_last_month:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_last_month:
+    min: -50
+    max: 150
+    mode: box
+  temp_high_last_year:
+    min: -50
+    max: 150
+    mode: box
+  temp_low_last_year:
+    min: -50
+    max: 150
+    mode: box
+
+input_text:
+  temp_high_date_overall:
+    name: Overall High Temp Date
+  temp_low_date_overall:
+    name: Overall Low Temp Date
+  temp_high_date_day:
+    name: Day High Temp Date
+  temp_low_date_day:
+    name: Day Low Temp Date
+  temp_high_date_week:
+    name: Week High Temp Date
+  temp_low_date_week:
+    name: Week Low Temp Date
+  temp_high_date_month:
+    name: Month High Temp Date
+  temp_low_date_month:
+    name: Month Low Temp Date
+  temp_high_date_year:
+    name: Year High Temp Date
+  temp_low_date_year:
+    name: Year Low Temp Date
+  temp_high_date_month_1:
+    name: Month 1 High Temp Date
+  temp_low_date_month_1:
+    name: Month 1 Low Temp Date
+  temp_high_date_month_2:
+    name: Month 2 High Temp Date
+  temp_low_date_month_2:
+    name: Month 2 Low Temp Date
+  temp_high_date_month_3:
+    name: Month 3 High Temp Date
+  temp_low_date_month_3:
+    name: Month 3 Low Temp Date
+  temp_high_date_month_4:
+    name: Month 4 High Temp Date
+  temp_low_date_month_4:
+    name: Month 4 Low Temp Date
+  temp_high_date_month_5:
+    name: Month 5 High Temp Date
+  temp_low_date_month_5:
+    name: Month 5 Low Temp Date
+  temp_high_date_month_6:
+    name: Month 6 High Temp Date
+  temp_low_date_month_6:
+    name: Month 6 Low Temp Date
+  temp_high_date_month_7:
+    name: Month 7 High Temp Date
+  temp_low_date_month_7:
+    name: Month 7 Low Temp Date
+  temp_high_date_month_8:
+    name: Month 8 High Temp Date
+  temp_low_date_month_8:
+    name: Month 8 Low Temp Date
+  temp_high_date_month_9:
+    name: Month 9 High Temp Date
+  temp_low_date_month_9:
+    name: Month 9 Low Temp Date
+  temp_high_date_month_10:
+    name: Month 10 High Temp Date
+  temp_low_date_month_10:
+    name: Month 10 Low Temp Date
+  temp_high_date_month_11:
+    name: Month 11 High Temp Date
+  temp_low_date_month_11:
+    name: Month 11 Low Temp Date
+  temp_high_date_month_12:
+    name: Month 12 High Temp Date
+  temp_low_date_month_12:
+    name: Month 12 Low Temp Date
+  temp_high_date_last_day:
+    name: Last Day High Temp Date
+  temp_low_date_last_day:
+    name: Last Day Low Temp Date
+  temp_high_date_last_week:
+    name: Last Week High Temp Date
+  temp_low_date_last_week:
+    name: Last Week Low Temp Date
+  temp_high_date_last_month:
+    name: Last Month High Temp Date
+  temp_low_date_last_month:
+    name: Last Month Low Temp Date
+  temp_high_date_last_year:
+    name: Last Year High Temp Date
+  temp_low_date_last_year:
+    name: Last Year Low Temp Date
+
+automation:
+  - alias: Update Temperature Records
+    id: 005ecdaf-0900-447c-b13f-f1f6730ab6cb
+    trigger:
+      - platform: state
+        entity_id: sensor.acurite_outside_temperature
+    action:
+      - choose: #Overall high temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) > states('input_number.temp_high_overall') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_high_overall
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_high_date_overall
+              data_template:
+                value: "{{ now() }}"
+      - choose: #Overall low temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) < states('input_number.temp_low_overall') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_low_overall
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_low_date_overall
+              data_template:
+                value: "{{ now() }}"
+      - choose: #Day high temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) > states('input_number.temp_high_day') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_high_day
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_high_date_day
+              data_template:
+                value: "{{ now() }}"
+      - choose: #Day low temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) < states('input_number.temp_low_day') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_low_day
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_low_date_day
+              data_template:
+                value: "{{ now() }}"
+      - choose: #Week high temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) > states('input_number.temp_high_week') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_high_week
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_high_date_week
+              data_template:
+                value: "{{ now() }}"
+      - choose: #Week low temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) < states('input_number.temp_low_week') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_low_week
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_low_date_week
+              data_template:
+                value: "{{ now() }}"
+      - choose: #Month high temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) > states('input_number.temp_high_month') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_high_month
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_number.set_value
+              data_template:
+                entity_id: >
+                  input_number.temp_high_month_{{ now().month }}
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_high_date_month
+              data_template:
+                value: "{{ now() }}"
+            - service: input_text.set_value
+              data_template:
+                entity_id: >
+                  input_text.temp_high_date_month_{{ now().month }}
+                value: "{{ now() }}"
+      - choose: #Month low temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) < states('input_number.temp_low_month') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_low_month
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_number.set_value
+              data_template:
+                entity_id: >
+                  input_number.temp_low_month_{{ now().month }}
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_low_date_month
+              data_template:
+                value: "{{ now() }}"
+            - service: input_text.set_value
+              data_template:
+                entity_id: >
+                  input_text.temp_low_date_month_{{ now().month }}
+                value: "{{ now() }}"      
+      - choose: #Year high temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) > states('input_number.temp_high_year') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_high_year
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_high_date_year
+              data_template:
+                value: "{{ now() }}"
+      - choose: #Year low temperature
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_outside_temperature') | float(none) < states('input_number.temp_low_year') | float(none) }}"
+          sequence:
+            - service: input_number.set_value
+              entity_id: input_number.temp_low_year
+              data_template:
+                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+            - service: input_text.set_value
+              entity_id: input_text.temp_low_date_year
+              data_template:
+                value: "{{ now() }}"
+
+  - alias: Reset Day Temperature
+    id: 3741aeac-88e7-45db-b91a-fa032d372f08
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.temp_high_last_day
+        data_template:
+          value: "{{ states('input_number.temp_high_day') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_low_last_day
+        data_template:
+          value: "{{ states('input_number.temp_low_day') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_high_day
+        data_template:
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_low_day
+        data_template:
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_high_date_last_day
+        data_template:
+          value: "{{ states('input_text.temp_high_date_day') | string(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_low_date_last_day
+        data_template:
+          value: "{{ states('input_text.temp_low_date_day') | string(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_high_date_day
+        data_template:
+          value: "{{ now() }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_low_date_day
+        data_template:
+          value: "{{ now() }}"
+
+  - alias: Reset Week Temperature
+    id: d2ca1011-34fb-4d9d-8d60-aaefa6cfa32f
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().weekday() == 0 }}"
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.temp_high_last_week
+        data_template:
+          value: "{{ states('input_number.temp_high_week') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_low_last_week
+        data_template:
+          value: "{{ states('input_number.temp_low_week') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_high_week
+        data_template:
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_low_week
+        data_template:
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_high_date_last_week
+        data_template:
+          value: "{{ states('input_text.temp_high_date_week') | string(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_low_date_last_week
+        data_template:
+          value: "{{ states('input_text.temp_low_date_week') | string(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_high_date_week
+        data_template:
+          value: "{{ now() }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_low_date_week
+        data_template:
+          value: "{{ now() }}"
+
+  - alias: Reset Month Temperature
+    id: 68064f64-7814-4fe6-9167-1f4bc724153a
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().day == 1 }}"
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.temp_high_last_month
+        data_template:
+          value: "{{ states('input_number.temp_high_month') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_low_last_month
+        data_template:
+          value: "{{ states('input_number.temp_low_month') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_high_month
+        data_template:
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_low_month
+        data_template:
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_high_date_last_month
+        data_template:
+          value: "{{ states('input_text.temp_high_date_month') | string(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_low_date_last_month
+        data_template:
+          value: "{{ states('input_text.temp_low_date_month') | string(none) }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: >
+            input_number.temp_high_month_{{ now().month }}
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: >
+            input_number.temp_low_month_{{ now().month }}
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_high_date_month
+        data_template:
+          value: "{{ now() }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_low_date_month
+        data_template:
+          value: "{{ now() }}"
+      - service: input_text.set_value
+        data_template:
+          entity_id: >
+            input_text.temp_high_date_month_{{ now().month }}
+          value: "{{ now() }}"
+      - service: input_text.set_value
+        data_template:
+          entity_id: >
+            input_text.temp_low_date_month_{{ now().month }}
+          value: "{{ now() }}" 
+
+  - alias: Reset Year Temperature
+    id: 86bdf918-9f26-4b71-87d0-5cadc1ec46c5
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().month == 1 }}"
+      - condition: template
+        value_template: "{{ now().day == 1 }}"
+    action:
+      - service: input_number.set_value
+        entity_id: input_number.temp_high_last_year
+        data_template:
+          value: "{{ states('input_number.temp_high_year') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_low_last_year
+        data_template:
+          value: "{{ states('input_number.temp_low_year') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_high_year
+        data_template:
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_number.set_value
+        entity_id: input_number.temp_low_year
+        data_template:
+          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_high_date_last_year
+        data_template:
+          value: "{{ states('input_text.temp_high_date_year') | string(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_low_date_last_year
+        data_template:
+          value: "{{ states('input_text.temp_low_date_year') | string(none) }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_high_date_year
+        data_template:
+          value: "{{ now() }}"
+      - service: input_text.set_value
+        entity_id: input_text.temp_low_date_year
+        data_template:
+          value: "{{ now() }}"
