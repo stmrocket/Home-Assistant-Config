@@ -2,9 +2,9 @@ dryerpanel:
   name: Dryer
   entities:
     - sensor.dryer_state
-    - sensor.dryer_voltage
-    - sensor.dryer_watts
-    - sensor.dryer_amps
+    - sensor.dryer_energy_voltage
+    - sensor.dryer_energy_power
+    - sensor.dryer_energy_current
     - sensor.dryer_energy_today
     - sensor.dryer_energy_yesterday
     - sensor.dryer_signal

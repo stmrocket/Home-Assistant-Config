@@ -589,9 +589,9 @@ sensor.washer_status:
     type: entities
     entities:
       - entity: sensor.washer_state
-      - entity: sensor.washer_voltage
-      - entity: sensor.washer_watts
-      - entity: sensor.washer_amps
+      - entity: sensor.washer_energy_voltage
+      - entity: sensor.washer_energy_power
+      - entity: sensor.washer_energy_current
       - entity: sensor.washer_energy_today
         icon: "mdi:gauge"
       - entity: sensor.washer_energy_yesterday
@@ -605,9 +605,9 @@ sensor.dryer_status:
     type: entities
     entities:
       - entity: sensor.dryer_state
-      - entity: sensor.dryer_voltage
-      - entity: sensor.dryer_watts
-      - entity: sensor.dryer_amps
+      - entity: sensor.dryer_energy_voltage
+      - entity: sensor.dryer_energy_power
+      - entity: sensor.dryer_energy_current
       - entity: sensor.dryer_energy_today
         icon: "mdi:gauge"
       - entity: sensor.dryer_energy_yesterday

@@ -2,7 +2,7 @@
   id: b20e9fcc-2cf1-4a73-b957-15c9b2a051c9
   trigger:
     - platform: numeric_state
-      entity_id: sensor.dryer_watts
+      entity_id: sensor.dryer_energy_power
       above: 5
       below: 20
       for:
@@ -18,7 +18,7 @@
   id: 207d3e98-175c-414d-aa88-3974301028dc
   trigger:
     - platform: numeric_state
-      entity_id: sensor.dryer_watts
+      entity_id: sensor.dryer_energy_power
       above: 50
       for:
         seconds: 2
@@ -37,7 +37,7 @@
   id: 5b860d55-1b30-49b0-87d7-ff953fdc4dd9
   trigger:
     - platform: numeric_state
-      entity_id: sensor.dryer_watts
+      entity_id: sensor.dryer_energy_power
       below: 5
       for:
         seconds: 2
@@ -57,7 +57,7 @@
   id: f2d307d7-23bc-40c7-9626-76cc5fdedad4
   trigger:
     - platform: numeric_state
-      entity_id: sensor.washer_watts
+      entity_id: sensor.washer_energy_power
       above: 20
       for:
         seconds: 10
@@ -78,7 +78,7 @@
   id: 51f499e7-bda1-44ec-ab06-f082bca8ce9c
   trigger:
     - platform: numeric_state
-      entity_id: sensor.washer_watts
+      entity_id: sensor.washer_energy_power
       below: 20
       for:
         minutes: 2
