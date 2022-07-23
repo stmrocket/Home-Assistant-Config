@@ -1,6 +1,7 @@
 mqtt:
   switch:
     - name: "Garage Light 1"
+      unique_id: f070fb14-8745-4265-b191-710d94ba97fe
       state_topic: "garage/t8_1/tele/current"
       command_topic: "garage/t8_1/command/set/power"
       availability_topic: "garage/t8_1/tele/LWT"
@@ -11,6 +12,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 2"
+      unique_id: b4a1a23b-778a-4798-9d03-29bb170b0930
       state_topic: "garage/t8_2/tele/current"
       command_topic: "garage/t8_2/command/set/power"
       availability_topic: "garage/t8_2/tele/LWT"
@@ -21,6 +23,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 3"
+      unique_id: 90d9a2cc-d242-4faa-b2b8-0edad7a3239c
       state_topic: "garage/t8_3/tele/current"
       command_topic: "garage/t8_3/command/set/power"
       availability_topic: "garage/t8_3/tele/LWT"
@@ -31,6 +34,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 4"
+      unique_id: 523c3ec6-e203-4e04-92a4-8f3883ce6a3e
       state_topic: "garage/t8_4/tele/current"
       command_topic: "garage/t8_4/command/set/power"
       availability_topic: "garage/t8_4/tele/LWT"
@@ -41,6 +45,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 5"
+      unique_id: a79c5fa6-3f37-4489-a2c2-d05640771ab9
       state_topic: "garage/t8_5/tele/current"
       command_topic: "garage/t8_5/command/set/power"
       availability_topic: "garage/t8_5/tele/LWT"
@@ -51,6 +56,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 6"
+      unique_id: a21b6a3f-7201-41c1-8365-ae01da761347
       state_topic: "garage/t8_6/tele/current"
       command_topic: "garage/t8_6/command/set/power"
       availability_topic: "garage/t8_6/tele/LWT"
@@ -61,6 +67,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 7"
+      unique_id: 6e1b9eb0-972a-4c6f-ae14-9897f2580579
       state_topic: "garage/t8_7/tele/current"
       command_topic: "garage/t8_7/command/set/power"
       availability_topic: "garage/t8_7/tele/LWT"
@@ -71,6 +78,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 8"
+      unique_id: c0b6fe78-cb67-4fbf-9033-6dba4a3ae0c2
       state_topic: "garage/t8_8/tele/current"
       command_topic: "garage/t8_8/command/set/power"
       availability_topic: "garage/t8_8/tele/LWT"
@@ -81,6 +89,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 9"
+      unique_id: 78a655ac-ef10-4298-bb86-abbb07eb03f7
       state_topic: "garage/t8_9/tele/current"
       command_topic: "garage/t8_9/command/set/power"
       availability_topic: "garage/t8_9/tele/LWT"
@@ -91,6 +100,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 10"
+      unique_id: d91c1d4b-07bb-4be7-8113-b37fe5a214bc
       state_topic: "garage/t8_10/tele/current"
       command_topic: "garage/t8_10/command/set/power"
       availability_topic: "garage/t8_10/tele/LWT"
@@ -101,6 +111,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 11"
+      unique_id: e475cd8e-d268-4bda-b08f-e2f6001d3184
       state_topic: "garage/t8_11/tele/current"
       command_topic: "garage/t8_11/command/set/power"
       availability_topic: "garage/t8_11/tele/LWT"
@@ -111,6 +122,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 12"
+      unique_id: 7da0debc-0d09-4d1c-82c6-da0c8834dd1f
       state_topic: "garage/t8_12/tele/current"
       command_topic: "garage/t8_12/command/set/power"
       availability_topic: "garage/t8_12/tele/LWT"
@@ -121,6 +133,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 13"
+      unique_id: eed79e02-5e4f-4f59-9867-07db8c44130d
       state_topic: "garage/t8_13/tele/current"
       command_topic: "garage/t8_13/command/set/power"
       availability_topic: "garage/t8_13/tele/LWT"
@@ -131,6 +144,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Garage Light 14"
+      unique_id: 03f47b57-7157-4fef-b6a0-1fff6b2c711a
       state_topic: "garage/t8_14/tele/current"
       command_topic: "garage/t8_14/command/set/power"
       availability_topic: "garage/t8_14/tele/LWT"

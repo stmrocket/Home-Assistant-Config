@@ -32,50 +32,62 @@ binary_sensor:
   - platform: template
     sensors:
       hvac_system_fan:
+        unique_id: bd0c93ae-4b60-4850-885e-7ab09c0b9437
         friendly_name: "HVAC System Fan Call"
         value_template: "{{ is_state('sensor.hvac_system_state', 'Fan') }}"
 
       hvac_system_heat:
         friendly_name: "HVAC System Heat Call"
+        unique_id: f3b86e5f-be73-4ee8-b9e7-f8538a9d2c4e
         value_template: "{{ is_state('sensor.hvac_system_state', 'Heat') }}"
 
       hvac_system_cool:
+        unique_id: 5ca3444e-3059-4dc5-bb78-50e82eac14e0
         friendly_name: "HVAC System Cool Call"
         value_template: "{{ is_state('sensor.hvac_system_state', 'Cool') }}"
 
       hvac_zone_1_fan:
+        unique_id: 5cfdcda3-541f-42db-9f42-f34ac41a2d3d
         friendly_name: "HVAC Zone 1 Fan Call"
         value_template: "{{ is_state('sensor.hvac_zone_1_state', 'Fan') }}"
 
       hvac_zone_1_heat:
+        unique_id: ac099d31-5393-45e4-888f-503fcf5d4f60
         friendly_name: "HVAC Zone 1 Heat Call"
         value_template: "{{ is_state('sensor.hvac_zone_1_state', 'Heat') }}"
 
       hvac_zone_1_cool:
+        unique_id: acc95a67-3ca6-484f-8d6f-cb52e8c714fd
         friendly_name: "HVAC Zone 1 Cool Call"
         value_template: "{{ is_state('sensor.hvac_zone_1_state', 'Cool') }}"
 
       hvac_zone_2_fan:
+        unique_id: 34300d77-3a3d-4243-9c51-93aedf7db828
         friendly_name: "HVAC Zone 2 Fan Call"
         value_template: "{{ is_state('sensor.hvac_zone_2_state', 'Fan') }}"
 
       hvac_zone_2_heat:
+        unique_id: 19b125b0-eda4-4b7a-b8d5-1402de242ff6
         friendly_name: "HVAC Zone 2 Heat Call"
         value_template: "{{ is_state('sensor.hvac_zone_2_state', 'Heat') }}"
 
       hvac_zone_2_cool:
+        unique_id: 79f52af0-6cff-45d5-a9b3-d27ef2079017
         friendly_name: "HVAC Zone 2 Cool Call"
         value_template: "{{ is_state('sensor.hvac_zone_2_state', 'Cool') }}"
 
       hvac_zone_3_fan:
+        unique_id: 37ca2772-5eca-4f83-adb2-155a2931bdbc
         friendly_name: "HVAC Zone 3 Fan Call"
         value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Fan') }}"
 
       hvac_zone_3_heat:
+        unique_id: c679be1a-12f4-4352-af6e-bccdd8936659
         friendly_name: "HVAC Zone 3 Heat Call"
         value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Heat') }}"
 
       hvac_zone_3_cool:
+        unique_id: 502db261-6358-4af6-b1e6-e3750861052e
         friendly_name: "HVAC Zone 3 Cool Call"
         value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Cool') }}"
 
@@ -96,6 +108,7 @@ sensor:
     sensors:
       
       hvac_system_runtime:
+        unique_id: 06f0687c-ece6-4350-bcbc-555f7f2b9529
         friendly_name: "HVAC Total System Runtime"
         unit_of_measurement: "h"
         value_template: >-
@@ -104,6 +117,7 @@ sensor:
           (states('sensor.hvac_system_cool_runtime') | float(none))) | round(2, default=none) }}
 
       hvac_zone_1_runtime:
+        unique_id: 0ac6aa07-d7bb-4ae8-93fb-3f991e012977
         friendly_name: "HVAC Zone 1 Total Runtime"
         unit_of_measurement: "h"
         value_template: >-
@@ -112,6 +126,7 @@ sensor:
           (states('sensor.hvac_zone_1_cool_runtime') | float(none))) | round(2, default=none) }}
 
       hvac_zone_2_runtime:
+        unique_id: 7e9a6c2b-c259-4733-97dc-b54312245404
         friendly_name: "HVAC Zone 2 Total Runtime"
         unit_of_measurement: "h"
         value_template: >-
@@ -120,6 +135,7 @@ sensor:
           (states('sensor.hvac_zone_2_cool_runtime') | float(none))) | round(2, default=none) }}
 
       hvac_zone_3_runtime:
+        unique_id: 69e9628f-caba-404f-b28a-f1a3344e37e5
         friendly_name: "HVAC Zone 3 Total Runtime"
         unit_of_measurement: "h"
         value_template: >-
@@ -232,68 +248,89 @@ sensor:
 mqtt:
   sensor:
     - name: HVAC System State
+      unique_id: 413ea11e-179f-4ea9-b39c-a7d93271423f
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['System']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: HVAC Zone 1 State
+      unique_id: 9c8e471c-b3c6-4f25-8a87-29adcee664c3
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['Zone1']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: HVAC Zone 2 State
+      unique_id: f0a462cc-89e3-474f-9bc2-754b196cfd30
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['Zone2']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: HVAC Zone 3 State
+      unique_id: ad95a002-13f3-488c-9fc9-17fb31e73da1
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['Zone3']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: HVAC Zone 1 Damper Position
+      unique_id: a06bf210-3b58-4648-a655-6744e0ca3ae7
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['Damper1']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: HVAC Zone 2 Damper Position
+      unique_id: 251b6aaf-6d79-4f16-a4fa-a45e5a11bc4b
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['Damper2']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: HVAC Zone 3 Damper Position
+      unique_id: f67077ed-3a38-4689-ad73-55988b480d7c
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['Damper3']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: HVAC Zone 4 Damper Position
+      unique_id: 7e411efb-8a11-45da-b5cc-e51cdcb254c5
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['Damper4']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: HVAC Fan Current
+      unique_id: a83d8d46-8b9e-4b0b-9451-00923dbad813
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['FanCurrent']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
       unit_of_measurement: "A"
+
     - name: HVAC Fan Differential Pressure
+      unique_id: 76f802f1-d11d-4cbb-84d2-075739e6a147
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['FanDP']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
       unit_of_measurement: "Pa"
+
     - name: HVAC Fan Differential Pressure Temperature
+      unique_id: bde0743e-7ece-4da2-8c50-32023f581694
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['FanDPTemp']}}"
       availability_topic: "hvac/tele/LWT"
@@ -301,14 +338,18 @@ mqtt:
       payload_not_available: "Offline"
       unit_of_measurement: "°C"
       device_class: temperature
+
     - name: HVAC Filter Differential Pressure
+      unique_id: e6b910db-0abe-454d-85c2-ac27f9529503
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['FilterDP']}}"
       availability_topic: "hvac/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
       unit_of_measurement: "Pa"
+
     - name: HVAC Filter Differential Pressure Temperature
+      unique_id: d02d0070-f5ae-4212-a763-c7cea9ef3b6c
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['FilterDPTemp']}}"
       availability_topic: "hvac/tele/LWT"
@@ -316,7 +357,9 @@ mqtt:
       payload_not_available: "Offline"
       unit_of_measurement: "°C"
       device_class: temperature
+
     - name: HVAC Manager Ambient Temperature
+      unique_id: 336ef81e-7a22-4821-a11f-daa19707ee39
       state_topic: "hvac/tele/system"
       value_template: "{{value_json['BoardTemp']}}"
       availability_topic: "hvac/tele/LWT"
@@ -324,22 +367,25 @@ mqtt:
       payload_not_available: "Offline"
       unit_of_measurement: "°C"
       device_class: temperature
+      
   binary_sensor:
-      -   name: HVAC Leak Detector 1
-          state_topic: "hvac/tele/system"
-          value_template: "{{value_json['Leak1']}}"
-          availability_topic: "hvac/tele/LWT"
-          payload_available: "Online"
-          payload_not_available: "Offline"
-          device_class: moisture
+    - name: HVAC Leak Detector 1
+      unique_id: 36b277db-58eb-4c5e-8d5c-65a7a00cb76a
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Leak1']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      device_class: moisture
 
-      -   name: HVAC Leak Detector 2
-          state_topic: "hvac/tele/system"
-          value_template: "{{value_json['Leak2']}}"
-          availability_topic: "hvac/tele/LWT"
-          payload_available: "Online"
-          payload_not_available: "Offline"
-          device_class: moisture
+    - name: HVAC Leak Detector 2
+      unique_id: 50c662f3-691d-4b80-969e-f53ba9c29830
+      state_topic: "hvac/tele/system"
+      value_template: "{{value_json['Leak2']}}"
+      availability_topic: "hvac/tele/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      device_class: moisture
 
 #################################################################
 #                                                               #

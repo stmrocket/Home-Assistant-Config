@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Kitchen Blinds"
+      unique_id: 18dab839-5204-4333-9422-75d97399b190
       device_class: blind
       command_topic: "habc/kitchen/command/set/state"
       set_position_topic: "habc/kitchen/command/set/positionpct"

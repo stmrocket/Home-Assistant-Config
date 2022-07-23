@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Right Shack Blind"
+      unique_id: 756a8262-f245-4fd4-9d40-d4a263e19598
       device_class: blind
       command_topic: "habc/shack_r/command/set/state"
       set_position_topic: "habc/shack_r/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Right Shack Blind Version"
+      unique_id: 23562eee-8839-4cf2-9bc5-6ebc7e600485
       state_topic: "habc/shack_r/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/shack_r/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Shack Blind Uptime"
+      unique_id: a145b870-bc4d-443f-bf24-045032e8a908
       state_topic: "habc/shack_r/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/shack_r/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Shack Blind RSSI"
+      unique_id: bed74c0d-ed0f-458b-adee-3b6cd199a4d3
       state_topic: "habc/shack_r/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/shack_r/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Shack Blind IP"
+      unique_id: 67b7f508-e27f-4291-b3f5-d382feea551e
       state_topic: "habc/shack_r/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/shack_r/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Shack Blind Free Heap"
+      unique_id: 4db7e047-0054-40ae-b09a-e7aabbf1730b
       state_topic: "habc/shack_r/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Shack Blind Heap Fragmentation"
+      unique_id: d7bb56f9-a799-42d1-bfb3-2f18fb116a81
       state_topic: "habc/shack_r/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/shack_r/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Shack Blind Core Version"
+      unique_id: 2c1daa93-1e10-4868-a152-595d0976950b
       state_topic: "habc/shack_r/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/shack_r/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Shack Blind Light Level"
+      unique_id: e6a420c3-c654-42df-b0c2-4e6795e9ceac
       state_topic: "habc/shack_r/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/shack_r/tele/LWT"

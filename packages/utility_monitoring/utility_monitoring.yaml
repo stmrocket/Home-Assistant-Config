@@ -9,141 +9,171 @@ sensor:
   - platform: template
     sensors:
       electricity_cost_this_hour:
+        unique_id: 30ec2abd-0af3-4d79-bbc6-0bea58ff0fbf
         friendly_name: Electricity Cost This Hour
         unit_of_measurement: "$"
         value_template: "{{ (states('sensor.energy_hourly') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_this_hour_unit:
+        unique_id: 64ecd654-8738-45bb-9f67-e8d4550f70f2
         friendly_name: Electricity Cost This Hour
         value_template: "${{ (states('sensor.energy_hourly') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_last_hour:
+        unique_id: 504f76b9-1cff-4242-ab55-0e6dc5f053ba
         friendly_name: Electricity Cost Last Hour
         unit_of_measurement: "$"
         value_template: "{{ (state_attr('sensor.energy_hourly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_last_hour_unit:
+        unique_id: 37411904-6979-4771-95ed-cda7fb7f1452
         friendly_name: Electricity Cost Last Hour
         value_template: "${{ (state_attr('sensor.energy_hourly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_today:
+        unique_id: c6b065cd-27e8-477a-8d05-34706c9f7481
         friendly_name: Electricity Cost Today
         unit_of_measurement: "$"
         value_template: "{{ (states('sensor.energy_daily') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_today_unit:
+        unique_id: bf2b1376-9cb4-42cb-a58e-6caa42e3a20e
         friendly_name: Electricity Cost Today
         value_template: "${{ (states('sensor.energy_daily') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_yesterday:
+        unique_id: fd6f80c6-12f5-43e8-ac49-f3b502d717c1
         friendly_name: Electricity Cost Yesterday
         unit_of_measurement: "$"
         value_template: "{{ (state_attr('sensor.energy_daily','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_yesterday_unit:
+        unique_id: c519b045-fa1d-4d0c-aaa5-8342084cb047
         friendly_name: Electricity Cost Yesterday
         value_template: "${{ (state_attr('sensor.energy_daily','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_this_week:
+        unique_id: 8bb20027-2950-486f-bdb7-c5ad91e9a1ed
         friendly_name: Electricity Cost This Week
         unit_of_measurement: "$"
         value_template: "{{ (states('sensor.energy_weekly') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_this_week_unit:
+        unique_id: 9480d97e-560a-40e5-a49f-b87ff16a791e
         friendly_name: Electricity Cost This Week
         value_template: "${{ (states('sensor.energy_weekly') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_last_week:
+        unique_id: 9cf72a48-6efd-4486-9f27-9bf6ebbab237
         friendly_name: Electricity Cost Last Week
         unit_of_measurement: "$"
         value_template: "{{ (state_attr('sensor.energy_weekly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_last_week_unit:
+        unique_id: d78ea197-1a03-434f-8c4c-f471135bf26b
         friendly_name: Electricity Cost Last Week
         value_template: "${{ (state_attr('sensor.energy_weekly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_this_month:
+        unique_id: 2750479c-7e18-44c0-8471-54e4182ee969
         friendly_name: Electricity Cost This Month
         unit_of_measurement: "$"
         value_template: "{{ (states('sensor.energy_monthly') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_this_month_unit:
+        unique_id: fb0924bf-6d9c-401f-8281-48e79f28d01a
         friendly_name: Electricity Cost This Month
         value_template: "${{ (states('sensor.energy_monthly') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_last_month:
+        unique_id: ff43186c-b071-4041-8450-311858b2faa5
         friendly_name: Electricity Cost Last Month
         unit_of_measurement: "$"
         value_template: "{{ (state_attr('sensor.energy_monthly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_last_month_unit:
+        unique_id: 3ac14aaa-473f-4536-8bc5-98ec4dcd65c7
         friendly_name: Electricity Cost Last Month
         value_template: "${{ (state_attr('sensor.energy_monthly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_this_year:
+        unique_id: a92f8d56-b068-4a9b-862e-7ab5071eec75
         friendly_name: Electricity Cost This Year
         unit_of_measurement: "$"
         value_template: "{{ (states('sensor.energy_yearly') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_this_year_unit:
+        unique_id: 8e890b79-65f1-4b9c-b4df-5b6fea0a0e56
         friendly_name: Electricity Cost This Year
         value_template: "${{ (states('sensor.energy_yearly') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_last_year:
+        unique_id: 8f53137d-7f55-48e9-967e-53229e2ed79a
         friendly_name: Electricity Cost Last Year
         unit_of_measurement: "$"
         value_template: "{{ (state_attr('sensor.energy_yearly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
 
       electricity_cost_last_year_unit:
+        unique_id: 263c5bef-fc22-4e2a-affb-947990e2b5e9
         friendly_name: Electricity Cost Last Year
         value_template: "${{ (state_attr('sensor.energy_yearly','last_period') | float(none) * states('input_number.energy_cost') | float(none)) | round (2, default=none) }}"
       
       energy_last_hour:
+        unique_id: 5bc9a84f-2e0b-450f-adc4-0d74428b3592
         friendly_name: Energy Last Hour
         unit_of_measurement: "kWh"
         value_template: "{{ state_attr('sensor.energy_hourly','last_period') | round (0, default=none) }}"
       
       energy_yesterday:
+        unique_id: 074c2860-cef9-4345-80d5-7a8e8d5500c9
         friendly_name: Energy Yesterday
         unit_of_measurement: "kWh"
         value_template: "{{ state_attr('sensor.energy_daily','last_period') | round (0, default=none) }}"
       
       energy_last_week:
+        unique_id: 8ce6cbf5-aa5c-4333-8dca-6eeeb84b2aae
         friendly_name: Energy Last Week
         unit_of_measurement: "kWh"
         value_template: "{{ state_attr('sensor.energy_weekly','last_period') | round (0, default=none) }}"
       
       energy_last_month:
+        unique_id: 48157114-70c3-4d51-b7e2-ca230ee86cc0
         friendly_name: Energy Last Month
         unit_of_measurement: "kWh"
         value_template: "{{ state_attr('sensor.energy_monthly','last_period') | round (0, default=none) }}"
       
       energy_last_year:
+        unique_id: 0b19445e-ee01-42bb-9ae4-862c68e5f3c0
         friendly_name: Energy Last Year
         unit_of_measurement: "kWh"
         value_template: "{{ state_attr('sensor.energy_yearly','last_period') | round (0, default=none) }}"
       
       energy_this_hour:
+        unique_id: a8b28d74-1d4d-486c-a173-963658435cf9
         friendly_name: Energy This Hour
         unit_of_measurement: "kWh"
         value_template: "{{ states('sensor.energy_hourly') | round (0, default=none) }}"
       
       energy_today:
+        unique_id: 679e906a-4a24-406e-b6ca-c6c523934d41
         friendly_name: Energy Today
         unit_of_measurement: "kWh"
         value_template: "{{ states('sensor.energy_daily') | round (0, default=none) }}"
       
       energy_this_week:
+        unique_id: c933f983-e8f2-4a58-b058-39f2ca8377b0
         friendly_name: Energy This Week
         unit_of_measurement: "kWh"
         value_template: "{{ states('sensor.energy_weekly') | round (0, default=none) }}"
       
       energy_this_month:
+        unique_id: 16b223a1-2216-4261-be17-042702d63ab6
         friendly_name: Energy This Month
         unit_of_measurement: "kWh"
         value_template: "{{ states('sensor.energy_monthly') | round (0, default=none) }}"
       
       energy_this_year:
+        unique_id: 6a9a07d9-c074-4830-b2ed-f2ca4bf946ba
         friendly_name: Energy This Year
         unit_of_measurement: "kWh"
         value_template: "{{ states('sensor.energy_yearly') | round (0, default=none) }}"

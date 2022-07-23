@@ -149,16 +149,19 @@ sensor:
     sensors:
       #Blank
       blank:
+        unique_id: 73e72478-0522-4325-88d8-7b1d96832919
         value_template: ""
         friendly_name: ""
 
       external_url:
+        unique_id: a0227421-19d4-43ba-b788-db5b8b78053b
         value_template: !secret ext_url
 
 binary_sensor:
   - platform: template
     sensors:
       is_dst:
+        unique_id: 215e3ce8-25a1-429e-a4b6-bad9817a2e3c
         value_template: "{{ now().timetuple().tm_isdst > 0 }}"
 
 input_boolean:
@@ -182,6 +185,7 @@ mqtt:
   light:
     - schema: json
       name: "Hall Lamp"
+      unique_id: ad658c11-749c-4b6c-9f0d-d684f68b0eb4
       state_topic: "esps/hall"
       command_topic: "esps/hall/set"
       brightness: true
@@ -198,6 +202,7 @@ mqtt:
         - Breathe
   switch:
     - name: "Fireplace"
+      unique_id: 634cd0db-3cf3-4e83-9779-65920a092fcb
       state_topic: "stat/fireplace/POWER"
       command_topic: "cmnd/fireplace/POWER"
       availability_topic: "tele/fireplace/LWT"
@@ -208,6 +213,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Wax Warmer"
+      unique_id: 618c4734-3b1f-4c54-af2d-570c01c96078
       state_topic: "warmer/stat/POWER"
       command_topic: "warmer/cmnd/POWER"
       availability_topic: "warmer/tele/LWT"
@@ -221,6 +227,7 @@ mqtt:
 
     - state_topic: "tele/fireplace/STATE"
       name: "Fireplace Signal"
+      unique_id: e93eb17c-daa3-412d-8d8e-335407aa7c77
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
       availability_topic: "tele/fireplace/LWT"
@@ -232,6 +239,7 @@ mqtt:
 
     - state_topic: "warmer/tele/STATE"
       name: "Fireplace Signal"
+      unique_id: 84a5744e-1857-424f-b650-65d97d27ee49
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
       availability_topic: "warmer/tele/LWT"

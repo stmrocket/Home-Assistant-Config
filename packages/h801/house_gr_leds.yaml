@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "House LEDs RGB"
+      unique_id: aa47849c-cb8f-4a47-af6c-88c4fb21aaf2
       state_topic: "h801/all/ha/state"
       command_topic: "h801/all/command/set/rgb/power"
       brightness_state_topic: "h801/all/tele/current"

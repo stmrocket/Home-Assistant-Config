@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Left Master Blind"
+      unique_id: 1eb6fc2a-2454-4704-ad77-fb2dd447cddb
       device_class: blind
       command_topic: "habc/master_l/command/set/state"
       set_position_topic: "habc/master_l/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Left Master Blind Version"
+      unique_id: 12e56c22-55dc-450e-b284-ff17ea9ad92a
       state_topic: "habc/master_l/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/master_l/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Master Blind Uptime"
+      unique_id: 275a6044-d7bf-4d32-a2f3-53e02beba1e2
       state_topic: "habc/master_l/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/master_l/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Master Blind RSSI"
+      unique_id: 74db22fd-a621-4b35-bb66-8b1f5a015043
       state_topic: "habc/master_l/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/master_l/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Master Blind IP"
+      unique_id: 8d7ebc74-f65b-4a24-a4e6-487a946751a9
       state_topic: "habc/master_l/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/master_l/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Master Blind Free Heap"
+      unique_id: c206b255-c808-40d3-a731-29c1ec9cf6a9
       state_topic: "habc/master_l/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Master Blind Heap Fragmentation"
+      unique_id: cc24fca2-e6b7-4c34-9371-b106c8304373
       state_topic: "habc/master_l/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/master_l/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Master Blind Core Version"
+      unique_id: 056f114b-3a4a-4143-9593-a6ba5a501075
       state_topic: "habc/master_l/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/master_l/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Master Blind Light Level"
+      unique_id: c940f097-7496-4cdb-90bc-b90c11ec1c37
       state_topic: "habc/master_l/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/master_l/tele/LWT"

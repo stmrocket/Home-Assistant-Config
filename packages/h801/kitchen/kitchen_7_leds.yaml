@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Kitchen LED 7 RGB"
+      unique_id: f76cf359-a4e5-41fb-a6bd-791d84627cf2
       state_topic: "h801/kitchen_7/tele/current"
       command_topic: "h801/kitchen_7/command/set/rgb/power"
       brightness_state_topic: "h801/kitchen_7/tele/current"
@@ -23,6 +24,7 @@ mqtt:
     #Driver Status Messages
 
     - name: "Kitchen LED 7 Version"
+      unique_id: 8401a62b-a262-4300-a42b-6791fe27d679
       state_topic: "h801/kitchen_7/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "h801/kitchen_7/tele/LWT"
@@ -30,6 +32,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Kitchen LED 7 Uptime"
+      unique_id: 72704b8d-65d8-4abf-acdd-d5440a060862
       state_topic: "h801/kitchen_7/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "h801/kitchen_7/tele/LWT"
@@ -37,6 +40,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Kitchen LED 7 RSSI"
+      unique_id: 271ee0f2-fa6d-47c0-a655-7665a30e6575
       state_topic: "h801/kitchen_7/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "h801/kitchen_7/tele/LWT"
@@ -44,6 +48,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Kitchen LED 7 IP"
+      unique_id: 8cf603a8-6fc0-4ce6-9db3-1b46d3625e5b
       state_topic: "h801/kitchen_7/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "h801/kitchen_7/tele/LWT"
@@ -51,6 +56,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Kitchen LED 7 Free Heap"
+      unique_id: 7e12a2e2-bcd6-474b-977a-7e826e49b4ad
       state_topic: "h801/kitchen_7/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "h801/kitchen_7/tele/LWT"
@@ -58,6 +64,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Kitchen LED 7 Heap Fragmentation"
+      unique_id: bd86a8b2-df9e-41c9-a75d-157126ad90ed
       state_topic: "h801/kitchen_7/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "h801/kitchen_7/tele/LWT"
@@ -65,6 +72,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Kitchen LED 7 Core Version"
+      unique_id: c02ecc56-a427-44cc-887c-bb4bb6047c09
       state_topic: "h801/kitchen_7/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "h801/kitchen_7/tele/LWT"

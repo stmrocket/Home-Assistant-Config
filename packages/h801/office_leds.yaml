@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Office Desk Light"
+      unique_id: b8c0e46a-32da-4b6a-9b57-920bfc871635
       state_topic: "h801/desk/tele/current"
       command_topic: "h801/desk/command/set/rgb/power"
       brightness_state_topic: "h801/desk/tele/current"
@@ -23,6 +24,7 @@ mqtt:
     #Driver Status Messages
 
     - name: "Office Desk Light Version"
+      unique_id: 27eb62a5-ab86-4a4c-9663-c020c067c16b
       state_topic: "h801/desk/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "h801/desk/tele/LWT"
@@ -30,6 +32,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Office Desk Light Uptime"
+      unique_id: 10b68171-3832-4f4e-b855-0aa6d506d806
       state_topic: "h801/desk/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "h801/desk/tele/LWT"
@@ -37,6 +40,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Office Desk Light RSSI"
+      unique_id: 47e2b4a4-038b-42d1-bfc8-90313a8ce8c5
       state_topic: "h801/desk/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "h801/desk/tele/LWT"
@@ -44,6 +48,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Office Desk Light IP"
+      unique_id: 97e1aba3-64c8-4236-bbb9-c6c6edcb59fe
       state_topic: "h801/desk/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "h801/desk/tele/LWT"
@@ -51,6 +56,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Office Desk Light Free Heap"
+      unique_id: 576f552b-7870-4c4a-8ec4-d3a4f9b3ca21
       state_topic: "h801/desk/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "h801/desk/tele/LWT"
@@ -58,6 +64,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Office Desk Light Heap Fragmentation"
+      unique_id: 3846b7a1-63e0-4d39-831e-4d6e39b8fa44
       state_topic: "h801/desk/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "h801/desk/tele/LWT"
@@ -65,6 +72,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Office Desk Light Core Version"
+      unique_id: 7c5e78a7-b19e-485f-a1e9-ededc713a8d3
       state_topic: "h801/desk/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "h801/desk/tele/LWT"

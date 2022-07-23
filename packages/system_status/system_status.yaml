@@ -39,6 +39,7 @@ binary_sensor:
     sensors:
       # True if there's an update available for supervisor
       updater_supervisor:
+        unique_id: 993a5a03-6340-4558-a753-a4e1ff9c5780
         friendly_name: "Updater - Supervisor"
         device_class: problem
         value_template: "{{ state_attr('sensor.supervisor_updates', 'update_available') }}"
@@ -46,6 +47,7 @@ binary_sensor:
 
       # True if there's updates available for any addons
       updater_addons:
+        unique_id: da31bf79-22ab-4570-bdff-a64975e106fc
         friendly_name: "Updater - Addons"
         device_class: problem
         value_template: "{{ states('sensor.supervisor_updates') | int(none) > 0 }}"
@@ -493,31 +495,37 @@ sensor:
   - platform: template
     sensors:
       wan_in_mbps:
+        unique_id: 6728fa46-ed71-4016-a7a8-d95e77235fdc
         value_template:  "{{ [((states('sensor.erl_wan_in_derivative')|float(none)*8)/1000000)|round(2, default=none),0]|max }}"
         unit_of_measurement: 'Mbps'
         friendly_name: WAN In
     
       wan_out_mbps:
+        unique_id: 14134f47-7e71-4321-bec3-3526a450fa04
         value_template:  "{{ [((states('sensor.erl_wan_out_derivative')|float(none)*8)/1000000)|round(2, default=none),0]|max }}"
         unit_of_measurement: 'Mbps'
         friendly_name: WAN Out
 
       wan_download_gb:
+        unique_id: 059b60a4-b193-469b-880e-e4b2d03ac327
         value_template:  "{{ (states('sensor.erl_wan_in')|float(none)/1000000000)|round(2, default=none) }}"
         unit_of_measurement: 'GB'
         friendly_name: WAN Download
     
       wan_upload_gb:
+        unique_id: 69285b44-7008-4ded-b4ef-dd29de3dd1f5
         value_template:  "{{ (states('sensor.erl_wan_out')|float(none)/1000000000)|round(2, default=none) }}"
         unit_of_measurement: 'GB'
         friendly_name: WAN Upload
 
       wan_ping:
+        unique_id: cac7f6bc-4985-4e47-a03a-31f4997286f9
         friendly_name: "WAN Ping"
         value_template: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2, default=none) }}"
         unit_of_measurement: "ms"
 
       sensor_count:
+        unique_id: f799fe61-0953-44b1-8bf8-7b5c1b0bc953
         friendly_name: "Number of Sensors"
         value_template: >
           {%- set domains = ['sensor'] -%}
@@ -530,6 +538,7 @@ sensor:
           {%- endfor -%}
 
       automation_count:
+        unique_id: 594410eb-1b4b-4f35-9e2d-efc0fa1ba540
         friendly_name: "Number of Automations"
         value_template: >
           {%- set domains = ['automation'] -%}
@@ -542,6 +551,7 @@ sensor:
           {%- endfor -%}
 
       script_count:
+        unique_id: f612fb24-7c7e-4519-a2b4-b261a22e1cea
         friendly_name: "Number of Scripts"
         value_template: >
           {%- set domains = ['script'] -%}
@@ -554,6 +564,7 @@ sensor:
           {%- endfor -%}
 
       switch_count:
+        unique_id: a61b2dcc-284b-47c6-939d-ed5ad7fc6588
         friendly_name: "Number of Switches"
         value_template: >
           {%- set domains = ['switch'] -%}
@@ -566,6 +577,7 @@ sensor:
           {%- endfor -%}
 
       binary_sensor_count:
+        unique_id: 1f3cbb9d-9d41-4513-a6a9-3845781f5c89
         friendly_name: "Number of Binary Sensors"
         value_template: >
           {%- set domains = ['binary_sensor'] -%}
@@ -578,6 +590,7 @@ sensor:
           {%- endfor -%}
 
       lights_count:
+        unique_id: bc6be24f-5187-4b9d-80d2-f0866cd54ee9
         friendly_name: "Number of Lights"
         value_template: >
           {%- set domains = ['light'] -%}
@@ -590,6 +603,7 @@ sensor:
           {%- endfor -%}
 
       tracker_count:
+        unique_id: a094ca92-d82d-4a76-9094-d3235dcc4e39
         friendly_name: "Number of Devices"
         value_template: >
           {%- set domains = ['device_tracker'] -%}
@@ -602,6 +616,7 @@ sensor:
           {%- endfor -%}
 
       camera_count:
+        unique_id: 01057f73-1a3d-452c-841a-75a699a4b6aa
         friendly_name: "Number of Devices"
         value_template: >
           {%- set domains = ['camera'] -%}
@@ -614,6 +629,7 @@ sensor:
           {%- endfor -%}
 
       fan_count:
+        unique_id: bb3bb5c8-8c3d-4678-ae84-074fc32f9aa1
         friendly_name: "Number of Devices"
         value_template: >
           {%- set domains = ['fan'] -%}
@@ -626,6 +642,7 @@ sensor:
           {%- endfor -%}
 
       media_player_count:
+        unique_id: 947d9cb4-b1a3-4d62-a50d-22df2dead053
         friendly_name: "Number of Devices"
         value_template: >
           {%- set domains = ['media_player'] -%}
@@ -638,78 +655,97 @@ sensor:
           {%- endfor -%}
 
       automation_count_high:
+        unique_id: 8db4b16f-4c7f-42d5-8cfa-531908be5cb2
         friendly_name: "Automation Count High Limit"
         value_template: "{{ states('input_number.automation_count_expected') |int(none) + 150 }}"
 
       automation_count_low:
+        unique_id: 9da7266a-c795-476a-96c6-7a285768741c
         friendly_name: "Automation Count Low Limit"
         value_template: "{{ states('input_number.automation_count_expected') |int(none) - 1 }}"
 
       binary_sensor_count_high:
+        unique_id: 6c54a243-4d65-41cc-ad4e-90669edac72c
         friendly_name: "Binary Sensor Count High Limit"
         value_template: "{{ states('input_number.binary_sensor_count_expected') |int(none) + 150 }}"
 
       binary_sensor_count_low:
+        unique_id: 0bd14287-a905-4eba-b4d4-f098b400dcc9
         friendly_name: "Binary Sensor Count Low Limit"
         value_template: "{{ states('input_number.binary_sensor_count_expected') |int(none) - 1 }}"
 
       switch_count_high:
+        unique_id: b203b720-913a-48a4-a2be-df9a76b49f32
         friendly_name: "Switch Count High Limit"
         value_template: "{{ states('input_number.switch_count_expected') |int(none) + 150 }}"
 
       switch_count_low:
+        unique_id: e8e00e43-1e7b-4642-8401-bd4d562bf8cc
         friendly_name: "Switch Count Low Limit"
         value_template: "{{ states('input_number.switch_count_expected') |int(none) - 1 }}"
 
       fan_count_high:
+        unique_id: 72c4fe94-fc43-4fd2-998d-cb560519b5c0
         friendly_name: "Fan Count High Limit"
         value_template: "{{ states('input_number.fan_count_expected') |int(none) + 150 }}"
 
       fan_count_low:
+        unique_id: 1091c755-d305-4315-aa63-b44cc271b6b8
         friendly_name: "Fan Count Low Limit"
         value_template: "{{ states('input_number.fan_count_expected') |int(none) - 1 }}"
 
       light_count_high:
+        unique_id: ba97f118-80f0-45a0-a37b-e2ebda51305a
         friendly_name: "Light Count High Limit"
         value_template: "{{ states('input_number.light_count_expected') |int(none) + 150 }}"
 
       light_count_low:
+        unique_id: 6fe2a57f-509a-4171-bfa9-43448e4f7b44
         friendly_name: "Light Count Low Limit"
         value_template: "{{ states('input_number.light_count_expected') |int(none) - 1 }}"
 
       tracked_device_count_high:
+        unique_id: dec3e884-2f6d-4cbe-91e9-d2113ef65030
         friendly_name: "Tracked Device Count High Limit"
         value_template: "{{ states('input_number.tracked_device_count_expected') |int(none) + 150 }}"
 
       tracked_device_count_low:
+        unique_id: 32ee1865-37d5-479b-b2a5-03db540ff7a0
         friendly_name: "Tracked Device Count Low Limit"
         value_template: "{{ states('input_number.tracked_device_count_expected') |int(none) - 1 }}"
 
       media_player_count_high:
+        unique_id: 8eda1888-0d54-48ca-b0d4-6575cec8f9d6
         friendly_name: "Media Player Count High Limit"
         value_template: "{{ states('input_number.media_player_count_expected') |int(none) + 150 }}"
 
       media_player_count_low:
+        unique_id: 71925d21-e6be-4aa7-af81-dd85021fdf4c
         friendly_name: "Media Player Count Low Limit"
         value_template: "{{ states('input_number.media_player_count_expected') |int(none) - 1 }}"
 
       script_count_high:
+        unique_id: 6c83621b-6004-4a8d-83c1-9f784fd31cf8
         friendly_name: "Script Count High Limit"
         value_template: "{{ states('input_number.script_count_expected') |int(none) + 150 }}"
 
       script_count_low:
+        unique_id: 03e049ea-4d2c-4d23-84f5-3eff58c16490
         friendly_name: "Script Count Low Limit"
         value_template: "{{ states('input_number.script_count_expected') |int(none) - 1 }}"
 
       sensor_count_high:
+        unique_id: 3a0e9b82-66e6-4f3d-ab3d-9cc5cd0142bc
         friendly_name: "Sensor Count High Limit"
         value_template: "{{ states('input_number.sensor_count_expected') |int(none) + 150 }}"
 
       sensor_count_low:
+        unique_id: e18d1e3c-e922-47b3-96d7-7200ca76f144
         friendly_name: "Sensor Count Low Limit"
         value_template: "{{ states('input_number.sensor_count_expected') |int(none) - 1 }}"
 
       hass_uptime:
+        unique_id: c299fdc7-0364-4d72-aa9d-8b2361880f9a
         friendly_name: Home Assistant Uptime
         value_template: >-
           {% set time = (as_timestamp(now(), none) - as_timestamp(states('sensor.time_online'), none)) / 60 | int(default=0) %}
@@ -752,6 +788,7 @@ sensor:
               {%- endif -%}
 
       hass_restart:
+        unique_id: 65c28a38-c606-40c9-961c-5232f9b1ffea
         friendly_name: Home Assistant Restart Time
         value_template: >-
           {% set time = (as_timestamp(states('sensor.time_online'), none)) - (as_timestamp(states('sensor.ha_shutdown'), none)) | int(default=0) %}
@@ -783,6 +820,7 @@ sensor:
               {%- endif -%}
 
       office_ups_battery_health:
+        unique_id: 61b76332-9f37-48f4-ba1d-dcf3fd66fb65
         friendly_name: Office UPS Battery Status
         value_template: >
           {% if is_state('sensor.office_ups_battery_status', '1') -%}
@@ -794,6 +832,7 @@ sensor:
           {% endif -%}
 
       server_ups_battery_health:
+        unique_id: 03e166ee-f39b-4668-83e2-913352c029a7
         friendly_name: Server UPS Battery Status
         value_template: >
           {% if is_state('sensor.server_ups_battery_status', '1') -%}
@@ -805,6 +844,7 @@ sensor:
           {% endif -%}
 
       shack_ups_battery_health:
+        unique_id: 897b0ca8-5ec6-4b1f-8e82-fed4379460b1
         friendly_name: Shack UPS Battery Status
         value_template: >
           {% if is_state('sensor.shack_ups_battery_status', '1') -%}
@@ -816,6 +856,7 @@ sensor:
           {% endif -%}
 
       office_ups_status:
+        unique_id: 89310f89-0b95-4709-845d-8e1f4824d200
         friendly_name: Office UPS Operating Status
         value_template: >
           {% if is_state('device_tracker.office_ups', 'not_home') -%}
@@ -831,6 +872,7 @@ sensor:
           {% endif -%}
 
       server_ups_status:
+        unique_id: 375dd8a2-d38e-4662-9664-698a1003895b
         friendly_name: Server UPS Operating Status
         value_template: >
           {% if is_state('device_tracker.server_ups', 'not_home') -%}
@@ -846,6 +888,7 @@ sensor:
           {% endif -%}
 
       shack_ups_status:
+        unique_id: 9d1e4c97-a524-4978-955d-602d2a678737
         friendly_name: Shack UPS Operating Status
         value_template: >
           {% if is_state('device_tracker.shack_ups', 'not_home') -%}
@@ -882,53 +925,66 @@ sensor:
 mqtt:
   sensor:
     - state_topic: "hass/restart"
+      unique_id: b6b52c5d-3e12-4808-a162-90502503a5b8
       name: "HA Shutdown"
 
     - name: Front Rooms AP Clients
+      unique_id: 8bd8ba58-7c6e-4cdb-96fd-30b7c5b52e42
       state_topic: iap
       value_template: "{{value_json['front'].clients }}"
 
     - name: Front Rooms AP 5 channel
+      unique_id: 41051dfa-aacb-41cc-a53e-2db2a87f25db
       state_topic: iap
       value_template: "{{value_json['front'].channel5 }}"
 
     - name: Front Rooms AP 2 channel
+      unique_id: d9419090-d0ca-4b73-a9c8-454d35df829c
       state_topic: iap
       value_template: "{{value_json['front'].channel2 }}"
 
     - name: Den AP Clients
+      unique_id: df7f8079-eabf-4a71-862d-90aaee04dd6d
       state_topic: iap
       value_template: "{{value_json['den'].clients }}"
 
     - name: Den AP 5 channel
+      unique_id: 95004876-75e1-41f0-b0a6-267e5e675ffb
       state_topic: iap
       value_template: "{{value_json['den'].channel5 }}"
 
     - name: Den AP 2 channel
+      unique_id: ad7070e8-e067-445e-860f-20a8e0e10324
       state_topic: iap
       value_template: "{{value_json['den'].channel2 }}"
 
     - name: Garage AP Clients
+      unique_id: addafd69-7742-4087-bdd4-8bbd552b2cd0
       state_topic: iap
       value_template: "{{value_json['garage'].clients }}"
 
     - name: Garage AP 5 channel
+      unique_id: fba6f014-e5a2-40d3-b335-a006f7b79f68
       state_topic: iap
       value_template: "{{value_json['garage'].channel5 }}"
 
     - name: Garage AP 2 channel
+      unique_id: 90239dcd-4bb6-4ab1-95b5-4192aa51b83d
       state_topic: iap
       value_template: "{{value_json['garage'].channel2 }}"
 
     - name: Shed AP Clients
+      unique_id: 7ac60d46-5e7f-471f-ae29-eead09546539
       state_topic: iap
       value_template: "{{value_json['shed'].clients }}"
 
     - name: Shed AP 5 channel
+      unique_id: f2e3bf41-16ad-4de6-bd88-bbee71bec471
       state_topic: iap
       value_template: "{{value_json['shed'].channel5 }}"
 
     - name: Shed AP 2 channel
+      unique_id: 4ded75ca-cc4a-4b02-acb0-be2e391e62a2
       state_topic: iap
       value_template: "{{value_json['shed'].channel2 }}"
 

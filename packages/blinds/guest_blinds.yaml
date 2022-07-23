@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Guest Blind"
+      unique_id: 1046ee38-213d-4380-8b1c-920a012e8096
       device_class: blind
       command_topic: "habc/guest/command/set/state"
       set_position_topic: "habc/guest/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Guest Blind Version"
+      unique_id: 7656d0f1-9736-456a-b74a-17cb69f634e7
       state_topic: "habc/guest/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/guest/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Guest Blind Uptime"
+      unique_id: 3931370f-97a0-4080-8014-2d4f00691245
       state_topic: "habc/guest/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/guest/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Guest Blind RSSI"
+      unique_id: 8adf6b0a-8793-4578-b672-ec6091a4ab8e
       state_topic: "habc/guest/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/guest/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Guest Blind IP"
+      unique_id: f69485e5-50c0-43ff-9f0c-128a1c1d152b
       state_topic: "habc/guest/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/guest/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Guest Blind Free Heap"
+      unique_id: 3fb9c1c7-ecec-4922-b416-110c5163410e
       state_topic: "habc/guest/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/guest/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Guest Blind Heap Fragmentation"
+      unique_id: c636ac5c-a09a-461f-b9b5-01d153f6897d
       state_topic: "habc/guest/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/guest/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Guest Blind Core Version"
+      unique_id: 3b77d6ae-6cb3-4f14-a02c-2acd47ec0ac5
       state_topic: "habc/guest/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/guest/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Guest Blind Light Level"
+      unique_id: fad066ee-139f-4d04-9051-f17877952c14
       state_topic: "habc/guest/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/guest/tele/LWT"

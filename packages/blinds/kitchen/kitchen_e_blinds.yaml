@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "East Kitchen Blind"
+      unique_id: 539454db-603c-4f5f-89a2-e8dc984baf51
       device_class: blind
       command_topic: "habc/kitchen_e/command/set/state"
       set_position_topic: "habc/kitchen_e/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "East Kitchen Blind Version"
+      unique_id: ac9c9a2a-b371-4a03-8d63-3de54c89f57b
       state_topic: "habc/kitchen_e/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/kitchen_e/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "East Kitchen Blind Uptime"
+      unique_id: cb667c5d-e81f-453b-b09e-cc823877fc1c
       state_topic: "habc/kitchen_e/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/kitchen_e/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "East Kitchen Blind RSSI"
+      unique_id: 0152090c-1409-4873-ac1d-5c5ef0f91ec9
       state_topic: "habc/kitchen_e/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/kitchen_e/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "East Kitchen Blind IP"
+      unique_id: 25f0be40-cb8f-4c36-87ca-c94d1720429e
       state_topic: "habc/kitchen_e/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/kitchen_e/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "East Kitchen Blind Free Heap"
+      unique_id: 0d90db41-1a65-4847-b2ca-bf1a027f6011
       state_topic: "habc/kitchen_e/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "East Kitchen Blind Heap Fragmentation"
+      unique_id: c637811d-d358-4fe5-bb12-36ed2c06b3fa
       state_topic: "habc/kitchen_e/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/kitchen_e/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "East Kitchen Blind Core Version"
+      unique_id: 386a5b5c-647c-4587-875f-9b65293c982d
       state_topic: "habc/kitchen_e/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/kitchen_e/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "East Kitchen Blind Light Level"
+      unique_id: e72245d1-edc1-45e1-941f-c41385310a4c
       state_topic: "habc/kitchen_e/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/kitchen_e/tele/LWT"

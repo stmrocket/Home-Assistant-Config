@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Left Kitchen Blind"
+      unique_id: dd61dd1e-f4e9-4bee-b59e-1a8556d46b9b
       device_class: blind
       command_topic: "habc/kitchen_l/command/set/state"
       set_position_topic: "habc/kitchen_l/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Left Kitchen Blind Version"
+      unique_id: 0bddfd42-da46-42ce-b639-ce8021e56c48
       state_topic: "habc/kitchen_l/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/kitchen_l/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Kitchen Blind Uptime"
+      unique_id: 4e13b80a-a0ff-4789-86c8-2a62ffd2f9c9
       state_topic: "habc/kitchen_l/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/kitchen_l/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Kitchen Blind RSSI"
+      unique_id: db5e058a-32b8-4b48-b585-cd137201275b
       state_topic: "habc/kitchen_l/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/kitchen_l/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Kitchen Blind IP"
+      unique_id: 0be8e7ee-c4d7-4112-9241-1e73c86a13bf
       state_topic: "habc/kitchen_l/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/kitchen_l/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Kitchen Blind Free Heap"
+      unique_id: 42238085-4d0d-40fb-b957-a7ab6517c9bd
       state_topic: "habc/kitchen_l/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Kitchen Blind Heap Fragmentation"
+      unique_id: 485ab61f-2810-41b3-8bed-031a351dce2e
       state_topic: "habc/kitchen_l/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/kitchen_l/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Kitchen Blind Core Version"
+      unique_id: b23590ea-527a-46c1-be09-a6f967f6f116
       state_topic: "habc/kitchen_l/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/kitchen_l/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Kitchen Blind Light Level"
+      unique_id: 383af33e-4c30-4454-bd48-1e9b70f617d5
       state_topic: "habc/kitchen_l/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/kitchen_l/tele/LWT"

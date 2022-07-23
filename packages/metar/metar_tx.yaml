@@ -1,6 +1,7 @@
 mqtt:
   switch:
     - name: Texas METAR Map Power
+      unique_id: 08a3aa29-064f-4c9a-ae90-17b6da4115b1
       state_topic: metar/tx/tele/current
       command_topic: metar/tx/command/set/power
       availability_topic: metar/tx/tele/LWT
@@ -16,6 +17,7 @@ mqtt:
     #Driver Status Messages
 
     - name: "Texas METAR Map Version"
+      unique_id: 110bf537-7fd4-4c66-9707-fd0c71400d78
       state_topic: "metar/tx/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "metar/tx/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Texas METAR Map Uptime"
+      unique_id: df15bbc3-c1ef-454e-8bef-377a5165e32f
       state_topic: "metar/tx/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "metar/tx/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Texas METAR Map RSSI"
+      unique_id: ce58a3f8-1e20-4ece-8a2e-d4ae2f20fe83
       state_topic: "metar/tx/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "metar/tx/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Texas METAR Map IP"
+      unique_id: 273af751-0299-4195-962a-518cfcc2dc00
       state_topic: "metar/tx/tele/status"
       value_template: "{{value_json['mapIP']}}"
       availability_topic: "metar/tx/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Texas METAR Map Free Heap"
+      unique_id: 5427374b-c0fb-4926-8039-56607477ff21
       state_topic: "metar/tx/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "metar/tx/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Texas METAR Map Heap Fragmentation"
+      unique_id: db5d691d-690d-4915-85bd-f4bedbef49c6
       state_topic: "metar/tx/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "metar/tx/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Texas METAR Map Core Version"
+      unique_id: 26219268-facf-43a0-ad34-bc6eeabf50be
       state_topic: "metar/tx/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "metar/tx/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: TX METAR Mode
+      unique_id: 15317f19-f0ed-4c71-8b7d-8ee1f66ca1e3
       state_topic: "metar/tx/tele/mode"
       availability_topic: "metar/tx/tele/LWT"
       payload_available: "Online"
@@ -78,6 +87,7 @@ sensor:
   - platform: template
     sensors:
       tx_metar_mode_clean:
+        unique_id: 335d7436-7ddc-45d7-b487-edc665996853
         friendly_name: TX METAR Mode Clean Name
         value_template: >-
           {% if is_state('sensor.tx_metar_mode', 'TEMP') -%}

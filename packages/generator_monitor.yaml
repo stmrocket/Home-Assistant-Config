@@ -1,106 +1,127 @@
 mqtt:
   sensor:
     - name: Generator Current Firmware
+      unique_id: c884b875-3fa9-4fb3-8676-a07a7651482a
       state_topic: "genset/tele/status"
       value_template: "{{value_json['currentFirmware']}}"
 
     - name: Generator Latest Firmware
+      unique_id: 022bbfec-11c9-4483-ba2f-1526cf6e102d
       state_topic: "genset/tele/status"
       value_template: "{{value_json['latestFirmware']}}"
 
     - name: Generator Engine Speed
+      unique_id: 0ef65609-96e7-49fb-b452-3f9c54d024b5
       state_topic: "genset/tele/status"
       value_template: "{{value_json['engineSpeed']}}"
       unit_of_measurement: "RPM"
 
     - name: Generator Engine Speed Target
+      unique_id: ab49ea95-3dea-4ce8-9c2a-1fe752936678
       state_topic: "genset/tele/status"
       value_template: "{{value_json['engineSpeedTarget']}}"
       unit_of_measurement: "RPM"
 
     - name: Generator Oil Pressure
+      unique_id: 0e92ac96-d20c-4548-a169-0244dd87ba3f
       state_topic: "genset/tele/status"
       value_template: "{{value_json['oilPressure']}}"
       unit_of_measurement: "psi"
 
     - name: Generator Coolant Temperature
+      unique_id: fff53be2-87f5-48a2-95e0-eb1499ad0553
       state_topic: "genset/tele/status"
       value_template: "{{value_json['coolantTemperature']}}"
       unit_of_measurement: "°F"
       device_class: temperature
 
     - name: Generator Battery Voltage
+      unique_id: 08667907-2e8e-4f94-a57c-c6558d9f8203
       state_topic: "genset/tele/status"
       value_template: "{{value_json['batteryVoltage']}}"
       unit_of_measurement: "V"
 
     - name: Generator Fuel Consumption Rate
+      unique_id: 12203590-dc38-4e94-8d84-1fe020bf90c2
       state_topic: "genset/tele/status"
       value_template: "{{value_json['fuelRate']}}"
       unit_of_measurement: "L/h"
 
     - name: Generator Oil Temperature
+      unique_id: 4622517e-dcff-4e7f-9436-69d527056b09
       state_topic: "genset/tele/status"
       value_template: "{{value_json['oilTemperature']}}"
       unit_of_measurement: "°F"
       device_class: temperature
 
     - name: Generator Controller Temperature
+      unique_id: 20d81ed2-f6e7-4892-84ae-369a01940003
       state_topic: "genset/tele/status"
       value_template: "{{value_json['controllerTemperature']}}"
       unit_of_measurement: "°F"
       device_class: temperature
 
     - name: Generator Intake Air Temperature
+      unique_id: c10f8a0e-e43a-4511-a810-ad1403c6a2cd
       state_topic: "genset/tele/status"
       value_template: "{{value_json['intakeAirTemperature']}}"
       unit_of_measurement: "°F"
       device_class: temperature
 
     - name: Generator Compartment Temperature
+      unique_id: f6871e91-24a2-4f97-b39b-cbe4a1ae7072
       state_topic: "genset/tele/status"
       value_template: "{{value_json['compartmentTemperature']}}"
       unit_of_measurement: "°F"
       device_class: temperature
 
     - name: Generator Voltage
+      unique_id: b8542a81-e187-4e2c-862a-75d12ca07160
       state_topic: "genset/tele/status"
       value_template: "{{value_json['generatorVoltage']}}"
       unit_of_measurement: "V"
 
     - name: Generator Frequency
+      unique_id: d64240b4-d571-48b5-829a-fbecca7ad27e
       state_topic: "genset/tele/status"
       value_template: "{{value_json['generatorFrequency']}}"
       unit_of_measurement: "Hz"
 
     - name: Generator State
+      unique_id: f9dd3675-9141-496e-89fd-32861b238111
       state_topic: "genset/tele/status"
       value_template: "{{value_json['generatorState']}}"
 
     - name: Generator Clock
+      unique_id: cb25327a-ceab-4b73-bdbc-6ad370eb5232
       state_topic: "genset/tele/status"
       value_template: "{{value_json['generatorTime']}}"
 
     - name: Generator Controller Hours
+      unique_id: 5ee1a157-1d84-4b30-b5f0-4f4ec2082f82
       state_topic: "genset/tele/status"
       value_template: "{{value_json['controllerHours']}}"
       unit_of_measurement: "h"
 
     - name: Generator Total Engine Hours
+      unique_id: 8cda0a63-fafe-4539-8f17-3384d095e414
       state_topic: "genset/tele/status"
       value_template: "{{value_json['engineHours']}}"
       unit_of_measurement: "h"
 
     - name: Generator Loaded Engine Hours
+      unique_id: 55378842-765e-4527-a348-0f713f01ab99
       state_topic: "genset/tele/status"
       value_template: "{{value_json['engineLoadedHours']}}"
       unit_of_measurement: "h"
 
     - name: Generator Engine Starts
+      unique_id: 680a820b-b52e-45bf-b74d-14598620d45e
       state_topic: "genset/tele/status"
       value_template: "{{value_json['totalStarts']}}"
 
     - name: Generator Last Service
+      unique_id: 667db61f-63b2-4afb-aa59-9092e4c09d13
       state_topic: "genset/tele/status"
       value_template: "{{value_json['lastService']}}"
 
@@ -110,92 +131,111 @@ mqtt:
       unit_of_measurement: "h"
 
     - name: Generator Time Since Service
+      unique_id: 8e09acab-525f-4fdc-bb99-263598a422b6
       state_topic: "genset/tele/status"
       value_template: "{{value_json['runtimeSinceService']}}"
       unit_of_measurement: "h"
 
     - name: Generator ATS Position
+      unique_id: a20cdea0-c176-4327-a427-d36cc6582ea4
       state_topic: "genset/tele/status"
       value_template: "{{value_json['contactorPosition']}}"
 
     - name: Generator Available Sources
+      unique_id: 334248aa-3000-4f99-abff-ea2974f394ee
       state_topic: "genset/tele/status"
       value_template: "{{value_json['availableSources']}}"
 
     - name: Generator Source 1 Voltage
+      unique_id: 3badeb1d-0bd7-4940-87c8-4239abe06ea7
       state_topic: "genset/tele/status"
       value_template: "{{value_json['source1Voltage']}}"
       unit_of_measurement: "V"
 
     - name: Generator Source 1 Frequency
+      unique_id: 9c6947cc-e2b8-4ccc-b741-299d604ebb21
       state_topic: "genset/tele/status"
       value_template: "{{value_json['source1Frequency']}}"
       unit_of_measurement: "Hz"
 
     - name: Generator Source 2 Voltage
+      unique_id: 84777272-ec67-475b-9bb9-6842a69b3d54
       state_topic: "genset/tele/status"
       value_template: "{{value_json['source2Voltage']}}"
       unit_of_measurement: "V"
 
     - name: Generator Source 2 Frequency
+      unique_id: 7b45790c-e1be-4f5b-8402-bd26373691e4
       state_topic: "genset/tele/status"
       value_template: "{{value_json['source2Frequency']}}"
       unit_of_measurement: "Hz"
 
     - name: Generator Alert
+      unique_id: c3d25325-d0fb-489e-8eee-f8be0155e622
       state_topic: "genset/tele/status"
       value_template: "{{value_json['currentAlert']}}"
 
     - name: Generator Last Exercise Start
+      unique_id: 74c34208-8308-492b-bc80-ce8cccf4e073
       state_topic: "genset/tele/exercise"
       value_template: "{{value_json['exerciseStart']}}"
 
     - name: Generator Last Exercise End
+      unique_id: f4979372-b4c0-4e8a-9e2a-6c4229f6a545
       state_topic: "genset/tele/exercise"
       value_template: "{{value_json['lastExercise']}}"
 
     - name: Generator Next Exercise Start
+      unique_id: cb60e9d4-5fcf-4f32-b408-d254866281c6
       state_topic: "genset/tele/exercise"
       value_template: "{{value_json['nextExercise']}}"
 
     - name: Generator Exercise Interval
+      unique_id: 74568698-306b-460a-adae-7a44c6533307
       state_topic: "genset/tele/exercise"
       value_template: "{{value_json['exerciseInterval']}}"
 
     - name: Generator Exercise Duration
+      unique_id: 94568fa3-d2d4-4fca-8575-cc3c29353269
       state_topic: "genset/tele/exercise"
       value_template: "{{value_json['exerciseDuration']}}"
 
     - name: Generator Exercise Mode
+      unique_id: fbaef5d9-4c51-4453-b056-2f8c0c072a6a
       state_topic: "genset/tele/exercise"
       value_template: "{{value_json['exerciseMode']}}"
 
   binary_sensor:
     - name: Generator Low Oil
+      unique_id: 8c954db2-87fc-4951-947b-91ab8231f950
       state_topic: "genset/tele/status"
       value_template: "{{value_json.lowOil}}"
       payload_on: "On"
       payload_off: "Off"
 
     - name: Generator Network Connected
+      unique_id: 6f5582b5-177e-4b76-b4d8-73246719c9f6
       state_topic: "genset/tele/status"
       value_template: "{{value_json.networkConnected}}"
       payload_on: "true"
       payload_off: "false"
 
     - name: Generator ATS Connected
+      unique_id: 6d4f673c-14a6-4a4b-94b7-1ac371f24124
       state_topic: "genset/tele/status"
       value_template: "{{value_json.atsConnected}}"
       payload_on: "True"
       payload_off: "False"
 
     - name: Generator Exercise Scheduled
+      unique_id: 28226c46-518f-45a4-aa25-7b97aadc46d7
       state_topic: "genset/tele/exercise"
       value_template: "{{value_json.exerciseScheduled}}"
       payload_on: "True"
       payload_off: "False"
 
     - name: Generator Exercise Active
+      unique_id: 5cf9e5e5-4cf4-4b59-9e06-23a370af00d3
       state_topic: "genset/tele/exercise"
       value_template: "{{value_json.exerciseActive}}"
       payload_on: "True"
@@ -206,6 +246,7 @@ sensor:
     sensors:
       generator_status:
         friendly_name: Generator Status
+        unique_id: 76dd23fc-85de-4728-9395-6458e2dd32d8
         value_template: >-
           {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
             Offline
@@ -232,6 +273,7 @@ sensor:
           {% endif -%}
 
       generator_icon:
+        unique_id: 8accf35e-a04b-4885-baad-30ac538c39f8
         friendly_name: Generator Status Icon
         value_template: >-
           {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
@@ -251,6 +293,7 @@ sensor:
           {% endif -%}
 
       generator_load_icon:
+        unique_id: 5391d9f3-8f32-42e6-8e38-48cacd7da3a3
         friendly_name: Generator Load Icon
         value_template: >-
           {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
@@ -260,6 +303,7 @@ sensor:
           {% endif -%}
 
       generator_utility_icon:
+        unique_id: 580fbaf1-98d2-4ab4-a758-59632dc8d718
         friendly_name: Generator Utility Icon
         value_template: >-
           {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
@@ -271,6 +315,7 @@ sensor:
           {% endif -%}
 
       generator_ats_icon:
+        unique_id: b3db8278-d2ca-401d-bb90-e5136f6d4ee2
         friendly_name: Generator ATS Icon
         value_template: >-
           {% if is_state('binary_sensor.generator_network_connected', 'off') -%}
@@ -286,6 +331,7 @@ sensor:
           {% endif -%}
 
       generator_firmware_status:
+        unique_id: 6117c0ee-41bd-4b60-adaa-aa6c2b0d5533
         friendly_name: Generator Firmware Update Available
         value_template: >-
           {% if states('sensor.generator_current_firmware') ==  states('sensor.generator_latest_firmware') -%}
@@ -295,6 +341,7 @@ sensor:
           {% endif -%}
 
       generator_ats_sources:
+        unique_id: 4fdb3baf-0d14-489e-9584-3778999b5d25
         friendly_name: Generator ATS Sources Available
         value_template: >-
           {% if is_state('sensor.generator_available_sources', 'Source1') -%}
@@ -306,6 +353,7 @@ sensor:
           {% endif -%}
 
       generator_exercise_scheduled:
+        unique_id: 9bd60562-d61c-4924-a0a4-7bd890c27c63
         friendly_name: Generator Exercise Scheduled
         value_template: >-
           {% if is_state('binary_sensor.generator_exercise_scheduled', 'on') -%}
@@ -315,6 +363,7 @@ sensor:
           {% endif -%}
 
       generator_exercise_active:
+        unique_id: e1db9ae6-0776-44cd-a95c-f44b808f6ba2
         friendly_name: Generator Exercise Active
         value_template: >-
           {% if is_state('binary_sensor.generator_exercise_active', 'on') -%}
@@ -324,6 +373,7 @@ sensor:
           {% endif -%}
 
       generator_ats_connected:
+        unique_id: eefff821-7d87-4576-9c3a-e8905b1c19ec
         friendly_name: Generator Exercise Active
         value_template: >-
           {% if is_state('binary_sensor.generator_ats_connected', 'on') -%}
@@ -333,6 +383,7 @@ sensor:
           {% endif -%}
 
       generator_network_connected:
+        unique_id: 4509b6f1-7b1e-4d68-b665-0e6696a8a18f
         friendly_name: Generator Exercise Active
         value_template: >-
           {% if is_state('binary_sensor.generator_network_connected', 'on') -%}

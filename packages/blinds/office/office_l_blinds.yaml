@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Left Office Blind"
+      unique_id: 42c48b3b-75a8-467a-a61b-497cae1ea4f0
       device_class: blind
       command_topic: "habc/office_l/command/set/state"
       set_position_topic: "habc/office_l/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Left Office Blind Version"
+      unique_id: 04ec7b59-8f73-4ef5-a49a-5f7294c7bf8b
       state_topic: "habc/office_l/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Office Blind Uptime"
+      unique_id: 7542732c-6e48-4a6f-b990-1ef9e12eb09d
       state_topic: "habc/office_l/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Office Blind RSSI"
+      unique_id: 4505facb-f7bf-495b-b3e0-feb041ae4bf8
       state_topic: "habc/office_l/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Office Blind IP"
+      unique_id: 61fcb013-e944-46ab-8e29-7ba73557169b
       state_topic: "habc/office_l/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Office Blind Free Heap"
+      unique_id: 14e4d306-0e92-421c-901a-a11dfb5f3de8
       state_topic: "habc/office_l/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Office Blind Heap Fragmentation"
+      unique_id: ba3d9737-7ab2-4c56-ab01-0e9ce37341bd
       state_topic: "habc/office_l/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Office Blind Core Version"
+      unique_id: 2e029aec-23de-4b3f-851f-946b05048cbf
       state_topic: "habc/office_l/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Office Blind Light Level"
+      unique_id: fca01e51-9ca3-497c-ae3a-7d4959ae5876
       state_topic: "habc/office_l/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/office_l/tele/LWT"

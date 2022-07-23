@@ -2,6 +2,7 @@ mqtt:
   switch:
     #Mute All
     - name: "Nuvo Mute All Zones"
+      unique_id: 0fdd5d0a-6562-4568-b521-1c0f252b7a86
       state_topic: "nuvo/tele/system/muteall"
       command_topic: "nuvo/command/set/system/muteall"
       payload_on: "ON"
@@ -14,6 +15,7 @@ mqtt:
 
     #Paging
     - name: "Nuvo Page Mode"
+      unique_id: b405a552-fdf9-4a7a-a78c-4dff08bd14d4
       state_topic: "nuvo/tele/system/page"
       command_topic: "nuvo/command/set/system/page"
       payload_on: "ON"
@@ -26,6 +28,7 @@ mqtt:
 
     #Zone Power
     - name: "Nuvo Zone 1 Power"
+      unique_id: 599d64fa-a487-46b4-97bd-2f7263305e18
       state_topic: "nuvo/tele/zone/1/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "1,ON"
@@ -37,6 +40,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 2 Power"
+      unique_id: 004ac029-5096-4f82-8f1b-fca8c3e02293
       state_topic: "nuvo/tele/zone/2/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "2,ON"
@@ -48,6 +52,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 3 Power"
+      unique_id: d925fc27-15bd-401e-97d2-4ba1727ef184
       state_topic: "nuvo/tele/zone/3/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "3,ON"
@@ -59,6 +64,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 4 Power"
+      unique_id: 9cc54e3c-213d-4786-9847-d097860edc3a
       state_topic: "nuvo/tele/zone/4/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "4,ON"
@@ -70,6 +76,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 5 Power"
+      unique_id: 63abfd14-fac6-4f4a-a1c9-b372dba1c0e0
       state_topic: "nuvo/tele/zone/5/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "5,ON"
@@ -81,6 +88,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 6 Power"
+      unique_id: 9eba700f-a291-49ff-a3f7-763e8f6e3e88
       state_topic: "nuvo/tele/zone/6/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "6,ON"
@@ -92,6 +100,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 7 Power"
+      unique_id: 08895dd4-ceb3-4cea-8577-ccfe16e3514b
       state_topic: "nuvo/tele/zone/7/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "7,ON"
@@ -103,6 +112,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 8 Power"
+      unique_id: a49538b4-f797-4cb8-ab8d-e9121a43400b
       state_topic: "nuvo/tele/zone/8/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "8,ON"
@@ -114,6 +124,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 9 Power"
+      unique_id: ed6bf877-5656-4de4-8e3c-af95d677515a
       state_topic: "nuvo/tele/zone/9/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "9,ON"
@@ -125,6 +136,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 10 Power"
+      unique_id: 0d46a24c-24d0-434f-bc1b-0a38a22552ed
       state_topic: "nuvo/tele/zone/10/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "10,ON"
@@ -136,6 +148,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 11 Power"
+      unique_id: 3a848dac-08b3-42b0-b3a1-ce325fc23c7c
       state_topic: "nuvo/tele/zone/11/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "11,ON"
@@ -147,6 +160,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 12 Power"
+      unique_id: d008a059-7040-4565-9e6b-cb3bd6fc9b71
       state_topic: "nuvo/tele/zone/12/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "12,ON"
@@ -158,6 +172,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 13 Power"
+      unique_id: d98ff351-374b-4497-9317-eda48c421920
       state_topic: "nuvo/tele/zone/13/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "13,ON"
@@ -169,6 +184,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 14 Power"
+      unique_id: b419e5f3-8f8d-46e4-b456-0907b2a7358e
       state_topic: "nuvo/tele/zone/14/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "14,ON"
@@ -180,6 +196,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 15 Power"
+      unique_id: 9e8e59f7-539a-4aa8-a7b0-462be53670d0
       state_topic: "nuvo/tele/zone/15/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "15,ON"
@@ -191,6 +208,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 16 Power"
+      unique_id: 765dbde0-3510-4b08-a88b-7d3c19cc244c
       state_topic: "nuvo/tele/zone/16/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "16,ON"
@@ -202,6 +220,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 17 Power"
+      unique_id: bb87de74-7523-4ec0-a9c5-7ac880509482
       state_topic: "nuvo/tele/zone/17/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "17,ON"
@@ -213,6 +232,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 18 Power"
+      unique_id: 3fe487e3-8c4d-4634-9647-252ddf9bff2b
       state_topic: "nuvo/tele/zone/18/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "18,ON"
@@ -224,6 +244,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 19 Power"
+      unique_id: 9d2cb786-7cd7-4fb9-ae23-1b29b0b68d9e
       state_topic: "nuvo/tele/zone/19/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "19,ON"
@@ -235,6 +256,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 20 Power"
+      unique_id: 4cab304e-6aa6-47b9-afaa-ff959fda42ee
       state_topic: "nuvo/tele/zone/20/power"
       command_topic: "nuvo/command/set/zone/power"
       payload_on: "20,ON"
@@ -247,6 +269,7 @@ mqtt:
 
     #Zone Mute
     - name: "Nuvo Zone 1 Mute"
+      unique_id: 2ece825f-250c-4918-b037-721bd2729c31
       state_topic: "nuvo/tele/zone/1"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -259,6 +282,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 2 Mute"
+      unique_id: 8e1cb6be-fce0-4852-aea2-7994b181bc2f
       state_topic: "nuvo/tele/zone/2"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -271,6 +295,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 3 Mute"
+      unique_id: 95481319-4be0-4ac0-92f3-9103098f64da
       state_topic: "nuvo/tele/zone/3"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -283,6 +308,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 4 Mute"
+      unique_id: ba21b722-0c9a-40a1-bdb0-87725de353d8
       state_topic: "nuvo/tele/zone/4"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -295,6 +321,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 5 Mute"
+      unique_id: 69cdeb02-b6c7-4fa5-a71a-8983b87317aa
       state_topic: "nuvo/tele/zone/5"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -307,6 +334,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 6 Mute"
+      unique_id: f10003c1-d9bb-455d-8ba4-a4d58511d9c9
       state_topic: "nuvo/tele/zone/6"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -319,6 +347,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 7 Mute"
+      unique_id: 6860001d-34fa-4134-bc9e-2a5a4b813ac8
       state_topic: "nuvo/tele/zone/7"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -331,6 +360,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 8 Mute"
+      unique_id: b4e1c7b2-f129-490c-9e68-30d03135c863
       state_topic: "nuvo/tele/zone/8"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -343,6 +373,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 9 Mute"
+      unique_id: 3193d539-2627-4835-8577-d923f5c472bd
       state_topic: "nuvo/tele/zone/9"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -355,6 +386,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 10 Mute"
+      unique_id: 82a8410e-e368-4850-9393-57d0f49b3f86
       state_topic: "nuvo/tele/zone/10"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -367,6 +399,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 11 Mute"
+      unique_id: d509967e-1759-4eb4-a374-4bf40a304e8d
       state_topic: "nuvo/tele/zone/11"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -379,6 +412,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 12 Mute"
+      unique_id: 9ec8f932-a301-43d2-b625-880558b8d0b9
       state_topic: "nuvo/tele/zone/12"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -391,6 +425,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 13 Mute"
+      unique_id: baafed1d-7a39-47b5-8d32-d8a7dd459922
       state_topic: "nuvo/tele/zone/13"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -403,6 +438,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 14 Mute"
+      unique_id: 076060d4-d01e-4e5d-8ace-847fd1981936
       state_topic: "nuvo/tele/zone/14"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -415,6 +451,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 15 Mute"
+      unique_id: f08c50a1-bea7-4dc4-a748-c8647de1cb91
       state_topic: "nuvo/tele/zone/15"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -427,6 +464,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 16 Mute"
+      unique_id: 3cde529a-a89f-4699-80f9-53ba5996681a
       state_topic: "nuvo/tele/zone/16"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -439,6 +477,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 17 Mute"
+      unique_id: 9598774c-b940-47d2-ba53-0e0cd11bb67a
       state_topic: "nuvo/tele/zone/17"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -451,6 +490,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 18 Mute"
+      unique_id: 81746779-0fe7-43e4-b3ea-aed50a4e08a6
       state_topic: "nuvo/tele/zone/18"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -463,6 +503,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 19 Mute"
+      unique_id: cbab4f3a-4493-4858-abd9-12f80de23de7
       state_topic: "nuvo/tele/zone/19"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -475,6 +516,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 20 Mute"
+      unique_id: cf4968f1-9028-4532-9e5a-0e2b5ffdacff
       state_topic: "nuvo/tele/zone/20"
       command_topic: "nuvo/command/set/zone/mute"
       value_template: "{{value_json['mute']}}"
@@ -488,6 +530,7 @@ mqtt:
 
     #Zone DND
     - name: "Nuvo Zone 1 DND"
+      unique_id: 8fcae013-a992-41ce-9eab-27bac1ff8bc0
       state_topic: "nuvo/tele/zone/1"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -500,6 +543,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 2 DND"
+      unique_id: e3d19523-6b17-4432-8313-65363c5fd4f8
       state_topic: "nuvo/tele/zone/2"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -512,6 +556,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 3 DND"
+      unique_id: 4253aa8a-9d94-44f2-b072-9bbe346a1ea6
       state_topic: "nuvo/tele/zone/3"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -524,6 +569,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 4 DND"
+      unique_id: 282f0f30-cefc-4c01-aeaf-2f302dac0bcc
       state_topic: "nuvo/tele/zone/4"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -536,6 +582,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 5 DND"
+      unique_id: e974a859-b3de-402c-ba08-fc56708bf90b
       state_topic: "nuvo/tele/zone/5"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -548,6 +595,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 6 DND"
+      unique_id: a0747f39-dbf9-4b71-804c-f3885dcab7b8
       state_topic: "nuvo/tele/zone/6"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -560,6 +608,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 7 DND"
+      unique_id: 7d8716ac-bc5a-45ec-856b-1b7781ecaee2
       state_topic: "nuvo/tele/zone/7"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -572,6 +621,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 8 DND"
+      unique_id: 3687e2f9-b42e-4884-8fbb-44481cf36282
       state_topic: "nuvo/tele/zone/8"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -584,6 +634,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 9 DND"
+      unique_id: e7cd40a0-13fb-4ad8-ab4b-291f4747e54b
       state_topic: "nuvo/tele/zone/9"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -596,6 +647,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 10 DND"
+      unique_id: f24af4c3-ae54-4f6d-b940-8e4e6b16a784
       state_topic: "nuvo/tele/zone/10"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -608,6 +660,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 11 DND"
+      unique_id: 20f9c4ec-3d14-4387-8668-82a517993936
       state_topic: "nuvo/tele/zone/11"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -620,6 +673,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 12 DND"
+      unique_id: f82b96e4-e117-47cf-afc0-19c9fa93df7f
       state_topic: "nuvo/tele/zone/12"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -632,6 +686,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 13 DND"
+      unique_id: d0a7135e-27e2-41fe-91a9-5fd62435c2b7
       state_topic: "nuvo/tele/zone/13"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -644,6 +699,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 14 DND"
+      unique_id: 7bbcc26f-11cb-406d-82a7-4768eaa0de2e
       state_topic: "nuvo/tele/zone/14"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -656,6 +712,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 15 DND"
+      unique_id: 66dcfc1f-22b4-4811-a967-4b702ab652e3
       state_topic: "nuvo/tele/zone/15"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -668,6 +725,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 16 DND"
+      unique_id: 93e06f95-5407-4895-b570-90e517e3414c
       state_topic: "nuvo/tele/zone/16"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -680,6 +738,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 17 DND"
+      unique_id: d6617d22-6512-48b2-900e-0ec42919de2b
       state_topic: "nuvo/tele/zone/17"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -692,6 +751,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 18 DND"
+      unique_id: a9c880e8-dc09-4c16-985f-983993f229cf
       state_topic: "nuvo/tele/zone/18"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -704,6 +764,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 19 DND"
+      unique_id: df980527-1ecc-4264-9623-2c4cc98e6ddc
       state_topic: "nuvo/tele/zone/19"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -716,6 +777,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 20 DND"
+      unique_id: f6e60580-7fe5-496a-8423-8331a163bffc
       state_topic: "nuvo/tele/zone/20"
       command_topic: "nuvo/command/set/zone/dnd"
       value_template: "{{value_json['dnd']}}"
@@ -729,6 +791,7 @@ mqtt:
 
     #Zone Party Host
     - name: "Nuvo Zone 1 Party"
+      unique_id: 3d59b0d8-17c8-449b-8892-72efc018b526
       state_topic: "nuvo/tele/zone/1/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "1,ON"
@@ -740,6 +803,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 2 Party"
+      unique_id: e3d9f25a-08fc-4f62-a04d-3b5e4b2990b7
       state_topic: "nuvo/tele/zone/2/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "2,ON"
@@ -751,6 +815,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 2 Party"
+      unique_id: 4111585b-e20f-44d8-a70b-bb2b44168881
       state_topic: "nuvo/tele/zone/3/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "3,ON"
@@ -762,6 +827,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 4 Party"
+      unique_id: b4ebda63-1611-4b54-ac1e-9cc7d12b3f6d
       state_topic: "nuvo/tele/zone/4/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "4,ON"
@@ -773,6 +839,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 5 Party"
+      unique_id: d3146679-cc7b-46ab-84b8-916fb370ce63
       state_topic: "nuvo/tele/zone/5/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "5,ON"
@@ -784,6 +851,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 6 Party"
+      unique_id: 65f13c95-0fe4-422f-afa3-2ba10a69bf87
       state_topic: "nuvo/tele/zone/6/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "6,ON"
@@ -795,6 +863,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 7 Party"
+      unique_id: 960ccf0c-393d-4c87-ad19-c67a5a1cfd3d
       state_topic: "nuvo/tele/zone/7/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "7,ON"
@@ -806,6 +875,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 8 Party"
+      unique_id: c48fd47c-d7fd-458f-bc26-1d2f233b14b8
       state_topic: "nuvo/tele/zone/8/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "8,ON"
@@ -817,6 +887,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 9 Party"
+      unique_id: db4beede-e2d4-45e3-84a7-dda7145a15f7
       state_topic: "nuvo/tele/zone/9/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "9,ON"
@@ -828,6 +899,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 10 Party"
+      unique_id: 005eb1ec-0a60-4806-be97-876aff6c8b30
       state_topic: "nuvo/tele/zone/10/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "10,ON"
@@ -839,6 +911,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 11 Party"
+      unique_id: 415af34f-79a7-43f3-bc6a-9cd5a18ab95e
       state_topic: "nuvo/tele/zone/11/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "11,ON"
@@ -850,6 +923,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 12 Party"
+      unique_id: 4898be66-ef62-490d-a6dc-ad071716f932
       state_topic: "nuvo/tele/zone/12/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "12,ON"
@@ -861,6 +935,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 13 Party"
+      unique_id: 0822a2e7-21da-4490-84d5-330e9d97d71e
       state_topic: "nuvo/tele/zone/13/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "13,ON"
@@ -872,6 +947,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 14 Party"
+      unique_id: 1a6d740c-7303-4cf6-a51f-2cb8ef8ff352
       state_topic: "nuvo/tele/zone/14/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "14,ON"
@@ -883,6 +959,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 15 Party"
+      unique_id: e8bbde9a-3c84-4ec6-b26c-38ee5623b618
       state_topic: "nuvo/tele/zone/15/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "15,ON"
@@ -894,6 +971,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 16 Party"
+      unique_id: 859f7c31-d0de-4cfd-9d8b-1cb1f0717457
       state_topic: "nuvo/tele/zone/16/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "16,ON"
@@ -905,6 +983,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 17 Party"
+      unique_id: ee7ac5b4-525d-4dac-8901-d19f255b1a36
       state_topic: "nuvo/tele/zone/17/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "17,ON"
@@ -916,6 +995,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 18 Party"
+      unique_id: 9ea3e569-8a2d-45de-a089-0c4eaa364db9
       state_topic: "nuvo/tele/zone/18/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "18,ON"
@@ -927,6 +1007,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 19 Party"
+      unique_id: 3b4ebdf4-f668-44f1-8761-493717dceda2
       state_topic: "nuvo/tele/zone/19/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "19,ON"
@@ -938,6 +1019,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 20 Party"
+      unique_id: f607bb99-793a-49b6-a45b-211a5c5e70a7
       state_topic: "nuvo/tele/zone/20/party"
       command_topic: "nuvo/command/set/zone/party"
       payload_on: "20,ON"
@@ -950,6 +1032,7 @@ mqtt:
 
     #Zone Lock
     - name: "Nuvo Zone 1 Lock"
+      unique_id: 1fc4ba42-44c6-4a20-bb37-4ee3782e1640
       state_topic: "nuvo/tele/zone/1"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -962,6 +1045,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 2 Lock"
+      unique_id: fd66de91-d73d-4250-bc3d-d5fcfcffd77f
       state_topic: "nuvo/tele/zone/2"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -974,6 +1058,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 3 Lock"
+      unique_id: c9f41dc4-966d-4b2b-8885-fb66376d3074
       state_topic: "nuvo/tele/zone/3"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -986,6 +1071,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 4 Lock"
+      unique_id: 3d0f7d58-8edc-4bde-94c9-67829ede7442
       state_topic: "nuvo/tele/zone/4"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -998,6 +1084,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 5 Lock"
+      unique_id: d9ed5a62-e665-4a93-b559-98cc450b1374
       state_topic: "nuvo/tele/zone/5"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1010,6 +1097,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 6 Lock"
+      unique_id: 5653a1f4-08c9-4c43-bad7-fb0f1e090f99
       state_topic: "nuvo/tele/zone/6"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1022,6 +1110,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 7 Lock"
+      unique_id: f46be724-4894-4679-b4a5-aa00b11eaec8
       state_topic: "nuvo/tele/zone/7"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1034,6 +1123,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 8 Lock"
+      unique_id: 75825b5c-dfcb-4dab-9737-26d7716bf6ff
       state_topic: "nuvo/tele/zone/8"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1046,6 +1136,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 9 Lock"
+      unique_id: 208a5566-f378-4eb5-9833-3bb9e0e8ba51
       state_topic: "nuvo/tele/zone/9"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1058,6 +1149,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 10 Lock"
+      unique_id: 265f4dad-5e86-436e-a5d8-b3d6a5aa8157
       state_topic: "nuvo/tele/zone/10"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1070,6 +1162,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 11 Lock"
+      unique_id: 4c8405d4-b3f2-4aa6-9369-1febcb549c57
       state_topic: "nuvo/tele/zone/11"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1082,6 +1175,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 12 Lock"
+      unique_id: ccfe5efe-fb3f-4f02-846e-63f52a96fe3f
       state_topic: "nuvo/tele/zone/12"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1094,6 +1188,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 13 Lock"
+      unique_id: 06f0f490-01b6-44bb-bc98-7e7c1c076ac6
       state_topic: "nuvo/tele/zone/13"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1106,6 +1201,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 14 Lock"
+      unique_id: c9a645cc-7dba-497a-aac9-28eb450624a2
       state_topic: "nuvo/tele/zone/14"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1118,6 +1214,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 15 Lock"
+      unique_id: e60b5961-692e-40fc-aec2-d1b0990c89bc
       state_topic: "nuvo/tele/zone/15"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1130,6 +1227,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 16 Lock"
+      unique_id: 1c8cea23-3e76-48c4-bf37-ddc94de173c2
       state_topic: "nuvo/tele/zone/16"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1142,6 +1240,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 17 Lock"
+      unique_id: 2f0ebd87-17d9-42ee-8b1e-39707bbff832
       state_topic: "nuvo/tele/zone/17"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1154,6 +1253,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 18 Lock"
+      unique_id: 551499eb-3bc1-4f38-be56-eddc3c11e755
       state_topic: "nuvo/tele/zone/18"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1166,6 +1266,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 19 Lock"
+      unique_id: a8e6529f-d922-469f-ab67-e695531980f5
       state_topic: "nuvo/tele/zone/19"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1178,6 +1279,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 20 Lock"
+      unique_id: ea815110-3424-4d5c-8773-1e48575aeb6b
       state_topic: "nuvo/tele/zone/20"
       command_topic: "nuvo/command/set/zone/lock"
       value_template: "{{value_json['lock']}}"
@@ -1193,6 +1295,7 @@ mqtt:
     #Bridge Status Messages
 
     - name: "Nuvo Bridge Version"
+      unique_id: 835343c9-4b07-49b7-8da0-4dfa69c45cea
       state_topic: "nuvo/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1200,6 +1303,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Bridge Uptime"
+      unique_id: 078b5d36-661b-4d0f-8b32-8c11993c232f
       state_topic: "nuvo/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1207,6 +1311,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Bridge RSSI"
+      unique_id: 4de35306-2111-4351-acc7-36ac0581aa5e
       state_topic: "nuvo/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1214,6 +1319,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Bridge IP"
+      unique_id: e2ae1bbe-8edf-460f-b3da-429f0de255e4
       state_topic: "nuvo/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1221,6 +1327,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Bridge Free Heap"
+      unique_id: 7d9411fa-ac8f-4764-af68-093cf2865c55
       state_topic: "nuvo/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1228,6 +1335,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Bridge Heap Fragmentation"
+      unique_id: 57b8e6c8-452d-497c-99c8-ba2001003e3b
       state_topic: "nuvo/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1235,6 +1343,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Bridge Core Version"
+      unique_id: e735c8ef-d962-4b3f-8a54-fbb2b55a797f
       state_topic: "nuvo/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1243,6 +1352,7 @@ mqtt:
 
     #Source 1
     - name: "Nuvo Zone 1 Source"
+      unique_id: 2a52626f-0763-4a36-931e-c9b61ed1f078
       state_topic: "nuvo/tele/zone/1"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1250,6 +1360,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 1 Volume"
+      unique_id: ea2b3b82-63d5-46e2-a04e-ad610bb0303b
       state_topic: "nuvo/tele/zone/1"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1258,6 +1369,7 @@ mqtt:
 
     #Source 2
     - name: "Nuvo Zone 2 Source"
+      unique_id: e2560102-076d-4d59-bdfb-9d9aebc36ed0
       state_topic: "nuvo/tele/zone/2"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1265,6 +1377,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 2 Volume"
+      unique_id: 7c1d0bf1-5b1d-4caa-95f4-f3be56394fb0
       state_topic: "nuvo/tele/zone/2"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1273,6 +1386,7 @@ mqtt:
 
     #Source 3
     - name: "Nuvo Zone 3 Source"
+      unique_id: cc7362ef-6e58-4fa3-a51d-aeb4c49f1e09
       state_topic: "nuvo/tele/zone/3"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1280,6 +1394,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 3 Volume"
+      unique_id: 6fc0104c-0938-4481-a789-2c1ceee08133
       state_topic: "nuvo/tele/zone/3"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1288,6 +1403,7 @@ mqtt:
 
     #Source 4
     - name: "Nuvo Zone 4 Source"
+      unique_id: efd5b601-7080-4db8-b5cf-292addf18481
       state_topic: "nuvo/tele/zone/4"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1295,6 +1411,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 4 Volume"
+      unique_id: b0cc370f-4475-4646-ad7d-40ada5b88b1f
       state_topic: "nuvo/tele/zone/4"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1303,6 +1420,7 @@ mqtt:
 
     #Source 5
     - name: "Nuvo Zone 5 Source"
+      unique_id: 6974c3d8-6784-451f-84f3-2199a109d4a0
       state_topic: "nuvo/tele/zone/5"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1310,6 +1428,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 5 Volume"
+      unique_id: 4a5f0845-8a7a-4d17-98b8-507ad3b920c4
       state_topic: "nuvo/tele/zone/5"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1318,6 +1437,7 @@ mqtt:
 
     #Source 6
     - name: "Nuvo Zone 6 Source"
+      unique_id: 86b54bab-8092-456a-96b7-f338b41cb646
       state_topic: "nuvo/tele/zone/6"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1325,6 +1445,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 6 Volume"
+      unique_id: ca0949a0-0268-48c4-b0f1-83427849607d
       state_topic: "nuvo/tele/zone/6"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1333,6 +1454,7 @@ mqtt:
 
     #Source 7
     - name: "Nuvo Zone 7 Source"
+      unique_id: 99f9d84b-cde3-4da5-9ee7-31f3ec3c8f0f
       state_topic: "nuvo/tele/zone/7"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1340,6 +1462,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 7 Volume"
+      unique_id: 3a07e8d4-455f-45a1-98ed-b86aa75f2959
       state_topic: "nuvo/tele/zone/7"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1348,6 +1471,7 @@ mqtt:
 
     #Source 8
     - name: "Nuvo Zone 8 Source"
+      unique_id: 17c75cae-125b-4c8b-ae7d-8a1695694cc2
       state_topic: "nuvo/tele/zone/8"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1355,6 +1479,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 8 Volume"
+      unique_id: aee4f34e-c836-43f8-92f4-fa25e6737d4f
       state_topic: "nuvo/tele/zone/8"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1363,6 +1488,7 @@ mqtt:
 
     #Source 9
     - name: "Nuvo Zone 9 Source"
+      unique_id: 934f930b-1dd9-47ef-8cd9-4795c25602ec
       state_topic: "nuvo/tele/zone/9"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1370,6 +1496,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 9 Volume"
+      unique_id: c8772af7-683b-4a44-8306-7ad62b39472c
       state_topic: "nuvo/tele/zone/9"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1378,6 +1505,7 @@ mqtt:
 
     #Source 10
     - name: "Nuvo Zone 10 Source"
+      unique_id: 11919752-c07e-41c2-9463-c89836e500ae
       state_topic: "nuvo/tele/zone/10"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1385,6 +1513,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 10 Volume"
+      unique_id: 80e50a2e-13b3-4991-b6d8-a1a48c4dc366
       state_topic: "nuvo/tele/zone/10"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1393,6 +1522,7 @@ mqtt:
 
     #Source 11
     - name: "Nuvo Zone 11 Source"
+      unique_id: a2aabc75-5b8e-41f2-8cb5-53d26497f0fe
       state_topic: "nuvo/tele/zone/11"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1400,6 +1530,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 11 Volume"
+      unique_id: 6ca8357c-5120-4534-8dc5-c5726bdbdc0b
       state_topic: "nuvo/tele/zone/11"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1408,6 +1539,7 @@ mqtt:
 
     #Source 12
     - name: "Nuvo Zone 12 Source"
+      unique_id: cbe73703-17d8-4ed1-8479-e029e6698f98
       state_topic: "nuvo/tele/zone/12"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1415,6 +1547,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 12 Volume"
+      unique_id: e7153924-9265-4d74-af7c-1ed0cd047f43
       state_topic: "nuvo/tele/zone/12"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1423,6 +1556,7 @@ mqtt:
 
     #Source 13
     - name: "Nuvo Zone 13 Source"
+      unique_id: 178b118e-e93f-420e-ad31-7fbaeec56e65
       state_topic: "nuvo/tele/zone/13"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1430,6 +1564,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 13 Volume"
+      unique_id: f9f46542-ea37-4fea-9a46-3371e91dc96c
       state_topic: "nuvo/tele/zone/13"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1438,6 +1573,7 @@ mqtt:
 
     #Source 14
     - name: "Nuvo Zone 14 Source"
+      unique_id: 7a447e93-e2f9-482a-b319-1723ef231c37
       state_topic: "nuvo/tele/zone/14"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1445,6 +1581,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 14 Volume"
+      unique_id: 3ae28ffb-b206-43ef-b5a9-cf8b4cdfddca
       state_topic: "nuvo/tele/zone/14"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1453,6 +1590,7 @@ mqtt:
 
     #Source 15
     - name: "Nuvo Zone 15 Source"
+      unique_id: 87206978-b471-420d-ad0e-e5fa2dfa28d9
       state_topic: "nuvo/tele/zone/15"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1460,6 +1598,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 15 Volume"
+      unique_id: 4726ca88-8b8f-40a7-9f17-67c8f8150f59
       state_topic: "nuvo/tele/zone/15"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1468,6 +1607,7 @@ mqtt:
 
     #Source 16
     - name: "Nuvo Zone 16 Source"
+      unique_id: f5c11fde-b441-4143-a573-e73f6a186f4d
       state_topic: "nuvo/tele/zone/16"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1475,6 +1615,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 16 Volume"
+      unique_id: 7ad4dbc2-37bb-4cce-859b-a596983d43e8
       state_topic: "nuvo/tele/zone/16"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1483,6 +1624,7 @@ mqtt:
 
     #Source 17
     - name: "Nuvo Zone 17 Source"
+      unique_id: 30512b88-e82a-4ada-827e-1f51a5a39aa5
       state_topic: "nuvo/tele/zone/17"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1490,6 +1632,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 17 Volume"
+      unique_id: 77498600-8727-4c9c-a5fc-7b56a2a6995d
       state_topic: "nuvo/tele/zone/17"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1498,6 +1641,7 @@ mqtt:
 
     #Source 18
     - name: "Nuvo Zone 18 Source"
+      unique_id: 3dc0f37a-7396-46a9-bb24-5cd47cf9506b
       state_topic: "nuvo/tele/zone/18"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1505,6 +1649,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 18 Volume"
+      unique_id: 3b3d819a-0e4c-4309-a53c-c434f4dd55fc
       state_topic: "nuvo/tele/zone/18"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1513,6 +1658,7 @@ mqtt:
 
     #Source 19
     - name: "Nuvo Zone 19 Source"
+      unique_id: ba1df4cd-c262-40e7-a5e5-f4ee41b94a68
       state_topic: "nuvo/tele/zone/19"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1520,6 +1666,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 19 Volume"
+      unique_id: 01afc821-115d-4ae1-8d7c-f5400635bba6
       state_topic: "nuvo/tele/zone/19"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1528,6 +1675,7 @@ mqtt:
 
     #Source 20
     - name: "Nuvo Zone 20 Source"
+      unique_id: 369392c8-bd90-4cdc-9eda-4c7d58ab3c0a
       state_topic: "nuvo/tele/zone/20"
       value_template: "{{value_json['source']}}"
       availability_topic: "nuvo/tele/LWT"
@@ -1535,6 +1683,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Nuvo Zone 20 Volume"
+      unique_id: c481d420-91c0-41d6-a35b-fff9429bc4a0
       state_topic: "nuvo/tele/zone/20"
       value_template: "{{value_json['volume']}}"
       availability_topic: "nuvo/tele/LWT"

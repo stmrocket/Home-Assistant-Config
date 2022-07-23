@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "House Blinds"
+      unique_id: 8909bc94-097c-42c6-812b-c92350c026d9
       device_class: blind
       command_topic: "habc/all/command/set/state"
       set_position_topic: "habc/all/command/set/positionpct"

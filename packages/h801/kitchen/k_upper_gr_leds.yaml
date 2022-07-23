@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Kitchen Upper LEDs RGB"
+      unique_id: 1bac6be4-c208-4a7f-bfdf-2f0f19482d06
       state_topic: "h801/k_upper/ha/state"
       command_topic: "h801/k_upper/command/set/rgb/power"
       brightness_state_topic: "h801/k_upper/tele/current"

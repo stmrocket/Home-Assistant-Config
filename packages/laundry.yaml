@@ -3,9 +3,12 @@ mqtt:
   sensor:
     #Sonoff Washer Monitor
     - name: "Washer State"
+      unique_id: cd0ad294-4301-453e-9ac1-e12ae356cca3
       state_topic: "hass/state/washer"
       icon: mdi:washing-machine
+
     - name: "Washer Watts"
+      unique_id: bb9ddd45-b7d4-419c-af44-a588c4cd7454
       state_topic: "tele/SNF-Washer/SENSOR"
       value_template: "{{value_json['ENERGY'].Power }}"
       qos: 2
@@ -14,7 +17,9 @@ mqtt:
       availability_topic: "tele/SNF-Washer/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: "Washer Voltage"
+      unique_id: 474f8990-0f88-4f0d-9c1a-f35a843a27b9
       state_topic: "tele/SNF-Washer/SENSOR"
       value_template: "{{value_json['ENERGY'].Voltage }}"
       qos: 2
@@ -23,7 +28,9 @@ mqtt:
       availability_topic: "tele/SNF-Washer/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: "Washer Amps"
+      unique_id: e6254600-b626-4e46-83a0-58f130bb4c3e
       state_topic: "tele/SNF-Washer/SENSOR"
       value_template: "{{value_json['ENERGY'].Current }}"
       qos: 2
@@ -32,7 +39,9 @@ mqtt:
       availability_topic: "tele/SNF-Washer/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: "Washer Energy Today"
+      unique_id: 4dd28c08-e305-465e-baa9-a9381c53d678
       state_topic: "tele/SNF-Washer/SENSOR"
       value_template: "{{value_json['ENERGY'].Today }}"
       qos: 2
@@ -40,7 +49,9 @@ mqtt:
       availability_topic: "tele/SNF-Washer/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+
     - name: "Washer Energy Yesterday"
+      unique_id: bdae31bd-17bf-4e34-b790-1092a06c0268
       state_topic: "tele/SNF-Washer/SENSOR"
       value_template: "{{value_json['ENERGY'].Yesterday }}"
       qos: 2
@@ -50,6 +61,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "tele/SNF-Washer/STATE"
+      unique_id: 8410514a-0f33-42aa-8b26-4c174ec40745
       name: "Washer Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -60,10 +72,12 @@ mqtt:
 
     #Sonoff Dryer Monitor
     - name: "Dryer State"
+      unique_id: 9e4b07de-7a19-4f99-ad73-3e9cfcfda4de
       state_topic: "hass/state/dryer"
       icon: mdi:tumble-dryer
 
     - name: "Dryer Watts"
+      unique_id: 3b07e690-dbe8-4d5d-8151-9985c7008e86
       state_topic: "tele/SNF-Dryer/SENSOR"
       value_template: "{{value_json['ENERGY'].Power }}"
       qos: 2
@@ -74,6 +88,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Dryer Voltage"
+      unique_id: d0226e54-93d0-46a8-9606-4a478b4ef0ca
       state_topic: "tele/SNF-Dryer/SENSOR"
       value_template: "{{value_json['ENERGY'].Voltage }}"
       qos: 2
@@ -84,6 +99,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Dryer Amps"
+      unique_id: fff955d1-c668-490d-814f-70943d09a884
       state_topic: "tele/SNF-Dryer/SENSOR"
       value_template: "{{value_json['ENERGY'].Current }}"
       qos: 2
@@ -94,6 +110,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Dryer Energy Today"
+      unique_id: 3550eaad-a3df-4a91-83db-b6cbad3e6c80
       state_topic: "tele/SNF-Dryer/SENSOR"
       value_template: "{{value_json['ENERGY'].Today }}"
       qos: 2
@@ -103,6 +120,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Dryer Energy Yesterday"
+      unique_id: dd6988cb-df90-4540-a971-948a4e927fca
       state_topic: "tele/SNF-Dryer/SENSOR"
       value_template: "{{value_json['ENERGY'].Yesterday }}"
       qos: 2
@@ -112,6 +130,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "tele/SNF-Dryer/STATE"
+      unique_id: eccae6a2-c100-4243-9d14-c060154de4c0
       name: "Dryer Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -124,6 +143,7 @@ sensor:
   - platform: template
     sensors:
       washer_status:
+        unique_id: de9d8708-c377-40ba-a545-0ddaf5ff11fc
         value_template: >-
           {% if is_state('input_boolean.washer_end', 'on')  -%}
             Done
@@ -132,6 +152,7 @@ sensor:
           {% endif -%}
 
       dryer_status:
+        unique_id: 17ca6811-6cac-4a56-93ee-1c2e578d0779
         value_template: >-
           {% if is_state('input_boolean.dryer_end', 'on')  -%}
             Done

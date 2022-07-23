@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Server Room Blind"
+      unique_id: d11b7025-1fec-419e-b0a0-63738494039c
       device_class: blind
       command_topic: "habc/server/command/set/state"
       set_position_topic: "habc/server/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Server Room Blind Version"
+      unique_id: c0a1aacd-91cc-4711-8567-9cdb04180f13
       state_topic: "habc/server/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/server/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Server Room Blind Uptime"
+      unique_id: f5ed3738-04fd-439a-98d6-4f331f2f2e32
       state_topic: "habc/server/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/server/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Server Room Blind RSSI"
+      unique_id: 8557cd9d-0435-4dcf-98f4-876177af689d
       state_topic: "habc/server/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/server/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Server Room Blind IP"
+      unique_id: 6cfc75dd-52ce-4cf7-b63d-9da92f28fad4
       state_topic: "habc/server/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/server/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Server Room Blind Free Heap"
+      unique_id: b58bcca7-ccac-421b-bbbe-40e9fa34e97d
       state_topic: "habc/server/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/server/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Server Room Blind Heap Fragmentation"
+      unique_id: 38ffe7a1-6fb7-4af4-b05f-e42d20216047
       state_topic: "habc/server/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/server/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Server Room Blind Core Version"
+      unique_id: 24fc7267-e9f7-4198-8ef8-a01efe3e581c
       state_topic: "habc/server/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/server/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Server Room Blind Light Level"
+      unique_id: ca001a43-7e42-49e6-b70c-8a70c99d6364
       state_topic: "habc/server/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/server/tele/LWT"

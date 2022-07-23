@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Kitchen Counter LEDs RGB"
+      unique_id: b9879a97-b300-447f-8886-0a5c47498f12
       state_topic: "h801/k_counter/ha/state"
       command_topic: "h801/k_counter/command/set/rgb/power"
       brightness_state_topic: "h801/k_counter/tele/current"

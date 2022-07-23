@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Shack Blinds"
+      unique_id: f1dcde6f-5300-435b-b76b-33bdfdce1ad2
       device_class: blind
       command_topic: "habc/shack/command/set/state"
       set_position_topic: "habc/shack/command/set/positionpct"

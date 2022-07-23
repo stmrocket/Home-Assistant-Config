@@ -1,122 +1,147 @@
 mqtt:
   sensor:
     - name: Daily Bike Distance
+      unique_id: e0af02b5-d175-4ab5-83b9-3c77af65cbe0
       state_topic: bike/tele/status
       value_template: "{{value_json['daily'].distance }}"
       unit_of_measurement: mi
 
     - name: Daily Bike Duration
+      unique_id: 9bcd9ded-5805-4b49-93e6-d3b6bba67223
       state_topic: bike/tele/status
       value_template: "{{value_json['daily'].time }}"
       unit_of_measurement: s
 
     - name: Daily Bike Climb
+      unique_id: 0c4c38bb-9235-4267-9a0e-c026bb82b38f
       state_topic: bike/tele/status
       value_template: "{{value_json['daily'].climb }}"
       unit_of_measurement: ft
 
     - name: Daily Bike Calories
+      unique_id: d936c823-f8c0-4fd5-88b2-8df31650ecd7
       state_topic: bike/tele/status
       value_template: "{{value_json['daily'].calories }}"
       unit_of_measurement: cal
 
     - name: Daily Bike Rides
+      unique_id: 6cbecab6-61dc-4c69-8968-0c42e87c1f09
       state_topic: bike/tele/status
       value_template: "{{value_json['daily'].rides }}"
 
     - name: Weekly Bike Distance
+      unique_id: 0dca1670-320c-4422-9abe-604f009d820e
       state_topic: bike/tele/status
       value_template: "{{value_json['weekly'].distance }}"
       unit_of_measurement: mi
 
     - name: Weekly Bike Duration
+      unique_id: 41bd33e5-ad71-45e0-98a8-2b1ea9050790
       state_topic: bike/tele/status
       value_template: "{{value_json['weekly'].time }}"
       unit_of_measurement: s
 
     - name: Weekly Bike Climb
+      unique_id: 09a73ac7-4cd9-4268-9714-9ae2c862be94
       state_topic: bike/tele/status
       value_template: "{{value_json['weekly'].climb }}"
       unit_of_measurement: ft
 
     - name: Weekly Bike Calories
+      unique_id: e022a23f-91c6-4e2a-8911-957a5740a030
       state_topic: bike/tele/status
       value_template: "{{value_json['weekly'].calories }}"
       unit_of_measurement: cal
 
     - name: Weekly Bike Rides
+      unique_id: 6ee93e39-8daa-4811-adbf-9746f5942841
       state_topic: bike/tele/status
       value_template: "{{value_json['weekly'].rides }}"
 
     - name: Monthly Bike Distance
+      unique_id: 9b747dcf-2f65-4c4d-8d6c-2207890651ad
       state_topic: bike/tele/status
       value_template: "{{value_json['monthly'].distance }}"
       unit_of_measurement: mi
 
     - name: Monthly Bike Duration
+      unique_id: 9044090d-b425-4f0e-be58-c271bca9f973
       state_topic: bike/tele/status
       value_template: "{{value_json['monthly'].time }}"
       unit_of_measurement: s
 
     - name: Monthly Bike Climb
+      unique_id: a2ba9e1e-e5ad-4e66-ae96-9984a6606f79
       state_topic: bike/tele/status
       value_template: "{{value_json['monthly'].climb }}"
       unit_of_measurement: ft
 
     - name: Monthly Bike Calories
+      unique_id: 62532635-796e-4684-9eb3-be3182e57d6c
       state_topic: bike/tele/status
       value_template: "{{value_json['monthly'].calories }}"
       unit_of_measurement: cal
 
     - name: Monthly Bike Rides
+      unique_id: 63e96d26-0d30-454d-b50c-da61141734d9
       state_topic: bike/tele/status
       value_template: "{{value_json['monthly'].rides }}"
 
     - name: Yearly Bike Distance
+      unique_id: 5af0dbea-01a7-4f16-82c1-f916fa69f47f
       state_topic: bike/tele/status
       value_template: "{{value_json['yearly'].distance }}"
       unit_of_measurement: mi
 
     - name: Yearly Bike Duration
+      unique_id: b346cb30-fd26-4b43-8af3-cb390511a979
       state_topic: bike/tele/status
       value_template: "{{value_json['yearly'].time }}"
       unit_of_measurement: s
 
     - name: Yearly Bike Climb
+      unique_id: 01c475af-d3ca-4bd1-849d-fd586819ff31
       state_topic: bike/tele/status
       value_template: "{{value_json['yearly'].climb }}"
       unit_of_measurement: ft
 
     - name: Yearly Bike Calories
+      unique_id: ddb533c4-ccdd-4ab5-a135-1a751cb6283c
       state_topic: bike/tele/status
       value_template: "{{value_json['yearly'].calories }}"
       unit_of_measurement: cal
 
     - name: Yearly Bike Rides
+      unique_id: e415aa08-e9cd-40c2-a290-bdc6cbab7b61
       state_topic: bike/tele/status
       value_template: "{{value_json['yearly'].rides }}"
 
     - name: Career Bike Distance
+      unique_id: 763fc49c-2b16-41b5-a724-03e8767bc6c3
       state_topic: bike/tele/status
       value_template: "{{value_json['career'].distance }}"
       unit_of_measurement: mi
 
     - name: Career Bike Duration
+      unique_id: 7d635a40-5062-4890-b393-07e5a7351154
       state_topic: bike/tele/status
       value_template: "{{value_json['career'].time }}"
       unit_of_measurement: s
 
     - name: Career Bike Climb
+      unique_id: d7cf3d5c-dc6a-4368-9fef-9f8cf5bb0df7
       state_topic: bike/tele/status
       value_template: "{{value_json['career'].climb }}"
       unit_of_measurement: ft
 
     - name: Career Bike Calories
+      unique_id: b056e36e-2714-484b-af03-6b1f2ed050f0
       state_topic: bike/tele/status
       value_template: "{{value_json['career'].calories }}"
       unit_of_measurement: cal
 
     - name: Career Bike Rides
+      unique_id: 8ebd0b5b-a7fb-49db-97e3-c7bf6404b91c
       state_topic: bike/tele/status
       value_template: "{{value_json['career'].rides }}"
 
@@ -124,6 +149,7 @@ sensor:
   - platform: template
     sensors:
       daily_bike_duration_calc:
+        unique_id: 930b1811-f7d0-4614-80b2-98042f8bb82f
         friendly_name: Daily Bike Duration Calculated
         value_template: >-
           {% set time = states('sensor.daily_bike_duration') | int(none) %}
@@ -166,6 +192,7 @@ sensor:
               {%- endif -%}
 
       weekly_bike_duration_calc:
+        unique_id: e754db9f-4bd2-4f4b-9578-9e7b9443cff7
         friendly_name: Weekly Bike Duration Calculated
         value_template: >-
           {% set time = states('sensor.weekly_bike_duration') | int(none) %}
@@ -208,6 +235,7 @@ sensor:
               {%- endif -%}
 
       monthly_bike_duration_calc:
+        unique_id: c5ab639e-b5a4-4436-a5e1-e02a5535324d
         friendly_name: Monthly Bike Duration Calculated
         value_template: >-
           {% set time = states('sensor.monthly_bike_duration') | int(none) %}
@@ -250,6 +278,7 @@ sensor:
               {%- endif -%}
 
       yearly_bike_duration_calc:
+        unique_id: 8c978c58-1063-42b0-af33-b2861495fea9
         friendly_name: Yearly Bike Duration Calculated
         value_template: >-
           {% set time = states('sensor.yearly_bike_duration') | int(none) %}
@@ -292,6 +321,7 @@ sensor:
               {%- endif -%}
 
       career_bike_duration_calc:
+        unique_id: 218a01d9-d884-45ff-a0b2-2191739ffb01
         friendly_name: Career Bike Duration Calculated
         value_template: >-
           {% set time = states('sensor.career_bike_duration') | int(none) %}

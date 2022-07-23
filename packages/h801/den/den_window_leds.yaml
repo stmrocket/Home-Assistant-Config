@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Den Window LEDs CCT"
+      unique_id: e154da3e-feb2-40e1-8016-a1cf46ad9a6a
       state_topic: "h801/d_windows/ha/state"
       command_topic: "h801/d_windows/command/set/rgb/power"
       brightness_state_topic: "h801/d_windows/tele/current"

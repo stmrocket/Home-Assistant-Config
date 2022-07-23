@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Left Shack Blind"
+      unique_id: 56d60ef1-c431-4d88-83cf-37383f537e20
       device_class: blind
       command_topic: "habc/shack_l/command/set/state"
       set_position_topic: "habc/shack_l/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Left Shack Blind Version"
+      unique_id: f64fa383-d0df-4a99-9500-04b8f08640b8
       state_topic: "habc/shack_l/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/shack_l/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Shack Blind Uptime"
+      unique_id: 6d0a3f58-5a7e-4aaa-93ff-2da409e4109e
       state_topic: "habc/shack_l/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/shack_l/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Shack Blind RSSI"
+      unique_id: a0364583-6d40-4a03-83c1-0b98c40cd282
       state_topic: "habc/shack_l/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/shack_l/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Shack Blind IP"
+      unique_id: 87d54b35-9221-4f77-8ce9-63e046ef83ee
       state_topic: "habc/shack_l/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/shack_l/tele/LWT"
@@ -51,6 +56,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Shack Blind Heap Fragmentation"
+      unique_id: 0f5edcb7-6fdc-47ec-adb9-56909928faa5
       state_topic: "habc/shack_l/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/shack_l/tele/LWT"
@@ -58,6 +64,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Shack Blind Core Version"
+      unique_id: 696f263e-b502-4f80-bd38-8e048e12b237
       state_topic: "habc/shack_l/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/shack_l/tele/LWT"
@@ -65,6 +72,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Shack Blind Light Level"
+      unique_id: 6107270d-d41f-4d21-b2b8-b3d034b2175d
       state_topic: "habc/shack_l/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/shack_l/tele/LWT"

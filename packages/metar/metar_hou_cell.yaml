@@ -1,6 +1,7 @@
 mqtt:
   switch:
     - name: HOU Cell METAR Map Power
+      unique_id: 21b744b6-b398-4c03-9d26-0cad209be288
       state_topic: metar/hou-cell/tele/current
       command_topic: metar/hou-cell/command/set/power
       payload_on: "ON"
@@ -22,6 +23,7 @@ sensor:
   - platform: template
     sensors:
       hou_cell_metar_mode_clean:
+        unique_id: 8fa725a8-e6b9-4105-a89d-ed2e3ebe0f0d
         friendly_name: HOU Cell METAR Mode Clean Name
         value_template: >-
           {% if is_state('sensor.hou_cell_metar_mode', 'TEMP') -%}
