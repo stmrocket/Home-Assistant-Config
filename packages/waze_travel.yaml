@@ -2,5 +2,6 @@ sensor:
   - platform: template
     sensors:
       shawn_position:
+        unique_id: 2ca22840-1300-49f2-a5e8-4e996166ef9f
         friendly_name: "Shawn Positioin"
         value_template: "{{ state_attr('device_tracker.shawn_n6', 'latitude') }}, {{ state_attr('device_tracker.shawn_n6', 'longitude') }}"

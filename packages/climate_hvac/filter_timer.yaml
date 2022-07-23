@@ -136,6 +136,7 @@ sensor:
     sensors:
       # Used to display current total runtime in frontend
       furnace_filter_life:
+        unique_id: bb7cb67d-a020-43d9-b708-d4b30dd837a5
         friendly_name: "Filter runtime"
         value_template: >
           {% set active = states('sensor.hvac_runtime_today') | float(none) %}
@@ -145,12 +146,14 @@ sensor:
 
       # Calculate average runtime in the last 7 days
       average_total_runtime_week:
+        unique_id: f6ace7ea-4f83-4acd-920f-86d517780c9d
         friendly_name: "Average total runtime last 7 days"
         value_template: "{{ ((states('sensor.hvac_runtime_last_7_days') | float(none)) / 7) | round(2, default=none) }}"
         unit_of_measurement: "h"
 
       # Calculate number of days until filter will need to be changed based on replacement threshold and rolling average
       furnace_filter_days_remaining:
+        unique_id: 458b5f3a-0be7-4fe2-b638-1497848d0cbb
         friendly_name: "Furnace filter days remaining"
         value_template: >
           {% if (states('sensor.average_total_runtime_week') | float(none)) == 0 %}
@@ -163,14 +166,17 @@ sensor:
         unit_of_measurement: "d"
 
       furnace_filter_last_replaced:
+        unique_id: 4ff43697-1dfc-4003-9ad8-a3710b04d37b
         friendly_name: Last Replaced
         value_template: "{{ states('input_text.furnace_filter')[:10] }}"
 
       furnace_last_bleached:
+        unique_id: b85843ea-49af-41d5-b6c0-302ad80c25a0
         friendly_name: Last Bleached
         value_template: "{{ states('input_text.furnace_bleach')[:10] }}"
 
       furnace_service_required:
+        unique_id: 57f0279c-3677-4e4c-b892-a4e42c224820
         friendly_name: HVAC Service Required
         value_template: >-
           {% if is_state('binary_sensor.hvac_needs_bleach', 'on') -%}
@@ -182,16 +188,19 @@ sensor:
           {% endif -%}
 
       beginning_filter_dp:
+        unique_id: bd87489a-7ebb-4518-9a4d-5315976416a3
         friendly_name: Beginning Filter Differential Pressure
         value_template: "{{ states('input_number.beginning_filter_dp') }}"
         unit_of_measurement: "Pa"
 
       maximum_filter_dp:
+        unique_id: 63bde6c1-9b76-40df-a509-543ba8e8449d
         friendly_name: Maximum Filter Differential Pressure
         value_template: "{{ states('input_number.maximum_filter_dp') }}"
         unit_of_measurement: "Pa"
 
       filter_dp_increase:
+        unique_id: 0beb9f43-fc30-4fdc-8503-0035e8be762a
         friendly_name: Filter Differential Pressure Increase
         value_template: >-
           {% if (states('sensor.beginning_filter_dp') | float(none)) > 0 %}

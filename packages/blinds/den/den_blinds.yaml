@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Den Blinds"
+      unique_id: 4ce9af6d-0d24-43f3-9d86-1b89dcd51a0e
       device_class: blind
       command_topic: "habc/den/command/set/state"
       set_position_topic: "habc/den/command/set/positionpct"

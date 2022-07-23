@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Office Blinds"
+      unique_id: 3c6b6734-2390-4e4c-a1b0-02a6b4a8a152
       device_class: blind
       command_topic: "habc/office/command/set/state"
       set_position_topic: "habc/office/command/set/positionpct"

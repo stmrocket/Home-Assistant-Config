@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Master Suite LEDs RGB"
+      unique_id: cb668f30-00b8-4c8e-810f-239df2d37fc0
       state_topic: "h801/master/ha/state"
       command_topic: "h801/master/command/set/rgb/power"
       brightness_state_topic: "h801/master/tele/current"

@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Master Bedroom LED 2 RGB"
+      unique_id: 0abb6687-75e0-44b9-a5d2-6e91358df992
       state_topic: "h801/mbed_2/tele/current"
       command_topic: "h801/mbed_2/command/set/rgb/power"
       brightness_state_topic: "h801/mbed_2/tele/current"
@@ -23,6 +24,7 @@ mqtt:
     #Driver Ststus Messages
 
     - name: "Master Bedroom LED 2 Version"
+      unique_id: 07a5731a-b297-4df6-86c4-eb3b7661170f
       state_topic: "h801/mbed_2/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "h801/mbed_2/tele/LWT"
@@ -30,6 +32,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Master Bedroom LED 2 Uptime"
+      unique_id: a5f19c6b-cce1-42b7-9ce7-5e561ab129d8
       state_topic: "h801/mbed_2/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "h801/mbed_2/tele/LWT"
@@ -37,6 +40,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Master Bedroom LED 2 RSSI"
+      unique_id: 20f90ffc-c92d-473b-a17a-88fa7eef1951
       state_topic: "h801/mbed_2/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "h801/mbed_2/tele/LWT"
@@ -44,6 +48,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Master Bedroom LED 2 IP"
+      unique_id: 6a655dbd-c5db-4075-972c-4d37518c1a28
       state_topic: "h801/mbed_2/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "h801/mbed_2/tele/LWT"
@@ -51,6 +56,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Master Bedroom LED 2 Free Heap"
+      unique_id: 59de837d-7c2a-4371-9944-56569e19e874
       state_topic: "h801/mbed_2/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "h801/mbed_2/tele/LWT"
@@ -58,6 +64,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Master Bedroom LED 2 Heap Fragmentation"
+      unique_id: 3b693161-e388-46ff-9ac9-6c8f99d8f344
       state_topic: "h801/mbed_2/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "h801/mbed_2/tele/LWT"
@@ -65,6 +72,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Master Bedroom LED 2 Core Version"
+      unique_id: b3ccfded-ccaf-4e4d-abd5-aca417c05774
       state_topic: "h801/mbed_2/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "h801/mbed_2/tele/LWT"

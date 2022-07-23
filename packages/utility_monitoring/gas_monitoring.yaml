@@ -1,84 +1,98 @@
 mqtt:
   sensor:
     - name: Gas Meter
+      unique_id: f7581fd8-0415-4afc-b4ba-80c3dc27ade2
       state_topic: !secret my_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N1 Gas Meter
+      unique_id: 1ed9842c-cd3f-45af-88fc-291f321bbbee
       state_topic: !secret n1_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N2 Gas Meter
+      unique_id: c8b1f987-a897-4033-af7b-41e9284a32a6
       state_topic: !secret n2_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N3 Gas Meter
+      unique_id: 70c08486-1853-42bd-8042-c975c76e788f
       state_topic: !secret n3_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N4 Gas Meter
+      unique_id: a27664a0-0cda-4416-bce5-3ecc3034fe28
       state_topic: !secret n4_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N5 Gas Meter
+      unique_id: fbc8f416-53d4-429c-83a9-6a036a1e1d31
       state_topic: !secret n5_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N6 Gas Meter
+      unique_id: 0d916f18-3912-458f-ba1b-8adabfe92d29
       state_topic: !secret n6_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N7 Gas Meter
+      unique_id: 9ab5e759-d7d1-4ca1-8e53-7c6f73faac09
       state_topic: !secret n7_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N8 Gas Meter
+      unique_id: 4377ac69-6c3b-452c-87d2-89512b9f01b3
       state_topic: !secret n8_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N9 Gas Meter
+      unique_id: 433925b3-877e-4322-a079-b41df670c660
       state_topic: !secret n9_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N10 Gas Meter
+      unique_id: eff027cc-c316-4aa7-9e6b-eb82cf159724
       state_topic: !secret n10_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N11 Gas Meter
+      unique_id: b074a7ac-1b21-4b58-adbe-eb8d13d06370
       state_topic: !secret n11_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N12 Gas Meter
+      unique_id: aa4a8145-634b-4056-871b-ef04fa0b783f
       state_topic: !secret n12_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
       device_class: gas
 
     - name: N13 Gas Meter
+      unique_id: 155ca6c9-a46e-45b9-8d83-f613a7a31c74
       state_topic: !secret n13_gas_meter
       value_template: "{{value_json['Consumption'] | round (2, default=none) }}"
       unit_of_measurement: "CCF"
@@ -88,71 +102,85 @@ sensor:
   - platform: template
     sensors:
       gas_last_hour:
+        unique_id: 569e3210-703a-41ef-863e-620140c50365
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.gas_hourly','last_period') }}"
         device_class: gas
 
       n1_gas_last_hour:
+        unique_id: 664569af-d58c-4a41-9149-e9ffc2bfeec3
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n1_gas_hourly','last_period') }}"
         device_class: gas
 
       n2_gas_last_hour:
+        unique_id: bc9ee464-a1a3-4b27-9c56-a86c3db3ada0
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n2_gas_hourly','last_period') }}"
         device_class: gas
 
       n3_gas_last_hour:
+        unique_id: 25911898-453f-45cc-a059-8e848ea6f21b
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n3_gas_hourly','last_period') }}"
         device_class: gas
 
       n4_gas_last_hour:
+        unique_id: 2d50702d-34f1-42ef-b570-71f7d3c5cc9e
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n4_gas_hourly','last_period') }}"
         device_class: gas
 
       n5_gas_last_hour:
+        unique_id: 5659eda7-a7c2-4c76-bdcd-a5d3377444a5
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n5_gas_hourly','last_period') }}"
         device_class: gas
 
       n6_gas_last_hour:
+        unique_id: ada67fe4-8a28-4199-8ef1-33336e747ca5
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n6_gas_hourly','last_period') }}"
         device_class: gas
 
       n7_gas_last_hour:
+        unique_id: cdb6ef09-2aba-4e6b-ba02-45982c38a648
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n7_gas_hourly','last_period') }}"
         device_class: gas
 
       n8_gas_last_hour:
+        unique_id: a9b1be26-9c0f-45f6-8bf1-764518221a34
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n8_gas_hourly','last_period') }}"
         device_class: gas
 
       n9_gas_last_hour:
+        unique_id: bbeeccbb-28cd-41ad-b639-b0eb38ddb6a7
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n9_gas_hourly','last_period') }}"
         device_class: gas
 
       n10_gas_last_hour:
+        unique_id: 6a2d662a-d253-4c49-8230-cd21f16afc6a
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n10_gas_hourly','last_period') }}"
         device_class: gas
 
       n11_gas_last_hour:
+        unique_id: a06727ee-92de-4716-b4fb-de73b1e5dbc8
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n11_gas_hourly','last_period') }}"
         device_class: gas
 
       n12_gas_last_hour:
+        unique_id: 2b8e7970-67bc-48b3-af01-1c2458490cb7
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n12_gas_hourly','last_period') }}"
         device_class: gas
         
       n13_gas_last_hour:
+        unique_id: 65ea5e36-3bbd-4137-9740-2bd5a26c787c
         unit_of_measurement: "CCF"
         value_template: "{{ state_attr('sensor.n13_gas_hourly','last_period') }}"
         device_class: gas

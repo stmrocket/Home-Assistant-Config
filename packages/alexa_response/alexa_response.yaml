@@ -3,6 +3,7 @@ sensor:
   - platform: template
     sensors:
       alexa_speech_url:
+        unique_id: fe01e1e8-dc06-4c95-9f6c-21d6bb9908b6
         value_template: !secret alexa_speech_url
 
 rest_command:

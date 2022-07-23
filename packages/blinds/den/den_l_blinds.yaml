@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Left Den Blind"
+      unique_id: 5d902920-d3eb-4737-a6da-b1de03600cb7
       device_class: blind
       command_topic: "habc/den_l/command/set/state"
       set_position_topic: "habc/den_l/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Left Den Blind Version"
+      unique_id: 11269e3a-3f58-4aa8-b509-9e058f9dfb57
       state_topic: "habc/den_l/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/den_l/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Den Blind Uptime"
+      unique_id: 3dab8f0f-c2c8-4b5c-89bf-0b9e9787eb96
       state_topic: "habc/den_l/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/den_l/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Den Blind RSSI"
+      unique_id: a34f252e-f722-44ca-92d0-b086661b7255
       state_topic: "habc/den_l/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/den_l/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Den Blind IP"
+      unique_id: 7d5a3699-0f7e-4129-8a77-9a2db96b0fb9
       state_topic: "habc/den_l/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/den_l/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Den Blind Free Heap"
+      unique_id: a1b7c617-de76-4661-bcb5-a24cedc8ed76
       state_topic: "habc/den_l/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Den Blind Heap Fragmentation"
+      unique_id: e8230732-7a7d-4377-a010-8088e0c20089
       state_topic: "habc/den_l/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/den_l/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Den Blind Core Version"
+      unique_id: dd4e04b6-755f-449b-b0cc-761133f27d5d
       state_topic: "habc/den_l/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/den_l/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Den Blind Light Level"
+      unique_id: 31634477-b9c8-4dc2-8954-47eefef69ae9
       state_topic: "habc/den_l/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/den_l/tele/LWT"

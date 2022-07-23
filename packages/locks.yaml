@@ -2,24 +2,28 @@ binary_sensor:
   - platform: template
     sensors:
       front_door_lock_battery_low:
+        unique_id: e1d0313f-1620-4204-8b2a-2a795626dc30
         value_template: "{{ states('sensor.front_door_lock_battery_level') | int(none) < 40 }}"
         friendly_name: "Front Door Lock Battery Low"
         delay_on:
           minutes: 5
 
       back_door_lock_battery_low:
+        unique_id: 7e8da13e-ffe7-45a1-ac7d-45e0d7b1bb6e
         value_template: "{{ states('sensor.back_door_lock_battery_level') | int(none) < 40 }}"
         friendly_name: "Back Door Lock Battery Low"
         delay_on:
           minutes: 5
 
       garage_entry_lock_battery_low:
+        unique_id: b216b903-9a51-40a5-a06c-752957623191
         value_template: "{{ states('sensor.garage_entry_lock_battery_level') | int(none) < 40 }}"
         friendly_name: "Garage Entry Lock Battery Low"
         delay_on:
           minutes: 5
 
       shed_door_lock_battery_low:
+        unique_id: 8a835794-d8b2-4da1-bc6e-6d2090601b8b
         value_template: "{{ states('sensor.shed_door_lock_battery_level') | int(none) < 40 }}"
         friendly_name: "Shed Door Lock Battery Low"
         delay_on:
@@ -88,18 +92,22 @@ sensor:
   - platform: template
     sensors:
       front_door_lock_status:
+        unique_id: caabf583-c19a-4b69-9be7-cdd6f80a4978
         friendly_name: Front Door Lock Status
         value_template: "{{ states('input_text.front_door_lock_status') }}"
 
       back_door_lock_status:
+        unique_id: e8c94281-d630-4f84-acc2-79bc0678fd25
         friendly_name: Back Door Lock Status
         value_template: "{{ states('input_text.back_door_lock_status') }}"
 
       garage_entry_lock_status:
+        unique_id: 2c529f4f-f694-4be7-93bf-ef7a52ab05bc
         friendly_name: Garage Entry Lock Status
         value_template: "{{ states('input_text.garage_entry_lock_status') }}"
 
       shed_door_lock_status:
+        unique_id: d9d31320-28a8-4494-a573-026a04c41a8a
         friendly_name: Shed Door Lock Status
         value_template: "{{ states('input_text.shed_door_lock_status') }}"
 

@@ -62,6 +62,7 @@ binary_sensor:
   - platform: template
     sensors:
       work_holiday:
+        unique_id: 25980edf-1846-44c7-bdaa-d5c03baa8fd0
         friendly_name: Work Calendar Holiday
         value_template: >-
           {{ states('sensor.date_time') > (state_attr('calendar.work_holidays','start_time') | timestamp_custom('%Y-%m-%d, %H:%M', True, "none")) and (states('sensor.date_time') < (state_attr('calendar.work_holidays','end_time') | timestamp_custom('%Y-%m-%d, %H:%M', True, "none"))) }}

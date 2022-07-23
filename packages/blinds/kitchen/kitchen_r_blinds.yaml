@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Right Kitchen Blind"
+      unique_id: b6ce7fbc-400d-45ad-ba1e-18481fa0c2d7
       device_class: blind
       command_topic: "habc/kitchen_r/command/set/state"
       set_position_topic: "habc/kitchen_r/command/set/positionpct"
@@ -16,6 +17,7 @@ mqtt:
 
   sensor:
     - name: "Right Kitchen Blind Version"
+      unique_id: 0d9442cd-c30c-4082-9a91-823ff39ffdb1
       state_topic: "habc/kitchen_r/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "habc/kitchen_r/tele/LWT"
@@ -23,6 +25,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Kitchen Blind Uptime"
+      unique_id: 4a90b1e2-acc3-4dd2-83d3-1e0f8c8bed24
       state_topic: "habc/kitchen_r/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "habc/kitchen_r/tele/LWT"
@@ -30,6 +33,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Kitchen Blind RSSI"
+      unique_id: 028f26e4-e36c-476b-8d54-50d496a8d92a
       state_topic: "habc/kitchen_r/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "habc/kitchen_r/tele/LWT"
@@ -37,6 +41,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Kitchen Blind IP"
+      unique_id: 1422e2ca-b877-48c4-9146-391f4e2f4862
       state_topic: "habc/kitchen_r/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "habc/kitchen_r/tele/LWT"
@@ -44,6 +49,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Kitchen Blind Free Heap"
+      unique_id: 3c86220c-34f5-4c64-a6b0-c56c99401ea7
       state_topic: "habc/kitchen_r/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "habc/office_l/tele/LWT"
@@ -51,6 +57,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Kitchen Blind Heap Fragmentation"
+      unique_id: 627c421a-c01f-4478-9e6b-600eaf841978
       state_topic: "habc/kitchen_r/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "habc/kitchen_r/tele/LWT"
@@ -58,6 +65,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Kitchen Blind Core Version"
+      unique_id: 0fb9b2ea-c52a-46be-9bdc-13f724a0a4d7
       state_topic: "habc/kitchen_r/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "habc/kitchen_r/tele/LWT"
@@ -65,6 +73,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Right Kitchen Blind Light Level"
+      unique_id: 6a6cf81d-855b-4b72-ac4e-7d43302da526
       state_topic: "habc/kitchen_r/tele/light"
       unit_of_measurement: "%"
       availability_topic: "habc/kitchen_r/tele/LWT"

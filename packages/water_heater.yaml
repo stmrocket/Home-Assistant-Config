@@ -1,12 +1,15 @@
 mqtt:
   sensor:
     - name: Thermopile Voltage
+      unique_id: bfe1ac2e-e95f-49a9-82dd-51c306746e1b
       state_topic: hwh_mon/sensor/thermopile_voltage/state
       icon: mdi:flame
+
 sensor:
   - platform: template
     sensors:
       water_heater_status:
+        unique_id: 27a058f0-d528-4fc7-b58d-d92d90c8b96c
         friendly_name: "Water Heater Status"
         value_template: >-
           {% if states('sensor.thermopile_voltage') | float(none) > 0.15-%}

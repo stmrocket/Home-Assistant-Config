@@ -4,6 +4,7 @@ vacuum:
   - platform: template
     vacuums:
       roomba:
+        unique_id: e191b333-3723-43f2-be47-f8d8574a7e45
         value_template: "{{ states('sensor.roomba_state') }}"
         battery_level_template: "{{ states('sensor.roomba_battery_level') | int(none) }}"
         start:
@@ -31,20 +32,24 @@ vacuum:
 mqtt:
   sensor:
     - name: "Roomba Battery Level"
+      unique_id: 93da098c-b0c7-440f-b5b0-07e8f2716d5c
       state_topic: "roomba/tele/battery"
       unit_of_measurement: "%"
       device_class: "battery"
 
     - name: "Roomba State"
+      unique_id: 642e6275-17f2-40ad-bfe0-cf40d53df385
       state_topic: "roomba/tele/status"
 
     - name: "Roomba Scheduler Command"
+      unique_id: 7d7905b2-6991-41f7-aa57-e46472cd6406
       state_topic: "hass/roomba/command"
 
 sensor:
   - platform: template
     sensors:
       roomba_status:
+        unique_id: 8f8ddb04-5b05-4c97-b17a-ba34b6cc91cc
         friendly_name: "Roomba Status"
         value_template: >-
           {% if is_state('vacuum.roomba', 'docked') and states('counter.roomba_cycles') | int(none) >= 5 -%}
@@ -59,6 +64,7 @@ switch:
   - platform: template
     switches:
       roomba:
+        unique_id: 9c4ef5f5-3069-47fe-a707-b58f9da886b0
         friendly_name: "Roomba Power"
         value_template: "{{ is_state('vacuum.roomba', 'cleaning') or is_state('vacuum.roomba', 'returning') }}"
         turn_on:

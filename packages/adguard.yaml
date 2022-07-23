@@ -10,127 +10,152 @@ utility_meter:
 mqtt:
   sensor:
     - name: AdGuard Main Average Processing Speed
+      unique_id: 8a0d78e2-f85b-4977-8de4-16b4f0690285
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['dns'].process_time }}"
       unit_of_measurement: ms
 
     - name: AdGuard Main DNS Queries Today
+      unique_id: cf787f6b-a73a-4d0d-8cff-25858c3fac06
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['dns'].query_day }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main DNS Queries This Hour
+      unique_id: c845d030-3e5a-4846-9ad8-a0f70c0c8be9
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['dns'].query_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main DNS Queries Last Hour
+      unique_id: b9ccd91d-f515-4875-bb12-ee7cb35bd2d1
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['dns'].query_last_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main DNS Block Ratio
+      unique_id: 3c24a168-c7d7-4168-a8ee-e5c178f247ec
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['filter'].block_ratio }}"
       unit_of_measurement: "%"
 
     - name: AdGuard Main DNS Queries Blocked Today
+      unique_id: 20dc7877-4e7a-4535-b1cd-2fdbc84ebbf4
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['filter'].blocked_day }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main DNS Queries Blocked This Hour
+      unique_id: 64241fad-fd26-4a45-8898-4b4b9c465665
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['filter'].blocked_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main DNS Queries Blocked Last Hour
+      unique_id: 1ce9590a-4520-475f-a9c3-12cf0614b90c
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['filter'].blocked_last_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main Safe Browsing Blocked Today
+      unique_id: 3aabd76e-8754-4f89-940e-44be0fad8ae2
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['browsing'].blocked_day }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main Safe Browsing Blocked This Hour
+      unique_id: 99cc9668-a9d3-4b4f-b0b2-eb3b72641771
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['browsing'].blocked_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main Safe Browsing Blocked Last Hour
+      unique_id: 64991153-d8c5-409e-9eba-072f97126669
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['browsing'].blocked_last_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Main Safe Search Blocked Today
+      unique_id: f8841914-b6ce-4732-bf77-eaf30fd59c86
       state_topic: adguard/main/tele/stats
       value_template: "{{value_json['search'].blocked_day }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup Average Processing Speed
+      unique_id: 6040876f-0ee1-452a-b43a-bb4521b14125
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['dns'].process_time }}"
       unit_of_measurement: ms
 
     - name: AdGuard Backup DNS Queries Today
+      unique_id: 2de77c58-8a03-43b6-8c06-4485fd6ac25a
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['dns'].query_day }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup DNS Queries This Hour
+      unique_id: ddc7aaec-4d29-438d-83b6-cdd5dc42c489
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['dns'].query_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup DNS Queries Last Hour
+      unique_id: d686e85b-fe66-4a53-a521-977ba8dfb0b6
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['dns'].query_last_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup DNS Block Ratio
+      unique_id: 160fbaed-0976-42c1-81a0-578e1946f7c0
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['filter'].block_ratio }}"
       unit_of_measurement: "%"
 
     - name: AdGuard Backup DNS Queries Blocked Today
+      unique_id: fa67c1b6-ce23-4fc4-a1ea-65006b5b4b0c
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['filter'].blocked_day }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup DNS Queries Blocked This Hour
+      unique_id: 4458c7a4-d023-42ca-9e95-a9ecd019b3ef
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['filter'].blocked_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup DNS Queries Blocked Last Hour
+      unique_id: 9a73abec-2a2b-424b-a62a-a1dfb3c28e3b
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['filter'].blocked_last_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup Safe Browsing Blocked Today
+      unique_id: 9aa94ab3-92dc-4880-af8b-949a6369c580
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['browsing'].blocked_day }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup Safe Browsing Blocked This Hour
+      unique_id: 95eef6eb-47be-400e-9129-468cb1f05b59
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['browsing'].blocked_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup Safe Browsing Blocked Last Hour
+      unique_id: 3b8d9566-74e1-4a88-a26a-f2db95d4d84b
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['browsing'].blocked_last_hour }}"
       unit_of_measurement: queries
 
     - name: AdGuard Backup Safe Search Blocked Today
+      unique_id: bf159b29-8048-4b8e-bd1c-e7ac5dc7c9b2
       state_topic: adguard/backup/tele/stats
       value_template: "{{value_json['search'].blocked_day }}"
       unit_of_measurement: queries
 
   switch:
     - name: AdGuard Main Protection
+      unique_id: a751b3e1-0635-4476-af96-abd088902135
       state_topic: "adguard/main/tele/stats"
       command_topic: "adguard/main/command/set/protection"
       value_template: "{{value_json['protection_enabled']}}"
@@ -138,6 +163,7 @@ mqtt:
       payload_off: "false"
     
     - name: AdGuard Backup Protection
+      unique_id: 1cdfcfb2-406c-4bee-8bb2-0fa22c06cbdd
       state_topic: "adguard/backup/tele/stats"
       command_topic: "adguard/backup/command/set/protection"
       value_template: "{{value_json['protection_enabled']}}"
@@ -145,6 +171,7 @@ mqtt:
       payload_off: "false"
     
     - name: AdGuard Main Filtering
+      unique_id: fa5b4591-1827-4dec-919a-cfdc4bdea6cd
       state_topic: "adguard/main/tele/stats"
       command_topic: "adguard/main/command/set/filter"
       value_template: "{{value_json['filter'].enabled}}"
@@ -152,6 +179,7 @@ mqtt:
       payload_off: "false"
     
     - name: AdGuard Backup Filtering
+      unique_id: a3a0a762-20dd-4707-9193-a6cbdede5a7d
       state_topic: "adguard/backup/tele/stats"
       command_topic: "adguard/backup/command/set/filter"
       value_template: "{{value_json['filter'].enabled}}"
@@ -159,6 +187,7 @@ mqtt:
       payload_off: "false"
     
     - name: AdGuard Main Parental Control
+      unique_id: bc9a4d9d-a3c1-40e0-a4c1-9398a5c70236
       state_topic: "adguard/main/tele/stats"
       command_topic: "adguard/main/command/set/parental"
       value_template: "{{value_json['parental'].enabled}}"
@@ -166,6 +195,7 @@ mqtt:
       payload_off: "false"
     
     - name: AdGuard Backup Parental Control
+      unique_id: 7ee1a3ed-0193-464f-bc2e-853c586db907
       state_topic: "adguard/backup/tele/stats"
       command_topic: "adguard/backup/command/set/parental"
       value_template: "{{value_json['parental'].enabled}}"
@@ -173,6 +203,7 @@ mqtt:
       payload_off: "false"
 
     - name: AdGuard Main Safe Browsing
+      unique_id: d4421052-53a6-4b77-bc0e-10124ee96ddb
       state_topic: "adguard/main/tele/stats"
       command_topic: "adguard/main/command/set/browsing"
       value_template: "{{value_json['browsing'].enabled}}"
@@ -180,6 +211,7 @@ mqtt:
       payload_off: "false"
 
     - name: AdGuard Backup Safe Browsing
+      unique_id: 4faa41b0-3cdd-494b-8c34-86d08bec6cc0
       state_topic: "adguard/backup/tele/stats"
       command_topic: "adguard/backup/command/set/browsing"
       value_template: "{{value_json['browsing'].enabled}}"
@@ -187,6 +219,7 @@ mqtt:
       payload_off: "false"
     
     - name: AdGuard Main Safe Search
+      unique_id: b7758c41-88eb-427e-a5c0-8a0f7b2a593d
       state_topic: "adguard/main/tele/stats"
       command_topic: "adguard/main/command/set/search"
       value_template: "{{value_json['search'].enabled}}"
@@ -194,6 +227,7 @@ mqtt:
       payload_off: "false"
     
     - name: AdGuard Backup Safe Search
+      unique_id: ec357c3f-6b10-411b-a751-59f2a6cc4408
       state_topic: "adguard/backup/tele/stats"
       command_topic: "adguard/backup/command/set/search"
       value_template: "{{value_json['search'].enabled}}"
@@ -205,56 +239,67 @@ sensor:
     sensors:
 
       adguard_dns_queries_today_total:
+        unique_id: a22000af-9db1-47af-84a5-954be2380d5b
         friendly_name: AdGuard DNS Queries Today Total
         value_template: "{{ states('sensor.adguard_main_dns_queries_today') | int(none) + states('sensor.adguard_backup_dns_queries_today') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_queries_this_hour_total:
+        unique_id: 8666f107-1640-4d79-bfd7-620a0a1fd712
         friendly_name: AdGuard DNS Queries This Hour Total
         value_template: "{{ states('sensor.adguard_main_dns_queries_this_hour') | int(none) + states('sensor.adguard_backup_dns_queries_this_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_queries_last_hour_total:
+        unique_id: 2c7963b5-7356-44e5-935d-3d49fdaef3af
         friendly_name: AdGuard DNS Queries Last Hour Total
         value_template: "{{ states('sensor.adguard_main_dns_queries_last_hour') | int(none) + states('sensor.adguard_backup_dns_queries_last_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_block_ratio_total:
+        unique_id: 9adcdd5b-90a8-4eed-ac91-110e47c585d7
         friendly_name: AdGuard DNS Block Ratio Total
         value_template: "{{ (((states('sensor.adguard_main_dns_queries_blocked_today') | int(none) + states('sensor.adguard_backup_dns_queries_blocked_today') | int(none)) / (states('sensor.adguard_main_dns_queries_today') | int(none) + states('sensor.adguard_backup_dns_queries_today') | int(none))) * 100) | round(0, default=none) }}"
         unit_of_measurement: "%"
     
       adguard_dns_queries_blocked_today_total:
+        unique_id: 49a8ceaf-da5a-41bf-b0c2-0f826f968b47
         friendly_name: AdGuard DNS Queries Blocked Today Total
         value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_today') | int(none) + states('sensor.adguard_backup_dns_queries_blocked_today') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_queries_blocked_this_hour_total:
+        unique_id: b7d0f977-ea32-4e1c-a644-f490c5f8094e
         friendly_name: AdGuard DNS Queries Blocked This Hour Total
         value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_this_hour') | int(none) + states('sensor.adguard_backup_dns_queries_blocked_this_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_dns_queries_blocked_last_hour_total:
+        unique_id: 6d3a964b-0eea-4c20-8615-4eb371f53d19
         friendly_name: AdGuard DNS Queries Blocked Last Hour Total
         value_template: "{{ states('sensor.adguard_main_dns_queries_blocked_last_hour') | int(none) + states('sensor.adguard_backup_dns_queries_blocked_last_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_safe_browsing_blocked_today_total:
+        unique_id: 942dd7a5-e45a-48ff-847a-1d71661cddac
         friendly_name: AdGuard Safe Browsing Blocked Today Total
         value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_today') | int(none) + states('sensor.adguard_backup_safe_browsing_blocked_today') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_safe_browsing_blocked_this_hour_total:
+        unique_id: 5727e823-8638-41ed-826d-6ba39251a795
         friendly_name: AdGuard Safe Browsing Blocked This Hour Total
         value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_this_hour') | int(none) + states('sensor.adguard_backup_safe_browsing_blocked_this_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_safe_browsing_blocked_last_hour_total:
+        unique_id: f5d65a82-2377-487b-8dea-7ae6913b4138
         friendly_name: AdGuard Safe Browsing Blocked Last Hour Total
         value_template: "{{ states('sensor.adguard_main_safe_browsing_blocked_last_hour') | int(none) + states('sensor.adguard_backup_safe_browsing_blocked_last_hour') | int(none) }}"
         unit_of_measurement: queries
     
       adguard_safe_search_blocked_today_total:
+        unique_id: 3ddc97f3-3394-44e3-9188-8d0dd2b93d70
         friendly_name: AdGuard Safe Search Blocked Today Total
         value_template: "{{ states('sensor.adguard_main_safe_search_blocked_today') | int(none) + states('sensor.adguard_backup_safe_search_blocked_today') | int(none) }}"
         unit_of_measurement: queries
@@ -263,6 +308,7 @@ switch:
   - platform: template
     switches:
       adguard_protection_combined:
+        unique_id: 7d9a3440-b423-443e-bcb8-d59c28947f12
         friendly_name: AdGuard Protection Combined
         value_template: "{{ is_state('switch.adguard_main_protection', 'on') or is_state('switch.adguard_backup_protection', 'on')}}"
         turn_on:
@@ -277,6 +323,7 @@ switch:
             - switch.adguard_backup_protection
 
       adguard_filtering_combined:
+        unique_id: 002baeb6-2b4b-4015-a96b-6bce371ea548
         friendly_name: AdGuard Filtering Combined
         value_template: "{{ is_state('switch.adguard_main_filtering', 'on') or is_state('switch.adguard_backup_filtering', 'on')}}"
         turn_on:
@@ -291,6 +338,7 @@ switch:
             - switch.adguard_backup_filtering
 
       adguard_parental_control_combined:
+        unique_id: 65514843-8eae-4424-aa79-e194ec80abae
         friendly_name: AdGuard Parental Control Combined
         value_template: "{{ is_state('switch.adguard_main_parental_control', 'on') or is_state('switch.adguard_backup_parental_control', 'on')}}"
         turn_on:
@@ -305,6 +353,7 @@ switch:
             - switch.adguard_backup_parental_control
 
       adguard_safe_browsing_combined:
+        unique_id: e4c24a48-ff7d-410f-bdca-d8e2ffdbedb4
         friendly_name: AdGuard Safe Browsing Combined
         value_template: "{{ is_state('switch.adguard_main_safe_browsing', 'on') or is_state('switch.adguard_backup_safe_browsing', 'on')}}"
         turn_on:
@@ -319,6 +368,7 @@ switch:
             - switch.adguard_backup_safe_browsing
 
       adguard_safe_search_combined:
+        unique_id: dcff523b-ee84-4649-ab60-a86829e3c10f
         friendly_name: AdGuard Safe Search Combined
         value_template: "{{ is_state('switch.adguard_main_safe_search', 'on') or is_state('switch.adguard_backup_safe_search', 'on')}}"
         turn_on:

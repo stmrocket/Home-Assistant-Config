@@ -1,6 +1,7 @@
 mqtt:
   cover:
     - name: "Master Blinds"
+      unique_id: 68ee56d1-8c73-4342-9de4-c2443da96d28
       device_class: blind
       command_topic: "habc/master/command/set/state"
       set_position_topic: "habc/master/command/set/positionpct"

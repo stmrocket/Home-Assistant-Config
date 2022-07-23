@@ -1,91 +1,109 @@
 mqtt:
   sensor:
     - name: "Shed Temperature OWFS"
+      unique_id: 44538414-6a59-4787-af8b-242fa85a20d8
       state_topic: "ds_secondary/sensor/shed/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Outside Temperature OWFS"
+      unique_id: 107a36b9-4efb-4445-8d7b-e5f348d7e775
       state_topic: "ds_secondary/sensor/outside/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Front HVAC Return Temperature OWFS"
+      unique_id: a357a8a7-be2d-4624-953c-c67b3c2ca92e
       state_topic: "ds_attic/sensor/hvac_return_front/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Back HVAC Return Temperature OWFS"
+      unique_id: 9f2fb5ce-6b3d-462e-91fe-89000d2ea307
       state_topic: "ds_attic/sensor/hvac_return_back/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Plenum HVAC Return Temperature OWFS"
+      unique_id: 5f27d0aa-317c-4984-8c2f-5ef349e3d646
       state_topic: "ds_attic/sensor/hvac_return_plenum/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Dryer Vent Temperature OWFS"
+      unique_id: 8c76079c-6196-47c4-bcd2-48f5da69c8a1
       state_topic: "ds_attic/sensor/dryer_vent/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Office Temperature OWFS"
+      unique_id: 28a81a25-120c-40a6-adf3-ab30aca4ad26
       state_topic: "ds_master/sensor/office/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Server Room HVAC Return Temperature OWFS"
+      unique_id: ecadea14-ef2d-474f-8847-4bc881375abc
       state_topic: "ds_attic/sensor/hvac_return_server/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Den Temperature OWFS"
+      unique_id: 650d3e98-e000-4a70-bd56-05623b52d86f
       state_topic: "ds_master/sensor/den/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Master Bedroom Temperature OWFS"
+      unique_id: b1cb30cd-bab1-4fe4-94e5-3d9f64bef547
       state_topic: "ds_master/sensor/master_bedroom/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "garage Temperature OWFS"
+      unique_id: fd930ab6-9c14-4422-9cdf-7157025e704c
       state_topic: "ds_secondary/sensor/garage/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Dining Room Temperature OWFS"
+      unique_id: f27edb79-09cf-434f-8a85-19d22bd70247
       state_topic: "ds_master/sensor/shack/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Server Room Temperature OWFS"
+      unique_id: cdf7b3dd-5a21-432b-ae0e-dbd27c68affd
       state_topic: "ds_master/sensor/server_closet/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "HVAC Supply Temperature OWFS"
+      unique_id: f92ee90b-8a2e-4ff6-9245-c0ff3a2012eb
       state_topic: "ds_attic/sensor/hvac_supply/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Work Room Temperature OWFS"
+      unique_id: 40d83999-edf2-49b9-83fb-ddf0f3d074d6
       state_topic: "ds_master/sensor/work_room/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Front Hall Temperature OWFS"
+      unique_id: 8b48426d-fdfb-4bc1-afcc-533b6534f964
       state_topic: "ds_attic/sensor/hall/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Guest Bedroom Temperature OWFS"
+      unique_id: ff29bc2a-89e2-4206-a714-59fff2b533e3
       state_topic: "ds_master/sensor/guest_room/state"
       unit_of_measurement: "°C"
       device_class: "temperature"
 
     - name: "Attic Temperature OWFS"
+      unique_id: 0579bdd0-101b-40b1-974e-1b4b93e2f796
       state_topic: "ds_attic/sensor/attic/state"
       unit_of_measurement: "°C"
       device_class: "temperature"

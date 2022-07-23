@@ -2,6 +2,7 @@ sensor:
   - platform: template
     sensors:
       den_avr_url:
+        unique_id: 49d3be12-2784-46ed-b844-b4080dda11b3
         value_template: !secret den_avr_url
 
 rest_command:

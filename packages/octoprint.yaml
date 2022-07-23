@@ -8,18 +8,23 @@ sensor:
   - platform: template
     sensors:
       nozzle_temp_actual:
+        unique_id: b9649d4c-c80d-4a88-af6b-f8ad42ce40b7
         value_template: "{{ (((states.sensor.prusa_mk3_actual_tool0_temp.state | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
       nozzle_temp_target:
+        unique_id: 9a2c87de-f6f4-4e3c-b167-c36b96276e8b
         value_template: "{{ (((states.sensor.prusa_mk3_target_tool0_temp.state | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
       bed_temp_actual:
+        unique_id: 00c38b93-1d12-48e9-b3f1-1bc263cd5ac2
         value_template: "{{ (((states.sensor.prusa_mk3_actual_bed_temp.state | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
       bed_temp_target:
+        unique_id: 417106a5-ca49-48cf-92c9-ca46c56a65eb
         value_template: "{{ (((states.sensor.prusa_mk3_target_bed_temp.state | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
       elapsed_print_time:
+        unique_id: e85cef1d-34b2-4cb3-ba43-2b6827e1cfb3
         value_template: >-
           {%- if not is_state('sensor.prusa_mk3_start_time','unknown') %}
             {% set time = as_timestamp(now(),0) - as_timestamp(states('sensor.prusa_mk3_start_time'),0) %}
@@ -55,6 +60,7 @@ sensor:
           {%- endif -%}
 
       remaining_print_time:
+        unique_id: 3e6be891-9896-4dec-aecd-83bf86343096
         value_template: >-
           {% set time = as_timestamp(states('sensor.prusa_mk3_estimated_finish_time'),0) - as_timestamp(now(),0) %}
             {% set minutes = ((time / 60) % 60) | int(none)%}
@@ -86,6 +92,7 @@ sensor:
               {%- endif -%}
 
       total_print_time:
+        unique_id: 763129a4-b640-4b37-ba1b-1c8de4089d22
         value_template: >-
           {% set time = as_timestamp(states('sensor.prusa_mk3_estimated_finish_time'),0) - as_timestamp(states('sensor.prusa_mk3_start_time'),0) %}
             {% set minutes = ((time / 60) % 60) | int(none)%}

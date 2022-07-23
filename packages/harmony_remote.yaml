@@ -2,9 +2,11 @@ sensor:
   - platform: template
     sensors:
       den_harmony_activity:
+        unique_id: a6c76263-031e-4fb4-ac3b-af868ffb2341
         friendly_name: Den Harmony Activity
         value_template: "{{ state_attr('remote.harmony_den', 'current_activity') }}"
 
       master_harmony_activity:
+        unique_id: 69543381-332a-426e-8a4c-4ec780d31dc0
         friendly_name: Master Bedroom Harmony Activity
         value_template: "{{ state_attr('remote.harmony_master_bedroom', 'current_activity') }}"

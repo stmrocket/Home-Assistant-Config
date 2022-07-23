@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Master Bedroom LEDs RGB"
+      unique_id: 0d5aa215-4323-4633-9a49-e842da3c18a0
       state_topic: "h801/mbed/ha/state"
       command_topic: "h801/mbed/command/set/rgb/power"
       brightness_state_topic: "h801/mbed/tele/current"

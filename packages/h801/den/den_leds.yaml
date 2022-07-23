@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Den LEDs RGB"
+      unique_id: 3eab7d15-c8dd-4a10-b10d-239dc88be67a
       state_topic: "h801/den/ha/state"
       command_topic: "h801/den/command/set/rgb/power"
       brightness_state_topic: "h801/den/tele/current"

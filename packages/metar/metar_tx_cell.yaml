@@ -1,6 +1,7 @@
 mqtt:
   switch:
     - name: Texas Cell METAR Map Power
+      unique_id: 4b958314-667f-4cbf-b3dc-ecb0d8d24f37
       state_topic: metar/tx-cell/tele/current
       command_topic: metar/tx-cell/command/set/power
       payload_on: "ON"
@@ -12,6 +13,7 @@ mqtt:
 
   sensor:
     - name: TX Cell METAR Mode
+      unique_id: 2f36f15f-ea5a-4225-bbab-5509ba446a27
       state_topic: "metar/tx-cell/tele/mode"
 
 input_boolean:
@@ -22,6 +24,7 @@ sensor:
   - platform: template
     sensors:
       tx_cell_metar_mode_clean:
+        unique_id: b50a3a4d-1ee4-43f4-bf81-29f7b3116b86
         friendly_name: TX Cell METAR Mode Clean Name
         value_template: >-
           {% if is_state('sensor.tx_cell_metar_mode', 'TEMP') -%}

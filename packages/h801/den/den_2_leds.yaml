@@ -1,6 +1,7 @@
 mqtt:
   light:
     - name: "Den LED 2 CCT"
+      unique_id: ca2c896b-d0c8-476e-9fe7-afd79f573fe6
       state_topic: "h801/den_2/tele/current"
       command_topic: "h801/den_2/command/set/rgb/power"
       brightness_state_topic: "h801/den_2/tele/current"
@@ -23,6 +24,7 @@ mqtt:
     #Driver Status Messages
 
     - name: "Den LED 2 Version"
+      unique_id: ab2ea659-8770-4d1c-b953-a5600a973576
       state_topic: "h801/den_2/tele/status"
       value_template: "{{value_json['espVersion']}}"
       availability_topic: "h801/den_2/tele/LWT"
@@ -30,6 +32,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Den LED 2 Uptime"
+      unique_id: 25a2c531-7d5d-4080-ab50-a9b0b764a9bf
       state_topic: "h801/den_2/tele/status"
       value_template: "{{value_json['espUptime']}}"
       availability_topic: "h801/den_2/tele/LWT"
@@ -37,6 +40,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Den LED 2 RSSI"
+      unique_id: 2e7c4147-58c4-442a-b493-01a35bfcafab
       state_topic: "h801/den_2/tele/status"
       value_template: "{{value_json['signalStrength']}}"
       availability_topic: "h801/den_2/tele/LWT"
@@ -44,6 +48,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Den LED 2 IP"
+      unique_id: 38711cb5-19c2-45dd-a2bd-50ab2cceaf4e
       state_topic: "h801/den_2/tele/status"
       value_template: "{{value_json['bridgeIP']}}"
       availability_topic: "h801/den_2/tele/LWT"
@@ -51,6 +56,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Den LED 2 Free Heap"
+      unique_id: 18957de1-f3de-4623-b82f-451e52f55d16
       state_topic: "h801/den_2/tele/status"
       value_template: "{{value_json['heapFree']}}"
       availability_topic: "h801/den_2/tele/LWT"
@@ -58,6 +64,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Den LED 2 Heap Fragmentation"
+      unique_id: 4c1922d8-20d2-470e-a5b5-2d313623f4d5
       state_topic: "h801/den_2/tele/status"
       value_template: "{{value_json['heapFragmentation']}}"
       availability_topic: "h801/den_2/tele/LWT"
@@ -65,6 +72,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Den LED 2 Core Version"
+      unique_id: 621aa97a-57c5-4076-a0ee-82d320afb30b
       state_topic: "h801/den_2/tele/status"
       value_template: "{{value_json['espCore']}}"
       availability_topic: "h801/den_2/tele/LWT"

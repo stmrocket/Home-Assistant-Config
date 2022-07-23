@@ -1,6 +1,7 @@
 mqtt:
   switch:
     - name: "Dining Room Decor"
+      unique_id: 9fd870d0-021e-445e-9010-7fc7ac9d4fce
       state_topic: "christmas/indoor/dining/stat/POWER"
       command_topic: "christmas/indoor/dining/cmnd/POWER"
       availability_topic: "christmas/indoor/dining/tele/LWT"
@@ -11,6 +12,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Entry Hall Decor"
+      unique_id: 73da2d14-d0de-4854-989f-cc38f0cdc406
       state_topic: "christmas/indoor/entry/stat/POWER"
       command_topic: "christmas/indoor/entry/cmnd/POWER"
       availability_topic: "christmas/indoor/entry/tele/LWT"
@@ -21,6 +23,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Christmas Village"
+      unique_id: f440f403-3199-43d7-9113-ddbb1ca3fc78
       state_topic: "christmas/indoor/village/stat/POWER"
       command_topic: "christmas/indoor/village/cmnd/POWER"
       availability_topic: "christmas/indoor/village/tele/LWT"
@@ -31,6 +34,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Snowman"
+      unique_id: adf177a0-2a7f-49ee-b798-76a073b23b8d
       state_topic: "christmas/indoor/snowman/stat/POWER"
       command_topic: "christmas/indoor/snowman/cmnd/POWER"
       availability_topic: "christmas/indoor/snowman/tele/LWT"
@@ -41,6 +45,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Christmas Tree"
+      unique_id: 8c049478-213b-4f78-a2fb-be2dfa6ce09e
       state_topic: "christmas/indoor/tree/stat/POWER"
       command_topic: "christmas/indoor/tree/cmnd/POWER"
       availability_topic: "christmas/indoor/tree/tele/LWT"
@@ -51,6 +56,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Left Christmas Tree"
+      unique_id: 0260d981-7d3d-42fe-9548-a7e8ed644cae
       state_topic: "christmas/indoor/l_tree/stat/POWER"
       command_topic: "christmas/indoor/l_tree/cmnd/POWER"
       availability_topic: "christmas/indoor/l_tree/tele/LWT"
@@ -61,6 +67,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Kitchen Christmas Tree"
+      unique_id: a26dc8bc-d656-4467-94bd-658981694c24
       state_topic: "christmas/indoor/k_tree/stat/POWER"
       command_topic: "christmas/indoor/k_tree/cmnd/POWER"
       availability_topic: "christmas/indoor/k_tree/tele/LWT"
@@ -71,6 +78,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Christmas Garland"
+      unique_id: 1df62352-4bc7-4479-a547-9a488143c8a4
       state_topic: "christmas/indoor/garland/stat/POWER"
       command_topic: "christmas/indoor/garland/cmnd/POWER"
       availability_topic: "christmas/indoor/garland/tele/LWT"
@@ -81,6 +89,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Master Bedroom Decor"
+      unique_id: d0a01cbc-d939-443a-8441-7d797cef5750
       state_topic: "christmas/indoor/master/stat/POWER"
       command_topic: "christmas/indoor/master/cmnd/POWER"
       availability_topic: "christmas/indoor/master/tele/LWT"
@@ -91,6 +100,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Kitchen Garland"
+      unique_id: ae918860-e902-4e41-83f8-70b6dacf853c
       state_topic: "christmas/indoor/kitchen/stat/POWER"
       command_topic: "christmas/indoor/kitchen/cmnd/POWER"
       availability_topic: "christmas/indoor/kitchen/tele/LWT"
@@ -101,6 +111,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Hall Decor"
+      unique_id: 92d6a966-fac8-4ac0-8352-a504a94ee233
       state_topic: "christmas/indoor/hall/stat/POWER"
       command_topic: "christmas/indoor/hall/cmnd/POWER"
       availability_topic: "christmas/indoor/hall/tele/LWT"
@@ -111,6 +122,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Office Decor"
+      unique_id: 9c029d47-59da-4aa8-96c3-5e98507b6a51
       state_topic: "christmas/indoor/office/stat/POWER"
       command_topic: "christmas/indoor/office/cmnd/POWER"
       availability_topic: "christmas/indoor/office/tele/LWT"
@@ -121,6 +133,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Christmas Amplifier"
+      unique_id: fac690ad-d979-4029-bee0-4843c405aabf
       state_topic: "christmas/outdoor/amplifier/stat/POWER"
       command_topic: "christmas/outdoor/amplifier/cmnd/POWER"
       availability_topic: "christmas/outdoor/amplifier/tele/LWT"
@@ -131,6 +144,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - name: "Christmas Security Lights"
+      unique_id: a5dc1729-ed29-4f16-aedc-9ec55667ec75
       state_topic: "christmas/outdoor/security/stat/POWER"
       command_topic: "christmas/outdoor/security/cmnd/POWER"
       availability_topic: "christmas/outdoor/security/tele/LWT"
@@ -142,6 +156,7 @@ mqtt:
 
   sensor:
     - state_topic: "christmas/indoor/dining/tele/STATE"
+      unique_id: 7c254248-5414-4ff8-8124-d78e79c74111
       name: "Dining Room Decor Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -151,6 +166,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/entry/tele/STATE"
+      unique_id: 420ace17-0959-4983-a34f-189758e3f232
       name: "Entry Hall Decor Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -160,6 +176,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/village/tele/STATE"
+      unique_id: f1909be9-6167-4a99-852f-1356762870cc
       name: "Christmas Village Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -169,6 +186,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/snowman/tele/STATE"
+      unique_id: c2ea2d56-4f05-4cfd-80e4-7c9bb0455511
       name: "Snowman Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -178,6 +196,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/tree/tele/STATE"
+      unique_id: a2d56311-a1fc-4fe3-ae6f-2b23cea14fa9
       name: "Chriatmas Tree Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -187,6 +206,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/l_tree/tele/STATE"
+      unique_id: 4c4be43c-0278-4044-b392-825a9fd3bcc6
       name: "Left Chriatmas Tree Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -196,6 +216,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/k_tree/tele/STATE"
+      unique_id: 1675419a-ca88-4b9b-811d-31c972ae6684
       name: "Kitchen Chriatmas Tree Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -205,6 +226,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/garland/tele/STATE"
+      unique_id: 5643faec-269c-4110-9b6d-2be86f5cb9b3
       name: "Chriatmas Garland Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -214,6 +236,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/master/tele/STATE"
+      unique_id: 385d8b49-cad5-4531-a50e-e4101e3796d7
       name: "Master Bedroom Decor Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -223,6 +246,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/kitchen/tele/STATE"
+      unique_id: b4fae6f2-a14e-4766-ab11-f9726245e725
       name: "Kitchen Garland Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -232,6 +256,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/hall/tele/STATE"
+      unique_id: 388f73d4-0a4f-4a98-8479-3d9c3e860230
       name: "Hall Decor Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -241,6 +266,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/indoor/office/tele/STATE"
+      unique_id: 4817e905-bb7d-4581-9c1a-d6fbbded9385
       name: "Office Decor Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -250,6 +276,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/outdoor/amplifier/tele/STATE"
+      unique_id: 51047a60-cb12-4ce3-97dd-7cd58f3bbc14
       name: "Christmas Amplifier Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -259,6 +286,7 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/outdoor/security/tele/STATE"
+      unique_id: 87f34028-037d-4503-afa0-28e7c7729472
       name: "Christmas Security Lights Signal"
       unit_of_measurement: "%"
       value_template: "{{value_json['Wifi'].RSSI }}"
@@ -268,24 +296,30 @@ mqtt:
       payload_not_available: "Offline"
 
     - state_topic: "christmas/falcon/player/Master/playlist/name/status"
+      unique_id: 91398798-9cb7-4b2e-949e-fb3423c32775
       name: "FPP Master Playlist"
 
     - state_topic: "christmas/falcon/player/Master/playlist/section/status"
+      unique_id: a4aea19f-3521-4d64-b7e8-515e7c7f04dc
       name: "FPP Master Playlist Section"
 
     - state_topic: "christmas/falcon/player/Master/playlist/sequence/status"
+      unique_id: 519c61f9-5d3d-4531-a835-d7e55f0b59ee
       name: "FPP Master Sequence"
 
     - state_topic: "christmas/falcon/player/Master/version"
+      unique_id: b73f5214-b5d1-42af-9503-9de0f2ad3673
       name: "FPP Master Version"
 
     - state_topic: "christmas/falcon/player/Master/state/status"
+      unique_id: b4bee69e-3dc9-4165-aa5d-0c6d36fe2be1
       name: "FPP Master Status"
       
 switch:
   - platform: template
     switches:
       indoor_christmas:
+        unique_id: e330407a-7352-43da-9316-338863d7870a
         friendly_name: "Indoor Christmas Decor"
         value_template: "{{ is_state('switch.dining_room_decor', 'on') or is_state('switch.entry_hall_decor', 'on') or is_state('switch.christmas_village', 'on') or is_state('switch.snowman', 'on') or is_state('switch.christmas_tree', 'on') or is_state('switch.left_christmas_tree', 'on') or is_state('switch.kitchen_christmas_tree', 'on') or is_state('switch.christmas_garland', 'on')  or is_state('switch.master_bedroom_decor', 'on') or is_state('switch.kitchen_garland', 'on') or is_state('switch.hall_decor', 'on') or is_state('switch.office_decor', 'on') }}"
         turn_on:

@@ -12,6 +12,7 @@ timer:
 mqtt:
   sensor:
     - name: Bridge state
+      unique_id: 225c7b71-00f8-4959-8d68-4fcca4665f99
       state_topic: "zigbee2mqtt/bridge/state"
       icon: mdi:router-wireless
 

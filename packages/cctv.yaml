@@ -1,64 +1,82 @@
 mqtt:
   camera:
     - name: West Front Last Person
+      unique_id: 1c8af900-99f6-4851-b4b9-6c933ed0a9f5
       topic: frigate/west_front/person/snapshot
 
     - name: East Front Last Person
+      unique_id: 1ab1e8c6-bc3c-4f03-9ada-2ef292345727
       topic: frigate/east_front/person/snapshot
 
     - name: West Side Last Person
+      unique_id: faf1f6c4-9adb-4be0-bf6d-3c950bf064c9
       topic: frigate/west_side/person/snapshot
 
     - name: East Side Last Person
+      unique_id: c714d5ad-214b-4da5-bc9f-3c7e57bc70ca
       topic: frigate/east_side/person/snapshot
 
     - name: Back Yard Last Person
+      unique_id: f1864a22-9a89-4038-b00c-faea16c21819
       topic: frigate/back_yard/person/snapshot
 
     - name: Back Porch Last Person
+      unique_id: 2d0180ed-64e2-4736-9f60-ea0d54395d4d
       topic: frigate/back_porch/person/snapshot
 
     - name: Front Porch Last Person
+      unique_id: e214750a-0544-41d0-98a6-b9828d8431e2
       topic: frigate/front_porch/person/snapshot
 
     - name: West Front Last Cat
+      unique_id: 2e32799b-06ef-4ed3-a1de-5133bde279bc
       topic: frigate/west_front/cat/snapshot
 
     - name: East Front Last Cat
+      unique_id: cb3df85a-da25-4b2e-99fc-345b8407a09f
       topic: frigate/east_front/cat/snapshot
 
     - name: West Side Last Cat
+      unique_id: ba60cd27-6689-4cdd-88f5-470ef8e91951
       topic: frigate/west_side/cat/snapshot
 
     - name: East Side Last Cat
+      unique_id: be320698-b592-4099-bee7-b8e2a71adbde
       topic: frigate/east_side/cat/snapshot
 
     - name: Back Yard Last Cat
+      unique_id: 2ff016bf-db2d-446b-9344-fc030f748726
       topic: frigate/back_yard/cat/snapshot
 
     - name: Back Porch Last Cat
+      unique_id: fe499e79-3a7e-47c9-ba0e-8a6314c5a191
       topic: frigate/back_porch/cat/snapshot
 
     - name: Front Porch Last Cat
+      unique_id: 809f417f-c355-47c0-9ac4-c678f80deb2e
       topic: frigate/front_porch/cat/snapshot
 
   binary_sensor:
     - name: West Front Person
+      unique_id: 21d6a483-3cc8-4a4d-a5d6-d88b4f20ba86
       state_topic: frigate/west_front/person
       device_class: motion
       availability_topic: frigate/available
 
     - name: East Front Person
+      unique_id: 3d8c8d3a-fb74-4316-8725-4f0b2273a106
       state_topic: frigate/east_front/person
       device_class: motion
       availability_topic: frigate/available
 
     - name: West Side Person
+      unique_id: 44b778db-3435-4289-86ab-33bad4cd1e99
       state_topic: frigate/west_side/person
       device_class: motion
       availability_topic: frigate/available
 
     - name: East Side Person
+      unique_id: f7019a8b-4f12-4e6e-8283-0aa899773ddb
       state_topic: frigate/east_side/person
       device_class: motion
       availability_topic: frigate/available
@@ -69,46 +87,55 @@ mqtt:
       availability_topic: frigate/available
 
     - name: Back Porch Person
+      unique_id: 178a613e-16fb-4de0-be73-9ca650da142c
       state_topic: frigate/back_porch/person
       device_class: motion
       availability_topic: frigate/available
 
     - name: Front Porch Person
+      unique_id: 540f637b-f9fe-4069-9b19-08da04e68206
       state_topic: frigate/front_porch/person
       device_class: motion
       availability_topic: frigate/available
 
     - name: West Front Cat
+      unique_id: 02f4c3de-79fe-476f-b3a7-e1c9256e7d0b
       state_topic: frigate/west_front/cat
       device_class: motion
       availability_topic: frigate/available
 
     - name: East Front Cat
+      unique_id: 826c67cf-c41d-4cdb-b7a6-2257ef5aa67c
       state_topic: frigate/east_front/cat
       device_class: motion
       availability_topic: frigate/available
 
     - name: West Side Cat
+      unique_id: 1a9c6a42-1162-4c4f-8004-6d962b8789c8
       state_topic: frigate/west_side/cat
       device_class: motion
       availability_topic: frigate/available
 
     - name: East Side Cat
+      unique_id: 8142e277-dfea-4f11-9170-0277fda7e6f5
       state_topic: frigate/east_side/cat
       device_class: motion
       availability_topic: frigate/available
 
     - name: Back Yard Cat
+      unique_id: 2489c501-bb9a-4836-b007-925fd524635b
       state_topic: frigate/back_yard/cat
       device_class: motion
       availability_topic: frigate/available
 
     - name: Back Porch Cat
+      unique_id: 6e85196e-62f7-4f7a-98fe-31e593adad6b
       state_topic: frigate/back_porch/cat
       device_class: motion
       availability_topic: frigate/available
 
     - name: Front Porch Cat
+      unique_id: 702de1e0-4c43-4bc9-b531-dfd67ed47aaf
       state_topic: frigate/front_porch/cat
       device_class: motion
       availability_topic: frigate/available
@@ -131,98 +158,161 @@ sensor:
   - platform: template
     sensors:
       frigate_west_front_detection_fps:
+        unique_id: 1bdf6412-836b-4cab-83a6-7e9016d3fedc
         value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["detection_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_west_front_process_fps:
+        unique_id: 94b7c342-f0de-4d4f-a89d-27060056723b
         value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["process_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_west_front_fps:
+        unique_id: 27f87d76-5c81-470e-99ce-f8c5e313249f
         value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["camera_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_west_front_skipped_fps:
+        unique_id: d0a0fd86-b632-49d8-94e5-94cf91cf3f9d
         value_template: '{{ states.sensor.frigate_debug.attributes["west_front"]["skipped_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_east_front_detection_fps:
+        unique_id: eb77d412-58d3-44c7-b40a-5146f58a34f7
         value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["detection_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_east_front_process_fps:
+        unique_id: 3e0cabdf-1f4f-46e1-925e-f04495593971
         value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["process_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_east_front_fps:
+        unique_id: 480adf85-5b68-4909-8804-e8e9e6f5bbcf
         value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["camera_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_east_front_skipped_fps:
+        unique_id: 61cc0299-2caf-451d-8fb6-fb286d8f01f3
         value_template: '{{ states.sensor.frigate_debug.attributes["east_front"]["skipped_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_west_side_detection_fps:
+        unique_id: 79a12f6d-e179-4179-a5e2-f7f23a48fc21
         value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["detection_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_west_side_process_fps:
+        unique_id: b0c7b8ac-1c88-4338-86ed-69380244ee89
         value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["process_fps"] }}'
         unit_of_measurement: "FPS"
+        
       frigate_west_side_fps:
+        unique_id: 852a50a4-889f-44ec-b90c-b1dd17773ca9
         value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["camera_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_west_side_skipped_fps:
+        unique_id: 0f042de1-4e08-4f01-9f03-4bf8d7d0aa70
         value_template: '{{ states.sensor.frigate_debug.attributes["west_side"]["skipped_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_east_side_detection_fps:
+        unique_id: bcbf6e74-ffa2-4698-8003-3e068753ec6f
         value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["detection_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_east_side_process_fps:
+        unique_id: 99032600-557a-489a-ba32-fff59fbbcb42
         value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["process_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_east_side_fps:
+        unique_id: b1c2c73c-c104-4c22-8cdc-4df2f6e24dad
         value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["camera_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_east_side_skipped_fps:
+        unique_id: 0bb6612f-70f9-47d3-b934-6438e3e9d9d0
         value_template: '{{ states.sensor.frigate_debug.attributes["east_side"]["skipped_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_back_yard_detection_fps:
+        unique_id: 220a5d17-871e-42d8-9fc0-8694f7c75e0b
         value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["detection_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_back_yard_process_fps:
+        unique_id: a65b8a42-ce99-467a-bace-923c7d1f249f
         value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["process_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_back_yard_fps:
+        unique_id: 1591461b-ef59-4fa9-923c-ebb354a3b352
         value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["camera_fps"] }}'
         unit_of_measurement: "FPS"
+        
       frigate_back_yard_skipped_fps:
+        unique_id: b2f17bfc-6b17-4285-8d19-aeea96ebaead
         value_template: '{{ states.sensor.frigate_debug.attributes["back_yard"]["skipped_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_back_porch_detection_fps:
+        unique_id: f51388d5-a385-42dc-94ad-abccfcef26c4
         value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["detection_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_back_porch_process_fps:
+        unique_id: d328879f-fd11-4834-a678-b540b3e4c2a0
         value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["process_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_back_porch_fps:
+        unique_id: 0186652c-2d97-46ef-b6b7-458d0514a564
         value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["camera_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_back_porch_skipped_fps:
+        unique_id: ab3a66db-ce9e-44f5-b878-0550eda23c69
         value_template: '{{ states.sensor.frigate_debug.attributes["back_porch"]["skipped_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_front_porch_detection_fps:
+        unique_id: 515b53dd-5244-4903-bbc6-900d5f1f2cc6
         value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["detection_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_front_porch_process_fps:
+        unique_id: 52d5c3ec-b19a-416c-9e58-983cc8db0c89
         value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["process_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_front_porch_fps:
+        unique_id: 8a6e327f-de61-4ad5-8e4f-ca5d0b214c46
         value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["camera_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_front_porch_skipped_fps:
+        unique_id: fbf7762c-42bb-4658-8958-6748d34095bb
         value_template: '{{ states.sensor.frigate_debug.attributes["front_porch"]["skipped_fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_coral_fps:
+        unique_id: 39590db4-fb61-4968-a930-c0f72d836bfb
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["fps"] }}'
         unit_of_measurement: "FPS"
+
       frigate_coral_inference:
+        unique_id: e3f32a76-0454-4876-940b-6d829a6fddce
         value_template: '{{ states.sensor.frigate_debug.attributes["coral"]["inference_speed"] }}'
         unit_of_measurement: "ms"
+
       frigate_processing_frame:
+        unique_id: 437627db-7517-4a63-ac19-e7424c84ae30
         value_template: '{{ (states.sensor.frigate_debug.attributes["west_front"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["east_front"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["front_porch"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["east_side"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["west_side"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["back_yard"]["frame_info"]["read"] + states.sensor.frigate_debug.attributes["back_porch"]["frame_info"]["read"]) / 7}}'
+
       frigate_status:
+        unique_id: f1d8aced-2c14-4763-bddd-e2facf21c2a7
         friendly_name: Frigate Status
         value_template: >-
           {% if is_state('input_boolean.frigate_enabled', 'on') and is_state('input_boolean.frigate_enabled_front', 'on') and is_state('input_boolean.frigate_enabled_back', 'on') -%}
