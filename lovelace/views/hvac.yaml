@@ -375,33 +375,35 @@ cards:
             height: 74
             line_width: 2
             font_size: 65
-            hours_to_show: 168
-            points_per_hour: 1
+            hours_to_show: 24
+            points_per_hour: 10
             show:
               icon: false
               extrema: true
+              fill: false
             color_thresholds:
-              - value: 10
+              - value: 0
                 color: "#e74c3c"
-              - value: -30
+              - value: -1
                 color: "#1db954"
 
           - type: custom:mini-graph-card
             entities:
-              - sensor.acurite_Garage_freezer_temperature
+              - sensor.acurite_garage_freezer_temperature
             name: Garage Freezer
             height: 74
             line_width: 2
             font_size: 65
-            hours_to_show: 168
-            points_per_hour: 1
+            hours_to_show: 24
+            points_per_hour: 10
             show:
               icon: false
               extrema: true
+              fill: false
             color_thresholds:
-              - value: 10
+              - value: 0
                 color: "#e74c3c"
-              - value: -30
+              - value: -1
                 color: "#1db954"
 
   #################################################################
