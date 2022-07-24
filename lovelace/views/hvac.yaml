@@ -366,15 +366,43 @@ cards:
   - type: vertical-stack
     cards:
       - !include /config/lovelace/cards/thermostat/front.yaml
-      - type: entities
-        title: Water Heater
-        show_header_toggle: false
-        entities:
-          - entity: sensor.water_heater_status
-            name: Status
-            icon: mdi:fire
-          - entity: sensor.water_heater_runtime
-            name: Runtime
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.acurite_kitchen_freezer_temperature
+            name: Kitchen Freezer
+            height: 74
+            line_width: 2
+            font_size: 65
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              icon: false
+              extrema: true
+            color_thresholds:
+              - value: 10
+                color: "#e74c3c"
+              - value: -30
+                color: "#1db954"
+
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.acurite_Garage_freezer_temperature
+            name: Garage Freezer
+            height: 74
+            line_width: 2
+            font_size: 65
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              icon: false
+              extrema: true
+            color_thresholds:
+              - value: 10
+                color: "#e74c3c"
+              - value: -30
+                color: "#1db954"
 
   #################################################################
   #                                                               #
@@ -385,6 +413,15 @@ cards:
   - type: vertical-stack
     cards:
       - !include /config/lovelace/cards/thermostat/living.yaml
+      - type: entities
+        title: Water Heater
+        show_header_toggle: false
+        entities:
+          - entity: sensor.water_heater_status
+            name: Status
+            icon: mdi:fire
+          - entity: sensor.water_heater_runtime
+            name: Runtime
 
   #################################################################
   #                                                               #
