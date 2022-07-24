@@ -13,12 +13,12 @@ mqtt:
 
     - name: AcuRite Kitchen Freezer Temperature
       unique_id: 0a35deaf-3f15-4846-b2a9-b6acb3024d79
-      state_topic: rtl_433/53612/temperature_F
+      state_topic: rtl_433/21673/temperature_F
       unit_of_measurement: "°F"
 
     - name: AcuRite Garage Freezer Temperature
       unique_id: 2a340db9-90a8-46c3-8184-f70381736461
-      state_topic: rtl_433/61924/temperature_F
+      state_topic: rtl_433/40369/temperature_F
       unit_of_measurement: "°F"
 
   binary_sensor:
@@ -29,10 +29,10 @@ mqtt:
     
     - name: AcuRite Kitchen Freezer Battery Low
       unique_id: c39b7cb1-9213-4a39-8193-459204341156
-      state_topic: rtl_433/53612/battery_ok
+      state_topic: rtl_433/21673/battery_ok
       value_template: "{{ value | int (0) == 0}}"
     
     - name: AcuRite Garage Freezer Battery Low
       unique_id: 1ae14a87-1c09-4722-b51e-32fcaac04330
-      state_topic: rtl_433/61924/battery_ok
+      state_topic: rtl_433/40369/battery_ok
       value_template: "{{ value | int (0) == 0}}"
