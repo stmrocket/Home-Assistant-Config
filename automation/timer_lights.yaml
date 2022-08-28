@@ -115,9 +115,14 @@
     - platform: time
       at: "23:30:00"
   condition:
-    - condition: state
-      entity_id: alarm_control_panel.house
-      state: armed_away
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_away
+        - condition: state
+          entity_id: input_boolean.vacation_mode
+          state: "off"
   action:
     - service: switch.turn_off
       entity_id:
