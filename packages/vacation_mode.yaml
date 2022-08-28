@@ -200,3 +200,43 @@ automation:
           - switch.back_porch_light
           - switch.master_bathroom_lights
           - switch.shack_light
+
+  - alias: Notify Alarm Disarmed
+    id: 47c99c56-602a-4695-9219-f8ecc9c3f0aa
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: disarmed
+    condition:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: alarm_control_panel.house
+            attribute: changed_by
+            state: "Sayaka"
+          - condition: state
+            entity_id: alarm_control_panel.house
+            attribute: changed_by
+            state: "Gary"
+    action:
+      service: notify.browser_shawn_7t
+      data:
+        title: Alarm Disarmed
+        message: The alarm has been disarmed.
+
+  - alias: Notify Alarm Armed in Vacation Mode
+    id: 426c952b-9cfd-48d7-9dc7-eb95c2de7c20
+    trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: arming
+      to: armed_away
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "on"
+    action:
+      service: notify.browser_shawn_7t
+      data:
+        title: Alarm Armed
+        message: The alarm has been armed.
