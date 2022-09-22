@@ -1,13 +1,4 @@
 notify:
-  - name: Elk_Pushover
-    platform: pushover
-    api_key: !secret push_elk
-    user_key: !secret push_usr
-
-  - name: System_Pushover
-    platform: pushover
-    api_key: !secret push_sys
-    user_key: !secret push_usr
 
   - name: den_kodi
     platform: kodi
