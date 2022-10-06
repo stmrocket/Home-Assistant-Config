@@ -152,7 +152,9 @@
       - condition: sun
         before: sunset
   action:
-    service: openuv.update_data
+    service: homeassistant.update_entity
+    target:
+      entity_id: sensor.current_uv_index
 
 - alias: Open Garage Door from NFC
   id: caf0c347-8e92-4a88-a841-c629d8489958
