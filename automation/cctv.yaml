@@ -306,3 +306,22 @@
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.frigate_enabled_back
+
+- alias: Cat Box Entry Alert
+  id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
+  trigger:
+    - platform: state
+      entity_id: sensor.litter_robot_short_status
+      to: Timing
+  action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.shack
+        filename: /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
+    - service: notify.cctv_email
+      data_template:
+        title: "Litter Robot Activated - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+        message: "The litter robot was activated at {{now().strftime('%H:%M:%S') }}."
+        data:
+          images:
+            - /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg      
