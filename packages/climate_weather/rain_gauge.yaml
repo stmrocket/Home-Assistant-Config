@@ -226,6 +226,10 @@ sensor:
         value_template: "{{ (states('input_number.rain_last_year') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
 
+      last_rain_date:
+        unique_id: 53fb7f35-1946-4e69-b5c4-eb94b0f9907c
+        value_template: "{{ states('input_text.last_rain')[:10] }}"
+
 
       rain_rate:
         unique_id: a01d2be8-0f05-41e1-9f5d-49b3be2e7d63
