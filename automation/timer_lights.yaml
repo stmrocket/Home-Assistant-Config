@@ -34,7 +34,10 @@
         - switch.den_table_lamp
         - switch.shack_lamp
     - service: light.turn_on
-      entity_id: light.entry_lamp
+      entity_id: 
+        - light.entry_lamp
+        - light.house_leds_rgb
+        - light.hall_lamp
     - service: input_boolean.turn_on
       entity_id: input_boolean.timer_lights
 
@@ -55,7 +58,10 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_on
-      entity_id: light.entry_lamp
+      entity_id: 
+        - light.entry_lamp
+        - light.house_leds_rgb
+        - light.hall_lamp
     - service: input_boolean.turn_on
       entity_id: input_boolean.timer_lights
 
@@ -105,7 +111,10 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_on
-      entity_id: light.entry_lamp
+      entity_id: 
+        - light.entry_lamp
+        - light.house_leds_rgb
+        - light.hall_lamp
     - service: input_boolean.turn_on
       entity_id: input_boolean.timer_lights
 
@@ -134,7 +143,10 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_off
-      entity_id: light.entry_lamp
+      entity_id: 
+        - light.entry_lamp
+        - light.house_leds_rgb
+        - light.hall_lamp
     - service: input_boolean.turn_off
       entity_id:
         - input_boolean.timer_lights
@@ -157,7 +169,10 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_off
-      entity_id: light.entry_lamp
+      entity_id: 
+        - light.entry_lamp
+        - light.house_leds_rgb
+        - light.hall_lamp
     - service: input_boolean.turn_off
       entity_id:
         - input_boolean.timer_lights
@@ -185,6 +200,12 @@
         - switch.shack_lamp
     - service: light.turn_off
       entity_id: light.entry_lamp
+        - light.entry_lamp     
+        - light.kitchen_leds_rgb
+        - light.den_leds_rgb
+        - light.guest_bathroom_led_rgb
+        - light.den_window_leds_cct
+        - light.hall_lamp
     - service: input_boolean.turn_off
       entity_id:
         - input_boolean.timer_lights
@@ -324,129 +345,6 @@
         - switch.shed_outside_light
         - switch.flagpole
         - switch.back_landscape
-
-- alias: Timer LEDs On House
-  id: 5959d6d3-395d-4830-bc95-cf48745146fd
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.house
-      to: disarmed
-    - platform: state
-      entity_id: alarm_control_panel.house
-      to: armed_home
-    - platform: state
-      entity_id: input_boolean.timer_lights
-      to: "on"
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_on_main_weekday_am
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_on_main_evenings
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_on_main_wweekend_holiday_am
-  condition:
-    - condition: state
-      entity_id: input_boolean.timer_lights
-      state: "on"
-    - condition: state
-      entity_id: light.house_leds_rgb
-      state: "off"
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: disarmed
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_home
-  action:
-    - service: light.turn_on
-      entity_id:
-        - light.house_leds_rgb
-        - light.hall_lamp
-
-- alias: Timer LEDs Off House Away
-  id: 5bf47e48-9e9d-4d72-9ce9-1d95d36b91aa
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.house
-      from: arming
-      to: armed_away
-    - platform: state
-      entity_id: alarm_control_panel.house
-      from: 
-        - disarmed
-        - armed_home
-      to: armed_away
-      for: "00:01:00"
-  action:
-    - service: light.turn_off
-      entity_id:
-        - light.house_leds_rgb
-        - light.hall_lamp
-
-- alias: Timer LEDs Off House
-  id: 3f1356fb-b406-4deb-9074-4f84f26ccafb
-  trigger:
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_off_main_night_away
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_off_main_mornings
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_off_main_night_mode
-  action:
-    - service: light.turn_off
-      entity_id:
-        - light.kitchen_leds_rgb
-        - light.den_leds_rgb
-        - light.guest_bathroom_led_rgb
-        - light.den_window_leds_cct
-        - light.hall_lamp
-
-- alias: Timer LEDs Off Master
-  id: 60346ca3-6764-402c-8412-496b18b103a6
-  trigger:
-    - platform: state
-      entity_id: input_boolean.timer_lights
-      to: "off"
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_off_main_night_away
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_off_main_mornings
-    - platform: event
-      event_type: automation_triggered
-      event_data:
-        entity_id: automation.timer_lights_off_main_night_mode
-  condition:
-    - condition: state
-      entity_id: input_boolean.timer_lights
-      state: "off"
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: disarmed
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_home
-  action:
-    - service: light.turn_off
-      entity_id: light.master_suite_leds_rgb
 
 - alias: Master Suite Off if Sleeping
   id: f867c8e4-d417-4037-a481-688e441b0f15
