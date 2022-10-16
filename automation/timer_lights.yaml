@@ -34,7 +34,7 @@
         - switch.den_table_lamp
         - switch.shack_lamp
     - service: light.turn_on
-      entity_id: 
+      entity_id:
         - light.entry_lamp
         - light.house_leds_rgb
         - light.hall_lamp
@@ -58,7 +58,7 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_on
-      entity_id: 
+      entity_id:
         - light.entry_lamp
         - light.house_leds_rgb
         - light.hall_lamp
@@ -111,7 +111,7 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_on
-      entity_id: 
+      entity_id:
         - light.entry_lamp
         - light.house_leds_rgb
         - light.hall_lamp
@@ -143,7 +143,7 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_off
-      entity_id: 
+      entity_id:
         - light.entry_lamp
         - light.house_leds_rgb
         - light.hall_lamp
@@ -169,7 +169,7 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_off
-      entity_id: 
+      entity_id:
         - light.entry_lamp
         - light.house_leds_rgb
         - light.hall_lamp
@@ -199,7 +199,7 @@
         - switch.den_table_lamp
         - switch.shack_lamp
     - service: light.turn_off
-      entity_id: light.entry_lamp
+      entity_id: 
         - light.entry_lamp     
         - light.kitchen_leds_rgb
         - light.den_leds_rgb
