@@ -15,7 +15,9 @@ midnight:
       background-repeat: no-repeat !important;
       background-image: url("/local/lovelace/background_19.png") !important;
       background-attachment: fixed !important;
+        --ha-card-border-width: 0px;
     }
+
   app-header-background-color: "rgba(150,150,150,0.15)"
   app-toolbar-background-color: none
   header-height: 48px
