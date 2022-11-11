@@ -5,34 +5,42 @@ sensor:
         unique_id: 712ed244-df40-4cbf-8c4c-a34415cdbd76
         friendly_name: Short Litter Robot Status
         value_template: >-
-          {% if is_state('sensor.litter_robot_status', 'RDY') or is_state('sensor.litter_robot_status', 'CCC') -%}
-            Ready
-          {% elif  is_state('sensor.litter_robot_status', 'CCP') -%}
-            Clean
-          {% elif  is_state('sensor.litter_robot_status', 'DF2') -%}
-            Drawer 2
-          {% elif  is_state('sensor.litter_robot_status', 'DF1') -%}
-            Drawer 1
-          {% elif  is_state('sensor.litter_robot_status', 'CSF') or is_state('sensor.litter_robot_status', 'CSI') -%}
-            Sensor
-          {% elif  is_state('sensor.litter_robot_status', 'CST') -%}
-            Timing
-          {% elif  is_state('sensor.litter_robot_status', 'BR') -%}
-            Bonnet  
-          {% elif  is_state('sensor.litter_robot_status', 'P') -%}
-            Paused 
-          {% elif  is_state('sensor.litter_robot_status', 'PD') -%}
-            Pinch
-          {% elif  is_state('sensor.litter_robot_status', 'PD') -%}
-            Pinch
-          {% elif  is_state('sensor.litter_robot_status', 'OFF') -%}
-            Off 
-          {% elif  is_state('sensor.litter_robot_status', 'DFS') or is_state('sensor.litter_robot_status', 'SDF') -%}
-            Full
-          {% elif  is_state('switch.litter_robot_sleep', 'on') -%}
+          {% if  is_state('binary_sensor.aprils_carnival_sleep_mode', 'on') -%}
             Sleep
-          {% elif  is_state('switch.litter_robot_sleep', 'NETWORK') -%}
-            Network
+          {% elif is_state('sensor.aprils_carnival_status_code', 'rdy') -%}
+            Ready
+          {% elif is_state('sensor.aprils_carnival_status_code', 'ccc') -%}
+            Done
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'ccp') -%}
+            Clean
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'df2') -%}
+            Drawer 2
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'df1') -%}
+            Drawer 1
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'csf') or is_state('sensor.aprils_carnival_status_code', 'csi') or is_state('sensor.aprils_carnival_status_code', 'scf') -%}
+            Sensor
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'cst') -%}
+            Timing
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'br') -%}
+            Bonnet  
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'p') -%}
+            Paused 
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'pd') or is_state('sensor.aprils_carnival_status_code', 'spf') -%}
+            Pinch
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'cd') -%}
+            Cat
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'ec') -%}
+            Empty
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'off') -%}
+            Off 
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'offline') -%}
+            Offline
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'otf') -%}
+            Torque 
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'dfs') or is_state('sensor.aprils_carnival_status_code', 'sdf') -%}
+            Full
+          {% elif  is_state('sensor.aprils_carnival_status_code', 'dhf') or is_state('sensor.aprils_carnival_status_code', 'dpf') or is_state('sensor.aprils_carnival_status_code', 'hpf') -%}
+            Position
           {% else -%}
             Error
           {% endif -%}
@@ -51,109 +59,6 @@ sensor:
         unique_id: ca35a957-46fb-40a8-b95a-100caa287f18
         friendly_name: Litter Robot Drawer Level
         value_template: "{{ ((states('counter.litter_robot_cycle_count') | int(none) / states('sensor.litter_robot_average_cycle_capacity') | int(none)) * 100) | round(0, default=none) }}"
-
-mqtt:
-  sensor:
-    - name: Litter Robot Power Status
-      unique_id: ad9b651a-3093-4b04-b4bc-55fbb5589808
-      state_topic: "pooper/status"
-      value_template: "{{value_json['powerStatus']}}"
-
-    - name: Litter Robot Sleep Mode Start Time
-      unique_id: 9d94bc3a-3d67-4a7e-9680-563ae96fd204
-      state_topic: "pooper/status"
-      value_template: "{{value_json['sleepModeStartTime']}}"
-
-    - name: Litter Robot Sleep Mode End Time
-      unique_id: 312afd4a-3f9e-4cd9-93bc-1deccec9754f
-      state_topic: "pooper/status"
-      value_template: "{{value_json['sleepModeEndTime']}}"
-
-    - name: Litter Robot DFI Cycle Count
-      unique_id: 3fa22abd-bb5f-4487-9214-1e4f33bb1e41
-      state_topic: "pooper/status"
-      value_template: "{{value_json['DFICycleCount']}}"
-
-    - name: Litter Robot Cycle Wait Time
-      unique_id: ee22f7c8-3de2-4e70-8bd6-bca53e6c890a
-      state_topic: "pooper/status"
-      value_template: "{{value_json['cleanCycleWaitTimeMinutes']}}"
-
-    - name: Litter Robot Status
-      unique_id: 0bfd2a6a-2d49-4170-8263-dca73cc0ecba
-      state_topic: "pooper/status"
-      value_template: "{{value_json['unitStatus']}}"
-
-    - name: Litter Robot Cycle Count
-      unique_id: b74bac54-5e97-4317-8378-3b718dd0a1d1
-      state_topic: "pooper/status"
-      value_template: "{{value_json['cycleCount']}}"
-
-    - name: Litter Robot Cycles After Full
-      unique_id: 93611ee0-f188-4260-999a-f8917059d581
-      state_topic: "pooper/status"
-      value_template: "{{value_json['cyclesAfterDrawerFull']}}"
-
-    - name: Litter Robot Reported Cycle Capacity
-      unique_id: 28bc949f-4099-485d-8f8d-ad36c19c121d
-      state_topic: "pooper/status"
-      value_template: "{{value_json['cycleCapacity']}}"
-
-  binary_sensor:
-    - name: Litter Robot Online
-      unique_id: 295f1d97-f3b3-48a1-834a-177cf151e421
-      state_topic: "pooper/status"
-      value_template: "{{value_json.didNotifyOffline}}"
-      payload_on: "false"
-      payload_off: "true"
-
-    - name: Litter Robot Drawer Full
-      unique_id: 690d5fb8-e4f8-46d8-9db2-96eb751f12fb
-      state_topic: "pooper/status"
-      value_template: "{{value_json.isDFITriggered}}"
-      payload_on: "1"
-      payload_off: "0"
-
-  switch:
-    - name: Litter Robot Sleep Mode
-      unique_id: df39a15d-8818-46bc-be0a-7a8106083047
-      state_topic: "pooper/status"
-      command_topic: "pooper/command/sleep"
-      payload_on: "ON"
-      payload_off: "OFF"
-      state_on: "1"
-      state_off: "0"
-      value_template: "{{value_json['sleepModeActive']}}"
-
-    - name: Litter Robot Power
-      unique_id: eb344ad6-b694-4494-9736-8e9b4485b277
-      state_topic: "pooper/status"
-      command_topic: "pooper/command/power"
-      payload_on: "ON"
-      payload_off: "OFF"
-      state_on: "ON"
-      state_off: "OFF"
-      value_template: "{{value_json['unitPower']}}"
-
-    - name: Litter Robot Lock
-      unique_id: c9fe201c-f9d3-488e-b801-3d20f0c856cd
-      state_topic: "pooper/status"
-      command_topic: "pooper/command/lock"
-      payload_on: "ON"
-      payload_off: "OFF"
-      state_on: "1"
-      state_off: "0"
-      value_template: "{{value_json['panelLockActive']}}"
-
-    - name: Litter Robot Light
-      unique_id: 8992b3d7-1138-4101-a68a-c84a2f2ce76e
-      state_topic: "pooper/status"
-      command_topic: "pooper/command/light"
-      payload_on: "ON"
-      payload_off: "OFF"
-      state_on: "1"
-      state_off: "0"
-      value_template: "{{value_json['nightLightActive']}}"
 
 input_number:
   litter_robot_cycle_count:
@@ -174,6 +79,18 @@ counter:
   litter_robot_cycle_count:
     step: 1
 
+switch:
+  - platform: template
+    switches:
+      litter_robot_power:
+        value_template: "{{ not is_state('sensor.aprils_carnival_status_code', 'on') }}"
+        turn_on:
+          service: vacuum.turn_on
+          entity_id: vacuum.aprils_carnival_litter_box
+        turn_off:
+          service: vacuum.turn_off
+          entity_id: vacuum.aprils_carnival_litter_box
+
 script:
   litter_robot_empty:
     sequence:
@@ -185,20 +102,16 @@ script:
         entity_id: input_number.litter_robot_empty_count
       - service: counter.reset
         entity_id: counter.litter_robot_cycle_count
-      - service: mqtt.publish
-        data_template:
-          topic: "pooper/command/empty"
-          payload: "{{ states('sensor.litter_robot_average_cycle_capacity') }}"
+      - service: button.press
+        entity_id: button.aprils_carnival_reset_waste_drawer
 
 automation:
   - alias: Update Litter Robot Cycle Count
     id: f656c603-f96b-4127-9059-a0fe410694a6
     trigger:
       - platform: state
-        entity_id: sensor.litter_robot_cycle_count
-    condition:
-      - condition: template
-        value_template: "{{ not is_state('sensor.litter_robot_cycle_count', '0') }}"
+        entity_id: sensor.aprils_carnival_status_code
+        to: "ccc"
     action:
       - service: counter.increment
         entity_id: counter.litter_robot_cycle_count
@@ -212,3 +125,22 @@ automation:
           tag_id: !secret pooper_nfc
     action:
       - service: script.litter_robot_empty
+
+  - alias: Cat Box Entry Alert
+    id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
+    trigger:
+      - platform: state
+        entity_id: sensor.aprils_carnival_status_code
+        to: "cst"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.shack
+          filename: /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
+      - service: notify.cctv_email
+        data_template:
+          title: "Litter Robot Activated - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "The litter robot was activated at {{now().strftime('%H:%M:%S') }}."
+          data:
+            images:
+              - /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg      
