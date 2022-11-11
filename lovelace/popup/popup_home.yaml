@@ -44,14 +44,14 @@ sensor.litter_robot_drawer_level:
             name: Cycle
             tap_action:
               action: call-service
-              service: mqtt.publish
+              service: vacuum.start
               service_data:
-                topic: "pooper/command/clean"
+                entity_id: vacuum.aprils_carnival_litter_box
 
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            entity: switch.litter_robot_lock
+            entity: switch.aprils_carnival_panel_lockout
             color_type: icon
             state:
               - value: "on"
@@ -63,7 +63,7 @@ sensor.litter_robot_drawer_level:
             name: Lock
 
           - type: "custom:button-card"
-            entity: switch.litter_robot_light
+            entity: switch.aprils_carnival_night_light_mode
             color_type: icon
             state:
               - value: "on"
@@ -75,7 +75,7 @@ sensor.litter_robot_drawer_level:
             name: Light
 
           - type: "custom:button-card"
-            entity: switch.litter_robot_sleep_mode
+            entity: binary_sensor.aprils_carnival_sleeping
             color_type: icon
             state:
               - value: "on"
@@ -89,7 +89,7 @@ sensor.litter_robot_drawer_level:
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            entity: sensor.litter_robot_cycle_wait_time
+            entity: select.aprils_carnival_clean_cycle_wait_time_minutes
             color_type: icon
             icon: mdi:timer-outline
             state:
@@ -101,13 +101,13 @@ sensor.litter_robot_drawer_level:
             name: 3 Min.
             tap_action:
               action: call-service
-              service: mqtt.publish
+              service: select.select_option
               service_data:
-                topic: "pooper/command/wait"
-                payload: "3"
+                entity_id: select.aprils_carnival_clean_cycle_wait_time_minutes
+                option: "3"
 
           - type: "custom:button-card"
-            entity: sensor.litter_robot_cycle_wait_time
+            entity: select.aprils_carnival_clean_cycle_wait_time_minutes
             color_type: icon
             icon: mdi:timer-outline
             state:
@@ -119,13 +119,13 @@ sensor.litter_robot_drawer_level:
             name: 7 Min.
             tap_action:
               action: call-service
-              service: mqtt.publish
+              service: select.select_option
               service_data:
-                topic: "pooper/command/wait"
-                payload: "7"
+                entity_id: select.aprils_carnival_clean_cycle_wait_time_minutes
+                option: "7"
 
           - type: "custom:button-card"
-            entity: sensor.litter_robot_cycle_wait_time
+            entity: select.aprils_carnival_clean_cycle_wait_time_minutes
             color_type: icon
             icon: mdi:timer-outline
             state:
@@ -137,10 +137,10 @@ sensor.litter_robot_drawer_level:
             name: 15 Min.
             tap_action:
               action: call-service
-              service: mqtt.publish
+              service: select.select_option
               service_data:
-                topic: "pooper/command/wait"
-                payload: "15"
+                entity_id: select.aprils_carnival_clean_cycle_wait_time_minutes
+                option: "15"    
 
 sensor.litter_robot_status_short:
   title: Litter Robot
