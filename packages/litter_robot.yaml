@@ -9,7 +9,7 @@ sensor:
             Sleep
           {% elif is_state('sensor.aprils_carnival_status_code', 'rdy') -%}
             Ready
-          {% if is_state('sensor.aprils_carnival_status_code', 'ccc') -%}
+          {% elif is_state('sensor.aprils_carnival_status_code', 'ccc') -%}
             Done
           {% elif  is_state('sensor.aprils_carnival_status_code', 'ccp') -%}
             Clean
