@@ -13,7 +13,15 @@ input_boolean.christmas_show:
       - entity: switch.christmas_amplifier
         name: Amplifier
       - entity: switch.christmas_security_lights
-        name: Security Lights
+        name: Security Lights      
+      - type: "custom:time-picker-card"
+        entity: input_datetime.amplifier_shutdown_time
+        name: Amplifier Off
+        hour_mode: 12
+        layout:
+          name: inside
+          align_controls: right
+          hour_mode: single
 
 switch.indoor_christmas:
   title: Indoor Christmas
