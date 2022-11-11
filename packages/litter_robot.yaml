@@ -83,6 +83,7 @@ switch:
   - platform: template
     switches:
       litter_robot_power:
+        unique_id: 1c69d41e-1d7a-4cba-82a8-d9f4230fa722
         value_template: "{{ not is_state('sensor.aprils_carnival_status_code', 'on') }}"
         turn_on:
           service: vacuum.turn_on
