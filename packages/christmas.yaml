@@ -218,7 +218,7 @@ automation:
         entity_id: input_boolean.amplifier_shutdown
 
   - alias: Christmas Amplifier Shutdown
-    id: 322d4e3b-2c8e-421c-b819-d11c1c5e6ef7
+    id: 0d150ed2-030d-4348-8032-ad58f481fb50
     trigger:
       - platform: state
         entity_id: sensor.fpp_master_sequence
