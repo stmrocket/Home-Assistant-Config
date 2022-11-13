@@ -26,7 +26,7 @@ switch:
       indoor_christmas:
         unique_id: e330407a-7352-43da-9316-338863d7870a
         friendly_name: "Indoor Christmas Decor"
-        value_template: "{{ is_state('switch.dining_room_decor', 'on') or is_state('switch.entry_hall_decor', 'on') or is_state('switch.christmas_village', 'on') or is_state('switch.snowman', 'on') or is_state('switch.christmas_tree', 'on') or is_state('switch.left_christmas_tree', 'on') or is_state('switch.kitchen_christmas_tree', 'on') or is_state('switch.christmas_garland', 'on')  or is_state('switch.master_bedroom_decor', 'on') or is_state('switch.kitchen_garland', 'on') or is_state('switch.hall_decor', 'on') or is_state('switch.office_decor', 'on') }}"
+        value_template: "{{ is_state('switch.dining_room_decor', 'on') or is_state('switch.entry_hall_decor', 'on') or is_state('switch.christmas_village', 'on') or is_state('switch.snowman', 'on') or is_state('switch.christmas_tree', 'on') or is_state('switch.left_christmas_tree', 'on') or is_state('switch.kitchen_christmas_tree', 'on') or is_state('switch.christmas_garland', 'on')  or is_state('switch.master_bedroom_decor', 'on') or is_state('switch.kitchen_garland', 'on') or is_state('switch.hall_decor', 'on') or is_state('switch.office_decor', 'on') or is_state('switch.ceramic_tree', 'on') or is_state('switch.metal_snowman', 'on') }}"
         turn_on:
           service: mqtt.publish
           data:
