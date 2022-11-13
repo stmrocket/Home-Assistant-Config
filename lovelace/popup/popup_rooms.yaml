@@ -52,6 +52,10 @@ switch.indoor_christmas:
         name: Hall
       - entity: switch.office_decor
         name: Office
+      - entity: switch.metal_snowman
+        name: Metal Snow Man
+      - entity: switch.ceramic_tree
+        name: Ceramic Tree
 
 cover.den_blinds:
   title: Den Blinds
