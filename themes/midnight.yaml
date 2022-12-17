@@ -101,3 +101,5 @@ midnight:
   input-outlined-hover-border-color: "var(--primary-text-color)"
   input-label-ink-color: "var(--primary-text-color)"
   input-dropdown-icon-color: "var(--primary-text-color)"
+  state-alarm-disarmed-color: "#4CAF50"
+  state-alarm-armed-color: "#F44336"
