@@ -1,49 +1,4 @@
-# Roomba
-
-vacuum:
-  - platform: template
-    vacuums:
-      roomba:
-        unique_id: e191b333-3723-43f2-be47-f8d8574a7e45
-        value_template: "{{ states('sensor.roomba_state') }}"
-        battery_level_template: "{{ states('sensor.roomba_battery_level') | int(none) }}"
-        start:
-          service: mqtt.publish
-          data:
-            topic: roomba/command/set
-            payload: start
-        pause:
-          service: mqtt.publish
-          data:
-            topic: roomba/command/set
-            payload: pause
-        stop:
-          service: mqtt.publish
-          data:
-            topic: roomba/command/set
-            payload: stop
-        return_to_base:
-          service: script.turn_on
-          data:
-            entity_id: script.roomba_dock
-
 # Roomba Sensors
-
-mqtt:
-  sensor:
-    - name: "Roomba Battery Level"
-      unique_id: 93da098c-b0c7-440f-b5b0-07e8f2716d5c
-      state_topic: "roomba/tele/battery"
-      unit_of_measurement: "%"
-      device_class: "battery"
-
-    - name: "Roomba State"
-      unique_id: 642e6275-17f2-40ad-bfe0-cf40d53df385
-      state_topic: "roomba/tele/status"
-
-    - name: "Roomba Scheduler Command"
-      unique_id: 7d7905b2-6991-41f7-aa57-e46472cd6406
-      state_topic: "hass/roomba/command"
 
 sensor:
   - platform: template
@@ -52,10 +7,10 @@ sensor:
         unique_id: 8f8ddb04-5b05-4c97-b17a-ba34b6cc91cc
         friendly_name: "Roomba Status"
         value_template: >-
-          {% if is_state('vacuum.roomba', 'docked') and states('counter.roomba_cycles') | int(none) >= 5 -%}
+          {% if is_state('vacuum.mrs_norris', 'docked') and states('counter.roomba_cycles') | int(none) >= 5 -%}
             full
           {% else -%}
-            {{ states('vacuum.roomba') }}
+            {{ states('vacuum.mrs_norris') }}
           {% endif -%}
 
 # Roomba Switches
@@ -66,15 +21,15 @@ switch:
       roomba:
         unique_id: 9c4ef5f5-3069-47fe-a707-b58f9da886b0
         friendly_name: "Roomba Power"
-        value_template: "{{ is_state('vacuum.roomba', 'cleaning') or is_state('vacuum.roomba', 'returning') }}"
+        value_template: "{{ is_state('vacuum.mrs_norris', 'cleaning') or is_state('vacuum.mrs_norris', 'returning') }}"
         turn_on:
           service: vacuum.start
           data:
-            entity_id: vacuum.roomba
+            entity_id: vacuum.mrs_norris
         turn_off:
-          service: script.turn_on
+          service: vacuum.return_to_base
           data:
-            entity_id: script.roomba_dock
+            entity_id: vacuum.mrs_norris
 
 input_boolean:
   roomba_auto:
@@ -88,20 +43,72 @@ counter:
 # Roomba Scripts
 
 script:
-  roomba_dock:
-    sequence:
-      - service: mqtt.publish
-        data:
-          topic: roomba/command/set
-          payload: stop
-      - delay:
-          milliseconds: 500
-      - service: mqtt.publish
-        data:
-          topic: roomba/command/set
-          payload: dock
 
   reset_roomba_counter:
     sequence:
       - service: counter.reset
         entity_id: counter.roomba_cycles
+
+automation:
+  - alias: Start Roomba from Schedule
+    id: ff865037-59b4-4162-a27e-abfd1fe70817
+    trigger:
+      - platform: time
+        at: "15:00:00"
+    condition:
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: state
+        entity_id: input_boolean.roomba_auto
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "off"
+      - condition: state
+        entity_id: alarm_control_panel.house
+        state: armed_away
+    action:
+      - service: vacuum.start
+        entity_id: vacuum.mrs_norris
+
+  - alias: Count Roomba Cycles
+    id: a49c5f1b-a77a-4223-9364-8f510e85d6d9
+    trigger:
+      - platform: state
+        entity_id: vacuum.mrs_norris
+        to: "cleaning"
+    action:
+      - service: counter.increment
+        entity_id: counter.roomba_cycles
+
+  - alias: Roomba Return if House Disarmed
+    id: 6dba1760-613c-4165-8e41-b54466b7ff1d
+    trigger:
+      - platform: state
+        entity_id: input_boolean.hvac_geofence
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: vacuum.mrs_norris
+        state: cleaning
+      - condition: state
+        entity_id: input_boolean.roomba_auto
+        state: "on"
+    action:
+      - service: vacuum.return_to_base
+        entity_id: vacuum.mrs_norris
+
+  - alias: Reset Dust Bin From NFC
+    id: ca947aaf-f8d3-485b-a1fe-1fe78a8eaa34
+    trigger:
+      - platform: event
+        event_type: tag_scanned
+        event_data:
+          tag_id: !secret roomba_nfc
+    action:
+      - service: script.reset_roomba_counter
