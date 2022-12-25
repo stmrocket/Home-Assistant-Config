@@ -73,6 +73,7 @@
         - switch.back_porch_light
         - switch.shack_light
         - switch.office_peripherals
+        - switch.server_room_workbench
 
 - alias: All Off Away
   id: 62b3aa82-b3de-4cdd-82ba-a6ed3f9b9fd8

@@ -75,7 +75,18 @@ cards:
           action: more-info
   - type: horizontal-stack
     cards:
-      - type: "custom:gap-card"
+      - type: "custom:button-card"
+        entity: switch.server_room_workbench
+        color_type: icon
+        color: rgb(228, 94, 101)
+        state:
+          - value: "on"
+            icon: mdi:desk-lamp-on
+          - value: "off"
+            icon: mdi:desk-lamp-off
+        name: Bench
+        hold_action:
+          action: more-info
       - type: "custom:button-card"
         entity: switch.server_closet_light
         color_type: icon
