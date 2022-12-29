@@ -53,4 +53,18 @@ influxdb:
       - alert
       - camera
       - remote
+      - light
+      - switch
+      - fan
+      - alarm_control_panel
+      - alert
+      - lock
+      - media_player
+      - person
+      - zone
+      - timer
+      - vacuum
+      - sun
+      - proximity
+      - cover
 
