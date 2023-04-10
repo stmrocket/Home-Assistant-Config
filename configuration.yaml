@@ -252,24 +252,6 @@ elkm1:
 api:
 alexa: !include alexa.yaml
 
-#Browser Mod
-browser_mod:
-  devices:
-    !secret kitchen_tablet_browser:
-      name: kitchen_tablet
-    !secret shawn_chromebook_browser:
-      name: shawn_chromebook
-    !secret shawn_office_browser:
-      name: shawn_office
-    !secret shawn_n6_browser:
-      name: shawn_n6
-    !secret office_tablet_browser:
-      name: office_tablet
-    !secret shack_tablet_browser:
-      name: shack_tablet
-  disable:
-    - all
-
 input_select:
   doorbell_tone:
     name: Doorbell Sound
