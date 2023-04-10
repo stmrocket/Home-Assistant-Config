@@ -244,7 +244,7 @@ automation:
           data:
             displaytime: 20000
             icon: "info"
-      - service: browser_mod.toast
+      - service: browser_mod.notification
         data:
           message: "The dryer has stopped."
           duration: 3000
@@ -314,7 +314,7 @@ automation:
           data:
             displaytime: 20000
             icon: "info"
-      - service: browser_mod.toast
+      - service: browser_mod.notification
         data:
           message: "The washer has stopped."
           duration: 3000
