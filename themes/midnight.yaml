@@ -9,7 +9,7 @@ midnight:
     hui-view {
       background: none !important;
     }
-    ha-app-layout {
+    ha-app-layout, div#view {
       background-position: center !important;
       background-size: cover !important;
       background-repeat: no-repeat !important;
@@ -106,3 +106,12 @@ midnight:
   state-alarm_control_panel-armed_home-color: "#F44336"
   state-alarm_control_panel-armed_night-color: "#F44336"
   state-lock-locked-color: "#ffffff"
+
+  popup-min-width: 400px
+  popup-max-width: 600px
+  popup-border-width: var(--ha-card-border-width, 2px)
+  popup-border-color: var(--ha-card-border-color, var(--divider-color, #eee))
+  popup-border-radius: 13px
+  popup-background-color: "#383C45"
+  popup-padding-x: 0px
+  popup-padding-y: 0px
