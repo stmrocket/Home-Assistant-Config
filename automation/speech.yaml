@@ -333,7 +333,7 @@
           displaytime: 20000
           icon: "info"
 
-    - service: browser_mod.toast
+    - service: browser_mod.notification
       data:
         message: "Someone is at the door."
         duration: 3000

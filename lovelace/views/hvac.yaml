@@ -92,9 +92,71 @@ cards:
                     color: rgb(255, 255, 255)
                     name: OK
                 tap_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Filter Ststus
+                      content:
+                        type: vertical-stack
+                        cards:
+                          - type: "custom:hui-entities-card"
+                            entities:
+                              - entity: sensor.furnace_filter_last_replaced
+                              - entity: sensor.furnace_filter_life
+                              - entity: sensor.average_total_runtime_week
+                              - entity: sensor.furnace_filter_days_remaining
+                              - entity: input_number.replacement_threshold
+                              - type: "custom:restriction-card"
+                                row: true
+                                restrictions:
+                                  confirm: true
+                                  text: "Reset filter timer?"
+                                card:
+                                  entity: script.furnace_filter_date
+                                  name: Reset Filter
+                              - entity: sensor.furnace_last_bleached
+                              - type: "custom:restriction-card"
+                                row: true
+                                restrictions:
+                                  confirm: true
+                                  text: "Reset bleach timer?"
+                                card:
+                                  entity: script.furnace_bleach_date
+                                  name: Reset Bleach
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: House Blinds
+                      content:
+                        type: vertical-stack
+                        cards:
+                          - type: "custom:hui-entities-card"
+                            entities:
+                              - entity: sensor.furnace_filter_last_replaced
+                              - entity: sensor.furnace_filter_life
+                              - entity: sensor.average_total_runtime_week
+                              - entity: sensor.furnace_filter_days_remaining
+                              - entity: input_number.replacement_threshold
+                              - type: "custom:restriction-card"
+                                row: true
+                                restrictions:
+                                  confirm: true
+                                  text: "Reset filter timer?"
+                                card:
+                                  entity: script.furnace_filter_date
+                                  name: Reset Filter
+                              - entity: sensor.furnace_last_bleached
+                              - type: "custom:restriction-card"
+                                row: true
+                                restrictions:
+                                  confirm: true
+                                  text: "Reset bleach timer?"
+                                card:
+                                  entity: script.furnace_bleach_date
+                                  name: Reset Bleach
           - type: glance
             columns: 5
             show_icon: false

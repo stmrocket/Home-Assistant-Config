@@ -226,7 +226,7 @@
         data:
           ttl: 0
           priority: high
-    - service: browser_mod.toast
+    - service: browser_mod.notification
       data:
         message: "It is now raining."
         duration: 3000
@@ -255,7 +255,7 @@
         data:
           ttl: 0
           priority: high
-    - service: browser_mod.toast
+    - service: browser_mod.notification
       data:
         message: "It has stopped raining."
         duration: 3000
