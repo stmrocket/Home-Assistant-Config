@@ -7,8 +7,6 @@
 id: 0
 icon: mdi:castle
 title: Home
-popup_cards:
-  !include /config/lovelace/popup/popup_home.yaml
 cards:
   #################################################################
   #                                                               #

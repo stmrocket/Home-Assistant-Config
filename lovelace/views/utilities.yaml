@@ -7,8 +7,6 @@
 id: 5
 icon: mdi:transmission-tower
 title: Utilities
-popup_cards:
-  !include /config/lovelace/popup/popup_utilities.yaml
 cards:
   - type: vertical-stack
     cards:
@@ -96,7 +94,104 @@ cards:
                   top: 33%
                   width: 30%
                 tap_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Generator Status
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: conditional
+                            conditions:
+                              - entity: binary_sensor.generator_running
+                                state: "off"
+                            card:
+                              type: entities
+                              entities:
+                                - entity: sensor.generator_status
+                                  name: Generator Status
+                                  icon: mdi:engine
+                                - entity: sensor.generator_firmware_status
+                                  name: Firmware
+                                  icon: mdi:micro-sd
+                                - entity: sensor.generator_battery_voltage
+                                  name: Battery Voltage
+                                  icon: mdi:car-battery
+                                - entity: sensor.generator_compartment_temperature
+                                  name: Enclosure Temperature
+                                  icon: mdi:thermometer
+                                - entity: sensor.generator_controller_temperature
+                                  name: Controller Temperature
+                                  icon: mdi:thermometer
+                                - entity: sensor.generator_total_engine_hours
+                                  name: Total
+                                  icon: mdi:timer-outline
+                                - entity: sensor.generator_loaded_engine_hours
+                                  name: Loaded
+                                  icon: mdi:timer-outline
+                                - entity: sensor.generator_time_since_service
+                                  name: Since Last Service
+                                  icon: mdi:timer-outline
+                                - entity: sensor.generator_engine_starts
+                                  name: Engine Starts
+                                  icon: mdi:engine
+                                - entity: sensor.generator_clock
+                                  name: Controller Time
+                                  icon: mdi:timer-outline
+
+                          - type: conditional
+                            conditions:
+                              - entity: binary_sensor.generator_running
+                                state: "on"
+                            card:
+                              type: entities
+                              entities:
+                                - entity: sensor.generator_status
+                                  name: Generator Status
+                                  icon: mdi:engine
+                                - entity: sensor.generator_engine_speed
+                                  name: Engine Speed
+                                  icon: mdi:engine
+                                - entity: sensor.generator_engine_speed_target
+                                  name: Engine Speed Target
+                                  icon: mdi:engine
+                                - entity: sensor.generator_oil_pressure
+                                  name: Oil Pressure
+                                  icon: mdi:gauge
+                                - entity: sensor.generator_oil_temperature
+                                  name: Oil Temperature
+                                  icon: mdi:thermometer
+                                - entity: binary_sensor.generator_low_oil
+                                  name: Low Oil
+                                  icon: mdi:oil
+                                - entity: sensor.generator_coolant_temperature
+                                  name: Coolant Temperature
+                                  icon: mdi:thermometer
+                                - entity: sensor.generator_intake_air_temperature
+                                  name: Intake Air Temperature
+                                  icon: mdi:thermometer
+                                - entity: sensor.generator_fuel_consumption_rate
+                                  name: Fuel Consumption
+                                  icon: mdi:fuel
+                                - entity: sensor.generator_battery_voltage
+                                  name: Battery Voltage
+                                  icon: mdi:car-battery
+                                - entity: sensor.generator_compartment_temperature
+                                  name: Enclosure Temperature
+                                  icon: mdi:thermometer
+                                - entity: sensor.generator_controller_temperature
+                                  name: Controller Temperature
+                                  icon: mdi:thermometer
+                                - entity: sensor.generator_total_engine_hours
+                                  name: Total
+                                  icon: mdi:timer-outline
+                                - entity: sensor.generator_time_since_service
+                                  name: Since Last Service
+                                  icon: mdi:timer-outline
+                                - entity: sensor.generator_clock
+                                  name: Controller Time
+                                  icon: mdi:timer-outline
                 hold_action: none
 
               - type: image
@@ -110,7 +205,22 @@ cards:
                   top: 33%
                   width: 30%
                 tap_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Utility Status
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: entities
+                            entities:
+                              - entity: sensor.generator_source_1_voltage
+                                name: Utility Voltage
+                                icon: mdi:power-plug
+                              - entity: sensor.generator_source_1_frequency
+                                name: Utility Frequency
+                                icon: mdi:power-plug
                 hold_action: none
 
               - type: image
@@ -124,7 +234,34 @@ cards:
                   top: 67%
                   width: 30%
                 tap_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Load Status
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: entities
+                            entities:
+                              - entity: sensor.generator_exercise_scheduled
+                                name: Exercise Scheduled
+                                icon: mdi:calendar
+                              - entity: sensor.generator_exercise_active
+                                name: Exercise Active
+                                icon: mdi:engine
+                              - entity: sensor.generator_exercise_mode
+                                name: Exercise Mode
+                                icon: mdi:engine
+                              - entity: sensor.generator_exercise_interval
+                                name: Exercise Interval
+                                icon: mdi:timer-outline
+                              - entity: sensor.generator_exercise_duration
+                                name: Exercise Duration
+                                icon: mdi:timer-outline
+                              - entity: sensor.generator_next_exercise_start
+                                name: Next Exercise
+                                icon: mdi:calendar
                 hold_action: none
 
               - type: image
@@ -139,7 +276,40 @@ cards:
                   top: 30%
                   width: 40%
                 tap_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: ATS Status
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: entities
+                            entities:
+                              - entity: sensor.generator_network_connected
+                                name: network Connected
+                                icon: mdi:ethernet
+                              - entity: sensor.generator_ats_connected
+                                name: ATS Connected
+                                icon: mdi:ethernet
+                              - entity: sensor.generator_ats_sources
+                                name: Available Sources
+                                icon: mdi:power-plug
+                              - entity: sensor.generator_ats_position
+                                name: Contactor Position
+                                icon: mdi:electric-switch
+                              - entity: sensor.generator_source_1_voltage
+                                name: Utility Voltage
+                                icon: mdi:power-plug
+                              - entity: sensor.generator_source_1_frequency
+                                name: Utility Frequency
+                                icon: mdi:power-plug
+                              - entity: sensor.generator_source_2_voltage
+                                name: Generator Voltage
+                                icon: mdi:power-plug
+                              - entity: sensor.generator_source_2_frequency
+                                name: Generator Frequency
+                                icon: mdi:power-plug
                 hold_action: none
 
               - type: state-label
@@ -149,7 +319,75 @@ cards:
                   top: 9%
                   font-size: 170%
                 tap_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: ATS Status
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: horizontal-stack
+                            cards:
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:power-plug-off
+                                name: Unloaded
+                                lock:
+                                  enabled: true
+                                  unlock: hold
+                                tap_action:
+                                  action: call-service
+                                  service: mqtt.publish
+                                  service_data:
+                                    topic: genset/command/run
+                                    payload: "unloaded"
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:power-plug
+                                name: Loaded
+                                lock:
+                                  enabled: true
+                                  unlock: hold
+                                tap_action:
+                                  action: call-service
+                                  service: mqtt.publish
+                                  service_data:
+                                    topic: genset/command/run
+                                    payload: "loaded"
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:wave
+                                name: Cycle
+                                lock:
+                                  enabled: true
+                                  unlock: hold
+                                tap_action:
+                                  action: call-service
+                                  service: mqtt.publish
+                                  service_data:
+                                    topic: genset/command/run
+                                    payload: "cycle"
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:stop-circle
+                                name: Stop
+                                lock:
+                                  enabled: true
+                                  unlock: hold
+                                tap_action:
+                                  action: call-service
+                                  service: mqtt.publish
+                                  service_data:
+                                    topic: genset/command/run
+                                    payload: "stop"
                 hold_action: none
 
               - type: state-label

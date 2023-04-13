@@ -1,8 +1,6 @@
 id: 4
 icon: mdi:weather-pouring
 title: Weather
-# popup_cards:
-#   !include /config/lovelace/popup/popup_media.yaml
 cards:
   - type: vertical-stack
     cards:   

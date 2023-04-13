@@ -444,14 +444,134 @@ cards:
             entities:
               - entity: sensor.daily_bike_distance
                 name: Daily
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Daily Rides
+                      content:
+                        type: entities
+                        entities:
+                          - entity: sensor.daily_bike_distance
+                            name: Distance
+                            icon: 'mdi:map-marker-distance'
+                          - entity: sensor.daily_bike_duration_calc
+                            name: Duration
+                            icon: 'mdi:timer'
+                          - entity: sensor.daily_bike_calories
+                            name: Calories
+                            icon: 'mdi:fire'
+                          - entity: sensor.daily_bike_climb
+                            name: Climb
+                            icon: 'mdi:slope-uphill'
+                          - entity: sensor.daily_bike_rides
+                            name: Rides
+                            icon: 'mdi:bicycle'
               - entity: sensor.weekly_bike_distance
                 name: Weekly
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Weekly Rides
+                      content:
+                        type: entities
+                        entities:
+                          - entity: sensor.weekly_bike_distance
+                            name: Distance
+                            icon: 'mdi:map-marker-distance'
+                          - entity: sensor.weekly_bike_duration_calc
+                            name: Duration
+                            icon: 'mdi:timer'
+                          - entity: sensor.weekly_bike_calories
+                            name: Calories
+                            icon: 'mdi:fire'
+                          - entity: sensor.weekly_bike_climb
+                            name: Climb
+                            icon: 'mdi:slope-uphill'
+                          - entity: sensor.weekly_bike_rides
+                            name: Rides
+                            icon: 'mdi:bicycle'
               - entity: sensor.monthly_bike_distance
                 name: Monthly
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Monthly Rides
+                      content:
+                        type: entities
+                        entities:
+                          - entity: sensor.monthly_bike_distance
+                            name: Distance
+                            icon: 'mdi:map-marker-distance'
+                          - entity: sensor.monthly_bike_duration_calc
+                            name: Duration
+                            icon: 'mdi:timer'
+                          - entity: sensor.monthly_bike_calories
+                            name: Calories
+                            icon: 'mdi:fire'
+                          - entity: sensor.monthly_bike_climb
+                            name: Climb
+                            icon: 'mdi:slope-uphill'
+                          - entity: sensor.monthly_bike_rides
+                            name: Rides
+                            icon: 'mdi:bicycle'
               - entity: sensor.yearly_bike_distance
                 name: Yearly
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Yearly Rides
+                      content:
+                        type: entities
+                        entities:
+                          - entity: sensor.yearly_bike_distance
+                            name: Distance
+                            icon: 'mdi:map-marker-distance'
+                          - entity: sensor.yearly_bike_duration_calc
+                            name: Duration
+                            icon: 'mdi:timer'
+                          - entity: sensor.yearly_bike_calories
+                            name: Calories
+                            icon: 'mdi:fire'
+                          - entity: sensor.yearly_bike_climb
+                            name: Climb
+                            icon: 'mdi:slope-uphill'
+                          - entity: sensor.yearly_bike_rides
+                            name: Rides
+                            icon: 'mdi:bicycle'
               - entity: sensor.career_bike_distance
                 name: Career
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Career Rides
+                      content:
+                        type: entities
+                        entities:
+                          - entity: sensor.career_bike_distance
+                            name: Distance
+                            icon: 'mdi:map-marker-distance'
+                          - entity: sensor.career_bike_duration_calc
+                            name: Duration
+                            icon: 'mdi:timer'
+                          - entity: sensor.career_bike_calories
+                            name: Calories
+                            icon: 'mdi:fire'
+                          - entity: sensor.career_bike_climb
+                            name: Climb
+                            icon: 'mdi:slope-uphill'
+                          - entity: sensor.career_bike_rides
+                            name: Rides
+                            icon: 'mdi:bicycle'
       - type: 'custom:stack-in-card'
         cards:
           - type: picture-elements

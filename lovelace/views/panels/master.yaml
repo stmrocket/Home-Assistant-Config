@@ -7,8 +7,6 @@
 id: 10
 icon: mdi:castle
 title: Home
-popup_cards:
-  !include /config/lovelace/popup/popup_panel_master.yaml
 cards:
   #################################################################
   #                                                               #
@@ -84,7 +82,96 @@ cards:
             tap_action:
               action: toggle
             hold_action:
-              action: more-info
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Master Blinds
+                  content:
+                    type: custom:vertical-stack-in-card
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:button-card"
+                            entity: cover.left_master_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: Left
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: cover.center_master_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: Center
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: cover.right_master_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: Right
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:gap-card"
+
+                          - type: "custom:button-card"
+                            entity: cover.west_master_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: West
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:gap-card"
           - type: "custom:button-card"
             entity: light.master_bedroom_light
             color_type: icon
@@ -144,9 +231,69 @@ cards:
                 icon: mdi:alarm-off
             name: Work
             tap_action:
-              action: more-info
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Work Alarm
+                  content:
+                    type: custom:stack-in-card
+                    cards:
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - entity: input_boolean.work_alarm_enabled
+                            name: Enabled
+                          - entity: input_select.spotify_work_alarm_playlist
+                            name: "Playlist"
+                      - type: "custom:time-picker-card"
+                        entity: input_datetime.master_work_alarm
+                        name: Wake Time
+                        hour_mode: 12
+                        layout:
+                          name: inside
+                          align_controls: right
+                          hour_mode: single
+                      - type: "custom:time-picker-card"
+                        entity: input_datetime.work_leave_time
+                        name: Leave Time
+                        hour_mode: 12
+                        layout:
+                          name: inside
+                          align_controls: right
+                          hour_mode: single
             hold_action:
-              action: more-info
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Work Alarm
+                  content:
+                    type: custom:stack-in-card
+                    cards:
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - entity: input_boolean.work_alarm_enabled
+                            name: Enabled
+                          - entity: input_select.spotify_work_alarm_playlist
+                            name: "Playlist"
+                      - type: "custom:time-picker-card"
+                        entity: input_datetime.master_work_alarm
+                        name: Wake Time
+                        hour_mode: 12
+                        layout:
+                          name: inside
+                          align_controls: right
+                          hour_mode: single
+                      - type: "custom:time-picker-card"
+                        entity: input_datetime.work_leave_time
+                        name: Leave Time
+                        hour_mode: 12
+                        layout:
+                          name: inside
+                          align_controls: right
+                          hour_mode: single
           
           - type: "custom:button-card"
             entity: input_boolean.manual_alarm_enabled
@@ -159,9 +306,161 @@ cards:
                 icon: mdi:alarm-off
             name: Manual
             tap_action:
-              action: more-info
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Manual Alarm
+                  content:
+                    type: custom:stack-in-card
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:button-card"
+                            entity: input_boolean.manual_alarm_enabled
+                            color_type: icon
+                            color: rgb(228, 94, 101)
+                            state:
+                              - value: "on"
+                                icon: mdi:alarm-check
+                              - value: "off"
+                                icon: mdi:alarm-off
+                            name: Enable
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: input_boolean.manual_alarm_repeat
+                            color_type: icon
+                            color: rgb(228, 94, 101)
+                            state:
+                              - value: "on"
+                                icon: mdi:repeat
+                              - value: "off"
+                                icon: mdi:repeat-off
+                            name: Repeat
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: input_boolean.manual_alarm_horn
+                            color_type: icon
+                            state:
+                              - value: "on"
+                                icon: mdi:alarm-bell
+                                color: rgb(228, 94, 101)
+                                name: Horn
+                              - value: "off"
+                                icon: mdi:music
+                                color: rgb(228, 94, 101)
+                                name: Music
+                            hold_action:
+                              action: more-info
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:gap-card"
+
+                          - type: "custom:button-card"
+                            entity: input_boolean.manual_alarm_hvac
+                            color_type: icon
+                            color: rgb(228, 94, 101)
+                            icon: mdi:thermostat
+                            name: Resume
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:gap-card"
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - entity: input_select.spotify_manual_alarm_playlist
+                            name: "Playlist"
+                      - type: "custom:time-picker-card"
+                        entity: input_datetime.master_manual_alarm
+                        name: Wake Time
+                        hour_mode: 12
+                        layout:
+                          name: inside
+                          align_controls: right
+                          hour_mode: single
             hold_action:
-              action: more-info
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Manual Alarm
+                  content:
+                    type: custom:stack-in-card
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:button-card"
+                            entity: input_boolean.manual_alarm_enabled
+                            color_type: icon
+                            color: rgb(228, 94, 101)
+                            state:
+                              - value: "on"
+                                icon: mdi:alarm-check
+                              - value: "off"
+                                icon: mdi:alarm-off
+                            name: Enable
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: input_boolean.manual_alarm_repeat
+                            color_type: icon
+                            color: rgb(228, 94, 101)
+                            state:
+                              - value: "on"
+                                icon: mdi:repeat
+                              - value: "off"
+                                icon: mdi:repeat-off
+                            name: Repeat
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: input_boolean.manual_alarm_horn
+                            color_type: icon
+                            state:
+                              - value: "on"
+                                icon: mdi:alarm-bell
+                                color: rgb(228, 94, 101)
+                                name: Horn
+                              - value: "off"
+                                icon: mdi:music
+                                color: rgb(228, 94, 101)
+                                name: Music
+                            hold_action:
+                              action: more-info
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:gap-card"
+
+                          - type: "custom:button-card"
+                            entity: input_boolean.manual_alarm_hvac
+                            color_type: icon
+                            color: rgb(228, 94, 101)
+                            icon: mdi:thermostat
+                            name: Resume
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:gap-card"
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - entity: input_select.spotify_manual_alarm_playlist
+                            name: "Playlist"
+                      - type: "custom:time-picker-card"
+                        entity: input_datetime.master_manual_alarm
+                        name: Wake Time
+                        hour_mode: 12
+                        layout:
+                          name: inside
+                          align_controls: right
+                          hour_mode: single
 
           - type: "custom:button-card"
             entity: switch.water_projector
@@ -171,6 +470,7 @@ cards:
             name: Waves
             hold_action:
               action: more-info
+
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
@@ -339,3 +639,178 @@ cards:
             controls: true
             info: true
             progress: true
+          tap_action:
+            action: fire-dom-event
+            browser_mod:
+              service: browser_mod.popup
+              data:
+                title: Master Stereo
+                content:
+                  type: custom:vertical-stack-in-card
+                  cards:
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:gap-card"
+
+                        - type: "custom:button-card"
+                          color_type: icon
+                          color: rgb(255, 255, 255)
+                          icon: mdi:skip-backward
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/prev
+                              payload: 4
+
+                        - type: "custom:button-card"
+                          color_type: icon
+                          color: rgb(255, 255, 255)
+                          icon: mdi:play-pause
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/play
+                              payload: 4
+
+                        - type: "custom:button-card"
+                          color_type: icon
+                          color: rgb(255, 255, 255)
+                          icon: mdi:skip-forward
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/next
+                              payload: 4
+
+                        - type: "custom:gap-card"
+
+                    - type: horizontal-stack
+                      cards:
+                        #- type: "custom:gap-card"
+
+                        - type: "custom:button-card"
+                          entity: sensor.nuvo_zone_4_source
+                          color_type: icon
+                          state:
+                            - value: 1
+                              color: rgb(228, 94, 101)
+                            - value: 1
+                              operator: >
+                              color: rgb(255, 255, 255)
+                          icon: mdi:spotify
+                          name: Spotify
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/src
+                              payload: 4,1
+
+                        - type: "custom:button-card"
+                          entity: sensor.nuvo_zone_4_source
+                          color_type: icon
+                          state:
+                            - value: 2
+                              operator: <
+                              color: rgb(255, 255, 255)
+                            - value: 2
+                              color: rgb(228, 94, 101)
+                            - value: 2
+                              operator: >
+                              color: rgb(255, 255, 255)
+                          icon: mdi:cast-audio
+                          name: Cast
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/src
+                              payload: 4,2
+
+                        - type: "custom:button-card"
+                          entity: sensor.nuvo_zone_4_source
+                          color_type: icon
+                          state:
+                            - value: 3
+                              operator: <
+                              color: rgb(255, 255, 255)
+                            - value: 3
+                              color: rgb(228, 94, 101)
+                            - value: 3
+                              operator: >
+                              color: rgb(255, 255, 255)
+                          icon: mdi:amazon-alexa
+                          name: Alexa
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/src
+                              payload: 4,3
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:button-card"
+                          entity: sensor.nuvo_zone_4_source
+                          color_type: icon
+                          state:
+                            - value: 4
+                              operator: <
+                              color: rgb(255, 255, 255)
+                            - value: 4
+                              color: rgb(228, 94, 101)
+                            - value: 4
+                              operator: >
+                              color: rgb(255, 255, 255)
+                          icon: mdi:server
+                          name: Server 1
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/src
+                              payload: 4,4
+
+                        - type: "custom:button-card"
+                          entity: sensor.nuvo_zone_4_source
+                          color_type: icon
+                          state:
+                            - value: 5
+                              operator: <
+                              color: rgb(255, 255, 255)
+                            - value: 5
+                              color: rgb(228, 94, 101)
+                            - value: 5
+                              operator: >
+                              color: rgb(255, 255, 255)
+                          icon: mdi:server
+                          name: Server 2
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/src
+                              payload: 4,5
+
+                        - type: "custom:button-card"
+                          entity: sensor.nuvo_zone_4_source
+                          color_type: icon
+                          state:
+                            - value: 6
+                              operator: <
+                              color: rgb(255, 255, 255)
+                            - value: 6
+                              color: rgb(228, 94, 101)
+                            - value: 6
+                              operator: >
+                              color: rgb(255, 255, 255)
+                          icon: mdi:video-input-component
+                          name: Aux
+                          tap_action:
+                            action: call-service
+                            service: mqtt.publish
+                            service_data:
+                              topic: nuvo/command/set/zone/src
+                              payload: 4,6          

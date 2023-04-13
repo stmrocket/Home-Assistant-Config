@@ -6,8 +6,6 @@
 id: 2
 icon: mdi:thermostat
 title: HVAC
-popup_cards:
-  !include /config/lovelace/popup/popup_hvac.yaml
 cards:
   #################################################################
   #                                                               #
