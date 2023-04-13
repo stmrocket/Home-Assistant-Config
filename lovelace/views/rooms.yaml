@@ -8,8 +8,6 @@
 id: 1
 icon: mdi:lightbulb-on
 title: Rooms
-popup_cards:
-  !include /config/lovelace/popup/popup_rooms.yaml
 cards:
   - type: vertical-stack
     cards:
