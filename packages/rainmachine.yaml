@@ -125,6 +125,18 @@ automation:
       - service: switch.turn_off
         entity_id: switch.back_drip_valve
 
+  - alias: Back Drip Valve Failsafe
+    id: a644784a-13bf-4ad3-a87f-078e100db760
+    trigger:
+      - platform: state
+        entity_id: switch.back_drip_valve
+        to: "on"
+        for:
+          hours: 1
+    action:
+      - service: switch.turn_off
+        entity_id: switch.back_drip_valve
+
 script:
   rainmachine_program_1_on:
     sequence:
