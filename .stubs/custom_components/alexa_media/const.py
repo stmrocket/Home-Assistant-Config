@@ -8,9 +8,16 @@ https://community.home-assistant.io/t/echo-devices-alexa-as-media-player-testers
 """
 from datetime import timedelta
 
-__version__ = "3.11.3"
+from homeassistant.const import (
+    CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+    CONCENTRATION_PARTS_PER_MILLION,
+    PERCENTAGE,
+)
+
+__version__ = "4.6.2"
 PROJECT_URL = "https://github.com/custom-components/alexa_media_player/"
 ISSUE_URL = f"{PROJECT_URL}issues"
+NOTIFY_URL = f"{PROJECT_URL}wiki/Configuration%3A-Notification-Component#use-the-notifyalexa_media-service"
 
 DOMAIN = "alexa_media"
 DATA_ALEXAMEDIA = "alexa_media"
@@ -29,11 +36,11 @@ DEPENDENT_ALEXA_COMPONENTS = [
     "sensor",
     "alarm_control_panel",
     "light",
+    "binary_sensor",
 ]
 
 HTTP_COOKIE_HEADER = "# HTTP Cookie File"
 CONF_ACCOUNTS = "accounts"
-CONF_COOKIES_TXT = "cookies_txt"
 CONF_DEBUG = "debug"
 CONF_HASS_URL = "hass_url"
 CONF_INCLUDE_DEVICES = "include_devices"
@@ -43,9 +50,9 @@ CONF_EXTENDED_ENTITY_DISCOVERY = "extended_entity_discovery"
 CONF_SECURITYCODE = "securitycode"
 CONF_OTPSECRET = "otp_secret"
 CONF_PROXY = "proxy"
+CONF_PROXY_WARNING = "proxy_warning"
 CONF_TOTP_REGISTER = "registered"
 CONF_OAUTH = "oauth"
-CONF_OAUTH_LOGIN = "oauth_login"
 DATA_LISTENER = "listener"
 
 EXCEPTION_TEMPLATE = "An exception of type {0} occurred. Arguments:\n{1!r}"
@@ -59,6 +66,7 @@ SERVICE_FORCE_LOGOUT = "force_logout"
 RECURRING_PATTERN = {
     None: "Never Repeat",
     "P1D": "Every day",
+    "P1M": "Every month",
     "XXXX-WE": "Weekends",
     "XXXX-WD": "Weekdays",
     "XXXX-WXX-1": "Every Monday",
@@ -70,6 +78,15 @@ RECURRING_PATTERN = {
     "XXXX-WXX-7": "Every Sunday",
 }
 
+RECURRING_DAY = {
+    "MO": 1,
+    "TU": 2,
+    "WE": 3,
+    "TH": 4,
+    "FR": 5,
+    "SA": 6,
+    "SU": 7,
+}
 RECURRING_PATTERN_ISO_SET = {
     None: {},
     "P1D": {1, 2, 3, 4, 5, 6, 7},
@@ -87,19 +104,30 @@ RECURRING_PATTERN_ISO_SET = {
 ATTR_MESSAGE = "message"
 ATTR_EMAIL = "email"
 ATTR_NUM_ENTRIES = "entries"
-STARTUP = """
+STARTUP = f"""
 -------------------------------------------------------------------
-{}
-Version: {}
+{DOMAIN}
+Version: {__version__}
 This is a custom component
 If you have any issues with this you need to open an issue here:
-{}
+{ISSUE_URL}
 -------------------------------------------------------------------
-""".format(
-    DOMAIN, __version__, ISSUE_URL
-)
+"""
 
 AUTH_CALLBACK_PATH = "/auth/alexamedia/callback"
 AUTH_CALLBACK_NAME = "auth:alexamedia:callback"
 AUTH_PROXY_PATH = "/auth/alexamedia/proxy"
 AUTH_PROXY_NAME = "auth:alexamedia:proxy"
+
+ALEXA_UNIT_CONVERSION = {
+    "Alexa.Unit.Percent": PERCENTAGE,
+    "Alexa.Unit.PartsPerMillion": CONCENTRATION_PARTS_PER_MILLION,
+    "Alexa.Unit.Density.MicroGramsPerCubicMeter": CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+}
+
+ALEXA_ICON_CONVERSION = {
+    "Alexa.AirQuality.CarbonMonoxide": "mdi:molecule-co",
+    "Alexa.AirQuality.Humidity": "mdi:water-percent",
+    "Alexa.AirQuality.IndoorAirQuality": "mdi:numeric",
+}
+ALEXA_ICON_DEFAULT = "mdi:molecule"

@@ -1,0 +1,50 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Device is already configured.",
+            "no_additional": "No additional devices found."
+        },
+        "error": {
+            "generic_hdhomerun_error": "{error_message}",
+            "timeout_error": "Timeout connecting to device."
+        },
+        "flow_title": "{name}",
+        "step": {
+            "friendly_name": {
+                "data": {
+                    "friendly_name": "Friendly name"
+                },
+                "title": "Friendly name"
+            },
+            "select_device": {
+                "description": "Select the device from the list below.<br />Devices already configured are not shown in the list."
+            },
+            "user": {
+                "data": {
+                    "host": "Host"
+                },
+                "description": "Enter the address of an HDHomeRun device on the network.<br />Leave blank to invoke discovery.",
+                "title": "Enter an address"
+            }
+        },
+        "title": "HDHomeRun"
+    },
+    "options": {
+        "step": {
+            "options": {
+                "data": {
+                    "channel_entity_picture_path": "Channel logo path",
+                    "channel_format":"Pick the format you'd like the channel to be displayed in"
+                },
+                "title": "Options"
+            },
+            "timeouts": {
+                "data": {
+                    "scan_interval": "Scan interval (in seconds)",
+                    "scan_interval_tuner_status": "Tuner status update (in seconds)"
+                },
+                "title": "Timeouts"
+            }
+        }
+    }
+}

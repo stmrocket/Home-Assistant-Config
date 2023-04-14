@@ -2,10 +2,16 @@
 from __future__ import annotations
 
 import logging
+import datetime
+import pytz
+from tzlocal import get_localzone
 
-from homeassistant.components.sensor import SensorEntity, SensorStateClass
+from homeassistant.components.sensor import (
+    SensorEntity,
+    SensorDeviceClass,
+)
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_ATTRIBUTION, CONF_ID, DEVICE_CLASS_TIMESTAMP
+from homeassistant.const import ATTR_ATTRIBUTION, CONF_ID
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import (
@@ -35,16 +41,17 @@ async def async_setup_entry(
     entities = []
     for (
         sensor_type,
-        (name, unit, icon, device_class, enabled_by_default),
+        (name, unit, icon, device_class, state_class, enabled_by_default),
     ) in GARMIN_ENTITY_LIST.items():
 
         _LOGGER.debug(
-            "Registering entity: %s, %s, %s, %s, %s, %s",
+            "Registering entity: %s, %s, %s, %s, %s, %s, %s",
             sensor_type,
             name,
             unit,
             icon,
             device_class,
+            state_class,
             enabled_by_default,
         )
         entities.append(
@@ -56,6 +63,7 @@ async def async_setup_entry(
                 unit,
                 icon,
                 device_class,
+                state_class,
                 enabled_by_default,
             )
         )
@@ -75,6 +83,7 @@ class GarminConnectSensor(CoordinatorEntity, SensorEntity):
         unit,
         icon,
         device_class,
+        state_class,
         enabled_default: bool = True,
     ):
         """Initialize a Garmin Connect sensor."""
@@ -83,14 +92,15 @@ class GarminConnectSensor(CoordinatorEntity, SensorEntity):
         self._unique_id = unique_id
         self._type = sensor_type
         self._device_class = device_class
+        self._state_class = state_class
         self._enabled_default = enabled_default
 
         self._attr_name = name
         self._attr_device_class = self._device_class
         self._attr_icon = icon
-        self._attr_unit_of_measurement = unit
+        self._attr_native_unit_of_measurement = unit
         self._attr_unique_id = f"{self._unique_id}_{self._type}"
-        self._attr_state_class = SensorStateClass.TOTAL
+        self._attr_state_class = state_class
 
     @property
     def native_value(self):
@@ -108,12 +118,22 @@ class GarminConnectSensor(CoordinatorEntity, SensorEntity):
                 self.coordinator.data[self._type]
             )
             if active_alarms:
-                return active_alarms[0]
+                date_time_obj = datetime.datetime.strptime(active_alarms[0], "%Y-%m-%dT%H:%M:%S")
+                tz = get_localzone()
+                timezone = pytz.timezone(tz.zone)
+                timezone_date_time_obj = timezone.localize(date_time_obj)
+                return timezone_date_time_obj
             else:
                 return None
+        elif self._type == "stressQualifier":
+                return value
 
-        if self._device_class == DEVICE_CLASS_TIMESTAMP:
-            return value
+        if self._device_class == SensorDeviceClass.TIMESTAMP:
+            date_time_obj = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+            tz = get_localzone()
+            timezone = pytz.timezone(tz.zone)
+            timezone_date_time_obj = timezone.localize(date_time_obj)
+            return timezone_date_time_obj
 
         return round(value, 2)
 
