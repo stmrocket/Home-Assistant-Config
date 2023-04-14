@@ -8,8 +8,6 @@
 id: 7
 icon: mdi:cog
 title: Settings
-popup_cards:
-  !include /config/lovelace/popup/popup_settings.yaml
 
 cards:
   - type: vertical-stack
