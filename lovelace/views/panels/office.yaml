@@ -83,7 +83,7 @@ cards:
             browser_mod:
               service: browser_mod.popup
               data:
-                title: House Blinds
+                title: Office NuVo
                 content:
                   type: custom:vertical-stack-in-card
                   cards:
@@ -462,7 +462,7 @@ cards:
             browser_mod:
               service: browser_mod.popup
               data:
-                title: House Blinds
+                title: Office NuVo
                 content:
                   type: custom:vertical-stack-in-card
                   cards:
