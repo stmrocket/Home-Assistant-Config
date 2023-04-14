@@ -3,12 +3,8 @@
 # Midnight Theme
 #
 midnight-tablet:
-  card-mod-theme: midnight-tablet
-  card-mod-root: |
-    app-toolbar {
-      display: none;
-    }
 
+  ha-card-border-width: 0px
   accent-color: "#E45E65"
   card-background-color: "var(--primary-background-color)"
   dark-primary-color: "var(--accent-color)"
@@ -81,3 +77,17 @@ midnight-tablet:
   toggle-button-color: "var(--primary-color)"
   ha-card-border-radius: "13px"
   ha-card-background: "rgba(150, 150, 150, 0.1)"
+  state-alarm_control_panel-disarmed-color: "#4CAF50"
+  state-alarm_control_panel-armed_away-color: "#F44336"
+  state-alarm_control_panel-armed_home-color: "#F44336"
+  state-alarm_control_panel-armed_night-color: "#F44336"
+  state-lock-locked-color: "#ffffff"
+
+  popup-min-width: 400px
+  popup-max-width: 600px
+  popup-border-width: var(--ha-card-border-width, 2px)
+  popup-border-color: var(--ha-card-border-color, var(--divider-color, #eee))
+  popup-border-radius: 13px
+  popup-background-color: "#383C45"
+  popup-padding-x: 0px
+  popup-padding-y: 0px
