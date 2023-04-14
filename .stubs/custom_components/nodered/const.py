@@ -2,7 +2,7 @@
 # Base component constants
 DOMAIN = "nodered"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "1.0.8"
+VERSION = "1.2.0"
 
 ISSUE_URL = "https://github.com/zachowj/hass-node-red/issues"
 
@@ -17,6 +17,7 @@ CONF_DATA = "data"
 CONF_DEVICE_INFO = "device_info"
 CONF_DEVICE_TRIGGER = "device_trigger"
 CONF_ENABLED = "enabled"
+CONF_ENTITY_PICTURE = "entity_picture"
 CONF_LAST_RESET = "last_reset"
 CONF_NAME = "name"
 CONF_NODE_ID = "node_id"
@@ -36,11 +37,12 @@ NODERED_DISCOVERY = "nodered_discovery"
 NODERED_DISCOVERY_NEW = "nodered_discovery_new_{}"
 NODERED_DISCOVERY_UPDATED = "nodered_discovery_updated_{}"
 NODERED_ENTITY = "nodered_entity_{}_{}"
+NODERED_CONFIG_UPDATE = "nodered_config_update_{}_{}"
 
 SERVICE_TRIGGER = "trigger"
 
 # Defaults
-NAME = DOMAIN
+NAME = "Node-RED Companion"
 SWITCH_ICON = "mdi:electric-switch-closed"
 
 STARTUP_MESSAGE = f"""

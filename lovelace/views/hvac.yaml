@@ -127,7 +127,7 @@ cards:
                   browser_mod:
                     service: browser_mod.popup
                     data:
-                      title: House Blinds
+                      title: Filter Status
                       content:
                         type: vertical-stack
                         cards:

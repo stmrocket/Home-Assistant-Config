@@ -4,6 +4,5 @@
   "documentation": "",
   "dependencies": ["lovelace"],
   "codeowners": [],
-  "requirements": ["jinja2"],
-  "version": "0.1.1"
+  "requirements": ["jinja2"]
 }

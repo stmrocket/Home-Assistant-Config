@@ -36,3 +36,15 @@ reset_all_entity_counters:
       data_template:
         entity_id: input_number.sensor_count_expected
         value: "{{ states('sensor.sensor_count') | float(none) }}"
+
+tablets_reload:
+  sequence:
+    - service: button.press
+      entity_id: 
+        - button.den_tablet_load_start_url
+        - button.kitchen_tablet_load_start_url
+        - button.master_bedroom_tablet_load_start_url
+        - button.office_tablet_load_start_url
+        - button.shack_tablet_load_start_url
+        - button.entry_tablet_load_start_url
+        - button.server_tablet_load_start_url

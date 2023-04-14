@@ -30,27 +30,42 @@ card:
           icon: mdi:pine-tree
           name: Indoor
           hold_action:
-            action: more-info
-        
-        # - type: custom:button-card
-        #   entity: sensor.candle_dummy
-        #   color_type: icon
-        #   icon: mdi:candle
-        #   name: Candles
-        #   tap_action:
-        #     action: call-service
-        #     service: mqtt.publish
-        #     service_data:
-        #       topic: ir/all/cmnd/irsend
-        #       payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
-        #   double_tap_action:
-        #     action: call-service
-        #     service: mqtt.publish
-        #     service_data:
-        #       topic: ir/all/cmnd/irsend
-        #       payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
-        #   hold_action:
-        #     action: more-info
+            action: fire-dom-event
+            browser_mod:
+              service: browser_mod.popup
+              data:
+                title: Indoor Christmas
+                content:
+                  type:  entities
+                  entities:
+                    - entity: switch.left_christmas_tree
+                      name: Left Tree
+                    - entity: switch.christmas_tree
+                      name: Right Tree
+                    - entity: switch.christmas_garland
+                      name: Garland
+                    - entity: switch.christmas_village
+                      name: Villiage
+                    - entity: switch.dining_room_decor
+                      name: Dining
+                    - entity: switch.entry_hall_decor
+                      name: Entry
+                    - entity: switch.master_bedroom_decor
+                      name: Master
+                    - entity: switch.snowman
+                      name: Snow Man
+                    - entity: switch.kitchen_garland
+                      name: Kitchen Garland
+                    - entity: switch.kitchen_christmas_tree
+                      name: Kitchen Tree
+                    - entity: switch.hall_decor
+                      name: Hall
+                    - entity: switch.office_decor
+                      name: Office
+                    - entity: switch.metal_snowman
+                      name: Metal Snow Man
+                    - entity: switch.ceramic_tree
+                      name: Ceramic Tree
 
         - type: "custom:button-card"
           entity: input_boolean.christmas_show
@@ -59,19 +74,32 @@ card:
           icon: mdi:pine-tree
           name: Show
           tap_action:
-            action: more-info
-
-        # - type: "custom:button-card"
-        #   entity: input_boolean.donation_box
-        #   color_type: icon
-        #   color: rgb(228, 94, 101)
-        #   state:
-        #     - value: "on"
-        #       icon: mdi:door-open
-        #     - value: "off"
-        #       icon: mdi:door-closed
-        #   name: Donation
-        #   hold_action:
-        #     action: more-info
+            action: fire-dom-event
+            browser_mod:
+              service: browser_mod.popup
+              data:
+                title: Outdoor Christmas
+                content:
+                  type: entities
+                  entities:
+                    - entity: input_boolean.christmas_show
+                    - entity: sensor.fpp_master_playlist
+                      name: Playlist
+                    - entity: sensor.fpp_master_playlist_section
+                      name: Playlist Section
+                    - entity: sensor.fpp_master_sequence
+                      name: Sequence
+                    - entity: switch.christmas_amplifier
+                      name: Amplifier
+                    - entity: switch.christmas_security_lights
+                      name: Security Lights      
+                    - type: "custom:time-picker-card"
+                      entity: input_datetime.amplifier_shutdown_time
+                      name: Amplifier Off
+                      hour_mode: 12
+                      layout:
+                        name: inside
+                        align_controls: right
+                        hour_mode: single
 
         - type: custom:gap-card

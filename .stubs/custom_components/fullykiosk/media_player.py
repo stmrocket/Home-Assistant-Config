@@ -2,12 +2,16 @@
 import logging
 
 import voluptuous as vol
+from homeassistant.components import media_source
 from homeassistant.components.media_player import (
     ATTR_MEDIA_VOLUME_LEVEL,
     SERVICE_VOLUME_SET,
     SUPPORT_PLAY_MEDIA,
     SUPPORT_VOLUME_SET,
     MediaPlayerEntity,
+)
+from homeassistant.components.media_player.browse_media import (
+    async_process_play_media_url,
 )
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers import entity_platform
@@ -49,7 +53,9 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     )
 
     platform.async_register_entity_service(
-        SERVICE_LOAD_URL, {vol.Required(ATTR_URL): cv.url}, "async_fullykiosk_load_url"
+        SERVICE_LOAD_URL,
+        {vol.Required(ATTR_URL): cv.string},
+        "async_fullykiosk_load_url",
     )
 
     platform.async_register_entity_service(
@@ -143,6 +149,10 @@ class FullyMediaPlayer(CoordinatorEntity, MediaPlayerEntity):
 
     async def async_play_media(self, media_type, media_id, **kwargs):
         """Play a piece of media."""
+        if media_source.is_media_source_id(media_id):
+            play_item = await media_source.async_resolve_media(self.hass, media_id)
+            media_id = async_process_play_media_url(self.hass, play_item.url)
+
         await self.async_fullykiosk_play_audio(media_id, AUDIOMANAGER_STREAM_MUSIC)
 
     async def async_set_volume_level(self, volume):

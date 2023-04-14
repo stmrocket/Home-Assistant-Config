@@ -401,6 +401,16 @@ cards:
                 content:
                   type: custom:vertical-stack-in-card
                   cards:
+                    - type: entities
+                      show_header_toggle: false
+                      entities:
+                        - entity: input_select.spotify_playlist
+                        - entity: script.spotify_change_playlist
+                          name: Change Playlist
+                    - type: horizontal-stack
+                      cards:
+                        - type: "custom:gap-card"
+
                     - type: horizontal-stack
                       cards:
                         - type: "custom:gap-card"

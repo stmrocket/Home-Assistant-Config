@@ -44,20 +44,25 @@
       to: armed_night
   action:
     - service: switch.turn_on
+      continue_on_error: true
       entity_id:
         - switch.master_bedroom_fan
         - switch.nuvo_zone_4_power
     - service: light.turn_off
+      continue_on_error: true
       entity_id: light.master_bedroom_light
     - service: mqtt.publish
+      continue_on_error: true
       data:
         topic: nuvo/command/set/zone/src
         payload: 4,2
     - service: mqtt.publish
+      continue_on_error: true
       data:
         topic: nuvo/command/set/zone/vol
         payload: 4,40
     - service: switch.turn_off
+      continue_on_error: true
       entity_id: switch.nuvo_zone_5_power
 
 - alias: Update Wunderground

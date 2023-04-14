@@ -307,10 +307,17 @@
       data:
         entity_id: camera.front_porch
         filename: /config/www/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
-    - service: browser_mod.more_info
-      entity_id: camera.front_porch
-    - service: timer.start
-      entity_id: timer.doorbell_popup
+    - service: browser_mod.popup
+      data:  
+        auto_close: true
+        timeout: 30000
+        content:
+          type: horizontal-stack
+          cards:
+            - type: picture-entity
+              show_state: false
+              show_name: false        
+              entity: camera.front_porch
     - service: notify.mobile_app_shawn_7t
       data_template:
         title: Doorbell
@@ -344,16 +351,6 @@
         data:
           images:
             - /config/www/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
-
-- alias: Close Doorbell Popup When Timer Expires
-  id: 7b1e04c9-1a38-4b88-8814-bc730d7c89a3
-  trigger:
-    - event_data:
-        entity_id: timer.doorbell_popup
-      event_type: timer.finished
-      platform: event
-  action:
-    - service: browser_mod.close_popup
 
 - alias: Remote Wake
   id: e23def72-8db0-46ed-9a8c-b8f7b273ca07
