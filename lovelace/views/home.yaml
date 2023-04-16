@@ -1110,9 +1110,9 @@ cards:
           - entity: camera.den
           - entity: camera.kitchen
           - entity: camera.office
-          - entity: camera.master
-          - entity: camera.hall
-          - entity: camera.guest
+          - entity: camera.master_bedroom
+          - entity: camera.hallway
+          - entity: camera.guest_room
           - entity: camera.shack
 
   #################################################################

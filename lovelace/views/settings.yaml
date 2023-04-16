@@ -1096,8 +1096,8 @@ cards:
                     9000: "#FF8C06"
 
             - type: picture-entity
-              entity: camera.prusa_mk3
-              camera_image: camera.prusa_mk3
+              entity: camera.prusa
+              camera_image: camera.prusa
               camera_view: live
               show_name: false
               show_state: false
