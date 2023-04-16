@@ -284,11 +284,9 @@
 - alias: Doorbell Alert
   id: 90304552-a927-40b7-98d0-a87a596e1017
   trigger:
-    - platform: mqtt
-      topic: parrot/tele/doorbell
     - platform: state
-      entity_id: sensor.elk_doorbell
-      to: Violated
+      entity_id: binary_sensor.front_door_button_pressed
+      to: "on"
   action:
     - service: mqtt.publish
       data_template:
