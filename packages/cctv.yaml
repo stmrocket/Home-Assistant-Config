@@ -266,6 +266,285 @@ automation:
             images:
               - /config/www/cctv/front_porch_person.jpg
               - /config/www/cctv/front_porch_full.jpg
+  
+  - alias: CCTV Garage Person Detected
+    id: d801733d-34e8-45b1-9c6d-be5adf1e553f
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.garage_person_occupancy
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: 'on'
+    action:
+      - service: camera.snapshot
+        continue_on_error: true
+        data:
+          entity_id: camera.garage
+          filename: /config/www/cctv/garage_full.jpg
+      - service: camera.snapshot
+        continue_on_error: true
+        data:
+          entity_id: camera.garage_person
+          filename: /config/www/cctv/garage_person.jpg
+      - service: notify.cctv_email
+        continue_on_error: true
+        data:
+          title: "CCTV Alarm: Garage - Person Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A person was detected on the garage camera at {{now().strftime('%H:%M:%S') }}."
+          data: 
+            images:
+              - /config/www/cctv/garage_person.jpg
+              - /config/www/cctv/garage_full.jpg
+  
+  - alias: CCTV West Front Cat Detected
+    id: 222aba6c-afa4-4226-b39e-de3f71662a9a
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.west_front_cat_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.frigate_enabled_front
+        state: "on"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.west_front
+          filename: /config/www/cctv/west_front_full.jpg
+      - service: camera.snapshot
+        data:
+          entity_id: camera.west_front_cat
+          filename: /config/www/cctv/west_front_cat.jpg
+      - service: notify.cctv_email
+        data:
+          title: "CCTV Alarm: West Front - Cat Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A cat was detected on the west front camera at {{now().strftime('%H:%M:%S') }}."
+          data:
+            images:
+              - /config/www/cctv/west_front_cat.jpg
+              - /config/www/cctv/west_front_full.jpg
+
+  - alias: CCTV East Front Cat Detected
+    id: 0575e725-ee28-48b4-a16d-c1abd1d5df62
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.east_front_cat_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.frigate_enabled_front
+        state: "on"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.east_front
+          filename: /config/www/cctv/east_front_full.jpg
+      - service: camera.snapshot
+        data:
+          entity_id: camera.east_front_cat
+          filename: /config/www/cctv/east_front_cat.jpg
+      - service: notify.cctv_email
+        data:
+          title: "CCTV Alarm: East Front - Cat Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A cat was detected on the east front camera at {{now().strftime('%H:%M:%S') }}."
+          data:
+            images:
+              - /config/www/cctv/east_front_cat.jpg
+              - /config/www/cctv/east_front_full.jpg
+
+  - alias: CCTV West Side Cat Detected
+    id: 4be4a812-c669-4bb4-a93d-61c838953e73
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.west_side_cat_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.frigate_enabled_front
+        state: "on"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.west_side
+          filename: /config/www/cctv/west_side_full.jpg
+      - service: camera.snapshot
+        data:
+          entity_id: camera.west_side_cat
+          filename: /config/www/cctv/west_side_cat.jpg
+      - service: notify.cctv_email
+        data:
+          title: "CCTV Alarm: West Side - Cat Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A cat was detected on the west side camera at {{now().strftime('%H:%M:%S') }}."
+          data:
+            images:
+              - /config/www/cctv/west_side_cat.jpg
+              - /config/www/cctv/west_side_full.jpg
+
+  - alias: CCTV East Side Cat Detected
+    id: d6ba9ca2-2ec0-4ef4-8b6a-d8af97842a3f
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.east_side_cat_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.frigate_enabled_back
+        state: "on"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.east_side
+          filename: /config/www/cctv/east_side_full.jpg
+      - service: camera.snapshot
+        data:
+          entity_id: camera.east_side_cat
+          filename: /config/www/cctv/east_side_cat.jpg
+      - service: notify.cctv_email
+        data:
+          title: "CCTV Alarm: East Side - Cat Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A cat was detected on the east side camera at {{now().strftime('%H:%M:%S') }}."
+          data:
+            images:
+              - /config/www/cctv/east_side_cat.jpg
+              - /config/www/cctv/east_side_full.jpg
+
+  - alias: CCTV Back Yard Cat Detected
+    id: 8fb6c7cd-2915-45b3-83e2-3b12724ca6da
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.back_yard_cat_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.frigate_enabled_back
+        state: "on"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.back_yard
+          filename: /config/www/cctv/back_yard_full.jpg
+      - service: camera.snapshot
+        data:
+          entity_id: camera.back_yard_cat
+          filename: /config/www/cctv/back_yard_cat.jpg
+      - service: notify.cctv_email
+        data:
+          title: "CCTV Alarm: Back Yard - Cat Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A cat was detected on the back yard camera at {{now().strftime('%H:%M:%S') }}."
+          data:
+            images:
+              - /config/www/cctv/back_yard_cat.jpg
+              - /config/www/cctv/back_yard_full.jpg
+
+  - alias: CCTV Back Porch Cat Detected
+    id: 74430858-a2a9-45d7-b247-7f604ca3ecc6
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.back_porch_cat_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.frigate_enabled_back
+        state: "on"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.back_porch
+          filename: /config/www/cctv/back_porch_full.jpg
+      - service: camera.snapshot
+        data:
+          entity_id: camera.back_porch_cat
+          filename: /config/www/cctv/back_porch_cat.jpg
+      - service: notify.cctv_email
+        data:
+          title: "CCTV Alarm: Back Porch - Cat Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A cat was detected on the back porch camera at {{now().strftime('%H:%M:%S') }}."
+          data:
+            images:
+              - /config/www/cctv/back_porch_cat.jpg
+              - /config/www/cctv/back_porch_full.jpg
+
+  - alias: CCTV Front Porch Cat Detected
+    id: 391c6db8-6e13-4650-a53c-374b69cccaa8
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.front_porch_cat_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.frigate_enabled_front
+        state: "on"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.front_porch
+          filename: /config/www/cctv/front_porch_full.jpg
+      - service: camera.snapshot
+        data:
+          entity_id: camera.front_porch_cat
+          filename: /config/www/cctv/front_porch_cat.jpg
+      - service: notify.cctv_email
+        data:
+          title: "CCTV Alarm: Front Porch - Cat Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A cat was detected on the front porch camera at {{now().strftime('%H:%M:%S') }}."
+          data:
+            images:
+              - /config/www/cctv/front_porch_cat.jpg
+              - /config/www/cctv/front_porch_full.jpg
+  
+  - alias: CCTV Garage Cat Detected
+    id: d801733d-34e8-45b1-9c6d-be5adf1e553f
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.garage_cat_occupancy
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_boolean.frigate_enabled
+        state: 'on'
+    action:
+      - service: camera.snapshot
+        continue_on_error: true
+        data:
+          entity_id: camera.garage
+          filename: /config/www/cctv/garage_full.jpg
+      - service: camera.snapshot
+        continue_on_error: true
+        data:
+          entity_id: camera.garage_cat
+          filename: /config/www/cctv/garage_cat.jpg
+      - service: notify.cctv_email
+        continue_on_error: true
+        data:
+          title: "CCTV Alarm: Garage - Cat Detected {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "A cat was detected on the garage camera at {{now().strftime('%H:%M:%S') }}."
+          data: 
+            images:
+              - /config/www/cctv/garage_cat.jpg
+              - /config/www/cctv/garage_full.jpg              
 
   - alias: Start Reset Timer When Frigate Disabled
     id: 891a2380-a10a-43bc-ab05-2a490d6f4f61
