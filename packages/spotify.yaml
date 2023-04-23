@@ -147,7 +147,7 @@ script:
       - service: media_player.select_source
         data:
           entity_id: media_player.spotify_home
-          source: "Shawn's Echo Dot"
+          source: "raspotify (raspotify)"
       - service: media_player.media_play
         entity_id: media_player.spotify_home
       - service: homeassistant.update_entity
