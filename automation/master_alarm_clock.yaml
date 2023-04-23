@@ -51,6 +51,23 @@
       entity_id: input_boolean.manual_alarm_horn
       state: "off"
   action:
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/zone/vol
+        payload: 4,60
+    - delay:
+        milliseconds: 500
+    - service: mqtt.publish
+      data:
+        topic: nuvo/command/set/zone/src
+        payload: 4,1
+    - delay:
+        milliseconds: 500
+    - service: switch.turn_on
+      data:
+        entity_id: switch.nuvo_zone_4_power
+    - service: media_player.media_play
+      entity_id: media_player.spotify_home
     - choose:
         - conditions:
             - condition: template
@@ -65,20 +82,6 @@
                 entity_id: input_select.spotify_playlist
                 option: "{{ states('input_select.spotify_manual_alarm_playlist')}}"
             - service: script.spotify_change_playlist
-    - service: mqtt.publish
-      data:
-        topic: nuvo/command/set/zone/vol
-        payload: 4,60
-    - delay:
-        milliseconds: 500
-    - service: mqtt.publish
-      data:
-        topic: nuvo/command/set/zone/src
-        payload: 4,1
-    - delay:
-        milliseconds: 500
-    - service: media_player.media_play
-      entity_id: media_player.spotify_home
     - service: light.turn_on
       data:
         entity_id: light.master_bedroom_lamps
@@ -162,20 +165,6 @@
       entity_id: input_boolean.work_alarm_ringing
       state: "on"
   action:
-    - choose:
-        - conditions:
-            - condition: template
-              value_template: "{{ not states('input_select.spotify_playlist') == states('input_select.spotify_work_alarm_playlist')}}"
-          sequence:
-            - service: input_select.select_option
-              data_template:
-                entity_id: input_select.spotify_restore_playlist
-                option: "{{ states('input_select.spotify_playlist')}}"
-            - service: input_select.select_option
-              data_template:
-                entity_id: input_select.spotify_playlist
-                option: "{{ states('input_select.spotify_work_alarm_playlist')}}"
-            - service: script.spotify_change_playlist
     - service: light.turn_on
       data:
         entity_id: light.master_bedroom_lamps
@@ -215,6 +204,20 @@
         milliseconds: 500
     - service: media_player.media_play
       entity_id: media_player.spotify_home
+    - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ not states('input_select.spotify_playlist') == states('input_select.spotify_work_alarm_playlist')}}"
+          sequence:
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.spotify_restore_playlist
+                option: "{{ states('input_select.spotify_playlist')}}"
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.spotify_playlist
+                option: "{{ states('input_select.spotify_work_alarm_playlist')}}"
+            - service: script.spotify_change_playlist
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.master_lamp_timer
