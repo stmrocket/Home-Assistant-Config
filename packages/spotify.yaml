@@ -175,6 +175,16 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DXcb6CQIjdqKy
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -188,6 +198,16 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DX5SzTPIoCKiv
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -201,6 +221,16 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DWVYgpMbMPJMz
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -214,6 +244,16 @@ script:
                   media_content_id: spotify:playlist:2BdKasaYAwvSYviEsz214Y
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -227,6 +267,16 @@ script:
                   media_content_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -240,6 +290,16 @@ script:
                   media_content_id: spotify:playlist:0vW1PaZHXiamxAgdRD1loI
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -253,6 +313,16 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DWViXqZVTGO3Z
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -266,6 +336,16 @@ script:
                   media_content_id: spotify:playlist:7J8HlMdOq82WJAU6JmhR5d
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -279,6 +359,16 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -292,6 +382,16 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DX5OrO2Jxuvdn
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -305,6 +405,16 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -318,6 +428,16 @@ script:
                   media_content_id: spotify:playlist:50Yv0e9mTtNO2vJqwwNfbp
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
           - conditions:
               - condition: state
@@ -331,6 +451,16 @@ script:
                   media_content_id: spotify:playlist:37i9dQZF1DWUileP28ODwg
               - service: homeassistant.update_entity
                 entity_id: media_player.spotify_home
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: false
+              - delay:
+                  seconds: 1
+              - service: media_player.shuffle_set
+                data:
+                  entity_id: media_player.spotify_home
+                  shuffle: true
 
   spotify_restore_playlist:
     sequence:
