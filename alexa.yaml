@@ -67,6 +67,7 @@ smart_home:
       - switch.houston_metar_map_power
       - switch.texas_metar_map_power
       - switch.us_metar_map_power
+      - switch.bike_fan
 
       #INPUT BOOLEAN
       - input_boolean.bedtime_trigger
