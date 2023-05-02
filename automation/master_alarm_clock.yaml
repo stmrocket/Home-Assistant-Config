@@ -239,13 +239,13 @@
 - alias: Master Wake Work Snooze Start
   id: ee0cda71-bbd3-4bef-abc1-ec2926161526
   trigger:
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_1
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_2
+    - platform: state
+      entity_id: sensor.master_snooze_button_1_action
+      to: "single"
+    - platform: state
+      entity_id: sensor.master_snooze_button_2_action
+      to: "single"
   condition:
-    - condition: template
-      value_template: "{{ trigger.payload_json['click'] == 'single' }}"
     - condition: state
       entity_id: input_boolean.alarm_clock_ringing
       state: "on"
@@ -289,13 +289,13 @@
 - alias: Master Wake Manual Snooze Start
   id: e025da73-f859-4a60-89a7-7e8f28419941
   trigger:
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_1
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_2
+    - platform: state
+      entity_id: sensor.master_snooze_button_1_action
+      to: "single"
+    - platform: state
+      entity_id: sensor.master_snooze_button_2_action
+      to: "single"
   condition:
-    - condition: template
-      value_template: "{{ trigger.payload_json['click'] == 'single' }}"
     - condition: state
       entity_id: input_boolean.alarm_clock_ringing
       state: "on"
@@ -379,13 +379,13 @@
 - alias: Master Wake Work Off
   id: 1f49e9be-0277-4b38-aafd-5ce5028dde2e
   trigger:
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_1
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_2
+    - platform: state
+      entity_id: sensor.master_snooze_button_1_action
+      to: "triple"
+    - platform: state
+      entity_id: sensor.master_snooze_button_2_action
+      to: "triple"
   condition:
-    - condition: template
-      value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
     - condition: state
       entity_id: input_boolean.work_alarm_ringing
       state: "on"
@@ -408,10 +408,12 @@
 - alias: Master Wake Manual Off Single
   id: 9ace932e-3bd1-4b5d-8973-3b15fe17a2db
   trigger:
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_1
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_2
+    - platform: state
+      entity_id: sensor.master_snooze_button_1_action
+      to: "triple"
+    - platform: state
+      entity_id: sensor.master_snooze_button_2_action
+      to: "triple"
   condition:
     - condition: template
       value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
@@ -439,13 +441,13 @@
 - alias: Master Wake Manual Off Repeat
   id: dffcacb6-c869-4493-a233-e35bd077fcb1
   trigger:
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_1
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_2
+    - platform: state
+      entity_id: sensor.master_snooze_button_1_action
+      to: "triple"
+    - platform: state
+      entity_id: sensor.master_snooze_button_2_action
+      to: "triple"
   condition:
-    - condition: template
-      value_template: "{{ trigger.payload_json['click'] == 'triple' }}"
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
       state: "on"
@@ -490,13 +492,13 @@
 - alias: Master Wake Manual Disable Button
   id: b5989175-c901-4a9d-8165-bbd1ba84fb98
   trigger:
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_1
-    - platform: mqtt
-      topic: zigbee2mqtt/snooze_button_2
+    - platform: state
+      entity_id: sensor.master_snooze_button_1_action
+      to: "quadruple"
+    - platform: state
+      entity_id: sensor.master_snooze_button_2_action
+      to: "quadruple"
   condition:
-    - condition: template
-      value_template: "{{ trigger.payload_json['click'] == 'quadruple' }}"
     - condition: state
       entity_id: input_boolean.manual_alarm_ringing
       state: "on"

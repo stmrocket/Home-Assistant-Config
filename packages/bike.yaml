@@ -362,3 +362,14 @@ sensor:
                   {%- endif -%}
                 {%- endif -%}
               {%- endif -%}
+
+automation:  
+  - alias: Toggle Bike Fan
+    id: 88aeb537-1479-4dc1-82b8-b01388e1be30
+    trigger:
+      - platform: state
+        entity_id: sensor.bike_fan_button_action
+        to: "single"
+    action: 
+      - service: switch.toggle
+        entity_id: switch.bike_fan

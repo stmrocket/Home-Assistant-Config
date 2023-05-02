@@ -406,7 +406,7 @@ automation:
     id: fb62b8e4-80da-447b-b5a6-fe2f341b295a
     trigger:
       - platform: state
-        entity_id: sensor.detergent_button_click
+        entity_id: sensor.detergent_pump_button_action
         to: "single"
     action: 
       - service: switch.turn_on

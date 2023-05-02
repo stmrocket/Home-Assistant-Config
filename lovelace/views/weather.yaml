@@ -11,7 +11,7 @@ cards:
         entities:
           - entity: sensor.attic_temperature_owfs
             name: Attic
-          - entity: sensor.aquara_den_temperature
+          - entity: sensor.den_climate_temperature
             name: Den
           - entity: sensor.dining_room_temperature_owfs
             name: Dining
@@ -21,11 +21,11 @@ cards:
             name: Garage
           - entity: sensor.guest_bedroom_temperature_owfs
             name: Guest
-          - entity: sensor.aquara_master_bedroom_temperature
+          - entity: sensor.master_bedroom_climate_temperature
             name: Master
-          - entity: sensor.aquara_office_temperature
+          - entity: sensor.office_climate_temperature
             name: Office
-          - entity: sensor.aquara_server_closet_temperature
+          - entity: sensor.server_room_climate_temperature
             name: Server
           - entity: sensor.acurite_outside_temperature
             name: Outside
