@@ -47,7 +47,7 @@ entity_pop_4: sensor.openweathermap_day_4_pop
 entity_pop_5: sensor.openweathermap_day_5_pop
 entity_uv_alert_summary: sensor.openweathermap_current_uv_combined
 entity_visibility: sensor.ktme_current_visibility
-entity_pressure: sensor.aquara_den_pressure
+entity_pressure: sensor.den_climate_pressure
 entity_precip_current: sensor.rain_day
 entity_precip_intensity_current: sensor.rain_rate
 slot_l1: daytime_low

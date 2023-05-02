@@ -4,7 +4,7 @@ cards:
   - type: picture-elements
     image: /local/lovelace/room_sm.png
     elements:
-      - entity: sensor.aquara_master_bedroom_temperature
+      - entity: sensor.master_bedroom_climate_temperature
         style:
           bottom: -5%
           right: 5%

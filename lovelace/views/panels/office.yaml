@@ -46,7 +46,7 @@ cards:
         displaySeconds: false
       - type: custom:mini-graph-card
         entities:
-          - sensor.aquara_office_temperature
+          - sensor.office_climate_temperature
         height: 46
         line_width: 2
         font_size: 65

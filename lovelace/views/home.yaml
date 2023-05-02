@@ -617,7 +617,7 @@ cards:
         cards:
           - type: custom:mini-graph-card
             entities:
-              - sensor.aquara_den_temperature
+              - sensor.den_climate_temperature
             name: Den
             height: 74
             line_width: 2
@@ -637,7 +637,7 @@ cards:
 
           - type: custom:mini-graph-card
             entities:
-              - sensor.aquara_server_closet_temperature
+              - sensor.server_room_climate_temperature
             name: Server Closet
             height: 74
             line_width: 2
