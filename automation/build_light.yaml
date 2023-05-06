@@ -3,6 +3,7 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_build_pending
+      local_only: false
   action:
     - service: light.turn_on
       data:
@@ -14,6 +15,7 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_build_running
+      local_only: false
   action:
     - service: light.turn_on
       data:
@@ -25,6 +27,7 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_build_failing
+      local_only: false
   action:
     - service: light.turn_on
       data:
@@ -36,6 +39,7 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_build_passing
+      local_only: false
   action:
     - service: light.turn_on
       data:

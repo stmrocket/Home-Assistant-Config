@@ -355,6 +355,7 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_wake
+      local_only: false
   condition:
     - condition: or
       conditions:

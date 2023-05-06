@@ -181,6 +181,7 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_tvh_post
+      local_only: true
   action:
     - service: notify.den_kodi
       data_template:
@@ -195,6 +196,7 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_tvh_subs
+      local_only: true
   action:
     - service: notify.den_kodi
       data_template:
@@ -209,6 +211,7 @@
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_tvh_comm
+      local_only: true
   action:
     - service: notify.den_kodi
       data_template:
