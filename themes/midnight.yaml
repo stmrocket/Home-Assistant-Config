@@ -19,10 +19,10 @@ midnight:
     }
 
   #Temporary changes until transparency is working:
-  ha-card-border-width: 0px
-  app-header-background-color: "var(--paper-listbox-background-color)" #Uncomment line below when transparency restored!
+  # ha-card-border-width: 0px
+  # app-header-background-color: "var(--paper-listbox-background-color)" #Uncomment line below when transparency restored!
 
-  #app-header-background-color: "rgba(150,150,150,0.15)"
+  app-header-background-color: "rgba(150,150,150,0.15)"
   app-toolbar-background-color: none
   header-height: 48px
   accent-color: "#E45E65"
