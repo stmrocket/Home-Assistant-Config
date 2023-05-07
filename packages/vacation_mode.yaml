@@ -219,7 +219,7 @@ automation:
             attribute: changed_by
             state: "Gary"
     action:
-      service: notify.browser_shawn_7t
+      service: notify.mobile_app_shawn_7t
       data:
         title: Alarm Disarmed
         message: The alarm has been disarmed.
@@ -236,7 +236,24 @@ automation:
         entity_id: input_boolean.vacation_mode
         state: "on"
     action:
-      service: notify.browser_shawn_7t
+      service: notify.mobile_app_shawn_7t
       data:
         title: Alarm Armed
         message: The alarm has been armed.
+
+  - alias: Vacation Notification Heartbeat
+    id: 8a4f83b8-1b3f-4757-80e4-c0fecdf6d433
+    trigger:
+    - platform: time
+      at: "08:00:00"
+    - platform: time
+      at: "20:00:00"
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "on"
+    action:
+      service: notify.mobile_app_shawn_7t
+      data:
+        title: Notification Test
+        message: Notification test -  {{now().strftime('%Y-%m-%d %H:%M:%S') }}
