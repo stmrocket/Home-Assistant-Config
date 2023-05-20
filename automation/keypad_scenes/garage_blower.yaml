@@ -1,0 +1,60 @@
+- alias: Garage Blower On from Keypad
+  id: 265b6ac1-efbc-4613-ac23-d28c9c10e13e
+  trigger:
+    - platform: state
+      entity_id: switch.garage_blower_power
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: switch.garage_blower
+      state: "off"
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.garage_blower
+
+- alias: Garage Blower Off from Keypad
+  id: 48add53f-d2bf-47b4-9527-e87afecee1ca
+  trigger:
+    - platform: state
+      entity_id: switch.garage_blower_power
+      from: "on"
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: switch.garage_blower
+      state: "on"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.garage_blower
+
+- alias: Garage Blower Keypad On
+  id: 059f83ab-80e2-475f-b29e-91dc9ca155a3
+  trigger:
+    - platform: state
+      entity_id: switch.garage_blower
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: switch.garage_blower_power
+      state: "off"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.garage_blower_power
+
+- alias: Garage Blower Keypad Off
+  id: 11d3cd9b-0495-4fcb-818a-5688fba90cb1
+  trigger:
+    - platform: state
+      entity_id: switch.garage_blower
+      from: "on"
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: switch.garage_blower_power
+      state: "on"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.garage_blower_power
