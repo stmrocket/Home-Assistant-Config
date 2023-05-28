@@ -257,3 +257,25 @@ automation:
       data:
         title: Notification Test
         message: Notification test -  {{now().strftime('%Y-%m-%d %H:%M:%S') }}
+
+script:
+  timer_lights_off:
+    sequence:
+      - service: switch.turn_off
+        entity_id:
+          - switch.kitchen_lamp
+          - switch.server_room_lamp
+          - switch.office_lamps
+          - switch.den_lamps
+          - switch.den_table_lamp
+          - switch.shack_lamp
+          - switch.guest_room_lamp
+      - service: light.turn_off
+        entity_id:
+          - light.entry_lamp
+          - light.house_leds_rgb
+          - light.hall_lamp
+      - service: input_boolean.turn_off
+        entity_id:
+          - input_boolean.timer_lights
+          - input_boolean.manual_timer_lights
