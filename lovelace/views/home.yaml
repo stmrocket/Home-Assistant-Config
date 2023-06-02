@@ -1114,6 +1114,7 @@ cards:
           - entity: camera.hallway
           - entity: camera.guest_room
           - entity: camera.shack
+          - entity: camera.server_room
 
   #################################################################
   #                                                               #
