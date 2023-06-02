@@ -1,0 +1,181 @@
+
+input_boolean:
+  vacuum_auto:
+    name: Schedule Enabled
+    icon: mdi:timer-outline
+  vacuum_entry:
+    name: Entry
+    icon: mdi:door-open
+  vacuum_hall:
+    name: Hall
+    icon: mdi:foot-print
+  vacuum_den:
+    name: den
+    icon: mdi:sofa
+  vacuum_kitchen:
+    name: Kitchen
+    icon: mdi:silverware-fork-knife
+  vacuum_shack:
+    name: Shack
+    icon: mdi:radio-tower
+  vacuum_office:
+    name: Office
+    icon: mdi:laptop
+  vacuum_guest_bedroom:
+    name: Guest Bedroom
+    icon: mdi:bed-empty
+  vacuum_guest_bathroom:
+    name: Guest Bathroom
+    icon: mdi:toilet
+  vacuum_server_room:
+    name: Server Room
+    icon: mdi:server
+  vacuum_master_bedroom:
+    name: Master Bedroom
+    icon: mdi:bed-empty
+  vacuum_master_bathroom:
+    name: Master Bathroom
+    icon: mdi:toilet
+
+homeassistant:
+  customize:
+    input_boolean.vacuum_entry:
+      room_id: "12"    
+    input_boolean.vacuum_hall:
+      room_id: "8"    
+    input_boolean.vacuum_den:
+      room_id: "11"    
+    input_boolean.vacuum_kitchen:
+      room_id: "10"    
+    input_boolean.vacuum_shack:
+      room_id: "9"    
+    input_boolean.vacuum_office:
+      room_id: "4"    
+    input_boolean.vacuum_guest_bedroom:
+      room_id: "1"    
+    input_boolean.vacuum_guest_bathroom:
+      room_id: "6"    
+    input_boolean.vacuum_server_room:
+      room_id: "3"    
+    input_boolean.vacuum_master_bedroom:
+      room_id: "5"    
+    input_boolean.vacuum_master_bathroom:
+      room_id: "2"    
+
+group:
+  vacuum_rooms:
+    name: vacuum_rooms
+    entities:
+      - input_boolean.vacuum_entry
+      - input_boolean.vacuum_hall
+      - input_boolean.vacuum_office
+      - input_boolean.vacuum_guest_bedroom
+      - input_boolean.vacuum_guest_bathroom
+      - input_boolean.vacuum_server_room
+      - input_boolean.vacuum_den
+      - input_boolean.vacuum_master_bedroom
+      - input_boolean.vacuum_master_bathroom
+      - input_boolean.vacuum_kitchen
+      - input_boolean.vacuum_shack
+
+
+counter:
+  vacuum_cycles:
+    step: 1
+
+# Roomba Scripts
+
+script:
+
+  reset_vacuum_counter:
+    sequence:
+      - service: counter.reset
+        entity_id: counter.vacuum_cycles
+
+  vacuum_clean_segments:
+    sequence:
+    - service: script.turn_on
+      target:
+        entity_id: script.vacuum_clean_segments_message
+      data:
+        variables:
+          segments: '{{expand("group.vacuum_rooms") | selectattr("state","eq","on")
+            | map(attribute="attributes.room_id") | list | to_json}}'
+    mode: single
+    alias: vacuum_clean_segments
+    icon: mdi:arrow-right
+
+  vacuum_clean_segments_message:
+    alias: vacuum_clean_segments_message
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
+        payload_template: '{"segment_ids": {{segments}}}'
+    mode: single
+
+automation:
+  - alias: Start Vacuum from Schedule
+    id: dd45d34f-0fb7-4ad2-88c9-788290b8ba02
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: armed_away
+        for: "00:10:00"
+    condition:
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: state
+        entity_id: input_boolean.vacuum_auto
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "off"
+    action:
+      - choose:
+        - conditions:
+          - condition: time
+            weekday:
+              - mon
+              - wed
+              - fri
+          sequence:
+            - service: mqtt.publish
+              data:
+                topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
+                payload: '{"segment_ids": ["12", "8", "4", "1", "6", "10", "9"], "iterations": 1, "customOrder": true}'
+        - conditions:
+          - condition: time
+            weekday:
+              - tue
+              - thu
+          sequence:
+            - service: mqtt.publish
+              data:
+                topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
+                payload: '{"segment_ids": ["11", "5", "2", "9"], "iterations": 1, "customOrder": true}'
+        - conditions:
+          - condition: time
+            weekday:
+              - sat
+              - sun
+          sequence:
+            - service: mqtt.publish
+              data:
+                topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
+                payload: '{"segment_ids": ["11"], "iterations": 1, "customOrder": true}'
+
+  - alias: Count Vacuum Cycles
+    id: 88b28362-f1cd-45ab-abce-edd5b194c0d7
+    trigger:
+      - platform: state
+        entity_id: vacuum.valetudo_crookshanks
+        to: "cleaning"
+    action:
+      - service: counter.increment
+        entity_id: counter.vacuum_cycles
