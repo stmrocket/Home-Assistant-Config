@@ -971,66 +971,60 @@ cards:
 
       - type: horizontal-stack
         cards:
-          - type: "custom:button-card"
-            entity: sensor.roomba_status
+          - type: custom:button-card
+            entity: vacuum.valetudo_crookshanks
             color_type: icon
-            state:
-              - value: "error"
-                color: rgb(255, 0, 0)
-                name: Error
-                icon: mdi:robot-vacuum
-              - value: "docked"
-                color: rgb(255, 255, 255)
-                name: Docked
-                icon: mdi:robot-vacuum
-              - value: "full"
-                color: rgb(255, 0, 0)
-                name: Docked
-                icon: mdi:trash-can
-              - value: "cleaning"
-                color: rgb(228, 94, 101)
-                name: Cleaning
-                icon: mdi:robot-vacuum
-              - value: "returning"
-                color: rgb(228, 94, 101)
-                name: Docking
-                icon: mdi:robot-vacuum
-              - value: "idle"
-                color: rgb(255, 255, 255)
-                name: Idle
-                icon: mdi:robot-vacuum
-              - value: "paused"
-                color: rgb(255, 200, 0)
-                name: Paused
-                icon: mdi:robot-vacuum
+            name: '[[[ return ` ${entity.state}` ]]]'
+            styles:
+              name:
+                - text-transform: capitalize
             tap_action:
-              action: call-service
-              service: switch.toggle
-              service_data:
-                entity_id: switch.roomba
-            hold_action:
               action: fire-dom-event
               browser_mod:
                 service: browser_mod.popup
                 data:
                   title: Roomba Status
                   content:
-                    type: entities
-                    show_header_toggle: false
-                    entities:
-                      - entity: switch.roomba
-                      - entity: sensor.mrs_norris_battery_level
-                      - entity: sensor.roomba_status
-                      - entity: input_boolean.roomba_auto
-                      - entity: counter.roomba_cycles
-                        name: Cycles Since Emptied
-                        icon: mdi:robot-vacuum
-                      - entity: script.reset_roomba_counter
-                        name: Reset Cycle Count
-                        icon: mdi:delete-empty
-            double_tap_action:
-              action: call-service
-              service: script.reset_roomba_counter
+                    type: custom:stack-in-card
+                    cards:
+                      - type: custom:valetudo-map-card
+                        vacuum: valetudo_crookshanks
+                        title: Crookshanks
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - entity: input_boolean.roomba_auto
+                          - entity: counter.roomba_cycles
+                            name: Cycles Since Emptied
+                            icon: mdi:robot-vacuum
+                          - entity: script.reset_roomba_counter
+                            name: Reset Cycle Count
+                            icon: mdi:delete-empty
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - input_boolean.vacuum_entry
+                          - input_boolean.vacuum_hall
+                          - input_boolean.vacuum_office
+                          - input_boolean.vacuum_guest_bedroom
+                          - input_boolean.vacuum_guest_bathroom
+                          - input_boolean.vacuum_server_room
+                          - input_boolean.vacuum_den
+                          - input_boolean.vacuum_master_bedroom
+                          - input_boolean.vacuum_master_bathroom
+                          - input_boolean.vacuum_kitchen
+                          - input_boolean.vacuum_shack
+                          - type: custom:button-card
+                            tap_action:
+                              action: call-service
+                              service: script.vacuum_clean_segments
+                              confirmation: true
+                              service_data: {}
+                              target: {}
+                            entity: script.vacuum_clean_segments
+                            name: Vacuum selected segments
+                            show_state: false
+                            show_icon: false
 
           - type: "custom:button-card"
             entity: lock.front_door
