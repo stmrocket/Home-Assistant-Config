@@ -994,10 +994,10 @@ cards:
                         show_header_toggle: false
                         entities:
                           - entity: input_boolean.roomba_auto
-                          - entity: counter.roomba_cycles
+                          - entity: counter.vacuum_cycles
                             name: Cycles Since Emptied
                             icon: mdi:robot-vacuum
-                          - entity: script.reset_roomba_counter
+                          - entity: script.reset_vacuum_counter
                             name: Reset Cycle Count
                             icon: mdi:delete-empty
                       - type: entities
