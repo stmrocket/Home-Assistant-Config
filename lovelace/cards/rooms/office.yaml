@@ -19,7 +19,12 @@ cards:
           left: 5%
           transform: initial
         tap_action: none
-        hold_action: none
+        hold_action: 
+          action: call-service
+          service: mqtt.publish
+          service_data:
+            topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
+            payload: '{"segment_ids": ["4"], "iterations": 1, "customOrder": true}'
         type: state-label
   - type: horizontal-stack
     cards:

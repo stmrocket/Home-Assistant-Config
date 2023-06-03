@@ -993,38 +993,120 @@ cards:
                       - type: entities
                         show_header_toggle: false
                         entities:
-                          - entity: input_boolean.roomba_auto
+                          - entity: input_boolean.vacuum_auto
                           - entity: counter.vacuum_cycles
                             name: Cycles Since Emptied
                             icon: mdi:robot-vacuum
                           - entity: script.reset_vacuum_counter
                             name: Reset Cycle Count
                             icon: mdi:delete-empty
-                      - type: entities
-                        show_header_toggle: false
-                        entities:
-                          - input_boolean.vacuum_entry
-                          - input_boolean.vacuum_hall
-                          - input_boolean.vacuum_office
-                          - input_boolean.vacuum_guest_bedroom
-                          - input_boolean.vacuum_guest_bathroom
-                          - input_boolean.vacuum_server_room
-                          - input_boolean.vacuum_den
-                          - input_boolean.vacuum_master_bedroom
-                          - input_boolean.vacuum_master_bathroom
-                          - input_boolean.vacuum_kitchen
-                          - input_boolean.vacuum_shack
+                      - type: horizontal-stack
+                        cards:
                           - type: custom:button-card
+                            icon: mdi:calendar-range
+                            name: Weekday 1
                             tap_action:
-                              action: call-service
-                              service: script.vacuum_clean_segments
-                              confirmation: true
-                              service_data: {}
-                              target: {}
-                            entity: script.vacuum_clean_segments
-                            name: Vacuum selected segments
-                            show_state: false
-                            show_icon: false
+                              action: fire-dom-event
+                              browser_mod:
+                                service: browser_mod.popup
+                                data:
+                                  title: Weekday 1 Vacuum Schedule
+                                  content:
+                                    type: entities
+                                    show_header_toggle: false
+                                    entities:
+                                      - input_boolean.vacuum_weekday_1_entry
+                                      - input_boolean.vacuum_weekday_1_hall
+                                      - input_boolean.vacuum_weekday_1_office
+                                      - input_boolean.vacuum_weekday_1_guest_bedroom
+                                      - input_boolean.vacuum_weekday_1_guest_bathroom
+                                      - input_boolean.vacuum_weekday_1_server_room
+                                      - input_boolean.vacuum_weekday_1_den
+                                      - input_boolean.vacuum_weekday_1_master_bedroom
+                                      - input_boolean.vacuum_weekday_1_master_bathroom
+                                      - input_boolean.vacuum_weekday_1_kitchen
+                                      - input_boolean.vacuum_weekday_1_shack
+                          - type: custom:button-card
+                            icon: mdi:calendar-range
+                            name: Weekday 2
+                            tap_action:
+                              action: fire-dom-event
+                              browser_mod:
+                                service: browser_mod.popup
+                                data:
+                                  title: Weekday 2 Vacuum Schedule
+                                  content:
+                                    type: entities
+                                    show_header_toggle: false
+                                    entities:
+                                      - input_boolean.vacuum_weekday_2_entry
+                                      - input_boolean.vacuum_weekday_2_hall
+                                      - input_boolean.vacuum_weekday_2_office
+                                      - input_boolean.vacuum_weekday_2_guest_bedroom
+                                      - input_boolean.vacuum_weekday_2_guest_bathroom
+                                      - input_boolean.vacuum_weekday_2_server_room
+                                      - input_boolean.vacuum_weekday_2_den
+                                      - input_boolean.vacuum_weekday_2_master_bedroom
+                                      - input_boolean.vacuum_weekday_2_master_bathroom
+                                      - input_boolean.vacuum_weekday_2_kitchen
+                                      - input_boolean.vacuum_weekday_2_shack
+                          - type: custom:button-card
+                            icon: mdi:calendar-weekend
+                            name: Weekend
+                            tap_action:
+                              action: fire-dom-event
+                              browser_mod:
+                                service: browser_mod.popup
+                                data:
+                                  title: Weekend Vacuum Schedule
+                                  content:
+                                    type: entities
+                                    show_header_toggle: false
+                                    entities:
+                                      - input_boolean.vacuum_weekend_entry
+                                      - input_boolean.vacuum_weekend_hall
+                                      - input_boolean.vacuum_weekend_office
+                                      - input_boolean.vacuum_weekend_guest_bedroom
+                                      - input_boolean.vacuum_weekend_guest_bathroom
+                                      - input_boolean.vacuum_weekend_server_room
+                                      - input_boolean.vacuum_weekend_den
+                                      - input_boolean.vacuum_weekend_master_bedroom
+                                      - input_boolean.vacuum_weekend_master_bathroom
+                                      - input_boolean.vacuum_weekend_kitchen
+                                      - input_boolean.vacuum_weekend_shack
+                          - type: custom:button-card
+                            icon: mdi:gesture-tap-button
+                            name: Manual
+                            tap_action:
+                              action: fire-dom-event
+                              browser_mod:
+                                service: browser_mod.popup
+                                data:
+                                  title: Manual Vacuum Schedule
+                                  content:
+                                    type: entities
+                                    show_header_toggle: false
+                                    entities:
+                                      - input_boolean.vacuum_manual_entry
+                                      - input_boolean.vacuum_manual_hall
+                                      - input_boolean.vacuum_manual_office
+                                      - input_boolean.vacuum_manual_guest_bedroom
+                                      - input_boolean.vacuum_manual_guest_bathroom
+                                      - input_boolean.vacuum_manual_server_room
+                                      - input_boolean.vacuum_manual_den
+                                      - input_boolean.vacuum_manual_master_bedroom
+                                      - input_boolean.vacuum_manual_master_bathroom
+                                      - input_boolean.vacuum_manual_kitchen
+                                      - input_boolean.vacuum_manual_shack
+                                      - type: custom:button-card
+                                        tap_action:
+                                          action: call-service
+                                          service: script.vacuum_clean_segments
+                                          confirmation: true
+                                        entity: script.vacuum_clean_segments
+                                        name: Vacuum Selected Segments
+                                        show_state: false
+                                        show_icon: false
 
           - type: "custom:button-card"
             entity: lock.front_door
