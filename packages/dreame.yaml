@@ -275,6 +275,8 @@ automation:
                     data:
                       topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
                       payload: '{"segment_ids": {{ states("sensor.weekday_1_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
+                  - service: input_boolean.turn_on
+                    entity_id: input_boolean.vacuum_weekday_select
               - conditions:
                 - condition: state
                   entity_id: input_boolean.vacuum_weekday_select
@@ -284,6 +286,8 @@ automation:
                     data:
                       topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
                       payload: '{"segment_ids": {{ states("sensor.weekday_2_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
+                  - service: input_boolean.turn_off
+                    entity_id: input_boolean.vacuum_weekday_select
         - conditions:
           - condition: time
             weekday:
