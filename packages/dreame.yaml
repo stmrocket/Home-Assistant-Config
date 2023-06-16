@@ -219,9 +219,7 @@ group:
 counter:
   vacuum_cycles:
     step: 1
-
-# Roomba Scripts
-
+    
 script:
 
   reset_vacuum_counter:

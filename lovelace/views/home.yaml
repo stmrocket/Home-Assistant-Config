@@ -983,7 +983,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Roomba Status
+                  title: Vacuum Status
                   content:
                     type: custom:stack-in-card
                     cards:
