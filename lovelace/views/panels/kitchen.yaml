@@ -479,13 +479,13 @@ cards:
                         cards:
                           - type: custom:button-card
                             icon: mdi:calendar-range
-                            name: Weekday 1
+                            name: Day 1
                             tap_action:
                               action: fire-dom-event
                               browser_mod:
                                 service: browser_mod.popup
                                 data:
-                                  title: Weekday 1 Vacuum Schedule
+                                  title: Day 1 Vacuum Schedule
                                   content:
                                     type: entities
                                     show_header_toggle: false
@@ -503,13 +503,13 @@ cards:
                                       - input_boolean.vacuum_weekday_1_shack
                           - type: custom:button-card
                             icon: mdi:calendar-range
-                            name: Weekday 2
+                            name: Day 2
                             tap_action:
                               action: fire-dom-event
                               browser_mod:
                                 service: browser_mod.popup
                                 data:
-                                  title: Weekday 2 Vacuum Schedule
+                                  title: Day 2 Vacuum Schedule
                                   content:
                                     type: entities
                                     show_header_toggle: false
