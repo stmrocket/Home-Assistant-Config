@@ -994,12 +994,9 @@ cards:
                         show_header_toggle: false
                         entities:
                           - entity: input_boolean.vacuum_auto
-                          - entity: counter.vacuum_cycles
-                            name: Cycles Since Emptied
-                            icon: mdi:robot-vacuum
-                          - entity: script.reset_vacuum_counter
-                            name: Reset Cycle Count
-                            icon: mdi:delete-empty
+                          - entity: sensor.next_vacuum_cycle
+                            name: Next Schedule
+                            icon: mdi:clock-outline
                       - type: horizontal-stack
                         cards:
                           - type: custom:button-card
@@ -1050,30 +1047,6 @@ cards:
                                       - input_boolean.vacuum_weekday_2_master_bathroom
                                       - input_boolean.vacuum_weekday_2_kitchen
                                       - input_boolean.vacuum_weekday_2_shack
-                          - type: custom:button-card
-                            icon: mdi:calendar-weekend
-                            name: Weekend
-                            tap_action:
-                              action: fire-dom-event
-                              browser_mod:
-                                service: browser_mod.popup
-                                data:
-                                  title: Weekend Vacuum Schedule
-                                  content:
-                                    type: entities
-                                    show_header_toggle: false
-                                    entities:
-                                      - input_boolean.vacuum_weekend_entry
-                                      - input_boolean.vacuum_weekend_hall
-                                      - input_boolean.vacuum_weekend_office
-                                      - input_boolean.vacuum_weekend_guest_bedroom
-                                      - input_boolean.vacuum_weekend_guest_bathroom
-                                      - input_boolean.vacuum_weekend_server_room
-                                      - input_boolean.vacuum_weekend_den
-                                      - input_boolean.vacuum_weekend_master_bedroom
-                                      - input_boolean.vacuum_weekend_master_bathroom
-                                      - input_boolean.vacuum_weekend_kitchen
-                                      - input_boolean.vacuum_weekend_shack
                           - type: custom:button-card
                             icon: mdi:gesture-tap-button
                             name: Manual
