@@ -18,9 +18,9 @@ sensor:
         friendly_name: Next Vacuum Cycle
         value_template: >-
           {% if is_state("input_boolean.vacuum_weekday_select", "on") -%}
-            Day 1
-          {%- else -%}
             Day 2
+          {%- else -%}
+            Day 1
           {%- endif %}
 
 input_boolean:
@@ -192,7 +192,7 @@ automation:
       - platform: state
         entity_id: alarm_control_panel.house
         to: armed_away
-        for: "00:02:00"
+        for: "00:01:00"
     condition:
       - condition: state
         entity_id: input_boolean.vacuum_auto
