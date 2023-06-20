@@ -9,9 +9,19 @@ mqtt:
     - name: Weekday 2 Vacuum Sequence
       unique_id: 1307f0bc-74e2-46d6-8e75-7d415d930669
       state_topic: vacschedule/week2
-    - name: Weekend Vacuum Sequence
-      unique_id: d6696bdf-4395-4acb-8320-a2358fdae28a
-      state_topic: vacschedule/weekend
+
+sensor:
+  - platform: template
+    sensors:
+      next_vacuum_cycle:
+        unique_id: cac0280c-9d37-49b4-92e0-acf90dc014e3
+        friendly_name: Next Vacuum Cycle
+        value_template: >-
+          {% if is_state("input_boolean.vacuum_weekday_select", "on") -%}
+            Day 1
+          {%- else -%}
+            Day 2
+          {%- endif %}
 
 input_boolean:
   vacuum_auto:
@@ -122,39 +132,6 @@ input_boolean:
   vacuum_weekday_2_master_bathroom:
     name: Master Bathroom
     icon: mdi:toilet
-  vacuum_weekend_entry:
-    name: Entry
-    icon: mdi:door-open
-  vacuum_weekend_hall:
-    name: Hall
-    icon: mdi:foot-print
-  vacuum_weekend_den:
-    name: Den
-    icon: mdi:sofa
-  vacuum_weekend_kitchen:
-    name: Kitchen
-    icon: mdi:silverware-fork-knife
-  vacuum_weekend_shack:
-    name: Shack
-    icon: mdi:radio-tower
-  vacuum_weekend_office:
-    name: Office
-    icon: mdi:laptop
-  vacuum_weekend_guest_bedroom:
-    name: Guest Bedroom
-    icon: mdi:bed-empty
-  vacuum_weekend_guest_bathroom:
-    name: Guest Bathroom
-    icon: mdi:toilet
-  vacuum_weekend_server_room:
-    name: Server Room
-    icon: mdi:server
-  vacuum_weekend_master_bedroom:
-    name: Master Bedroom
-    icon: mdi:bed-empty
-  vacuum_weekend_master_bathroom:
-    name: Master Bathroom
-    icon: mdi:toilet
 
 group:
   vacuum_manual_rooms:
@@ -199,34 +176,8 @@ group:
       - input_boolean.vacuum_weekday_2_master_bathroom
       - input_boolean.vacuum_weekday_2_kitchen
       - input_boolean.vacuum_weekday_2_shack
-  vacuum_weekend_rooms:
-    name: Weekend Vacuum Rooms
-    entities:
-      - input_boolean.vacuum_weekday_2_entry
-      - input_boolean.vacuum_weekday_2_hall
-      - input_boolean.vacuum_weekday_2_office
-      - input_boolean.vacuum_weekday_2_guest_bedroom
-      - input_boolean.vacuum_weekday_2_guest_bathroom
-      - input_boolean.vacuum_weekday_2_server_room
-      - input_boolean.vacuum_weekday_2_den
-      - input_boolean.vacuum_weekday_2_master_bedroom
-      - input_boolean.vacuum_weekday_2_master_bathroom
-      - input_boolean.vacuum_weekday_2_kitchen
-      - input_boolean.vacuum_weekday_2_shack
-
-
-
-counter:
-  vacuum_cycles:
-    step: 1
     
 script:
-
-  reset_vacuum_counter:
-    sequence:
-      - service: counter.reset
-        entity_id: counter.vacuum_cycles
-
   vacuum_clean_segments:
     sequence:
     - service: mqtt.publish
@@ -241,7 +192,7 @@ automation:
       - platform: state
         entity_id: alarm_control_panel.house
         to: armed_away
-        for: "00:10:00"
+        for: "00:02:00"
     condition:
       - condition: state
         entity_id: input_boolean.vacuum_auto
@@ -255,59 +206,29 @@ automation:
     action:
       - choose:
         - conditions:
-          - condition: time
-            weekday:
-              - mon
-              - tue
-              - wed
-              - thu
-              - fri
-          sequence:
-            - choose:
-              - conditions:
-                - condition: state
-                  entity_id: input_boolean.vacuum_weekday_select
-                  state: "off"
-                sequence:
-                  - service: mqtt.publish
-                    data:
-                      topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
-                      payload: '{"segment_ids": {{ states("sensor.weekday_1_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
-                  - service: input_boolean.turn_on
-                    entity_id: input_boolean.vacuum_weekday_select
-              - conditions:
-                - condition: state
-                  entity_id: input_boolean.vacuum_weekday_select
-                  state: "on"
-                sequence:
-                  - service: mqtt.publish
-                    data:
-                      topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
-                      payload: '{"segment_ids": {{ states("sensor.weekday_2_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
-                  - service: input_boolean.turn_off
-                    entity_id: input_boolean.vacuum_weekday_select
-        - conditions:
-          - condition: time
-            weekday:
-              - sat
-              - sun
+          - condition: state
+            entity_id: input_boolean.vacuum_weekday_select
+            state: "off"
           sequence:
             - service: mqtt.publish
               data:
                 topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
-                payload: '{"segment_ids": {{ states("sensor.weekend_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
+                payload: '{"segment_ids": {{ states("sensor.weekday_1_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
+            - service: input_boolean.turn_on
+              entity_id: input_boolean.vacuum_weekday_select
+        - conditions:
+          - condition: state
+            entity_id: input_boolean.vacuum_weekday_select
+            state: "on"
+          sequence:
+            - service: mqtt.publish
+              data:
+                topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
+                payload: '{"segment_ids": {{ states("sensor.weekday_2_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
+            - service: input_boolean.turn_off
+              entity_id: input_boolean.vacuum_weekday_select
       - service: input_boolean.turn_on
         entity_id: input_boolean.vacuum_cycle_initiated
-
-  - alias: Count Vacuum Cycles
-    id: 88b28362-f1cd-45ab-abce-edd5b194c0d7
-    trigger:
-      - platform: state
-        entity_id: vacuum.valetudo_crookshanks
-        to: "cleaning"
-    action:
-      - service: counter.increment
-        entity_id: counter.vacuum_cycles
   
   - alias: Clear Daily Vacuum Run Indicator
     id: c1d1bed4-0cfb-40be-9222-ea6c0a9d52ca
