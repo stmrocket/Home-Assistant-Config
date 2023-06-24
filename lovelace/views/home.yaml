@@ -997,6 +997,15 @@ cards:
                           - entity: sensor.next_vacuum_cycle
                             name: Next Schedule
                             icon: mdi:clock-outline
+                          - type: custom:button-card
+                            tap_action:
+                              action: call-service
+                              service: script.vacuum_run_daily_clean
+                              confirmation: true
+                            entity: script.vacuum_run_daily_clean
+                            name: Run Daily Cleaning
+                            show_state: false
+                            show_icon: false
                       - type: horizontal-stack
                         cards:
                           - type: custom:button-card
