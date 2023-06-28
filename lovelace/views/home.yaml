@@ -998,7 +998,7 @@ cards:
                               - entity: vacuum.valetudo_crookshanks
                                 state: "error"
                             row:
-                              entity: sensor.valetudo_croookshanks_error
+                              entity: sensor.valetudo_crookshanks_error
                           - entity: input_boolean.vacuum_auto
                           - entity: sensor.next_vacuum_cycle
                             name: Next Schedule
