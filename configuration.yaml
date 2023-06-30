@@ -128,7 +128,8 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
       type: module
-    
+    - url: /hacsfiles/ha-heatmap-card/heatmap-card.js
+      type: module
 
 # Discover some devices automatically
 discovery:
