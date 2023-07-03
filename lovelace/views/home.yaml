@@ -595,7 +595,7 @@ cards:
 
       - type: custom:mini-graph-card
         entities:
-          - sensor.acurite_outside_temperature
+          - sensor.acurite_atlas_temperature
         name: Outside
         height: 46
         line_width: 2
