@@ -65,14 +65,6 @@
       continue_on_error: true
       entity_id: switch.nuvo_zone_5_power
 
-- alias: Update Wunderground
-  id: 20b122c7-ee12-4734-ac22-092a80502ee0
-  trigger:
-    - platform: time_pattern
-      minutes: "*"
-  action:
-    - service: rest_command.update_wunderground
-
 - alias: Vacation Mode On
   id: 196cf690-72dd-4494-bfbf-64027e27e44f
   trigger:

@@ -43,188 +43,225 @@ sensor:
     sensors:
       rain_minute:
         unique_id: bd1d7bbf-8653-4f52-a64b-b8b0998fae05
-        value_template: "{{ (states('counter.rain_minute') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_minute') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_hour:
         unique_id: e5d3e3a4-37f2-4758-b22d-e43645d6698f
-        value_template: "{{ (states('counter.rain_hour') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_hour') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_day:
         unique_id: 12a861de-80a9-431f-96b8-2e71c571821f 
-        value_template: "{{ (states('counter.rain_day') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_day') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_week:
         unique_id: b50d9d93-4c6a-4eb4-9ff2-ac80cdedc6f5
-        value_template: "{{ (states('counter.rain_week') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_week') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month:
         unique_id: e716d790-0646-4219-b487-6701c4ef6e4a
-        value_template: "{{ (states('counter.rain_month') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_1:
         unique_id: fb6a476f-5bc5-4714-a6b6-f1a8ce38cf2d
-        value_template: "{{ (states('counter.rain_month_1') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_1') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_2:
         unique_id: 2df63924-90c7-4db6-b45c-a1e7fa11ea18
-        value_template: "{{ (states('counter.rain_month_2') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_2') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_3:
         unique_id: cb669411-c2fc-4f42-b4bc-5f245bfa1530
-        value_template: "{{ (states('counter.rain_month_3') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_3') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_4:
         unique_id: c6120002-4eab-43fa-ad42-e7829f464966
-        value_template: "{{ (states('counter.rain_month_4') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_4') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_5:
         unique_id: bb906b59-22ea-4832-9b34-debebe83caa3
-        value_template: "{{ (states('counter.rain_month_5') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_5') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_6:
         unique_id: bffa7d4f-30a3-43ac-a33d-e774ada71906
-        value_template: "{{ (states('counter.rain_month_6') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_6') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_7:
         unique_id: 4ec09e20-88d7-414f-9ab0-2c7e5788b586
-        value_template: "{{ (states('counter.rain_month_7') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_7') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_8:
         unique_id: cb4ef57c-a561-4640-90d1-5135ffad539a
-        value_template: "{{ (states('counter.rain_month_8') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_8') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_9:
         unique_id: cce186bf-f87a-4c34-b325-ac036cfffd12
-        value_template: "{{ (states('counter.rain_month_9') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_9') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_10:
         unique_id: 5eeb2e1d-5509-4ddf-8f9d-d6cd8fd4a875
-        value_template: "{{ (states('counter.rain_month_10') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_10') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_11:
         unique_id: b23d03d1-ea14-4039-8544-2f8d9e7586cf
-        value_template: "{{ (states('counter.rain_month_11') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_11') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_month_12:
         unique_id: 19f3c43c-b0bc-4db5-bad8-66589e04b1ef
-        value_template: "{{ (states('counter.rain_month_12') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_12') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_year:
         unique_id: 83304d39-d025-4832-851c-192f4b0f05ff
-        value_template: "{{ (states('counter.rain_year') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_year') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_total:
         unique_id: 9fc44d92-d6f1-4bde-90c0-4592e9658cf7
-        value_template: "{{ (states('counter.rain_total') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_total') |int(none) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_minute:
         unique_id: a8473f13-1967-4980-ad0c-3f3b2f46d094
         value_template: "{{ (states('input_number.rain_last_minute') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_hour:
         unique_id: eaf3dc46-b331-4b7f-9bd4-adbfa4267aee
         value_template: "{{ (states('input_number.rain_last_hour') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_day:
         unique_id: ffd1151f-98a7-465d-9561-7b6177b9f56a
         value_template: "{{ (states('input_number.rain_last_day') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_week:
         unique_id: 094b89b1-b79e-4ac9-a9dc-9b927170706f
         value_template: "{{ (states('input_number.rain_last_week') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month:
         unique_id: 9ba8e03a-9809-4da3-a6e8-8375a6bfe8f1
         value_template: "{{ (states('input_number.rain_last_month') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_1:
         unique_id: 58fe8efd-8066-4606-ab8d-b6f9d469573e
         value_template: "{{ (states('input_number.rain_last_month_1') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_2:
         unique_id: 7923c9f7-0ae8-4890-83c6-1834c31536d8
         value_template: "{{ (states('input_number.rain_last_month_2') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_3:
         unique_id: 296024ac-32d7-4c27-bd1a-5b76296de773
         value_template: "{{ (states('input_number.rain_last_month_3') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_4:
         unique_id: c94747fe-2882-4f05-99ab-e89f3ab712ec
         value_template: "{{ (states('input_number.rain_last_month_4') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_5:
         unique_id: 8e2773b4-bb6d-4fd2-a624-28862e29770f
         value_template: "{{ (states('input_number.rain_last_month_5') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_6:
         unique_id: ee1d8ca7-dfcf-4374-b57b-369049cf9d97
         value_template: "{{ (states('input_number.rain_last_month_6') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_7:
         unique_id: c0574236-1a8d-49ee-b06a-f98f53ded175
         value_template: "{{ (states('input_number.rain_last_month_7') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_8:
         unique_id: 1472c733-5880-439c-8c57-f46e4dfc079d
         value_template: "{{ (states('input_number.rain_last_month_8') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_9:
         unique_id: f94d73c1-3e4a-47f5-b145-b807bcb9fe65
         value_template: "{{ (states('input_number.rain_last_month_9') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_10:
         unique_id: a0299c2e-710f-40cb-98b8-b4b2439cc26a
         value_template: "{{ (states('input_number.rain_last_month_10') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_11:
         unique_id: 0c035306-6e94-47ee-9e2a-0e82ef033e63
         value_template: "{{ (states('input_number.rain_last_month_11') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_month_12:
         unique_id: 12a897cb-26f5-4dc1-bc8c-7a37fcb6ce45
         value_template: "{{ (states('input_number.rain_last_month_12') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       rain_last_year:
         unique_id: 8134bd62-7f15-4f72-bb4e-c1e1c85939cc
         value_template: "{{ (states('input_number.rain_last_year') |int(none) / 100) | round(2, default=none) }}"
         unit_of_measurement: "in"
+        device_class: precipitation
 
       last_rain_date:
         unique_id: 53fb7f35-1946-4e69-b5c4-eb94b0f9907c
@@ -295,381 +332,950 @@ sensor:
              states('input_number.rain_minute_58') | float(none) +
              states('input_number.rain_minute_59') | float) | round(2, default=none) }}
         unit_of_measurement: "in/hr"
+        device_class: precipitation_intensity
 
 input_number:
+  last_rain_report:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_minute:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_hour:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_day:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_week:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_year:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_total:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_1:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_2:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_3:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_4:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_5:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_6:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_7:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_8:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_9:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_10:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_11:
+    min: 0
+    max: 100000
+    mode: box
+
+  rain_month_12:
+    min: 0
+    max: 100000
+    mode: box
+
   rain_minute_00:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_01:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_02:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_03:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_04:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_05:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_06:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_07:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_08:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_09:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_10:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_11:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_12:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_13:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_14:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_15:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_16:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_17:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_18:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_19:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_20:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_21:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_22:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_23:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_24:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_25:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_26:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_27:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_28:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_29:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_30:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_31:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_32:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_33:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_34:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_35:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_36:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_37:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_38:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_39:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_40:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_41:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_42:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_43:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_44:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_45:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_46:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_47:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_48:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_49:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_50:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_51:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_52:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_53:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_54:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_55:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_56:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_57:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_58:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_minute_59:
     min: 0
-    max: 100
+    max: 100000
     mode: box
 
   rain_last_minute:
     min: 0
     max: 100000
     mode: box
+
   rain_last_hour:
     min: 0
     max: 100000
     mode: box
+
   rain_last_day:
     min: 0
     max: 100000
     mode: box
+
   rain_last_week:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month:
     min: 0
     max: 100000
     mode: box
+
   rain_last_year:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_1:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_2:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_3:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_4:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_5:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_6:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_7:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_8:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_9:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_10:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_11:
     min: 0
     max: 100000
     mode: box
+
   rain_last_month_12:
     min: 0
     max: 100000
-    mode: box
+    mode: box  
+  
+  rain_disable_time:
+    name: Rain Gauge Disable Time
+    min: 1
+    max: 24
+    step: 1
+    icon: mdi:timer-outline
+    unit_of_measurement: h
+
+input_boolean:
+  rain_enabled:
+    name: Rain Gauge Enabled
+    icon: mdi:water
 
 input_text:
   last_rain:
     name: Last Rain Date
+
+timer:
+  rain_disable:
+    name: Rain Gauge Auto-restart Timer
+    icon: mdi:timer-outline
+
+automation:
+  - alias: Count Rainfall
+    id: 7da2ee73-f9b2-41a1-b75e-fed26d4de648
+    mode: queued
+    trigger:
+      - platform: state
+        entity_id: sensor.acurite_cumulative_rain
+    action:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ ((states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) > 0) and ((states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) < 38) and is_state('input_boolean.rain_enabled', 'on') }}"
+          sequence:
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.rain_minute
+              data_template:
+                value: "{{ states('input_number.rain_minute') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.rain_hour
+              data_template:
+                value: "{{ states('input_number.rain_hour') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.rain_day
+              data_template:
+                value: "{{ states('input_number.rain_day') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.rain_week
+              data_template:
+                value: "{{ states('input_number.rain_week') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.rain_month
+              data_template:
+                value: "{{ states('input_number.rain_month') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.rain_year
+              data_template:
+                value: "{{ states('input_number.rain_year') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.rain_total
+              data_template:
+                value: "{{ states('input_number.rain_total') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+              
+
+            - service: input_number.set_value
+              continue_on_error: true
+              data_template:
+                entity_id: >
+                  input_number.rain_month_{{ now().month }}
+                value: "{{ states('input_number.rain_month') | float(none) }}"
+
+            - service: input_number.set_value
+              continue_on_error: true
+              data_template:
+                entity_id: >
+                  {% if  now().minute < 10 -%}
+                    input_number.rain_minute_0{{ now().minute }}
+                  {% else -%}
+                    input_number.rain_minute_{{ now().minute }}
+                  {% endif -%}
+                value: "{{ ((states('input_number.rain_minute') | float(none)) / 25.4) | round(2, default=none) }}"
+
+            - service: input_text.set_value
+              continue_on_error: true
+              entity_id: input_text.last_rain
+              data_template:
+                value: "{{ now() }}"
+
+      - service: input_number.set_value
+        entity_id: input_number.last_rain_report
+        data_template:
+          value: "{{ states('sensor.acurite_cumulative_rain') | float(none) }}"
+
+  - alias: Reset Minute Rain
+    id: 18532267-5d0d-49da-8cb2-50440c6569ca
+    trigger:
+      - platform: time_pattern
+        minutes: "*"
+        seconds: "0"
+    action:
+      - service: input_number.set_value
+        continue_on_error: true
+        data_template:
+          entity_id: >
+            {% if now().minute == 0 -%}
+              input_number.rain_minute_59
+            {% elif  now().minute <= 10 -%}
+              input_number.rain_minute_0{{ now().minute - 1 }}
+            {% else -%}
+              input_number.rain_minute_{{ now().minute - 1 }}
+            {% endif -%}
+          value: "{{ states('sensor.rain_minute') }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_minute
+        data_template:
+          value: "{{ states('input_number.rain_minute') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_minute
+        data:
+          value: 0
+
+  - alias: Reset Hour Rain
+    id: 8e6db58a-4e06-4d40-81d3-d0df45583091
+    trigger:
+      - platform: time_pattern
+        hours: "*"
+        minutes: "0"
+        seconds: "0"
+    action:
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_hour
+        data_template:
+          value: "{{ states('input_number.rain_hour') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_hour
+        data:
+          value: 0
+
+  - alias: Reset Day Rain
+    id: 07cb27b8-3ec2-4da2-a348-b25ea3a265ef
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    action:
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_day
+        data_template:
+          value: "{{ states('input_number.rain_day') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_day
+        data:
+          value: 0
+
+  - alias: Reset Week Rain
+    id: 2bb73533-17d7-49cc-b52d-8448c94ed490
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().weekday() == 0 }}"
+    action:
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_week
+        data_template:
+          value: "{{ states('input_number.rain_week') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_week
+        data:
+          value: 0
+
+  - alias: Reset Month Rain
+    id: bc41d281-ad03-4ebf-8dad-4a62194ee1b4
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().day == 1 }}"
+    action:
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month
+        data_template:
+          value: "{{ states('input_number.rain_month') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_month
+        data:
+          value: 0
+
+  - alias: Reset Year Rain
+    id: 4e41317a-b7a9-458b-9db5-a3f374491c5d
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().month == 1 }}"
+      - condition: template
+        value_template: "{{ now().day == 1 }}"
+    action:
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_year
+        data_template:
+          value: "{{ states('input_number.rain_year') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_1
+        data_template:
+          value: "{{ states('input_number.rain_month_1') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_2
+        data_template:
+          value: "{{ states('input_number.rain_month_2') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_3
+        data_template:
+          value: "{{ states('input_number.rain_month_3') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_4
+        data_template:
+          value: "{{ states('input_number.rain_month_4') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_5
+        data_template:
+          value: "{{ states('input_number.rain_month_5') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_6
+        data_template:
+          value: "{{ states('input_number.rain_month_6') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_7
+        data_template:
+          value: "{{ states('input_number.rain_month_7') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_8
+        data_template:
+          value: "{{ states('input_number.rain_month_8') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_9
+        data_template:
+          value: "{{ states('input_number.rain_month_9') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_10
+        data_template:
+          value: "{{ states('input_number.rain_month_10') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_11
+        data_template:
+          value: "{{ states('input_number.rain_month_11') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: input_number.rain_last_month_12
+        data_template:
+          value: "{{ states('input_number.rain_month_12') | float(none) }}"
+      - service: input_number.set_value
+        continue_on_error: true
+        entity_id: 
+          - input_number.rain_year
+          - input_number.rain_month_1
+          - input_number.rain_month_2
+          - input_number.rain_month_3
+          - input_number.rain_month_4
+          - input_number.rain_month_5
+          - input_number.rain_month_6
+          - input_number.rain_month_7
+          - input_number.rain_month_8
+          - input_number.rain_month_9
+          - input_number.rain_month_10
+          - input_number.rain_month_11
+          - input_number.rain_month_12
+        data:
+          value: 0     
+      
+
+  - alias: Detect Rain Started
+    id: 36234827-f4ba-4b2c-b68f-b27ee354d257
+    trigger:
+      - platform: state
+        entity_id: sensor.elk_optical_rain
+        to: Violated
+    condition:
+      - condition: state
+        entity_id: input_boolean.is_raining
+        state: "off"
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.is_raining
+      - condition: template
+        value_template: "{{ not is_state('person.shawn_mccoy','home') }}"
+      - service: notify.mobile_app_shawn_7t
+        data:
+          message: It is now raining.
+          title: Weather
+          data:
+            ttl: 0
+            priority: high
+      - service: browser_mod.notification
+        data:
+          message: "It is now raining."
+          duration: 3000
+
+  - alias: Detect Rain Stopped
+    id: 9ae2b245-b303-4d59-ba85-2be41146bcdd
+    trigger:
+      - platform: state
+        entity_id: sensor.elk_optical_rain
+        to: Normal
+    condition:
+      - condition: state
+        entity_id: input_boolean.is_raining
+        state: "on"
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.is_raining
+      - condition: template
+        value_template: "{{ not is_state('person.shawn_mccoy','home') }}"
+      - service: notify.mobile_app_shawn_7t
+        data:
+          message: It has stopped raining.
+          title: Weather
+          data:
+            ttl: 0
+            priority: high
+      - service: browser_mod.notification
+        data:
+          message: "It has stopped raining."
+          duration: 3000
+
+  - alias: Display Rainfall on Elk Keypads
+    id: aae69df9-96b8-4b41-aac4-ddbc2f3e37db
+    trigger:
+      - platform: state
+        entity_id: sensor.rain_day
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: disarmed
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: arming
+        to: armed_home
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: arming
+        to: armed_night
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: 
+          - disarmed
+          - armed_night
+        to: armed_home
+        for: "00:01:00"
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: 
+          - disarmed
+          - armed_home
+        to: armed_night
+        for: "00:01:00"
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.rain_day') | float(none) > 0 }}"
+    action:
+      - service: elkm1.alarm_display_message
+        data_template:
+          entity_id: alarm_control_panel.house
+          line1: 'Rain: {{ states("sensor.rain_day") }}"'
+
+  - alias: Clear Rainfall on Elk Keypads
+    id: d7ec1407-ccc7-4c86-a807-382bad717c5f
+    trigger:
+      - platform: template
+        value_template: "{{ states('sensor.rain_day') | float(none) == 0 }}"
+    action:
+      - service: elkm1.alarm_display_message
+        data_template:
+          entity_id: alarm_control_panel.house
+          clear: 0
+
+  - alias: Start Reset Timer When Rain Gauge Disabled
+    id: 6d919602-148d-4af4-be62-0d8351e4ae46
+    trigger:
+      - platform: state
+        entity_id: input_boolean.rain_enabled
+        to: 'off'
+    action:
+      - service: timer.start
+        data_template:
+          entity_id: timer.rain_disable
+          duration: "{{ states('input_number.rain_disable_time') | int * 3600}}"
+
+  - alias: Restart Rain Gauge When Restart Timer Expires
+    id: d2cabe3a-150c-460d-8e7a-bb05387041af
+    trigger:
+      - event_data:
+          entity_id: timer.rain_disable
+        event_type: timer.finished
+        platform: event
+    condition:
+      - condition: state
+        entity_id: input_boolean.rain_enabled
+        state: 'off'
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.rain_enabled
+
+  - alias: Cancel Rain Gauge Timer if Rain Gauge Manually Enabled
+    id: da5c9db0-0b40-49f1-b9d4-cc81fa93fc3a
+    trigger:
+      - platform: state
+        entity_id: input_boolean.rain_enabled
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: timer.rain_disable
+        state: 'active'
+    action:
+      - service: timer.cancel
+        entity_id: timer.rain_disable
+    
