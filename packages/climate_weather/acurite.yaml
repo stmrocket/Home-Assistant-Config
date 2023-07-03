@@ -36,7 +36,7 @@ mqtt:
       state_class: measurement
 
     - name: AcuRite Atlas Humidity
-      unique_id: e90be4e3-e41a-4492-86aa-2a157eb06f3a
+      unique_id: 0a2197fb-5833-4199-b813-c9bc3a211468
       state_topic: rtl_433-shed/647/humidity
       unit_of_measurement: "%"
       device_class: humidity
