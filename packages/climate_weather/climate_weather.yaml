@@ -609,7 +609,7 @@ mqtt:
 
 rest_command:
   update_wunderground:
-    url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.acurite_outside_temperature') }}&humidity={{ states('sensor.acurite_outside_humidity') }}&dewptf={{ states('sensor.thermal_comfort_dewpoint') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&action=updateraw"
+    url: "{{ states('sensor.pws_url') }}tempf={{ states('sensor.acurite_atlas_temperature') }}&humidity={{ states('sensor.acurite_atlas_humidity') }}&dewptf={{ states('sensor.thermal_comfort_dewpoint') }}&baromin={{ states('sensor.press_in') }}&rainin={{ states('sensor.rain_rate') }}&dailyrainin={{ states('sensor.rain_day') }}&winddir={{ states('sensor.acurite_atlas_wind_direction') }}&windspeedmph={{ states('sensor.acurite_atlas_wind_speed') }}&windgustmph={{ states('sensor.local_wind_gust_2_minute') }}&windspdmph_avg2m={{ states('sensor.local_wind_speed_2_minute_average') }}&winddir_avg2m={{ states('sensor.local_wind_direction_2_minute_average') }}&windgustmph_10m={{ states('sensor.local_wind_gust_10_minute') }}&UV={{ states('sensor.acurite_atlas_uv_index') }}&AqPM2.5={{ states('sensor.outdoor_pm_particulate_matter_2_5um_concentration') }}&AqPM10={{ states('sensor.outdoor_pm_particulate_matter_2_5um_concentration') }}&action=updateraw&realtime=1&rtfreq=3"
 
 input_boolean:
   is_raining:
@@ -876,7 +876,7 @@ automation:
     id: 005ecdaf-0900-447c-b13f-f1f6730ab6cb
     trigger:
       - platform: state
-        entity_id: sensor.acurite_outside_temperature
+        entity_id: sensor.acurite_atlas_temperature
     action:
       - choose: #Overall high temperature
         - conditions:
@@ -886,7 +886,7 @@ automation:
             - service: input_number.set_value
               entity_id: input_number.temp_high_overall
               data_template:
-                value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+                value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
             - service: input_text.set_value
               entity_id: input_text.temp_high_date_overall
               data_template:
@@ -1046,11 +1046,11 @@ automation:
       - service: input_number.set_value
         entity_id: input_number.temp_high_day
         data_template:
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_number.set_value
         entity_id: input_number.temp_low_day
         data_template:
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_text.set_value
         entity_id: input_text.temp_high_date_last_day
         data_template:
@@ -1088,11 +1088,11 @@ automation:
       - service: input_number.set_value
         entity_id: input_number.temp_high_week
         data_template:
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_number.set_value
         entity_id: input_number.temp_low_week
         data_template:
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_text.set_value
         entity_id: input_text.temp_high_date_last_week
         data_template:
@@ -1130,11 +1130,11 @@ automation:
       - service: input_number.set_value
         entity_id: input_number.temp_high_month
         data_template:
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_number.set_value
         entity_id: input_number.temp_low_month
         data_template:
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_text.set_value
         entity_id: input_text.temp_high_date_last_month
         data_template:
@@ -1147,12 +1147,12 @@ automation:
         data_template:
           entity_id: >
             input_number.temp_high_month_{{ now().month }}
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_number.set_value
         data_template:
           entity_id: >
             input_number.temp_low_month_{{ now().month }}
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_text.set_value
         entity_id: input_text.temp_high_date_month
         data_template:
@@ -1194,11 +1194,11 @@ automation:
       - service: input_number.set_value
         entity_id: input_number.temp_high_year
         data_template:
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_number.set_value
         entity_id: input_number.temp_low_year
         data_template:
-          value: "{{ states('sensor.acurite_outside_temperature') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_temperature') | float(none) }}"
       - service: input_text.set_value
         entity_id: input_text.temp_high_date_last_year
         data_template:
