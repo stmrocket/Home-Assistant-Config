@@ -271,7 +271,7 @@ sensor:
         
   - platform: statistics
     name: Local Wind Gust 10 Minute
-    unique_id: 82ac1f0c-2e2b-4fa3-a76b-68ed87f39833
+    unique_id: 717aeaac-2fa1-48db-96e7-b151be95f843
     entity_id: sensor.acurite_atlas_wind_speed
     state_characteristic: value_max
     max_age:
@@ -279,7 +279,7 @@ sensor:
 
   - platform: statistics
     name: Local Wind Speed 2 Minute Average
-    unique_id: 82ac1f0c-2e2b-4fa3-a76b-68ed87f39833
+    unique_id: 1fffa5b0-9677-4c22-a8c9-73ed194013a1
     entity_id: sensor.acurite_atlas_wind_speed
     state_characteristic: mean
     max_age:
@@ -287,7 +287,7 @@ sensor:
 
   - platform: statistics
     name: Local Wind Direction 2 Minute Average
-    unique_id: 82ac1f0c-2e2b-4fa3-a76b-68ed87f39833
+    unique_id: a9dd1b0c-f51f-40cd-9846-3a7a30b69cf5
     entity_id: sensor.acurite_atlas_wind_direction
     state_characteristic: mean
     max_age:
