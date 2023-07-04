@@ -43,229 +43,229 @@ sensor:
     sensors:
       rain_minute:
         unique_id: bd1d7bbf-8653-4f52-a64b-b8b0998fae05
-        value_template: "{{ states('input_number.rain_minute') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_minute') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_hour:
         unique_id: e5d3e3a4-37f2-4758-b22d-e43645d6698f
-        value_template: "{{ states('input_number.rain_hour') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_hour') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_day:
         unique_id: 12a861de-80a9-431f-96b8-2e71c571821f 
-        value_template: "{{ states('input_number.rain_day') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_day') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_week:
         unique_id: b50d9d93-4c6a-4eb4-9ff2-ac80cdedc6f5
-        value_template: "{{ states('input_number.rain_week') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_week') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month:
         unique_id: e716d790-0646-4219-b487-6701c4ef6e4a
-        value_template: "{{ states('input_number.rain_month') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_1:
         unique_id: fb6a476f-5bc5-4714-a6b6-f1a8ce38cf2d
-        value_template: "{{ states('input_number.rain_month_1') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_1') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_2:
         unique_id: 2df63924-90c7-4db6-b45c-a1e7fa11ea18
-        value_template: "{{ states('input_number.rain_month_2') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_2') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_3:
         unique_id: cb669411-c2fc-4f42-b4bc-5f245bfa1530
-        value_template: "{{ states('input_number.rain_month_3') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_3') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_4:
         unique_id: c6120002-4eab-43fa-ad42-e7829f464966
-        value_template: "{{ states('input_number.rain_month_4') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_4') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_5:
         unique_id: bb906b59-22ea-4832-9b34-debebe83caa3
-        value_template: "{{ states('input_number.rain_month_5') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_5') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_6:
         unique_id: bffa7d4f-30a3-43ac-a33d-e774ada71906
-        value_template: "{{ states('input_number.rain_month_6') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_6') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_7:
         unique_id: 4ec09e20-88d7-414f-9ab0-2c7e5788b586
-        value_template: "{{ states('input_number.rain_month_7') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_7') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_8:
         unique_id: cb4ef57c-a561-4640-90d1-5135ffad539a
-        value_template: "{{ states('input_number.rain_month_8') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_8') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_9:
         unique_id: cce186bf-f87a-4c34-b325-ac036cfffd12
-        value_template: "{{ states('input_number.rain_month_9') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_9') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_10:
         unique_id: 5eeb2e1d-5509-4ddf-8f9d-d6cd8fd4a875
-        value_template: "{{ states('input_number.rain_month_10') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_10') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_11:
         unique_id: b23d03d1-ea14-4039-8544-2f8d9e7586cf
-        value_template: "{{ states('input_number.rain_month_11') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_11') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_month_12:
         unique_id: 19f3c43c-b0bc-4db5-bad8-66589e04b1ef
-        value_template: "{{ states('input_number.rain_month_12') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_month_12') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_year:
         unique_id: 83304d39-d025-4832-851c-192f4b0f05ff
-        value_template: "{{ states('input_number.rain_year') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_year') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_total:
         unique_id: 9fc44d92-d6f1-4bde-90c0-4592e9658cf7
-        value_template: "{{ states('input_number.rain_total') |int(none) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_total') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_minute:
         unique_id: a8473f13-1967-4980-ad0c-3f3b2f46d094
-        value_template: "{{ (states('input_number.rain_last_minute') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_minute') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_hour:
         unique_id: eaf3dc46-b331-4b7f-9bd4-adbfa4267aee
-        value_template: "{{ (states('input_number.rain_last_hour') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_hour') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_day:
         unique_id: ffd1151f-98a7-465d-9561-7b6177b9f56a
-        value_template: "{{ (states('input_number.rain_last_day') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_day') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_week:
         unique_id: 094b89b1-b79e-4ac9-a9dc-9b927170706f
-        value_template: "{{ (states('input_number.rain_last_week') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_week') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month:
         unique_id: 9ba8e03a-9809-4da3-a6e8-8375a6bfe8f1
-        value_template: "{{ (states('input_number.rain_last_month') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_1:
         unique_id: 58fe8efd-8066-4606-ab8d-b6f9d469573e
-        value_template: "{{ (states('input_number.rain_last_month_1') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_1') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_2:
         unique_id: 7923c9f7-0ae8-4890-83c6-1834c31536d8
-        value_template: "{{ (states('input_number.rain_last_month_2') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_2') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_3:
         unique_id: 296024ac-32d7-4c27-bd1a-5b76296de773
-        value_template: "{{ (states('input_number.rain_last_month_3') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_3') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_4:
         unique_id: c94747fe-2882-4f05-99ab-e89f3ab712ec
-        value_template: "{{ (states('input_number.rain_last_month_4') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_4') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_5:
         unique_id: 8e2773b4-bb6d-4fd2-a624-28862e29770f
-        value_template: "{{ (states('input_number.rain_last_month_5') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_5') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_6:
         unique_id: ee1d8ca7-dfcf-4374-b57b-369049cf9d97
-        value_template: "{{ (states('input_number.rain_last_month_6') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_6') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_7:
         unique_id: c0574236-1a8d-49ee-b06a-f98f53ded175
-        value_template: "{{ (states('input_number.rain_last_month_7') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_7') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_8:
         unique_id: 1472c733-5880-439c-8c57-f46e4dfc079d
-        value_template: "{{ (states('input_number.rain_last_month_8') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_8') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_9:
         unique_id: f94d73c1-3e4a-47f5-b145-b807bcb9fe65
-        value_template: "{{ (states('input_number.rain_last_month_9') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_9') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_10:
         unique_id: a0299c2e-710f-40cb-98b8-b4b2439cc26a
-        value_template: "{{ (states('input_number.rain_last_month_10') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_10') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_11:
         unique_id: 0c035306-6e94-47ee-9e2a-0e82ef033e63
-        value_template: "{{ (states('input_number.rain_last_month_11') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_11') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_month_12:
         unique_id: 12a897cb-26f5-4dc1-bc8c-7a37fcb6ce45
-        value_template: "{{ (states('input_number.rain_last_month_12') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_month_12') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       rain_last_year:
         unique_id: 8134bd62-7f15-4f72-bb4e-c1e1c85939cc
-        value_template: "{{ (states('input_number.rain_last_year') |int(none) / 100) | round(2, default=none) }}"
+        value_template: "{{ states('input_number.rain_last_year') }}"
         unit_of_measurement: "in"
         device_class: precipitation
 
       last_rain_date:
         unique_id: 53fb7f35-1946-4e69-b5c4-eb94b0f9907c
-        value_template: "{{ states('input_text.last_rain')[:10] }}"
+        value_template: "{{ tates('input_text.last_rain')[:10] }}"
 
 
       rain_rate:
