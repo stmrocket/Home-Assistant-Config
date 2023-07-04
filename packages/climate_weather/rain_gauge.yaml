@@ -919,7 +919,7 @@ automation:
                   {% else -%}
                     input_number.rain_minute_{{ now().minute }}
                   {% endif -%}
-                value: "{{ ((states('input_number.rain_minute') | float(none)) / 25.4) | round(2, default=none) }}"
+                value: "{{ (states('input_number.rain_minute') | float(none)) | round(2, default=none) }}"
 
             - service: input_text.set_value
               continue_on_error: true
