@@ -56,6 +56,12 @@ cards:
           - entity: sensor.last_rain_date
             name: Last Rainfall
             icon: mdi:calendar-today
+          - type: divider
+          - input_boolean.rain_enabled
+          - entity: input_number.rain_disable_time
+            name: Delay
+          - entity: timer.rain_disable
+            name: Time Remaining
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
