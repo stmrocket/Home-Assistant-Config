@@ -858,49 +858,49 @@ automation:
       - choose:
         - conditions:
           - condition: template
-            value_template: "{{ ((states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) > 0) and ((states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) < 38) and is_state('input_boolean.rain_enabled', 'on') }}"
+            value_template: "{{ ((states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) > 0) and ((states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) < 2) and is_state('input_boolean.rain_enabled', 'on') }}"
           sequence:
             - service: input_number.set_value
               continue_on_error: true
               entity_id: input_number.rain_minute
               data_template:
-                value: "{{ states('input_number.rain_minute') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+                value: "{{ states('input_number.rain_minute') | float(none) + (states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
 
             - service: input_number.set_value
               continue_on_error: true
               entity_id: input_number.rain_hour
               data_template:
-                value: "{{ states('input_number.rain_hour') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+                value: "{{ states('input_number.rain_hour') | float(none) + (states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
 
             - service: input_number.set_value
               continue_on_error: true
               entity_id: input_number.rain_day
               data_template:
-                value: "{{ states('input_number.rain_day') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+                value: "{{ states('input_number.rain_day') | float(none) + (states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
 
             - service: input_number.set_value
               continue_on_error: true
               entity_id: input_number.rain_week
               data_template:
-                value: "{{ states('input_number.rain_week') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+                value: "{{ states('input_number.rain_week') | float(none) + (states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
 
             - service: input_number.set_value
               continue_on_error: true
               entity_id: input_number.rain_month
               data_template:
-                value: "{{ states('input_number.rain_month') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+                value: "{{ states('input_number.rain_month') | float(none) + (states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
 
             - service: input_number.set_value
               continue_on_error: true
               entity_id: input_number.rain_year
               data_template:
-                value: "{{ states('input_number.rain_year') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+                value: "{{ states('input_number.rain_year') | float(none) + (states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
 
             - service: input_number.set_value
               continue_on_error: true
               entity_id: input_number.rain_total
               data_template:
-                value: "{{ states('input_number.rain_total') | float(none) + (states('sensor.acurite_cumulative_rain') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
+                value: "{{ states('input_number.rain_total') | float(none) + (states('sensor.acurite_atlas_cumulative_rainfall') | float(none) - states('input_number.last_rain_report') | float(none)) }}"
               
 
             - service: input_number.set_value
@@ -930,7 +930,7 @@ automation:
       - service: input_number.set_value
         entity_id: input_number.last_rain_report
         data_template:
-          value: "{{ states('sensor.acurite_cumulative_rain') | float(none) }}"
+          value: "{{ states('sensor.acurite_atlas_cumulative_rainfall') | float(none) }}"
 
   - alias: Reset Minute Rain
     id: 18532267-5d0d-49da-8cb2-50440c6569ca
