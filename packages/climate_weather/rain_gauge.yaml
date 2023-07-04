@@ -853,7 +853,7 @@ automation:
     mode: queued
     trigger:
       - platform: state
-        entity_id: sensor.acurite_atlas_cumulative_rain
+        entity_id: sensor.acurite_atlas_cumulative_rainfall
     action:
       - choose:
         - conditions:
