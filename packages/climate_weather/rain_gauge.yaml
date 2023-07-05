@@ -1167,6 +1167,8 @@ automation:
       - platform: state
         entity_id: sensor.elk_optical_rain
         to: Normal
+        for:
+          minutes: 10
     condition:
       - condition: state
         entity_id: input_boolean.is_raining
