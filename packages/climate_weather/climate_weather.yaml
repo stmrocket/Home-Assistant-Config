@@ -284,6 +284,7 @@ sensor:
 template:
   - sensor:
     - name: AcuRite Atlas Wind Speed Buffered
+      unique_id: bb04804b-cad8-4bda-9124-e249215761aa
       unit_of_measurement: "mph"
       device_class: wind_speed
       state_class: measurement
@@ -291,6 +292,7 @@ template:
       attributes:
           minute_counter: "{{ now().minute }}"
     - name: AcuRite Atlas Wind Direction Buffered
+      unique_id: f220269c-ee0b-4024-bc93-d74b4ed7cdf7
       unit_of_measurement: "°"
       state_class: measurement
       state: "{{ states('sensor.acurite_atlas_wind_direction') }}"
