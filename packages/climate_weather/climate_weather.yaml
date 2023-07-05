@@ -260,7 +260,7 @@ sensor:
   - platform: statistics
     name: Local Wind Gust 10 Minute
     unique_id: 717aeaac-2fa1-48db-96e7-b151be95f843
-    entity_id: sensor.acurite_atlas_wind_speed
+    entity_id: sensor.acurite_atlas_wind_speed_buffered
     state_characteristic: value_max
     max_age:
       minutes: 10
@@ -276,10 +276,30 @@ sensor:
   - platform: statistics
     name: Local Wind Direction 2 Minute Average
     unique_id: a9dd1b0c-f51f-40cd-9846-3a7a30b69cf5
-    entity_id: sensor.acurite_atlas_wind_direction
+    entity_id: sensor.acurite_atlas_wind_direction_buffered
     state_characteristic: mean
     max_age:
       minutes: 2
+
+template:
+  - sensor:
+    - name: AcuRite Atlas Wind Speed Buffered
+      unique_id: bb04804b-cad8-4bda-9124-e249215761aa
+      unit_of_measurement: "mph"
+      device_class: wind_speed
+      state_class: measurement
+      state: "{{ states('sensor.acurite_atlas_wind_speed') }}"
+      attributes:
+          minute_counter: "{{ now().minute }}"
+    - name: AcuRite Atlas Wind Direction Buffered
+      unique_id: f220269c-ee0b-4024-bc93-d74b4ed7cdf7
+      unit_of_measurement: "°"
+      state_class: measurement
+      state: "{{ states('sensor.acurite_atlas_wind_direction') }}"
+      attributes:
+          minute_counter: "{{ now().minute }}"
+
+
 
 mqtt:
   sensor:
