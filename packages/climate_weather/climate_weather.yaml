@@ -252,7 +252,7 @@ sensor:
   - platform: statistics
     name: Local Wind Gust 2 Minute
     unique_id: 82ac1f0c-2e2b-4fa3-a76b-68ed87f39833
-    entity_id: sensor.acurite_atlas_wind_speed
+    entity_id: sensor.acurite_atlas_wind_speed_buffered
     state_characteristic: value_max
     max_age:
       minutes: 2
@@ -268,7 +268,7 @@ sensor:
   - platform: statistics
     name: Local Wind Speed 2 Minute Average
     unique_id: 1fffa5b0-9677-4c22-a8c9-73ed194013a1
-    entity_id: sensor.acurite_atlas_wind_speed
+    entity_id: sensor.acurite_atlas_wind_speed_buffered
     state_characteristic: mean
     max_age:
       minutes: 2
@@ -792,6 +792,10 @@ input_number:
     min: -50
     max: 150
     mode: box
+  last_strike_count:
+    min: 0
+    max: 10000
+    mode: box
 
 input_text:
   temp_high_date_overall:
@@ -1231,3 +1235,39 @@ automation:
         seconds: "/3"
     action:
       - service: rest_command.update_wunderground
+
+  - alias: Repeat Barometric Pressure
+    id: ad3b9c6f-574e-455d-8e37-d91b8905bb12
+    trigger:
+      - platform: mqtt
+        topic: "zigbee2mqtt/Den Climate"
+    action:
+    - service: mqtt.publish
+      data:
+        topic: weather/reports/press_in
+        payload_template: "{{ states('sensor.den_climate_pressure') }}"
+
+  - alias: Repeat Lightning Strikes
+    id: 5273763b-bd68-4b07-83a5-aecb680dab29
+    trigger:
+      - platform: state
+        entity_id: sensor.acurite_atlas_lightning_strike_count
+    action:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) > 0 }}"
+          sequence:
+            - alias: Repeat for the number of strikes counted
+              repeat:
+                count: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) - states('input_number.last_strike_count') }}"
+                sequence:
+                  - service: mqtt.publish     
+                    data:               
+                      topic: weather/reports/lightning_distance
+                      payload_template: "{{ states('sensor.acurite_atlas_lightning_strike_distance') }}"
+      - service: input_number.set_value
+        entity_id: input_number.last_strike_count
+        data_template:
+          value: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) }}"
+

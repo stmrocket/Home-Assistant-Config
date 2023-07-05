@@ -1281,3 +1281,13 @@ automation:
       - service: timer.cancel
         entity_id: timer.rain_disable
     
+  - alias: Repeat Cumulative Rain
+    id: 66cf3868-c46e-4b43-84d9-bf52b6c037a4
+    trigger:
+      - platform: mqtt
+        topic: rtl_433-shed/647/rain_in
+    action:
+    - service: mqtt.publish
+      data:
+        topic: weather/reports/rain_in
+        payload_template: "{{ states('sensor.rain_total') }}"
