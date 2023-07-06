@@ -794,7 +794,11 @@ input_number:
     mode: box
   last_strike_count:
     min: 0
-    max: 10000
+    max: 100000
+    mode: box
+  total_strike_count:
+    min: 0
+    max: 100000
     mode: box
 
 input_text:
@@ -1256,18 +1260,46 @@ automation:
       - choose:
         - conditions:
           - condition: template
-            value_template: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) > 0 }}"
+            value_template: "{{ ((states('sensor.acurite_atlas_lightning_strike_count') | int(none) - states('input_number.last_strike_count') | int(none)) > 0) ) }}"
           sequence:
-            - alias: Repeat for the number of strikes counted
-              repeat:
-                count: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) - states('input_number.last_strike_count') }}"
+            - repeat:
+                count: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) - states('input_number.last_strike_count') | int(0) }}"
                 sequence:
                   - service: mqtt.publish     
                     data:               
                       topic: weather/reports/lightning_distance
                       payload_template: "{{ states('sensor.acurite_atlas_lightning_strike_distance') }}"
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.total_strike_count
+              data_template:
+                value: "{{ states('input_number.total_strike_count') | int(none) + (states('sensor.acurite_atlas_lightning_strike_count') | int(none) - states('input_number.last_strike_count') | int(none)) }}"
+            - service: mqtt.publish     
+              data:               
+                topic: weather/reports/lightning_strike_count
+                payload_template: "{{ states('input_number.total_strike_count') }}"
+        - conditions:
+          - condition: template
+            value_template: "{{ (states('sensor.acurite_atlas_lightning_strike_count') | int(none) < states('input_number.last_strike_count') | int(none) and (states('sensor.acurite_atlas_lightning_strike_count') | int(none) > 0) }}"
+          sequence:
+            - repeat:
+                count: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) - states('input_number.last_strike_count') | int(0) }}"
+                sequence:
+                  - service: mqtt.publish     
+                    data:               
+                      topic: weather/reports/lightning_distance
+                      payload_template: "{{ states('sensor.acurite_atlas_lightning_strike_distance') }}"
+            - service: input_number.set_value
+              continue_on_error: true
+              entity_id: input_number.total_strike_count
+              data_template:
+                value: "{{ states('input_number.total_strike_count') | int(none) + states('sensor.acurite_atlas_lightning_strike_count') | int(none) }}"
+            - service: mqtt.publish     
+              data:               
+                topic: weather/reports/lightning_strike_count
+                payload_template: "{{ states('input_number.total_strike_count') }}"
       - service: input_number.set_value
-        entity_id: input_number.last_strike_count
+        entity_id: input_number.last_strike_count 
         data_template:
           value: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) }}"
 
