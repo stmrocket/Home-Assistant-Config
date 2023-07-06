@@ -1280,7 +1280,7 @@ automation:
                 payload_template: "{{ states('input_number.total_strike_count') }}"
         - conditions:
           - condition: template
-            value_template: "{{ (states('sensor.acurite_atlas_lightning_strike_count') | int(none) < states('input_number.last_strike_count') | int(none)) and (states('sensor.acurite_atlas_lightning_strike_count') | int(none) > 0) }}"
+            value_template: "{{ (states('sensor.acurite_atlas_lightning_strike_count') | int(none) < states('input_number.last_strike_count') | int(none) and (states('sensor.acurite_atlas_lightning_strike_count') | int(none) > 0) }}"
           sequence:
             - repeat:
                 count: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) - states('input_number.last_strike_count') | int(0) }}"
