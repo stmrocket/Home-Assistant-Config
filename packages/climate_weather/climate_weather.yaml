@@ -1251,7 +1251,7 @@ automation:
         topic: weather/reports/press_in
         payload_template: "{{ states('sensor.den_climate_pressure') }}"
 
-  - alias: Repeat Lightning Strikes
+  - alias: Repeat Lightning Strike Distance
     id: 5273763b-bd68-4b07-83a5-aecb680dab29
     trigger:
       - platform: state
@@ -1307,3 +1307,36 @@ automation:
         data_template:
           value: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) }}"
 
+  - alias: Send Rain Counts to MQTT
+    id: 66cf3868-c46e-4b43-84d9-bf52b6c037a4
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.rain_hour
+          - sensor.rain_day
+          - sensor.rain_week
+          - sensor.rain_month
+          - sensor.rain_year
+      - platform: time_pattern
+        minutes: "/15"
+    action:
+    - service: mqtt.publish
+      data:
+        topic: weather/reports/rain_hour
+        payload_template: "{{ states('sensor.rain_hour') }}"
+    - service: mqtt.publish
+      data:
+        topic: weather/reports/rain_day
+        payload_template: "{{ states('sensor.rain_day') }}"
+    - service: mqtt.publish
+      data:
+        topic: weather/reports/rain_week
+        payload_template: "{{ states('sensor.rain_week') }}"
+    - service: mqtt.publish
+      data:
+        topic: weather/reports/rain_month
+        payload_template: "{{ states('sensor.rain_month') }}"
+    - service: mqtt.publish
+      data:
+        topic: weather/reports/rain_year
+        payload_template: "{{ states('sensor.rain_year') }}"
