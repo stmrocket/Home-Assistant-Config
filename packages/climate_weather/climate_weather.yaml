@@ -1308,7 +1308,7 @@ automation:
           value: "{{ states('sensor.acurite_atlas_lightning_strike_count') | int(0) }}"
 
   - alias: Send Rain Counts to MQTT
-    id: 66cf3868-c46e-4b43-84d9-bf52b6c037a4
+    id: e8cf37b4-9b4f-462c-ae83-8c3e9144fc3b
     trigger:
       - platform: state
         entity_id:
