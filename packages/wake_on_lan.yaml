@@ -8,3 +8,26 @@ switch:
     turn_off:
       service: button.press
       entity_id: button.shawn_desktop_hibernate
+
+automation:
+  - alias: Office PC on With Desk
+    id: 8afcbc9d-ce6f-4629-8f50-aa74333d277c
+    trigger:
+      - platform: state
+        entity_id: switch.computer
+        from: "off"
+        to: "on"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.office_pc
+
+  - alias: Office PC off With Desk
+    id: ec21334c-e550-4710-98fe-22bcaccbf608
+    trigger:
+      - platform: state
+        entity_id: switch.computer
+        from: "on"
+        to: "off"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.office_pc
