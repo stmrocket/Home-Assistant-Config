@@ -18,6 +18,7 @@
       entity_id: light.master_suite_leds_rgb
     - service: switch.turn_off
       entity_id: switch.master_bedroom_lamps
+    - service: rest_command.play_waves
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
 
@@ -43,6 +44,7 @@
       entity_id: switch.master_bedroom_lamps
     - service: switch.turn_on
       entity_id: switch.elk_night_mode_on
+    - service: rest_command.play_waves
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
 
@@ -72,6 +74,7 @@
       data:
         topic: nuvo/command/set/zone/vol
         payload: 4,60
+    - service: rest_command.play_waves
     - service: switch.turn_off
       entity_id: switch.master_bedroom_fan
     - service: light.turn_off
