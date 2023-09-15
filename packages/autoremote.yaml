@@ -9,3 +9,5 @@ rest_command:
     url: !secret ar_stop_truck
   load_audiobook:
     url: !secret ar_load_audiobook
+  play_waves:
+    url: !secret ar_play_waves
