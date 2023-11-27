@@ -85,8 +85,42 @@ mqtt:
       device_class: illuminance
       state_class: measurement
 
+    - name: AcuRite Iris Temperature
+      unique_id: e961168d-9102-492c-a25c-9dbbc7046ca5
+      state_topic: rtl_433-shed/321/temperature_F
+      unit_of_measurement: "°F"
+      device_class: temperature
+      state_class: measurement
+
+    - name: AcuRite Iris Humidity
+      unique_id: 274ec9da-cb3f-454f-a810-2cfaa494c5b5
+      state_topic: rtl_433-shed/321/humidity
+      unit_of_measurement: "%"
+      device_class: humidity
+      state_class: measurement
+
+    - name: AcuRite Iris Wind Speed
+      unique_id: fd3a3253-40ad-46a5-aeff-a952fdd85888
+      state_topic: rtl_433-shed/321/wind_avg_km_h
+      unit_of_measurement: "km/h"
+      device_class: wind_speed
+      state_class: measurement
+
+    - name: AcuRite Iris Wind Direction
+      unique_id: a9a86271-ddc2-49f6-b24d-c2c031956240
+      state_topic: rtl_433-shed/321/wind_dir_deg
+      unit_of_measurement: "°"
+      state_class: measurement
+
+    - name: AcuRite Iris Cumulative Rainfall
+      unique_id: 1838ce60-155c-4249-9087-ac20baa80f16
+      state_topic: rtl_433-shed/321/rain_in
+      unit_of_measurement: "in"
+      device_class: precipitation
+      state_class: total_increasing
+
   binary_sensor:
-    - name: AcuRite Battery Low
+    - name: AcuRite Outdoor Temperature Battery Low
       unique_id: 9959f1a8-144c-4975-bde0-107f4b4683b2
       state_topic: rtl_433/8860/battery_ok
       payload_on: "0"
@@ -110,6 +144,13 @@ mqtt:
     - name: AcuRite Atlas Battery Low
       unique_id: 1ae14a87-1c09-4722-b51e-32fcaac04330
       state_topic: rtl_433-shed/647/battery_ok
+      payload_on: "0"
+      payload_off: "1"
+      device_class: battery
+    
+    - name: AcuRite Iris Battery Low
+      unique_id: fb46ba8d-85a7-43b7-8118-6f0d546eaf3b
+      state_topic: rtl_433-shed/321/battery_ok
       payload_on: "0"
       payload_off: "1"
       device_class: battery
