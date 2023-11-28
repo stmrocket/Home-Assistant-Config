@@ -76,6 +76,7 @@ mqtt:
     - name: AcuRite Atlas UV Index
       unique_id: aba02d60-fca1-4aba-909f-75dc8e0729f7
       state_topic: rtl_433-shed/647/uv
+      unit_of_measurement: "UV index"
       state_class: measurement
 
     - name: AcuRite Atlas Illuminance
@@ -154,3 +155,4 @@ mqtt:
       payload_on: "0"
       payload_off: "1"
       device_class: battery
+      

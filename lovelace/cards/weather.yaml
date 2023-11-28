@@ -2,7 +2,7 @@ type: 'custom:bom-weather-card'
 title: BOM Weather
 entity_current_conditions: sensor.openweathermap_current_icon
 entity_current_text: sensor.openweathermap_current_summary
-entity_temperature: sensor.acurite_atlas_temperature
+entity_temperature: sensor.acurite_ws_temperature
 entity_forecast_high_temp_1: sensor.openweathermap_day_1_maximum_temperature
 entity_forecast_high_temp_2: sensor.openweathermap_day_2_maximum_temperature
 entity_forecast_high_temp_3: sensor.openweathermap_day_3_maximum_temperature
@@ -26,10 +26,10 @@ entity_summary_5: sensor.openweathermap_day_5_summary
 entity_sun: sun.sun
 entity_daytime_high: sensor.openweathermap_current_maximum_temperature
 entity_daytime_low: sensor.openweathermap_current_minimum_temperature
-entity_wind_bearing: sensor.acurite_atlas_wind_direction
-entity_wind_speed: sensor.acurite_atlas_wind_speed
+entity_wind_bearing: sensor.acurite_ws_wind_direction
+entity_wind_speed: sensor.acurite_ws_wind_speed
 entity_wind_gust: sensor.local_wind_gust_2_minute
-entity_humidity: sensor.acurite_atlas_humidity
+entity_humidity: sensor.acurite_ws_humidity
 entity_apparent_temp: sensor.local_apparent_temperature
 entity_daily_summary: sensor.weather_description
 entity_pop: sensor.openweathermap_current_pop
