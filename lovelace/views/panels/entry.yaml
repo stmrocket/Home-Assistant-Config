@@ -46,7 +46,7 @@ cards:
         displaySeconds: false
       - type: custom:mini-graph-card
         entities:
-          - sensor.acurite_atlas_temperature
+          - sensor.acurite_ws_temperature
         height: 46
         line_width: 2
         font_size: 65
