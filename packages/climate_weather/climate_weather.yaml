@@ -27,7 +27,7 @@ sensor:
         device_class: temperature
 
       local_uv_risk:
-        unique_id: 5b4f6c6c-95ba-4161-b7ee-4a09e8376035
+        unique_id: 8b1949cd-4ff1-4656-8d19-1125f63add20
         value_template: >-
           {% if states("sensor.acurite_ws_uv_index") | int(0) >= 0 and states("sensor.acurite_ws_uv_index") | int(0) <= 2 -%}
             Low

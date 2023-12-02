@@ -30,58 +30,58 @@ mqtt:
 
     - name: AcuRite Atlas Temperature
       unique_id: e559f22a-a2d7-4446-b78c-85137c2744f6
-      state_topic: rtl_433-shed/647/temperature_F
+      state_topic: rtl_433-shed/157/temperature_F
       unit_of_measurement: "°F"
       device_class: temperature
       state_class: measurement
 
     - name: AcuRite Atlas Humidity
       unique_id: 0a2197fb-5833-4199-b813-c9bc3a211468
-      state_topic: rtl_433-shed/647/humidity
+      state_topic: rtl_433-shed/157/humidity
       unit_of_measurement: "%"
       device_class: humidity
       state_class: measurement
 
     - name: AcuRite Atlas Wind Speed
       unique_id: 7502d473-f2da-42da-a51f-d65db8ee5646
-      state_topic: rtl_433-shed/647/wind_avg_mi_h
+      state_topic: rtl_433-shed/157/wind_avg_mi_h
       unit_of_measurement: "mph"
       device_class: wind_speed
       state_class: measurement
 
     - name: AcuRite Atlas Wind Direction
       unique_id: 22de0b71-23ed-466a-a6d0-e1672bc084d6
-      state_topic: rtl_433-shed/647/wind_dir_deg
+      state_topic: rtl_433-shed/157/wind_dir_deg
       unit_of_measurement: "°"
       state_class: measurement
 
     - name: AcuRite Atlas Lightning Strike Count
       unique_id: 2bcbf856-d573-45e1-b69d-d87a39813c03
-      state_topic: rtl_433-shed/647/strike_count
+      state_topic: rtl_433-shed/157/strike_count
       state_class: measurement
 
     - name: AcuRite Atlas Lightning Strike Distance
       unique_id: 9b704b3b-8337-40d9-bd82-6b6a4ad9fe2c
-      state_topic: rtl_433-shed/647/strike_distance
+      state_topic: rtl_433-shed/157/strike_distance
       unit_of_measurement: "mi"
       state_class: measurement
 
     - name: AcuRite Atlas Cumulative Rainfall
       unique_id: 18ff9b22-b386-4cc7-9ef7-3b19cfb26013
-      state_topic: rtl_433-shed/647/rain_in
+      state_topic: rtl_433-shed/157/rain_in
       unit_of_measurement: "in"
       device_class: precipitation
       state_class: total_increasing
 
     - name: AcuRite Atlas UV Index
       unique_id: aba02d60-fca1-4aba-909f-75dc8e0729f7
-      state_topic: rtl_433-shed/647/uv
+      state_topic: rtl_433-shed/157/uv
       unit_of_measurement: "UV index"
       state_class: measurement
 
     - name: AcuRite Atlas Illuminance
       unique_id: 2221e328-1b4d-4c40-9ed0-c966530f7fec
-      state_topic: rtl_433-shed/647/lux
+      state_topic: rtl_433-shed/157/lux
       unit_of_measurement: "lx"
       device_class: illuminance
       state_class: measurement
@@ -144,7 +144,7 @@ mqtt:
     
     - name: AcuRite Atlas Battery Low
       unique_id: 1ae14a87-1c09-4722-b51e-32fcaac04330
-      state_topic: rtl_433-shed/647/battery_ok
+      state_topic: rtl_433-shed/157/battery_ok
       payload_on: "0"
       payload_off: "1"
       device_class: battery
