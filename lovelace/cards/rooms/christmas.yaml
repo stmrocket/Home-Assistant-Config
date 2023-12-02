@@ -1,9 +1,9 @@
 # Christmas
 type: conditional
 conditions:
-  - entity: switch.christmas_tree
+  - entity: switch.christmas_1
     state_not: "unavailable"
-  - entity: switch.christmas_tree
+  - entity: switch.christmas_1
     state_not: "unknown"
 card:
   type: custom:stack-in-card
@@ -29,43 +29,6 @@ card:
           color: rgb(228, 94, 101)
           icon: mdi:pine-tree
           name: Indoor
-          hold_action:
-            action: fire-dom-event
-            browser_mod:
-              service: browser_mod.popup
-              data:
-                title: Indoor Christmas
-                content:
-                  type:  entities
-                  entities:
-                    - entity: switch.left_christmas_tree
-                      name: Left Tree
-                    - entity: switch.christmas_tree
-                      name: Right Tree
-                    - entity: switch.christmas_garland
-                      name: Garland
-                    - entity: switch.christmas_village
-                      name: Villiage
-                    - entity: switch.dining_room_decor
-                      name: Dining
-                    - entity: switch.entry_hall_decor
-                      name: Entry
-                    - entity: switch.master_bedroom_decor
-                      name: Master
-                    - entity: switch.snowman
-                      name: Snow Man
-                    - entity: switch.kitchen_garland
-                      name: Kitchen Garland
-                    - entity: switch.kitchen_christmas_tree
-                      name: Kitchen Tree
-                    - entity: switch.hall_decor
-                      name: Hall
-                    - entity: switch.office_decor
-                      name: Office
-                    - entity: switch.metal_snowman
-                      name: Metal Snow Man
-                    - entity: switch.ceramic_tree
-                      name: Ceramic Tree
 
         - type: "custom:button-card"
           entity: input_boolean.christmas_show
