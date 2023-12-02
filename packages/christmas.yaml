@@ -26,7 +26,7 @@ switch:
       indoor_christmas:
         unique_id: e330407a-7352-43da-9316-338863d7870a
         friendly_name: "Indoor Christmas Decor"
-        value_template: "{{ is_state('switch.dining_room_decor', 'on') or is_state('switch.entry_hall_decor', 'on') or is_state('switch.christmas_village', 'on') or is_state('switch.snowman', 'on') or is_state('switch.christmas_tree', 'on') or is_state('switch.left_christmas_tree', 'on') or is_state('switch.kitchen_christmas_tree', 'on') or is_state('switch.christmas_garland', 'on')  or is_state('switch.master_bedroom_decor', 'on') or is_state('switch.kitchen_garland', 'on') or is_state('switch.hall_decor', 'on') or is_state('switch.office_decor', 'on') or is_state('switch.ceramic_tree', 'on') or is_state('switch.metal_snowman', 'on') }}"
+        value_template: "{{ is_state('switch.christmas_1', 'on') or is_state('switch.christmas_2', 'on') or is_state('switch.christmas_3', 'on') or is_state('switch.christmas_4', 'on') or is_state('switch.christmas_5', 'on') or is_state('switch.christmas_6', 'on') or is_state('switch.christmas_7', 'on') or is_state('switch.christmas_8', 'on')  or is_state('switch.christmas_9', 'on') or is_state('switch.christmas_10', 'on') or is_state('switch.christmas_11', 'on') or is_state('switch.christmas_12', 'on') or is_state('switch.christmas_13', 'on') or is_state('switch.christmas_14', 'on') or is_state('switch.christmas_15', 'on') or is_state('switch.christmas_16', 'on') or is_state('switch.christmas_17', 'on') }}"
         turn_on:
           service: mqtt.publish
           data:
@@ -46,10 +46,6 @@ input_boolean:
   amplifier_shutdown:
     name: Allow Amplifier Shutdown
     icon: mdi:speaker-off
-
-  # donation_box:
-  #   name: Donation Box
-  #   icon: mdi:door-closed
 
 input_datetime:
   amplifier_shutdown_time:
@@ -148,27 +144,6 @@ automation:
           - group.landscape_lights
       - service: input_boolean.turn_on
         entity_id: input_boolean.frigate_enabled_front
-
-  # - alias: Donation Box Opened
-  #   id: f2226ed0-ef53-48b5-a2f4-5baed7f5668c
-  #   trigger:
-  #     - platform: state
-  #       entity_id: sensor.elk_donation_box
-  #       to: Violated
-  #   action:
-  #     - service: mqtt.publish
-  #       data:
-  #         topic: parrot/command/set/play
-  #         payload: 3,4
-  #     - service: notify.mobile_app_shawn_7t
-  #       data:
-  #         message: The donation box has been opened.
-  #         title: Donation Box
-  #         data:
-  #           ttl: 0
-  #           priority: high
-  #     - service: input_boolean.turn_on
-  #       entity_id: input_boolean.donation_box
 
   - alias: Candles On at Dark When Home
     id: 43d4c5d9-071d-4604-9297-715e0251f132
