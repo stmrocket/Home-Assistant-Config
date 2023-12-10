@@ -10,15 +10,15 @@
       from: armed_home
       to: armed_night
   action:
-    - service: light.turn_off
+    - service: switch.turn_off
       entity_id:
-        - light.den_tablet_screen
-        - light.kitchen_tablet_screen
-        - light.master_bedroom_tablet_screen
-        - light.office_tablet_screen
-        - light.shack_tablet_screen
-        - light.entry_tablet_screen
-        - light.server_tablet_screen
+        - switch.den_tablet_screen
+        - switch.kitchen_tablet_screen
+        - switch.master_bedroom_tablet_screen
+        - switch.office_tablet_screen
+        - switch.shack_tablet_screen
+        - switch.entry_tablet_screen
+        - switch.server_tablet_screen
 
 - alias: Tablet When Home
   id: ebfd2c16-e7a6-417a-b820-236884d35fe7
@@ -31,15 +31,15 @@
       from: armed_night
       to: armed_home
   action:
-    - service: light.turn_on
+    - service: switch.turn_on
       entity_id:
-        - light.den_tablet_screen
-        - light.kitchen_tablet_screen
-        - light.master_bedroom_tablet_screen
-        - light.office_tablet_screen
-        - light.shack_tablet_screen
-        - light.entry_tablet_screen
-        - light.server_tablet_screen
+        - switch.den_tablet_screen
+        - switch.kitchen_tablet_screen
+        - switch.master_bedroom_tablet_screen
+        - switch.office_tablet_screen
+        - switch.shack_tablet_screen
+        - switch.entry_tablet_screen
+        - switch.server_tablet_screen
 
 - alias: Tablet when Away
   id: afe3db69-fe02-4bc7-8282-0935e4976610
@@ -48,15 +48,15 @@
       entity_id: alarm_control_panel.house
       to: armed_away
   action:
-    - service: light.turn_off
+    - service: switch.turn_off
       entity_id:
-        - light.den_tablet_screen
-        - light.kitchen_tablet_screen
-        - light.master_bedroom_tablet_screen
-        - light.office_tablet_screen
-        - light.shack_tablet_screen
-        - light.entry_tablet_screen
-        - light.server_tablet_screen
+        - switch.den_tablet_screen
+        - switch.kitchen_tablet_screen
+        - switch.master_bedroom_tablet_screen
+        - switch.office_tablet_screen
+        - switch.shack_tablet_screen
+        - switch.entry_tablet_screen
+        - switch.server_tablet_screen
 
 - alias: Reload Tablets When HA Starts
   id: 37809ea5-1069-4fb7-8a84-082d72e77732
