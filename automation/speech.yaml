@@ -349,6 +349,10 @@
         data:
           images:
             - /config/www/cctv/tmp/front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
+          html: >
+            The doorbell was rung at {{now().strftime('%H:%M:%S') }}.
+            <br>
+            <img src="cid:front_porch_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg">
 
 - alias: Remote Wake
   id: e23def72-8db0-46ed-9a8c-b8f7b273ca07
