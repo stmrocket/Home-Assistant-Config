@@ -80,6 +80,12 @@ automation:
             images:
               - /config/www/cctv/west_front_person.jpg
               - /config/www/cctv/west_front_full.jpg
+            html: >
+              A person was detected on the west front camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:west_front_person.jpg">
+              <br>
+              <img src="cid:west_front_full.jpg">
 
   - alias: CCTV East Front Person Detected
     id: 0575e725-ee28-48b4-a16d-c1abd1d5df62
@@ -111,6 +117,12 @@ automation:
             images:
               - /config/www/cctv/east_front_person.jpg
               - /config/www/cctv/east_front_full.jpg
+            html: >
+              A person was detected on the east front camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:east_front_person.jpg">
+              <br>
+              <img src="cid:east_front_full.jpg">
 
   - alias: CCTV West Side Person Detected
     id: 4be4a812-c669-4bb4-a93d-61c838953e73
@@ -142,6 +154,12 @@ automation:
             images:
               - /config/www/cctv/west_side_person.jpg
               - /config/www/cctv/west_side_full.jpg
+            html: >
+              A person was detected on the west side camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:west_side_person.jpg">
+              <br>
+              <img src="cid:west_side_full.jpg">
 
   - alias: CCTV East Side Person Detected
     id: d6ba9ca2-2ec0-4ef4-8b6a-d8af97842a3f
@@ -173,6 +191,12 @@ automation:
             images:
               - /config/www/cctv/east_side_person.jpg
               - /config/www/cctv/east_side_full.jpg
+            html: >
+              A person was detected on the east side camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:east_side_person.jpg">
+              <br>
+              <img src="cid:east_side_full.jpg">
 
   - alias: CCTV Back Yard Person Detected
     id: 8fb6c7cd-2915-45b3-83e2-3b12724ca6da
@@ -204,6 +228,12 @@ automation:
             images:
               - /config/www/cctv/back_yard_person.jpg
               - /config/www/cctv/back_yard_full.jpg
+            html: >
+              A person was detected on the back yaed camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:back_yard_person.jpg">
+              <br>
+              <img src="cid:back_yard_full.jpg">
 
   - alias: CCTV Back Porch Person Detected
     id: 74430858-a2a9-45d7-b247-7f604ca3ecc6
@@ -235,6 +265,12 @@ automation:
             images:
               - /config/www/cctv/back_porch_person.jpg
               - /config/www/cctv/back_porch_full.jpg
+            html: >
+              A person was detected on the back porch camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:back_porch_person.jpg">
+              <br>
+              <img src="cid:back_porch_full.jpg">
 
   - alias: CCTV Front Porch Person Detected
     id: 391c6db8-6e13-4650-a53c-374b69cccaa8
@@ -266,6 +302,12 @@ automation:
             images:
               - /config/www/cctv/front_porch_person.jpg
               - /config/www/cctv/front_porch_full.jpg
+            html: >
+              A person was detected on the front porch camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:front_porch_person.jpg">
+              <br>
+              <img src="cid:front_porch_full.jpg">
   
   - alias: CCTV Garage Person Detected
     id: d801733d-34e8-45b1-9c6d-be5adf1e553f
@@ -297,6 +339,12 @@ automation:
             images:
               - /config/www/cctv/garage_person.jpg
               - /config/www/cctv/garage_full.jpg
+            html: >
+              A person was detected on the garage camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:garage_person.jpg">
+              <br>
+              <img src="cid:garage_full.jpg">
   
   - alias: CCTV West Front Cat Detected
     id: b164b9bb-403e-444a-a299-4dce6c422074
@@ -328,6 +376,12 @@ automation:
             images:
               - /config/www/cctv/west_front_cat.jpg
               - /config/www/cctv/west_front_full.jpg
+            html: >
+              A cat was detected on the west front camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:west_front_cat.jpg">
+              <br>
+              <img src="cid:west_front_full.jpg">
 
   - alias: CCTV East Front Cat Detected
     id: 13294571-4be6-4bb8-9aa1-3a2e3080e71e
@@ -359,6 +413,12 @@ automation:
             images:
               - /config/www/cctv/east_front_cat.jpg
               - /config/www/cctv/east_front_full.jpg
+            html: >
+              A cat was detected on the east front camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:east_front_cat.jpg">
+              <br>
+              <img src="cid:east_front_full.jpg">
 
   - alias: CCTV West Side Cat Detected
     id: e408ca30-4591-424b-8bcb-184613b30408
@@ -390,6 +450,12 @@ automation:
             images:
               - /config/www/cctv/west_side_cat.jpg
               - /config/www/cctv/west_side_full.jpg
+            html: >
+              A cat was detected on the west side camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:west_side_cat.jpg">
+              <br>
+              <img src="cid:west_side_full.jpg">
 
   - alias: CCTV East Side Cat Detected
     id: 81df1be5-8263-48d8-b6fe-43da9662fb40
@@ -421,6 +487,12 @@ automation:
             images:
               - /config/www/cctv/east_side_cat.jpg
               - /config/www/cctv/east_side_full.jpg
+            html: >
+              A cat was detected on the east side camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:east_side_cat.jpg">
+              <br>
+              <img src="cid:east_side_full.jpg">
 
   - alias: CCTV Back Yard Cat Detected
     id: 88ff2d96-5855-4fbf-b1a9-ee2ba4b7b2d1
@@ -452,6 +524,12 @@ automation:
             images:
               - /config/www/cctv/back_yard_cat.jpg
               - /config/www/cctv/back_yard_full.jpg
+            html: >
+              A cat was detected on the back yard camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:back_yard_cat.jpg">
+              <br>
+              <img src="cid:back_yard_full.jpg">
 
   - alias: CCTV Back Porch Cat Detected
     id: a2bb1489-ebd0-449e-a07e-c34202ee5056
@@ -483,6 +561,12 @@ automation:
             images:
               - /config/www/cctv/back_porch_cat.jpg
               - /config/www/cctv/back_porch_full.jpg
+            html: >
+              A cat was detected on the back porch camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:back_porch_cat.jpg">
+              <br>
+              <img src="cid:back_porch_full.jpg">
 
   - alias: CCTV Front Porch Cat Detected
     id: 72662093-da18-46ac-b4b5-99763b2100ff
@@ -514,6 +598,12 @@ automation:
             images:
               - /config/www/cctv/front_porch_cat.jpg
               - /config/www/cctv/front_porch_full.jpg
+            html: >
+              A cat was detected on the front porch camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:front_porch_cat.jpg">
+              <br>
+              <img src="cid:front_porch_full.jpg">
   
   - alias: CCTV Garage Cat Detected
     id: 8c3f1b50-b310-4f62-8fcb-e7922aa9ca3b
@@ -544,7 +634,13 @@ automation:
           data: 
             images:
               - /config/www/cctv/garage_cat.jpg
-              - /config/www/cctv/garage_full.jpg              
+              - /config/www/cctv/garage_full.jpg     
+            html: >
+              A cat was detected on the garage camera at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:garage_cat.jpg">
+              <br>
+              <img src="cid:garage_full.jpg">         
 
   - alias: Start Reset Timer When Frigate Disabled
     id: 891a2380-a10a-43bc-ab05-2a490d6f4f61
