@@ -144,4 +144,8 @@ automation:
           message: "The litter robot was activated at {{now().strftime('%H:%M:%S') }}."
           data:
             images:
-              - /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg      
+              - /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg     
+            html: >
+              The litter robot was activated at {{now().strftime('%H:%M:%S') }}.
+              <br>
+              <img src="cid:shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg">   
