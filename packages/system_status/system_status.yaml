@@ -1,26 +1,26 @@
-device_tracker:
-  - platform: ping
-    hosts:
-      core_router: !secret core_router_ip
-      nas: !secret nas_ip
-      hdhomerun: !secret hdhr_ip
-      musicport: !secret musicport_ip
-      owfs_pi: !secret owfs_pi_ip
-      core_switch: !secret core_switch_ip
-      poe_switch: !secret poe_switch_ip
-      isy_994: !secret isy_ip
-      alarm_panel: !secret alarm_panel_ip
-      ap_front: !secret ap_front_ip
-      ap_den: !secret ap_den_ip
-      ap_garage: !secret ap_garage_ip
-      ap_shed: !secret ap_shed_ip
-      redlink: !secret redlink_ip
-      server_ups: !secret server_ups_ip
-      shack_ups: !secret shack_ups_ip
-      office_ups: !secret office_ups_ip
-      generator: !secret generator_ip
-      rainmachine: !secret rainmachine_ip
-      adguard: !secret adguard_ip
+# device_tracker:
+#   - platform: ping
+#     hosts:
+#       core_router: !secret core_router_ip
+#       nas: !secret nas_ip
+#       hdhomerun: !secret hdhr_ip
+#       musicport: !secret musicport_ip
+#       owfs_pi: !secret owfs_pi_ip
+#       core_switch: !secret core_switch_ip
+#       poe_switch: !secret poe_switch_ip
+#       isy_994: !secret isy_ip
+#       alarm_panel: !secret alarm_panel_ip
+#       ap_front: !secret ap_front_ip
+#       ap_den: !secret ap_den_ip
+#       ap_garage: !secret ap_garage_ip
+#       ap_shed: !secret ap_shed_ip
+#       redlink: !secret redlink_ip
+#       server_ups: !secret server_ups_ip
+#       shack_ups: !secret shack_ups_ip
+#       office_ups: !secret office_ups_ip
+#       generator: !secret generator_ip
+#       rainmachine: !secret rainmachine_ip
+#       adguard: !secret adguard_ip
 
 #################################################################
 #                                                               #
