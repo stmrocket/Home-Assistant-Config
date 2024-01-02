@@ -1,10 +1,10 @@
 utility_meter:
   adguard_queries_daily:
-    source: sensor.adguard_dns_queries_today_total
+    source: sensor.adguard_main_dns_queries_today
     cycle: daily
 
   adguard_blocked_daily:
-    source: sensor.adguard_dns_queries_blocked_today_total
+    source: sensor.adguard_main_dns_queries_blocked_today
     cycle: daily
 
 mqtt:
