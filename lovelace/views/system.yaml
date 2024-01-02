@@ -2303,46 +2303,17 @@ cards:
                         cards:
                           - type: entities
                             entities:
-                              - type: custom:multiple-entity-row
-                                entity: sensor.adguard_main_dns_queries_today
-                                name: Total DNS Queries
-                                show_state: false
-                                entities:
-                                  - entity: sensor.adguard_main_dns_queries_today
-                                    name: Main
-                                    unit: false
-                                  - entity: sensor.adguard_backup_dns_queries_today
-                                    name: Backup
-                                    unit: false
-                              - type: custom:multiple-entity-row
-                                entity: sensor.adguard_main_dns_queries_today
-                                name: DNS Queries Blocked
-                                show_state: false
-                                entities:
-                                  - entity: sensor.adguard_main_dns_queries_blocked_today
-                                    name: Main
-                                    unit: false
-                                  - entity: sensor.adguard_backup_dns_queries_blocked_today
-                                    name: Backup
-                                    unit: false
-                              - type: custom:multiple-entity-row
-                                entity: sensor.adguard_main_dns_block_ratio
-                                name: DNS Block Ratio
-                                show_state: false
-                                entities:
-                                  - entity: sensor.adguard_main_dns_block_ratio
-                                    name: Main
-                                  - entity: sensor.adguard_backup_dns_block_ratio
-                                    name: Backup
-                              - type: custom:multiple-entity-row
-                                entity: sensor.adguard_main_average_processing_speed
+                              - entity: sensor.adguard_main_dns_queries_today
+                                name: Queries Today
+                                unit: false
+                              - entity: sensor.adguard_main_dns_queries_blocked_today
+                                name: Blocked Queries Today
+                                unit: false
+                              - entity: sensor.adguard_main_dns_block_ratio
+                                name: Block Ratio
+                              - entity: sensor.adguard_main_average_processing_speed
                                 name: DNS Processing Speed
                                 show_state: false
-                                entities:
-                                  - entity: sensor.adguard_main_average_processing_speed
-                                    name: Main
-                                  - entity: sensor.adguard_backup_average_processing_speed
-                                    name: Backup
                 hold_action: none
                 type: state-label
 
@@ -2354,7 +2325,7 @@ cards:
                     show_state: true
                     show_legend: false
                     show_graph: false
-                  - entity: sensor.adguard_dns_queries_last_hour_total
+                  - entity: sensor.adguard_main_dns_queries_last_hour
                     aggregate_func: max
                     show_state: false
                     show_legend: false
@@ -2374,7 +2345,7 @@ cards:
                     show_state: true
                     show_legend: false
                     show_graph: false
-                  - entity: sensor.adguard_dns_queries_blocked_last_hour_total
+                  - entity: sensor.adguard_main_dns_queries_blocked_last_hour
                     aggregate_func: max
                     color: "#e45e65"
                     show_state: false
@@ -2396,7 +2367,7 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: switch.adguard_protection_combined
+                entity: switch.adguard_main_protection
                 lock:
                   enabled: true
                   unlock: hold
@@ -2411,7 +2382,7 @@ cards:
                 name: "Master"
 
               - type: "custom:button-card"
-                entity: switch.adguard_filtering_combined
+                entity: switch.adguard_main_filtering
                 lock:
                   enabled: true
                   unlock: hold
@@ -2426,7 +2397,7 @@ cards:
                 name: "Filter"
 
               - type: "custom:button-card"
-                entity: switch.adguard_parental_control_combined
+                entity: switch.adguard_main_parental_control
                 lock:
                   enabled: true
                   unlock: hold
@@ -2440,7 +2411,7 @@ cards:
                 name: "Parent"
 
               - type: "custom:button-card"
-                entity: switch.adguard_safe_search_combined
+                entity: switch.adguard_main_safe_search
                 lock:
                   enabled: true
                   unlock: hold
@@ -2454,7 +2425,7 @@ cards:
                 name: "Search"
 
               - type: "custom:button-card"
-                entity: switch.adguard_safe_browsing_combined
+                entity: switch.adguard_main_safe_browsing
                 lock:
                   enabled: true
                   unlock: hold
