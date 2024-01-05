@@ -1452,7 +1452,7 @@ automation:
     condition:
       - condition: state
         entity_id: input_boolean.atlas_bad
-        state: "on"
+        state: "off"
     action:
       - service: timer.start
         entity_id: timer.atlas_watchdog      
