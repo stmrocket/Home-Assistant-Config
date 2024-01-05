@@ -1427,7 +1427,7 @@ automation:
     id: b5b29022-a2c0-434e-9d76-152864920e93
     trigger:
       - platform: mqtt
-        topic: rtl_433-shed/647/battery_ok
+        topic: rtl_433-shed/157/battery_ok
     action:
       - service: timer.start
         entity_id: timer.atlas_watchdog      
