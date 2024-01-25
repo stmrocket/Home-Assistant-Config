@@ -199,6 +199,58 @@ utility_meter:
     source: sensor.energy_used
     cycle: yearly
 
+  ro_water_input_hourly:
+    source: sensor.ro_mon_filter_input_total_flow
+    cycle: hourly
+
+  ro_water_input_daily:
+    source: sensor.ro_mon_filter_input_total_flow
+    cycle: daily
+
+  ro_water_input_weekly:
+    source: sensor.ro_mon_filter_input_total_flow
+    cycle: weekly
+
+  ro_water_input_monthly:
+    source: sensor.ro_mon_filter_input_total_flow
+    cycle: monthly
+
+  ro_water_input_yearly:
+    source: sensor.ro_mon_filter_input_total_flow
+    cycle: yearly
+
+  ro_water_input_total:
+    source: sensor.ro_mon_filter_input_total_flow
+
+  ro_water_input_last_change:
+    source: sensor.ro_mon_filter_input_total_flow
+
+  ro_water_output_hourly:
+    source: sensor.ro_mon_filter_output_total_flow
+    cycle: hourly
+
+  ro_water_output_daily:
+    source: sensor.ro_mon_filter_output_total_flow
+    cycle: daily
+
+  ro_water_output_weekly:
+    source: sensor.ro_mon_filter_output_total_flow
+    cycle: weekly
+
+  ro_water_output_monthly:
+    source: sensor.ro_mon_filter_output_total_flow
+    cycle: monthly
+
+  ro_water_output_yearly:
+    source: sensor.ro_mon_filter_output_total_flow
+    cycle: yearly
+
+  ro_water_output_total:
+    source: sensor.ro_mon_filter_output_total_flow
+
+  ro_water_output_last_change:
+    source: sensor.ro_mon_filter_output_total_flow
+
 input_number:
   energy_cost:
     name: Electricity Cost
