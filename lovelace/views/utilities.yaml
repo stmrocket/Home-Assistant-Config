@@ -551,3 +551,36 @@ cards:
                     name: Neighbors
                   - entity: sensor.gas_monthly
                     name: House
+  - type: vertical-stack
+    cards:
+      - type: entities
+        title: Water Heater
+        show_header_toggle: false
+        entities:
+          - entity: sensor.water_heater_status
+            name: Status
+            icon: mdi:fire
+          - entity: sensor.water_heater_runtime
+            name: Runtime
+      - type: "custom:mini-graph-card"
+        name: Daily RO Water Use
+        entities:
+          - entity: sensor.ro_water_input_daily
+            name: IN
+            show_legend: true
+            show_points: true
+            show_state: true
+            color: "#e45e65"
+          - entity: sensor.ro_water_output_daily
+            name: OUT
+            show_legend: true
+            show_points: true
+            show_state: true
+            color: "#0091ff"
+        font_size: 65
+        hours_to_show: 24
+        line_width: 2
+        points_per_hour: 1
+        show:
+          icon: false
+        smoothing: true
