@@ -475,15 +475,6 @@ cards:
   - type: vertical-stack
     cards:
       - !include /config/lovelace/cards/thermostat/living.yaml
-      - type: entities
-        title: Water Heater
-        show_header_toggle: false
-        entities:
-          - entity: sensor.water_heater_status
-            name: Status
-            icon: mdi:fire
-          - entity: sensor.water_heater_runtime
-            name: Runtime
 
   #################################################################
   #                                                               #
