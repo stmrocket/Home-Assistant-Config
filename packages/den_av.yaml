@@ -18,14 +18,12 @@ rest_command:
     url: "{{ states('sensor.den_avr_url') }}081VL"
     method: get
 
-switch:
-  - platform: command_line
-    switches:
-      den_tv:
-        name: Den TV
-        unique_id: 1cea3280-de25-46a2-a4d7-702c73cabcd2
-        command_on: echo -n -e "\x08\x22\x00\x00\x00\x02\xD4" | nc 10.10.10.44 22
-        command_off: echo -n -e "\x08\x22\x00\x00\x00\x01\xD5" | nc 10.10.10.44 22
+command_line:
+  - switch:
+    name: Den TV
+    unique_id: 1cea3280-de25-46a2-a4d7-702c73cabcd2
+    command_on: echo -n -e "\x08\x22\x00\x00\x00\x02\xD4" | nc 10.10.10.44 22
+    command_off: echo -n -e "\x08\x22\x00\x00\x00\x01\xD5" | nc 10.10.10.44 22
 
 script:
   den_avr_mute:
@@ -169,6 +167,16 @@ script:
           method: Input.ExecuteAction
           action: stepback
   
+  den_kodi_info:
+    mode: parallel
+    sequence:
+      - service: kodi.call_method
+        target:
+          entity_id: media_player.den_kodi
+        data:
+          method: Input.ExecuteAction
+          action: info
+  
   den_kodi_tv_shows:
     mode: parallel
     sequence:
@@ -180,6 +188,18 @@ script:
           window: videos
           parameters:
             - TvshowTitles
+  
+  den_kodi_tv_movies:
+    mode: parallel
+    sequence:
+      - service: kodi.call_method
+        target:
+          entity_id: media_player.den_kodi
+        data:
+          method: GUI.ActivateWindow
+          window: videos
+          parameters:
+            - MovieTitles
   
   den_kodi_pvr:
     mode: parallel
