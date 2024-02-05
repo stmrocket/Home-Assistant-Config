@@ -86,10 +86,10 @@ switch:
         unique_id: 1c69d41e-1d7a-4cba-82a8-d9f4230fa722
         value_template: "{{ not is_state('sensor.aprils_carnival_status_code', 'on') }}"
         turn_on:
-          service: vacuum.turn_on
+          service: vacuum.start
           entity_id: vacuum.aprils_carnival_litter_box
         turn_off:
-          service: vacuum.turn_off
+          service: vacuum.stop
           entity_id: vacuum.aprils_carnival_litter_box
 
 script:
