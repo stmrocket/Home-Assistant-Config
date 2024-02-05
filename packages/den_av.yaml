@@ -20,10 +20,10 @@ rest_command:
 
 command_line:
   - switch:
-    name: Den TV
-    unique_id: 1cea3280-de25-46a2-a4d7-702c73cabcd2
-    command_on: echo -n -e "\x08\x22\x00\x00\x00\x02\xD4" | nc 10.10.10.44 22
-    command_off: echo -n -e "\x08\x22\x00\x00\x00\x01\xD5" | nc 10.10.10.44 22
+      name: Den TV
+      unique_id: 1cea3280-de25-46a2-a4d7-702c73cabcd2
+      command_on: echo -n -e "\x08\x22\x00\x00\x00\x02\xD4" | nc 10.10.10.44 22
+      command_off: echo -n -e "\x08\x22\x00\x00\x00\x01\xD5" | nc 10.10.10.44 22
 
 script:
   den_avr_mute:
