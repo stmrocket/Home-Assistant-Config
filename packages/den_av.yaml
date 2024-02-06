@@ -382,3 +382,12 @@ script:
           entity_id: remote.roku_living_room
         data:
           command: play
+  
+  den_roku_select:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: select
