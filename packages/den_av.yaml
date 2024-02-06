@@ -212,3 +212,173 @@ script:
           window: pvr
           parameters:
             - TVChannels
+
+  spotify_select_christian:
+    mode: parallel
+    sequence:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.spotify_playlist
+          option: "Top Christian Contemporary"
+      - service: script.spotify_change_playlist
+
+  spotify_select_country:
+    mode: parallel
+    sequence:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.spotify_playlist
+          option: "Hot Country"
+      - service: script.spotify_change_playlist
+
+  spotify_select_scores:
+    mode: parallel
+    sequence:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.spotify_playlist
+          option: "Epic Film Scores for Studying"
+      - service: script.spotify_change_playlist
+
+  spotify_select_christmas:
+    mode: parallel
+    sequence:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.spotify_playlist
+          option: "Christmas Hits"
+      - service: script.spotify_change_playlist
+
+  den_avr_activity_vol_kodi:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_25
+
+  den_avr_activity_vol_roku:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_25
+
+  den_avr_activity_vol_ps3:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_33
+
+  den_avr_activity_vol_cast:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_40
+
+  den_avr_activity_vol_wii:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_40
+
+  den_avr_activity_vol_apple:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_40
+
+  den_avr_activity_vol_nuvo:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_40
+  
+  den_roku_back:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: back
+  
+  den_roku_home:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: home
+  
+  den_roku_up:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: up
+  
+  den_roku_down:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: down
+  
+  den_roku_left:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: left
+  
+  den_roku_right:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: right
+  
+  den_roku_replay:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: replay
+  
+  den_roku_info:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: info
+  
+  den_roku_reverse:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: reverse
+  
+  den_roku_forward:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: forward
+  
+  den_roku_play:
+    mode: parallel
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.roku_living_room
+        data:
+          command: play
