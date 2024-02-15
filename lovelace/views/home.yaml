@@ -973,6 +973,7 @@ cards:
         cards:
           - type: custom:button-card
             entity: vacuum.valetudo_crookshanks
+            icon: mdi:robot-vacuum
             color_type: icon
             name: '[[[ return ` ${entity.state}` ]]]'
             styles:
