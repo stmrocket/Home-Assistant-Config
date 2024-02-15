@@ -1,19 +1,10 @@
-proximity:
-  home:
-    ignored_zones:
-      - work
-    devices:
-      - device_tracker.shawn_7t
-    tolerance: 50
-    unit_of_measurement: km
-
 automation:
   - alias: Mark 2km Geofence Entered
     id: ff1b8ae9-ea8c-4881-8963-ce11161cb40a
     trigger:
       - platform: numeric_state
-        entity_id: proximity.home
-        below: 2
+        entity_id: sensor.home_shawn_7t_distance
+        below: 6600
     action:
       - service: input_boolean.turn_on
         entity_id: input_boolean.hvac_geofence
@@ -22,8 +13,8 @@ automation:
     id: ed8de0cb-33ff-455b-9c65-fdfca8ce4e2a
     trigger:
       - platform: numeric_state
-        entity_id: proximity.home
-        above: 2
+        entity_id: sensor.home_shawn_7t_distance
+        above: 6600
     action:
       - service: input_boolean.turn_off
         entity_id: input_boolean.hvac_geofence

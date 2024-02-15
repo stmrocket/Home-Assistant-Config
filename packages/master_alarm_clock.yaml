@@ -56,7 +56,6 @@ sensor:
       - "date_time"
       - "time_date"
       - "time_utc"
-      - "beat"
 
 binary_sensor:
   - platform: template
