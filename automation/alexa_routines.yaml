@@ -47,6 +47,7 @@
     - service: rest_command.play_waves
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
+    - service: button.push
 
 - alias: Alexa Bedtime
   id: 45e4c19f-a346-4d77-aa0c-f6ccc7f15d4e
@@ -100,7 +101,6 @@
           entity_id: alarm_control_panel.house
           state: disarmed
   action:
-    - service: rest_command.unlock_truck
     - service: lock.unlock
       entity_id: lock.front_door
     - service: input_boolean.turn_on
