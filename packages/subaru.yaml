@@ -130,13 +130,6 @@ automation:
         entity_id: alarm_control_panel.house
         from: arming
         to: armed_night
-      - platform: state
-        entity_id: alarm_control_panel.house
-        from: 
-          - disarmed
-          - armed_home
-        to: armed_night
-        for: "00:01:00"
     action:
       - service: lock.lock
         entity_id: lock.crosstrek_door_locks
