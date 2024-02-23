@@ -106,20 +106,20 @@ script:
         entity_id: input_number.crosstrek_last_oil
         data_template:
           value: >
-            {{ states('sensor.crosstrek_odometer') | float(none) %}}
+            {{ states('sensor.crosstrek_odometer') | float(none) }}
 
   reset_crosstrek_tires:
     alias: Reset Crosstrek Tire Rotation
     sequence:
       - service: input_text.set_value
-        entity_id: input_text.crosstrek_last_tires
+        entity_id: input_text.crosstrek_last_tire
         data_template:
           value: "{{ now() }}"
       - service: input_number.set_value
-        entity_id: input_number.crosstrek_last_tires
+        entity_id: input_number.crosstrek_last_tire
         data_template:
           value: >
-            {{ states('sensor.crosstrek_odometer') | float(none) %}}
+            {{ states('sensor.crosstrek_odometer') | float(none) }}
 
 
 automation:
