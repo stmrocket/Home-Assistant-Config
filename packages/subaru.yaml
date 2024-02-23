@@ -1,0 +1,142 @@
+sensor:
+  - platform: template
+    sensors:
+      crosstrek_oil_life:
+        unique_id: 79438bf6-ddd5-4392-a8ce-c6e8af9f56cd
+        friendly_name: Crosstrek Oil Remaining Life
+        unit_of_measurement: "%"
+        value_template: "{{ (((states('input_number.crosstrek_oil_threshold') | int(0) - states('sensor.crosstrek_oil_distance') | int(0)) / states('input_number.crosstrek_oil_threshold') | int(0)) * 100) | round (0, default=none)}}"
+
+      crosstrek_tire_life:
+        unique_id: d07aa3f7-4e55-4e1d-82e8-13190c870dae
+        friendly_name: Crosstrek Tire Rotation Remaining Life
+        unit_of_measurement: "%"
+        value_template: "{{ (((states('input_number.crosstrek_tire_threshold') | int(0) - states('sensor.crosstrek_tire_distance') | int(0)) / states('input_number.crosstrek_tire_threshold') | int(0)) * 100) | round (0, default=none)}}"
+
+      crosstrek_mileage_yesterday:
+        unique_id: 71cf4ec1-e380-4954-9891-701627d3602d
+        friendly_name: Crosstrek Mileage Yesterday
+        unit_of_measurement: "mi"
+        value_template: "{{ state_attr('sensor.crosstrek_mileage_daily','last_period') | round (0, default=none) }}"
+
+      crosstrek_mileage_last_week:
+        unique_id: 7e3232cf-b9dd-49bb-9e18-52e3c85ea3ec
+        friendly_name: Crosstrek Mileage Last Week
+        unit_of_measurement: "mi"
+        value_template: "{{ state_attr('sensor.crosstrek_mileage_weekly','last_period') | round (0, default=none) }}"
+        
+      crosstrek_mileage_last_month:
+        unique_id: e5fc4334-f2ca-4fad-af77-05144ae79d24
+        friendly_name: Crosstrek Mileage Last month
+        unit_of_measurement: "mi"
+        value_template: "{{ state_attr('sensor.crosstrek_mileage_monthly','last_period') | round (0, default=none) }}"
+
+      crosstrek_mileage_last_year:      
+        unique_id: e61e2b36-9be4-4a04-95c5-9b7d0e98bf88
+        friendly_name: Crosstrek Mileage Last year
+        unit_of_measurement: "mi"
+        value_template: "{{ state_attr('sensor.crosstrek_mileage_yearly','last_period') | round (0, default=none) }}"
+
+template:
+  - sensor:
+      - name: Crosstrek Oil Distance
+        unique_id: 4bf99b0b-7c57-4a56-b71a-83c6be8b4f3c
+        unit_of_measurement: "mi"
+        state: "{{ (states('sensor.crosstrek_odometer') | int(0) - states('input_number.crosstrek_last_oil') | int(0)) | round (0, default=none)}}"
+
+      - name: Crosstrek Tire Distance
+        unique_id: 4863941c-246a-4d71-a81d-d5e686628862
+        unit_of_measurement: "mi"
+        state: "{{ (states('sensor.crosstrek_odometer') | int(0) - states('input_number.crosstrek_last_tire') | int(0)) | round (0, default=none)}}"
+
+input_number:
+  crosstrek_last_oil:
+    name: Last Oil Change Mileage
+    min: 0
+    max: 200000
+    unit_of_measurement: mi
+  crosstrek_last_tire:
+    name: Last Tire Rotation Mileage
+    min: 0
+    max: 200000
+    unit_of_measurement: mi
+  crosstrek_oil_threshold:
+    name: Oil Change Threshold
+    min: 0
+    max: 20000
+    unit_of_measurement: mi
+  crosstrek_tire_threshold:
+    name: Tire Rotation Threshold
+    min: 0
+    max: 20000
+    unit_of_measurement: mi
+
+input_text:
+  crosstrek_last_oil:
+    name: Last Oil Change Date
+  crosstrek_last_tire:
+    name: Last Tire Rotation Date
+
+utility_meter:
+  crosstrek_mileage_daily:
+    source: sensor.crosstrek_odometer
+    cycle: daily
+
+  crosstrek_mileage_weekly:
+    source: sensor.crosstrek_odometer
+    cycle: weekly
+
+  crosstrek_mileage_monthly:
+    source: sensor.crosstrek_odometer
+    cycle: monthly
+
+  crosstrek_mileage_yearly:
+    source: sensor.crosstrek_odometer
+    cycle: yearly
+
+script:
+  reset_crosstrek_oil:
+    alias: Reset Crosstrek Oil Life
+    sequence:
+      - service: input_text.set_value
+        entity_id: input_text.crosstrek_last_oil
+        data_template:
+          value: "{{ now() }}"
+      - service: input_number.set_value
+        entity_id: input_number.crosstrek_last_oil
+        data_template:
+          value: >
+            {{ states('sensor.crosstrek_odometer') | float(none) %}}
+
+  reset_crosstrek_tires:
+    alias: Reset Crosstrek Tire Rotation
+    sequence:
+      - service: input_text.set_value
+        entity_id: input_text.crosstrek_last_tires
+        data_template:
+          value: "{{ now() }}"
+      - service: input_number.set_value
+        entity_id: input_number.crosstrek_last_tires
+        data_template:
+          value: >
+            {{ states('sensor.crosstrek_odometer') | float(none) %}}
+
+
+automation:
+  - alias: Lock Crosstrek When Going to Bed
+    id: de350ab2-f43b-496b-af2e-82c9831a35d3
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: arming
+        to: armed_night
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: 
+          - disarmed
+          - armed_home
+        to: armed_night
+        for: "00:01:00"
+    action:
+      - service: lock.lock
+        entity_id: lock.crosstrek_door_locks
