@@ -173,26 +173,6 @@ input_boolean:
     name: Master Lamp Timer
     icon: mdi:timer-outline
 
-mqtt:
-  light:
-    - schema: json
-      name: "Hall Lamp"
-      unique_id: ad658c11-749c-4b6c-9f0d-d684f68b0eb4
-      state_topic: "esps/hall"
-      command_topic: "esps/hall/set"
-      brightness: true
-      rgb: true
-      effect: true
-      effect_list:
-        - Solid
-        - Blink
-        - Flash
-        - Rainbow
-        - Chase
-        - Fire flicker
-        - Lightning
-        - Breathe
-
 # Timers
 timer:
   laundry_room:
