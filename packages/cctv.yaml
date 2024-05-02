@@ -70,7 +70,7 @@ automation:
           filename: /config/www/cctv/west_front_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.west_front_person
+          entity_id: image.west_front_person
           filename: /config/www/cctv/west_front_person.jpg
       - service: notify.cctv_email
         data:
@@ -107,7 +107,7 @@ automation:
           filename: /config/www/cctv/east_front_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.east_front_person
+          entity_id: image.east_front_person
           filename: /config/www/cctv/east_front_person.jpg
       - service: notify.cctv_email
         data:
@@ -144,7 +144,7 @@ automation:
           filename: /config/www/cctv/west_side_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.west_side_person
+          entity_id: image.west_side_person
           filename: /config/www/cctv/west_side_person.jpg
       - service: notify.cctv_email
         data:
@@ -181,7 +181,7 @@ automation:
           filename: /config/www/cctv/east_side_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.east_side_person
+          entity_id: image.east_side_person
           filename: /config/www/cctv/east_side_person.jpg
       - service: notify.cctv_email
         data:
@@ -218,7 +218,7 @@ automation:
           filename: /config/www/cctv/back_yard_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.back_yard_person
+          entity_id: image.back_yard_person
           filename: /config/www/cctv/back_yard_person.jpg
       - service: notify.cctv_email
         data:
@@ -255,7 +255,7 @@ automation:
           filename: /config/www/cctv/back_porch_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.back_porch_person
+          entity_id: image.back_porch_person
           filename: /config/www/cctv/back_porch_person.jpg
       - service: notify.cctv_email
         data:
@@ -292,7 +292,7 @@ automation:
           filename: /config/www/cctv/front_porch_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.front_porch_person
+          entity_id: image.front_porch_person
           filename: /config/www/cctv/front_porch_person.jpg
       - service: notify.cctv_email
         data:
@@ -328,7 +328,7 @@ automation:
       - service: camera.snapshot
         continue_on_error: true
         data:
-          entity_id: camera.garage_person
+          entity_id: image.garage_person
           filename: /config/www/cctv/garage_person.jpg
       - service: notify.cctv_email
         continue_on_error: true
@@ -366,7 +366,7 @@ automation:
           filename: /config/www/cctv/west_front_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.west_front_cat
+          entity_id: image.west_front_cat
           filename: /config/www/cctv/west_front_cat.jpg
       - service: notify.cctv_email
         data:
@@ -403,7 +403,7 @@ automation:
           filename: /config/www/cctv/east_front_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.east_front_cat
+          entity_id: image.east_front_cat
           filename: /config/www/cctv/east_front_cat.jpg
       - service: notify.cctv_email
         data:
@@ -440,7 +440,7 @@ automation:
           filename: /config/www/cctv/west_side_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.west_side_cat
+          entity_id: image.west_side_cat
           filename: /config/www/cctv/west_side_cat.jpg
       - service: notify.cctv_email
         data:
@@ -477,7 +477,7 @@ automation:
           filename: /config/www/cctv/east_side_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.east_side_cat
+          entity_id: image.east_side_cat
           filename: /config/www/cctv/east_side_cat.jpg
       - service: notify.cctv_email
         data:
@@ -514,7 +514,7 @@ automation:
           filename: /config/www/cctv/back_yard_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.back_yard_cat
+          entity_id: image.back_yard_cat
           filename: /config/www/cctv/back_yard_cat.jpg
       - service: notify.cctv_email
         data:
@@ -551,7 +551,7 @@ automation:
           filename: /config/www/cctv/back_porch_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.back_porch_cat
+          entity_id: image.back_porch_cat
           filename: /config/www/cctv/back_porch_cat.jpg
       - service: notify.cctv_email
         data:
@@ -588,7 +588,7 @@ automation:
           filename: /config/www/cctv/front_porch_full.jpg
       - service: camera.snapshot
         data:
-          entity_id: camera.front_porch_cat
+          entity_id: image.front_porch_cat
           filename: /config/www/cctv/front_porch_cat.jpg
       - service: notify.cctv_email
         data:
@@ -624,7 +624,7 @@ automation:
       - service: camera.snapshot
         continue_on_error: true
         data:
-          entity_id: camera.garage_cat
+          entity_id: image.garage_cat
           filename: /config/www/cctv/garage_cat.jpg
       - service: notify.cctv_email
         continue_on_error: true
