@@ -83,7 +83,7 @@ automation:
             html: >
               A person was detected on the west front camera at {{now().strftime('%H:%M:%S') }}.
               <br>
-              <img src="cid:west_front.jpg">
+              <img src="cid:west_front.jpg" style="width:100%; height:auto; border:none;" />
 
   - alias: CCTV East Front Person Detected
     id: 0575e725-ee28-48b4-a16d-c1abd1d5df62
