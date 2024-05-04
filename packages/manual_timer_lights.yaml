@@ -34,8 +34,9 @@ script:
       - service: light.turn_on
         entity_id:
           - light.entry_lamp
-          - light.house_leds_rgb
+          - light.house_leds
           - light.hall_lamp
+          - light.den_window_leds
       - service: input_boolean.turn_on
         entity_id: input_boolean.manual_timer_lights
 
@@ -57,8 +58,9 @@ script:
       - service: light.turn_off
         entity_id:
           - light.entry_lamp
-          - light.house_leds_rgb
+          - light.house_leds
           - light.hall_lamp
+          - light.den_window_leds
       - service: input_boolean.turn_off
         entity_id: input_boolean.manual_timer_lights
 

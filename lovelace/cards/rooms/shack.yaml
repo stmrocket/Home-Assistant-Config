@@ -135,7 +135,7 @@ cards:
           action: more-info
 
       - type: "custom:button-card"
-        entity: light.shack_desk_light
+        entity: light.shackled_light
         color_type: icon
         color: rgb(228, 94, 101)
         icon: mdi:radio-tower

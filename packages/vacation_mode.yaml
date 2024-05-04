@@ -273,8 +273,9 @@ script:
       - service: light.turn_off
         entity_id:
           - light.entry_lamp
-          - light.house_leds_rgb
+          - light.house_leds
           - light.hall_lamp
+          - light.den_window_leds
       - service: input_boolean.turn_off
         entity_id:
           - input_boolean.timer_lights

@@ -171,7 +171,7 @@ cards:
   - type: horizontal-stack
     cards:
       - type: "custom:button-card"
-        entity: light.master_bedroom_leds_rgb
+        entity: light.master_bedroom_leds
         color_type: icon
         color: rgb(228, 94, 101)
         state:

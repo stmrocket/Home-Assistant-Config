@@ -69,7 +69,7 @@ cards:
           action: more-info
 
       - type: "custom:button-card"
-        entity: light.master_bathroom_led_rgb
+        entity: light.masterbathled_light
         color_type: icon
         color: rgb(228, 94, 101)
         state:

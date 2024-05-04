@@ -36,8 +36,9 @@
     - service: light.turn_on
       entity_id:
         - light.entry_lamp
-        - light.house_leds_rgb
+        - light.house_leds
         - light.hall_lamp
+        - light.den_window_leds
     - service: input_boolean.turn_on
       entity_id: input_boolean.timer_lights
 
@@ -60,8 +61,9 @@
     - service: light.turn_on
       entity_id:
         - light.entry_lamp
-        - light.house_leds_rgb
+        - light.house_leds
         - light.hall_lamp
+        - light.den_window_leds
     - service: input_boolean.turn_on
       entity_id: input_boolean.timer_lights
 
@@ -113,8 +115,9 @@
     - service: light.turn_on
       entity_id:
         - light.entry_lamp
-        - light.house_leds_rgb
+        - light.house_leds
         - light.hall_lamp
+        - light.den_window_leds
     - service: input_boolean.turn_on
       entity_id: input_boolean.timer_lights
 
@@ -145,8 +148,9 @@
     - service: light.turn_off
       entity_id:
         - light.entry_lamp
-        - light.house_leds_rgb
+        - light.house_leds
         - light.hall_lamp
+        - light.den_window_leds
     - service: input_boolean.turn_off
       entity_id:
         - input_boolean.timer_lights
@@ -171,8 +175,9 @@
     - service: light.turn_off
       entity_id:
         - light.entry_lamp
-        - light.house_leds_rgb
+        - light.house_leds
         - light.hall_lamp
+        - light.den_window_leds
     - service: input_boolean.turn_off
       entity_id:
         - input_boolean.timer_lights
@@ -201,10 +206,10 @@
     - service: light.turn_off
       entity_id: 
         - light.entry_lamp     
-        - light.kitchen_leds_rgb
-        - light.den_leds_rgb
-        - light.guest_bathroom_led_rgb
-        - light.den_window_leds_cct
+        - light.kitchen_leds
+        - light.denled1_light
+        - light.guestbathled_light
+        - light.den_window_leds
         - light.hall_lamp
     - service: input_boolean.turn_off
       entity_id:
@@ -368,12 +373,12 @@
           entity_id: switch.master_bedroom_lamps
           state: "on"
         - condition: state
-          entity_id: light.master_suite_leds_rgb
+          entity_id: light.master_suite_leds
           state: "on"
   action:
     - service: light.turn_off
       data:
-        entity_id: light.master_suite_leds_rgb
+        entity_id: light.master_suite_leds
     - service: switch.turn_off
       entity_id:
         - switch.master_bedroom_lamps
