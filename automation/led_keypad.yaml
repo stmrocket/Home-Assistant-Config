@@ -7,11 +7,11 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.master_bedroom_leds_rgb
+      entity_id: light.master_bedroom_leds
       state: "off"
   action:
     - service: light.turn_on
-      entity_id: light.master_bedroom_leds_rgb
+      entity_id: light.master_bedroom_leds
 
 - alias: Master Bedroom LEDs Off from Keypad
   id: e9f5128d-c5c9-4839-8e49-84bfa23ff0c3
@@ -22,11 +22,11 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.master_bedroom_leds_rgb
+      entity_id: light.master_bedroom_leds
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.master_bedroom_leds_rgb
+      entity_id: light.master_bedroom_leds
 
 - alias: Master Bathroom LEDs On from Keypad
   id: db208244-e971-452c-816f-2c35d77a1705
@@ -37,11 +37,11 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.master_bathroom_led_rgb
+      entity_id: light.masterbathled_light
       state: "off"
   action:
     - service: light.turn_on
-      entity_id: light.master_bathroom_led_rgb
+      entity_id: light.masterbathled_light
 
 - alias: Master Bathroom LEDs Off from Keypad
   id: efd698f7-84e5-4d02-ba60-0c44bdc73e06
@@ -52,11 +52,11 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.master_bathroom_led_rgb
+      entity_id: light.masterbathled_light
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.master_bathroom_led_rgb
+      entity_id: light.masterbathled_light
 
 - alias: Kitchen LEDs On from Keypad
   id: c4b53362-baff-49b0-bbd9-3be1f30f2816
@@ -67,11 +67,11 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.kitchen_leds_rgb
+      entity_id: light.kitchen_leds
       state: "off"
   action:
     - service: light.turn_on
-      entity_id: light.kitchen_leds_rgb
+      entity_id: light.kitchen_leds
 
 - alias: Kitchen LEDs Off from Keypad
   id: 8774921d-e589-417e-a6e2-e9ba94666ca5
@@ -82,11 +82,11 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.kitchen_leds_rgb
+      entity_id: light.kitchen_leds
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.kitchen_leds_rgb
+      entity_id: light.kitchen_leds
 
 - alias: Den LEDs On from Keypad
   id: d302c0c2-dc65-4c39-8d83-4f54a1abee8c
@@ -97,11 +97,11 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.den_leds_rgb
+      entity_id: light.denled1_light
       state: "off"
   action:
     - service: light.turn_on
-      entity_id: light.den_leds_rgb
+      entity_id: light.denled1_light
 
 - alias: Den LEDs Off from Keypad
   id: 2644b7fc-9365-46ee-af0e-99f519e28349
@@ -112,11 +112,11 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.den_leds_rgb
+      entity_id: light.denled1_light
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.den_leds_rgb
+      entity_id: light.denled1_light
 
 - alias: Guest Bathroom LEDs On from Keypad
   id: 6577d80a-9449-41b3-8d79-62e69ccba079
@@ -127,11 +127,11 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.guest_bathroom_led_rgb
+      entity_id: light.guestbathled_light
       state: "off"
   action:
     - service: light.turn_on
-      entity_id: light.guest_bathroom_led_rgb
+      entity_id: light.guestbathled_light
 
 - alias: Guest Bathroom LEDs Off from Keypad
   id: 4e75a0e7-0687-4fe8-8042-07e9cef0f5fa
@@ -142,11 +142,11 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.guest_bathroom_led_rgb
+      entity_id: light.guestbathled_light
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.guest_bathroom_led_rgb
+      entity_id: light.guestbathled_light
 
 - alias: Counter LEDs On from Keypad
   id: 50974046-bef0-4d43-b401-5817b4c07455
@@ -157,11 +157,11 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.kitchen_counter_leds_white
+      entity_id: light.kitchen_worklights
       state: "off"
   action:
     - service: light.turn_on
-      entity_id: light.kitchen_counter_leds_white
+      entity_id: light.kitchen_worklights
 
 - alias: Counter LEDs Off from Keypad
   id: 81f67999-5e21-4a80-ae15-20b193eb9dde
@@ -172,16 +172,16 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.kitchen_counter_leds_white
+      entity_id: light.kitchen_worklights
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.kitchen_counter_leds_white
+      entity_id: light.kitchen_worklights
 
 - alias: Master Bedroom LEDs Keypad On
   id: 3ffe0a71-b168-4a96-9c48-3dc7f0b5e8ee
   trigger:
-    - entity_id: light.master_bedroom_leds_rgb
+    - entity_id: light.master_bedroom_leds
       platform: state
       from: "off"
       to: "on"
@@ -196,7 +196,7 @@
 - alias: Master Bedroom LEDs Keypad Off
   id: f3baef06-bf98-4766-9112-0522fe31228a
   trigger:
-    - entity_id: light.master_bedroom_leds_rgb
+    - entity_id: light.master_bedroom_leds
       platform: state
       from: "on"
       to: "off"
@@ -211,7 +211,7 @@
 - alias: Master Bathroom LEDs Keypad On
   id: ba6a559d-8a1e-46b9-8388-78800ab6e3ea
   trigger:
-    - entity_id: light.master_bathroom_led_rgb
+    - entity_id: light.masterbathled_light
       platform: state
       from: "off"
       to: "on"
@@ -226,7 +226,7 @@
 - alias: Master Bathroom LEDs Keypad Off
   id: 9744f0fe-139a-4a5a-b425-5dc2172935f1
   trigger:
-    - entity_id: light.master_bathroom_led_rgb
+    - entity_id: light.masterbathled_light
       platform: state
       from: "on"
       to: "off"
@@ -241,7 +241,7 @@
 - alias: Kitchen LEDs Keypad On
   id: 506f5dba-ba13-40c3-9bff-a80df1ab8e58
   trigger:
-    - entity_id: light.kitchen_leds_rgb
+    - entity_id: light.kitchen_leds
       platform: state
       from: "off"
       to: "on"
@@ -256,7 +256,7 @@
 - alias: Kitchen LEDs Keypad Off
   id: ebb428c5-2ca0-4198-a5dd-414335f7d26a
   trigger:
-    - entity_id: light.kitchen_leds_rgb
+    - entity_id: light.kitchen_leds
       platform: state
       from: "on"
       to: "off"
@@ -271,7 +271,7 @@
 - alias: Den LEDs Keypad On
   id: 75a733cd-126b-4927-a578-b3fc54e06457
   trigger:
-    - entity_id: light.den_leds_rgb
+    - entity_id: light.denled1_light
       platform: state
       from: "off"
       to: "on"
@@ -286,7 +286,7 @@
 - alias: Den LEDs Keypad Off
   id: 318f1a69-9ed0-46b7-b697-4a0b696231a3
   trigger:
-    - entity_id: light.den_leds_rgb
+    - entity_id: light.denled1_light
       platform: state
       from: "on"
       to: "off"
@@ -301,7 +301,7 @@
 - alias: Guest Bathroom LEDs Keypad On
   id: 6ce141d9-212e-419e-9a5f-fbb96840dd6f
   trigger:
-    - entity_id: light.guest_bathroom_led_rgb
+    - entity_id: light.guestbathled_light
       platform: state
       from: "off"
       to: "on"
@@ -316,7 +316,7 @@
 - alias: Guest Bathroom LEDs Keypad Off
   id: c54a1c16-482f-4039-a4aa-b20d3c3ae666
   trigger:
-    - entity_id: light.guest_bathroom_led_rgb
+    - entity_id: light.guestbathled_light
       platform: state
       from: "on"
       to: "off"
@@ -331,7 +331,7 @@
 - alias: White Counter LEDs Keypad On
   id: 91fba5f2-5abe-4173-bd28-f4d0c8e1a59a
   trigger:
-    - entity_id: light.kitchen_counter_leds_white
+    - entity_id: light.kitchen_worklights
       platform: state
       from: "off"
       to: "on"
@@ -346,7 +346,7 @@
 - alias: White Counter LEDs Keypad Off
   id: 14d73378-7920-48dc-96ef-6e8059c66c0b
   trigger:
-    - entity_id: light.kitchen_counter_leds_white
+    - entity_id: light.kitchen_worklights
       platform: state
       from: "on"
       to: "off"
@@ -367,11 +367,11 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.den_window_leds_cct
+      entity_id: light.den_window_leds
       state: "off"
   action:
     - service: light.turn_on
-      entity_id: light.den_window_leds_cct
+      entity_id: light.den_window_leds
 
 - alias: Stained Glass LEDs Off from Keypad
   id: c870c392-5229-4bec-b66d-b253b1266f00
@@ -382,16 +382,16 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.den_window_leds_cct
+      entity_id: light.den_window_leds
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.den_window_leds_cct
+      entity_id: light.den_window_leds
 
 - alias: Stained Glass LEDs Keypad On
   id: 6ab91176-1d68-4bcd-8d13-2a779fe34cdb
   trigger:
-    - entity_id: light.den_window_leds_cct
+    - entity_id: light.den_window_leds
       platform: state
       from: "off"
       to: "on"
@@ -406,7 +406,7 @@
 - alias: Stained Glass LEDs Keypad Off
   id: b6d2f668-f16d-4e7d-8ee1-495a9bc567a3
   trigger:
-    - entity_id: light.den_window_leds_cct
+    - entity_id: light.den_window_leds
       platform: state
       from: "on"
       to: "off"

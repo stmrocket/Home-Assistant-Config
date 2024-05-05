@@ -11,7 +11,7 @@ cards:
           right: 17%
           transform: initial
         type: state-icon
-      - entity: sensor.garage_temperature_owfs
+      - entity: sensor.garage_temperature_ow
         style:
           bottom: -5%
           right: 5%

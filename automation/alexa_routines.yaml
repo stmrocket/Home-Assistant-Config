@@ -15,7 +15,7 @@
           state: arming
   action:
     - service: light.turn_off
-      entity_id: light.master_suite_leds_rgb
+      entity_id: light.master_suite_leds
     - service: switch.turn_off
       entity_id: switch.master_bedroom_lamps
     - service: rest_command.play_waves
@@ -39,7 +39,7 @@
           state: disarmed
   action:
     - service: light.turn_off
-      entity_id: light.master_suite_leds_rgb
+      entity_id: light.master_suite_leds
     - service: switch.turn_off
       entity_id: switch.master_bedroom_lamps
     - service: switch.turn_on

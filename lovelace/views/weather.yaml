@@ -9,17 +9,17 @@ cards:
         columns: 4
         show_icon: false
         entities:
-          - entity: sensor.attic_temperature_owfs
+          - entity: sensor.attic_temperature_ow
             name: Attic
           - entity: sensor.den_climate_temperature
             name: Den
-          - entity: sensor.dining_room_temperature_owfs
-            name: Dining
-          - entity: sensor.front_hall_temperature_owfs
+          - entity: sensor.shack_temperature_ow
+            name: Shack
+          - entity: sensor.hall_temperature_ow
             name: Hall
-          - entity: sensor.garage_temperature_owfs
+          - entity: sensor.atc_garage_temperature
             name: Garage
-          - entity: sensor.guest_bedroom_temperature_owfs
+          - entity: sensor.guest_room_temperature_ow
             name: Guest
           - entity: sensor.master_bedroom_climate_temperature
             name: Master
@@ -29,9 +29,9 @@ cards:
             name: Server
           - entity: sensor.acurite_ws_temperature
             name: Outside
-          - entity: sensor.shed_temperature_owfs
+          - entity: sensor.shed_temperature_ow
             name: Shed
-          - entity: sensor.work_room_temperature_owfs
+          - entity: sensor.atc_work_room_temperature
             name: Work
 
 

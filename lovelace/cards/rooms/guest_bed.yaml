@@ -4,7 +4,7 @@ cards:
   - type: picture-elements
     image: /local/lovelace/room_sm.png
     elements:
-      - entity: sensor.guest_bedroom_temperature_owfs
+      - entity: sensor.guest_room_temperature_ow
         style:
           bottom: -5%
           right: 5%

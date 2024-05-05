@@ -51,8 +51,8 @@
         - light.server_room_light
         - light.utility_room_light
         - light.den_light
-        - light.shack_desk_light
-        - light.office_desk_light
+        - light.shackled_light
+        - light.officeled_light
     - service: switch.turn_off
       entity_id:
         - switch.den_fireplace

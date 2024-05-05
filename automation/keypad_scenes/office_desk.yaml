@@ -7,12 +7,12 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.office_desk_light
+      entity_id: light.officeled_light
       state: "off"
   action:
     - service: light.turn_on
       data:
-        entity_id: light.office_desk_light
+        entity_id: light.officeled_light
 
 - alias: Office Desk Light Off from Keypad
   id: 6acb799f-596c-439b-8f78-7882d8bec786
@@ -23,17 +23,17 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.office_desk_light
+      entity_id: light.officeled_light
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.office_desk_light
+      entity_id: light.officeled_light
 
 - alias: Office Desk Light Keypad On
   id: af503ac8-ddba-490b-8de9-684a1077532e
   trigger:
     - platform: state
-      entity_id: light.office_desk_light
+      entity_id: light.officeled_light
       from: "off"
       to: "on"
   condition:
@@ -48,7 +48,7 @@
   id: 82504963-eaf4-4f74-a5d2-c0dc877559e4
   trigger:
     - platform: state
-      entity_id: light.office_desk_light
+      entity_id: light.officeled_light
       from: "on"
       to: "off"
   condition:

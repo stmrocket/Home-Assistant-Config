@@ -4,7 +4,7 @@ cards:
   - type: picture-elements
     image: /local/lovelace/room_sm.png
     elements:
-      - entity: sensor.dining_room_temperature_owfs
+      - entity: sensor.shack_temperature_ow
         style:
           bottom: -5%
           right: 5%
@@ -135,7 +135,7 @@ cards:
           action: more-info
 
       - type: "custom:button-card"
-        entity: light.shack_desk_light
+        entity: light.shackled_light
         color_type: icon
         color: rgb(228, 94, 101)
         icon: mdi:radio-tower

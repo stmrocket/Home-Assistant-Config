@@ -7,12 +7,12 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: light.shack_desk_light
+      entity_id: light.shackled_light
       state: "off"
   action:
     - service: light.turn_on
       data:
-        entity_id: light.shack_desk_light
+        entity_id: light.shackled_light
 
 - alias: Shack Desk Light Off from Keypad
   id: a595df5c-0bd7-4bbf-9974-ccaf99c6bbfc
@@ -23,17 +23,17 @@
       to: "off"
   condition:
     - condition: state
-      entity_id: light.shack_desk_light
+      entity_id: light.shackled_light
       state: "on"
   action:
     - service: light.turn_off
-      entity_id: light.shack_desk_light
+      entity_id: light.shackled_light
 
 - alias: Shack Desk Light Keypad On
   id: 16c1d619-6b7e-4f07-9a68-f1030343b07b
   trigger:
     - platform: state
-      entity_id: light.shack_desk_light
+      entity_id: light.shackled_light
       from: "off"
       to: "on"
   condition:
@@ -48,7 +48,7 @@
   id: 96636f12-49b5-4a22-ad87-c0f409aaa485
   trigger:
     - platform: state
-      entity_id: light.shack_desk_light
+      entity_id: light.shackled_light
       from: "on"
       to: "off"
   condition:

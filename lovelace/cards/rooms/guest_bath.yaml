@@ -69,7 +69,7 @@ cards:
         hold_action:
           action: more-info
       - type: "custom:button-card"
-        entity: light.guest_bathroom_led_rgb
+        entity: light.guestbathled_light
         color_type: icon
         color: rgb(228, 94, 101)
         state:
