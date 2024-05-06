@@ -5,7 +5,7 @@ sensor:
         unique_id: 27a058f0-d528-4fc7-b58d-d92d90c8b96c
         friendly_name: "Water Heater Status"
         value_template: >-
-          {% if states('sensor.thermopile_voltage') | float(none) > 0.13-%} #was .15
+          {% if states('sensor.thermopile_voltage') | float(none) > 0.13-%} 
             Idle
           {% elif states('sensor.thermopile_voltage') | float(none) > 0.10-%}
             Heating
