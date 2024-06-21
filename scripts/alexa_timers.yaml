@@ -11,10 +11,10 @@ alexa_den_timer_announce:
               'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_den_next_timer'), none)
               < as_timestamp(now(), none) }}"
         sequence:
-          - service: mqtt.publish
+          - service: esphome.elkspeak_dfplayer_play_folder
             data:
-              topic: parrot/command/set/play
-              payload: 3,7
+              folder: 3
+              file: 7
           - delay:
               minutes: 1
 
@@ -31,10 +31,10 @@ alexa_entry_timer_announce:
               'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_entry_next_timer'), none)
               < as_timestamp(now(), none) }}"
         sequence:
-          - service: mqtt.publish
+          - service: esphome.elkspeak_dfplayer_play_folder
             data:
-              topic: parrot/command/set/play
-              payload: 3,5
+              folder: 3
+              file: 5
           - delay:
               minutes: 1
 
@@ -51,10 +51,10 @@ alexa_guest_timer_announce:
               'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_guest_room_next_timer'), none)
               < as_timestamp(now(), none) }}"
         sequence:
-          - service: mqtt.publish
+          - service: esphome.elkspeak_dfplayer_play_folder
             data:
-              topic: parrot/command/set/play
-              payload: 3,6
+              folder: 3
+              file: 6
           - delay:
               minutes: 1
 
@@ -71,10 +71,10 @@ alexa_master_timer_announce:
               'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_master_bedroom_next_timer'), none)
               < as_timestamp(now(), none) }}"
         sequence:
-          - service: mqtt.publish
+          - service: esphome.elkspeak_dfplayer_play_folder
             data:
-              topic: parrot/command/set/play
-              payload: 3,8
+              folder: 3
+              file: 8
           - delay:
               minutes: 1
 
@@ -91,10 +91,10 @@ alexa_office_timer_announce:
               'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_office_next_timer'), none)
               < as_timestamp(now(), none) }}"
         sequence:
-          - service: mqtt.publish
+          - service: esphome.elkspeak_dfplayer_play_folder
             data:
-              topic: parrot/command/set/play
-              payload: 3,9
+              folder: 3
+              file: 9
           - delay:
               minutes: 1
 
@@ -111,9 +111,9 @@ alexa_server_timer_announce:
               'unknown', 'unavailable'] and as_timestamp(states('sensor.alexa_server_room_next_timer'), none)
               < as_timestamp(now(), none) }}"
         sequence:
-          - service: mqtt.publish
+          - service: esphome.elkspeak_dfplayer_play_folder
             data:
-              topic: parrot/command/set/play
-              payload: 3,10
+              folder: 3
+              file: 10
           - delay:
               minutes: 1

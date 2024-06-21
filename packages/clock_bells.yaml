@@ -36,10 +36,10 @@ automation:
         entity_id: sensor.den_harmony_activity
         state: "PowerOff"
     action:
-      - service: mqtt.publish
-        data:
-          topic: parrot/command/set/play
-          payload: 5,1
+    - service: esphome.elkspeak_dfplayer_play_folder
+      data:
+        folder: 5
+        file: 1
 
   - alias: Clock 30 Minute Chime
     id: 3be468e4-de76-4f5c-b39b-aa959b1ebcd7
@@ -65,10 +65,10 @@ automation:
         entity_id: sensor.den_harmony_activity
         state: "PowerOff"
     action:
-      - service: mqtt.publish
-        data:
-          topic: parrot/command/set/play
-          payload: 5,2
+    - service: esphome.elkspeak_dfplayer_play_folder
+      data:
+        folder: 5
+        file: 2
 
   - alias: Clock 45 Minute Chime
     id: 745ae3a8-f0e5-4790-ba0b-c02901bc13d9
@@ -94,10 +94,10 @@ automation:
         entity_id: sensor.den_harmony_activity
         state: "PowerOff"
     action:
-      - service: mqtt.publish
-        data:
-          topic: parrot/command/set/play
-          payload: 5,3
+    - service: esphome.elkspeak_dfplayer_play_folder
+      data:
+        folder: 5
+        file: 3
 
   - alias: Clock Hourly Chime
     id: 08d39500-83f1-4f29-9faa-8ae57fef381a
@@ -117,80 +117,80 @@ automation:
         entity_id: input_boolean.clock_bells_enabled
         state: "on"
     action:
-      - service: mqtt.publish
-        data_template:
-          topic: parrot/command/set/play
-          payload: >
+    - service: esphome.elkspeak_dfplayer_play_folder
+      data_template:
+        folder: 5
+        file: >
             {% if now().hour == 0 or now().hour == 12 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,15
+                15
               {% else -%}
-                5,27
+                27
               {% endif -%}  
             {% elif now().hour == 1 or now().hour == 13 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,4
+                4
               {% else -%}
-                5,16
+                16
               {% endif -%}   
             {% elif now().hour == 2 or now().hour == 14 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,5
+                5
               {% else -%}
-                5,17
+                17
               {% endif -%} 
             {% elif now().hour == 3 or now().hour == 15 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,6
+                6
               {% else -%}
-                5,18
+                18
               {% endif -%} 
             {% elif now().hour == 4 or now().hour == 16 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,7
+                7
               {% else -%}
-                5,19
+                19
               {% endif -%} 
             {% elif now().hour == 5 or now().hour == 17 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,8
+                8
               {% else -%}
-                5,20
+                20
               {% endif -%} 
             {% elif now().hour == 6 or now().hour == 18 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,9
+                9
               {% else -%}
-                5,21
+                21
               {% endif -%}
             {% elif now().hour == 7 or now().hour == 19 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,10
+                10
               {% else -%}
-                5,22
+                22
               {% endif -%}
             {% elif now().hour == 8 or now().hour == 20 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,11
+                11
               {% else -%}
-                5,23
+                23
               {% endif -%}
             {% elif now().hour == 9 or now().hour == 21 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,12
+                12
               {% else -%}
-                5,24
+                24
               {% endif -%}
             {% elif now().hour == 10 or now().hour == 22 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,13
+                13
               {% else -%}
-                5,25
+                25
               {% endif -%}
             {% elif now().hour == 11 or now().hour == 23 -%}
               {% if is_state('input_boolean.clock_bells_hour_chime','on') -%}
-                5,14
+                14
               {% else -%}
-                5,26
+                26
               {% endif -%}
             {% endif -%}
