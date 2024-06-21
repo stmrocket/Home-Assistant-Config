@@ -2019,6 +2019,17 @@ cards:
                           - device_tracker.mbed_2
                           - device_tracker.shack
 
+              - type: "custom:button-card"
+                entity: device_tracker.adguard
+                color_type: icon
+                icon: mdi:shield-check
+                state:
+                  - value: "home"
+                    color: rgb(94, 228, 101)
+                  - value: "not_home"
+                    color: rgb(228, 94, 101)
+                name: AdGuard
+
               # - type: "custom:button-card"
               #   entity: device_tracker.parrot
               #   color_type: icon
@@ -2262,17 +2273,7 @@ cards:
                           - entity: sensor.shack_ups_battery_temperature
                             name: Battery Temperature
 
-              - type: "custom:button-card"
-                entity: device_tracker.adguard
-                color_type: icon
-                icon: mdi:shield-check
-                state:
-                  - value: "home"
-                    color: rgb(94, 228, 101)
-                  - value: "not_home"
-                    color: rgb(228, 94, 101)
-                name: AdGuard
-
+              - type: "custom:gap-card"
               - type: "custom:gap-card"
               - type: "custom:gap-card"
               - type: "custom:gap-card"
