@@ -485,24 +485,6 @@
           ttl: 0
           priority: high
 
-- alias: Notify Parrot Offline
-  id: 1fc26e52-63ed-4a51-95b7-b9ab547753b4
-  trigger:
-    - platform: state
-      entity_id: device_tracker.parrot
-      from: "home"
-      to: "not_home"
-      for:
-        minutes: 5
-  action:
-    - service: notify.mobile_app_shawn_7t
-      data:
-        title: Device Offline
-        message: The MQTT Parrot has been offline for 5 minutes.
-        data:
-          ttl: 0
-          priority: high
-
 - alias: Notify Clock Horn Offline
   id: fc3f2065-8cee-4298-a20a-a6629246c2ca
   trigger:

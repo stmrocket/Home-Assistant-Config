@@ -2019,16 +2019,16 @@ cards:
                           - device_tracker.mbed_2
                           - device_tracker.shack
 
-              - type: "custom:button-card"
-                entity: device_tracker.parrot
-                color_type: icon
-                icon: mdi:speaker
-                state:
-                  - value: "home"
-                    color: rgb(94, 228, 101)
-                  - value: "not_home"
-                    color: rgb(228, 94, 101)
-                name: Parrot
+              # - type: "custom:button-card"
+              #   entity: device_tracker.parrot
+              #   color_type: icon
+              #   icon: mdi:speaker
+              #   state:
+              #     - value: "home"
+              #       color: rgb(94, 228, 101)
+              #     - value: "not_home"
+              #       color: rgb(228, 94, 101)
+              #   name: Parrot
 
           - type: horizontal-stack
             cards:
