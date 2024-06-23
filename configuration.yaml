@@ -242,10 +242,3 @@ input_select:
       - Wish Upon A Star
       - Christmas
     icon: mdi:music
-
-
-device_tracker:
-  - platform: aruba
-    host: !secret aruba_host
-    username: !secret aruba_user
-    password: !secret aruba_pass
