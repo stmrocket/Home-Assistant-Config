@@ -18,6 +18,50 @@ rest_command:
     url: "{{ states('sensor.den_avr_url') }}081VL"
     method: get
 
+  den_avr_on:
+    url: "{{ states('sensor.den_avr_url') }}PO"
+    method: get
+
+  den_avr_off:
+    url: "{{ states('sensor.den_avr_url') }}PF"
+    method: get
+
+  den_avr_vol_up:
+    url: "{{ states('sensor.den_avr_url') }}VU"
+    method: get
+
+  den_avr_vol_dn:
+    url: "{{ states('sensor.den_avr_url') }}VD"
+    method: get
+
+  den_avr_src_ps3:
+    url: "{{ states('sensor.den_avr_url') }}25FN"
+    method: get
+
+  den_avr_src_wii:
+    url: "{{ states('sensor.den_avr_url') }}11FN"
+    method: get
+
+  den_avr_src_apple:
+    url: "{{ states('sensor.den_avr_url') }}19FN"
+    method: get
+
+  den_avr_src_roku:
+    url: "{{ states('sensor.den_avr_url') }}20FN"
+    method: get
+
+  den_avr_src_cast:
+    url: "{{ states('sensor.den_avr_url') }}21FN"
+    method: get
+
+  den_avr_src_kodi:
+    url: "{{ states('sensor.den_avr_url') }}22FN"
+    method: get
+
+  den_avr_src_nuvo:
+    url: "{{ states('sensor.den_avr_url') }}04FN"
+    method: get
+
 command_line:
   - switch:
       name: Den TV
@@ -283,6 +327,61 @@ script:
     mode: parallel
     sequence:
       - service: rest_command.den_avr_40
+
+  den_avr_on:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_on
+
+  den_avr_off:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_off
+
+  den_avr_vol_up:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_vol_up
+
+  den_avr_vol_dn:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_vol_dn
+
+  den_avr_src_ps3:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_src_ps3
+
+  den_avr_src_wii:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_src_wii
+
+  den_avr_src_apple:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_src_apple
+
+  den_avr_src_roku:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_src_roku
+
+  den_avr_src_cast:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_src_cast
+
+  den_avr_src_kodi:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_src_kodi
+
+  den_avr_src_nuvo:
+    mode: parallel
+    sequence:
+      - service: rest_command.den_avr_src_nuvo
   
   den_roku_back:
     mode: parallel
