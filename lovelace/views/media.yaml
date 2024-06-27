@@ -29,8 +29,9 @@ cards:
             artwork: cover
             hide:
               source: true
-              progress: true
               name: true
+              icon: true
+              volume: true
 
       - type: custom:stack-in-card
         cards:

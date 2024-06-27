@@ -42,8 +42,7 @@ script:
                 data:
                   media_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
                   media_type: playlist
-                  enqueue: replace
-                  radio_mode: true
+                  enqueue: play
                 target:
                   entity_id: media_player.errol
 
@@ -54,10 +53,9 @@ script:
             sequence:
               - service: mass.play_media
                 data:
-                  media_content_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
+                  media_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
                   media_type: playlist
-                  enqueue: replace
-                  radio_mode: true
+                  enqueue: play
                 target:
                   entity_id: media_player.errol
 
@@ -68,10 +66,9 @@ script:
             sequence:
               - service: mass.play_media
                 data:
-                  media_content_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
+                  media_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
                   media_type: playlist
-                  enqueue: replace
-                  radio_mode: true
+                  enqueue: play
                 target:
                   entity_id: media_player.errol
 
@@ -82,10 +79,9 @@ script:
             sequence:
               - service: mass.play_media
                 data:
-                  media_content_id: spotify:playlist:37i9dQZF1DWUileP28ODwg
+                  media_id: spotify:playlist:37i9dQZF1DWUileP28ODwg
                   media_type: playlist
-                  enqueue: replace
-                  radio_mode: true
+                  enqueue: play
                 target:
                   entity_id: media_player.errol
       
