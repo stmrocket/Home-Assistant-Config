@@ -498,6 +498,7 @@ script:
           entity_id: input_select.spotify_playlist
           option: "{{ states('input_select.spotify_restore_playlist')}}"
       - service: script.spotify_change_playlist
+      
 automation:
   #All operations expect Nuvo source 1...
 
