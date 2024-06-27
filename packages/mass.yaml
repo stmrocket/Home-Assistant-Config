@@ -42,9 +42,11 @@ script:
                 data:
                   media_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
                   media_type: playlist
-                  enqueue: play
+                  enqueue: replace
                 target:
                   entity_id: media_player.errol
+              - service: media_player.play_media
+                entity_id: media_player.errol
 
           - conditions:
               - condition: state
@@ -55,9 +57,11 @@ script:
                 data:
                   media_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
                   media_type: playlist
-                  enqueue: play
+                  enqueue: replace
                 target:
                   entity_id: media_player.errol
+              - service: media_player.play_media
+                entity_id: media_player.errol
 
           - conditions:
               - condition: state
@@ -68,9 +72,11 @@ script:
                 data:
                   media_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
                   media_type: playlist
-                  enqueue: play
+                  enqueue: replace
                 target:
                   entity_id: media_player.errol
+              - service: media_player.play_media
+                entity_id: media_player.errol
 
           - conditions:
               - condition: state
@@ -81,9 +87,11 @@ script:
                 data:
                   media_id: spotify:playlist:37i9dQZF1DWUileP28ODwg
                   media_type: playlist
-                  enqueue: play
+                  enqueue: replace
                 target:
                   entity_id: media_player.errol
+              - service: media_player.play_media
+                entity_id: media_player.errol
       
 automation:
   #All operations expect Nuvo source 1...
