@@ -1194,12 +1194,13 @@ cards:
       - type: 'custom:mini-media-player'
         entity: media_player.errol
         icon: mdi:music-box-multiple-outline
-        volume_stateless: true
         artwork: cover
         hide:
+          name: true
           source: true
           power: true
-          progress: true
+          volume: true
+          icon: true
         tap_action:
               action: fire-dom-event
               browser_mod:
