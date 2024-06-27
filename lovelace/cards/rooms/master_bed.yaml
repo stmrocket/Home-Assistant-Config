@@ -207,7 +207,7 @@ cards:
                     entities:
                       - entity: input_boolean.work_alarm_enabled
                         name: Enabled
-                      - entity: input_select.spotify_work_alarm_playlist
+                      - entity: input_select.mass_work_alarm_playlist
                         name: "Playlist"
                   - type: "custom:time-picker-card"
                     entity: input_datetime.master_work_alarm
@@ -239,7 +239,7 @@ cards:
                     entities:
                       - entity: input_boolean.work_alarm_enabled
                         name: Enabled
-                      - entity: input_select.spotify_work_alarm_playlist
+                      - entity: input_select.mass_work_alarm_playlist
                         name: "Playlist"
                   - type: "custom:time-picker-card"
                     entity: input_datetime.master_work_alarm
@@ -336,7 +336,7 @@ cards:
                   - type: entities
                     show_header_toggle: false
                     entities:
-                      - entity: input_select.spotify_manual_alarm_playlist
+                      - entity: input_select.mass_manual_alarm_playlist
                         name: "Playlist"
                   - type: "custom:time-picker-card"
                     entity: input_datetime.master_manual_alarm
@@ -414,7 +414,7 @@ cards:
                   - type: entities
                     show_header_toggle: false
                     entities:
-                      - entity: input_select.spotify_manual_alarm_playlist
+                      - entity: input_select.mass_manual_alarm_playlist
                         name: "Playlist"
                   - type: "custom:time-picker-card"
                     entity: input_datetime.master_manual_alarm
@@ -603,8 +603,8 @@ cards:
                       - value: 1
                         operator: >
                         color: rgb(255, 255, 255)
-                    icon: mdi:spotify
-                    name: Spotify
+                    icon: mdi:music-box-multiple-outline
+                    name: MASS
                     tap_action:
                       action: call-service
                       service: mqtt.publish

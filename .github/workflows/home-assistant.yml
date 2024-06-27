@@ -22,7 +22,7 @@ jobs:
         with:
           args: -X POST ${{ secrets.BUILD_PENDING }}
       - name: ⤵️ Check out configuration from GitHub
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.7
       - name: Copy Stubs to Proper Directory
         run: cp -R ./.stubs/* ./
       - name: Show Build Running
@@ -30,7 +30,7 @@ jobs:
         with:
           args: -X POST ${{ secrets.BUILD_RUNNING }}
       - name: 🚀 Run Home Assistant Configuration Check
-        uses: frenck/action-home-assistant@v1.0.3
+        uses: frenck/action-home-assistant@v1.4.1
         with:
           version: stable
       - name: Show Build Failing
