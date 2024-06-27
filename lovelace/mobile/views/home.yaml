@@ -598,8 +598,8 @@ cards:
   - type: vertical-stack
     cards:
       - type: 'custom:mini-media-player'
-        entity: media_player.spotify
-        icon: mdi:spotify
+        entity: media_player.errol
+        icon: mdi:music-box-multiple-outline
         volume_stateless: true
         artwork: cover
         hide:

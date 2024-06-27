@@ -269,8 +269,8 @@ cards:
                   - value: 1
                     operator: >
                     color: rgb(255, 255, 255)
-                icon: mdi:spotify
-                name: Spotify
+                icon: mdi:music-box-multiple-outline
+                name: MASS
                 tap_action:
                   action: call-service
                   service: mqtt.publish

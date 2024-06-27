@@ -1192,8 +1192,8 @@ cards:
   - type: vertical-stack
     cards:
       - type: 'custom:mini-media-player'
-        entity: media_player.spotify
-        icon: mdi:spotify
+        entity: media_player.errol
+        icon: mdi:music-box-multiple-outline
         volume_stateless: true
         artwork: cover
         hide:
@@ -1205,20 +1205,20 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Spotify
+                  title: Music Assistant
                   content:
                     type: custom:vertical-stack-in-card
                     cards:
                       - type: entities
                         show_header_toggle: false
-                        title: Spotify
+                        title: Music Assistant
                         entities:
-                          - entity: input_select.spotify_playlist
-                          - entity: script.spotify_change_playlist
+                          - entity: input_select.mass_playlist
+                          - entity: script.mass_change_playlist
                             name: Change Playlist
                           - type: 'custom:mini-media-player'
-                            entity: media_player.spotify
-                            icon: mdi:spotify
+                            entity: media_player.errol
+                            icon: mdi:music-box-multiple-outline
                             artwork: cover
                             hide:
                               source: true
