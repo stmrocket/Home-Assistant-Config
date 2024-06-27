@@ -2060,3 +2060,362 @@ automation:
                   {{ minute }}
                 {%- endif -%}
               {%- endif -%}
+
+media_player:
+  - platform: universal
+    name: Office Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_1_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_1_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 1
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 1
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 1
+    attributes:
+      state: switch.nuvo_zone_1_power
+      is_volume_muted: switch.nuvo_zone_1_mute
+
+  - platform: universal
+    name: Guest Bedroom Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_2_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_2_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 2
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 2
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 2
+    attributes:
+      state: switch.nuvo_zone_2_power
+      is_volume_muted: switch.nuvo_zone_2_mute
+
+  - platform: universal
+    name: Server Room Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_3_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_3_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 3
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 3
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 3
+    attributes:
+      state: switch.nuvo_zone_3_power
+      is_volume_muted: switch.nuvo_zone_3_mute
+
+  - platform: universal
+    name: Master Bedroom Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_4_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_4_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 4
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 4
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 4
+    attributes:
+      state: switch.nuvo_zone_4_power
+      is_volume_muted: switch.nuvo_zone_4_mute
+
+  - platform: universal
+    name: Master Bathroom Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_5_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_5_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 5
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 5
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 5
+    attributes:
+      state: switch.nuvo_zone_5_power
+      is_volume_muted: switch.nuvo_zone_5_mute
+
+  - platform: universal
+    name: Garage Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_6_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_6_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 6
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 6
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 6
+          entity_id: switch.nuvo_zone_6_mute
+    attributes:
+      state: switch.nuvo_zone_6_power
+      is_volume_muted: switch.nuvo_zone_6_mute
+
+  - platform: universal
+    name: Den Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_7_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_7_power
+      volume_up:
+        service: remote.send_command
+        data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeUp
+          device: 34014570
+      volume_down:
+        service: remote.send_command
+        data:
+          entity_id: remote.harmony_den
+          command:
+            - VolumeDown
+          device: 34014570
+      volume_mute:
+        service: remote.send_command
+        data:
+          entity_id: remote.harmony_den
+          command:
+            - Mute
+          device: 34014570
+    attributes:
+      state: switch.nuvo_zone_7_power
+
+  - platform: universal
+    name: Dining Room Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_9_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_9_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 9
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 9
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 9
+    attributes:
+      state: switch.nuvo_zone_9_power
+      is_volume_muted: switch.nuvo_zone_9_mute
+
+  - platform: universal
+    name: Kitchen Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_10_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_10_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 10
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 10
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 10
+    attributes:
+      state: switch.nuvo_zone_10_power
+      is_volume_muted: switch.nuvo_zone_10_mute
+
+  - platform: universal
+    name: Back Porch Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_11_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_11_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 11
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 11
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 11
+    attributes:
+      state: switch.nuvo_zone_11_power
+      is_volume_muted: switch.nuvo_zone_11_mute
+
+  - platform: universal
+    name: Guest Bathroom Stereo
+    children:
+      - media_player.errol
+    commands:
+      turn_on:
+        service: switch.turn_on
+        data:
+          entity_id: switch.nuvo_zone_12_power
+      turn_off:
+        service: switch.turn_off
+        data:
+          entity_id: switch.nuvo_zone_12_power
+      volume_up:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/volup
+          payload: 12
+      volume_down:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/voldn
+          payload: 12
+      volume_mute:
+        service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/mute
+          payload: 12
+    attributes:
+      state: switch.nuvo_zone_12_power
+      is_volume_muted: switch.nuvo_zone_12_mute
