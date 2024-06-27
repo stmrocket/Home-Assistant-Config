@@ -257,41 +257,41 @@ script:
           parameters:
             - TVChannels
 
-  spotify_select_christian:
+  mass_select_christian:
     mode: parallel
     sequence:
       - service: input_select.select_option
         data:
-          entity_id: input_select.spotify_playlist
+          entity_id: input_select.mass_playlist
           option: "Top Christian Contemporary"
-      - service: script.spotify_change_playlist
+      - service: script.mass_change_playlist
 
-  spotify_select_country:
+  mass_select_country:
     mode: parallel
     sequence:
       - service: input_select.select_option
         data:
-          entity_id: input_select.spotify_playlist
+          entity_id: input_select.mass_playlist
           option: "Hot Country"
-      - service: script.spotify_change_playlist
+      - service: script.mass_change_playlist
 
-  spotify_select_scores:
+  mass_select_scores:
     mode: parallel
     sequence:
       - service: input_select.select_option
         data:
-          entity_id: input_select.spotify_playlist
+          entity_id: input_select.mass_playlist
           option: "Epic Film Scores for Studying"
-      - service: script.spotify_change_playlist
+      - service: script.mass_change_playlist
 
-  spotify_select_christmas:
+  mass_select_christmas:
     mode: parallel
     sequence:
       - service: input_select.select_option
         data:
-          entity_id: input_select.spotify_playlist
+          entity_id: input_select.mass_playlist
           option: "Christmas Hits"
-      - service: script.spotify_change_playlist
+      - service: script.mass_change_playlist
 
   den_avr_activity_vol_kodi:
     mode: parallel

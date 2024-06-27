@@ -68,8 +68,8 @@ cards:
                     - type: entities
                       show_header_toggle: false
                       entities:
-                        - entity: input_select.spotify_playlist
-                        - entity: script.spotify_change_playlist
+                        - entity: input_select.mass_playlist
+                        - entity: script.mass_change_playlist
                           name: Change Playlist
 
                     - type: horizontal-stack
@@ -124,8 +124,8 @@ cards:
                             - value: 1
                               operator: >
                               color: rgb(255, 255, 255)
-                          icon: mdi:spotify
-                          name: Spotify
+                          icon: mdi:music-box-multiple-outline
+                          name: MASS
                           tap_action:
                             action: call-service
                             service: mqtt.publish
@@ -252,8 +252,8 @@ cards:
                             - value: 1
                               operator: >
                               color: rgb(255, 255, 255)
-                          icon: mdi:spotify
-                          name: Spotify
+                          icon: mdi:music-box-multiple-outline
+                          name: MASS
                           tap_action:
                             action: call-service
                             service: mqtt.publish
