@@ -32,6 +32,7 @@ cards:
               name: true
               icon: true
               volume: true
+              progress: true
 
       - type: custom:stack-in-card
         cards:

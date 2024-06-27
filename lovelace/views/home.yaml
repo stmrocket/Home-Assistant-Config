@@ -1201,6 +1201,7 @@ cards:
           power: true
           volume: true
           icon: true
+          progress: true
         tap_action:
               action: fire-dom-event
               browser_mod:
