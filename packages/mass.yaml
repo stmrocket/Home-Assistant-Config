@@ -92,7 +92,6 @@ script:
                   media_id: KSBJ
                   media_type: radio
                   enqueue: replace
-                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
 
