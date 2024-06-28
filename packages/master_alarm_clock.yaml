@@ -135,13 +135,21 @@ automation:
       - service: switch.turn_on
         data:
           entity_id: switch.nuvo_zone_4_power
+      - delay:
+          milliseconds: 500
       - service: media_player.media_play
         entity_id: media_player.errol
-      - service: input_select.select_option
-        data_template:
-          entity_id: input_select.mass_playlist
-          option: "{{ states('input_select.mass_manual_alarm_playlist')}}"
-      - service: script.mass_change_playlist
+      
+      - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ not states('input_select.mass_playlist') == states('input_select.mass_manual_alarm_playlist')}}"
+          sequence:
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.mass_playlist
+                option: "{{ states('input_select.mass_manual_alarm_playlist')}}"
+            - service: script.mass_change_playlist
       - service: light.turn_on
         data:
           entity_id: light.master_bedroom_lamps
@@ -264,11 +272,16 @@ automation:
           milliseconds: 500
       - service: media_player.media_play
         entity_id: media_player.errol
-      - service: input_select.select_option
-        data_template:
-          entity_id: input_select.mass_playlist
-          option: "{{ states('input_select.mass_work_alarm_playlist')}}"
-      - service: script.mass_change_playlist
+      - choose:
+        - conditions:
+            - condition: template
+              value_template: "{{ not states('input_select.mass_playlist') == states('input_select.mass_work_alarm_playlist')}}"
+          sequence:
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.mass_playlist
+                option: "{{ states('input_select.mass_work_alarm_playlist')}}"
+            - service: script.mass_change_playlist
       - service: input_boolean.turn_on
         data:
           entity_id: input_boolean.master_lamp_timer
