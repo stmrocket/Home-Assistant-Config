@@ -94,6 +94,10 @@ script:
                   enqueue: replace
                 target:
                   entity_id: media_player.errol
+              - delay:
+                  seconds: 3
+              - service: media_player.media_play
+                entity_id: media_player.errol
 
           - conditions:
               - condition: state
