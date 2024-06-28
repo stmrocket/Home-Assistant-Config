@@ -226,6 +226,10 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
+          payload_template: "1,1,{{ state('input_select.mass_playlist') }}"
+      - service: mqtt.publish
+        data:
+          topic: nuvo/command/set/source/line
           payload_template: "1,2,{{ state_attr('media_player.errol', 'media_album_name') }}"
       - service: mqtt.publish
         data:
@@ -342,7 +346,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,1,Select a Playliast"
+          payload_template: "1,1,Select a Playlist"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
@@ -429,6 +433,10 @@ automation:
     action:
       - service: input_boolean.turn_off
         entity_id: input_boolean.nuvo_mass_in_menu
+      - service: mqtt.publish
+        data:
+          topic: nuvo/command/set/source/line
+          payload_template: "1,1,{{ state('input_select.mass_playlist') }}"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
