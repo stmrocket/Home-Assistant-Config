@@ -356,8 +356,6 @@ automation:
         entity_id: input_boolean.nuvo_mass_in_menu
         state: "off"
     action:
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.nuvo_mass_in_menu
       - service: input_select.select_option
         data_template:
           entity_id: input_select.mass_restore_playlist
@@ -378,6 +376,8 @@ automation:
         data:
           topic: nuvo/command/set/source/line
           payload_template: '1,4,""'
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.nuvo_mass_in_menu
 
   - alias: Mass Nuvo Next Playlist
     id: 954b4e7a-521f-4b63-9825-9671e788d9c1
@@ -450,8 +450,6 @@ automation:
         entity_id: input_boolean.nuvo_mass_in_menu
         state: "on"
     action:
-      - service: input_boolean.turn_off
-        entity_id: input_boolean.nuvo_mass_in_menu
       - service: input_select.select_option
         data_template:
           entity_id: input_select.mass_playlist
@@ -472,6 +470,8 @@ automation:
         data:
           topic: nuvo/command/set/source/line
           payload_template: '1,4,{{ state_attr("media_player.errol", "media_title") }}'
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.nuvo_mass_in_menu
 
   #Auto Zone Playback Control
   - alias: Mass Play When Source Selected
