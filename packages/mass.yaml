@@ -229,7 +229,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,1,{{ state('input_select.mass_playlist') }}"
+          payload_template: "1,1,{{ states('input_select.mass_playlist') }}"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
@@ -439,7 +439,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,1,{{ state('input_select.mass_playlist') }}"
+          payload_template: "1,1,{{ states('input_select.mass_playlist') }}"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
