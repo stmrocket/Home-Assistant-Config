@@ -470,6 +470,8 @@ automation:
         data:
           topic: nuvo/command/set/source/line
           payload_template: '1,4,{{ state_attr("media_player.errol", "media_title") }}'
+      - delay:
+          milliseconds: 500
       - service: input_boolean.turn_off
         entity_id: input_boolean.nuvo_mass_in_menu
 
