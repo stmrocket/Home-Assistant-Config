@@ -468,41 +468,6 @@ automation:
               data:
                 topic: nuvo/command/set/source/line
                 payload_template: '1,4,{{ state_attr("media_player.errol", "media_title") }}'
-  - alias: Mass Nuvo Return Without Change
-    id: 34c7ae53-9919-40c2-a465-53f9c473ae4e
-    trigger:
-      - platform: mqtt
-        topic: nuvo/tele/source/1/press
-        payload: "HPLAY"
-    condition:
-      - condition: state
-        entity_id: input_boolean.nuvo_mass_in_menu
-        state: "on"
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: input_select.mass_playlist
-          option: "{{ states('input_select.mass_restore_playlist')}}"
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: "1,1,{{ states('input_select.mass_playlist') }}"
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,2,{{ state_attr("media_player.errol", "media_album_name") }}'
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,3,{{ state_attr("media_player.errol", "media_artist") }}'
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,4,{{ state_attr("media_player.errol", "media_title") }}'
-      - delay:
-          milliseconds: 500
-      - service: input_boolean.turn_off
-        entity_id: input_boolean.nuvo_mass_in_menu
 
   #Auto Zone Playback Control
   - alias: Mass Play When Source Selected
