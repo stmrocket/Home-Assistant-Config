@@ -16,6 +16,18 @@ input_select:
       - Christian Christmas
       - A Soft Piano Christmas
 
+  mass_restore_playlist:
+    name: Playlist
+    options:
+      - Top Christian Contemporary
+      - Contemporary Christian Instrumentals on Piano
+      - KSBJ
+      - Hot Country
+      - Epic Film Scores for Studying
+      - Christmas Hits
+      - Christian Christmas
+      - A Soft Piano Christmas
+
   mass_work_alarm_playlist:
     name: Playlist
     options:
@@ -346,6 +358,10 @@ automation:
     action:
       - service: input_boolean.turn_on
         entity_id: input_boolean.nuvo_mass_in_menu
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.mass_restore_playlist
+          option: "{{ states('input_select.mass_playlist')}}"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
@@ -436,6 +452,10 @@ automation:
     action:
       - service: input_boolean.turn_off
         entity_id: input_boolean.nuvo_mass_in_menu
+      - service: input_select.select_option
+        data_template:
+          entity_id: input_select.mass_playlist
+          option: "{{ states('input_select.mass_restore_playlist')}}"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
