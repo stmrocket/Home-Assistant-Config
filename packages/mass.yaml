@@ -345,40 +345,6 @@ automation:
         entity_id: input_boolean.nuvo_mass_in_menu
       - service: script.mass_change_playlist
 
-  - alias: Mass Nuvo Enter Menu
-    id: ca840b37-1f0d-4dc7-b0c2-aef044d8a078
-    trigger:
-      - platform: mqtt
-        topic: nuvo/tele/source/1/press
-        payload: "HPLAY"
-    condition:
-      - condition: state
-        entity_id: input_boolean.nuvo_mass_in_menu
-        state: "off"
-    action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: input_select.mass_restore_playlist
-          option: "{{ states('input_select.mass_playlist')}}"
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: "1,1,Select a Playlist"
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,2,""'
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,3,{{ states("input_select.mass_playlist") }}'
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,4,""'
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.nuvo_mass_in_menu
-
   - alias: Mass Nuvo Next Playlist
     id: 954b4e7a-521f-4b63-9825-9671e788d9c1
     trigger:
@@ -439,41 +405,69 @@ automation:
           topic: nuvo/command/set/source/line
           payload_template: '1,4,""'
 
-  - alias: Mass Nuvo Return Without Change
-    id: 34c7ae53-9919-40c2-a465-53f9c473ae4e
+  - alias: Mass Handle Menu
+    id: 6763e1ff-a7f7-4a53-a39d-ae7ed31b1102
     trigger:
       - platform: mqtt
         topic: nuvo/tele/source/1/press
         payload: "HPLAY"
-    condition:
-      - condition: state
-        entity_id: input_boolean.nuvo_mass_in_menu
-        state: "on"
+        
     action:
-      - service: input_select.select_option
-        data_template:
-          entity_id: input_select.mass_playlist
-          option: "{{ states('input_select.mass_restore_playlist')}}"
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: "1,1,{{ states('input_select.mass_playlist') }}"
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,2,{{ state_attr("media_player.errol", "media_album_name") }}'
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,3,{{ state_attr("media_player.errol", "media_artist") }}'
-      - service: mqtt.publish
-        data:
-          topic: nuvo/command/set/source/line
-          payload_template: '1,4,{{ state_attr("media_player.errol", "media_title") }}'
-      - delay:
-          milliseconds: 500
-      - service: input_boolean.turn_off
-        entity_id: input_boolean.nuvo_mass_in_menu
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: input_boolean.nuvo_mass_in_menu
+            state: "off"
+          sequence:
+            - service: input_boolean.turn_on
+              entity_id: input_boolean.nuvo_mass_in_menu
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.mass_restore_playlist
+                option: "{{ states('input_select.mass_playlist')}}"
+            - service: mqtt.publish
+              data:
+                topic: nuvo/command/set/source/line
+                payload_template: "1,1,Select a Playlist"
+            - service: mqtt.publish
+              data:
+                topic: nuvo/command/set/source/line
+                payload_template: '1,2,""'
+            - service: mqtt.publish
+              data:
+                topic: nuvo/command/set/source/line
+                payload_template: '1,3,{{ states("input_select.mass_playlist") }}'
+            - service: mqtt.publish
+              data:
+                topic: nuvo/command/set/source/line
+                payload_template: '1,4,""'
+        - conditions:
+          - condition: state
+            entity_id: input_boolean.nuvo_mass_in_menu
+            state: "on"
+          sequence:
+            - service: input_boolean.turn_off
+              entity_id: input_boolean.nuvo_mass_in_menu
+            - service: input_select.select_option
+              data_template:
+                entity_id: input_select.mass_playlist
+                option: "{{ states('input_select.mass_restore_playlist')}}"
+            - service: mqtt.publish
+              data:
+                topic: nuvo/command/set/source/line
+                payload_template: "1,1,{{ states('input_select.mass_playlist') }}"
+            - service: mqtt.publish
+              data:
+                topic: nuvo/command/set/source/line
+                payload_template: '1,2,{{ state_attr("media_player.errol", "media_album_name") }}'
+            - service: mqtt.publish
+              data:
+                topic: nuvo/command/set/source/line
+                payload_template: '1,3,{{ state_attr("media_player.errol", "media_artist") }}'
+            - service: mqtt.publish
+              data:
+                topic: nuvo/command/set/source/line
+                payload_template: '1,4,{{ state_attr("media_player.errol", "media_title") }}'
 
   #Auto Zone Playback Control
   - alias: Mass Play When Source Selected
