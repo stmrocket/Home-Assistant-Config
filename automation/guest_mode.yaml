@@ -2,7 +2,7 @@
   id: 28314aa0-56d8-4d2b-8213-1e9209a9ecd5
   trigger:
     - platform: state
-      entity_id: device_tracker.karen_oneplus7t
+      entity_id: device_tracker.karen_7t
       to: home
   action:
     - service: input_boolean.turn_on
@@ -12,7 +12,7 @@
   id: 141808fa-47a9-49a5-8e02-5eff4ff73539
   trigger:
     - platform: state
-      entity_id: device_tracker.karen_oneplus7t
+      entity_id: device_tracker.karen_7t
       to: not_home
   condition:
     - condition: state
