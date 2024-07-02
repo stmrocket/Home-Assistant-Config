@@ -1,0 +1,9 @@
+- alias: Dummy Automation
+  id: 8ae789f2-1880-4d2e-a824-d5413d9bb09c
+  trigger:
+    - platform: time_pattern
+      minutes: "/15"
+  action:
+    - service: homeassistant.update_entity
+      entity_id:
+        - sensor.automation_count
