@@ -335,6 +335,7 @@ automation:
       up, but not brought back up
     mode: parallel
     max: 2
+    id: 54e6a6f9-75b3-4926-a50d-a1a88b8cb47d
     trigger:
       - platform: state
         entity_id: binary_sensor.trash_bin_vibration
@@ -405,6 +406,7 @@ automation:
     description: "Sends a notification if the recycling or trash is scheduled to be picked up tomorrow. But only if I haven't already taken the bins out."
     mode: parallel
     max: 2
+    id: 6bfb8bc7-3e26-4125-a4d2-0d4cb19e83e9
     trigger:
       - platform: time
         at: "19:30:00"
@@ -559,6 +561,7 @@ automation:
       Change helper boolean and send notification when one (or waiting for both)
       trash and recycling have been picked up
     mode: single
+    id: dc5a29a0-162f-49c5-907c-46cd7c164dac
     trigger:
       - platform: state
         entity_id: input_boolean.trash_picked_up
@@ -684,6 +687,8 @@ automation:
 
   - alias: Health Check for Bluetooth beacons
     description: "Send a notification if the presence sensor for the Bluetooth beacons have been unknown for a while."
+    mode: single
+    id: c5b25a78-e19e-445c-84d9-f8d0d29697a0
     trigger:
       - platform: time
         at: "19:00:00"
@@ -730,4 +735,3 @@ automation:
               priority: high
             push:
               interruption-level: time-sensitive
-    mode: single
