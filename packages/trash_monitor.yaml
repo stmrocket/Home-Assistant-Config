@@ -1,0 +1,733 @@
+template:
+  - trigger:
+      - platform: time_pattern
+        # Let's be honest, we don't need to check often. 
+        # But 5 minutes should be reactive enough if I need to correct an event date.
+        minutes: "/5" 
+    action:
+      - service: calendar.get_events
+        data:
+          start_date_time: "{{ today_at() }}"
+          end_date_time: "{{ today_at('23:59:59') }}"
+        target:
+          entity_id: calendar.waste_collection
+        response_variable: agenda_today
+      - service: calendar.get_events
+        data:
+          start_date_time: "{{ today_at() + timedelta(days=1) }}"
+          end_date_time: "{{ today_at('23:59:59') + timedelta(days=1) }}"
+        target:
+          entity_id: calendar.waste_collection
+        response_variable: agenda_tomorrow
+    binary_sensor:
+      - name: Trash Today
+        unique_id: c97814bb-2ff9-405e-856d-68f34bfae6de
+        state: |-
+          {% set search_term = "Trash" %}
+          {{ agenda_today['calendar.waste_collection'].events
+          | selectattr('summary', 'search', search_term) | list | count > 0 }}
+      - name: Recycling Today
+        unique_id: c66e0764-fa6c-4375-b862-03274fdf92ec
+        state: |-
+          {% set search_term = "Recycling" %}
+          {{ agenda_today['calendar.waste_collection'].events
+          | selectattr('summary', 'search', search_term) | list | count > 0 }}
+      - name: Trash Tomorrow
+        unique_id: c2e85184-38f0-4161-a390-0320f858771c
+        state: |-
+          {% set search_term = "Trash" %}
+          {{ agenda_tomorrow['calendar.waste_collection'].events
+          | selectattr('summary', 'search', search_term) | list | count > 0 }}
+      - name: Recycling Tomorrow
+        unique_id: a613932d-ef51-4cbd-b2df-e6b5eeeb7232
+        state: |-
+          {% set search_term = "Recycling" %}
+          {{ agenda_tomorrow['calendar.waste_collection'].events
+          | selectattr('summary', 'search', search_term) | list | count > 0 }}
+
+mqtt:
+  sensor:
+  ##
+  # Trash Bin
+  ##
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Trash Bin RSSI"
+    unique_id: 76304484-0027-460d-a377-f78f17673b42
+    device_class: signal_strength
+    # Assume the sensor is too far away after 300 seconds of no updates
+    expire_after: 300
+    unit_of_measurement: "dBm"
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    value_template: >-
+      {% set targetUuidFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000001" and targetUuidFound.found == False %}
+                  {{ value_json.obj[i].rssi }}
+                  {% set targetUuidFound.found = True %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetUuidFound = namespace(found=False) %}
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Trash Bin Battery"
+    unique_id: 56b55a13-8f80-470e-9285-f37cf2dfa537
+    device_class: battery
+    state_class: measurement
+    unit_of_measurement: "%"
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    # Sensor with CR2477 stops operating around is 2450 mV
+    # Battery starts at 3.3V. Anything over 3.0V is considered 100%.
+    # Assumes discharge curve is linear
+    # Type 8 message is (Eddystone) TLM, which contains the battery information as mV
+    value_template: >-
+      {% set targetDmacFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].dmac == "DD34020A4811" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
+                  {% set stock_voltage = 3000 %}
+                  {% set voltage_range = 550 %}
+                  {% set current_voltage = value_json.obj[i].vbatt %}
+                  {% set remaining_life = 0 %}
+
+                  {% if current_voltage >= stock_voltage %}
+                    {% set remaining_life = 100 %}
+                  {% elif current_voltage > (stock_voltage - voltage_range) %}
+                    {% set remaining_life = int((current_voltage - (stock_voltage - voltage_range)) / voltage_range * 100) %}
+                  {% else %}
+                    {% set remaining_life = 0 %}
+                  {% endif %}
+                  {{ remaining_life | int }}
+                  {% set targetDmacFound.found = True %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetDmacFound = namespace(found=False) %}
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Trash Bin Temperature"
+    unique_id: 1358d38e-d81d-452d-8eef-142cf5101045
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    # Type 8 message is (Eddystone) TLM, which contains the temperatue as °C
+    value_template: >-
+      {% set targetDmacFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].dmac == "DD34020A4811" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
+                  {{ value_json.obj[i].temp }}
+                  {% set targetDmacFound.found = True %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetDmacFound = namespace(found=False) %}
+  ##
+  # Recycling Bin
+  ##
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Recycling Bin RSSI"
+    unique_id: 17020bd7-5736-4be4-b14d-9d65be1081a4
+    device_class: signal_strength
+    # Assume the sensor is too far away after 300 seconds of no updates
+    expire_after: 300
+    unit_of_measurement: "dBm"
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    value_template: >-
+      {% set targetUuidFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000003" and targetUuidFound.found == False %}
+                  {{ value_json.obj[i].rssi }}
+                  {% set targetUuidFound.found = True %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetUuidFound = namespace(found=False) %}
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Recycling Bin Battery"
+    unique_id: 6487373b-d772-4e3c-85cb-7b48c67448d6
+    device_class: battery
+    state_class: measurement
+    unit_of_measurement: "%"
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    # Sensor with CR2477 stops operating around is 2450 mV
+    # Battery starts at 3.3V. Anything over 3.0V is considered 100%.
+    # Assumes discharge curve is linear
+    # Type 8 message is (Eddystone) TLM, which contains the battery information as mV
+    value_template: >-
+      {% set targetDmacFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].dmac == "DD34020A4968" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
+                  {% set stock_voltage = 3000 %}
+                  {% set voltage_range = 550 %}
+                  {% set current_voltage = value_json.obj[i].vbatt %}
+                  {% set remaining_life = 0 %}
+
+                  {% if current_voltage >= stock_voltage %}
+                    {% set remaining_life = 100 %}
+                  {% elif current_voltage > (stock_voltage - voltage_range) %}
+                    {% set remaining_life = int((current_voltage - (stock_voltage - voltage_range)) / voltage_range * 100) %}
+                  {% else %}
+                    {% set remaining_life = 0 %}
+                  {% endif %}
+                  {{ remaining_life | int }}
+                  {% set targetDmacFound.found = True %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetDmacFound = namespace(found=False) %}
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Recycling Bin Temperature"
+    unique_id: 20a474e0-1830-4f87-a931-2d3dfac1bc66
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    # Type 8 message is (Eddystone) TLM, which contains the temperatue as °C
+    value_template: >-
+      {% set targetDmacFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].dmac == "DD34020A4968" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
+                  {{ value_json.obj[i].temp }}
+                  {% set targetDmacFound.found = True %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetDmacFound = namespace(found=False) %}
+  
+  binary_sensor:
+# Trash bin
+  ##
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Trash Bin Vibration"
+    unique_id: 6cf64961-3f1d-4805-9aee-468bea2b0381
+    # off_delay of 30s so we don't get spammed with the vibration state changing
+    off_delay: 30
+    device_class: vibration
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    value_template: >-
+      {% set targetUuidFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000002" and targetUuidFound.found == False %}
+                  ON
+                  {% set targetUuidFound.found = True %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetUuidFound = namespace(found=False) %}
+  ##
+  # Recycling Bin
+  ##
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Recycling Bin Vibration"
+    unique_id: 6077d454-ceb1-4dca-b637-03fc216f94d7
+    # off_delay of 30s so we don't get spammed with the vibration state changing
+    off_delay: 30
+    device_class: vibration
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    value_template: >-
+      {% set targetUuidFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000004" and targetUuidFound.found == False %}
+                  ON
+                  {% set targetUuidFound.found = True %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetUuidFound = namespace(found=False) %}
+# Trash bin
+  ##
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Trash Bin Present"
+    unique_id: b71bcf43-9f24-4e59-9a21-d9dba4540d9b
+    device_class: presence
+    # Assume the sensor is too far away after 300 seconds of no updates
+    off_delay: 300
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    # Since this is using a filter that gets generated _after_ the RSSI sensor populates it, the
+    # very first message (and possibly 2nd message) would not have populated the filter yet.
+    # This is probably ok since the sensor should be updating ~every second and should resolve
+    # itself in only a few seconds.
+    # We also set this to expire after 300 seconds as the only other trigger is if we see message
+    # that matches the UUID for this sensor.
+    # We check if it's a number before we set the away status to fix a bug where the filtered RSSI is unknown on boot
+    value_template: >-
+      {% set targetUuidFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000001" and targetUuidFound.found == False %}
+                  {% if states('sensor.filtered_trash_bin_rssi') | is_number and states('input_number.trash_bin_rssi_threshold') | is_number %}
+                      {{ 'ON' if states('sensor.filtered_trash_bin_rssi') | float > states('input_number.trash_bin_rssi_threshold') | float else 'OFF' }}
+                      {% set targetUuidFound.found = True %}
+                  {%- endif %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetUuidFound = namespace(found=False) %}
+  ##
+  # Recycling Bin
+  ##
+  - state_topic: "bluecharm/publish/BC57290B0D70"
+    name: "Recycling Bin Present"
+    unique_id: 55baecab-3b24-4502-840d-9378a16b707d
+    device_class: presence
+    # Assume the sensor is too far away after 300 seconds of no updates
+    off_delay: 300
+    # Home Assistant ignores an empty value ('') and will not update the state of the entity.
+    # Since this is using a filter that gets generated _after_ the RSSI sensor populates it, the
+    # very first message (and possibly 2nd message) would not have populated the filter yet.
+    # This is probably ok since the sensor should be updating ~every second and should resolve
+    # itself in only a few seconds.
+    # We also set this to expire after 300 seconds as the only other trigger is if we see message
+    # that matches the UUID for this sensor.
+    # We check if it's a number before we set the away status to fix a bug where the filtered RSSI is unknown on boot
+    value_template: >-
+      {% set targetUuidFound = namespace(found=False) %}
+          {% for i in range(value_json.obj|count) -%}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000003" and targetUuidFound.found == False %}
+                  {% if states('sensor.filtered_recycling_bin_rssi') | is_number and states('input_number.recycling_bin_rssi_threshold') | is_number %}
+                      {{ 'ON' if states('sensor.filtered_recycling_bin_rssi') | float > states('input_number.recycling_bin_rssi_threshold') | float else 'OFF' }}
+                      {% set targetUuidFound.found = True %}
+                  {%- endif %}
+              {%- endif %}
+          {%- endfor %}
+      {% set targetUuidFound = namespace(found=False) %}
+
+sensor:
+  - platform: filter
+    name: "Filtered Trash Bin RSSI"
+    unique_id: bfe664b1-0f11-4329-9d48-0f9fe8185155
+    entity_id: sensor.trash_bin_rssi
+    filters:
+      - filter: outlier
+        window_size: 5
+        radius: 5.0
+      - filter: lowpass
+        time_constant: 10
+        precision: 2
+      - filter: time_simple_moving_average
+        window_size: "00:01"
+        precision: 2
+  - platform: filter
+    name: "Filtered Recycling Bin RSSI"
+    unique_id: 9fffb3c6-73e1-45c7-ab47-593fc5926240
+    entity_id: sensor.recycling_bin_rssi
+    filters:
+      - filter: outlier
+        window_size: 5
+        radius: 5.0
+      - filter: lowpass
+        time_constant: 10
+        precision: 2
+      - filter: time_simple_moving_average
+        window_size: "00:01"
+        precision: 2
+
+input_number:
+  trash_bin_rssi_threshold:
+    name: Trash Bin RSSI Threshold
+    min: -100
+    max: 0
+    step: 1
+  recycling_bin_rssi_threshold:
+    name: Recycling Bin RSSI Threshold
+    min: -100
+    max: 0
+    step: 1
+
+input_boolean:
+  trash_picked_up:
+    name: Trash Picked Up
+  recycling_picked_up:
+    name: Recycling Picked Up
+
+automation:
+  - alias: Recycling or Trash Picked Up Helper
+    description: >-
+      Update the helpers that indicate whether recycling or trash has been picked
+      up, but not brought back up
+    mode: parallel
+    max: 2
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.trash_bin_vibration
+        to: "on"
+        id: trash-picked-up
+      - platform: state
+        entity_id: binary_sensor.trash_bin_present
+        to: "on"
+        id: trash-brought-in
+        for:
+          minutes: 1
+      - platform: state
+        entity_id: binary_sensor.recycling_bin_vibration
+        to: "on"
+        id: recycling-picked-up
+      - platform: state
+        entity_id: binary_sensor.recycling_bin_present
+        to: "on"
+        id: recycling-brought-in
+        for:
+          minutes: 1
+    action:
+      - choose:
+          - conditions:
+              - condition: trigger
+                id: trash-picked-up
+              - condition: state
+                entity_id: binary_sensor.trash_today
+                state: "on"
+              - condition: state
+                entity_id: binary_sensor.trash_bin_present
+                state: "off"
+            sequence:
+              - service: input_boolean.turn_on
+                entity_id: input_boolean.trash_picked_up
+          - conditions:
+              - condition: trigger
+                id: trash-brought-in
+              - condition: state
+                entity_id: binary_sensor.trash_today
+                state: "on"
+            sequence:
+              - service: input_boolean.turn_off
+                entity_id: input_boolean.trash_picked_up
+          - conditions:
+              - condition: trigger
+                id: recycling-picked-up
+              - condition: state
+                entity_id: binary_sensor.recycling_today
+                state: "on"
+              - condition: state
+                entity_id: binary_sensor.recycling_bin_present
+                state: "off"
+            sequence:
+              - service: input_boolean.turn_on
+                entity_id: input_boolean.recycling_picked_up
+          - conditions:
+              - condition: trigger
+                id: recycling-brought-in
+              - condition: state
+                entity_id: binary_sensor.recycling_today
+                state: "on"
+            sequence:
+              - service: input_boolean.turn_off
+                entity_id: input_boolean.recycling_picked_up
+
+  - alias: Recycling or Trash Removal Tomorrow Notification
+    description: "Sends a notification if the recycling or trash is scheduled to be picked up tomorrow. But only if I haven't already taken the bins out."
+    mode: parallel
+    max: 2
+    trigger:
+      - platform: time
+        at: "19:30:00"
+        id: trash
+      - platform: time
+        at: "19:30:00"
+        id: recycling
+    action:
+      - choose:
+          - conditions:
+              - condition: trigger
+                id: trash
+              - condition: state
+                entity_id: binary_sensor.trash_tomorrow
+                state: "on"
+              - condition: state
+                entity_id: binary_sensor.recycling_tomorrow
+                state: "off"
+              - condition: or
+                conditions:
+                  - condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: binary_sensor.trash_bin_present
+                        state: "off"
+                    alias: Test if trash is Home, Unavailable, or Unknown
+                alias: Test if bin is at home
+            sequence:
+              - service: notify.mobile_app_shawn_7t
+                data:
+                  title: 🗑️ Trash!
+                  message: The trash has not been taken out yet. Pickup is tomorrow.
+                  data:
+                    notification_icon: mdi:dump-truck
+                    group: waste-removal-alert
+                    channel: waste-removal-alert
+                    data:
+                      ttl: "0"
+                      priority: high
+                    push:
+                      interruption-level: time-sensitive
+          - conditions:
+              - condition: trigger
+                id: recycling
+              - condition: state
+                entity_id: binary_sensor.recycling_tomorrow
+                state: "on"
+              - condition: or
+                conditions:
+                  - condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: binary_sensor.trash_bin_present
+                        state: "off"
+                    alias: Test if trash is Home, Unavailable, or Unknown
+                  - condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: binary_sensor.recycling_bin_present
+                        state: "off"
+                    alias: Test if recycling is Home, Unavailable, or Unknown
+                alias: Test if bins are at home
+            sequence:
+              - service: notify.mobile_app_shawn_7t
+                data:
+                  title: ♻️ Recycling & Trash!
+                  message: >-
+                    The recycling or trash have not been taken out yet. Pickup
+                    is tomorrow.
+                  data:
+                    notification_icon: mdi:recycle
+                    group: waste-removal-alert
+                    channel: waste-removal-alert
+                    data:
+                      ttl: "0"
+                      priority: high
+                    push:
+                      interruption-level: time-sensitive
+          - conditions:
+              - condition: trigger
+                id: trash
+              - condition: state
+                entity_id: binary_sensor.trash_tomorrow
+                state: "on"
+              - condition: state
+                entity_id: binary_sensor.recycling_tomorrow
+                state: "off"
+              - alias: Test if bin is not at home
+                condition: or
+                conditions:
+                  - alias: Test if trash is not at Home
+                    condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: binary_sensor.trash_bin_present
+                        state: "on"
+            sequence:
+              - service: notify.mobile_app_shawn_7t
+                data:
+                  title: 🗑️ Trash!
+                  message: The trash was already taken down. Was that you?
+                  data:
+                    notification_icon: mdi:dump-truck
+                    group: waste-removal-alert
+                    channel: waste-removal-alert
+                    data:
+                      ttl: "0"
+                      priority: high
+                    push:
+                      interruption-level: time-sensitive
+            alias: Trash tomorrow (bin not home)
+          - conditions:
+              - condition: trigger
+                id: recycling
+              - condition: state
+                entity_id: binary_sensor.recycling_tomorrow
+                state: "on"
+              - alias: Test if bin not at home
+                condition: or
+                conditions:
+                  - alias: Test if trash is not Home
+                    condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: binary_sensor.trash_bin_present
+                        state: "on"
+                  - alias: Test if recycling is not Home
+                    condition: not
+                    conditions:
+                      - condition: state
+                        entity_id: binary_sensor.recycling_bin_present
+                        state: "on"
+            sequence:
+              - service: notify.mobile_app_shawn_7t
+                data:
+                  title: ♻️ Recycling & Trash?
+                  message: >-
+                    The recycling or trash were already taken down. Was that
+                    you?
+                  data:
+                    notification_icon: mdi:recycle
+                    group: waste-removal-alert
+                    channel: waste-removal-alert
+                    data:
+                      ttl: "0"
+                      priority: high
+                    push:
+                      interruption-level: time-sensitive
+            alias: Trash/Recycling tomorrow (bin not home)
+  - alias: Recycling or Trash Picked up Notification
+    description: >-
+      Change helper boolean and send notification when one (or waiting for both)
+      trash and recycling have been picked up
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: input_boolean.trash_picked_up
+        to: "on"
+        from: "off"
+        id: trash
+      - platform: state
+        entity_id: input_boolean.recycling_picked_up
+        to: "on"
+        from: "off"
+        id: recycling
+      - platform: time
+        at: "19:30:00"
+        id: bin-reminder
+    action:
+      - choose:
+          - conditions:
+              - condition: trigger
+                id: trash
+              - condition: state
+                entity_id: binary_sensor.recycling_today
+                state: "off"
+                alias: Only send this alert if it's not a recycling day
+            sequence:
+              - service: shell_command.west_front_latest
+              - delay:
+                  hours: 0
+                  minutes: 0
+                  seconds: 1
+                  milliseconds: 0
+              - service: notify.mobile_app_shawn_7t
+                data:
+                  title: 🗑️ Trash picked up
+                  message: The trash bin has been picked up.
+                  data:
+                    notification_icon: mdi:dump-truck
+                    group: waste-removal-alert
+                    channel: waste-removal-alert
+                    image: /config/www/cctv/west_front_latest.jpg
+                    data:
+                      ttl: "0"
+                      priority: high
+                    push:
+                      interruption-level: time-sensitive
+          - conditions:
+              - condition: trigger
+                id:
+                  - trash
+                  - recycling
+              - condition: or
+                conditions:
+                  - condition: state
+                    entity_id: input_boolean.recycling_picked_up
+                    state: "on"
+                  - condition: state
+                    entity_id: binary_sensor.recycling_bin_present
+                    state: "on"
+                alias: Recycling has been picked up, or taken inside
+              - condition: or
+                conditions:
+                  - condition: state
+                    entity_id: input_boolean.trash_picked_up
+                    state: "on"
+                  - condition: state
+                    entity_id: binary_sensor.trash_bin_present
+                    state: "on"
+                alias: Trash has been picked up, or taken inside
+            sequence:
+              - service: shell_command.west_front_latest
+              - delay:
+                  hours: 0
+                  minutes: 0
+                  seconds: 1
+                  milliseconds: 0
+              - service: notify.mobile_app_shawn_7t
+                data:
+                  title: ♻️🗑️ Recycling & trash picked up
+                  message: The recycling & trash bins have been picked up.
+                  data:
+                    notification_icon: mdi:dump-truck
+                    group: waste-removal-alert
+                    channel: waste-removal-alert
+                    image: /config/www/cctv/west_front_latest.jpg
+                    data:
+                      ttl: "0"
+                      priority: high
+                    push:
+                      interruption-level: time-sensitive
+          - conditions:
+              - condition: trigger
+                id:
+                  - bin-reminder
+              - alias: Recycling or trash hasn't been picked up
+                condition: or
+                conditions:
+                  - condition: state
+                    entity_id: input_boolean.recycling_picked_up
+                    state: "on"
+                  - condition: state
+                    entity_id: input_boolean.trash_picked_up
+                    state: "on"
+            sequence:
+              - service: shell_command.west_front_latest
+              - delay:
+                  hours: 0
+                  minutes: 0
+                  seconds: 1
+                  milliseconds: 0
+              - service: notify.family
+                data:
+                  title: ♻️🗑️ Recycling or trash picked up
+                  message: The recycling or trash bins still haven't been picked up.
+                  data:
+                    notification_icon: mdi:dump-truck
+                    group: waste-removal-alert
+                    channel: waste-removal-alert
+                    image: /config/www/cctv/west_front_latest.jpg
+                    data:
+                      ttl: "0"
+                      priority: high
+                    push:
+                      interruption-level: time-sensitive
+
+  - alias: Health Check for Bluetooth beacons
+    description: "Send a notification if the presence sensor for the Bluetooth beacons have been unknown for a while."
+    trigger:
+      - platform: time
+        at: "19:00:00"
+    condition:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.trash_tomorrow
+            state: "on"
+          - condition: state
+            entity_id: binary_sensor.recycling_tomorrow
+            state: "on"
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.trash_bin_present
+            state: unknown
+          - condition: state
+            entity_id: binary_sensor.recycling_bin_present
+            state: unknown
+          - condition: template
+            alias: Test if Trash Bin RSSI is older than 15 minutes
+            value_template: >-
+              {{ (as_timestamp(now()) -
+              as_timestamp(states.sensor.trash_bin_rssi.last_updated)) > 900 }}
+          - condition: template
+            alias: Test if Recycling Bin RSSI is older than 15 minutes
+            value_template: >-
+              {{ (as_timestamp(now()) -
+              as_timestamp(states.sensor.recycling_bin_rssi.last_updated)) > 900 }}
+    action:
+      - service: notify.mobile_app_shawn_7t
+        data:
+          title: 📡 Bluetooth beacon state unknown
+          message: >-
+            One of the Bluetooth beacon's presence sensor has been unknown for a while.
+            Please investigate.
+          data:
+            notification_icon: mdi:radio-tower
+            group: bluetooth-beacon-alert
+            channel: bluetooth-beacon-alert
+            data:
+              ttl: "0"
+              priority: high
+            push:
+              interruption-level: time-sensitive
+    mode: single

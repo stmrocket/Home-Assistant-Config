@@ -56,6 +56,7 @@ shell_command:
   back_porch_snapshot: 'wget -q 10.10.10.28:5000/api/back_porch/any/snapshot.jpg -O /config/www/cctv/back_porch.jpg'
   front_porch_snapshot: 'wget -q 10.10.10.28:5000/api/front_porch/any/snapshot.jpg -O /config/www/cctv/front_porch.jpg'
   garage_snapshot: 'wget -q 10.10.10.28:5000/api/garage/any/snapshot.jpg -O /config/www/cctv/garage.jpg'
+  west_front_latest: 'wget -q 10.10.10.28:5000/api/west_front/latest.jpg -O /config/www/cctv/west_front_latest.jpg'
 
 automation:
   - alias: CCTV West Front Person Detected
