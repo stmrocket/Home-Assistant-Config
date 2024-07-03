@@ -44,6 +44,51 @@ template:
           {% set search_term = "Recycling" %}
           {{ agenda_tomorrow['calendar.waste_collection'].events
           | selectattr('summary', 'search', search_term) | list | count > 0 }}
+  - sensor:
+    - name: Trash Bin Status
+      unique_id: 1aa12e62-2b8c-416a-807c-dac64002d187
+      state: >-
+        {% if  is_state('binary_sensor.trash_today', 'off') and is_state('binary_sensor.trash_tomorrow', 'off') and is_state('binary_sensor.trash_bin_present', 'on') -%} 
+          In
+        {% elif  is_state('binary_sensor.trash_today', 'off') and is_state('binary_sensor.trash_tomorrow', 'on') and is_state('binary_sensor.trash_bin_present', 'on') -%}
+          Tomorrow In
+        {% elif  is_state('binary_sensor.trash_today', 'on') and is_state('binary_sensor.trash_tomorrow', 'off') and is_state('binary_sensor.trash_bin_present', 'on') and is_state('input_boolean.trash_picked_up', 'off') -%}
+          Today In
+        {% elif  is_state('binary_sensor.trash_today', 'off') and is_state('binary_sensor.trash_tomorrow', 'on') and is_state('binary_sensor.trash_bin_present', 'off') -%}
+          Tomorrow Out
+        {% elif  is_state('binary_sensor.trash_today', 'on') and is_state('binary_sensor.trash_tomorrow', 'off') and is_state('binary_sensor.trash_bin_present', 'off') and is_state('input_boolean.trash_picked_up', 'off') -%}
+          Today Out
+        {% elif  is_state('binary_sensor.trash_today', 'on') and is_state('binary_sensor.trash_tomorrow', 'off') and is_state('binary_sensor.trash_bin_present', 'off') and is_state('input_boolean.trash_picked_up', 'on') -%}
+          Empty
+        {% elif  is_state('binary_sensor.trash_today', 'on') and is_state('binary_sensor.trash_tomorrow', 'off') and is_state('binary_sensor.trash_bin_present', 'on') and is_state('input_boolean.trash_picked_up_today', 'on') -%}
+          In
+        {% elif  is_state('binary_sensor.trash_today', 'off') and is_state('binary_sensor.trash_tomorrow', 'off') and is_state('binary_sensor.trash_bin_present', 'off') and is_state('input_boolean.trash_picked_up', 'on') -%}
+          Empty Still Out
+        {% elif  is_state('binary_sensor.trash_today', 'off') and is_state('binary_sensor.trash_tomorrow', 'off') and is_state('binary_sensor.trash_bin_present', 'off') -%}
+          Out
+        {% endif -%}
+    - name: Recycling Bin Status
+      unique_id: 930ac44e-4cd6-4152-8ac5-f56b0fe109d7
+      state: >-
+        {% if  is_state('binary_sensor.recycling_today', 'off') and is_state('binary_sensor.recycling_tomorrow', 'off') and is_state('binary_sensor.recycling_bin_present', 'on') -%} 
+          In
+        {% elif  is_state('binary_sensor.recycling_today', 'off') and is_state('binary_sensor.recycling_tomorrow', 'on') and is_state('binary_sensor.recycling_bin_present', 'on') -%}
+          Tomorrow In
+        {% elif  is_state('binary_sensor.recycling_today', 'on') and is_state('binary_sensor.recycling_tomorrow', 'off') and is_state('binary_sensor.recycling_bin_present', 'on') and is_state('input_boolean.recycling_picked_up', 'off') -%}
+          Today In
+        {% elif  is_state('binary_sensor.recycling_today', 'off') and is_state('binary_sensor.recycling_tomorrow', 'on') and is_state('binary_sensor.recycling_bin_present', 'off') -%}
+          Tomorrow Out
+        {% elif  is_state('binary_sensor.recycling_today', 'on') and is_state('binary_sensor.recycling_tomorrow', 'off') and is_state('binary_sensor.recycling_bin_present', 'off') and is_state('input_boolean.recycling_picked_up', 'off') -%}
+          Today Out
+        {% elif  is_state('binary_sensor.recycling_today', 'on') and is_state('binary_sensor.recycling_tomorrow', 'off') and is_state('binary_sensor.recycling_bin_present', 'off') and is_state('input_boolean.recycling_picked_up', 'on') -%}
+          Empty
+        {% elif  is_state('binary_sensor.recycling_today', 'on') and is_state('binary_sensor.recycling_tomorrow', 'off') and is_state('binary_sensor.recycling_bin_present', 'on') and is_state('input_boolean.recycling_picked_up_today', 'on') -%}
+          In
+        {% elif  is_state('binary_sensor.recycling_today', 'off') and is_state('binary_sensor.recycling_tomorrow', 'off') and is_state('binary_sensor.recycling_bin_present', 'off') and is_state('input_boolean.recycling_picked_up', 'on') -%}
+          Empty Still Out
+        {% elif  is_state('binary_sensor.recycling_today', 'off') and is_state('binary_sensor.recycling_tomorrow', 'off') and is_state('binary_sensor.recycling_bin_present', 'off') -%}
+          Out
+        {% endif -%}
 
 mqtt:
   sensor:
@@ -325,8 +370,12 @@ input_number:
 input_boolean:
   trash_picked_up:
     name: Trash Picked Up
+  trash_picked_up_today:
+    name: Trash Picked Up Today
   recycling_picked_up:
     name: Recycling Picked Up
+  recycling_picked_up_today:
+    name: Recycling Picked Up Today
 
 automation:
   - alias: Recycling or Trash Picked Up Helper
@@ -371,11 +420,13 @@ automation:
             sequence:
               - service: input_boolean.turn_on
                 entity_id: input_boolean.trash_picked_up
+              - service: input_boolean.turn_on
+                entity_id: input_boolean.trash_picked_up_today
           - conditions:
               - condition: trigger
                 id: trash-brought-in
               - condition: state
-                entity_id: binary_sensor.trash_today
+                entity_id: binary_sensor.trash_picked_up
                 state: "on"
             sequence:
               - service: input_boolean.turn_off
@@ -392,11 +443,13 @@ automation:
             sequence:
               - service: input_boolean.turn_on
                 entity_id: input_boolean.recycling_picked_up
+              - service: input_boolean.turn_on
+                entity_id: input_boolean.recycling_picked_up_today
           - conditions:
               - condition: trigger
                 id: recycling-brought-in
               - condition: state
-                entity_id: binary_sensor.recycling_today
+                entity_id: binary_sensor.recycling_picked_up
                 state: "on"
             sequence:
               - service: input_boolean.turn_off
@@ -735,3 +788,23 @@ automation:
               priority: high
             push:
               interruption-level: time-sensitive
+  - alias: Clear Trash Picked Up Today Flag
+    id: 6099d563-8390-4d81-995e-2ea52417905d
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.trash_today
+        from: "on"
+        to: "off"
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.trash_picked_up_today
+  - alias: Clear Recycling Picked Up Today Flag
+    id: 83ec13f4-721b-4412-9fd6-1191ea9998b4
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.recycling_today
+        from: "on"
+        to: "off"
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.recycling_picked_up_today
