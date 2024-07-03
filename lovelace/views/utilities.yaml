@@ -584,3 +584,126 @@ cards:
         show:
           icon: false
         smoothing: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:gap-card
+          - type: custom:button-card
+            entity: sensor.trash_bin_status
+            color_type: icon
+            icon: mdi:trash-can
+            state:
+              - value: In
+                color: rgb(255, 255, 255)
+                name: In
+              - value: Tomorrow In
+                color: rgb(228, 213, 94)
+                name: Tomorrow
+              - value: Today In
+                color: rgb(228, 94, 101)
+                name: Today
+              - value: Tomorrow Out
+                color: rgb(94, 228, 101)
+                name: Tomorrow
+              - value: Today Out
+                color: rgb(94, 228, 101)
+                name: Today
+              - value: Empty
+                color: rgb(228, 213, 94)
+                name: Empty
+              - value: Empty Still Out
+                color: rgb(228, 94, 101)
+                name: Empty
+              - value: Out
+                color: rgb(228, 94, 101)
+                name: Out
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Trash Bin
+                  content:
+                    type: entities
+                    entities:
+                      - entity: sensor.filtered_trash_bin_rssi
+                        name: Filtered RSSI
+                      - entity: sensor.trash_bin_battery
+                        name: Battery
+                      - entity: sensor.trash_bin_temperature
+                        name: Temperature
+            hold_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Trash Bin
+                  content:
+                    type: entities
+                    entities:
+                      - entity: sensor.filtered_trash_bin_rssi
+                        name: Filtered RSSI
+                      - entity: sensor.trash_bin_battery
+                        name: Battery
+                      - entity: sensor.trash_bin_temperature
+                        name: Temperature
+          - type: custom:button-card
+            entity: sensor.recycling_bin_status
+            color_type: icon
+            icon: mdi:recycle
+            state:
+              - value: In
+                color: rgb(255, 255, 255)
+                name: In
+              - value: Tomorrow In
+                color: rgb(228, 213, 94)
+                name: Tomorrow
+              - value: Today In
+                color: rgb(228, 94, 101)
+                name: Today
+              - value: Tomorrow Out
+                color: rgb(94, 228, 101)
+                name: Tomorrow
+              - value: Today Out
+                color: rgb(94, 228, 101)
+                name: Today
+              - value: Empty
+                color: rgb(228, 213, 94)
+                name: Empty
+              - value: Empty Still Out
+                color: rgb(228, 94, 101)
+                name: Empty
+              - value: Out
+                color: rgb(228, 94, 101)
+                name: Out
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Trash Bin
+                  content:
+                    type: entities
+                    entities:
+                      - entity: sensor.filtered_recycling_bin_rssi
+                        name: Filtered RSSI
+                      - entity: sensor.recycling_bin_battery
+                        name: Battery
+                      - entity: sensor.recycling_bin_temperature
+                        name: Temperature
+            hold_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Trash Bin
+                  content:
+                    type: entities
+                    entities:
+                      - entity: sensor.filtered_recycling_bin_rssi
+                        name: Filtered RSSI
+                      - entity: sensor.recycling_bin_battery
+                        name: Battery
+                      - entity: sensor.recycling_bin_temperature
+                        name: Temperature
+          - type: custom:gap-card
+
