@@ -106,7 +106,7 @@ mqtt:
     value_template: >-
       {% set targetUuidFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000001" and targetUuidFound.found == False %}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000003" and targetUuidFound.found == False %}
                   {{ value_json.obj[i].rssi }}
                   {% set targetUuidFound.found = True %}
               {%- endif %}
@@ -126,7 +126,7 @@ mqtt:
     value_template: >-
       {% set targetDmacFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].dmac == "DD34020A4811" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
+              {% if value_json.obj[i].dmac == "DD34020A4968" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
                   {% set stock_voltage = 3000 %}
                   {% set voltage_range = 550 %}
                   {% set current_voltage = value_json.obj[i].vbatt %}
@@ -155,7 +155,7 @@ mqtt:
     value_template: >-
       {% set targetDmacFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].dmac == "DD34020A4811" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
+              {% if value_json.obj[i].dmac == "DD34020A4968" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
                   {{ value_json.obj[i].temp }}
                   {% set targetDmacFound.found = True %}
               {%- endif %}
@@ -175,7 +175,7 @@ mqtt:
     value_template: >-
       {% set targetUuidFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000003" and targetUuidFound.found == False %}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000001" and targetUuidFound.found == False %}
                   {{ value_json.obj[i].rssi }}
                   {% set targetUuidFound.found = True %}
               {%- endif %}
@@ -195,7 +195,7 @@ mqtt:
     value_template: >-
       {% set targetDmacFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].dmac == "DD34020A4968" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
+              {% if value_json.obj[i].dmac == "DD34020A4811" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
                   {% set stock_voltage = 3000 %}
                   {% set voltage_range = 550 %}
                   {% set current_voltage = value_json.obj[i].vbatt %}
@@ -224,7 +224,7 @@ mqtt:
     value_template: >-
       {% set targetDmacFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].dmac == "DD34020A4968" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
+              {% if value_json.obj[i].dmac == "DD34020A4811" and value_json.obj[i].type == 8 and targetDmacFound.found == False %}
                   {{ value_json.obj[i].temp }}
                   {% set targetDmacFound.found = True %}
               {%- endif %}
@@ -244,7 +244,7 @@ mqtt:
     value_template: >-
       {% set targetUuidFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000002" and targetUuidFound.found == False %}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000004" and targetUuidFound.found == False %}
                   ON
                   {% set targetUuidFound.found = True %}
               {%- endif %}
@@ -263,7 +263,7 @@ mqtt:
     value_template: >-
       {% set targetUuidFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000004" and targetUuidFound.found == False %}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000002" and targetUuidFound.found == False %}
                   ON
                   {% set targetUuidFound.found = True %}
               {%- endif %}
@@ -288,7 +288,7 @@ mqtt:
     value_template: >-
       {% set targetUuidFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000001" and targetUuidFound.found == False %}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000003" and targetUuidFound.found == False %}
                   {% if states('sensor.filtered_trash_bin_rssi') | is_number and states('input_number.trash_bin_rssi_threshold') | is_number %}
                       {{ 'ON' if states('sensor.filtered_trash_bin_rssi') | float > states('input_number.trash_bin_rssi_threshold') | float else 'OFF' }}
                       {% set targetUuidFound.found = True %}
@@ -316,7 +316,7 @@ mqtt:
     value_template: >-
       {% set targetUuidFound = namespace(found=False) %}
           {% for i in range(value_json.obj|count) -%}
-              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000003" and targetUuidFound.found == False %}
+              {% if value_json.obj[i].uuid == "7777772E6B6B6D636E2E636F6D000001" and targetUuidFound.found == False %}
                   {% if states('sensor.filtered_recycling_bin_rssi') | is_number and states('input_number.recycling_bin_rssi_threshold') | is_number %}
                       {{ 'ON' if states('sensor.filtered_recycling_bin_rssi') | float > states('input_number.recycling_bin_rssi_threshold') | float else 'OFF' }}
                       {% set targetUuidFound.found = True %}
