@@ -17,7 +17,14 @@ cards:
   - type: vertical-stack
     cards:
       - !include /config/lovelace/cards/weather.yaml
-      - type: "custom:gap-card"
+
+      - type: 'custom:our-groceries-card'
+        title: Shopping Lists
+        show_header: false
+        entity: sensor.our_groceries
+        show_crossed_off: true
+        sort_by_name: true
+        hide_empty_lists: false
 
   #################################################################
   #                                                               #
