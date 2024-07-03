@@ -17,6 +17,7 @@ cards:
   - type: vertical-stack
     cards:
       - !include /config/lovelace/cards/weather.yaml
+      - type: "custom:gap-card"
 
   #################################################################
   #                                                               #
