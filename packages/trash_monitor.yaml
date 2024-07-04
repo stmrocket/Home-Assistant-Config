@@ -723,7 +723,7 @@ automation:
                   minutes: 0
                   seconds: 1
                   milliseconds: 0
-              - service: notify.family
+              - service: notify.browser_shawn_7t
                 data:
                   title: ♻️🗑️ Recycling or trash picked up
                   message: The recycling or trash bins still haven't been picked up.
