@@ -426,7 +426,7 @@ automation:
               - condition: trigger
                 id: trash-brought-in
               - condition: state
-                entity_id: binary_sensor.trash_picked_up
+                entity_id: input_boolean.trash_picked_up
                 state: "on"
             sequence:
               - service: input_boolean.turn_off
@@ -449,7 +449,7 @@ automation:
               - condition: trigger
                 id: recycling-brought-in
               - condition: state
-                entity_id: binary_sensor.recycling_picked_up
+                entity_id: input_boolean.recycling_picked_up
                 state: "on"
             sequence:
               - service: input_boolean.turn_off
