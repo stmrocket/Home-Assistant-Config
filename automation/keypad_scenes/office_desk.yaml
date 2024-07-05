@@ -58,3 +58,63 @@
   action:
     - service: switch.turn_off
       entity_id: switch.office_desk_light
+
+- alias: Office Desk  On from Keypad
+  id: 44492cb3-173c-4b5e-b662-2b17a7e134b3
+  trigger:
+    - platform: state
+      entity_id: switch.office_peripherals
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: switch.office_desk
+      state: "off"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.office_desk
+
+- alias: Office Desk Off from Keypad
+  id: e1aab9c7-ed9a-436e-9879-35dc60d83b06
+  trigger:
+    - platform: state
+      entity_id: switch.office_peripherals
+      from: "on"
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: switch.office_desk
+      state: "on"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.office_desk
+
+- alias: Office Desk Keypad On
+  id: 9bf61651-c6b3-4dcd-b944-d97411113db4
+  trigger:
+    - platform: state
+      entity_id: switch.office_desk
+      from: "off"
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: switch.office_peripherals
+      state: "off"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.office_peripherals
+
+- alias: Office Desk Light Keypad Off
+  id: cf17e5a6-1e59-4915-93f9-bd5cd72e1ffd
+  trigger:
+    - platform: state
+      entity_id: switch.office_desk
+      from: "on"
+      to: "off"
+  condition:
+    - condition: state
+      entity_id: switch.office_peripherals
+      state: "on"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.office_peripherals

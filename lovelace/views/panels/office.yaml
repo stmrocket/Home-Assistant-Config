@@ -444,7 +444,7 @@ cards:
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            entity: switch.office_peripherals
+            entity: switch.office_desk
             color_type: icon
             color: rgb(228, 94, 101)
             icon: mdi:desktop-tower-monitor
