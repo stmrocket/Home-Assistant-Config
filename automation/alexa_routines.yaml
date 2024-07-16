@@ -18,7 +18,7 @@
       entity_id: light.master_suite_leds
     - service: switch.turn_off
       entity_id: switch.master_bedroom_lamps
-    - service: rest_command.play_waves
+    - service: esphome.sound_machine_master_dfplayer_play_bedtime
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
 
@@ -44,7 +44,7 @@
       entity_id: switch.master_bedroom_lamps
     - service: switch.turn_on
       entity_id: switch.elk_night_mode_on
-    - service: rest_command.play_waves
+    - service: esphome.sound_machine_master_dfplayer_play_bedtime
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
     - service: button.push
@@ -62,7 +62,6 @@
         - switch.master_bedroom_fan
     - service: input_boolean.turn_off
       entity_id: input_boolean.bedtime_trigger
-    - service: rest_command.load_audiobook
 
 - alias: Alexa Good Morning
   id: 3b90e15b-6f41-493a-84ed-0a489068547b
@@ -75,7 +74,7 @@
       data:
         topic: nuvo/command/set/zone/vol
         payload: 4,60
-    - service: rest_command.play_waves
+    - service: esphome.sound_machine_master_dfplayer_stop
     - service: switch.turn_off
       entity_id: switch.master_bedroom_fan
     - service: light.turn_off
