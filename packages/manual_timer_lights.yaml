@@ -104,11 +104,11 @@ automation:
         to: "on"
     condition:
       - condition: state
-        entity_id: switch.hall_timer_lights
+        entity_id: switch.timer_lights
         state: "off"
     action:
       - service: switch.turn_on
-        entity_id: switch.hall_timer_lights
+        entity_id: switch.timer_lights
 
   - alias: Manual Timer Lights Keypad Off
     id: 7e7673c2-75ab-4ef5-8681-c7577a128657
@@ -119,8 +119,8 @@ automation:
         to: "off"
     condition:
       - condition: state
-        entity_id: switch.hall_timer_lights
+        entity_id: switch.timer_lights
         state: "on"
     action:
       - service: switch.turn_off
-        entity_id: switch.hall_timer_lights
+        entity_id: switch.timer_lights
