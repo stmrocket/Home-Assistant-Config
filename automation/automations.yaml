@@ -153,21 +153,6 @@
     target:
       entity_id: sensor.current_uv_index
 
-- alias: Open Garage Door from NFC
-  id: caf0c347-8e92-4a88-a841-c629d8489958
-  trigger:
-    - platform: event
-      event_type: tag_scanned
-      event_data:
-        tag_id: !secret garage_door_nfc
-  action:
-    - service: switch.turn_on
-      entity_id: switch.elk_garage_door
-    - delay:
-        seconds: 2
-    - service: switch.turn_off
-      entity_id: switch.elk_garage_door
-
 - alias: Tvheadend Post Started
   id: 93fad5bb-a083-485d-8b3a-7db1eb796d1e
   trigger:

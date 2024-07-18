@@ -1,0 +1,38 @@
+cover:
+  - platform: template
+    covers:
+      garage_door:
+        unique_id: 87539381-f98e-4401-bae8-f95d72c4d3b0
+        device_class: garage
+        friendly_name: Garage Door
+        value_template: "{{ not is_state('sensor.elk_garage_door', 'Normal') }}"
+        open_cover:
+          service: script.garage_door_actuate
+        close_cover:
+          service: script.garage_door_actuate
+
+automation:
+  - alias: Open Garage Door from NFC
+    id: caf0c347-8e92-4a88-a841-c629d8489958
+    trigger:
+      - platform: event
+        event_type: tag_scanned
+        event_data:
+          tag_id: !secret garage_door_nfc
+    action:
+      - service: switch.turn_on
+        entity_id: switch.elk_garage_door
+      - delay:
+          seconds: 2
+      - service: switch.turn_off
+        entity_id: switch.elk_garage_door
+
+script:
+  garage_door_actuate:
+    sequence:
+      - service: switch.turn_on
+        entity_id: switch.elk_garage_door
+      - delay:
+          seconds: 2
+      - service: switch.turn_off
+        entity_id: switch.elk_garage_door
