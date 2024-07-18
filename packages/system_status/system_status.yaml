@@ -1085,7 +1085,6 @@ group:
     entities:
       - switch.frigate
       - switch.tv_headend
-      - switch.eagle_mqtt
 
 utility_meter:
   wan_in_monthly:
