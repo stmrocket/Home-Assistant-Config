@@ -1,4 +1,4 @@
-media_palyer:
+media_player:
   - platform: universal
     name: Den Kodi Harmony
     children:
