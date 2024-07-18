@@ -11,7 +11,7 @@ cards:
           right: 24%
           transform: initial
         type: state-icon
-      - entity: lock.garage_entry
+      - entity: lock.garage_entry_lock
         style:
           bottom: -5%
           font-weight: bold

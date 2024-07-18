@@ -25,11 +25,11 @@
       for: "00:01:00"
   condition:
     - condition: state
-      entity_id: lock.front_door
+      entity_id: lock.front_door_lock
       state: unlocked
   action:
     - service: lock.lock
-      entity_id: lock.front_door
+      entity_id: lock.front_door_lock
 
 - alias: Front Door Lock Timer Trigger
   id: 50900130-1fdc-4c0a-96ae-52d1247296b2
@@ -39,7 +39,7 @@
       from: Normal
       to: Violated
     - platform: state
-      entity_id: lock.front_door
+      entity_id: lock.front_door_lock
       from: locked
       to: unlocked
   action:
@@ -58,11 +58,11 @@
       entity_id: sensor.elk_front_door
       state: Normal
     - condition: state
-      entity_id: lock.front_door
+      entity_id: lock.front_door_lock
       state: unlocked
   action:
     - service: lock.lock
-      entity_id: lock.front_door
+      entity_id: lock.front_door_lock
 
 - alias: Lock Front Door When Leaving
   id: f8e7cb5d-6e72-49c0-ae1d-b84f9b8e7176
@@ -77,4 +77,4 @@
       state: arming
   action:
     - service: lock.lock
-      entity_id: lock.front_door
+      entity_id: lock.front_door_lock

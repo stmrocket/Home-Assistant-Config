@@ -25,11 +25,11 @@
       for: "00:01:00"
   condition:
     - condition: state
-      entity_id: lock.garage_entry
+      entity_id: lock.garage_entry_lock
       state: unlocked
   action:
     - data:
-        entity_id: lock.garage_entry
+        entity_id: lock.garage_entry_lock
       service: lock.lock
 - alias: Garage Entry Lock Timer Trigger
   id: 399aa4dc-f175-4e0f-be29-f8bf0741a42f
@@ -38,7 +38,7 @@
       from: Normal
       to: Violated
       platform: state
-    - entity_id: lock.garage_entry
+    - entity_id: lock.garage_entry_lock
       from: locked
       platform: state
       to: unlocked
@@ -64,9 +64,9 @@
       entity_id: sensor.elk_garage_door
       state: Violated
     - condition: state
-      entity_id: lock.garage_entry
+      entity_id: lock.garage_entry_lock
       state: unlocked
   action:
     - data:
-        entity_id: lock.garage_entry
+        entity_id: lock.garage_entry_lock
       service: lock.lock

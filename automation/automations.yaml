@@ -14,13 +14,13 @@
       for: "00:01:00"
   condition:
     - condition: state
-      entity_id: lock.front_door
+      entity_id: lock.front_door_lock
       state: locked
     - condition: state
-      entity_id: lock.back_door
+      entity_id: lock.back_door_lock
       state: locked
     - condition: state
-      entity_id: lock.garage_entry
+      entity_id: lock.garage_entry_lock
       state: locked
   action:
     - service: notify.mobile_app_shawn_7t
