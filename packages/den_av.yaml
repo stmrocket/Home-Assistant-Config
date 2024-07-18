@@ -62,6 +62,10 @@ rest_command:
     url: "{{ states('sensor.den_avr_url') }}04FN"
     method: get
 
+  den_avr_mute:
+    url: "{{ states('sensor.den_avr_url') }}MO"
+    method: get
+
 command_line:
   - switch:
       name: Den TV
