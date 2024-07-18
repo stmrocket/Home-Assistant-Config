@@ -468,23 +468,6 @@
           ttl: 0
           priority: high
 
-- alias: Notify Docker Eagle MQTT Down
-  id: 6285f1e3-723f-48d3-abf9-d902a7c8f843
-  trigger:
-    - platform: state
-      entity_id: switch.eagle_mqtt
-      to: "off"
-      for:
-        minutes: 2
-  action:
-    - service: notify.mobile_app_shawn_7t
-      data:
-        title: Container Down
-        message: The Eagle MQTT Docker container is down.
-        data:
-          ttl: 0
-          priority: high
-
 - alias: Notify Clock Horn Offline
   id: fc3f2065-8cee-4298-a20a-a6629246c2ca
   trigger:

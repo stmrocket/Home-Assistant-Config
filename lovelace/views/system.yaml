@@ -2099,21 +2099,7 @@ cards:
                                   confirm: true
                                   text: "Change container state?"
                                 card:
-                                  entity: switch.mysql
-                              - type: "custom:restriction-card"
-                                row: true
-                                restrictions:
-                                  confirm: true
-                                  text: "Change container state?"
-                                card:
                                   entity: switch.tv_headend
-                              - type: "custom:restriction-card"
-                                row: true
-                                restrictions:
-                                  confirm: true
-                                  text: "Change container state?"
-                                card:
-                                  entity: switch.eagle_mqtt
 
               - type: "custom:button-card"
                 entity: sensor.server_ups_status
