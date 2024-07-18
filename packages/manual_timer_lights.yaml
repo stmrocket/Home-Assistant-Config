@@ -27,7 +27,6 @@ script:
           - switch.server_room_lamp
           - switch.office_lamps
           - switch.den_lamps
-          - switch.den_table_lamp
           - switch.shack_lamp
           - switch.guest_room_lamp
           - switch.master_bedroom_lamps
@@ -51,7 +50,6 @@ script:
           - switch.server_room_lamp
           - switch.office_lamps
           - switch.den_lamps
-          - switch.den_table_lamp
           - switch.shack_lamp
           - switch.guest_room_lamp
           - switch.master_bedroom_lamps

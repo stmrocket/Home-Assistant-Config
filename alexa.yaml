@@ -12,7 +12,7 @@ smart_home:
       - light.house_leds
       - light.den_light
       - light.kitchen_sink_light
-      - light.hall_light
+      - light.hallway_light
       - light.den_light
       - light.office_light
       - light.entry_light
@@ -47,13 +47,12 @@ smart_home:
       - switch.shed_outside_light
       - switch.lava_lamp
       - switch.popper
-      - switch.den_table_lamp
+      - switch.den_lamps
       - switch.office_fan
       - switch.office_peripherals
       - switch.server_room_lamp
       - switch.server_room_fan
       - switch.kitchen_lamp
-      - switch.den_lamps
       - switch.shack_light
       - switch.guest_bedroom_fan
       - switch.guest_room_lamp
@@ -161,8 +160,6 @@ smart_home:
       name: Guest Bathroom Stereo
     switch.shed_outside_light:
       name: Shed Light
-    switch.den_table_lamp:
-      name: Piano Lamp
     switch.office_fan:
       name: Office Fan
     switch.office_peripherals:

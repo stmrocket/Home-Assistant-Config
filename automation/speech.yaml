@@ -192,7 +192,7 @@
 - alias: Elk Speak Air Handler Disabled
   id: ebcca31c-f16c-41ea-80f4-3f18aeb6ee08
   trigger:
-    - entity_id: switch.elk_ahu_disable
+    - entity_id: switch.elk_ahu_disabled
       platform: state
       to: "on"
   action:

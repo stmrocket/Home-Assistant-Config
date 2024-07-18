@@ -37,11 +37,11 @@
       to: "open"
   condition:
     - condition: state
-      entity_id: switch.server_room_blinds
+      entity_id: switch.server_blinds
       state: "off"
   action:
     - service: switch.turn_on
-      entity_id: switch.server_room_blinds
+      entity_id: switch.server_blinds
 
 - alias: Server Blind Keypad off if all Closed
   id: b211d035-1cc2-4fd1-a6a1-c6c74208c1f6
@@ -52,8 +52,8 @@
       to: "closed"
   condition:
     - condition: state
-      entity_id: switch.server_room_blinds
+      entity_id: switch.server_blinds
       state: "on"
   action:
     - service: switch.turn_off
-      entity_id: switch.server_room_blinds
+      entity_id: switch.server_blinds

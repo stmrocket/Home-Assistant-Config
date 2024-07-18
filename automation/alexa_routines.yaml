@@ -47,7 +47,6 @@
     - service: esphome.sound_machine_master_dfplayer_play_bedtime
     - service: input_boolean.turn_off
       entity_id: input_boolean.goodnight_trigger
-    - service: button.push
 
 - alias: Alexa Bedtime
   id: 45e4c19f-a346-4d77-aa0c-f6ccc7f15d4e

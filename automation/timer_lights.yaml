@@ -31,7 +31,6 @@
         - switch.server_room_lamp
         - switch.office_lamps
         - switch.den_lamps
-        - switch.den_table_lamp
         - switch.shack_lamp
     - service: light.turn_on
       entity_id:
@@ -55,7 +54,6 @@
         - switch.server_room_lamp
         - switch.office_lamps
         - switch.den_lamps
-        - switch.den_table_lamp
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_on
@@ -109,7 +107,6 @@
         - switch.server_room_lamp
         - switch.office_lamps
         - switch.den_lamps
-        - switch.den_table_lamp
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_on
@@ -142,7 +139,6 @@
         - switch.server_room_lamp
         - switch.office_lamps
         - switch.den_lamps
-        - switch.den_table_lamp
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_off
@@ -169,7 +165,6 @@
         - switch.server_room_lamp
         - switch.office_lamps
         - switch.den_lamps
-        - switch.den_table_lamp
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_off
@@ -201,7 +196,6 @@
         - switch.server_room_lamp
         - switch.office_lamps
         - switch.den_lamps
-        - switch.den_table_lamp
         - switch.shack_lamp
     - service: light.turn_off
       entity_id: 
