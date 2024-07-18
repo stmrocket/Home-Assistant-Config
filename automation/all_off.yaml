@@ -144,7 +144,7 @@
       entity_id:
         - light.guest_bedroom_light
         - light.guest_bathroom_light
-        - light.hall_light
+        - light.hallway_light
     - service: switch.turn_off
       entity_id:
         - switch.guest_bedroom_fan
