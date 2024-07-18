@@ -1,7 +1,7 @@
 sensor:
 
   - platform: integration
-    source: sensor.hem_total_power
+    source: sensor.energy_monitor_electric_consumption_w
     name: energy_used
     unit_prefix: k
     round: 2

@@ -91,9 +91,9 @@ smart_home:
       - input_boolean.us_metar_mode
 
       #LOCK
-      - lock.front_door
-      - lock.garage_entry
-      - lock.back_door
+      - lock.front_door_lock
+      - lock.garage_entry_lock
+      - lock.back_door_lock
 
       #COVER
       - cover.house_blinds
@@ -106,13 +106,13 @@ smart_home:
       - cover.server_room_blind
 
   entity_config:
-    lock.front_door:
+    lock.front_door_lock:
       name: Front Door
       description: Front Door Deadbolt
-    lock.garage_entry:
+    lock.garage_entry_lock:
       name: Garage Entry
       description: Garage Entry Deadbolt
-    lock.back_door:
+    lock.back_door_lock:
       name: Back Door
       description: Back Door Deadbolt
     light.kitchen_leds:

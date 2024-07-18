@@ -25,11 +25,11 @@
       for: "00:01:00"
   condition:
     - condition: state
-      entity_id: lock.back_door
+      entity_id: lock.back_door_lock
       state: unlocked
   action:
     - data:
-        entity_id: lock.back_door
+        entity_id: lock.back_door_lock
       service: lock.lock
 - alias: Back Door Lock Timer Trigger
   id: f4298aaf-3cee-447e-8c86-01d42993e9c5
@@ -38,7 +38,7 @@
       from: Normal
       to: Violated
       platform: state
-    - entity_id: lock.back_door
+    - entity_id: lock.back_door_lock
       from: locked
       platform: state
       to: unlocked
@@ -57,9 +57,9 @@
       entity_id: sensor.elk_back_door
       state: Normal
     - condition: state
-      entity_id: lock.back_door
+      entity_id: lock.back_door_lock
       state: unlocked
   action:
     - data:
-        entity_id: lock.back_door
+        entity_id: lock.back_door_lock
       service: lock.lock

@@ -101,7 +101,7 @@
           state: disarmed
   action:
     - service: lock.unlock
-      entity_id: lock.front_door
+      entity_id: lock.front_door_lock
     - service: input_boolean.turn_on
       entity_id: input_boolean.elk_away_on
     - service: input_boolean.turn_off

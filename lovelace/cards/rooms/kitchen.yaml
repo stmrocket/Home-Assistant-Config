@@ -4,7 +4,7 @@ cards:
   - type: picture-elements
     image: /local/lovelace/room_sm.png
     elements:
-      - entity: lock.back_door
+      - entity: lock.back_door_lock
         style:
           bottom: -5%
           font-weight: bold

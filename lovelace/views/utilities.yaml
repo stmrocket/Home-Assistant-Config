@@ -29,7 +29,7 @@ cards:
 
           - type: custom:mini-graph-card
             entities:
-              - entity: sensor.hem_total_power
+              - entity: sensor.energy_monitor_electric_consumption_w
                 show_points: false
               - entity: sensor.energy_daily
                 show_state: true

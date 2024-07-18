@@ -10,7 +10,7 @@
       state: disarmed
   action:
     - service: lock.lock
-      entity_id: lock.garage_entry
+      entity_id: lock.garage_entry_lock
     - service: switch.turn_on
       entity_id: switch.elk_away_mode_on
     - service: switch.turn_off
@@ -33,7 +33,7 @@
           state: arming
   action:
     - service: lock.unlock
-      entity_id: lock.garage_entry
+      entity_id: lock.garage_entry_lock
     - service: switch.turn_on
       entity_id: switch.elk_stay_mode_off
     - service: switch.turn_off

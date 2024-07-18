@@ -120,7 +120,7 @@ cards:
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            entity: lock.front_door
+            entity: lock.front_door_lock
             color_type: icon
             state:
               - value: "locked"
@@ -134,12 +134,12 @@ cards:
               action: call-service
               service: lock.lock
               service_data:
-                entity_id: lock.front_door
+                entity_id: lock.front_door_lock
             hold_action:
               action: more-info
 
           - type: "custom:button-card"
-            entity: lock.garage_entry
+            entity: lock.garage_entry_lock
             color_type: icon
             state:
               - value: "locked"
@@ -153,12 +153,12 @@ cards:
               action: call-service
               service: lock.lock
               service_data:
-                entity_id: lock.garage_entry
+                entity_id: lock.garage_entry_lock
             hold_action:
               action: more-info
 
           - type: "custom:button-card"
-            entity: lock.back_door
+            entity: lock.back_door_lock
             color_type: icon
             state:
               - value: "locked"
@@ -172,7 +172,7 @@ cards:
               action: call-service
               service: lock.lock
               service_data:
-                entity_id: lock.back_door
+                entity_id: lock.back_door_lock
             hold_action:
               action: more-info
 

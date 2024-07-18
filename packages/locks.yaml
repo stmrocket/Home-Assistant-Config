@@ -134,7 +134,7 @@ automation:
     trigger:
       - platform: event
         event_type: zwave_js_notification
-    condition: "{{ trigger.event.data.device_id == 'b436398cd17ea6165a28f7110099c684' and trigger.event.data.event_label.endswith('lock operation') }}"
+    condition: "{{ trigger.event.data.device_id == '17752e4d4f06fc403e931c7b1ca21401' and trigger.event.data.event_label.endswith('lock operation') }}"
     action:
       - service: input_text.set_value
         data:
@@ -155,7 +155,7 @@ automation:
     trigger:
       - platform: event
         event_type: zwave_js_notification
-    condition: "{{ trigger.event.data.device_id == 'd7bb2208f41fd5bbb5b2395c8ef7c504' and trigger.event.data.event_label.endswith('lock operation') }}"
+    condition: "{{ trigger.event.data.device_id == '1663e6c964a6b7a1413df245cf4cb7e0' and trigger.event.data.event_label.endswith('lock operation') }}"
     action:
       - service: input_text.set_value
         data:
@@ -198,7 +198,7 @@ automation:
     trigger:
       - platform: event
         event_type: zwave_js_notification
-    condition: "{{ trigger.event.data.device_id == '63432e13ee7f4830440cb4c0dc8efd4b' and trigger.event.data.event_label.endswith('lock operation') }}"
+    condition: "{{ trigger.event.data.device_id == '98d579436e80e0c79ee235bbf9a1be11' and trigger.event.data.event_label.endswith('lock operation') }}"
     action:
       - service: input_text.set_value
         data:
