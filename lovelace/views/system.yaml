@@ -1776,16 +1776,12 @@ cards:
                       content:
                         type: entities
                         entities:
-                          - entity: sensor.front_rooms_ap_clients
-                            name: Clients
-                            icon: mdi:account
-                          - entity: sensor.front_rooms_ap_2_channel
-                            name: 2.4 GHz Channel
+                          - entity: sensor.front_2_4ghz_clients
+                            name: 2.4 GHz Clients
                             icon: mdi:antenna
-                          - entity: sensor.front_rooms_ap_5_channel
-                            name: 5.0 GHz Channel
+                          - entity: sensor.front_5ghz_clients
+                            name: 5.0 GHz Clients
                             icon: mdi:antenna
-
               - type: "custom:button-card"
                 entity: device_tracker.ap_den
                 color_type: icon
@@ -1806,14 +1802,11 @@ cards:
                       content:
                         type: entities
                         entities:
-                          - entity: sensor.den_ap_clients
-                            name: Clients
-                            icon: mdi:account
-                          - entity: sensor.den_ap_2_channel
-                            name: 2.4 GHz Channel
+                          - entity: sensor.den_2_4ghz_clients
+                            name: 2.4 GHz Clients
                             icon: mdi:antenna
-                          - entity: sensor.den_ap_5_channel
-                            name: 5.0 GHz Channel
+                          - entity: sensor.den_5ghz_clients
+                            name: 5.0 GHz Clients
                             icon: mdi:antenna
 
               - type: "custom:button-card"
@@ -1827,24 +1820,6 @@ cards:
                     color: rgb(228, 94, 101)
                     icon: mdi:access-point-network-off
                 name: Garage
-                tap_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Garage AP
-                      content:
-                        type: entities
-                        entities:
-                          - entity: sensor.garage_ap_clients
-                            name: Clients
-                            icon: mdi:account
-                          - entity: sensor.garage_ap_2_channel
-                            name: 2.4 GHz Channel
-                            icon: mdi:antenna
-                          - entity: sensor.garage_ap_5_channel
-                            name: 5.0 GHz Channel
-                            icon: mdi:antenna
 
           - type: horizontal-stack
             cards:
@@ -1869,14 +1844,11 @@ cards:
                       content:
                         type: entities
                         entities:
-                          - entity: sensor.shed_ap_clients
-                            name: Clients
-                            icon: mdi:account
-                          - entity: sensor.shed_ap_2_channel
-                            name: 2.4 GHz Channel
+                          - entity: sensor.shed_2_4ghz_clients
+                            name: 2.4 GHz Clients
                             icon: mdi:antenna
-                          - entity: sensor.shed_ap_5_channel
-                            name: 5.0 GHz Channel
+                          - entity: sensor.shed_5ghz_clients
+                            name: 5.0 GHz Clients
                             icon: mdi:antenna
 
               - type: "custom:button-card"
