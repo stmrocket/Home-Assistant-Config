@@ -902,66 +902,6 @@ mqtt:
       unique_id: b6b52c5d-3e12-4808-a162-90502503a5b8
       name: "HA Shutdown"
 
-    - name: Front Rooms AP Clients
-      unique_id: 8bd8ba58-7c6e-4cdb-96fd-30b7c5b52e42
-      state_topic: iap
-      value_template: "{{value_json['front'].clients }}"
-
-    - name: Front Rooms AP 5 channel
-      unique_id: 41051dfa-aacb-41cc-a53e-2db2a87f25db
-      state_topic: iap
-      value_template: "{{value_json['front'].channel5 }}"
-
-    - name: Front Rooms AP 2 channel
-      unique_id: d9419090-d0ca-4b73-a9c8-454d35df829c
-      state_topic: iap
-      value_template: "{{value_json['front'].channel2 }}"
-
-    - name: Den AP Clients
-      unique_id: df7f8079-eabf-4a71-862d-90aaee04dd6d
-      state_topic: iap
-      value_template: "{{value_json['den'].clients }}"
-
-    - name: Den AP 5 channel
-      unique_id: 95004876-75e1-41f0-b0a6-267e5e675ffb
-      state_topic: iap
-      value_template: "{{value_json['den'].channel5 }}"
-
-    - name: Den AP 2 channel
-      unique_id: ad7070e8-e067-445e-860f-20a8e0e10324
-      state_topic: iap
-      value_template: "{{value_json['den'].channel2 }}"
-
-    - name: Garage AP Clients
-      unique_id: addafd69-7742-4087-bdd4-8bbd552b2cd0
-      state_topic: iap
-      value_template: "{{value_json['garage'].clients }}"
-
-    - name: Garage AP 5 channel
-      unique_id: fba6f014-e5a2-40d3-b335-a006f7b79f68
-      state_topic: iap
-      value_template: "{{value_json['garage'].channel5 }}"
-
-    - name: Garage AP 2 channel
-      unique_id: 90239dcd-4bb6-4ab1-95b5-4192aa51b83d
-      state_topic: iap
-      value_template: "{{value_json['garage'].channel2 }}"
-
-    - name: Shed AP Clients
-      unique_id: 7ac60d46-5e7f-471f-ae29-eead09546539
-      state_topic: iap
-      value_template: "{{value_json['shed'].clients }}"
-
-    - name: Shed AP 5 channel
-      unique_id: f2e3bf41-16ad-4de6-bd88-bbee71bec471
-      state_topic: iap
-      value_template: "{{value_json['shed'].channel5 }}"
-
-    - name: Shed AP 2 channel
-      unique_id: 4ded75ca-cc4a-4b02-acb0-be2e391e62a2
-      state_topic: iap
-      value_template: "{{value_json['shed'].channel2 }}"
-
 ####################################################
 #                                                  #
 #                  NUMERIC INPUT                   #
