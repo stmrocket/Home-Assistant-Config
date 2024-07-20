@@ -871,53 +871,56 @@ cards:
           type: picture-elements
           image: /local/lovelace/room.png
           elements:
-            - entity: sensor.blank
+            - type: state-label
+              entity: sensor.blank
               hold-action: none
               prefix: "Prusa MK4: Offline"
               style:
                 bottom: 20%
                 font-size: 150%
                 left: 5%
-                transform: initial
-              type: state-label    
-              tap-action:     
+                transform: initial    
+              tap_action:
                 action: fire-dom-event
                 browser_mod:
                   service: browser_mod.popup
                   data:
                     title: Prusa MK4
                     content:
-                      type: horizontal-stack
-                      cards:  
-                        - type: "custom:button-card"
-                          entity: switch.prusa_mk4
-                          color_type: icon
-                          color: rgb(228, 94, 101)
-                          icon: mdi:printer-3d
-                          name: Power
-                          hold_action:
-                            action: more-info 
-                        - type: "custom:button-card"
-                          entity: button.prusamk4_pause_job
-                          color_type: icon
-                          icon: mdi:pause
-                          name: Pause
-                          hold_action:
-                            action: more-info 
-                        - type: "custom:button-card"
-                          entity: button.prusamk4_resume_job
-                          color_type: icon
-                          icon: mdi:play
-                          name: Resume
-                          hold_action:
-                            action: more-info 
-                        - type: "custom:button-card"
-                          entity: button.prusamk4_cancel_job
-                          color_type: icon
-                          icon: mdi:cancel
-                          name: Cancel
-                          hold_action:
-                            action: more-info 
+                      type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:button-card
+                              entity: switch.prusa_mk4
+                              color_type: icon
+                              color: rgb(228, 94, 101)
+                              icon: mdi:printer-3d
+                              name: Power
+                              hold_action:
+                                action: more-info                     
+                            - type: custom:button-card
+                              entity: button.prusamk4_pause_job
+                              color_type: icon
+                              icon: mdi:pause
+                              name: Pause
+                              hold_action:
+                                action: more-info
+                            - type: custom:button-card
+                              entity: button.prusamk4_resume_job
+                              color_type: icon
+                              icon: mdi:play
+                              name: Resume
+                              hold_action:
+                                action: more-info
+                            - type: custom:button-card
+                              entity: button.prusamk4_cancel_job
+                              color_type: icon
+                              icon: mdi:cancel
+                              name: Cancel
+                              hold_action:
+                                action: more-info
+              hold_action: none
       - type: conditional
         conditions:
           - entity: sensor.prusamk4
@@ -928,53 +931,60 @@ cards:
             - type: picture-elements
               image: /local/lovelace/room.png
               elements:
-                - entity: sensor.prusamk4
-                  hold-action: none
-                  prefix: 'Prusa MK4: '
-                  style:
-                    bottom: 20%
-                    font-size: 150%
-                    left: 5%
-                    transform: initial
-                    tap-action:
-                      action: fire-dom-event
-                      browser_mod:
-                        service: browser_mod.popup
-                        data:
-                          title: Prusa MK4
-                          content:
-                            type: horizontal-stack
-                            cards:
-                              - type: custom:button-card
-                                entity: switch.prusa_mk4
-                                color_type: icon
-                                color: rgb(228, 94, 101)
-                                icon: mdi:printer-3d
-                                name: Power
-                                hold_action:
-                                  action: more-info
-                              - type: custom:button-card
-                                entity: button.prusamk4_pause_job
-                                color_type: icon
-                                icon: mdi:pause
-                                name: Pause
-                                hold_action:
-                                  action: more-info
-                              - type: custom:button-card
-                                entity: button.prusamk4_resume_job
-                                color_type: icon
-                                icon: mdi:play
-                                name: Resume
-                                hold_action:
-                                  action: more-info
-                              - type: custom:button-card
-                                entity: button.prusamk4_cancel_job
-                                color_type: icon
-                                icon: mdi:cancel
-                                name: Cancel
-                                hold_action:
-                                  action: more-info
-                  type: state-label
+                - type: custom:stack-in-card
+                  cards:
+                    - type: picture-elements
+                      image: /local/lovelace/room.png
+                      elements:
+                        - type: state-label
+                          entity: sensor.prusamk4
+                          prefix: 'Prusa MK4: '
+                          style:
+                            bottom: 20%
+                            font-size: 150%
+                            left: 5%
+                            transform: initial
+                          tap_action:
+                            action: fire-dom-event
+                            browser_mod:
+                              service: browser_mod.popup
+                              data:
+                                title: Prusa MK4
+                                content:
+                                  type: custom:vertical-stack-in-card
+                                  cards:
+                                    - type: horizontal-stack
+                                      cards:
+                                        - type: custom:button-card
+                                          entity: switch.prusa_mk4
+                                          color_type: icon
+                                          color: rgb(228, 94, 101)
+                                          icon: mdi:printer-3d
+                                          name: Power
+                                          hold_action:
+                                            action: more-info                     
+                                        - type: custom:button-card
+                                          entity: button.prusamk4_pause_job
+                                          color_type: icon
+                                          icon: mdi:pause
+                                          name: Pause
+                                          hold_action:
+                                            action: more-info
+                                        - type: custom:button-card
+                                          entity: button.prusamk4_resume_job
+                                          color_type: icon
+                                          icon: mdi:play
+                                          name: Resume
+                                          hold_action:
+                                            action: more-info
+                                        - type: custom:button-card
+                                          entity: button.prusamk4_cancel_job
+                                          color_type: icon
+                                          icon: mdi:cancel
+                                          name: Cancel
+                                          hold_action:
+                                            action: more-info
+                          hold_action: none
                 - entity: sensor.mk4_remaining_print_time
                   prefix: 'Remaining: '
                   style:
@@ -1199,53 +1209,56 @@ cards:
           type: picture-elements
           image: /local/lovelace/room.png
           elements:
-            - entity: sensor.blank
+            - type: state-label
+              entity: sensor.blank
               hold-action: none
               prefix: "Prusa MK3.5: Offline"
               style:
                 bottom: 20%
                 font-size: 150%
                 left: 5%
-                transform: initial
-              type: state-label    
-              tap-action:     
+                transform: initial  
+              tap_action:
                 action: fire-dom-event
                 browser_mod:
                   service: browser_mod.popup
                   data:
-                    title: Prusa MK3.5
+                    title: Prusa MK4
                     content:
-                      type: horizontal-stack
-                      cards:  
-                        - type: "custom:button-card"
-                          entity: switch.prusa_mk3
-                          color_type: icon
-                          color: rgb(228, 94, 101)
-                          icon: mdi:printer-3d
-                          name: Power
-                          hold_action:
-                            action: more-info 
-                        - type: "custom:button-card"
-                          entity: button.prusamk3_5_pause_job
-                          color_type: icon
-                          icon: mdi:pause
-                          name: Pause
-                          hold_action:
-                            action: more-info 
-                        - type: "custom:button-card"
-                          entity: button.prusamk3_5_resume_job
-                          color_type: icon
-                          icon: mdi:play
-                          name: Resume
-                          hold_action:
-                            action: more-info 
-                        - type: "custom:button-card"
-                          entity: button.prusamk3_5_cancel_job
-                          color_type: icon
-                          icon: mdi:cancel
-                          name: Cancel
-                          hold_action:
-                            action: more-info 
+                      type: custom:vertical-stack-in-card
+                      cards:
+                        - type: horizontal-stack
+                          cards:
+                            - type: custom:button-card
+                              entity: switch.prusa_mk3
+                              color_type: icon
+                              color: rgb(228, 94, 101)
+                              icon: mdi:printer-3d
+                              name: Power
+                              hold_action:
+                                action: more-info                     
+                            - type: custom:button-card
+                              entity: button.prusamk3_5_pause_job
+                              color_type: icon
+                              icon: mdi:pause
+                              name: Pause
+                              hold_action:
+                                action: more-info
+                            - type: custom:button-card
+                              entity: button.prusamk3_5_resume_job
+                              color_type: icon
+                              icon: mdi:play
+                              name: Resume
+                              hold_action:
+                                action: more-info
+                            - type: custom:button-card
+                              entity: button.prusamk3_5_cancel_job
+                              color_type: icon
+                              icon: mdi:cancel
+                              name: Cancel
+                              hold_action:
+                                action: more-info
+              hold_action: none
       - type: conditional
         conditions:
           - entity: sensor.prusamk3_5
@@ -1256,7 +1269,8 @@ cards:
             - type: picture-elements
               image: /local/lovelace/room.png
               elements:
-                - entity: sensor.prusamk3_5
+                - type: state-label
+                  entity: sensor.prusamk3_5
                   hold-action: none
                   prefix: 'Prusa MK3.5: '
                   style:
@@ -1264,45 +1278,46 @@ cards:
                     font-size: 150%
                     left: 5%
                     transform: initial
-                    tap-action:
+                    tap_action:
                       action: fire-dom-event
                       browser_mod:
                         service: browser_mod.popup
                         data:
-                          title: Prusa MK3.5
+                          title: Prusa MK4
                           content:
-                            type: horizontal-stack
+                            type: custom:vertical-stack-in-card
                             cards:
-                              - type: custom:button-card
-                                entity: switch.prusa_mk3
-                                color_type: icon
-                                color: rgb(228, 94, 101)
-                                icon: mdi:printer-3d
-                                name: Power
-                                hold_action:
-                                  action: more-info
-                              - type: custom:button-card
-                                entity: button.prusamk3_5_pause_job
-                                color_type: icon
-                                icon: mdi:pause
-                                name: Pause
-                                hold_action:
-                                  action: more-info
-                              - type: custom:button-card
-                                entity: button.prusamk3_5_resume_job
-                                color_type: icon
-                                icon: mdi:play
-                                name: Resume
-                                hold_action:
-                                  action: more-info
-                              - type: custom:button-card
-                                entity: button.prusamk3_5_cancel_job
-                                color_type: icon
-                                icon: mdi:cancel
-                                name: Cancel
-                                hold_action:
-                                  action: more-info
-                  type: state-label
+                              - type: horizontal-stack
+                                cards:
+                                  - type: custom:button-card
+                                    entity: switch.prusa_mk3
+                                    color_type: icon
+                                    color: rgb(228, 94, 101)
+                                    icon: mdi:printer-3d
+                                    name: Power
+                                    hold_action:
+                                      action: more-info                     
+                                  - type: custom:button-card
+                                    entity: button.prusamk3_5_pause_job
+                                    color_type: icon
+                                    icon: mdi:pause
+                                    name: Pause
+                                    hold_action:
+                                      action: more-info
+                                  - type: custom:button-card
+                                    entity: button.prusamk3_5_resume_job
+                                    color_type: icon
+                                    icon: mdi:play
+                                    name: Resume
+                                    hold_action:
+                                      action: more-info
+                                  - type: custom:button-card
+                                    entity: button.prusamk3_5_cancel_job
+                                    color_type: icon
+                                    icon: mdi:cancel
+                                    name: Cancel
+                                    hold_action:
+                                      action: more-info
                 - entity: sensor.mk3_remaining_print_time
                   prefix: 'Remaining: '
                   style:
