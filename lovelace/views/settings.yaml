@@ -1223,7 +1223,7 @@ cards:
                 browser_mod:
                   service: browser_mod.popup
                   data:
-                    title: Prusa MK4
+                    title: Prusa MK3.5
                     content:
                       type: custom:vertical-stack-in-card
                       cards:
@@ -1283,7 +1283,7 @@ cards:
                       browser_mod:
                         service: browser_mod.popup
                         data:
-                          title: Prusa MK4
+                          title: Prusa MK3.5
                           content:
                             type: custom:vertical-stack-in-card
                             cards:
