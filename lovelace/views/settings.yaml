@@ -1273,46 +1273,47 @@ cards:
                     font-size: 150%
                     left: 5%
                     transform: initial
-                    tap_action:
-                      action: fire-dom-event
-                      browser_mod:
-                        service: browser_mod.popup
-                        data:
-                          title: Prusa MK3.5
-                          content:
-                            type: custom:vertical-stack-in-card
-                            cards:
-                              - type: horizontal-stack
-                                cards:
-                                  - type: custom:button-card
-                                    entity: switch.prusa_mk3
-                                    color_type: icon
-                                    color: rgb(228, 94, 101)
-                                    icon: mdi:printer-3d
-                                    name: Power
-                                    hold_action:
-                                      action: more-info                     
-                                  - type: custom:button-card
-                                    entity: button.prusamk3_5_pause_job
-                                    color_type: icon
-                                    icon: mdi:pause
-                                    name: Pause
-                                    hold_action:
-                                      action: more-info
-                                  - type: custom:button-card
-                                    entity: button.prusamk3_5_resume_job
-                                    color_type: icon
-                                    icon: mdi:play
-                                    name: Resume
-                                    hold_action:
-                                      action: more-info
-                                  - type: custom:button-card
-                                    entity: button.prusamk3_5_cancel_job
-                                    color_type: icon
-                                    icon: mdi:cancel
-                                    name: Cancel
-                                    hold_action:
-                                      action: more-info
+                  tap_action:
+                    action: fire-dom-event
+                    browser_mod:
+                      service: browser_mod.popup
+                      data:
+                        title: Prusa MK3.5
+                        content:
+                          type: custom:vertical-stack-in-card
+                          cards:
+                            - type: horizontal-stack
+                              cards:
+                                - type: custom:button-card
+                                  entity: switch.prusa_mk3
+                                  color_type: icon
+                                  color: rgb(228, 94, 101)
+                                  icon: mdi:printer-3d
+                                  name: Power
+                                  hold_action:
+                                    action: more-info                     
+                                - type: custom:button-card
+                                  entity: button.prusamk3_5_pause_job
+                                  color_type: icon
+                                  icon: mdi:pause
+                                  name: Pause
+                                  hold_action:
+                                    action: more-info
+                                - type: custom:button-card
+                                  entity: button.prusamk3_5_resume_job
+                                  color_type: icon
+                                  icon: mdi:play
+                                  name: Resume
+                                  hold_action:
+                                    action: more-info
+                                - type: custom:button-card
+                                  entity: button.prusamk3_5_cancel_job
+                                  color_type: icon
+                                  icon: mdi:cancel
+                                  name: Cancel
+                                  hold_action:
+                                    action: more-info
+                  hold_action: none
                 - entity: sensor.mk3_remaining_print_time
                   prefix: 'Remaining: '
                   style:
