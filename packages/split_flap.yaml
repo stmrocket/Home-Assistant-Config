@@ -3,7 +3,7 @@ automation:
     id: 8f115519-6602-41dd-9f38-30b804117ba4
     trigger:
       - platform: time_pattern
-        minutes: 1
+        minutes: "*"
     condition:
       - condition: or
         conditions:
