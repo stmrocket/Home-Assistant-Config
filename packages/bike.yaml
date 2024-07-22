@@ -373,3 +373,54 @@ automation:
     action: 
       - service: switch.toggle
         entity_id: switch.bike_fan
+
+  - alias: Reset Daily Bike Data
+    id: 14d91d22-b923-464f-9841-4a035a704f69
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    action:
+      - service: mqtt.publish
+        data:
+          topic: bike/cmd/reset/day
+
+  - alias: Reset Weekly Bike Data
+    id: 1f7ff03b-66f3-4939-88d5-ec2cfb1089cb
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().weekday() == 0 }}"
+    action:
+      - service: mqtt.publish
+        data:
+          topic: bike/cmd/reset/week
+
+  - alias: Reset Monthly Bike Data
+    id: f6e4e180-a998-4863-a4d0-c7fa025cd094
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().day == 1 }}"
+    action:
+      - service: mqtt.publish
+        data:
+          topic: bike/cmd/reset/month
+
+  - alias: Reset Yearly Bike Data
+    id: 4c8a374a-58f6-447a-8d59-ce76a7de48bb
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    condition:
+      - condition: template
+        value_template: "{{ now().month == 1 }}"
+      - condition: template
+        value_template: "{{ now().day == 1 }}"
+    action:
+      - service: mqtt.publish
+        data:
+          topic: bike/cmd/reset/year
