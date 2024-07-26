@@ -981,20 +981,25 @@ group:
     name: LED Controllers
     all: true
     entities:
-      - device_tracker.den_1
-      - device_tracker.gbath
-      - device_tracker.kitchen_1
-      - device_tracker.kitchen_2
-      - device_tracker.kitchen_3
-      - device_tracker.kitchen_4
-      - device_tracker.kitchen_5
-      - device_tracker.kitchen_6
-      - device_tracker.kitchen_7
-      - device_tracker.kitchen_8
-      - device_tracker.mbath
-      - device_tracker.mbed_1
-      - device_tracker.mbed_2
-      - device_tracker.shack
+      - device_tracker.denled1
+      - device_tracker.denled2
+      - device_tracker.denled3
+      - device_tracker.denled4
+      - device_tracker.guestbathled
+      - device_tracker.kitchenled1
+      - device_tracker.kitchenled2
+      - device_tracker.kitchenled3
+      - device_tracker.kitchenled4
+      - device_tracker.kitchenled5
+      - device_tracker.kitchenled6
+      - device_tracker.kitchenled7
+      - device_tracker.masterbathled
+      - device_tracker.masterbedled1
+      - device_tracker.masterbedled2
+      - device_tracker.officeled
+      - device_tracker.shackled
+
+
 
   blinds:
     name: Blind Controllers
