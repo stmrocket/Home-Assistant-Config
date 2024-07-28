@@ -67,6 +67,8 @@ smart_home:
       - switch.texas_metar_map_power
       - switch.us_metar_map_power
       - switch.bike_fan
+      - switch.sound_machine_master
+      - switch.sound_machine_guest
 
       #INPUT BOOLEAN
       - input_boolean.bedtime_trigger
@@ -211,4 +213,8 @@ smart_home:
     switch.texas_metar_map_power:
       name: Texas Map
     switch.us_metar_map_power:
-      name: US Map
+      name: US Map    
+    switch.sound_machine_master:
+      name: Sound Machine
+    switch.sound_machine_guest:
+      name: Guest Sound Machine
