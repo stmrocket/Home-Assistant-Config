@@ -3,15 +3,6 @@ input_text:
     name: Work Split Flap Text
     max: 12
 
-Script:
-  work_flaps_send_text:
-    alias: Send Manual Text to Work Split Flaps
-    sequence:
-      - service: mqtt.publish
-        data:
-          topic: flaps/work/set
-          payload_template: "{{ states('input_text.work_flaps_text') }}"
-
 
 
 automation:

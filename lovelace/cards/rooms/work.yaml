@@ -58,3 +58,25 @@ cards:
           action: more-info
           
       - type: "custom:gap-card"
+  - type: horizontal-stack
+    cards:
+      - type: entities
+        entities:
+          - entity: input_text.work_flaps_text
+            name: Text
+            icon: none
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            color_type: icon
+            icon: mdi:send-check
+            name: Send
+            tap_action:
+              action: call-service
+              service: mqtt.publish
+              service_data:
+                topic: flaps/office/set
+                payload_template: '{{ states(''input_text.work_flaps_text'') }}'
+            hold_action:
+              action: none
+          - type: custom:gap-card
