@@ -24,7 +24,7 @@ automation:
       - service: mqtt.publish        
         data:
           topic: denflaps/control
-          payload_template: >-
+          payload: >-
             {% if now().weekday() in (0,) %} 
               MON {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
             {% elif now().weekday() in (1,) %} 

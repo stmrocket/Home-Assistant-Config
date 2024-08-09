@@ -9,7 +9,7 @@
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/zone/vol
-        payload_template: "5,40"
+        payload: "5,40"
     - service: cover.close_cover
       entity_id: cover.master_blinds
 
@@ -24,7 +24,7 @@
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/zone/vol
-        payload_template: "5,60"
+        payload: "5,60"
 
 - alias: Master Shower Fan Timer
   id: e9b7ef63-4fd4-452b-8263-8310b9eaae05
@@ -40,7 +40,7 @@
     - service: mqtt.publish
       data:
         topic: nuvo/command/set/zone/vol
-        payload_template: "5,60"
+        payload: "5,60"
     - delay: 00:10:00
     - service: switch.turn_off
       data:

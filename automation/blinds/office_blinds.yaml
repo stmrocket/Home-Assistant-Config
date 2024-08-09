@@ -87,7 +87,7 @@
   action:
     - service: mqtt.publish
       data:
-        payload_template: "{{ state_attr('cover.center_office_blind', 'current_position') }}"
+        payload: "{{ state_attr('cover.center_office_blind', 'current_position') }}"
         topic: habc/office/tele/currentpct
         retain: "true"
 

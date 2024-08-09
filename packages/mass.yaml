@@ -201,7 +201,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/info
-          payload_template: "1,{{ (state_attr('media_player.errol', 'media_duration') | float(none) * 10) | float(none) |  round(0, default=none)}},{{ (state_attr('media_player.errol', 'media_position') | float(none) * 10) | float(none) |  round(0, default=none)}},{% if is_state('media_player.errol', 'playing')  -%}2{%- elif is_state('media_player.errol', 'paused') -%}3{%- else -%}1{%- endif %}"
+          payload: "1,{{ (state_attr('media_player.errol', 'media_duration') | float(none) * 10) | float(none) |  round(0, default=none)}},{{ (state_attr('media_player.errol', 'media_position') | float(none) * 10) | float(none) |  round(0, default=none)}},{% if is_state('media_player.errol', 'playing')  -%}2{%- elif is_state('media_player.errol', 'paused') -%}3{%- else -%}1{%- endif %}"
 
   - alias: Mass Update Keypad Dispinfo when pausing
     id: 977dad9d-867e-4026-89ca-d7547a896a6e
@@ -213,7 +213,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/info
-          payload_template: "1,{{ (state_attr('media_player.errol', 'media_duration') | float(none) * 10) | float(none) |  round(0, default=none)}},{{ (state_attr('media_player.errol', 'media_position') | float(none) * 10) | float(none) |  round(0, default=none)}},{% if is_state('media_player.errol', 'playing')  -%}2{%- elif is_state('media_player.errol', 'paused') -%}3{%- else -%}1{%- endif %}"
+          payload: "1,{{ (state_attr('media_player.errol', 'media_duration') | float(none) * 10) | float(none) |  round(0, default=none)}},{{ (state_attr('media_player.errol', 'media_position') | float(none) * 10) | float(none) |  round(0, default=none)}},{% if is_state('media_player.errol', 'playing')  -%}2{%- elif is_state('media_player.errol', 'paused') -%}3{%- else -%}1{%- endif %}"
 
   - alias: Mass Update Keypad Displine
     id: 81e2c8e3-3d3e-49c1-af93-96f077533556
@@ -241,19 +241,19 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,1,{{ states('input_select.mass_playlist') }}"
+          payload: "1,1,{{ states('input_select.mass_playlist') }}"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,2,{{ state_attr('media_player.errol', 'media_album_name') }}"
+          payload: "1,2,{{ state_attr('media_player.errol', 'media_album_name') }}"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,3,{{ state_attr('media_player.errol', 'media_artist') }}"
+          payload: "1,3,{{ state_attr('media_player.errol', 'media_artist') }}"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,4,{{ state_attr('media_player.errol', 'media_title') }}"
+          payload: "1,4,{{ state_attr('media_player.errol', 'media_title') }}"
 
   - alias: Mass Pause from Keypad
     id: 2c803fe5-d149-4619-8614-ad76c8ea4019
@@ -361,19 +361,19 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,1,Select a Playlist"
+          payload: "1,1,Select a Playlist"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: '1,2,""'
+          payload: '1,2,""'
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: '1,3,{{ states("input_select.mass_playlist") }}'
+          payload: '1,3,{{ states("input_select.mass_playlist") }}'
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: '1,4,""'
+          payload: '1,4,""'
 
   - alias: Mass Nuvo Previous Playlist
     id: 8e2f9aab-82b2-4b33-9d77-7c6f8b2abe9e
@@ -391,19 +391,19 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: "1,1,Select a Playlist"
+          payload: "1,1,Select a Playlist"
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: '1,2,""'
+          payload: '1,2,""'
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: '1,3,{{ states("input_select.mass_playlist") }}'
+          payload: '1,3,{{ states("input_select.mass_playlist") }}'
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/source/line
-          payload_template: '1,4,""'
+          payload: '1,4,""'
 
   - alias: Mass Handle Menu
     id: 6763e1ff-a7f7-4a53-a39d-ae7ed31b1102
@@ -428,19 +428,19 @@ automation:
             - service: mqtt.publish
               data:
                 topic: nuvo/command/set/source/line
-                payload_template: "1,1,Select a Playlist"
+                payload: "1,1,Select a Playlist"
             - service: mqtt.publish
               data:
                 topic: nuvo/command/set/source/line
-                payload_template: '1,2,""'
+                payload: '1,2,""'
             - service: mqtt.publish
               data:
                 topic: nuvo/command/set/source/line
-                payload_template: '1,3,{{ states("input_select.mass_playlist") }}'
+                payload: '1,3,{{ states("input_select.mass_playlist") }}'
             - service: mqtt.publish
               data:
                 topic: nuvo/command/set/source/line
-                payload_template: '1,4,""'
+                payload: '1,4,""'
         - conditions:
           - condition: state
             entity_id: input_boolean.nuvo_mass_in_menu
@@ -455,19 +455,19 @@ automation:
             - service: mqtt.publish
               data:
                 topic: nuvo/command/set/source/line
-                payload_template: "1,1,{{ states('input_select.mass_playlist') }}"
+                payload: "1,1,{{ states('input_select.mass_playlist') }}"
             - service: mqtt.publish
               data:
                 topic: nuvo/command/set/source/line
-                payload_template: '1,2,{{ state_attr("media_player.errol", "media_album_name") }}'
+                payload: '1,2,{{ state_attr("media_player.errol", "media_album_name") }}'
             - service: mqtt.publish
               data:
                 topic: nuvo/command/set/source/line
-                payload_template: '1,3,{{ state_attr("media_player.errol", "media_artist") }}'
+                payload: '1,3,{{ state_attr("media_player.errol", "media_artist") }}'
             - service: mqtt.publish
               data:
                 topic: nuvo/command/set/source/line
-                payload_template: '1,4,{{ state_attr("media_player.errol", "media_title") }}'
+                payload: '1,4,{{ state_attr("media_player.errol", "media_title") }}'
 
   #Auto Zone Playback Control
   - alias: Mass Play When Source Selected
