@@ -15,3 +15,32 @@ switch:
           service: esphome.sound_machine_guest_dfplayer_play_bedtime
         turn_off:
           service: esphome.sound_machine_guest_dfplayer_stop
+
+automation:
+  - alias: Turn On Sound Machine
+    id: 03759759-c2c7-4d9e-80c7-594b998b615a
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.elkm1_house
+        from: disarmed
+        to: armed_night
+      - platform: state
+        entity_id: alarm_control_panel.elkm1_house
+        from: armed_home
+        to: armed_night
+    action:
+      - service: esphome.sound_machine_master_dfplayer_play_bedtime
+
+  - alias: Turn Off Sound Machine
+    id: c7b2bf10-f9f0-4ba9-9f53-21c9297ad4da
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.elkm1_house
+        from: armed_night
+        to: armed_home
+      - platform: state
+        entity_id: alarm_control_panel.elkm1_house
+        from: armed_night
+        to: disarmed
+    action:
+      - service: esphome.esphome.sound_machine_master_dfplayer_stop          
