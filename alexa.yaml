@@ -90,6 +90,7 @@ smart_home:
       - input_boolean.hou_metar_mode
       - input_boolean.tx_metar_mode
       - input_boolean.us_metar_mode
+      - input_boolean.vacation_mode
 
       #LOCK
       - lock.front_door_lock
