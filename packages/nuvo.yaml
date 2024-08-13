@@ -2023,7 +2023,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: nuvo/command/set/system/time
-          payload_template: >-
+          payload: >-
             {% set year = now().year %}
             {% set month = now().month %}
             {% set day = now().day %}

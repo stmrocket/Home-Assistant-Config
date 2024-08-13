@@ -14,4 +14,4 @@ switch:
         turn_on:
           service: esphome.sound_machine_guest_dfplayer_play_bedtime
         turn_off:
-          service: esphome.sound_machine_guest_dfplayer_stop
+          service: esphome.sound_machine_guest_dfplayer_stop   

@@ -1326,7 +1326,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: weather/reports/press_in
-        payload_template: "{{ states('sensor.den_climate_pressure') }}"
+        payload: "{{ states('sensor.den_climate_pressure') }}"
 
   - alias: Repeat Lightning Strike Distance
     id: 5273763b-bd68-4b07-83a5-aecb680dab29
@@ -1345,7 +1345,7 @@ automation:
                   - service: mqtt.publish     
                     data:               
                       topic: weather/reports/lightning_distance
-                      payload_template: "{{ states('sensor.acurite_atlas_lightning_strike_distance') }}"
+                      payload: "{{ states('sensor.acurite_atlas_lightning_strike_distance') }}"
                   - delay:
                       milliseconds: 500
             - service: input_number.set_value
@@ -1356,7 +1356,7 @@ automation:
             - service: mqtt.publish     
               data:               
                 topic: weather/reports/lightning_strike_count
-                payload_template: "{{ states('input_number.total_strike_count') }}"
+                payload: "{{ states('input_number.total_strike_count') }}"
         - conditions:
           - condition: template
             value_template: "{{ (states('sensor.acurite_atlas_lightning_strike_count') | int(none) < states('input_number.last_strike_count') | int(none)) and (states('sensor.acurite_atlas_lightning_strike_count') | int(none) > 0) }}"
@@ -1367,7 +1367,7 @@ automation:
                   - service: mqtt.publish     
                     data:               
                       topic: weather/reports/lightning_distance
-                      payload_template: "{{ states('sensor.acurite_atlas_lightning_strike_distance') | int(0)  }}"
+                      payload: "{{ states('sensor.acurite_atlas_lightning_strike_distance') | int(0)  }}"
                   - delay:
                       milliseconds: 500
             - service: input_number.set_value
@@ -1378,7 +1378,7 @@ automation:
             - service: mqtt.publish     
               data:               
                 topic: weather/reports/lightning_strike_count
-                payload_template: "{{ states('input_number.total_strike_count') | int(0) }}"
+                payload: "{{ states('input_number.total_strike_count') | int(0) }}"
       - service: input_number.set_value
         entity_id: input_number.last_strike_count 
         data_template:
@@ -1401,27 +1401,27 @@ automation:
     - service: mqtt.publish
       data:
         topic: weather/reports/rain_hour
-        payload_template: "{{ states('sensor.rain_hour') }}"
+        payload: "{{ states('sensor.rain_hour') }}"
     - service: mqtt.publish
       data:
         topic: weather/reports/rain_day
-        payload_template: "{{ states('sensor.rain_day') }}"
+        payload: "{{ states('sensor.rain_day') }}"
     - service: mqtt.publish
       data:
         topic: weather/reports/rain_week
-        payload_template: "{{ states('sensor.rain_week') }}"
+        payload: "{{ states('sensor.rain_week') }}"
     - service: mqtt.publish
       data:
         topic: weather/reports/rain_month
-        payload_template: "{{ states('sensor.rain_month') }}"
+        payload: "{{ states('sensor.rain_month') }}"
     - service: mqtt.publish
       data:
         topic: weather/reports/rain_year
-        payload_template: "{{ states('sensor.rain_year') }}"
+        payload: "{{ states('sensor.rain_year') }}"
     - service: mqtt.publish
       data:
         topic: weather/reports/rain_rate
-        payload_template: "{{ states('sensor.rain_rate') }}"
+        payload: "{{ states('sensor.rain_rate') }}"
 
   - alias: Reset AcuRite Atlas Watchdog
     id: b5b29022-a2c0-434e-9d76-152864920e93

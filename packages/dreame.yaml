@@ -183,7 +183,7 @@ script:
     - service: mqtt.publish
       data:
         topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
-        payload_template: '{"segment_ids": {{ states("sensor.manual_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
+        payload: '{"segment_ids": {{ states("sensor.manual_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
   vacuum_run_daily_clean:
     sequence:
       - choose:

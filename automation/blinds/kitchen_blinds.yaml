@@ -105,7 +105,7 @@
   action:
     - service: mqtt.publish
       data:
-        payload_template: "{{ state_attr('cover.east_kitchen_blind', 'current_position') }}"
+        payload: "{{ state_attr('cover.east_kitchen_blind', 'current_position') }}"
         topic: habc/kitchen/tele/currentpct
         retain: "true"
 
