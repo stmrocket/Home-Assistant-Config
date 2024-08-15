@@ -1157,24 +1157,214 @@ cards:
         show_state: false
         entities:
           - entity: camera.front_porch
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.front_porch
           - entity: camera.east_front
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.east_front
           - entity: camera.west_front
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.west_front
           - entity: camera.east_side
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.east_side
           - entity: camera.west_side
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.west_side
           - entity: camera.back_yard
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.back_yard
           - entity: camera.back_porch
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.back_porch
           - entity: camera.garage
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.garage
           - entity: camera.den
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.den
           - entity: camera.kitchen
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.kitchen
           - entity: camera.office
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.office
           - entity: camera.master_bedroom
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.master_bedroom
           - entity: camera.hallway
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.hallway
           - entity: camera.guest_room
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.guest_room
           - entity: camera.shack
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.shack
           - entity: camera.server_room
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.server_room
           - entity: camera.prusa
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.prusa
           - entity: camera.prusa_mk3
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.prusa_mk3
           - entity: camera.prusa_mk4
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Front Porch
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.prusa_mk4
 
   #################################################################
   #                                                               #
