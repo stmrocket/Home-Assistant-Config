@@ -65,7 +65,7 @@ automation:
     id: c7bef6b1-9f32-49d3-b624-7e5c7ac3f98c
     trigger:
       - platform: state
-        entity_id: person.shawn_mccoy
+        entity_id: person.shawn
         to: "work"
     action:
       - service: switch.turn_on
@@ -75,7 +75,7 @@ automation:
     id: 4f491d21-7a6a-41eb-b8f5-3a258a7acd82
     trigger:
       - platform: state
-        entity_id: person.shawn_mccoy
+        entity_id: person.shawn
         from: "work"
         to: "not_home"
         for:

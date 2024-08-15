@@ -1151,7 +1151,7 @@ automation:
       - service: input_boolean.turn_on
         entity_id: input_boolean.is_raining
       - condition: template
-        value_template: "{{ not is_state('person.shawn_mccoy','home') }}"
+        value_template: "{{ not is_state('person.shawn','home') }}"
       - service: notify.mobile_app_shawn_7t
         data:
           message: It is now raining.
@@ -1180,7 +1180,7 @@ automation:
       - service: input_boolean.turn_off
         entity_id: input_boolean.is_raining
       - condition: template
-        value_template: "{{ not is_state('person.shawn_mccoy','home') }}"
+        value_template: "{{ not is_state('person.shawn','home') }}"
       - service: notify.mobile_app_shawn_7t
         data:
           message: It has stopped raining.

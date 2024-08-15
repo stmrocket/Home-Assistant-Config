@@ -133,7 +133,7 @@
       to: "on"
   condition:
     - condition: state
-      entity_id: person.shawn_mccoy
+      entity_id: person.shawn
       state: home
     - condition: state
       entity_id: alarm_control_panel.house
@@ -162,7 +162,7 @@
     - condition: or
       conditions:
         - condition: state
-          entity_id: person.shawn_mccoy
+          entity_id: person.shawn
           state: not_home
         - condition: not
           conditions:
