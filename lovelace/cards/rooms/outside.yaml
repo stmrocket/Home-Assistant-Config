@@ -116,104 +116,108 @@ cards:
         entity: sensor.truck_dummy
         color_type: icon
         color: rgb(255, 255, 255)
-        icon: mdi:car-pickup
-        name: Truck
+        icon: mdi:car-hatchback
+        name: Crosstrek
         tap_action:
           action: fire-dom-event
           browser_mod:
-          service: browser_mod.popup
-          data:
-            title: Truck COntrol
-            content:
-            type: custom:vertical-stack-in-card
-            cards:
-              - type: horizontal-stack
+            service: browser_mod.popup
+            data:
+              title: Crosstrek Control
+              content:
+                type: custom:vertical-stack-in-card
                 cards:
-                  - type: "custom:button-card"
-                    color: rgb(255, 255, 255)
-                    icon: mdi:lock-open
-                    name: Unlock
-                    tap_action:
-                      action: call-service
-                      service: rest_command.unlock_truck
-
-                  - type: "custom:button-card"
-                    color: rgb(255, 255, 255)
-                    icon: mdi:lock
-                    name: Lock
-                    tap_action:
-                      action: call-service
-                      service: rest_command.lock_truck
-
-              - type: horizontal-stack
-                cards:
-                  - type: "custom:button-card"
-                    lock:
-                      enabled: true
-                      unlock: hold
-                      color_type: icon
-                    color: rgb(255, 255, 255)
-                    icon: mdi:engine
-                    name: Start
-                    tap_action:
-                      action: call-service
-                      service: rest_command.start_truck
-
-                  - type: "custom:button-card"
-                    color: rgb(255, 255, 255)
-                    icon: mdi:engine-off
-                    name: Stop
-                    tap_action:
-                      action: call-service
-                      service: rest_command.stop_truck
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:button-card
+                        color: rgb(255, 255, 255)
+                        icon: mdi:lock-open
+                        name: Unlock
+                        tap_action:
+                          service: lock.unlock
+                          service_data:
+                            entity_id: lock.crosstrek_door_locks
+                      - type: custom:button-card
+                        color: rgb(255, 255, 255)
+                        icon: mdi:lock
+                        name: Lock
+                        tap_action:
+                          action: call-service
+                          service: lock.lock
+                          service_data:
+                            entity_id: lock.crosstrek_door_locks
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:button-card
+                        lock:
+                          enabled: true
+                          unlock: hold
+                          color_type: icon
+                        color: rgb(255, 255, 255)
+                        icon: mdi:engine
+                        name: Start
+                        tap_action:
+                          service: button.press
+                          service_data:
+                            entity_id: button.crosstrek_remote_start
+                      - type: custom:button-card
+                        color: rgb(255, 255, 255)
+                        icon: mdi:engine-off
+                        name: Stop
+                        tap_action:
+                          service: button.press
+                          service_data:
+                            entity_id: button.crosstrek_remote_stop
         hold_action:
           action: fire-dom-event
           browser_mod:
-          service: browser_mod.popup
-          data:
-            title: Truck COntrol
-            content:
-            type: custom:vertical-stack-in-card
-            cards:
-              - type: horizontal-stack
+            service: browser_mod.popup
+            data:
+              title: Crosstrek Control
+              content:
+                type: custom:vertical-stack-in-card
                 cards:
-                  - type: "custom:button-card"
-                    color: rgb(255, 255, 255)
-                    icon: mdi:lock-open
-                    name: Unlock
-                    tap_action:
-                      action: call-service
-                      service: rest_command.unlock_truck
-
-                  - type: "custom:button-card"
-                    color: rgb(255, 255, 255)
-                    icon: mdi:lock
-                    name: Lock
-                    tap_action:
-                      action: call-service
-                      service: rest_command.lock_truck
-
-              - type: horizontal-stack
-                cards:
-                  - type: "custom:button-card"
-                    lock:
-                      enabled: true
-                      unlock: hold
-                      color_type: icon
-                    color: rgb(255, 255, 255)
-                    icon: mdi:engine
-                    name: Start
-                    tap_action:
-                      action: call-service
-                      service: rest_command.start_truck
-
-                  - type: "custom:button-card"
-                    color: rgb(255, 255, 255)
-                    icon: mdi:engine-off
-                    name: Stop
-                    tap_action:
-                      action: call-service
-                      service: rest_command.stop_truck
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:button-card
+                        color: rgb(255, 255, 255)
+                        icon: mdi:lock-open
+                        name: Unlock
+                        tap_action:
+                          service: lock.unlock
+                          service_data:
+                            entity_id: lock.crosstrek_door_locks
+                      - type: custom:button-card
+                        color: rgb(255, 255, 255)
+                        icon: mdi:lock
+                        name: Lock
+                        tap_action:
+                          action: call-service
+                          service: lock.lock
+                          service_data:
+                            entity_id: lock.crosstrek_door_locks
+                  - type: horizontal-stack
+                    cards:
+                      - type: custom:button-card
+                        lock:
+                          enabled: true
+                          unlock: hold
+                          color_type: icon
+                        color: rgb(255, 255, 255)
+                        icon: mdi:engine
+                        name: Start
+                        tap_action:
+                          service: button.press
+                          service_data:
+                            entity_id: button.crosstrek_remote_start
+                      - type: custom:button-card
+                        color: rgb(255, 255, 255)
+                        icon: mdi:engine-off
+                        name: Stop
+                        tap_action:
+                          service: button.press
+                          service_data:
+                            entity_id: button.crosstrek_remote_stop
 
   - type: 'custom:mini-media-player'
     entity: media_player.back_porch_stereo

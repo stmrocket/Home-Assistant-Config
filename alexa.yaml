@@ -82,10 +82,6 @@ smart_home:
       - input_boolean.elk_away_on
       - input_boolean.leaving_trigger
       - input_boolean.returning_trigger
-      - input_boolean.start_truck
-      - input_boolean.stop_truck
-      - input_boolean.unlock_truck
-      - input_boolean.lock_truck
       - input_boolean.frigate_enabled
       - input_boolean.hou_metar_mode
       - input_boolean.tx_metar_mode
@@ -106,6 +102,12 @@ smart_home:
       - cover.office_blinds
       - cover.guest_blind
       - cover.server_room_blind
+
+      #SCRIPT
+      - script.alexa_unlock_crosstrek
+      - script.alexa_lock_crosstrek
+      - script.alexa_start_crosstrek
+      - script.alext_stop_crosstrek
 
   entity_config:
     lock.front_door_lock:

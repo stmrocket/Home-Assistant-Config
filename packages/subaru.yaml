@@ -121,6 +121,47 @@ script:
           value: >
             {{ states('sensor.crosstrek_odometer') | float(none) }}
 
+  alexa_unlock_crosstrek:
+    alias: Alexa Unlock Crosstrek
+    sequence:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: armed_home
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: disarmed
+      - service: lock.unlock
+        entity_id: lock.crosstrek_door_locks
+
+  alexa_lock_crosstrek:
+    alias: Alexa Lock Crosstrek
+    sequence:
+      - service: lock.lock
+        entity_id: lock.crosstrek_door_locks
+
+  alexa_start_crosstrek:
+    alias: Alexa Start Crosstrek
+    sequence:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: armed_home
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: disarmed
+      - service: button.press
+        entity_id: button.crosstrek_remote_start
+
+  alexa_stop_crosstrek:
+    alias: Alexa Stop Crosstrek
+    sequence:
+      - service: button.press
+        entity_id: button.crosstrek_remote_stop
+
+
 
 automation:
   - alias: Lock Crosstrek When Going to Bed
@@ -133,3 +174,128 @@ automation:
     action:
       - service: lock.lock
         entity_id: lock.crosstrek_door_locks
+
+  - alias: Send Crosstrek Start Notification When at Work
+    id: a2d6bb57-4abb-4f8f-9aa0-36dcc75476e6
+    trigger:
+      - platform: time
+        at: "15:50:00"
+    condition:
+      - condition: state
+        entity_id: person.shawn
+        state: "work"
+    action:
+      - service: notify.mobile_app_shawn_7t
+        data:
+          title: Heading Home
+          message: "It's about that time.  Would you like to start your car?"
+          data:
+            ttl: 0
+            priority: high
+            actions:
+              - action: "start_suv" # The key you are sending for the event
+                title: "Start" # The button title
+
+  - alias: Start Crosstrek from Notification
+    id: c18588f3-cf17-47d4-8d0d-d2fc18eda755
+    trigger:
+      - platform: event
+        event_type: mobile_app_notification_action
+        event_data:
+          action: start_suv
+    action:
+      - service: button.press
+        entity_id: button.crosstrek_remote_start
+
+  - alias: Alexa Prompt to Start Crosstrek When Cold
+    id: 2b99e6d6-2a07-4e7d-ab74-0edef5164a11
+    trigger:
+      - platform: template
+        value_template: "{{ states('sensor.time') == (((state_attr('input_datetime.work_leave_time' , 'timestamp')) - (10 * 60))|timestamp_custom('%H:%M', false, none)) }}"
+    condition:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.work_alarm_enabled
+            state: "on"
+          - condition: state
+            entity_id: binary_sensor.work_holiday
+            state: "off"
+          - condition: state
+            entity_id: light.kitchen_light
+            state: "on"
+          - condition: time
+            weekday:
+              - mon
+              - tue
+              - wed
+              - thu
+              - fri
+          - condition: numeric_state
+            entity_id: sensor.acurite_ws_temperature
+            below: 45
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: alarm_control_panel.house
+                state: armed_home
+              - condition: state
+                entity_id: alarm_control_panel.house
+                state: disarmed
+    action:
+      - service: script.activate_alexa_actionable_notification
+        data_template:
+          text: "The temperature is {{states('sensor.acurite_ws_temperature') | float(none) | round(1, default) }} degrees.  Would you like to start your car?"
+          event_id: "actionable_notification_start_suv"
+          alexa_device: "media_player.alexa_den"
+      - service: notify.mobile_app_shawn_7t
+        data_template:
+          title: Heading Home
+          message: "The temperature is {{states('sensor.acurite_ws_temperature') | float(none) | round(1, default) }} degrees.  Would you like to start your car?"
+          data:
+            ttl: 0
+            priority: high
+            tag: suv_start_cold
+            actions:
+              - action: "start_suv_cold" # The key you are sending for the event
+                title: "Yes" # The button title
+              - action: "no" # The key you are sending for the event
+                title: "No" # The button title
+
+  - alias: Start Crosstrek via Actionable Notificaiton
+    id: 37903a1e-4b42-4341-b863-99cc6ea77646
+    trigger:
+      - platform: event
+        event_type: alexa_actionable_notification
+        event_data:
+          event_id: actionable_notification_start_suv
+          event_response: ResponseYes
+      - platform: event
+        event_type: mobile_app_notification_action
+        event_data:
+          action: start_suv_cold
+    action:
+      - service: button.press
+        entity_id: button.crosstrek_remote_start
+
+  - alias: Clear Crosstrek Phone Notification if Alexa Responds
+    id: 9419fe51-600c-4163-926e-ab5137a3f6df
+    trigger:
+      - platform: event
+        event_type: alexa_actionable_notification
+        event_data:
+          event_id: actionable_notification_start_suv
+          event_response: ResponseYes
+      - platform: event
+        event_type: alexa_actionable_notification
+        event_data:
+          event_id: actionable_notification_start_suv
+          event_response: ResponseNo
+    action:
+      - service: notify.mobile_app_shawn_7t
+        data:
+          ttl: 0
+          priority: high
+          message: clear_notification
+          data:
+            tag: suv_start_cold
