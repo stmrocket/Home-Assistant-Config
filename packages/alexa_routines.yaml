@@ -49,26 +49,6 @@ input_boolean:
     initial: off
     icon: mdi:alarm-bell
 
-  start_truck:
-    name: Alexa Start Truck
-    initial: off
-    icon: mdi:car-pickup
-
-  stop_truck:
-    name: Alexa Stop Truck
-    initial: off
-    icon: mdi:car-pickup
-
-  unlock_truck:
-    name: Alexa Unlock Truck
-    initial: off
-    icon: mdi:car-pickup
-
-  lock_truck:
-    name: Alexa Lock Truck
-    initial: off
-    icon: mdi:car-pickup
-
   returning_door_unlocked:
     name: Alexa Returning Door Unlocked
     initial: off
