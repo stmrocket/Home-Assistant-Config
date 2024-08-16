@@ -184,6 +184,7 @@ script:
       data:
         topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
         payload: '{"segment_ids": {{ states("sensor.manual_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
+
   vacuum_run_daily_clean:
     sequence:
       - choose:
@@ -211,6 +212,13 @@ script:
                 entity_id: input_boolean.vacuum_weekday_select
       - service: input_boolean.turn_on
         entity_id: input_boolean.vacuum_cycle_initiated
+
+  vacuum_clean_room:
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
+          payload: '{"segment_ids": [{{ states("sensor.valetudo_"~room~"_id")}}], "iterations": 1, "customOrder": true}'
 
 automation:
   - alias: Start Vacuum from Schedule
