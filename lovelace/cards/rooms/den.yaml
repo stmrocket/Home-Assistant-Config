@@ -21,11 +21,9 @@ cards:
         tap_action: none
         hold_action:
           action: call-service
-          service: mqtt.publish
+          service: script.vacuum_clean_room
           service_data:
-            topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
-            payload: '{"segment_ids": ["11"], "iterations": 1, "customOrder": true}'
-
+            room: den
         type: state-label
 
   - type: horizontal-stack
