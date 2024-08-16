@@ -170,7 +170,7 @@ automation:
     trigger:
       - platform: numeric_state
         entity_id: sensor.washer_energy_power
-        below: 20
+        below: 5
         for:
           minutes: 2
     action:
