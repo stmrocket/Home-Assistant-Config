@@ -124,6 +124,31 @@ automation:
                     {%- else -%}
                       {{ state_attr('sensor.nfl_hou', 'kickoff_in') }}
                     {%- endif -%}
+          - conditions:
+            - condition: state
+              entity_id: sensor.mlb_ari
+              state: 'IN'
+            sequence:
+              - service: mqtt.publish        
+                data:
+                  topic: denflaps/control
+                  payload: >-
+                    {%- if is_state('sensor.mlb_ari','IN') -%}
+                      {%- if is_state_attr('sensor.mlb_ari','team_homeaway','home') -%}
+                        {{ state_attr('sensor.mlb_ari', 'opponent_abbr') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'opponent_score') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'team_abbr') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'team_score') }}
+                      {%- else -%}
+                        {{ state_attr('sensor.mlb_ari', 'team_abbr') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'team_score') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'opponent_abbr') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'opponent_score') }}
+                      {%- endif -%}
+                      {%- if is_state_attr('sensor.mlb_ari','last_play','END GAME') -%}
+                          {{ ' END' }}
+                      {%- elif state_attr('sensor.mlb_ari','last_play')[:1] == 'M' or state_attr('sensor.mlb_ari','last_play')[:1] == 'E' -%}
+                          {{ state_attr('sensor.mlb_ari', 'clock') }}
+                      {%- else -%}
+                          {{ ' ' }}{{ state_attr('sensor.mlb_ari', 'clock')[:1] }}{{ state_attr('sensor.mlb_ari', 'clock')[-3:-2] }}{{' O'}}{{ state_attr('sensor.mlb_ari', 'outs') }}{{' B'}}{{ state_attr('sensor.mlb_ari', 'balls') }}{{' S'}}{{ state_attr('sensor.mlb_ari', 'strikes') }}
+                      {%- endif -%} 
+                    {%- else -%}
+                      {{ state_attr('sensor.mlb_ari', 'kickoff_in') }}
+                    {%- endif -%}
         default:
           - service: mqtt.publish        
             data:
