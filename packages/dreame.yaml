@@ -36,6 +36,9 @@ input_boolean:
   vacuum_manual_entry:
     name: Entry
     icon: mdi:door-open
+  vacuum_manual_laundry:
+    name: Laundry
+    icon: mdi:washing-machine
   vacuum_manual_hall:
     name: Hall
     icon: mdi:foot-print
@@ -66,9 +69,15 @@ input_boolean:
   vacuum_manual_master_bathroom:
     name: Master Bathroom
     icon: mdi:toilet
+  vacuum_manual_master_closet:
+    name: Master Closet
+    icon: mdi:hanger
   vacuum_weekday_1_entry:
     name: Entry
     icon: mdi:door-open
+  vacuum_weekday_1_laundry:
+    name: Laundry
+    icon: mdi:washing-machine
   vacuum_weekday_1_hall:
     name: Hall
     icon: mdi:foot-print
@@ -99,9 +108,15 @@ input_boolean:
   vacuum_weekday_1_master_bathroom:
     name: Master Bathroom
     icon: mdi:toilet
+  vacuum_weekday_1_master_closet:
+    name: Master Closet
+    icon: mdi:hanger
   vacuum_weekday_2_entry:
     name: Entry
     icon: mdi:door-open
+  vacuum_weekday_2_laundry:
+    name: Laundry
+    icon: mdi:washing-machine
   vacuum_weekday_2_hall:
     name: Hall_1_
     icon: mdi:foot-print
@@ -132,12 +147,16 @@ input_boolean:
   vacuum_weekday_2_master_bathroom:
     name: Master Bathroom
     icon: mdi:toilet
+  vacuum_weekday_2_master_closet:
+    name: Master Closet
+    icon: mdi:hanger
 
 group:
   vacuum_manual_rooms:
     name: Vacuum Rooms
     entities:
       - input_boolean.vacuum_manual_entry
+      - input_boolean.vacuum_manual_laundry
       - input_boolean.vacuum_manual_hall
       - input_boolean.vacuum_manual_office
       - input_boolean.vacuum_manual_guest_bedroom
@@ -146,12 +165,14 @@ group:
       - input_boolean.vacuum_manual_den
       - input_boolean.vacuum_manual_master_bedroom
       - input_boolean.vacuum_manual_master_bathroom
+      - input_boolean.vacuum_manual_master_closet
       - input_boolean.vacuum_manual_kitchen
       - input_boolean.vacuum_manual_shack
   vacuum_weekday_1_rooms:
     name: Weekday 1 Vacuum Rooms
     entities:
       - input_boolean.vacuum_weekday_1_entry
+      - input_boolean.vacuum_weekday_1_laundry
       - input_boolean.vacuum_weekday_1_hall
       - input_boolean.vacuum_weekday_1_office
       - input_boolean.vacuum_weekday_1_guest_bedroom
@@ -160,12 +181,14 @@ group:
       - input_boolean.vacuum_weekday_1_den
       - input_boolean.vacuum_weekday_1_master_bedroom
       - input_boolean.vacuum_weekday_1_master_bathroom
+      - input_boolean.vacuum_weekday_1_master_closet
       - input_boolean.vacuum_weekday_1_kitchen
       - input_boolean.vacuum_weekday_1_shack
   vacuum_weekday_2_rooms:
     name: Weekday 2 Vacuum Rooms
     entities:
       - input_boolean.vacuum_weekday_2_entry
+      - input_boolean.vacuum_weekday_2_laundry
       - input_boolean.vacuum_weekday_2_hall
       - input_boolean.vacuum_weekday_2_office
       - input_boolean.vacuum_weekday_2_guest_bedroom
@@ -174,6 +197,7 @@ group:
       - input_boolean.vacuum_weekday_2_den
       - input_boolean.vacuum_weekday_2_master_bedroom
       - input_boolean.vacuum_weekday_2_master_bathroom
+      - input_boolean.vacuum_weekday_2_master_closet
       - input_boolean.vacuum_weekday_2_kitchen
       - input_boolean.vacuum_weekday_2_shack
     

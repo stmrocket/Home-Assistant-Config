@@ -33,7 +33,11 @@ cards:
           left: 5%
           transform: initial
         tap_action: none
-        hold_action: none
+        hold_action: 
+          action: call-service
+          service: script.vacuum_clean_room
+          service_data:
+            room: laundry
         type: state-label
   - type: horizontal-stack
     cards:
