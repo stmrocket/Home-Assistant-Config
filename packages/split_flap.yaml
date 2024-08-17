@@ -139,10 +139,8 @@ automation:
                       {%- else -%}
                         {{ state_attr('sensor.mlb_ari', 'team_abbr') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'team_score') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'opponent_abbr') }}{{ ' ' }}{{ state_attr('sensor.mlb_ari', 'opponent_score') }}
                       {%- endif -%}
-                      {%- if is_state_attr('sensor.mlb_ari','last_play','END GAME') -%}
-                          {{ ' END' }}
-                      {%- elif state_attr('sensor.mlb_ari','last_play')[:1] == 'M' or state_attr('sensor.mlb_ari','last_play')[:1] == 'E' -%}
-                          {{ state_attr('sensor.mlb_ari', 'clock') }}
+                      {%- if state_attr('sensor.mlb_ari','last_play')[:1] == 'M' or state_attr('sensor.mlb_ari','last_play')[:1] == 'E' -%}
+                          {{ ' ' }}{{ state_attr('sensor.mlb_ari', 'clock') }}
                       {%- else -%}
                           {{ ' ' }}{{ state_attr('sensor.mlb_ari', 'clock')[:1] }}{{ state_attr('sensor.mlb_ari', 'clock')[-3:-2] }}{{' O'}}{{ state_attr('sensor.mlb_ari', 'outs') }}{{' B'}}{{ state_attr('sensor.mlb_ari', 'balls') }}{{' S'}}{{ state_attr('sensor.mlb_ari', 'strikes') }}
                       {%- endif -%} 
