@@ -40,10 +40,19 @@ automation:
                       {%- endif -%}  
                       {{ state_attr('sensor.nfl_hou', 'opponent_abbr') }}
                       {%- if not is_state_attr('sensor.nfl_hou','possession','34') and not is_state_attr('sensor.nfl_hou','possession','Unknown') -%}
-                        {{ '.' }}{{ state_attr('sensor.nfl_hou', 'opponent_score') }}{{ ' ' }}{{ state_attr('sensor.nfl_hou', 'clock')[:-6] }}{{' '}}{{ state_attr('sensor.nfl_hou', 'clock')[-3:] }}
+                        {{ '.' }}{{ state_attr('sensor.nfl_hou', 'opponent_score') }}
                       {%- else -%}
-                        {{ ' ' }}{{ state_attr('sensor.nfl_hou', 'opponent_score') }}{{ ' ' }}{{ state_attr('sensor.nfl_hou', 'clock')[:-6] }}{{' '}}{{ state_attr('sensor.nfl_hou', 'clock')[-3:] }}
+                        {{ ' ' }}{{ state_attr('sensor.nfl_hou', 'opponent_score') }}
                       {%- endif -%}
+                      {%- if not state_attr('sensor.nfl_hou', 'last_play')[:7] == 'Timeout' -%}
+                        {%- if not is_state_attr('sensor.nfl_hou','clock','Halftime') -%}
+                          {{ ' ' }}{{ state_attr('sensor.nfl_hou', 'clock')[:-6] }}{{' '}}{{ state_attr('sensor.nfl_hou', 'clock')[-3:] }}
+                        {%- else -%}
+                          {{ ' HALFTIME' }}
+                        {%- endif -%}
+                      {%- else -%}
+                        {{ ' TIMEOUT' }}
+                      {%- endif -%}  
                     {%- else -%}
                       {{ state_attr('sensor.nfl_hou', 'kickoff_in') }}
                     {%- endif -%}
