@@ -21,22 +21,49 @@ automation:
             entity_id: alarm_control_panel.house
             state: disarmed
     action:
-      - service: mqtt.publish        
-        data:
-          topic: denflaps/control
-          payload: >-
-            {% if now().weekday() in (0,) %} 
-              MON {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
-            {% elif now().weekday() in (1,) %} 
-              TUE {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
-            {% elif now().weekday() in (2,) %} 
-              WED {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
-            {% elif now().weekday() in (3,) %} 
-              THU {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
-            {% elif now().weekday() in (4,) %} 
-              FRI {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
-            {% elif now().weekday() in (5,) %} 
-              SAT {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
-            {% elif now().weekday() in (6,) %} 
-              SUN {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
-            {% endif %}
+      - choose:
+          - conditions:
+            - condition: state
+              entity_id: sensor.nfl_hou
+              state: 'IN'
+            sequence:
+              - service: mqtt.publish        
+                data:
+                  topic: denflaps/control
+                  payload: >-
+                    {%- if is_state('sensor.nfl_hou','IN') -%}
+                      {{ state_attr('sensor.nfl_hou', 'team_abbr') }}
+                      {%- if is_state_attr('sensor.nfl_hou','possession','34') -%}
+                        {{ '.' }}{{ state_attr('sensor.nfl_hou', 'team_score') }}{{ ' ' }}
+                      {%- else -%}
+                        {{ ' ' }}{{ state_attr('sensor.nfl_hou', 'team_score') }}{{ ' ' }}
+                      {%- endif -%}  
+                      {{ state_attr('sensor.nfl_hou', 'opponent_abbr') }}
+                      {%- if not is_state_attr('sensor.nfl_hou','possession','34') and not is_state_attr('sensor.nfl_hou','possession','Unknown') -%}
+                        {{ '.' }}{{ state_attr('sensor.nfl_hou', 'opponent_score') }}{{ ' ' }}{{ state_attr('sensor.nfl_hou', 'clock')[:-6] }}{{' '}}{{ state_attr('sensor.nfl_hou', 'clock')[-3:] }}
+                      {%- else -%}
+                        {{ ' ' }}{{ state_attr('sensor.nfl_hou', 'opponent_score') }}{{ ' ' }}{{ state_attr('sensor.nfl_hou', 'clock')[:-6] }}{{' '}}{{ state_attr('sensor.nfl_hou', 'clock')[-3:] }}
+                      {%- endif -%}
+                    {%- else -%}
+                      {{ state_attr('sensor.nfl_hou', 'kickoff_in') }}
+                    {%- endif -%}
+        default:
+          - service: mqtt.publish        
+            data:
+              topic: denflaps/control
+              payload: >-
+                {% if now().weekday() in (0,) %} 
+                  MON {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                {% elif now().weekday() in (1,) %} 
+                  TUE {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                {% elif now().weekday() in (2,) %} 
+                  WED {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                {% elif now().weekday() in (3,) %} 
+                  THU {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                {% elif now().weekday() in (4,) %} 
+                  FRI {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                {% elif now().weekday() in (5,) %} 
+                  SAT {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                {% elif now().weekday() in (6,) %} 
+                  SUN {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                {% endif %}
