@@ -139,8 +139,10 @@ automation:
                       {%- else -%}
                         {{ state_attr('sensor.mlb_hou', 'team_abbr') }}{{ ' ' }}{{ state_attr('sensor.mlb_hou', 'team_score') }}{{ ' ' }}{{ state_attr('sensor.mlb_hou', 'opponent_abbr') }}{{ ' ' }}{{ state_attr('sensor.mlb_hou', 'opponent_score') }}
                       {%- endif -%}
-                      {%- if state_attr('sensor.mlb_hou','last_play')[:1] == 'M' or state_attr('sensor.mlb_hou','last_play')[:1] == 'E' or state_attr('sensor.mlb_hou','last_play')[:1] == 'F' -%}
-                          {{ ' ' }}{{ state_attr('sensor.mlb_hou', 'clock') }}
+                      {%- if is_state_attr('sensor.mlb_hou','last_play','END GAME') -%}
+                          {{ ' END' }}
+                      {%- elif state_attr('sensor.mlb_hou','clock')[:1] == 'M' or state_attr('sensor.mlb_hou','clock')[:1] == 'E' -%}
+                          {{ state_attr('sensor.mlb_hou', 'clock') }}
                       {%- else -%}
                           {{ ' ' }}{{ state_attr('sensor.mlb_hou', 'clock')[:1] }}{{ state_attr('sensor.mlb_hou', 'clock')[-3:-2] }}{{' O'}}{{ state_attr('sensor.mlb_hou', 'outs') }}{{' B'}}{{ state_attr('sensor.mlb_hou', 'balls') }}{{' S'}}{{ state_attr('sensor.mlb_hou', 'strikes') }}
                       {%- endif -%} 
