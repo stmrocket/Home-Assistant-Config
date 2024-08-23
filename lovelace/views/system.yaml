@@ -436,7 +436,101 @@ cards:
                   font-size: 150%
                   left: 5%
                   transform: initial
-                tap_action: none
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: GitHub Updater
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: horizontal-stack
+                            cards:
+                              - type: "custom:button-card"
+                                entity: binary_sensor.git_update_ready
+                                color_type: icon
+                                state:
+                                  - value: "on"
+                                    color: rgb(228, 94, 101)
+                                  - value: "off"
+                                    color: rgb(255, 255, 255)
+                                icon: mdi:github
+                                name: Pull
+                                tap_action:
+                                  action: call-service
+                                  service: script.update_config
+
+                              - type: "custom:button-card"
+                                entity: binary_sensor.git_update_ready
+                                color_type: icon
+                                state:
+                                  - value: "on"
+                                    color: rgb(228, 94, 101)
+                                  - value: "off"
+                                    color: rgb(255, 255, 255)
+                                icon: mdi:github
+                                name: Restart
+                                tap_action:
+                                  action: call-service
+                                  service: script.update_config_restart
+
+                              - type: "custom:button-card"
+                                entity: binary_sensor.git_update_ready
+                                color_type: icon
+                                state:
+                                  - value: "on"
+                                    color: rgb(228, 94, 101)
+                                  - value: "off"
+                                    color: rgb(255, 255, 255)
+                                icon: mdi:equal
+                                name: Clear
+                                tap_action:
+                                  action: call-service
+                                  service: script.clear_config_update_flag
+
+                          - type: horizontal-stack
+                            cards:
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:robot
+                                name: Automations
+                                tap_action:
+                                  action: call-service
+                                  service: automation.reload
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:script-text
+                                name: Scripts
+                                tap_action:
+                                  action: call-service
+                                  service: script.reload
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:tools
+                                name: Reload
+                                tap_action:
+                                  action: call-service
+                                  service: homeassistant.reload_all
+                          - type: horizontal-stack
+                            cards:
+                              - type: "custom:gap-card"
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:web
+                                name: Tablets
+                                tap_action:
+                                  action: call-service
+                                  service: script.tablets_reload
+
+                              - type: "custom:gap-card"
                 hold_action: none
                 double_tap_action:
                   action: call-service
@@ -1354,368 +1448,7 @@ cards:
   #                                                               #
   #################################################################
   - type: vertical-stack
-    cards:
-      - type: custom:stack-in-card
-        cards:
-          - type: picture-elements
-            image: /local/lovelace/room.png
-            elements:
-              - entity: sensor.blank
-                hold-action: none
-                prefix: Updates
-                style:
-                  bottom: 20%
-                  font-size: 150%
-                  left: 5%
-                  transform: initial
-                tap_action: none
-                hold_action: none
-                type: state-label
-          - type: horizontal-stack
-            cards:
-              - type: "custom:button-card"
-                entity: binary_sensor.git_update_ready
-                color_type: icon
-                icon: mdi:github
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: GitHub
-                tap_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: GitHub Updater
-                      content:
-                        type: custom:vertical-stack-in-card
-                        cards:
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:button-card"
-                                entity: binary_sensor.git_update_ready
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                icon: mdi:github
-                                name: Pull
-                                tap_action:
-                                  action: call-service
-                                  service: script.update_config
-
-                              - type: "custom:button-card"
-                                entity: binary_sensor.git_update_ready
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                icon: mdi:github
-                                name: Restart
-                                tap_action:
-                                  action: call-service
-                                  service: script.update_config_restart
-
-                              - type: "custom:button-card"
-                                entity: binary_sensor.git_update_ready
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                icon: mdi:equal
-                                name: Clear
-                                tap_action:
-                                  action: call-service
-                                  service: script.clear_config_update_flag
-
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:robot
-                                name: Automations
-                                tap_action:
-                                  action: call-service
-                                  service: automation.reload
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:script-text
-                                name: Scripts
-                                tap_action:
-                                  action: call-service
-                                  service: script.reload
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:tools
-                                name: Reload
-                                tap_action:
-                                  action: call-service
-                                  service: homeassistant.reload_all
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:gap-card"
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:web
-                                name: Tablets
-                                tap_action:
-                                  action: call-service
-                                  service: script.tablets_reload
-
-                              - type: "custom:gap-card"
-                hold_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: GitHub Updater
-                      content:
-                        type: custom:vertical-stack-in-card
-                        cards:
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:button-card"
-                                entity: binary_sensor.git_update_ready
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                icon: mdi:github
-                                name: Pull
-                                tap_action:
-                                  action: call-service
-                                  service: script.update_config
-
-                              - type: "custom:button-card"
-                                entity: binary_sensor.git_update_ready
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                icon: mdi:github
-                                name: Restart
-                                tap_action:
-                                  action: call-service
-                                  service: script.update_config_restart
-
-                              - type: "custom:button-card"
-                                entity: binary_sensor.git_update_ready
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                icon: mdi:equal
-                                name: Clear
-                                tap_action:
-                                  action: call-service
-                                  service: script.clear_config_update_flag
-
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:robot
-                                name: Automations
-                                tap_action:
-                                  action: call-service
-                                  service: automation.reload
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:script-text
-                                name: Scripts
-                                tap_action:
-                                  action: call-service
-                                  service: script.reload
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:tools
-                                name: Reload
-                                tap_action:
-                                  action: call-service
-                                  service: homeassistant.reload_all
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:gap-card"
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:web
-                                name: Tablets
-                                tap_action:
-                                  action: call-service
-                                  service: script.tablets_reload
-
-                              - type: "custom:gap-card"
-              - type: "custom:button-card"
-                entity: sensor.hacs
-                color_type: icon
-                icon: mdi:package
-                state:
-                  - value: 0
-                    operator: ">"
-                    color: rgb(228, 94, 101)
-                  - value: 0
-                    color: rgb(255, 255, 255)
-                name: HACS
-                tap_action: 
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: HACS
-                      content:
-                        type: "custom:list-card"
-                        entity: sensor.hacs
-                        feed_attribute: repositories
-                        columns:
-                          - { field: display_name, title: "Name" }
-                          - { field: installed_version, title: "Installed" }
-                          - { field: available_version, title: "Latest" }
-                hold_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: HACS
-                      content:
-                        type: "custom:list-card"
-                        entity: sensor.hacs
-                        feed_attribute: repositories
-                        columns:
-                          - { field: display_name, title: "Name" }
-                          - { field: installed_version, title: "Installed" }
-                          - { field: available_version, title: "Latest" }
-
-              - type: "custom:button-card"
-                entity: binary_sensor.updater_addons
-                color_type: icon
-                icon: mdi:docker
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: Add-Ons
-                tap_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Add-Ons
-                      content:
-                        type: "custom:list-card"
-                        entity: sensor.supervisor_updates
-                        feed_attribute: addons
-                        columns:
-                          - { field: name, title: "Name" }
-                          - { field: version, title: "Installed" }
-                          - { field: version_latest, title: "Latest" }
-                hold_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Add-Ons
-                      content:
-                        type: "custom:list-card"
-                        entity: sensor.supervisor_updates
-                        feed_attribute: addons
-                        columns:
-                          - { field: name, title: "Name" }
-                          - { field: version, title: "Installed" }
-                          - { field: version_latest, title: "Latest" }
-
-              - type: "custom:button-card"
-                entity: update.home_assistant_core_update
-                color_type: icon
-                icon: mdi:home-assistant
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: Core
-                tap_action:
-                  action: more-info
-                hold_action:
-                  action: more-info
-
-              - type: "custom:button-card"
-                entity: binary_sensor.updater_supervisor
-                color_type: icon
-                icon: mdi:server
-                state:
-                  - value: "on"
-                    color: rgb(228, 94, 101)
-                  - value: "off"
-                    color: rgb(255, 255, 255)
-                name: Supervisor
-                tap_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Supervisor
-                      content:
-                        type: entities
-                        show_header_toggle: false
-                        entities:
-                          - entity: sensor.supervisor_updates
-                            type: custom:multiple-entity-row
-                            name: Version
-                            show_state: false
-                            entities:
-                              - attribute: current_version
-                                name: Installed
-                              - attribute: newest_version
-                                name: Available
-                hold_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Supervisor
-                      content:
-                        type: entities
-                        show_header_toggle: false
-                        entities:
-                          - entity: sensor.supervisor_updates
-                            type: custom:multiple-entity-row
-                            name: Version
-                            show_state: false
-                            entities:
-                              - attribute: current_version
-                                name: Installed
-                              - attribute: newest_version
-                                name: Available
-
+    cards:      
       - type: custom:stack-in-card
         cards:
           - type: picture-elements
