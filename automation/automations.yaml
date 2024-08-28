@@ -108,24 +108,6 @@
         payload: ""
         topic: christmas/indoor/decorations/cmnd/state
 
-- alias: Refresh Entity Counters
-  id: 18785331-0fb7-444a-bdda-b9c7c54eff61
-  trigger:
-    - platform: time_pattern
-      minutes: "/15"
-  action:
-    - service: homeassistant.update_entity
-      entity_id:
-        - sensor.automation_count
-        - sensor.binary_sensor_count
-        - sensor.switch_count
-        - sensor.fan_count
-        - sensor.lights_count
-        - sensor.tracker_count
-        - sensor.media_player_count
-        - sensor.script_count
-        - sensor.sensor_count
-
 - alias: "Set Theme to Midnight"
   id: 891cd399-8598-4588-a680-0c3543d92fec
   trigger:
