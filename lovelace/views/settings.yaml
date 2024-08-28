@@ -218,13 +218,6 @@ cards:
                 hold_action:
                   action: more-info
 
-  #################################################################
-  #                                                               #
-  #                      Home - GitHub                            #
-  #                                                               #
-  #################################################################
-  - type: vertical-stack
-    cards:
       - type: custom:stack-in-card
         cards:
           - type: picture-elements
