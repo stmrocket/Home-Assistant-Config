@@ -200,7 +200,7 @@ automation:
             images:
               - /config/www/cctv/back_yard.jpg
             html: >
-              A person was detected on the back yaed camera at {{now().strftime('%H:%M:%S') }}.
+              A person was detected on the back yard camera at {{now().strftime('%H:%M:%S') }}.
               <br>
               <img src="cid:back_yard.jpg" style="width:98%; height:auto; border:none;" />
 
