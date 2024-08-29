@@ -6,7 +6,7 @@ input_boolean:
     name: Manual Alarm Clock Enabled
     icon: mdi:timer-outline
   alarm_clock_active:
-    name: Work Alarm Clock Ringing
+    name: Alarm Clock Active
     icon: mdi:timer-outline
   alarm_clock_ringing:
     name: Alarm Clock Ringing
@@ -122,7 +122,7 @@ automation:
                 state: "off"
               - condition: state
                 entity_id: binary_sensor.weekend_today
-                state: off
+                state: "off"
               - condition: state
                 entity_id: input_boolean.work_alarm_enabled
                 state: "on"
@@ -159,7 +159,7 @@ automation:
       - service: input_boolean.turn_on
         entity_id: input_boolean.work_alarm_enabled
 
-  - alias: Master Wake Work First Snooze
+  - alias: Master Wake First Snooze
     id: bb609e7d-eed3-4df2-b319-15366d20b86e
     trigger:
       - platform: state
@@ -225,7 +225,7 @@ automation:
       - service: timer.start
         entity_id: timer.master_snooze
 
-  - alias: Master Wake Work Second Snooze
+  - alias: Master Wake Second Snooze
     id: 7b143191-0e4d-4b5a-9613-c6e574285d38
     trigger:
       - platform: state
@@ -239,7 +239,7 @@ automation:
       - service: switch.turn_on
         entity_id: switch.master_bedroom_lamps
 
-  - alias: Master Wake Work Snooze Start
+  - alias: Master Wake Snooze Start
     id: ee0cda71-bbd3-4bef-abc1-ec2926161526
     trigger:
       - platform: state
@@ -265,7 +265,7 @@ automation:
       - service: input_boolean.turn_off
         entity_id: input_boolean.alarm_clock_ringing
 
-  - alias: Master Wake Work Snooze Stop
+  - alias: Master Wake Snooze Stop
     id: ee3dd64e-4ec6-4b79-981e-d9aaf22b214d
     trigger:
       - platform: event
@@ -289,7 +289,7 @@ automation:
       - service: counter.increment
         entity_id: counter.master_snooze
 
-  - alias: Master Wake Work Off
+  - alias: Master Wake Off
     id: 1f49e9be-0277-4b38-aafd-5ce5028dde2e
     trigger:
       - platform: state
