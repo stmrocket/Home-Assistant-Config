@@ -330,10 +330,10 @@ automation:
         entity_id:
           - switch.master_clock_manual
           - switch.master_clock_work      
-      - service: binary_sensor.turn_off
+      - service: input_boolean.turn_off
         entity_id: 
-          - binary_sensor.work_alarm_status
-          - binary_sensor.manual_alarm_status
+          - input_boolean.work_alarm_status
+          - input_boolean.manual_alarm_status
 
   - alias: Master Wake Work On from Keypad
     id: 05f2aa29-4a90-4c1c-972b-89b52161f609
@@ -468,13 +468,13 @@ automation:
             sequence:
               - service: switch.turn_on
                 entity_id: switch.master_clock_work
-              - service: binary_sensor.turn_on
-                entity_id: binary_sensor.work_alarm_status
+              - service: input_boolean.turn_on
+                entity_id: input_boolean.work_alarm_status
         default:
           - service: switch.turn_off
             entity_id: switch.master_clock_work
-          - service: binary_sensor.turn_off
-            entity_id: binary_sensor.work_alarm_status
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.work_alarm_status
       - choose:
           - conditions:
               - condition: or
@@ -506,12 +506,12 @@ automation:
             sequence:
               - service: switch.turn_on
                 entity_id: switch.master_clock_manual
-              - service: binary_sensor.turn_on
-                entity_id: binary_sensor.manual_alarm_status
+              - service: input_boolean.turn_on
+                entity_id: input_boolean.manual_alarm_status
         default:
           - service: switch.turn_off
             entity_id: switch.master_clock_manual
-          - service: binary_sensor.turn_off
-            entity_id: binary_sensor.manual_alarm_status
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.manual_alarm_status
 
 
