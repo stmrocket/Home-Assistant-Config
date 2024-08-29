@@ -116,37 +116,36 @@ automation:
         from: "off"
         to: "on"
         id: calendar
-    condition:
-      - condition: or
-        conditions:
-          - condition: and
-            conditions:
-              - condition: trigger
-                id: work
-              - condition: state
-                entity_id: binary_sensor.work_holiday_today
-                state: "off"
-              - condition: state
-                entity_id: binary_sensor.weekend_today
-                state: "off"
-              - condition: state
-                entity_id: input_boolean.work_alarm_enabled
-                state: "on"
-          - condition: and
-            conditions:
-              - condition: trigger
-                id: manual
-              - condition: state
-                entity_id: input_boolean.manual_alarm_enabled
-                state: "on"
-          - condition: trigger
-            id: calendar
     action:
       - choose:
           - conditions:
               - condition: state
                 entity_id: alarm_control_panel.house
                 state: armed_night
+              - condition: or
+                conditions:
+                  - condition: and
+                    conditions:
+                      - condition: trigger
+                        id: work
+                      - condition: state
+                        entity_id: binary_sensor.work_holiday_today
+                        state: "off"
+                      - condition: state
+                        entity_id: binary_sensor.weekend_today
+                        state: "off"
+                      - condition: state
+                        entity_id: input_boolean.work_alarm_enabled
+                        state: "on"
+                  - condition: and
+                    conditions:
+                      - condition: trigger
+                        id: manual
+                      - condition: state
+                        entity_id: input_boolean.manual_alarm_enabled
+                        state: "on"
+                  - condition: trigger
+                    id: calendar
             sequence:
               - service: mqtt.publish
                 data:
