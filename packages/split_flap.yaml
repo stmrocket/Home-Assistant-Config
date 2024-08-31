@@ -75,6 +75,57 @@ automation:
                     {%- endif -%}
           - conditions:
             - condition: state
+              entity_id: sensor.ncaaf_tu
+              state: 'IN'
+            sequence:
+              - service: mqtt.publish        
+                data:
+                  topic: denflaps/control
+                  payload: >-
+                    {%- if is_state('sensor.ncaaf_tu','IN') -%}
+                      {%- if is_state_attr('sensor.ncaaf_tu','team_homeaway','home') -%}
+                        {{ state_attr('sensor.ncaaf_tu', 'opponent_abbr') }}
+                        {%- if state_attr('sensor.ncaaf_tu','possession') == state_attr('sensor.ncaaf_tu','opponent_id') -%}
+                          {{ '.' }}
+                        {%- else -%}
+                          {{ ' ' }}
+                        {%- endif -%}
+                        {{ state_attr('sensor.ncaaf_tu', 'opponent_score') }}{{ ' ' }}{{ state_attr('sensor.ncaaf_tu', 'team_abbr') }}
+                        {%- if state_attr('sensor.ncaaf_tu','possession') == state_attr('sensor.ncaaf_tu','team_id') -%}
+                          {{ '.' }}
+                        {%- else -%}
+                          {{ ' ' }}
+                        {%- endif -%} 
+                        {{ state_attr('sensor.ncaaf_tu', 'team_score') }}
+                      {%- else -%}
+                        {{ state_attr('sensor.ncaaf_tu', 'team_abbr') }}
+                        {%- if state_attr('sensor.ncaaf_tu','possession') == state_attr('sensor.ncaaf_tu','team_id') -%}
+                          {{ '.' }}
+                        {%- else -%}
+                          {{ ' ' }}
+                        {%- endif -%}  
+                        {{ state_attr('sensor.ncaaf_tu', 'team_score') }}{{ ' ' }}{{ state_attr('sensor.ncaaf_tu', 'opponent_abbr') }}
+                        {%- if state_attr('sensor.ncaaf_tu','possession') == state_attr('sensor.ncaaf_tu','opponent_id') -%}
+                          {{ '.' }}
+                        {%- else -%}
+                          {{ ' ' }}
+                        {%- endif -%}
+                        {{ state_attr('sensor.ncaaf_tu', 'opponent_score') }}
+                      {%- endif -%}  
+                      {%- if state_attr('sensor.ncaaf_tu', 'last_play')[:9] == 'Timeout #' -%}
+                        {{ ' TIMEOUT' }}
+                      {%- elif is_state_attr('sensor.ncaaf_tu','clock','Halftime') -%}
+                          {{ ' HALFTIME' }}
+                      {%- elif is_state_attr('sensor.ncaaf_tu','last_play','END GAME') -%}
+                          {{ ' END' }}
+                      {%- else -%}
+                          {{ ' ' }}{{ state_attr('sensor.ncaaf_tu', 'clock')[:-6] }}{{' '}}{{ state_attr('sensor.ncaaf_tu', 'clock')[-3:] }}    
+                      {%- endif -%} 
+                    {%- else -%}
+                      {{ state_attr('sensor.ncaaf_tu', 'kickoff_in') }}
+                    {%- endif -%}
+          - conditions:
+            - condition: state
               entity_id: sensor.nfl_hou
               state: 'IN'
             sequence:
