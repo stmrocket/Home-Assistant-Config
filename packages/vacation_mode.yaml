@@ -269,6 +269,7 @@ script:
           - switch.den_lamps
           - switch.shack_lamp
           - switch.guest_room_lamp
+          - switch.master_bedroom_lamps
       - service: light.turn_off
         entity_id:
           - light.entry_lamp
