@@ -65,6 +65,8 @@ automation:
                         {{ ' TIMEOUT' }}
                       {%- elif is_state_attr('sensor.ncaaf_tamu','clock','Halftime') -%}
                           {{ ' HALFTIME' }}
+                      {%- elif is_state_attr('sensor.ncaaf_tamu','clock','Delayed') -%}
+                          {{ ' DELAYED' }}
                       {%- elif is_state_attr('sensor.ncaaf_tamu','last_play','END GAME') -%}
                           {{ ' END' }}
                       {%- else -%}
@@ -116,6 +118,8 @@ automation:
                         {{ ' TIMEOUT' }}
                       {%- elif is_state_attr('sensor.ncaaf_tu','clock','Halftime') -%}
                           {{ ' HALFTIME' }}
+                      {%- elif is_state_attr('sensor.ncaaf_tamu','clock','Delayed') -%}
+                          {{ ' DELAYED' }}
                       {%- elif is_state_attr('sensor.ncaaf_tu','last_play','END GAME') -%}
                           {{ ' END' }}
                       {%- else -%}
@@ -167,6 +171,8 @@ automation:
                         {{ ' TIMEOUT' }}
                       {%- elif is_state_attr('sensor.nfl_hou','clock','Halftime') -%}
                           {{ ' HALFTIME' }}
+                      {%- elif is_state_attr('sensor.ncaaf_tamu','clock','Delayed') -%}
+                          {{ ' DELAYED' }}
                       {%- elif is_state_attr('sensor.nfl_hou','last_play','END GAME') -%}
                           {{ ' END' }}
                       {%- else -%}
