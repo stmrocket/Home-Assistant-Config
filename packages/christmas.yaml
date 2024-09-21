@@ -89,8 +89,14 @@ automation:
         entity_id: switch.indoor_christmas
       - service: mqtt.publish
         data:
-          topic: ir/all/cmnd/irsend
+          topic: cmnd/allir/irsend
           payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE58A7"}'
+      - delay:
+          seconds: 10
+      - service: mqtt.publish
+        data:
+          topic: cmnd/allir/irsend
+          payload: '{"Protocol":"NEC","Bits":32,"Data":"0x00FF629D"}'
 
   - alias: MQTT Christmas Show On
     id: e2e0b58e-27e0-4e1a-857e-cbd85d015b86
@@ -163,8 +169,14 @@ automation:
     action:
       - service: mqtt.publish
         data:
-          topic: ir/all/cmnd/irsend
+          topic: cmnd/allir/irsend
           payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
+      - delay:
+          seconds: 10
+      - service: mqtt.publish
+        data:
+          topic: cmnd/allir/irsend
+          payload: '{"Protocol":"NEC","Bits":32,"Data":"0x00FFA25D"}'
 
   - alias: Candles On at When Returning After Dark
     id: 3f6ccd03-0d72-4e6c-bed7-0d32f338e7fb
@@ -180,8 +192,14 @@ automation:
     action:
       - service: mqtt.publish
         data:
-          topic: ir/all/cmnd/irsend
+          topic: cmnd/allir/irsend
           payload: '{"Protocol":"NEC","Bits":32,"Data":"0x1FE48B7"}'
+      - delay:
+          seconds: 10
+      - service: mqtt.publish
+        data:
+          topic: cmnd/allir/irsend
+          payload: '{"Protocol":"NEC","Bits":32,"Data":"0x00FFA25D"}'
 
   - alias: Arm Christmas Amplifier Shutdown
     id: 322d4e3b-2c8e-421c-b819-d11c1c5e6ef7
