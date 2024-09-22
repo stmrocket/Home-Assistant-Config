@@ -154,9 +154,10 @@ automation:
   - alias: Candles On at Dark When Home
     id: 43d4c5d9-071d-4604-9297-715e0251f132
     trigger:
-      - platform: sun
-        event: sunset
-        offset: "00:30:00"
+      - platform: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state.attributes.elevation }}"
+        below: -6
     condition:
       - condition: or
         conditions:
