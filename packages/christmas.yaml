@@ -157,7 +157,7 @@ automation:
       - platform: numeric_state
         entity_id: sun.sun
         value_template: "{{ state.attributes.elevation }}"
-        below: -6
+        below: -3
     condition:
       - condition: or
         conditions:
