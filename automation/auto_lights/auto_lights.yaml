@@ -9,6 +9,7 @@
       to: Violated
   action:
     - service: light.turn_on
+      continue_on_error: true
       entity_id: 
         - light.attic_light
         - light.garage_attic_light
@@ -31,6 +32,7 @@
       state: Normal
   action:
     - service: light.turn_off
+      continue_on_error: true
       entity_id: 
         - light.attic_light
         - light.garage_attic_light
