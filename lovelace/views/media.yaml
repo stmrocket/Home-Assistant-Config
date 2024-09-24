@@ -59,42 +59,41 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: sensor.den_harmony_activity
+                entity: select.den_den_av
                 color_type: icon
                 state:
-                  - value: "PowerOff"
+                  - value: "Power Off"
                     color: rgb(228, 94, 101)
-                  - value: "PowerOff"
+                  - value: "Power Off"
                     operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:remote-tv-off
                 name: "Off"
                 tap_action:
-                  action: call-service
-                  service: remote.turn_off
+                  service: select.select_option
                   service_data:
-                    entity_id: remote.harmony_den
+                    entity_id: select.den_den_av
+                    option: "Power Off"
 
               - type: "custom:button-card"
-                entity: sensor.den_harmony_activity
+                entity: select.den_den_av
                 color_type: icon
                 state:
-                  - value: "Watch PVR"
+                  - value: "Watch Kodi"
                     color: rgb(228, 94, 101)
-                  - value: "Watch PVR"
+                  - value: "Watch Kodi"
                     operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:kodi
                 name: Kodi
                 tap_action:
-                  action: call-service
-                  service: remote.turn_on
+                  service: select.select_option
                   service_data:
-                    entity_id: remote.harmony_den
-                    activity: "Watch PVR"
+                    entity_id: select.den_den_av
+                    option: "Watch Kodi"
 
               - type: "custom:button-card"
-                entity: sensor.den_harmony_activity
+                entity: select.den_den_av
                 color_type: icon
                 state:
                   - value: "Watch Roku"
@@ -105,47 +104,44 @@ cards:
                 icon: mdi:youtube-tv
                 name: Roku
                 tap_action:
-                  action: call-service
-                  service: remote.turn_on
+                  service: select.select_option
                   service_data:
-                    entity_id: remote.harmony_den
-                    activity: "Watch Roku"
+                    entity_id: select.den_den_av
+                    option: "Watch Roku"
 
               - type: "custom:button-card"
-                entity: sensor.den_harmony_activity
+                entity: select.den_den_av
                 color_type: icon
                 state:
-                  - value: "ChromeCast"
+                  - value: "Watch ChromeCast"
                     color: rgb(228, 94, 101)
-                  - value: "ChromeCast"
+                  - value: "Watch ChromeCast"
                     operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:cast
                 name: Cast
                 tap_action:
-                  action: call-service
-                  service: remote.turn_on
+                  service: select.select_option
                   service_data:
-                    entity_id: remote.harmony_den
-                    activity: "ChromeCast"
+                    entity_id: select.den_den_av
+                    option: "Watch ChromeCast"
 
               - type: "custom:button-card"
-                entity: sensor.den_harmony_activity
+                entity: select.den_den_av
                 color_type: icon
                 state:
-                  - value: "Listen to WHA"
+                  - value: "Listen to NuVo"
                     color: rgb(228, 94, 101)
-                  - value: "Listen to WHA"
+                  - value: "Listen to NuVo"
                     operator: "!="
                     color: rgb(255, 255, 255)
                 icon: mdi:music
                 name: Music
                 tap_action:
-                  action: call-service
-                  service: remote.turn_on
+                  service: select.select_option
                   service_data:
-                    entity_id: remote.harmony_den
-                    activity: "Listen to WHA"
+                    entity_id: select.den_den_av
+                    option: "Listen to NuVo"
           - type: horizontal-stack
             cards:
               - type: "custom:gap-card"
@@ -153,8 +149,8 @@ cards:
 
           - type: conditional
             conditions:
-              - entity: sensor.den_harmony_activity
-                state: "Watch PVR"
+              - entity: select.den_den_av
+                state: "Watch Kodi"
               - entity: media_player.den_kodi
                 state_not: "idle"
               - entity: media_player.den_kodi
@@ -173,7 +169,7 @@ cards:
 
           - type: conditional
             conditions:
-              - entity: sensor.den_harmony_activity
+              - entity: select.den_den_av
                 state: "Watch Roku"
               - entity: media_player.roku_living_room
                 state_not: "home"
@@ -191,8 +187,8 @@ cards:
 
           - type: conditional
             conditions:
-              - entity: sensor.den_harmony_activity
-                state: "Listen to WHA"
+              - entity: select.den_den_av
+                state: "Listen to NuVo"
               - entity: sensor.nuvo_zone_7_source
                 state: "1"
             card:
@@ -322,8 +318,8 @@ cards:
                                   payload: 7,6
           - type: conditional
             conditions:
-              - entity: sensor.den_harmony_activity
-                state: "Listen to WHA"
+              - entity: select.den_den_av
+                state: "Listen to NuVo"
               - entity: sensor.nuvo_zone_7_source
                 state_not: "1"
             card:
