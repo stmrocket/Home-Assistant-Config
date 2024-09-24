@@ -1179,7 +1179,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: East Front
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1190,7 +1190,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: West Front
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1201,7 +1201,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: East Side
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1212,7 +1212,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: West Side
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1223,7 +1223,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Back Yard
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1234,7 +1234,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Back Porch
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1245,7 +1245,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Garage
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1256,7 +1256,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Den
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1267,7 +1267,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Kitchen
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1278,7 +1278,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Office
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1289,7 +1289,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Master Bedroom
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1300,7 +1300,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Hallway
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1311,7 +1311,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Guest Room
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1322,7 +1322,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Shack
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1333,7 +1333,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Server Room
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1344,7 +1344,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Prusa
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1355,7 +1355,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Pruse Mk3
                   content:
                     type: custom:frigate-card
                     cameras:
@@ -1366,7 +1366,7 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Front Porch
+                  title: Prusa Mk4
                   content:
                     type: custom:frigate-card
                     cameras:
