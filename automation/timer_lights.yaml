@@ -22,16 +22,16 @@
           state: armed_away
   action:
     - service: switch.turn_on
-      entity_id:
       continue_on_error: true
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
         - switch.den_lamps
         - switch.shack_lamp
     - service: light.turn_on
-      entity_id:
       continue_on_error: true
+      entity_id:
         - light.entry_lamp
         - light.house_leds
         - light.hall_lamp
@@ -47,8 +47,8 @@
       offset: "-00:30:00"
   action:
     - service: switch.turn_on
-      entity_id:
       continue_on_error: true
+      entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -56,8 +56,8 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_on
-      entity_id:
       continue_on_error: true
+      entity_id:
         - light.entry_lamp
         - light.house_leds
         - light.hall_lamp
