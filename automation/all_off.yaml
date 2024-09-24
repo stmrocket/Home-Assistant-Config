@@ -39,6 +39,7 @@
       to: armed_night
   action:
     - service: light.turn_off
+      continue_on_error: true
       entity_id:
         - light.dining_room_light
         - light.entry_light
@@ -54,6 +55,7 @@
         - light.shackled_light
         - light.officeled_light
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.den_fireplace
         - switch.den_fan
@@ -91,6 +93,7 @@
       for: "00:01:00"
   action:
     - service: light.turn_off
+      continue_on_error: true
       entity_id:
         - light.guest_bedroom_light
         - light.guest_bathroom_light
@@ -98,6 +101,7 @@
         - light.master_shower_light
         - light.hallway_light
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.master_bathroom_lights
         - switch.master_bathroom_fan
@@ -120,6 +124,7 @@
       state: "off"
   action:
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
@@ -141,11 +146,13 @@
       state: "off"
   action:
     - service: light.turn_off
+      continue_on_error: true
       entity_id:
         - light.guest_bedroom_light
         - light.guest_bathroom_light
         - light.hallway_light
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.guest_bedroom_fan
         - switch.guest_bathroom_fan
@@ -201,6 +208,7 @@
       state: "off"
   action:
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.outside_lights
         - switch.shed_outside_light

@@ -23,6 +23,7 @@
   action:
     - service: switch.turn_on
       entity_id:
+      continue_on_error: true
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -30,6 +31,7 @@
         - switch.shack_lamp
     - service: light.turn_on
       entity_id:
+      continue_on_error: true
         - light.entry_lamp
         - light.house_leds
         - light.hall_lamp
@@ -46,6 +48,7 @@
   action:
     - service: switch.turn_on
       entity_id:
+      continue_on_error: true
         - switch.kitchen_lamp
         - switch.server_room_lamp
         - switch.office_lamps
@@ -54,6 +57,7 @@
         - switch.guest_room_lamp
     - service: light.turn_on
       entity_id:
+      continue_on_error: true
         - light.entry_lamp
         - light.house_leds
         - light.hall_lamp
@@ -98,6 +102,7 @@
               state: "off"
   action:
     - service: switch.turn_on
+      continue_on_error: true
       entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
@@ -106,6 +111,7 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_on
+      continue_on_error: true
       entity_id:
         - light.entry_lamp
         - light.house_leds
@@ -130,6 +136,7 @@
           state: "off"
   action:
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
@@ -138,6 +145,7 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_off
+      continue_on_error: true
       entity_id:
         - light.entry_lamp
         - light.house_leds
@@ -156,6 +164,7 @@
       offset: "+00:30:00"
   action:
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
@@ -164,6 +173,7 @@
         - switch.shack_lamp
         - switch.guest_room_lamp
     - service: light.turn_off
+      continue_on_error: true
       entity_id:
         - light.entry_lamp
         - light.house_leds
@@ -187,6 +197,7 @@
       to: armed_night
   action:
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.kitchen_lamp
         - switch.server_room_lamp
@@ -194,6 +205,7 @@
         - switch.den_lamps
         - switch.shack_lamp
     - service: light.turn_off
+      continue_on_error: true
       entity_id: 
         - light.entry_lamp     
         - light.kitchen_leds
@@ -270,11 +282,10 @@
           state: armed_home
   action:
     - service: switch.turn_on
-      data:
-        entity_id: switch.master_bedroom_lamps
+      continue_on_error: true
+      entity_id: switch.master_bedroom_lamps
     - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.master_lamp_timer
+      entity_id: input_boolean.master_lamp_timer
 
 - alias: Timer Lights Off Master
   id: 7b13c5a7-b0ce-42c4-a8ae-1eca4f620d56
@@ -305,6 +316,7 @@
           state: armed_home
   action:
     - service: switch.turn_off
+      continue_on_error: true
       entity_id: switch.master_bedroom_lamps
     - service: input_boolean.turn_off
       entity_id: input_boolean.master_lamp_timer
@@ -319,6 +331,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.outside_timer_lights
     - service: switch.turn_on
+      continue_on_error: true
       entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
@@ -335,6 +348,7 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.outside_timer_lights
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.outside_lights
         - switch.shed_outside_light
@@ -367,9 +381,10 @@
           state: "on"
   action:
     - service: light.turn_off
-      data:
-        entity_id: light.master_suite_leds
+      continue_on_error: true
+      entity_id: light.master_suite_leds
     - service: switch.turn_off
+      continue_on_error: true
       entity_id:
         - switch.master_bedroom_lamps
         - switch.water_projector
