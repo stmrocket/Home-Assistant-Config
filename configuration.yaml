@@ -157,10 +157,6 @@ binary_sensor:
         value_template: "{{ now().timetuple().tm_isdst > 0 }}"
 
 input_boolean:
-  guest_mode:
-    name: Guest Mode
-    icon: mdi:timer-outline
-
   timer_lights:
     name: Timer Lights
     icon: mdi:lightbulb
