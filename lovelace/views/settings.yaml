@@ -1352,8 +1352,8 @@ cards:
                       state_not: unavailable
                   card:
                     type: picture-entity
-                    entity: camera.prusamk4_preview
-                    camera_image: camera.prusamk4_preview
+                    entity: camera.prusamk3_5_preview
+                    camera_image: camera.prusamk3_5_preview
                     camera_view: live
                     show_name: false
                     show_state: false
