@@ -76,7 +76,7 @@ script:
                   media_id: spotify:playlist:37i9dQZF1DWUileP28ODwg
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'on'
+                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
                   
@@ -90,7 +90,7 @@ script:
                   media_id: spotify:playlist:50Yv0e9mTtNO2vJqwwNfbp
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'on'
+                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
                   
@@ -121,7 +121,6 @@ script:
                   media_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'on'
                 target:
                   entity_id: media_player.errol
                   
@@ -135,7 +134,6 @@ script:
                   media_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'on'
                 target:
                   entity_id: media_player.errol
 
@@ -149,7 +147,6 @@ script:
                   media_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'on'
                 target:
                   entity_id: media_player.errol
 
@@ -163,7 +160,7 @@ script:
                   media_id: spotify:playlist:37i9dQZF1DWViXqZVTGO3Z
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'on'
+                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
 
@@ -177,7 +174,7 @@ script:
                   media_id: spotify:playlist:7J8HlMdOq82WJAU6JmhR5d
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'on'
+                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
       
