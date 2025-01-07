@@ -71,7 +71,7 @@ script:
                 entity_id: input_select.mass_playlist
                 state: "Top Christian Contemporary"
             sequence:
-              - service: mass.play_media
+              - service: music_assistant.play_media
                 data:
                   media_id: spotify:playlist:37i9dQZF1DWUileP28ODwg
                   media_type: playlist
@@ -85,7 +85,7 @@ script:
                 entity_id: input_select.mass_playlist
                 state: "Contemporary Christian Instrumentals on Piano"
             sequence:
-              - service: mass.play_media
+              - service: music_assistant.play_media
                 data:
                   media_id: spotify:playlist:50Yv0e9mTtNO2vJqwwNfbp
                   media_type: playlist
@@ -99,7 +99,7 @@ script:
                 entity_id: input_select.mass_playlist
                 state: "KSBJ"
             sequence:
-              - service: mass.play_media
+              - service: music_assistant.play_media
                 data:
                   media_id: KSBJ
                   media_type: radio
@@ -116,7 +116,7 @@ script:
                 entity_id: input_select.mass_playlist
                 state: "Hot Country"
             sequence:
-              - service: mass.play_media
+              - service: music_assistant.play_media
                 data:
                   media_id: spotify:playlist:37i9dQZF1DX1lVhptIYRda
                   media_type: playlist
@@ -129,7 +129,7 @@ script:
                 entity_id: input_select.mass_playlist
                 state: "Epic Film Scores for Studying"
             sequence:
-              - service: mass.play_media
+              - service: music_assistant.play_media
                 data:
                   media_id: spotify:playlist:0fObmR6AFCrJq5atFij2hj
                   media_type: playlist
@@ -142,7 +142,7 @@ script:
                 entity_id: input_select.mass_playlist
                 state: "Christmas Hits"
             sequence:
-              - service: mass.play_media
+              - service: music_assistant.play_media
                 data:
                   media_id: spotify:playlist:37i9dQZF1DX0Yxoavh5qJV
                   media_type: playlist
@@ -155,7 +155,7 @@ script:
                 entity_id: input_select.mass_playlist
                 state: "Christian Christmas"
             sequence:
-              - service: mass.play_media
+              - service: music_assistant.play_media
                 data:
                   media_id: spotify:playlist:37i9dQZF1DWViXqZVTGO3Z
                   media_type: playlist
@@ -169,7 +169,7 @@ script:
                 entity_id: input_select.mass_playlist
                 state: "A Soft Piano Christmas"
             sequence:
-              - service: mass.play_media
+              - service: music_assistant.play_media
                 data:
                   media_id: spotify:playlist:7J8HlMdOq82WJAU6JmhR5d
                   media_type: playlist
