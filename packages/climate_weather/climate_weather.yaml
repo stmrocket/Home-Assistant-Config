@@ -281,6 +281,22 @@ sensor:
     max_age:
       minutes: 2
 
+  - platform: filter
+    name: Filtered AcuRite Atlas Temperature
+    entity_id: sensor.acurite_atlas_temperature
+    filters:
+      - filter: outlier
+        window_size: 7
+        radius: 5
+
+  - platform: filter
+    name: Filtered AcuRite Outside Temperature
+    entity_id: sensor.acurite_outside_temperature
+    filters:
+      - filter: outlier
+        window_size: 7
+        radius: 5
+
 template:
   - sensor:
     - name: AcuRite WS Wind Speed Buffered
@@ -304,11 +320,12 @@ template:
       unique_id: cc9cd34a-58bd-4bf4-93ab-233c083b23ca
       unit_of_measurement: "°F"
       state_class: measurement
+      device_class: temperature
       state: >-
         {% if is_state("input_boolean.atlas_bad", "off") -%}
-          {{ states("sensor.acurite_atlas_temperature")}}
+          {{ states("sensor.filtered_acurite_atlas_temperature")}}
         {%- else -%}
-          {{ states("sensor.acurite_outside_temperature")}}
+          {{ states("sensor.filtered_acurite_outside_temperature")}}
         {%- endif %}
     
     - name: AcuRite WS Humidity
