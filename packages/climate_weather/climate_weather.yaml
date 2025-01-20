@@ -322,7 +322,7 @@ template:
       state_class: measurement
       device_class: temperature
       state: >-
-        {% if is_state("input_boolean.atlas_bad", "off") -%}
+        {% if is_state("input_boolean.atlas_bad", "on") -%}
           {{ states("sensor.filtered_acurite_atlas_temperature")}}
         {%- else -%}
           {{ states("sensor.filtered_acurite_outside_temperature")}}
@@ -333,7 +333,7 @@ template:
       unit_of_measurement: "%"
       state_class: measurement
       state: >-
-        {% if is_state("input_boolean.atlas_bad", "off") -%}
+        {% if is_state("input_boolean.atlas_bad", "on") -%}
           {{ states("sensor.acurite_atlas_humidity")}}
         {%- else -%}
           {{ states("sensor.acurite_outside_humidity")}}
@@ -366,7 +366,7 @@ template:
       unit_of_measurement: "in"
       state_class: measurement
       state: >-
-        {% if is_state("input_boolean.atlas_bad", "on") -%}
+        {% if is_state("input_boolean.atlas_bad", "off") -%}
           {{ states("sensor.acurite_atlas_cumulative_rainfall")}}
         {%- else -%}
           {{ states("sensor.acurite_iris_cumulative_rainfall")}}
@@ -377,7 +377,7 @@ template:
       unit_of_measurement: "UV index"
       state_class: measurement
       state: >-
-        {% if is_state("input_boolean.atlas_bad", "on") -%}
+        {% if is_state("input_boolean.atlas_bad", "off") -%}
           {{ states("sensor.acurite_atlas_uv_index")}}
         {%- else -%}
           {{ states("sensor.openweathermap_current_uv_index")}}
