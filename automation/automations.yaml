@@ -165,17 +165,14 @@
           displaytime: 5000
           icon: "info"
 
-- alias: Tvheadend Commercials Done
+- alias: Jellyfin Postprocessor Done
   id: 05350930-668a-4122-86bd-3d075d8e3888
   trigger:
     - platform: webhook
       webhook_id: !secret webhook_tvh_comm
       local_only: true
   action:
-    - service: notify.den_kodi
-      data_template:
-        title: "{{ trigger.query.title }}"
-        message: "Commercial detection complete."
-        data:
-          displaytime: 5000
-          icon: "info"
+    - service: esphome.elkspeak_dfplayer_play_folder
+      data:
+        folder: 4
+        file: 3
