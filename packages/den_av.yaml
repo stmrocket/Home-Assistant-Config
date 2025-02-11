@@ -31,7 +31,7 @@ sensor:
             http://10.10.10.27:8123/local/remote_icons/channels/youtube.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'org.jellyfin.androidtv') -%}
             {% if is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing') -%}
-              {{state_attr('media_player.den_tv_jellyfin', 'entity_picture') }}
+              {{ state_attr('media_player.den_tv_jellyfin', 'entity_picture') | replace("=150","=240",1) }}
             {% else -%}
               http://10.10.10.27:8123/local/remote_icons/channels/jellyfin.webp
             {% endif -%}
