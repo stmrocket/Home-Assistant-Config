@@ -2,6 +2,7 @@ media_player:
   - platform: custom_universal_media_player
     name: Den TV Current Status
     attributes:
+      state: 'on'
       entity_picture: sensor.den_media_cover
 
 sensor:
