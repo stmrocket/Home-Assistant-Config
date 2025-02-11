@@ -16,27 +16,27 @@ sensor:
         unique_id: 1606a2f0-f6fe-49ca-ab06-d0c430a6ea60
         value_template: >-
           {% if is_state_attr('media_player.den_tv_android', 'app_id', 'com.espn.score_center') -%}
-            "http://10.10.10.27:8123/local/remote_icons/channels/espn.webp"
+            http://10.10.10.27:8123/local/remote_icons/channels/espn.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.wbd.stream') -%}
-            "http://10.10.10.27:8123/local/remote_icons/channels/max.webp"
+            http://10.10.10.27:8123/local/remote_icons/channels/max.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.netflix.ninja') -%}
-            "http://10.10.10.27:8123/local/remote_icons/channels/netflix.webp"
+            http://10.10.10.27:8123/local/remote_icons/channels/netflix.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.amazon.amazonvideo.livingroom') -%}
-            "http://10.10.10.27:8123/local/remote_icons/channels/prime.webp"
+            http://10.10.10.27:8123/local/remote_icons/channels/prime.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.qvc.androidtv') -%}
-            "http://10.10.10.27:8123/local/remote_icons/channels/qvc.webp"
+            http://10.10.10.27:8123/local/remote_icons/channels/qvc.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.spotify.tv.android') -%}
-            "http://10.10.10.27:8123/local/remote_icons/channels/spotify.webp"
+            http://10.10.10.27:8123/local/remote_icons/channels/spotify.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.google.android.youtube.tv') -%}
-            "http://10.10.10.27:8123/local/remote_icons/channels/youtube.webp"
+            http://10.10.10.27:8123/local/remote_icons/channels/youtube.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.google.android.youtube.tv') -%}
             {% if is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing') -%}
               {{state_attr('media_player.den_tv_jellyfin', 'entity_picture') }}
             {% else -%}
-              "http://10.10.10.27:8123/local/remote_icons/channels/jellyfin.webp"
+              http://10.10.10.27:8123/local/remote_icons/channels/jellyfin.webp
             {% endif -%}
           {% else -%}
-            "http://10.10.10.27:8123/local/remote_icons/channels/googletv.webp"
+            http://10.10.10.27:8123/local/remote_icons/channels/googletv.webp
           {% endif -%}
 
 rest_command:
