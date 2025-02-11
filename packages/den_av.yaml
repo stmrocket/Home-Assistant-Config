@@ -244,80 +244,80 @@ script:
   den_atv_src_espn:
     mode: parallel
     sequence:
-      - action: com.espn.score_center
+      - action: media_player.play_media
         data:
           media_content_type: app
-          media_content_id: max
+          media_content_id: com.espn.score_center
         target:
           entity_id: media_player.den_tv_android
 
   den_atv_src_jellyfin:
     mode: parallel
     sequence:
-      - action: org.jellyfin.androidtv
+      - action: media_player.play_media
         data:
           media_content_type: app
-          media_content_id: max
+          media_content_id: org.jellyfin.androidtv
         target:
           entity_id: media_player.den_tv_android
 
   den_atv_src_max:
     mode: parallel
     sequence:
-      - action: com.wbd.stream
+      - action: media_player.play_media
         data:
           media_content_type: app
-          media_content_id: max
+          media_content_id: com.wbd.stream
         target:
           entity_id: media_player.den_tv_android
 
   den_atv_src_netflix:
     mode: parallel
     sequence:
-      - action: com.netflix.ninja
+      - action: media_player.play_media
         data:
           media_content_type: app
-          media_content_id: max
+          media_content_id: com.netflix.ninja
         target:
           entity_id: media_player.den_tv_android
 
   den_atv_src_prime:
     mode: parallel
     sequence:
-      - action: com.amazon.amazonvideo.livingroom
+      - action: media_player.play_media
         data:
           media_content_type: app
-          media_content_id: max
+          media_content_id: com.amazon.amazonvideo.livingroom
         target:
           entity_id: media_player.den_tv_android
 
   den_atv_src_qvc:
     mode: parallel
     sequence:
-      - action: com.qvc.androidtv
+      - action: media_player.play_media
         data:
           media_content_type: app
-          media_content_id: max
+          media_content_id: com.qvc.androidtv
         target:
           entity_id: media_player.den_tv_android
 
   den_atv_src_spotify:
     mode: parallel
     sequence:
-      - action: com.spotify.tv.android
+      - action: media_player.play_media
         data:
           media_content_type: app
-          media_content_id: max
+          media_content_id: com.spotify.tv.android
         target:
           entity_id: media_player.den_tv_android
 
   den_atv_src_youtube:
     mode: parallel
     sequence:
-      - action: com.google.android.youtube.tv
+      - action: media_player.play_media
         data:
           media_content_type: app
-          media_content_id: max
+          media_content_id: com.google.android.youtube.tv
         target:
           entity_id: media_player.den_tv_android
 
