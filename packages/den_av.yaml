@@ -34,6 +34,7 @@ sensor:
               {{state_attr('media_player.den_tv_jellyfin', 'entity_picture') }}
             {% else -%}
               "http://10.10.10.27:8123/local/remote_icons/channels/jellyfin.webp"
+            {% endif -%}
           {% else -%}
             "http://10.10.10.27:8123/local/remote_icons/channels/googletv.webp"
           {% endif -%}
