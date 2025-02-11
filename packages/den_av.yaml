@@ -1,9 +1,41 @@
+media_player:
+  - platform: custom_universal_media_player
+    name: Den TV Current Status
+    attributes:
+      entity_picture: sensor.den_media_cover
+
 sensor:
   - platform: template
     sensors:
       den_avr_url:
         unique_id: 49d3be12-2784-46ed-b844-b4080dda11b3
         value_template: !secret den_avr_url
+
+      den_media_cover:
+        unique_id: 1606a2f0-f6fe-49ca-ab06-d0c430a6ea60
+        value_template: >-
+          {% if is_state_attr('media_player.den_tv_android', 'app_id', 'com.espn.score_center') -%}
+            "http://10.10.10.27:8123/local/remote_icons/channels/espn.webp"
+          {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.wbd.stream') -%}
+            "http://10.10.10.27:8123/local/remote_icons/channels/max.webp"
+          {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.netflix.ninja') -%}
+            "http://10.10.10.27:8123/local/remote_icons/channels/netflix.webp"
+          {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.amazon.amazonvideo.livingroom') -%}
+            "http://10.10.10.27:8123/local/remote_icons/channels/prime.webp"
+          {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.qvc.androidtv') -%}
+            "http://10.10.10.27:8123/local/remote_icons/channels/qvc.webp"
+          {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.spotify.tv.android') -%}
+            "http://10.10.10.27:8123/local/remote_icons/channels/spotify.webp"
+          {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.google.android.youtube.tv') -%}
+            "http://10.10.10.27:8123/local/remote_icons/channels/youtube.webp"
+          {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.google.android.youtube.tv') -%}
+            {% if is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing') -%}
+              {{state_attr('media_player.den_tv_jellyfin', 'entity_picture') }}
+            {% else -%}
+              "http://10.10.10.27:8123/local/remote_icons/channels/jellyfin.webp"
+          {% else -%}
+            "http://10.10.10.27:8123/local/remote_icons/channels/googletv.webp"
+          {% endif -%}
 
 rest_command:
   den_avr_25:
@@ -82,184 +114,6 @@ script:
           entity_id: media_player.den_avr
         data:
           is_volume_muted: "{{ not state_attr('media_player.den_avr' , 'is_volume_muted') }}"
-  
-  den_kodi_up:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.Up
-  
-  den_kodi_down:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.Down
-  
-  den_kodi_left:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.Left
-  
-  den_kodi_right:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.Right
-  
-  den_kodi_select:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.Select
-  
-  den_kodi_home:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.Home
-  
-  den_kodi_back:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.Back
-  
-  den_kodi_context:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.ExecuteAction
-          action: contextmenu
-  
-  den_kodi_osd:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.ExecuteAction
-          action: osd
-  
-  den_kodi_codec:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.ShowCodec
-  
-  den_kodi_top:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.ExecuteAction
-          action: firstpage
-  
-  den_kodi_bottom:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.ExecuteAction
-          action: lastpage
-  
-  den_kodi_step_forward:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.ExecuteAction
-          action: stepforward
-  
-  den_kodi_step_back:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.ExecuteAction
-          action: stepback
-  
-  den_kodi_info:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: Input.ExecuteAction
-          action: info
-  
-  den_kodi_tv_shows:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: GUI.ActivateWindow
-          window: videos
-          parameters:
-            - TvshowTitles
-  
-  den_kodi_tv_movies:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: GUI.ActivateWindow
-          window: videos
-          parameters:
-            - MovieTitles
-  
-  den_kodi_pvr:
-    mode: parallel
-    sequence:
-      - service: kodi.call_method
-        target:
-          entity_id: media_player.den_kodi
-        data:
-          method: GUI.ActivateWindow
-          window: pvr
-          parameters:
-            - TVChannels
 
   mass_select_christian:
     mode: parallel
@@ -386,114 +240,86 @@ script:
     mode: parallel
     sequence:
       - service: rest_command.den_avr_src_nuvo
-  
-  den_roku_back:
+
+  den_atv_src_espn:
     mode: parallel
     sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
+      - action: com.espn.score_center
         data:
-          command: back
-  
-  den_roku_home:
+          media_content_type: app
+          media_content_id: max
+        target:
+          entity_id: media_player.den_tv_android
+
+  den_atv_src_jellyfin:
     mode: parallel
     sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
+      - action: org.jellyfin.androidtv
         data:
-          command: home
-  
-  den_roku_up:
+          media_content_type: app
+          media_content_id: max
+        target:
+          entity_id: media_player.den_tv_android
+
+  den_atv_src_max:
     mode: parallel
     sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
+      - action: com.wbd.stream
         data:
-          command: up
-  
-  den_roku_down:
+          media_content_type: app
+          media_content_id: max
+        target:
+          entity_id: media_player.den_tv_android
+
+  den_atv_src_netflix:
     mode: parallel
     sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
+      - action: com.netflix.ninja
         data:
-          command: down
-  
-  den_roku_left:
+          media_content_type: app
+          media_content_id: max
+        target:
+          entity_id: media_player.den_tv_android
+
+  den_atv_src_prime:
     mode: parallel
     sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
+      - action: com.amazon.amazonvideo.livingroom
         data:
-          command: left
-  
-  den_roku_right:
+          media_content_type: app
+          media_content_id: max
+        target:
+          entity_id: media_player.den_tv_android
+
+  den_atv_src_qvc:
     mode: parallel
     sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
+      - action: com.qvc.androidtv
         data:
-          command: right
-  
-  den_roku_replay:
+          media_content_type: app
+          media_content_id: max
+        target:
+          entity_id: media_player.den_tv_android
+
+  den_atv_src_spotify:
     mode: parallel
     sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
+      - action: com.spotify.tv.android
         data:
-          command: replay
-  
-  den_roku_info:
+          media_content_type: app
+          media_content_id: max
+        target:
+          entity_id: media_player.den_tv_android
+
+  den_atv_src_youtube:
     mode: parallel
     sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
+      - action: com.google.android.youtube.tv
         data:
-          command: info
-  
-  den_roku_reverse:
-    mode: parallel
-    sequence:
-      - service: remote.send_command
+          media_content_type: app
+          media_content_id: max
         target:
-          entity_id: remote.roku_living_room
-        data:
-          command: reverse
-  
-  den_roku_forward:
-    mode: parallel
-    sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
-        data:
-          command: forward
-  
-  den_roku_play:
-    mode: parallel
-    sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
-        data:
-          command: play
-  
-  den_roku_select:
-    mode: parallel
-    sequence:
-      - service: remote.send_command
-        target:
-          entity_id: remote.roku_living_room
-        data:
-          command: select
+          entity_id: media_player.den_tv_android
 
 automation:
   - alias: Den AV On With NuVo
