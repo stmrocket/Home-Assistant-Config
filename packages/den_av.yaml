@@ -4,6 +4,10 @@ media_player:
     attributes:
       state: media_player.den_tv_android
       entity_picture: sensor.den_media_cover
+      media_title: sensor.den_media_title
+      source: sensor.den_media_source
+      media_duration: sensor.den_media_duration
+      media_position: sensor.den_media_position
 
 sensor:
   - platform: template
@@ -37,6 +41,42 @@ sensor:
             {% endif -%}
           {% else -%}
             {{ states('sensor.external_url') }}/local/remote_icons/channels/googletv.webp
+          {% endif -%}
+
+      den_media_title:
+        unique_id: 7f86c2f5-e43d-4cfc-90ba-fe18b4654432
+        value_template: >-
+          {% if is_state_attr('media_player.den_tv_android', 'app_id', 'org.jellyfin.androidtv') and (is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing')) -%}
+            {{ state_attr('media_player.den_tv_jellyfin', 'media_series_title') }}
+          {% else -%}
+            
+          {% endif -%}
+
+      den_media_source:
+        unique_id: 6bec9f4f-03d3-43d2-afb6-0275c38f6d67
+        value_template: >-
+          {% if is_state_attr('media_player.den_tv_android', 'app_id', 'org.jellyfin.androidtv') and (is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing')) -%}
+            {{ state_attr('media_player.den_tv_jellyfin', 'media_title') }}
+          {% else -%}
+            
+          {% endif -%}
+
+      den_media_duration:
+        unique_id: 6d75e32c-4904-440b-9949-844a6812516e
+        value_template: >-
+          {% if is_state_attr('media_player.den_tv_android', 'app_id', 'org.jellyfin.androidtv') and (is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing')) -%}
+            {{ state_attr('media_player.den_tv_jellyfin', 'media_duration') }}
+          {% else -%}
+            
+          {% endif -%}
+
+      den_media_position:
+        unique_id: 909a55b3-104e-4322-a3c2-463ea178fbc9
+        value_template: >-
+          {% if is_state_attr('media_player.den_tv_android', 'app_id', 'org.jellyfin.androidtv') and (is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing')) -%}
+            {{ state_attr('media_player.den_tv_jellyfin', 'media_position') }}
+          {% else -%}
+            
           {% endif -%}
 
 rest_command:
