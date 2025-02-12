@@ -36,7 +36,7 @@ sensor:
               {{ states('sensor.external_url') }}/local/remote_icons/channels/jellyfin.webp
             {% endif -%}
           {% else -%}
-            {{ states('sensor.external_url') }}/remote_icons/channels/googletv.webp
+            {{ states('sensor.external_url') }}local//remote_icons/channels/googletv.webp
           {% endif -%}
 
 rest_command:
