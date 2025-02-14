@@ -134,7 +134,7 @@ automation:
     trigger:
       - platform: event
         event_type: zwave_js_notification
-    condition: "{{ trigger.event.data.device_id == '17752e4d4f06fc403e931c7b1ca21401' and trigger.event.data.event_label.endswith('lock operation') }}"
+    condition: "{{ trigger.event.data.device_id == 'd7ae7465d96a4d0ba8f370e391b78e67' and trigger.event.data.event_label.endswith('lock operation') }}"
     action:
       - service: input_text.set_value
         data:
