@@ -1,0 +1,69 @@
+automation:
+  - alias: Mute Phone at Zone
+    id: 805508b7-ddac-4a09-84b5-bdba82be63d6
+    trigger:
+      - platform: state
+        entity_id: person.shawn
+        to: "church"
+        for:
+            minutes: 1
+    action:      
+      - action: notify.mobile_app_shawn_7t
+        data:
+          message: "command_ringer_mode"
+          data:
+            command: "vibrate"
+
+  - alias: Unmute Phone When Leaving Zone
+    id: 7fc2717e-5b63-408c-8c54-620c3a06d20f
+    trigger:
+      - platform: state
+        entity_id: person.shawn
+        from: "church"
+        to: "not_home"
+        for:
+            minutes: 5
+      - platform: state
+        entity_id: person.shawn
+        from: "not_home"
+        to: "home"
+        for:
+            minutes: 1
+    action:
+      - action: notify.mobile_app_shawn_7t
+        data:
+          message: "command_ringer_mode"
+          data:
+            command: "normal"
+
+  - alias: Phone DND On When Going to Bed
+    id: 52bb1a6a-789c-42b2-a3e2-ea50edca3031
+    trigger:
+    - entity_id: alarm_control_panel.house
+      from: arming
+      platform: state
+      to: armed_night
+    action:
+      - action: notify.mobile_app_shawn_7t
+        data:
+          message: "command_dnd"
+          data:
+            command: "priority_only"
+
+  - alias: Phone DND Off When Getting Up
+    id: 60de2d01-bbd0-441a-a428-97c65d9cb538
+    trigger:
+    - entity_id: alarm_control_panel.house
+      from: armed_night
+      platform: state
+      to: armed_home
+    - entity_id: alarm_control_panel.house
+      from: armed_night
+      platform: state
+      to: disarmed
+    action:
+      - action: notify.mobile_app_shawn_7t
+        data:
+          message: "command_dnd"
+          data:
+            command: "off"
