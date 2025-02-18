@@ -77,6 +77,31 @@ automation:
                     {%- endif -%}
           - conditions:
             - condition: state
+              entity_id: sensor.ncaab_tamu
+              state: 'IN'
+            sequence:
+              - service: mqtt.publish        
+                data:
+                  topic: denflaps/control
+                  payload: >-
+                    {%- if is_state('sensor.ncaab_tamu','IN') -%}
+                      {%- if is_state_attr('sensor.ncaab_tamu','team_homeaway','home') -%}
+                        {{ state_attr('sensor.ncaab_tamu', 'opponent_abbr') }}{{ ' ' }}{{ state_attr('sensor.ncaab_tamu', 'opponent_score') }}{{ ' ' }}{{ state_attr('sensor.ncaab_tamu', 'team_abbr') }}{{ ' ' }}{{ state_attr('sensor.ncaab_tamu', 'team_score') }}
+                      {%- else -%}
+                        {{ state_attr('sensor.ncaab_tamu', 'team_abbr') }}{{ ' ' }}{{ state_attr('sensor.ncaab_tamu', 'team_score') }}{{ ' ' }}{{ state_attr('sensor.ncaab_tamu', 'opponent_abbr') }}{{ ' ' }}{{ state_attr('sensor.ncaab_tamu', 'opponent_score') }}
+                      {%- endif -%}
+                      {%- if is_state_attr('sensor.ncaab_tamu','last_play','END GAME') -%}
+                          {{ ' END' }}
+                      {%- elif state_attr('sensor.ncaab_tamu','clock')[:1] == 'M' or state_attr('sensor.ncaab_tamu','clock')[:1] == 'E' -%}
+                          {{ ' ' }}{{ state_attr('sensor.ncaab_tamu', 'clock') }}
+                      {%- else -%}
+                          {{ ' ' }}{{ state_attr('sensor.ncaab_tamu', 'clock')[:1] }}{{ state_attr('sensor.ncaab_tamu', 'clock')[-3:-2] }}{{' O'}}{{ state_attr('sensor.ncaab_tamu', 'outs') }}{{' B'}}{{ state_attr('sensor.ncaab_tamu', 'balls') }}{{' S'}}{{ state_attr('sensor.ncaab_tamu', 'strikes') }}
+                      {%- endif -%} 
+                    {%- else -%}
+                      {{ state_attr('sensor.ncaab_tamu', 'kickoff_in') }}
+                    {%- endif -%}
+          - conditions:
+            - condition: state
               entity_id: sensor.ncaaf_tu
               state: 'IN'
             sequence:
