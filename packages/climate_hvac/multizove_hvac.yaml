@@ -1,9 +1,9 @@
 climate:
   - platform: dual_smart_thermostat
     name: Front
-    heater: input_boolean.front_hvac_heat
-    cooler: input_boolean.front_hvac_cool
-    fan: input_boolean.front_hvac_fan
+    heater: input_boolean.hvac_front_heat
+    cooler: input_boolean.hvac_front_cool
+    fan: input_boolean.hvac_front_fan
     fan_on_with_ac: true
     target_sensor: sensor.office_climate_temperature
     humidity_sensor: sensor.office_climate_humidity
@@ -26,9 +26,9 @@ climate:
 
   - platform: dual_smart_thermostat
     name: Den
-    heater: input_boolean.den_hvac_heat
-    cooler: input_boolean.den_hvac_cool
-    fan: input_boolean.den_hvac_fan
+    heater: input_boolean.hvac_den_heat
+    cooler: input_boolean.hvac_den_cool
+    fan: input_boolean.hvac_den_fan
     fan_on_with_ac: true
     target_sensor: sensor.den_climate_temperature
     humidity_sensor: sensor.den_climate_humidity
@@ -48,9 +48,9 @@ climate:
 
   - platform: dual_smart_thermostat
     name: Master
-    heater: input_boolean.master_hvac_heat
-    cooler: input_boolean.master_hvac_cool
-    fan: input_boolean.master_hvac_fan
+    heater: input_boolean.hvac_master_heat
+    cooler: input_boolean.hvac_master_cool
+    fan: input_boolean.hvac_master_fan
     fan_on_with_ac: true
     target_sensor: sensor.master_bedroom_climate_temperature
     humidity_sensor: sensor.master_bedroom_climate_humidity
