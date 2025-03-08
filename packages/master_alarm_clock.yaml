@@ -161,17 +161,10 @@ automation:
                 entity_id: timer.master_snooze
               - service: climate.set_temperature
                 data:
-                  entity_id: climate.living_areas
-                  target_temp_high: 78
-                  target_temp_low: 68
-              - service: climate.set_temperature
-                data:
-                  entity_id: climate.front_rooms
-                  target_temp_high: 78
-                  target_temp_low: 68
-              - service: climate.set_temperature
-                data:
-                  entity_id: climate.master_suite
+                  entity_id: 
+                    - climate.den_thermostat
+                    - climate.front_thermostat
+                    - climate.master_thermostat
                   target_temp_high: 78
                   target_temp_low: 68
       - service: input_boolean.turn_off
