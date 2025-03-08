@@ -3,7 +3,7 @@
 type: custom:stack-in-card
 cards:
   - type: custom:simple-thermostat
-    entity: climate.living_areas
+    entity: climate.den_thermostat
     icon: mdi:thermostat-box
     step_size: 1
     decimals: 0
