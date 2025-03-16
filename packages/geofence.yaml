@@ -3,7 +3,7 @@ automation:
     id: ff1b8ae9-ea8c-4881-8963-ce11161cb40a
     trigger:
       - platform: numeric_state
-        entity_id: sensor.home_shawn_7t_distance
+        entity_id: sensor.home_shawn_n30_distance
         below: 6600
     action:
       - service: input_boolean.turn_on
@@ -13,7 +13,7 @@ automation:
     id: ed8de0cb-33ff-455b-9c65-fdfca8ce4e2a
     trigger:
       - platform: numeric_state
-        entity_id: sensor.home_shawn_7t_distance
+        entity_id: sensor.home_shawn_n30_distance
         above: 6600
     action:
       - service: input_boolean.turn_off

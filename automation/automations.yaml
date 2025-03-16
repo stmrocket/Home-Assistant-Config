@@ -23,7 +23,7 @@
       entity_id: lock.garage_entry_lock
       state: locked
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_n30
       data:
         message: The alarm is fully armed in away mode and all doors are secure.
         title: House Secure

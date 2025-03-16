@@ -219,7 +219,7 @@ automation:
             attribute: changed_by
             state: "Gary"
     action:
-      service: notify.mobile_app_shawn_7t
+      service: notify.mobile_app_shawn_n30
       data:
         title: Alarm Disarmed
         message: The alarm has been disarmed.
@@ -236,7 +236,7 @@ automation:
         entity_id: input_boolean.vacation_mode
         state: "on"
     action:
-      service: notify.mobile_app_shawn_7t
+      service: notify.mobile_app_shawn_n30
       data:
         title: Alarm Armed
         message: The alarm has been armed.
@@ -253,7 +253,7 @@ automation:
         entity_id: input_boolean.vacation_mode
         state: "on"
     action:
-      service: notify.mobile_app_shawn_7t
+      service: notify.mobile_app_shawn_n30
       data:
         title: Notification Test
         message: Notification test -  {{now().strftime('%Y-%m-%d %H:%M:%S') }}

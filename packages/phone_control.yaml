@@ -8,7 +8,7 @@ automation:
         for:
             minutes: 1
     action:      
-      - action: notify.mobile_app_shawn_7t
+      - action: notify.mobile_app_shawn_n30
         data:
           message: "command_ringer_mode"
           data:
@@ -30,7 +30,7 @@ automation:
         for:
             minutes: 1
     action:
-      - action: notify.mobile_app_shawn_7t
+      - action: notify.mobile_app_shawn_n30
         data:
           message: "command_ringer_mode"
           data:
@@ -44,7 +44,7 @@ automation:
       platform: state
       to: armed_night
     action:
-      - action: notify.mobile_app_shawn_7t
+      - action: notify.mobile_app_shawn_n30
         data:
           message: "command_dnd"
           data:
@@ -62,7 +62,7 @@ automation:
       platform: state
       to: disarmed
     action:
-      - action: notify.mobile_app_shawn_7t
+      - action: notify.mobile_app_shawn_n30
         data:
           message: "command_dnd"
           data:
