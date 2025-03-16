@@ -5,7 +5,7 @@
       entity_id: switch.elk_fire_alarm
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_n30
       data:
         message: The fire alarm has been triggered.
         title: Alarm!
@@ -110,7 +110,7 @@
       entity_id: switch.elk_co_alarm
       to: "on"
   action:
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_n30
       data:
         message: The CO alarm has been triggered.
         title: Alarm!

@@ -230,7 +230,7 @@ automation:
           file: 1
       - service: timer.start
         entity_id: timer.dryer_alert
-      - service: notify.mobile_app_shawn_7t
+      - service: notify.mobile_app_shawn_n30
         data:
           message: The dryer has stopped.
           title: Laundry Update
@@ -300,7 +300,7 @@ automation:
           file: 3
       - service: timer.start
         entity_id: timer.washer_alert
-      - service: notify.mobile_app_shawn_7t
+      - service: notify.mobile_app_shawn_n30
         data:
           message: The washer has stopped.
           title: Laundry Update

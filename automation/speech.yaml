@@ -316,7 +316,7 @@
               show_state: false
               show_name: false        
               entity: camera.front_porch
-    - service: notify.mobile_app_shawn_7t
+    - service: notify.mobile_app_shawn_n30
       data_template:
         title: Doorbell
         message: Someone is at the front door.

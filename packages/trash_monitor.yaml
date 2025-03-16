@@ -488,7 +488,7 @@ automation:
                     alias: Test if trash is Home, Unavailable, or Unknown
                 alias: Test if bin is at home
             sequence:
-              - service: notify.mobile_app_shawn_7t
+              - service: notify.mobile_app_shawn_n30
                 data:
                   title: 🗑️ Trash!
                   message: The trash has not been taken out yet. Pickup is tomorrow.
@@ -523,7 +523,7 @@ automation:
                     alias: Test if recycling is Home, Unavailable, or Unknown
                 alias: Test if bins are at home
             sequence:
-              - service: notify.mobile_app_shawn_7t
+              - service: notify.mobile_app_shawn_n30
                 data:
                   title: ♻️ Recycling & Trash!
                   message: >-
@@ -557,7 +557,7 @@ automation:
                         entity_id: binary_sensor.trash_bin_present
                         state: "on"
             sequence:
-              - service: notify.mobile_app_shawn_7t
+              - service: notify.mobile_app_shawn_n30
                 data:
                   title: 🗑️ Trash!
                   message: The trash was already taken down. Was that you?
@@ -593,7 +593,7 @@ automation:
                         entity_id: binary_sensor.recycling_bin_present
                         state: "on"
             sequence:
-              - service: notify.mobile_app_shawn_7t
+              - service: notify.mobile_app_shawn_n30
                 data:
                   title: ♻️ Recycling & Trash?
                   message: >-
@@ -645,7 +645,7 @@ automation:
                   minutes: 0
                   seconds: 1
                   milliseconds: 0
-              - service: notify.mobile_app_shawn_7t
+              - service: notify.mobile_app_shawn_n30
                 data:
                   title: 🗑️ Trash picked up
                   message: The trash bin has been picked up.
@@ -689,7 +689,7 @@ automation:
                   minutes: 0
                   seconds: 1
                   milliseconds: 0
-              - service: notify.mobile_app_shawn_7t
+              - service: notify.mobile_app_shawn_n30
                 data:
                   title: ♻️🗑️ Recycling & trash picked up
                   message: The recycling & trash bins have been picked up.
@@ -723,7 +723,7 @@ automation:
                   minutes: 0
                   seconds: 1
                   milliseconds: 0
-              - service: notify.mobile_app_shawn_7t
+              - service: notify.mobile_app_shawn_n30
                 data:
                   title: ♻️🗑️ Recycling or trash picked up
                   message: The recycling or trash bins still haven't been picked up.
@@ -773,7 +773,7 @@ automation:
               {{ (as_timestamp(now()) -
               as_timestamp(states.sensor.recycling_bin_rssi.last_updated)) > 900 }}
     action:
-      - service: notify.mobile_app_shawn_7t
+      - service: notify.mobile_app_shawn_n30
         data:
           title: 📡 Bluetooth beacon state unknown
           message: >-

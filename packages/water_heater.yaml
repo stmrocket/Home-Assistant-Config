@@ -34,7 +34,7 @@ alert:
     message: "The water heater pilot light has failed."
     done_message: "The water heater pilot light has been re-lit."
     notifiers:
-      - mobile_app_shawn_7t
+      - mobile_app_shawn_n30
 
 automation:
   - alias: Water Heater Pilot Alert
