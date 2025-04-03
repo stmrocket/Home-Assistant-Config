@@ -132,6 +132,8 @@ lovelace:
       type: module
     - url: /hacsfiles/platinum-weather-card/platinum-weather-card.js
       type: module
+    - url: /hacsfiles/sidebar-card/sidebar-card.js
+      type: module
 
 # Sensors
 sensor:
