@@ -141,6 +141,8 @@ lovelace:
       type: module
     - url: /hacsfiles/decluttering-card/decluttering-card.js
       type: module
+    - url: /hacsfiles/lovelace-wallpanel/wallpanel.js
+      type: module
 
 # Sensors
 sensor:

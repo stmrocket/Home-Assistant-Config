@@ -74,7 +74,7 @@ midnight:
   primary-color: "#5294E2"
   primary-text-color: "#FFFFFF"
   secondary-background-color: "#383C45"
-  secondary-text-color: "#5294E2"
+  secondary-text-color: "#FFFFFF" #Was 5294E2
   sidebar-background-color: "var(--paper-listbox-background-color)"
   sidebar-icon-color: "rgba(255, 255, 255, 0.70)"
   #sidebar-selected-icon-color: "var(--primary-color)"
@@ -119,3 +119,7 @@ midnight:
   popup-background-color: "#383C45"
   popup-padding-x: 0px
   popup-padding-y: 0px
+
+mini-media-player-mmp: rgba(255, 255, 255, 0.6)  #or for night rgba(0, 0, 0, 0.6)
+text-color: '#404040'
+accent-color: '#9FD848' 
