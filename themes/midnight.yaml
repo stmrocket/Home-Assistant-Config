@@ -120,4 +120,4 @@ midnight:
   popup-padding-x: 0px
   popup-padding-y: 0px
 
-mini-media-player-mmp: rgba(0, 0, 0, 0.6)
+  mini-media-player-mmp: rgba(0, 0, 0, 0.6)
