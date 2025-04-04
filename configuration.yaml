@@ -56,6 +56,11 @@ lovelace:
       mode: yaml
       filename: lovelace-server.yaml
       title: Server Tablet
+      show_in_sidebar: false    
+    lovelace-crestron-kitchen:
+      mode: yaml
+      filename: lovelace-crestron-kitchen.yaml
+      title: Kitchen Crestron Wall Panel
       show_in_sidebar: false
   resources:
     - url: /hacsfiles/bar-card/bar-card.js
@@ -133,6 +138,8 @@ lovelace:
     - url: /hacsfiles/platinum-weather-card/platinum-weather-card.js
       type: module
     - url: /hacsfiles/sidebar-card/sidebar-card.js
+      type: module
+    - url: /hacsfiles/decluttering-card/decluttering-card.js
       type: module
 
 # Sensors
