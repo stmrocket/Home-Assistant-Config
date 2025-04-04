@@ -1,4 +1,4 @@
-media_card_speaker:
+media_card_panel:
   card:
     type: picture-elements
     image: local/overlay.svg
@@ -10,7 +10,7 @@ media_card_speaker:
         }                          
     elements:
       - aspect_ratio: 1/1
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         show_icon: false
         show_label: false
         show_last_changed: false
@@ -62,17 +62,46 @@ media_card_speaker:
           border-color: rgba(0,0,0,0.0)
         card:
           artwork: none
-          entity: '[[entity]]'
+          entity: media_player.[[entity]]
           group: false
           icon: 'mdi:speaker'
           hide:
             controls: true
-            icon: false
-            name: false
+            icon: true
+            name: true
             power: true
             runtime: false
             source: true
             volume: true
+            progress: false
+          shortcuts:
+            columns: 5
+            buttons:
+              - name: Christian
+                type: script
+                id: script.panel_christian
+                data:
+                  entity: '[[entity]]'
+              - name: Country
+                type: script
+                id: script.panel_country
+                data:
+                  entity: '[[entity]]'
+              - name: Scores
+                type: script
+                id: script.panel_scores
+                data:
+                  entity: '[[entity]]'
+              - name: XMAS
+                type: script
+                id: script.panel_christmas
+                data:
+                  entity: '[[entity]]'
+              - name: Cast
+                type: script
+                id: script.panel_cast
+                data:
+                  entity: '[[entity]]'
           hold_action:
             action: none
           tap_action:
@@ -94,7 +123,7 @@ media_card_speaker:
           type: 'custom:mini-media-player'
       - icon: 'mdi:chevron-right'
         template: music_card_speaker_button
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         style:
           right: '-7.5%'
           top: 50%
@@ -104,20 +133,20 @@ media_card_speaker:
           action: call-service
           service: media_player.media_next_track
           service_data:
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium
         hold_action:
           action: call-service
           service: media_player.media_seek
           service_data:
             seek_position: "[[[ return entity.attributes.media_position + 15 ]]]"
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: heavy          
           repeat: 1000
         type: 'custom:button-card'            
       - icon: 'mdi:chevron-left'
         template: music_card_speaker_button
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         style:
           right: 57.5%
           top: 50%
@@ -127,14 +156,14 @@ media_card_speaker:
           action: call-service
           service: media_player.media_previous_track
           service_data:
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium
         hold_action:
           action: call-service
           service: media_player.media_seek
           service_data:
             seek_position: "[[[ return entity.attributes.media_position - 15 ]]]"
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: heavy          
           repeat: 1000
         type: 'custom:button-card'            
@@ -144,7 +173,7 @@ media_card_speaker:
         show_icon: false
         show_entity_picture: true
         size: 100%
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         style:
           right: 10%
           top: 50%
@@ -164,14 +193,14 @@ media_card_speaker:
           action: call-service
           service: media_player.media_play_pause
           service_data:
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium
         hold_action:
           action: none
         type: 'custom:button-card'
       - icon: 'mdi:close-circle'
         template: music_card_speaker_button
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         style:
           right: 35%
           top: 15%
@@ -184,14 +213,14 @@ media_card_speaker:
             is_volume_muted: >
               [[[ if (entity.attributes.is_volume_muted == false) return 'true'; return
               'false' ]]]
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium          
         hold_action:
           action: none     
         type: 'custom:button-card'            
       - icon: 'mdi:minus-circle'
         template: music_card_speaker_button
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         style:
           right: 60%
           top: 25%
@@ -202,20 +231,20 @@ media_card_speaker:
           service: media_player.volume_set
           service_data:
             volume_level: "[[[ return entity.attributes.volume_level - 0.020 ]]]"
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium       
         hold_action:
           action: call-service
           service: media_player.volume_set
           service_data:
             volume_level: "[[[ return entity.attributes.volume_level - 0.020 ]]]"
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium       
           repeat: 300
         type: 'custom:button-card'            
       - icon: 'mdi:plus-circle'
         template: music_card_speaker_button
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         style:
           left: 75%
           top: 25%
@@ -226,20 +255,20 @@ media_card_speaker:
           service: media_player.volume_set
           service_data:
             volume_level: "[[[ return entity.attributes.volume_level + 0.020 ]]]"
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium          
         hold_action:
           action: call-service
           service: media_player.volume_set
           service_data:
             volume_level: "[[[ return entity.attributes.volume_level + 0.020 ]]]"
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium          
           repeat: 300
         type: 'custom:button-card'            
       - icon: 'mdi:power-standby'
         template: music_card_speaker_button
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         style:
           right: 80%
           top: 10%
@@ -249,13 +278,13 @@ media_card_speaker:
           action: call-service
           service: media_player.toggle
           service_data:
-            entity_id: '[[entity]]'
+            entity_id: media_player.[[entity]]
           haptic: medium
         hold_action:
           action: none
         type: 'custom:button-card'                
       - icon: 'mdi:dots-vertical'
-        entity: '[[entity]]'
+        entity: media_player.[[entity]]
         template: music_card_speaker_button
         style:
           left: 90%

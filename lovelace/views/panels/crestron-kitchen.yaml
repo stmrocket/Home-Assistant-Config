@@ -23,6 +23,25 @@ cards:
       #                        Home - CCTV                            #
       #                                                               #
       #################################################################
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.acurite_ws_temperature
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 24
+        points_per_hour: 1
+        show:
+          icon: false
+          extrema: false
+          name: false
+        color_thresholds:
+          - value: 80
+            color: "#e74c3c"
+          - value: 75
+            color: "#1db954"
+          - value: 70
+            color: "#3498db"
       - type: glance
         columns: 4
         show_name: true
@@ -32,9 +51,6 @@ cards:
           - entity: camera.east_front
           - entity: camera.west_front
           - entity: camera.back_yard
-
-      - type: "custom:gap-card"
-        height: 100
   #################################################################
   #                                                               #
   #                         Home - Media                          #
@@ -42,48 +58,649 @@ cards:
   #################################################################
   - type: vertical-stack
     cards:
-      - type: alarm-panel
-        entity: alarm_control_panel.house
+      - type: horizontal-stack
         cards:
-          - type: 
-            states:
-              - arm_home
-              - arm_away
-              - arm_night
-      
-      - type: custom:mini-media-player
-        entity: media_player.kitchen_stereo
-        artwork: cover
-        volume_stateless: true
-        idle_view:
-          when_idle: true
-          when_standby: true
-        hide:
-          icon: true
-          progress: true
-        shortcuts:
-          columns: 5
-          buttons:
-            - name: Christian
-              type: script
-              id: script.mass_select_christian
-            - name: Country
-              type: script
-              id: script.mass_select_country
-            - name: Scores
-              type: script
-              id: script.mass_select_Scores
-            - name: XMAS
-              type: script
-              id: script.mass_select_christmas
-            - name: Cast
-              type: script
-              id: script.mass_select_christmas
-        tap_action:
-          action: call-service
-          service: media_player.toggle
-          service_data:
-            entity_id: media_player.kitchen_stereo
+          - type: "custom:button-card"
+            entity: sensor.litter_robot_status_short
+            color_type: icon
+            icon: mdi:cat
+            state:
+              - value: "Ready"
+                color: rgb(255, 255, 255)
+                name: "[[[ return `Ready - ${states['sensor.litter_robot_drawer_level'].state}%` ]]]"
+              - value: "Clean"
+                color: rgb(255, 255, 255)
+                name: Clean
+              - value: "Drawer 2"
+                color: rgb(255, 255, 255)
+                name: Drawer 2
+              - value: "Drawer 1"
+                color: rgb(255, 255, 255)
+                name: Drawer 1
+              - value: "Sensor"
+                color: rgb(228, 94, 101)
+                name: Sensor
+              - value: "Timing"
+                color: rgb(255, 255, 255)
+                name: Timing
+              - value: "Bonnet"
+                color: rgb(228, 94, 101)
+                name: Bonnet
+              - value: "Paused"
+                color: rgb(228, 94, 101)
+                name: Paused
+              - value: "Off"
+                color: rgb(255, 255, 255)
+                name: "Off"
+              - value: "Full"
+                color: rgb(228, 94, 101)
+                name: Full
+              - value: "Error"
+                color: rgb(228, 94, 101)
+                name: Error
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Litter Robot
+                  content:
+                    type: custom:vertical-stack-in-card
+                    cards:
+                      - type: entities
+                        entities:
+                          - entity: sensor.litter_robot_status_short
+                            name: Status
+                            icon: mdi:cat
+                          - entity: counter.litter_robot_cycle_count
+                            name: Cycle Count
+                            icon: mdi:toilet
+                          - entity: sensor.litter_robot_average_cycle_capacity
+                            name: Average Drawer Capacity
+                            icon: mdi:trash-can-outline
+
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:button-card"
+                            entity: switch.litter_robot_power
+                            color_type: icon
+                            state:
+                              - value: "on"
+                                color: rgb(228, 94, 101)
+                              - value: "off"
+                                color: rgb(255, 255, 255)
+                            icon: mdi:power
+                            name: Power
+
+                          - type: "custom:button-card"
+                            color_type: icon
+                            color: rgb(255, 255, 255)
+                            icon: mdi:trash-can
+                            name: Empty
+                            tap_action:
+                              action: call-service
+                              service: script.litter_robot_empty
+
+                          - type: "custom:button-card"
+                            color_type: icon
+                            color: rgb(255, 255, 255)
+                            icon: mdi:reload
+                            name: Cycle
+                            tap_action:
+                              action: call-service
+                              service: vacuum.start
+                              service_data:
+                                entity_id: vacuum.april_s_carnival_litter_box
+
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:button-card"
+                            entity: switch.april_s_carnival_panel_lockout
+                            color_type: icon
+                            state:
+                              - value: "on"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:lock
+                              - value: "off"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:lock-open
+                            name: Lock
+
+                          - type: "custom:button-card"
+                            entity: switch.april_s_carnival_night_light_mode
+                            color_type: icon
+                            state:
+                              - value: "on"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:lightbulb-on-outline
+                              - value: "off"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:lightbulb-outline
+                            name: Light
+
+                          - type: "custom:button-card"
+                            entity: binary_sensor.april_s_carnival_sleeping
+                            color_type: icon
+                            state:
+                              - value: "on"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:sleep
+                              - value: "off"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:sleep-off
+                            name: Sleep
+
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:button-card"
+                            entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                            color_type: icon
+                            icon: mdi:timer-outline
+                            state:
+                              - value: "3"
+                                color: rgb(228, 94, 101)
+                              - operator: "!="
+                                value: "3"
+                                color: rgb(255, 255, 255)
+                            name: 3 Min.
+                            tap_action:
+                              action: call-service
+                              service: select.select_option
+                              service_data:
+                                entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                                option: "3"
+
+                          - type: "custom:button-card"
+                            entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                            color_type: icon
+                            icon: mdi:timer-outline
+                            state:
+                              - value: "7"
+                                color: rgb(228, 94, 101)
+                              - operator: "!="
+                                value: "7"
+                                color: rgb(255, 255, 255)
+                            name: 7 Min.
+                            tap_action:
+                              action: call-service
+                              service: select.select_option
+                              service_data:
+                                entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                                option: "7"
+
+                          - type: "custom:button-card"
+                            entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                            color_type: icon
+                            icon: mdi:timer-outline
+                            state:
+                              - value: "15"
+                                color: rgb(228, 94, 101)
+                              - operator: "!="
+                                value: "15"
+                                color: rgb(255, 255, 255)
+                            name: 15 Min.
+                            tap_action:
+                              action: call-service
+                              service: select.select_option
+                              service_data:
+                                entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                                option: "15"   
+          - type: "custom:button-card"
+            entity: alarm_control_panel.house
+            color_type: icon
+            state:
+              - value: "disarmed"
+                color: rgb(255, 255, 255)
+                name: Disarmed
+                icon: mdi:shield-off
+              - value: "armed_home"
+                color: rgb(228, 94, 101)
+                name: Stay
+                icon: mdi:shield-home
+              - value: "armed_night"
+                color: rgb(228, 94, 101)
+                name: Night
+                icon: mdi:shield-moon
+              - value: "armed_away"
+                color: rgb(228, 94, 101)
+                name: Away
+                icon: mdi:shield-lock
+            tap_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: sensor.washer_status
+            color_type: icon
+            icon: mdi:washing-machine
+            state:
+              - value: "Washing"
+                color: rgb(228, 94, 101)
+                name: Washing
+              - value: "Idle"
+                color: rgb(255, 255, 255)
+                name: Idle
+              - value: "Done"
+                color: rgb(255, 255, 255)
+                name: Done
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Washer
+                  content:
+                    type: entities
+                    entities:
+                      - entity: sensor.washer_state
+                      - entity: sensor.washer_energy_voltage
+                      - entity: sensor.washer_energy_power
+                      - entity: sensor.washer_energy_current
+                      - entity: sensor.washer_energy_today
+                        icon: "mdi:gauge"
+                      - entity: sensor.washer_energy_yesterday
+                        icon: "mdi:gauge"
+                      - entity: sensor.washer_signal
+                        icon: "mdi:wifi"
+            hold_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Washer
+                  content:
+                    type: entities
+                    entities:
+                      - entity: sensor.washer_state
+                      - entity: sensor.washer_energy_voltage
+                      - entity: sensor.washer_energy_power
+                      - entity: sensor.washer_energy_current
+                      - entity: sensor.washer_energy_today
+                        icon: "mdi:gauge"
+                      - entity: sensor.washer_energy_yesterday
+                        icon: "mdi:gauge"
+                      - entity: sensor.washer_signal
+                        icon: "mdi:wifi"
+            double_tap_action:
+              action: call-service
+              service: input_boolean.turn_off
+              service_data:
+                entity_id: input_boolean.washer_end
+
+          - type: "custom:button-card"
+            entity: sensor.dryer_status
+            color_type: icon
+            icon: mdi:tumble-dryer
+            state:
+              - value: "Drying"
+                color: rgb(228, 94, 101)
+                name: Drying
+              - value: "Idle"
+                color: rgb(255, 255, 255)
+                name: Idle
+              - value: "Done"
+                color: rgb(255, 255, 255)
+                name: Done
+              - value: "Door Open"
+                color: rgb(255, 200, 0)
+                name: Door
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Dryer
+                  content:
+                    type: entities
+                    entities:
+                      - entity: sensor.dryer_state
+                      - entity: sensor.dryer_energy_voltage
+                      - entity: sensor.dryer_energy_power
+                      - entity: sensor.dryer_energy_current
+                      - entity: sensor.dryer_energy_today
+                        icon: "mdi:gauge"
+                      - entity: sensor.dryer_energy_yesterday
+                        icon: "mdi:gauge"
+                      - entity: sensor.dryer_signal
+                        icon: "mdi:wifi"
+            hold_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Dryer
+                  content:
+                    type: entities
+                    entities:
+                      - entity: sensor.dryer_state
+                      - entity: sensor.dryer_energy_voltage
+                      - entity: sensor.dryer_energy_power
+                      - entity: sensor.dryer_energy_current
+                      - entity: sensor.dryer_energy_today
+                        icon: "mdi:gauge"
+                      - entity: sensor.dryer_energy_yesterday
+                        icon: "mdi:gauge"
+                      - entity: sensor.dryer_signal
+                        icon: "mdi:wifi"
+            double_tap_action:
+              action: call-service
+              service: input_boolean.turn_off
+              service_data:
+                entity_id: input_boolean.dryer_end
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: lock.front_door_lock
+            color_type: icon
+            state:
+              - value: "locked"
+                color: rgb(255, 255, 255)
+                icon: mdi:lock
+              - value: "unlocked"
+                color: rgb(228, 94, 101)
+                icon: mdi:lock-open
+            name: Front
+            tap_action:
+              action: call-service
+              service: lock.lock
+              service_data:
+                entity_id: lock.front_door_lock
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: lock.garage_entry_lock
+            color_type: icon
+            state:
+              - value: "locked"
+                color: rgb(255, 255, 255)
+                icon: mdi:lock
+              - value: "unlocked"
+                color: rgb(228, 94, 101)
+                icon: mdi:lock-open
+            name: Garage
+            tap_action:
+              action: call-service
+              service: lock.lock
+              service_data:
+                entity_id: lock.garage_entry_lock
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: lock.back_door_lock
+            color_type: icon
+            state:
+              - value: "locked"
+                color: rgb(255, 255, 255)
+                icon: mdi:lock
+              - value: "unlocked"
+                color: rgb(228, 94, 101)
+                icon: mdi:lock-open
+            name: Back
+            tap_action:
+              action: call-service
+              service: lock.lock
+              service_data:
+                entity_id: lock.back_door_lock
+            hold_action:
+              action: more-info      
+      - type: "custom:gap-card"
+        height: 1
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: cover.kitchen_blinds
+            color_type: icon
+            state:
+              - value: "open"
+                color: rgb(228, 94, 101)
+                icon: mdi:blinds-open
+              - value: "closed"
+                color: rgb(255, 255, 255)
+                icon: mdi:blinds
+              - value: "unavailable"
+                color: rgb(228, 94, 101)
+                icon: mdi:exclamation
+            name: Blinds
+            tap_action:
+              action: toggle
+            hold_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Kitchen Blinds
+                  content:
+                    type: custom:vertical-stack-in-card
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:button-card"
+                            entity: cover.left_kitchen_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: Left
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: cover.right_kitchen_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: Right
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: cover.east_kitchen_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: East
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+          - type: "custom:button-card"
+            entity: light.kitchen_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lightbulb-outline
+            name: Lights
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: light.kitchen_sink_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lightbulb-outline
+            name: Sink Light
+            hold_action:
+              action: more-info
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: light.dining_room_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lightbulb-outline
+            name: Table
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: light.kitchen_leds
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lightbulb-outline
+            name: Cabinets
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: light.kitchen_worklights
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lightbulb-outline
+            name: Counter
+            hold_action:
+              action: more-info
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: switch.popper
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:popcorn
+            name: Popper
+            hold_action:
+              action: more-info
+          - type: custom:button-card
+            entity: vacuum.valetudo_crookshanks
+            icon: mdi:robot-vacuum
+            color_type: icon
+            name: '[[[ return ` ${entity.state}` ]]]'
+            styles:
+              name:
+                - text-transform: capitalize
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Vacuum Status
+                  content:
+                    type: custom:stack-in-card
+                    cards:
+                      - type: custom:valetudo-map-card
+                        vacuum: valetudo_crookshanks
+                        title: Crookshanks
+                      - type: entities
+                        show_header_toggle: false
+                        entities:
+                          - entity: input_boolean.vacuum_auto
+                          - entity: sensor.next_vacuum_cycle
+                            name: Next Schedule
+                            icon: mdi:clock-outline
+                      - type: horizontal-stack
+                        cards:
+                          - type: custom:button-card
+                            icon: mdi:calendar-range
+                            name: Day 1
+                            tap_action:
+                              action: fire-dom-event
+                              browser_mod:
+                                service: browser_mod.popup
+                                data:
+                                  title: Day 1 Vacuum Schedule
+                                  content:
+                                    type: entities
+                                    show_header_toggle: false
+                                    entities:
+                                      - input_boolean.vacuum_weekday_1_entry
+                                      - input_boolean.vacuum_weekday_1_hall
+                                      - input_boolean.vacuum_weekday_1_office
+                                      - input_boolean.vacuum_weekday_1_guest_bedroom
+                                      - input_boolean.vacuum_weekday_1_guest_bathroom
+                                      - input_boolean.vacuum_weekday_1_server_room
+                                      - input_boolean.vacuum_weekday_1_den
+                                      - input_boolean.vacuum_weekday_1_master_bedroom
+                                      - input_boolean.vacuum_weekday_1_master_bathroom
+                                      - input_boolean.vacuum_weekday_1_kitchen
+                                      - input_boolean.vacuum_weekday_1_shack
+                          - type: custom:button-card
+                            icon: mdi:calendar-range
+                            name: Day 2
+                            tap_action:
+                              action: fire-dom-event
+                              browser_mod:
+                                service: browser_mod.popup
+                                data:
+                                  title: Day 2 Vacuum Schedule
+                                  content:
+                                    type: entities
+                                    show_header_toggle: false
+                                    entities:
+                                      - input_boolean.vacuum_weekday_2_entry
+                                      - input_boolean.vacuum_weekday_2_hall
+                                      - input_boolean.vacuum_weekday_2_office
+                                      - input_boolean.vacuum_weekday_2_guest_bedroom
+                                      - input_boolean.vacuum_weekday_2_guest_bathroom
+                                      - input_boolean.vacuum_weekday_2_server_room
+                                      - input_boolean.vacuum_weekday_2_den
+                                      - input_boolean.vacuum_weekday_2_master_bedroom
+                                      - input_boolean.vacuum_weekday_2_master_bathroom
+                                      - input_boolean.vacuum_weekday_2_kitchen
+                                      - input_boolean.vacuum_weekday_2_shack
+                          - type: custom:button-card
+                            icon: mdi:gesture-tap-button
+                            name: Manual
+                            tap_action:
+                              action: fire-dom-event
+                              browser_mod:
+                                service: browser_mod.popup
+                                data:
+                                  title: Manual Vacuum Schedule
+                                  content:
+                                    type: entities
+                                    show_header_toggle: false
+                                    entities:
+                                      - input_boolean.vacuum_manual_entry
+                                      - input_boolean.vacuum_manual_hall
+                                      - input_boolean.vacuum_manual_office
+                                      - input_boolean.vacuum_manual_guest_bedroom
+                                      - input_boolean.vacuum_manual_guest_bathroom
+                                      - input_boolean.vacuum_manual_server_room
+                                      - input_boolean.vacuum_manual_den
+                                      - input_boolean.vacuum_manual_master_bedroom
+                                      - input_boolean.vacuum_manual_master_bathroom
+                                      - input_boolean.vacuum_manual_kitchen
+                                      - input_boolean.vacuum_manual_shack
+                                      - type: custom:button-card
+                                        tap_action:
+                                          action: call-service
+                                          service: script.vacuum_clean_segments
+                                          confirmation: true
+                                        entity: script.vacuum_clean_segments
+                                        name: Vacuum Selected Segments
+                                        show_state: false
+                                        show_icon: false
+          - type: "custom:button-card"
+            entity: switch.wax_warmer
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:fire
+            name: Wax Warmer
+            hold_action:
+              action: more-info
 
       #################################################################
       #                                                               #
@@ -98,4 +715,4 @@ cards:
       - type: custom:decluttering-card
         template: media_card_speaker
         variables:
-          - entity: media_player.kitchen_stereo
+          - entity: kitchen_stereo
