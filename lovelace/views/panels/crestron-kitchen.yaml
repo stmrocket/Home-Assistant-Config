@@ -1,0 +1,98 @@
+#############################################################################################################################################
+#                                                                                                                                           #
+#                                                              VIEW 8 - Kitchen Tablet                                                      #
+#                                                                                                                                           #
+#############################################################################################################################################
+
+id: 1
+icon: mdi:castle
+title: Home
+cards:
+  #################################################################
+  #                                                               #
+  #                      Home - Weather Card                      #
+  #                                                               #
+  #################################################################
+
+  - type: vertical-stack
+    cards:
+      - !include /config/lovelace/cards/weather-static.yaml
+
+      #################################################################
+      #                                                               #
+      #                        Home - CCTV                            #
+      #                                                               #
+      #################################################################
+      - type: glance
+        columns: 4
+        show_name: true
+        show_state: false
+        entities:
+          - entity: camera.front_porch
+          - entity: camera.east_front
+          - entity: camera.west_front
+          - entity: camera.back_yard
+
+      - type: "custom:gap-card"
+        height: 100
+  #################################################################
+  #                                                               #
+  #                         Home - Media                          #
+  #                                                               #
+  #################################################################
+  - type: alarm-panel
+    entity: alarm_control_panel.house
+    cards:
+      - type: 
+        states:
+          - arm_home
+          - arm_away
+          - arm_night
+
+      #################################################################
+      #                                                               #
+      #                       Home - HVAC                             #
+      #                                                               #
+      #################################################################
+      - type: vertical-stack
+        cards:
+          - type: custom:mm2-clock-card
+            timezone: America/Chicago
+            displaySeconds: false
+          - type: custom:mini-media-player
+            entity: media_player.kitchen_stereo
+            artwork: cover
+            volume_stateless: true
+            idle_view:
+              when_idle: true
+              when_standby: true
+            hide:
+              icon: true
+              progress: true
+            shortcuts:
+              columns: 5
+              buttons:
+                - name: Christian
+                  type: script
+                  id: script.mass_select_christian
+                - name: Country
+                  type: script
+                  id: script.mass_select_country
+                - name: Scores
+                  type: script
+                  id: script.mass_select_Scores
+                - name: XMAS
+                  type: script
+                  id: script.mass_select_christmas
+                - name: Cast
+                  type: script
+                  id: script.mass_select_christmas
+            tap_action:
+              action: call-service
+              service: media_player.toggle
+              service_data:
+                entity_id: media_player.kitchen_stereo
+          - type: 'custom:decluttering-card'
+            template: media_card_speaker
+            variables:
+              - entity: media_player.kitchen_stereo

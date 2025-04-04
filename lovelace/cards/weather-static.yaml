@@ -1,0 +1,60 @@
+type: custom:platinum-weather-card
+card_config_version: 8
+custom1_icon: mdi:weather-rainy
+custom1_units: in
+custom1_value: sensor.rain_day
+custom2_icon: mdi:weather-pouring
+custom2_units: in/h
+custom2_value: sensor.rain_rate
+daily_forecast_days: 5
+entity_apparent_temp: sensor.local_apparent_temperature
+entity_extended: sensor.weather_description
+entity_forecast_icon: sensor.openweathermap_current_icon
+entity_forecast_icon_1: sensor.openweathermap_day_1_icon
+entity_forecast_max: sensor.openweathermap_current_maximum_temperature
+entity_forecast_max_1: sensor.openweathermap_day_1_maximum_temperature
+entity_forecast_min: sensor.openweathermap_current_minimum_temperature
+entity_forecast_min_1: sensor.openweathermap_day_1_minimum_temperature
+entity_humidity: sensor.acurite_ws_humidity
+entity_pop: sensor.openweathermap_current_pop
+entity_pop_1: sensor.openweathermap_day_1_pop
+entity_pos: sensor.openweathermap_current_precip_forecast
+entity_pos_1: sensor.openweathermap_day_1_precip_forecast
+entity_pressure: sensor.den_climate_pressure
+entity_summary: sensor.openweathermap_current_summary
+entity_sun: sun.sun
+entity_temperature: sensor.acurite_ws_temperature
+entity_uv_alert_summary: sensor.local_uv_combined
+entity_visibility: sensor.ktme_current_visibility
+entity_wind_bearing: sensor.acurite_ws_wind_direction
+entity_wind_gust: sensor.local_wind_gust_2_minute
+entity_wind_speed: sensor.acurite_ws_wind_speed
+extended_use_attr: false
+forecast_type: daily
+option_static_icons: true
+overview_layout: complete
+section_order:
+  - overview
+  - slots
+  - daily_forecast
+  - extended
+show_section_daily_forecast: true
+show_section_extended: true
+show_section_overview: true
+show_section_slots: true
+slot_l1: forecast_min
+slot_l2: wind
+slot_l3: humidity
+slot_l4: visibility
+slot_l5: sun_next
+slot_l6: custom1
+slot_l7: remove
+slot_l8: remove
+slot_r1: forecast_max
+slot_r2: popforecast
+slot_r3: uv_summary
+slot_r4: pressure
+slot_r5: sun_following
+slot_r6: custom2
+slot_r7: remove
+slot_r8: remove
