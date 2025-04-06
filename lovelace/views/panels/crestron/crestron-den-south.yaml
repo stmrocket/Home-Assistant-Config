@@ -252,27 +252,21 @@ cards:
             icon: mdi:remote-tv-off
             name: "Off"
             tap_action:
-              service: select.select_option
-              service_data:
-                entity_id: select.den_den_av
-                option: "Power Off"
+              service: script.den_av_off
 
           - type: "custom:button-card"
             entity: select.den_den_av
             color_type: icon
             state:
-              - value: "Watch Kodi"
+              - value: "Watch Android TV"
                 color: rgb(228, 94, 101)
-              - value: "Watch Kodi"
+              - value: "Watch Android TV"
                 operator: "!="
                 color: rgb(255, 255, 255)
-            icon: mdi:kodi
-            name: Kodi
+            icon: mdi:television-classic
+            name: Android
             tap_action:
-              service: select.select_option
-              service_data:
-                entity_id: select.den_den_av
-                option: "Watch Kodi"
+              service: script.den_av_tv
 
           - type: "custom:button-card"
             entity: select.den_den_av
@@ -286,7 +280,4 @@ cards:
             icon: mdi:music
             name: Music
             tap_action:
-              service: select.select_option
-              service_data:
-                entity_id: select.den_den_av
-                option: "Listen to NuVo"
+              service: script.den_av_nuvo

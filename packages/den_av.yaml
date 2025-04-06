@@ -368,46 +368,29 @@ script:
         target:
           entity_id: media_player.den_tv_android
 
-automation:
-  - alias: Den AV On With NuVo
-    id: d737a132-dd7a-458e-905c-e1cfeb761bb0
-    trigger:
-      - platform: state
-        entity_id: switch.nuvo_zone_7_power
-        to: "on"
-    action:
-      - service: select.select_option
-        data:
+  den_av_off:
+    mode: parallel
+    sequence:
+      - action: select.select_option
+        target:
           entity_id: select.den_den_av
-          option: "Listen to NuVo" 
-
-  - alias: Den Mute Amp When NuVo Off
-    id: d7a50b2a-e6e2-44bc-9358-71508c9097dd
-    trigger:
-      - platform: state
-        entity_id: switch.nuvo_zone_7_power
-        to: "off"
-    condition:
-      - condition: state
-        entity_id: select.den_den_av
-        state: "Listen to NuVo"
-    action:
-      - service: rest_command.den_avr_mute
-
-  - alias: Den AV Off With NuVo
-    id: b65d4447-c1c1-4875-9cb9-092552249790
-    trigger:
-      - platform: state
-        entity_id: switch.nuvo_zone_7_power
-        to: "off"
-        for:
-          seconds: 30
-    condition:
-      - condition: state
-        entity_id: select.den_den_av
-        state: "Listen to NuVo"
-    action:
-      - service: select.select_option
         data:
+          option: Power Off
+
+  den_av_tv:
+    mode: parallel
+    sequence:
+      - action: select.select_option
+        target:
           entity_id: select.den_den_av
-          option: "Power Off"          
+        data:
+          option: Watch Android TV
+
+  den_av_nuvo:
+    mode: parallel
+    sequence:
+      - action: select.select_option
+        target:
+          entity_id: select.den_den_av
+        data:
+          option: Watch NuVo
