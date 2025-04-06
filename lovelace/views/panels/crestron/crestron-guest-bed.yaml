@@ -12,7 +12,7 @@ cards:
       - type: custom:mm2-clock-card
         timezone: America/Chicago
         displaySeconds: false
-      - !include /config/lovelace/cards/weather-static.yaml
+      - !include /config/lovelace/cards/weather-static-7.yaml
       
   - type: vertical-stack
     cards:   
