@@ -1,0 +1,21 @@
+title: Crestron Panels
+
+button_card_templates:
+  !include /config/lovelace/resources/button_card_templates.yaml
+decluttering_templates:
+  !include /config/lovelace/resources/decluttering_card_templates.yaml
+
+background: center / cover no-repeat url("/local/lovelace/background_19.png") fixed
+views:
+  - !include /config/lovelace/views/panels/crestron/crestron-entry.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-office.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-guest-bed.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-guest-bath.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-server.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-den-south.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-den-north.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-master-bed.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-master-bath.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-shack.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-kitchen.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-dining.yaml

@@ -59,8 +59,8 @@ lovelace:
       show_in_sidebar: false    
     lovelace-crestron-kitchen:
       mode: yaml
-      filename: lovelace-crestron-kitchen.yaml
-      title: Kitchen Crestron Wall Panel
+      filename: lovelace-crestron.yaml
+      title: Crestron Wall Panels
       show_in_sidebar: false
   resources:
     - url: /hacsfiles/bar-card/bar-card.js

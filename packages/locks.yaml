@@ -132,6 +132,62 @@ sensor:
         unique_id: d9d31320-28a8-4494-a573-026a04c41a8a
         friendly_name: Shed Door Lock Status
         value_template: "{{ states('input_text.shed_door_lock_status') }}"
+        
+      front_door_status:
+        unique_id: d1e82baf-e948-46ba-958b-59b7f797b19c
+        friendly_name: Front Door Status
+        value_template: >-
+          {% if is_state('binary_sensor.front_door_status', 'on') -%}
+            open
+          {% elif  is_state('lock.front_door_lock', 'locked') -%}
+            locked
+          {% elif is_state('lock.front_door_lock', 'unlocked') -%}
+            unlocked
+          {% else -%}
+            error
+          {% endif -%}
+
+      back_door_status:
+        unique_id: 2957980c-5c66-4bec-a995-1317223ba61e
+        friendly_name: Back Door Status
+        value_template: >-
+          {% if is_state('binary_sensor.back_door_status', 'on') -%}
+            open
+          {% elif  is_state('lock.back_door_lock', 'locked') -%}
+            locked
+          {% elif is_state('lock.back_door_lock', 'unlocked') -%}
+            unlocked
+          {% else -%}
+            error
+          {% endif -%}
+
+      garage_entry_status:
+        unique_id: 494d27d7-8755-4e12-9dfb-9faaa4ff70a1
+        friendly_name: Garage Entry Status
+        value_template: >-
+          {% if is_state('binary_sensor.garage_entry_status', 'on') -%}
+            open
+          {% elif  is_state('lock.garage_entry_lock', 'locked') -%}
+            locked
+          {% elif is_state('lock.garage_entry_lock', 'unlocked') -%}
+            unlocked
+          {% else -%}
+            error
+          {% endif -%}
+
+      shed_door_status:
+        unique_id: 398b10a6-34ff-4216-931f-ae013b1f5e1e
+        friendly_name: Garage Entry Status
+        value_template: >-
+          {% if is_state('binary_sensor.shed_door_status', 'on') -%}
+            open
+          {% elif  is_state('lock.shed_door', 'locked') -%}
+            locked
+          {% elif is_state('lock.shed_door', 'unlocked') -%}
+            unlocked
+          {% else -%}
+            error
+          {% endif -%}
 
 timer:
   front_door:

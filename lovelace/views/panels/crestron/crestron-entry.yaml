@@ -1,0 +1,122 @@
+id: 0
+icon: mdi:castle
+title: Entry
+cards:
+
+  - type: vertical-stack
+    cards:     
+      - type: custom:decluttering-card
+        template: weather_static   
+      - type: custom:decluttering-card
+        template: panel_temperature_graph
+        variables:
+          - entity: sensor.acurite_ws_temperature
+      - type: custom:decluttering-card
+        template: cameras_tablet
+
+  - type: vertical-stack
+    cards:   
+      - type: custom:decluttering-card
+        template: alarm_card_panel
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: litter_robot_button
+          - type: custom:decluttering-card
+            template: alarm_panel_button
+          - type: custom:decluttering-card
+            template: garage_door_button
+
+      - type: horizontal-stack
+        cards:          
+          - type: custom:decluttering-card
+            template: front_lock_button
+          - type: custom:decluttering-card
+            template: garage_lock_button
+          - type: custom:decluttering-card
+            template: back_lock_button
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: shed_lock_button    
+          - type: custom:decluttering-card
+            template: washer_button      
+          - type: custom:decluttering-card
+            template: dryer_button        
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mm2-clock-card
+        timezone: America/Chicago
+        displaySeconds: false
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: cover.house_blinds
+            color_type: icon
+            state:
+              - value: "open"
+                color: rgb(228, 94, 101)
+                icon: mdi:blinds-open
+              - value: "closed"
+                color: rgb(255, 255, 255)
+                icon: mdi:blinds
+              - value: "unavailable"
+                color: rgb(228, 94, 101)
+                icon: mdi:exclamation
+            name: Blinds
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+              
+          - type: "custom:button-card"
+            entity: light.entry_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:lightbulb-on-outline
+              - value: "off"
+                icon: mdi:lightbulb-outline
+            name: Light
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.outside_lights
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:lightbulb-on-outline
+              - value: "off"
+                icon: mdi:lightbulb-outline
+            name: Outside
+            hold_action:
+              action: more-info
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: switch.entry_lamp
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lamp
+            name: Lamp
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.manual_timer_lights
+            color_type: icon
+            icon: mdi:lamp
+            state:
+              - value: "on"
+                color: rgb(228, 94, 101)
+              - value: "off"
+                color: rgb(255, 255, 255)
+            name: All
+            hold_action:
+              action: more-info
+          - type: custom:decluttering-card
+            template: vacuum_button_simple

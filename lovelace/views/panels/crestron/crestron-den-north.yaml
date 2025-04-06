@@ -1,0 +1,293 @@
+id: 6
+icon: mdi:castle
+title: Den North
+cards:
+
+  - type: vertical-stack
+    cards:     
+      - type: custom:decluttering-card
+        template: weather_static   
+      - type: custom:decluttering-card
+        template: panel_temperature_graph
+        variables:
+          - entity: sensor.den_climate_temperature
+      - type: custom:decluttering-card
+        template: cameras_tablet
+
+  - type: vertical-stack
+    cards:   
+      - type: custom:decluttering-card
+        template: media_card_panel
+        variables:
+          - entity: den_stereo
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: litter_robot_button
+          - type: custom:decluttering-card
+            template: alarm_panel_button
+          - type: custom:decluttering-card
+            template: garage_door_button
+
+      - type: horizontal-stack
+        cards:          
+          - type: custom:decluttering-card
+            template: front_lock_button
+          - type: custom:decluttering-card
+            template: garage_lock_button
+          - type: custom:decluttering-card
+            template: back_lock_button
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: shed_lock_button    
+          - type: custom:decluttering-card
+            template: washer_button      
+          - type: custom:decluttering-card
+            template: dryer_button        
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mm2-clock-card
+        timezone: America/Chicago
+        displaySeconds: false      
+      - type: custom:decluttering-card
+        template: bike_stats 
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: cover.den_blinds
+            color_type: icon
+            state:
+              - value: "open"
+                color: rgb(228, 94, 101)
+                icon: mdi:blinds-open
+              - value: "closed"
+                color: rgb(255, 255, 255)
+                icon: mdi:blinds
+              - value: "unavailable"
+                color: rgb(228, 94, 101)
+                icon: mdi:exclamation
+            name: Blinds
+            tap_action:
+              action: toggle
+            hold_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Den Blinds
+                  content:
+                    type: custom:vertical-stack-in-card
+                    cards:
+                      - type: horizontal-stack
+                        cards:
+                          - type: "custom:button-card"
+                            entity: cover.left_den_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: Left
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: cover.center_den_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: Center
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+
+                          - type: "custom:button-card"
+                            entity: cover.right_den_blind
+                            color_type: icon
+                            state:
+                              - value: "open"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:blinds-open
+                              - value: "closed"
+                                color: rgb(255, 255, 255)
+                                icon: mdi:blinds
+                              - value: "unavailable"
+                                color: rgb(228, 94, 101)
+                                icon: mdi:exclamation
+                            name: Right
+                            tap_action:
+                              action: toggle
+                            hold_action:
+                              action: more-info
+
+          - type: "custom:button-card"
+            entity: light.den_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:lightbulb-on-outline
+              - value: "off"
+                icon: mdi:lightbulb-outline
+            name: Light
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: switch.den_fan
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:fan
+              - value: "off"
+                icon: mdi:fan-off
+            name: Fan
+            hold_action:
+              action: more-info
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: switch.den_lamps
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lamp
+            name: Lamps
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: light.denled1_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:led-on
+              - value: "off"
+                icon: mdi:led-off
+            name: LEDs
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: light.den_window_leds
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:window-open-variant
+              - value: "off"
+                icon: mdi:window-closed-variant
+            name: Windows
+            hold_action:
+              action: more-info
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: switch.fireplace
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:fireplace
+              - value: "off"
+                icon: mdi:fireplace-off
+            name: Fire
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: switch.us_metar_map_power
+            color_type: icon
+            icon: mdi:map
+            state:
+              - value: "on"
+                color: rgb(228, 94, 101)
+                name: "[[[ return `${states['sensor.us_metar_mode_clean'].state}` ]]]"
+              - value: "off"
+                color: rgb(255, 255, 255)
+                name: Map
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.us_metar_mode
+            hold_action:
+              action: more-info
+          - type: custom:decluttering-card
+            template: vacuum_button_simple
+      
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: select.den_den_av
+            color_type: icon
+            state:
+              - value: "Power Off"
+                color: rgb(228, 94, 101)
+              - value: "Power Off"
+                operator: "!="
+                color: rgb(255, 255, 255)
+            icon: mdi:remote-tv-off
+            name: "Off"
+            tap_action:
+              service: select.select_option
+              service_data:
+                entity_id: select.den_den_av
+                option: "Power Off"
+
+          - type: "custom:button-card"
+            entity: select.den_den_av
+            color_type: icon
+            state:
+              - value: "Watch Kodi"
+                color: rgb(228, 94, 101)
+              - value: "Watch Kodi"
+                operator: "!="
+                color: rgb(255, 255, 255)
+            icon: mdi:kodi
+            name: Kodi
+            tap_action:
+              service: select.select_option
+              service_data:
+                entity_id: select.den_den_av
+                option: "Watch Kodi"
+
+          - type: "custom:button-card"
+            entity: select.den_den_av
+            color_type: icon
+            state:
+              - value: "Listen to NuVo"
+                color: rgb(228, 94, 101)
+              - value: "Listen to NuVo"
+                operator: "!="
+                color: rgb(255, 255, 255)
+            icon: mdi:music
+            name: Music
+            tap_action:
+              service: select.select_option
+              service_data:
+                entity_id: select.den_den_av
+                option: "Listen to NuVo"
