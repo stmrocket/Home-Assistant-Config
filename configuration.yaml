@@ -57,7 +57,7 @@ lovelace:
       filename: lovelace-server.yaml
       title: Server Tablet
       show_in_sidebar: false    
-    lovelace-crestron-kitchen:
+    lovelace-crestron:
       mode: yaml
       filename: lovelace-crestron.yaml
       title: Crestron Wall Panels
