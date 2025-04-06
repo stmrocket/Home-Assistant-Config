@@ -1,6 +1,7 @@
 id: 10
 icon: mdi:castle
 title: Kitchen
+type: custom:horizontal-layout
 cards:
 
   - type: vertical-stack

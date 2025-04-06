@@ -1,6 +1,7 @@
 id: 6
 icon: mdi:castle
 title: Den North
+type: custom:horizontal-layout
 cards:
 
   - type: vertical-stack

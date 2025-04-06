@@ -1146,11 +1146,11 @@ alarm_card_panel:
               background: rgba(255,255,255,0.5);
             }
             #keypad mwc-button {
-              padding: 17px !important;
+              padding: 15px !important;
               margin: 4px;
               width: 10%;
               box-sizing: border-box;
-              height: 73px;           
+              height: 68px;           
             }
             paper-input {
                 max-width: 300px !important;

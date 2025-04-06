@@ -1,6 +1,7 @@
 id: 0
 icon: mdi:castle
 title: Entry
+type: custom:horizontal-layout
 cards:
 
   - type: vertical-stack

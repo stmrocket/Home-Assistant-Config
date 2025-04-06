@@ -1,6 +1,7 @@
 id: 9
 icon: mdi:castle
 title: Shack
+type: custom:horizontal-layout
 cards:
 
   - type: vertical-stack
