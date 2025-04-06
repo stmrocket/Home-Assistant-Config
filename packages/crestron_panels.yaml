@@ -1,0 +1,52 @@
+script:
+  crestron_reload:
+    mode: parallel
+    sequence:
+      - service: button.press
+        entity_id: 
+          - button.entry_crestron_reload
+          - button.office_crestron_reload
+          - button.guest_bedroom_crestron_reload
+          - button.guest_bathroom_crestron_reload
+          - button.server_room_crestron_reload
+          - button.den_south_crestron_reload
+          - button.den_north_crestron_reload
+          - button.master_bedroom_crestron_reload
+          - button.master_bathroom_crestron_reload
+          - button.shack_crestron_reload
+          - button.kitchen_crestron_reload
+          - button.dining_room_crestron_reload
+  crestron_standby:
+    mode: parallel
+    sequence:
+      - service: button.press
+        entity_id: 
+          - button.entry_crestron_standby
+          - button.office_crestron_standby
+          - button.guest_bedroom_crestron_standby
+          - button.guest_bathroom_crestron_standby
+          - button.server_room_crestron_standby
+          - button.den_south_crestron_standby
+          - button.den_north_crestron_standby
+          - button.master_bedroom_crestron_standby
+          - button.master_bathroom_crestron_standby
+          - button.shack_crestron_standby
+          - button.kitchen_crestron_standby
+          - button.dining_room_crestron_standby
+  crestron_wake:
+    mode: parallel
+    sequence:
+      - service: button.press
+        entity_id: 
+          - button.entry_crestron_wake
+          - button.office_crestron_wake
+          - button.guest_bedroom_crestron_wake
+          - button.guest_bathroom_crestron_wake
+          - button.server_room_crestron_wake
+          - button.den_south_crestron_wake
+          - button.den_north_crestron_wake
+          - button.master_bedroom_crestron_wake
+          - button.master_bathroom_crestron_wake
+          - button.shack_crestron_wake
+          - button.kitchen_crestron_wake
+          - button.dining_room_crestron_wake

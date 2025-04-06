@@ -19,6 +19,7 @@
         - switch.shack_tablet_screen
         - switch.entry_tablet_screen
         - switch.server_tablet_screen
+    - service: script.crestron_standby
 
 - alias: Tablet When Home
   id: ebfd2c16-e7a6-417a-b820-236884d35fe7
@@ -40,6 +41,7 @@
         - switch.shack_tablet_screen
         - switch.entry_tablet_screen
         - switch.server_tablet_screen
+    - service: script.crestron_wake
 
 - alias: Tablet when Away
   id: afe3db69-fe02-4bc7-8282-0935e4976610
@@ -57,6 +59,7 @@
         - switch.shack_tablet_screen
         - switch.entry_tablet_screen
         - switch.server_tablet_screen
+    - service: script.crestron_standby
 
 - alias: Reload Tablets When HA Starts
   id: 37809ea5-1069-4fb7-8a84-082d72e77732
