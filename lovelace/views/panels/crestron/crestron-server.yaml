@@ -1,6 +1,7 @@
 id: 4
 icon: mdi:castle
 title: Server
+type: custom:horizontal-layout
 cards:
 
   - type: vertical-stack

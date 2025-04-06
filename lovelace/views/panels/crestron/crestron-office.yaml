@@ -1,6 +1,7 @@
 id: 1
 icon: mdi:castle
 title: Office
+type: custom:horizontal-layout
 cards:
 
   - type: vertical-stack

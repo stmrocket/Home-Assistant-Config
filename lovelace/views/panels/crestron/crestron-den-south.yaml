@@ -1,6 +1,7 @@
 id: 5
 icon: mdi:castle
 title: Den South
+type: custom:horizontal-layout
 cards:
 
   - type: vertical-stack
