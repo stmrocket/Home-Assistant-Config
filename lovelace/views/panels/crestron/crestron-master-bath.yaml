@@ -1,0 +1,22 @@
+id: 8
+icon: mdi:castle
+title: Master Bath
+type: custom:masonry-layout
+layout:
+  width: 400
+  max_cols: 2
+cards:
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mm2-clock-card
+        timezone: America/Chicago
+        displaySeconds: false
+      - !include /config/lovelace/cards/weather-static.yaml
+      
+  - type: vertical-stack
+    cards:   
+      - type: custom:decluttering-card
+        template: media_card_panel
+        variables:
+          - entity: master_bathroom_stereo

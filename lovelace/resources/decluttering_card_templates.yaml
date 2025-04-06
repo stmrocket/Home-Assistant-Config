@@ -297,3 +297,873 @@ media_card_panel:
         hold_action:
           action: none
         type: 'custom:button-card'
+
+weather_static:
+  card:
+    type: custom:platinum-weather-card
+    card_config_version: 8
+    custom1_icon: mdi:weather-rainy
+    custom1_units: in
+    custom1_value: sensor.rain_day
+    custom2_icon: mdi:weather-pouring
+    custom2_units: in/h
+    custom2_value: sensor.rain_rate
+    daily_forecast_days: 5
+    entity_apparent_temp: sensor.local_apparent_temperature
+    entity_extended: sensor.weather_description
+    entity_forecast_icon: sensor.openweathermap_current_icon
+    entity_forecast_icon_1: sensor.openweathermap_day_1_icon
+    entity_forecast_max: sensor.openweathermap_current_maximum_temperature
+    entity_forecast_max_1: sensor.openweathermap_day_1_maximum_temperature
+    entity_forecast_min: sensor.openweathermap_current_minimum_temperature
+    entity_forecast_min_1: sensor.openweathermap_day_1_minimum_temperature
+    entity_humidity: sensor.acurite_ws_humidity
+    entity_pop: sensor.openweathermap_current_pop
+    entity_pop_1: sensor.openweathermap_day_1_pop
+    entity_pos: sensor.openweathermap_current_precip_forecast
+    entity_pos_1: sensor.openweathermap_day_1_precip_forecast
+    entity_pressure: sensor.den_climate_pressure
+    entity_summary: sensor.openweathermap_current_summary
+    entity_sun: sun.sun
+    entity_temperature: sensor.acurite_ws_temperature
+    entity_uv_alert_summary: sensor.local_uv_combined
+    entity_visibility: sensor.ktme_current_visibility
+    entity_wind_bearing: sensor.acurite_ws_wind_direction
+    entity_wind_gust: sensor.local_wind_gust_2_minute
+    entity_wind_speed: sensor.acurite_ws_wind_speed
+    extended_use_attr: false
+    forecast_type: daily
+    option_static_icons: true
+    overview_layout: complete
+    section_order:
+      - overview
+      - slots
+      - daily_forecast
+      - extended
+    show_section_daily_forecast: true
+    show_section_extended: true
+    show_section_overview: true
+    show_section_slots: true
+    slot_l1: forecast_min
+    slot_l2: wind
+    slot_l3: humidity
+    slot_l4: visibility
+    slot_l5: sun_next
+    slot_l6: custom1
+    slot_l7: remove
+    slot_l8: remove
+    slot_r1: forecast_max
+    slot_r2: popforecast
+    slot_r3: uv_summary
+    slot_r4: pressure
+    slot_r5: sun_following
+    slot_r6: custom2
+    slot_r7: remove
+    slot_r8: remove
+
+
+vacuum_button_simple:
+  card:
+    type: custom:button-card
+    entity: vacuum.valetudo_crookshanks
+    icon: mdi:robot-vacuum
+    color_type: icon
+    name: '[[[ return ` ${entity.state}` ]]]'
+    styles:
+      name:
+        - text-transform: capitalize
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Vacuum Status
+          content:
+            type: custom:stack-in-card
+            cards:
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - entity: input_boolean.vacuum_auto
+                  - entity: sensor.next_vacuum_cycle
+                    name: Next Schedule
+                    icon: mdi:clock-outline
+              - type: horizontal-stack
+                cards:
+                  - type: custom:button-card
+                    icon: mdi:calendar-range
+                    name: Day 1
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          title: Day 1 Vacuum Schedule
+                          content:
+                            type: entities
+                            show_header_toggle: false
+                            entities:
+                              - input_boolean.vacuum_weekday_1_entry
+                              - input_boolean.vacuum_weekday_1_hall
+                              - input_boolean.vacuum_weekday_1_office
+                              - input_boolean.vacuum_weekday_1_guest_bedroom
+                              - input_boolean.vacuum_weekday_1_guest_bathroom
+                              - input_boolean.vacuum_weekday_1_server_room
+                              - input_boolean.vacuum_weekday_1_den
+                              - input_boolean.vacuum_weekday_1_master_bedroom
+                              - input_boolean.vacuum_weekday_1_master_bathroom
+                              - input_boolean.vacuum_weekday_1_kitchen
+                              - input_boolean.vacuum_weekday_1_shack
+                  - type: custom:button-card
+                    icon: mdi:calendar-range
+                    name: Day 2
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          title: Day 2 Vacuum Schedule
+                          content:
+                            type: entities
+                            show_header_toggle: false
+                            entities:
+                              - input_boolean.vacuum_weekday_2_entry
+                              - input_boolean.vacuum_weekday_2_hall
+                              - input_boolean.vacuum_weekday_2_office
+                              - input_boolean.vacuum_weekday_2_guest_bedroom
+                              - input_boolean.vacuum_weekday_2_guest_bathroom
+                              - input_boolean.vacuum_weekday_2_server_room
+                              - input_boolean.vacuum_weekday_2_den
+                              - input_boolean.vacuum_weekday_2_master_bedroom
+                              - input_boolean.vacuum_weekday_2_master_bathroom
+                              - input_boolean.vacuum_weekday_2_kitchen
+                              - input_boolean.vacuum_weekday_2_shack
+                  - type: custom:button-card
+                    icon: mdi:gesture-tap-button
+                    name: Manual
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          title: Manual Vacuum Schedule
+                          content:
+                            type: entities
+                            show_header_toggle: false
+                            entities:
+                              - input_boolean.vacuum_manual_entry
+                              - input_boolean.vacuum_manual_hall
+                              - input_boolean.vacuum_manual_office
+                              - input_boolean.vacuum_manual_guest_bedroom
+                              - input_boolean.vacuum_manual_guest_bathroom
+                              - input_boolean.vacuum_manual_server_room
+                              - input_boolean.vacuum_manual_den
+                              - input_boolean.vacuum_manual_master_bedroom
+                              - input_boolean.vacuum_manual_master_bathroom
+                              - input_boolean.vacuum_manual_kitchen
+                              - input_boolean.vacuum_manual_shack
+                              - type: custom:button-card
+                                tap_action:
+                                  action: call-service
+                                  service: script.vacuum_clean_segments
+                                  confirmation: true
+                                entity: script.vacuum_clean_segments
+                                name: Vacuum Selected Segments
+                                show_state: false
+                                show_icon: false
+
+litter_robot_button:
+  card:
+    type: "custom:button-card"
+    entity: sensor.litter_robot_status_short
+    color_type: icon
+    icon: mdi:cat
+    state:
+      - value: "Ready"
+        color: rgb(255, 255, 255)
+        name: "[[[ return `Ready - ${states['sensor.litter_robot_drawer_level'].state}%` ]]]"
+      - value: "Clean"
+        color: rgb(255, 255, 255)
+        name: Clean
+      - value: "Drawer 2"
+        color: rgb(255, 255, 255)
+        name: Drawer 2
+      - value: "Drawer 1"
+        color: rgb(255, 255, 255)
+        name: Drawer 1
+      - value: "Sensor"
+        color: rgb(228, 94, 101)
+        name: Sensor
+      - value: "Timing"
+        color: rgb(255, 255, 255)
+        name: Timing
+      - value: "Bonnet"
+        color: rgb(228, 94, 101)
+        name: Bonnet
+      - value: "Paused"
+        color: rgb(228, 94, 101)
+        name: Paused
+      - value: "Off"
+        color: rgb(255, 255, 255)
+        name: "Off"
+      - value: "Full"
+        color: rgb(228, 94, 101)
+        name: Full
+      - value: "Error"
+        color: rgb(228, 94, 101)
+        name: Error
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Litter Robot
+          content:
+            type: custom:vertical-stack-in-card
+            cards:
+              - type: entities
+                entities:
+                  - entity: sensor.litter_robot_status_short
+                    name: Status
+                    icon: mdi:cat
+                  - entity: counter.litter_robot_cycle_count
+                    name: Cycle Count
+                    icon: mdi:toilet
+                  - entity: sensor.litter_robot_average_cycle_capacity
+                    name: Average Drawer Capacity
+                    icon: mdi:trash-can-outline
+
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: switch.litter_robot_power
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                    icon: mdi:power
+                    name: Power
+
+                  - type: "custom:button-card"
+                    color_type: icon
+                    color: rgb(255, 255, 255)
+                    icon: mdi:trash-can
+                    name: Empty
+                    tap_action:
+                      action: call-service
+                      service: script.litter_robot_empty
+
+                  - type: "custom:button-card"
+                    color_type: icon
+                    color: rgb(255, 255, 255)
+                    icon: mdi:reload
+                    name: Cycle
+                    tap_action:
+                      action: call-service
+                      service: vacuum.start
+                      service_data:
+                        entity_id: vacuum.april_s_carnival_litter_box
+
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: switch.april_s_carnival_panel_lockout
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:lock
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:lock-open
+                    name: Lock
+
+                  - type: "custom:button-card"
+                    entity: switch.april_s_carnival_night_light_mode
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:lightbulb-on-outline
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:lightbulb-outline
+                    name: Light
+
+                  - type: "custom:button-card"
+                    entity: binary_sensor.april_s_carnival_sleeping
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:sleep
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:sleep-off
+                    name: Sleep
+
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                    color_type: icon
+                    icon: mdi:timer-outline
+                    state:
+                      - value: "3"
+                        color: rgb(228, 94, 101)
+                      - operator: "!="
+                        value: "3"
+                        color: rgb(255, 255, 255)
+                    name: 3 Min.
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      service_data:
+                        entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                        option: "3"
+
+                  - type: "custom:button-card"
+                    entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                    color_type: icon
+                    icon: mdi:timer-outline
+                    state:
+                      - value: "7"
+                        color: rgb(228, 94, 101)
+                      - operator: "!="
+                        value: "7"
+                        color: rgb(255, 255, 255)
+                    name: 7 Min.
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      service_data:
+                        entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                        option: "7"
+
+                  - type: "custom:button-card"
+                    entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                    color_type: icon
+                    icon: mdi:timer-outline
+                    state:
+                      - value: "15"
+                        color: rgb(228, 94, 101)
+                      - operator: "!="
+                        value: "15"
+                        color: rgb(255, 255, 255)
+                    name: 15 Min.
+                    tap_action:
+                      action: call-service
+                      service: select.select_option
+                      service_data:
+                        entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                        option: "15"   
+
+cameras_tablet:
+  card:
+    type: glance
+    columns: 4
+    show_name: true
+    show_state: false
+    entities:
+      - entity: camera.front_porch
+      - entity: camera.east_front
+      - entity: camera.west_front
+      - entity: camera.back_yard
+
+panel_temperature_graph:
+  card:    
+    type: custom:mini-graph-card
+    entities:
+      - '[[entity]]'
+    height: 46
+    line_width: 2
+    font_size: 65
+    hours_to_show: 24
+    points_per_hour: 1
+    show:
+      icon: false
+      extrema: false
+      name: false
+    color_thresholds:
+      - value: 80
+        color: "#e74c3c"
+      - value: 75
+        color: "#1db954"
+      - value: 70
+        color: "#3498db"
+
+alarm_panel_button:
+  card:   
+    type: "custom:button-card"
+    entity: alarm_control_panel.house
+    color_type: icon
+    state:
+      - value: "disarmed"
+        color: rgb(255, 255, 255)
+        name: Disarmed
+        icon: mdi:shield-off
+      - value: "armed_home"
+        color: rgb(228, 94, 101)
+        name: Stay
+        icon: mdi:shield-home
+      - value: "armed_night"
+        color: rgb(228, 94, 101)
+        name: Night
+        icon: mdi:shield-moon
+      - value: "armed_away"
+        color: rgb(228, 94, 101)
+        name: Away
+        icon: mdi:shield-lock
+    tap_action:
+      action: more-info
+
+garage_door_button:
+  card:
+    type: "custom:button-card"
+    entity: cover.garage_door
+    color_type: icon
+    name: Garage
+    state:
+      - value: "closed"
+        color: rgb(255, 255, 255)
+        icon: mdi:garage
+      - value: "open"
+        color: rgb(228, 94, 101)
+        icon: mdi:garage-open
+    tap_action:
+      action: call-service
+      service: cover.close_cover
+      service_data:
+        entity_id: cover.garage_door
+
+front_lock_button:
+  card:
+    type: "custom:button-card"
+    entity: sensor.front_door_status
+    color_type: icon
+    state:
+      - value: "open"
+        color: rgb(228, 94, 101)
+        icon: mdi:door-open
+      - value: "locked"
+        color: rgb(255, 255, 255)
+        icon: mdi:lock
+      - value: "unlocked"
+        color: rgb(228, 94, 101)
+        icon: mdi:lock-open
+      - value: "error"
+        color: rgb(228, 94, 101)
+        icon: mdi:alert-circle
+    name: Front
+    tap_action:
+      action: call-service
+      service: lock.lock
+      service_data:
+        entity_id: lock.front_door_lock
+    hold_action:
+      action: more-info
+      entity: lock.front_door_lock
+
+garage_lock_button:
+  card:
+    type: "custom:button-card"
+    entity: sensor.garage_entry_status
+    color_type: icon
+    state:
+      - value: "open"
+        color: rgb(228, 94, 101)
+        icon: mdi:door-open
+      - value: "locked"
+        color: rgb(255, 255, 255)
+        icon: mdi:lock
+      - value: "unlocked"
+        color: rgb(228, 94, 101)
+        icon: mdi:lock-open
+      - value: "error"
+        color: rgb(228, 94, 101)
+        icon: mdi:alert-circle
+    name: Garage
+    tap_action:
+      action: call-service
+      service: lock.lock
+      service_data:
+        entity_id: lock.garage_entry_lock
+    hold_action:
+      action: more-info
+      entity: lock.garage_entry_lock
+
+back_lock_button:
+  card:
+    type: "custom:button-card"
+    entity: sensor.back_door_status
+    color_type: icon
+    state:
+      - value: "open"
+        color: rgb(228, 94, 101)
+        icon: mdi:door-open
+      - value: "locked"
+        color: rgb(255, 255, 255)
+        icon: mdi:lock
+      - value: "unlocked"
+        color: rgb(228, 94, 101)
+        icon: mdi:lock-open
+      - value: "error"
+        color: rgb(228, 94, 101)
+        icon: mdi:alert-circle
+    name: Back
+    tap_action:
+      action: call-service
+      service: lock.lock
+      service_data:
+        entity_id: lock.back_door_lock
+    hold_action:
+      action: more-info
+      entity: lock.back_door_lock
+
+shed_lock_button:
+  card:
+    type: "custom:button-card"
+    entity: sensor.shed_door_status
+    color_type: icon
+    state:
+      - value: "open"
+        color: rgb(228, 94, 101)
+        icon: mdi:door-open
+      - value: "locked"
+        color: rgb(255, 255, 255)
+        icon: mdi:lock
+      - value: "unlocked"
+        color: rgb(228, 94, 101)
+        icon: mdi:lock-open
+      - value: "error"
+        color: rgb(228, 94, 101)
+        icon: mdi:alert-circle
+    name: Back
+    tap_action:
+      action: call-service
+      service: lock.lock
+      service_data:
+        entity_id: lock.shed_door
+    hold_action:
+      action: more-info
+      entity: lock.shed_door
+
+washer_button:
+  card:
+    type: "custom:button-card"
+    entity: sensor.washer_status
+    color_type: icon
+    icon: mdi:washing-machine
+    state:
+      - value: "Washing"
+        color: rgb(228, 94, 101)
+        name: Washing
+      - value: "Idle"
+        color: rgb(255, 255, 255)
+        name: Idle
+      - value: "Done"
+        color: rgb(255, 255, 255)
+        name: Done
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Washer
+          content:
+            type: entities
+            entities:
+              - entity: sensor.washer_state
+              - entity: sensor.washer_energy_voltage
+              - entity: sensor.washer_energy_power
+              - entity: sensor.washer_energy_current
+              - entity: sensor.washer_energy_today
+                icon: "mdi:gauge"
+              - entity: sensor.washer_energy_yesterday
+                icon: "mdi:gauge"
+              - entity: sensor.washer_signal
+                icon: "mdi:wifi"
+    hold_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Washer
+          content:
+            type: entities
+            entities:
+              - entity: sensor.washer_state
+              - entity: sensor.washer_energy_voltage
+              - entity: sensor.washer_energy_power
+              - entity: sensor.washer_energy_current
+              - entity: sensor.washer_energy_today
+                icon: "mdi:gauge"
+              - entity: sensor.washer_energy_yesterday
+                icon: "mdi:gauge"
+              - entity: sensor.washer_signal
+                icon: "mdi:wifi"
+    double_tap_action:
+      action: call-service
+      service: input_boolean.turn_off
+      service_data:
+        entity_id: input_boolean.washer_end
+
+dryer_button:
+  card:
+    type: "custom:button-card"
+    entity: sensor.dryer_status
+    color_type: icon
+    icon: mdi:tumble-dryer
+    state:
+      - value: "Drying"
+        color: rgb(228, 94, 101)
+        name: Drying
+      - value: "Idle"
+        color: rgb(255, 255, 255)
+        name: Idle
+      - value: "Done"
+        color: rgb(255, 255, 255)
+        name: Done
+      - value: "Door Open"
+        color: rgb(255, 200, 0)
+        name: Door
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Dryer
+          content:
+            type: entities
+            entities:
+              - entity: sensor.dryer_state
+              - entity: sensor.dryer_energy_voltage
+              - entity: sensor.dryer_energy_power
+              - entity: sensor.dryer_energy_current
+              - entity: sensor.dryer_energy_today
+                icon: "mdi:gauge"
+              - entity: sensor.dryer_energy_yesterday
+                icon: "mdi:gauge"
+              - entity: sensor.dryer_signal
+                icon: "mdi:wifi"
+    hold_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Dryer
+          content:
+            type: entities
+            entities:
+              - entity: sensor.dryer_state
+              - entity: sensor.dryer_energy_voltage
+              - entity: sensor.dryer_energy_power
+              - entity: sensor.dryer_energy_current
+              - entity: sensor.dryer_energy_today
+                icon: "mdi:gauge"
+              - entity: sensor.dryer_energy_yesterday
+                icon: "mdi:gauge"
+              - entity: sensor.dryer_signal
+                icon: "mdi:wifi"
+    double_tap_action:
+      action: call-service
+      service: input_boolean.turn_off
+      service_data:
+        entity_id: input_boolean.dryer_end 
+
+bike_stats:
+  card:
+    type: glance
+    show_icon: false
+    entities:
+      - entity: sensor.daily_bike_distance
+        name: Daily
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Daily Rides
+              content:
+                type: entities
+                entities:
+                  - entity: sensor.daily_bike_distance
+                    name: Distance
+                    icon: 'mdi:map-marker-distance'
+                  - entity: sensor.daily_bike_duration_calc
+                    name: Duration
+                    icon: 'mdi:timer'
+                  - entity: sensor.daily_bike_calories
+                    name: Calories
+                    icon: 'mdi:fire'
+                  - entity: sensor.daily_bike_climb
+                    name: Climb
+                    icon: 'mdi:slope-uphill'
+                  - entity: sensor.daily_bike_rides
+                    name: Rides
+                    icon: 'mdi:bicycle'
+      - entity: sensor.weekly_bike_distance
+        name: Weekly
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Weekly Rides
+              content:
+                type: entities
+                entities:
+                  - entity: sensor.weekly_bike_distance
+                    name: Distance
+                    icon: 'mdi:map-marker-distance'
+                  - entity: sensor.weekly_bike_duration_calc
+                    name: Duration
+                    icon: 'mdi:timer'
+                  - entity: sensor.weekly_bike_calories
+                    name: Calories
+                    icon: 'mdi:fire'
+                  - entity: sensor.weekly_bike_climb
+                    name: Climb
+                    icon: 'mdi:slope-uphill'
+                  - entity: sensor.weekly_bike_rides
+                    name: Rides
+                    icon: 'mdi:bicycle'
+      - entity: sensor.monthly_bike_distance
+        name: Monthly
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Monthly Rides
+              content:
+                type: entities
+                entities:
+                  - entity: sensor.monthly_bike_distance
+                    name: Distance
+                    icon: 'mdi:map-marker-distance'
+                  - entity: sensor.monthly_bike_duration_calc
+                    name: Duration
+                    icon: 'mdi:timer'
+                  - entity: sensor.monthly_bike_calories
+                    name: Calories
+                    icon: 'mdi:fire'
+                  - entity: sensor.monthly_bike_climb
+                    name: Climb
+                    icon: 'mdi:slope-uphill'
+                  - entity: sensor.monthly_bike_rides
+                    name: Rides
+                    icon: 'mdi:bicycle'
+      - entity: sensor.yearly_bike_distance
+        name: Yearly
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Yearly Rides
+              content:
+                type: entities
+                entities:
+                  - entity: sensor.yearly_bike_distance
+                    name: Distance
+                    icon: 'mdi:map-marker-distance'
+                  - entity: sensor.yearly_bike_duration_calc
+                    name: Duration
+                    icon: 'mdi:timer'
+                  - entity: sensor.yearly_bike_calories
+                    name: Calories
+                    icon: 'mdi:fire'
+                  - entity: sensor.yearly_bike_climb
+                    name: Climb
+                    icon: 'mdi:slope-uphill'
+                  - entity: sensor.yearly_bike_rides
+                    name: Rides
+                    icon: 'mdi:bicycle'
+      - entity: sensor.career_bike_distance
+        name: Career
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Career Rides
+              content:
+                type: entities
+                entities:
+                  - entity: sensor.career_bike_distance
+                    name: Distance
+                    icon: 'mdi:map-marker-distance'
+                  - entity: sensor.career_bike_duration_calc
+                    name: Duration
+                    icon: 'mdi:timer'
+                  - entity: sensor.career_bike_calories
+                    name: Calories
+                    icon: 'mdi:fire'
+                  - entity: sensor.career_bike_climb
+                    name: Climb
+                    icon: 'mdi:slope-uphill'
+                  - entity: sensor.career_bike_rides
+                    name: Rides
+                    icon: 'mdi:bicycle'
+
+alarm_card_panel:
+  card:
+    type: alarm-panel
+    entity: alarm_control_panel.house
+    states:
+      - arm_home
+      - arm_away
+    name: Alarm
+    card_mod:
+      style:
+        .: |
+          ha-card {
+          border-radius: 20px 20px 20px 20px;
+          border-bottom: hidden;
+          --paper-input-container-shared-input-style_-_font-size: 2.5rem;
+          --keypad-font-size:2.5rem;
+          --mdc-typography-button-font-size: 1.3rem;
+          --mdc-button-outline-color: rgba(0, 0, 0, 0);
+          --paper-font-subhead_-_font-size: 1.5rem;
+          --mdc-theme-primary: white;
+          }
+            #keypad {
+              width: 30%;
+              max-width: 500px !important;
+            }
+            #keypad mwc-button {
+              border-radius: 5px;
+            }
+            mwc-button.numberkey {
+              border-color: rgba(255,255,255,0.5);
+              border-width: 2px;
+              border-style: solid;
+            }
+            #keypad mwc-button:hover {
+              background: rgba(255,255,255,0.5);
+            }
+            #keypad mwc-button {
+              padding: 17px !important;
+              margin: 4px;
+              width: 10%;
+              box-sizing: border-box;
+              height: 73px;           
+            }
+            paper-input {
+                max-width: 300px !important;
+            } 
+          :host {
+            --mdc-typography-button-font-size: 20px;
+                }          
+        ha-chip:
+          $: |
+            div:nth-child(1) {
+                {% if is_state("alarm_control_panel.610", "disarmed") %}
+                  background-color: green;
+                {% else %}
+                  background-color:darkred;
+                {% endif %} 
+              }

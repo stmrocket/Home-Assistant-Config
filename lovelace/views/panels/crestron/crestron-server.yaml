@@ -1,0 +1,187 @@
+id: 4
+icon: mdi:castle
+title: Server
+cards:
+
+  - type: vertical-stack
+    cards:     
+      - type: custom:decluttering-card
+        template: weather_static   
+      - type: custom:decluttering-card
+        template: panel_temperature_graph
+        variables:
+          - entity: sensor.server_room_climate_temperature
+      - type: custom:decluttering-card
+        template: cameras_tablet
+
+  - type: vertical-stack
+    cards:   
+      - type: custom:decluttering-card
+        template: media_card_panel
+        variables:
+          - entity: server_room_stereo
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: litter_robot_button
+          - type: custom:decluttering-card
+            template: alarm_panel_button
+          - type: custom:decluttering-card
+            template: garage_door_button
+
+      - type: horizontal-stack
+        cards:          
+          - type: custom:decluttering-card
+            template: front_lock_button
+          - type: custom:decluttering-card
+            template: garage_lock_button
+          - type: custom:decluttering-card
+            template: back_lock_button
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: shed_lock_button    
+          - type: custom:decluttering-card
+            template: washer_button      
+          - type: custom:decluttering-card
+            template: dryer_button        
+
+  - type: vertical-stack
+    cards:
+      - type: custom:mm2-clock-card
+        timezone: America/Chicago
+        displaySeconds: false
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: cover.server_room_blind
+            color_type: icon
+            state:
+              - value: "open"
+                color: rgb(228, 94, 101)
+                icon: mdi:blinds-open
+              - value: "closed"
+                color: rgb(255, 255, 255)
+                icon: mdi:blinds
+              - value: "unavailable"
+                color: rgb(228, 94, 101)
+                icon: mdi:exclamation
+            name: Blinds
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+              
+          - type: "custom:button-card"
+            entity: light.server_room_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:lightbulb-on-outline
+              - value: "off"
+                icon: mdi:lightbulb-outline
+            name: Light
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.server_room_fan
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:fan
+              - value: "off"
+                icon: mdi:fan-off
+            name: Fan
+            hold_action:
+              action: more-info
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: switch.server_room_lamp
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:lamp
+            name: Lamp
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.server_room_workbench
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:desk-lamp-on
+              - value: "off"
+                icon: mdi:desk-lamp-off
+            name: Bench
+            hold_action:
+              action: more-info
+
+          - type: "custom:button-card"
+            entity: switch.server_closet_light
+            color_type: icon
+            color: rgb(228, 94, 101)
+            icon: mdi:door
+            name: Closet Light
+            hold_action:
+              action: more-info
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: switch.prusa_mk3
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:printer-3d-nozzle
+              - value: "off"
+                icon: mdi:printer-3d-nozzle-off
+            name: MK3
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.prusa_mk4
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:printer-3d-nozzle
+              - value: "off"
+                icon: mdi:printer-3d-nozzle-off
+            name: MK4
+            hold_action:
+              action: more-info
+          - type: "custom:button-card"
+            entity: switch.voron_2_4
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:printer-3d-nozzle
+              - value: "off"
+                icon: mdi:printer-3d-nozzle-off
+            name: Voron
+            hold_action:
+              action: more-info
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: switch.server_closet_fan
+            color_type: icon
+            color: rgb(228, 94, 101)
+            state:
+              - value: "on"
+                icon: mdi:fan
+              - value: "off"
+                icon: mdi:fan-off
+            name: Closet
+            hold_action:
+              action: more-info
+
+          - type: custom:decluttering-card
+            template: vacuum_button_simple
+          - type: "custom:gap-card"   
