@@ -2419,3 +2419,119 @@ media_player:
     attributes:
       state: switch.nuvo_zone_12_power
       is_volume_muted: switch.nuvo_zone_12_mute
+
+
+
+sensor:
+  - platform: template
+    sensors:
+      office_stereo_status:
+        unique_id: 3a879893-3043-4795-8629-e8d6849b21bf
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_1_power', 'on') and is_state('switch.nuvo_zone_1_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_1_power', 'on') and is_state('switch.nuvo_zone_1_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      guest_bedroom_stereo_status:
+        unique_id: 87dc92e5-6fb7-4616-bb86-19b018009870
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_2_power', 'on') and is_state('switch.nuvo_zone_2_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_2_power', 'on') and is_state('switch.nuvo_zone_2_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      server_room_stereo_status:
+        unique_id: 310d22ad-c122-4370-b3b2-cde161456404
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_3_power', 'on') and is_state('switch.nuvo_zone_3_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_3_power', 'on') and is_state('switch.nuvo_zone_3_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      master_bedroom_stereo_status:
+        unique_id: a33d98a4-a5bf-4974-a17f-f387177a3b9d
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_4_power', 'on') and is_state('switch.nuvo_zone_4_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_4_power', 'on') and is_state('switch.nuvo_zone_4_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      master_bathroom_stereo_status:
+        unique_id: 998798f3-9508-4ee4-9ba5-8e1b73fa984b
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_5_power', 'on') and is_state('switch.nuvo_zone_5_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_5_power', 'on') and is_state('switch.nuvo_zone_5_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      garage_stereo_status:
+        unique_id: acabdd8a-440b-4d6a-9c8e-5404e56d80a7
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_6_power', 'on') and is_state('switch.nuvo_zone_6_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_6_power', 'on') and is_state('switch.nuvo_zone_6_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      den_stereo_status:
+        unique_id: fd1d6ab2-315e-4bbb-b284-d576a7a01a9c
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_7_power', 'on') and is_state('switch.nuvo_zone_7_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_7_power', 'on') and is_state('switch.nuvo_zone_7_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      dining_room_stereo_status:
+        unique_id: 3a50a852-4cc2-4976-9d73-83855b6d5ae5
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_9_power', 'on') and is_state('switch.nuvo_zone_9_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_9_power', 'on') and is_state('switch.nuvo_zone_9_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      kitchen_stereo_status:
+        unique_id: 89d8bf8f-5ea6-46ee-8bff-622080c97574
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_10_power', 'on') and is_state('switch.nuvo_zone_10_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_10_power', 'on') and is_state('switch.nuvo_zone_10_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      back_porch_stereo_status:
+        unique_id: 6a767bc7-25e9-4868-b294-dd253e19c743
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_11_power', 'on') and is_state('switch.nuvo_zone_11_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_11_power', 'on') and is_state('switch.nuvo_zone_11_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
+      guest_bathroom_stereo_status:
+        unique_id: f12144fd-9282-4655-b6a4-162c7b00305e
+        value_template: >-
+          {% if is_state('switch.nuvo_zone_12_power', 'on') and is_state('switch.nuvo_zone_12_source', '1') -%}
+            mass
+          {% elif is_state('switch.nuvo_zone_12_power', 'on') and is_state('switch.nuvo_zone_12_source', '2') -%}
+            cast
+          {% else -%}
+            off
+          {% endif -%}
