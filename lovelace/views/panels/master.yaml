@@ -221,7 +221,7 @@ cards:
               action: more-info
 
           - type: "custom:button-card"
-            entity: input_boolean.work_alarm_enabled
+            entity: input_boolean.work_alarm_status
             color_type: icon
             color: rgb(228, 94, 101)
             state:
@@ -237,7 +237,7 @@ cards:
                 data:
                   title: Work Alarm
                   content:
-                    type: custom:stack-in-card
+                    type: custom:vertical-stack-in-card
                     cards:
                       - type: entities
                         show_header_toggle: false
@@ -269,7 +269,7 @@ cards:
                 data:
                   title: Work Alarm
                   content:
-                    type: custom:stack-in-card
+                    type: custom:vertical-stack-in-card
                     cards:
                       - type: entities
                         show_header_toggle: false
@@ -296,7 +296,7 @@ cards:
                           hour_mode: single
           
           - type: "custom:button-card"
-            entity: input_boolean.manual_alarm_enabled
+            entity: input_boolean.manual_alarm_status
             color_type: icon
             color: rgb(228, 94, 101)
             state:
@@ -310,70 +310,16 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Manual Alarm
+                  title: Manual Alarm Clock
                   content:
-                    type: custom:stack-in-card
+                    type: custom:vertical-stack-in-card
                     cards:
-                      - type: horizontal-stack
-                        cards:
-                          - type: "custom:button-card"
-                            entity: input_boolean.manual_alarm_enabled
-                            color_type: icon
-                            color: rgb(228, 94, 101)
-                            state:
-                              - value: "on"
-                                icon: mdi:alarm-check
-                              - value: "off"
-                                icon: mdi:alarm-off
-                            name: Enable
-                            hold_action:
-                              action: more-info
-
-                          - type: "custom:button-card"
-                            entity: input_boolean.manual_alarm_repeat
-                            color_type: icon
-                            color: rgb(228, 94, 101)
-                            state:
-                              - value: "on"
-                                icon: mdi:repeat
-                              - value: "off"
-                                icon: mdi:repeat-off
-                            name: Repeat
-                            hold_action:
-                              action: more-info
-
-                          - type: "custom:button-card"
-                            entity: input_boolean.manual_alarm_horn
-                            color_type: icon
-                            state:
-                              - value: "on"
-                                icon: mdi:alarm-bell
-                                color: rgb(228, 94, 101)
-                                name: Horn
-                              - value: "off"
-                                icon: mdi:music
-                                color: rgb(228, 94, 101)
-                                name: Music
-                            hold_action:
-                              action: more-info
-                      - type: horizontal-stack
-                        cards:
-                          - type: "custom:gap-card"
-
-                          - type: "custom:button-card"
-                            entity: input_boolean.manual_alarm_hvac
-                            color_type: icon
-                            color: rgb(228, 94, 101)
-                            icon: mdi:thermostat
-                            name: Resume
-                            hold_action:
-                              action: more-info
-
-                          - type: "custom:gap-card"
                       - type: entities
                         show_header_toggle: false
                         entities:
-                          - entity: input_select.mass_manual_alarm_playlist
+                          - entity: input_boolean.manual_alarm_enabled
+                            name: Enabled
+                          - entity: input_select.mass_work_alarm_playlist
                             name: "Playlist"
                       - type: "custom:time-picker-card"
                         entity: input_datetime.master_manual_alarm
@@ -388,70 +334,16 @@ cards:
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Manual Alarm
+                  title: Manual Alarm Clock
                   content:
-                    type: custom:stack-in-card
+                    type: custom:vertical-stack-in-card
                     cards:
-                      - type: horizontal-stack
-                        cards:
-                          - type: "custom:button-card"
-                            entity: input_boolean.manual_alarm_enabled
-                            color_type: icon
-                            color: rgb(228, 94, 101)
-                            state:
-                              - value: "on"
-                                icon: mdi:alarm-check
-                              - value: "off"
-                                icon: mdi:alarm-off
-                            name: Enable
-                            hold_action:
-                              action: more-info
-
-                          - type: "custom:button-card"
-                            entity: input_boolean.manual_alarm_repeat
-                            color_type: icon
-                            color: rgb(228, 94, 101)
-                            state:
-                              - value: "on"
-                                icon: mdi:repeat
-                              - value: "off"
-                                icon: mdi:repeat-off
-                            name: Repeat
-                            hold_action:
-                              action: more-info
-
-                          - type: "custom:button-card"
-                            entity: input_boolean.manual_alarm_horn
-                            color_type: icon
-                            state:
-                              - value: "on"
-                                icon: mdi:alarm-bell
-                                color: rgb(228, 94, 101)
-                                name: Horn
-                              - value: "off"
-                                icon: mdi:music
-                                color: rgb(228, 94, 101)
-                                name: Music
-                            hold_action:
-                              action: more-info
-                      - type: horizontal-stack
-                        cards:
-                          - type: "custom:gap-card"
-
-                          - type: "custom:button-card"
-                            entity: input_boolean.manual_alarm_hvac
-                            color_type: icon
-                            color: rgb(228, 94, 101)
-                            icon: mdi:thermostat
-                            name: Resume
-                            hold_action:
-                              action: more-info
-
-                          - type: "custom:gap-card"
                       - type: entities
                         show_header_toggle: false
                         entities:
-                          - entity: input_select.mass_manual_alarm_playlist
+                          - entity: input_boolean.manual_alarm_enabled
+                            name: Enabled
+                          - entity: input_select.mass_work_alarm_playlist
                             name: "Playlist"
                       - type: "custom:time-picker-card"
                         entity: input_datetime.master_manual_alarm
