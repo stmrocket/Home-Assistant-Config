@@ -21,6 +21,7 @@ cards:
         template: media_card_panel
         variables:
           - entity: server_room_stereo
+          - zone: 3
 
       - type: horizontal-stack
         cards:

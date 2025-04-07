@@ -21,6 +21,7 @@ cards:
         template: media_card_panel
         variables:
           - entity: den_stereo
+          - zone: 7
 
       - type: horizontal-stack
         cards:

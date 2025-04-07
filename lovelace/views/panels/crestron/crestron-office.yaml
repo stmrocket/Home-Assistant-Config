@@ -21,6 +21,7 @@ cards:
         template: media_card_panel
         variables:
           - entity: office_stereo
+          - zone: 1
 
       - type: horizontal-stack
         cards:

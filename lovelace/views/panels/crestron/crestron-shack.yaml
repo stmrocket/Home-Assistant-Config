@@ -20,7 +20,8 @@ cards:
       - type: custom:decluttering-card
         template: media_card_panel
         variables:
-          - entity: dinign_room_stereo
+          - entity: dining_room_stereo
+          - zone: 9
 
       - type: horizontal-stack
         cards:

@@ -21,6 +21,7 @@ cards:
         template: media_card_panel
         variables:
           - entity: master_bedroom_stereo
+          - zone: 4
 
       - type: horizontal-stack
         cards:

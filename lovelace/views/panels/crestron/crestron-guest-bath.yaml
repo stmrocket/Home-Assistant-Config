@@ -20,3 +20,4 @@ cards:
         template: media_card_panel
         variables:
           - entity: guest_bathroom_stereo
+          - zone: 12
