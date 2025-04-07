@@ -393,4 +393,4 @@ script:
         target:
           entity_id: select.den_den_av
         data:
-          option: Watch NuVo
+          option: Listen to NuVo
