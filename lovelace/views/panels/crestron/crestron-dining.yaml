@@ -240,7 +240,7 @@ cards:
             color: rgb(228, 94, 101)
             state:
               - value: "on"
-                icon: mdi:speaker-wireless
+                icon: mdi:speaker
               - value: "off"
                 icon: mdi:speaker-off
             name: porch
