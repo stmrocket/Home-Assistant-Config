@@ -21,6 +21,7 @@ cards:
         template: media_card_panel
         variables:
           - entity: kitchen_stereo
+          - zone: 10
 
       - type: horizontal-stack
         cards:

@@ -21,6 +21,7 @@ cards:
         template: media_card_panel
         variables:
           - entity: dining_room_stereo
+          - zone: 9
 
       - type: horizontal-stack
         cards:

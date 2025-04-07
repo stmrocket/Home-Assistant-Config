@@ -20,3 +20,4 @@ cards:
         template: media_card_panel
         variables:
           - entity: master_bathroom_stereo
+          - zone: 5
