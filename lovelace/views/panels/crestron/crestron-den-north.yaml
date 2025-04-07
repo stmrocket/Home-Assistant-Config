@@ -18,10 +18,7 @@ cards:
   - type: vertical-stack
     cards:   
       - type: custom:decluttering-card
-        template: media_card_panel
-        variables:
-          - entity: den_stereo
-          - zone: 7
+        template: media_card_den
 
       - type: horizontal-stack
         cards:
