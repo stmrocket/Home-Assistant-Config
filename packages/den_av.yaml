@@ -25,27 +25,27 @@ sensor:
         unique_id: 1606a2f0-f6fe-49ca-ab06-d0c430a6ea60
         value_template: >-
           {% if is_state_attr('media_player.den_tv_android', 'app_id', 'com.espn.score_center') -%}
-            {{ states('sensor.external_url') }}/local/remote_icons/channels/espn.webp
+            /local/remote_icons/channels/espn.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.wbd.stream') -%}
-            {{ states('sensor.external_url') }}/local/remote_icons/channels/max.webp
+            /local/remote_icons/channels/max.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.netflix.ninja') -%}
-            {{ states('sensor.external_url') }}/local/remote_icons/channels/netflix.webp
+            /local/remote_icons/channels/netflix.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.amazon.amazonvideo.livingroom') -%}
-            {{ states('sensor.external_url') }}/local/remote_icons/channels/prime.webp
+            /local/remote_icons/channels/prime.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.qvc.androidtv') -%}
-            {{ states('sensor.external_url') }}/local/remote_icons/channels/qvc.webp
+            /local/remote_icons/channels/qvc.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.spotify.tv.android') -%}
-            {{ states('sensor.external_url') }}/local/remote_icons/channels/spotify.webp
+            /local/remote_icons/channels/spotify.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.google.android.youtube.tv') -%}
-            {{ states('sensor.external_url') }}/local/remote_icons/channels/youtube.webp
+            /local/remote_icons/channels/youtube.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'org.jellyfin.androidtv') -%}
             {% if is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing') -%}
               {{ state_attr('media_player.den_tv_jellyfin', 'entity_picture') | replace("=150","=240",1) }}
             {% else -%}
-              {{ states('sensor.external_url') }}/local/remote_icons/channels/jellyfin.webp
+              /local/remote_icons/channels/jellyfin.webp
             {% endif -%}
           {% else -%}
-            {{ states('sensor.external_url') }}/local/remote_icons/channels/googletv.webp
+            /local/remote_icons/channels/googletv.webp
           {% endif -%}
 
       den_media_title:
