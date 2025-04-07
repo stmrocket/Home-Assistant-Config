@@ -252,6 +252,7 @@ cards:
             icon: mdi:remote-tv-off
             name: "Off"
             tap_action:
+              action: call-service
               service: script.den_av_off
 
           - type: "custom:button-card"
@@ -266,6 +267,7 @@ cards:
             icon: mdi:television-classic
             name: Android
             tap_action:
+              action: call-service
               service: script.den_av_tv
 
           - type: "custom:button-card"
@@ -280,4 +282,5 @@ cards:
             icon: mdi:music
             name: Music
             tap_action:
+              action: call-service
               service: script.den_av_nuvo
