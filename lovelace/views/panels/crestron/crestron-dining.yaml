@@ -244,6 +244,8 @@ cards:
               - value: "off"
                 icon: mdi:speaker-off
             name: porch
+            tap_action:
+              action: toggle
             hold_action:
               action: more-info
       - type: horizontal-stack

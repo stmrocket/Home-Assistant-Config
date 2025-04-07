@@ -1622,9 +1622,49 @@ cameras_tablet:
     show_state: false
     entities:
       - entity: camera.front_porch
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Front Porch
+              content:
+                type: custom:frigate-card
+                cameras:
+                  - camera_entity: camera.front_porch
       - entity: camera.east_front
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: East Front
+              content:
+                type: custom:frigate-card
+                cameras:
+                  - camera_entity: camera.east_front
       - entity: camera.west_front
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: West Front
+              content:
+                type: custom:frigate-card
+                cameras:
+                  - camera_entity: camera.west_front
       - entity: camera.back_yard
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Back Yard
+              content:
+                type: custom:frigate-card
+                cameras:
+                  - camera_entity: camera.back_yard
 
 panel_temperature_graph:
   card:    
