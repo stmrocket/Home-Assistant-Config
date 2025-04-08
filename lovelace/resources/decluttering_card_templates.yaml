@@ -1447,13 +1447,13 @@ litter_robot_button:
         name: Drawer 2
         styles:
           icon:
-            - animation: blink 1s infinite
+            - animation: blink 2s infinite
       - value: "Drawer 1"
         color: rgb(94, 101, 228)
         name: Drawer 1
         styles:
           icon:
-            - animation: blink 1s infinite
+            - animation: blink 2s infinite
       - value: "Sensor"
         color: rgb(228, 94, 101)
         name: Sensor
