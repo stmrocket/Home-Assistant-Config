@@ -1434,7 +1434,7 @@ litter_robot_button:
     icon: mdi:cat
     state:
       - value: "Ready"
-        color: rgb(94, 101, 228)
+        color: rgb(255, 255, 255)
         name: "[[[ return `Ready - ${states['sensor.litter_robot_drawer_level'].state}%` ]]]"
       - value: "Clean"
         color: rgb(228, 221, 94)
@@ -1447,13 +1447,13 @@ litter_robot_button:
         name: Drawer 2
         styles:
           icon:
-            - animation: blink 1s infinite
+            - animation: blink 2s infinite
       - value: "Drawer 1"
         color: rgb(94, 101, 228)
         name: Drawer 1
         styles:
           icon:
-            - animation: blink 1s infinite
+            - animation: blink 2s infinite
       - value: "Sensor"
         color: rgb(228, 94, 101)
         name: Sensor
@@ -1493,6 +1493,9 @@ litter_robot_button:
       - value: "Full"
         color: rgb(94, 101, 228)
         name: Full
+        styles:
+          icon:
+            - animation: blink 1s infinite
       - value: "Sleep"
         color: rgb(255, 255, 255)
         name: Sleep
