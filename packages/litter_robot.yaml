@@ -41,6 +41,8 @@ sensor:
             Full
           {% elif  is_state('sensor.april_s_carnival_status_code', 'dhf') or is_state('sensor.april_s_carnival_status_code', 'dpf') or is_state('sensor.april_s_carnival_status_code', 'hpf') -%}
             Position
+          {% elif  is_state('sensor.april_s_carnival_status_code', 'pwrd') or is_state('sensor.april_s_carnival_status_code', 'pwru') -%}
+            Power
           {% else -%}
             Error
           {% endif -%}

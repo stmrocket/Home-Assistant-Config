@@ -1434,26 +1434,56 @@ litter_robot_button:
     icon: mdi:cat
     state:
       - value: "Ready"
-        color: rgb(255, 255, 255)
+        color: rgb(94, 101, 228)
         name: "[[[ return `Ready - ${states['sensor.litter_robot_drawer_level'].state}%` ]]]"
       - value: "Clean"
-        color: rgb(255, 255, 255)
+        color: rgb(228, 221, 94)
         name: Clean
+      - value: "Done"
+        color: rgb(228, 221, 94)
+        name: Done
       - value: "Drawer 2"
-        color: rgb(255, 255, 255)
+        color: rgb(94, 101, 228)
         name: Drawer 2
+        styles:
+          icon:
+            - animation: blink 1s infinite
       - value: "Drawer 1"
-        color: rgb(255, 255, 255)
+        color: rgb(94, 101, 228)
         name: Drawer 1
+        styles:
+          icon:
+            - animation: blink 1s infinite
       - value: "Sensor"
         color: rgb(228, 94, 101)
         name: Sensor
+        styles:
+          icon:
+            - animation: blink 1s infinite
       - value: "Timing"
-        color: rgb(255, 255, 255)
-        name: Timing
-      - value: "Bonnet"
         color: rgb(228, 94, 101)
+        name: Timing
+      - value: "Cat"
+        color: rgb(228, 94, 101)
+        name: Cat
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Bonnet"
+        color: rgb(228, 221, 94)
         name: Bonnet
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Pinch"
+        color: rgb(228, 221, 94)
+        name: Pinch
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Empty"
+        color: rgb(228, 221, 94)
+        name: Empty
       - value: "Paused"
         color: rgb(228, 94, 101)
         name: Paused
@@ -1461,11 +1491,35 @@ litter_robot_button:
         color: rgb(255, 255, 255)
         name: "Off"
       - value: "Full"
-        color: rgb(228, 94, 101)
+        color: rgb(94, 101, 228)
         name: Full
-      - value: "Error"
+      - value: "Sleep"
+        color: rgb(255, 255, 255)
+        name: Sleep
+      - value: "Offline"
+        color: rgb(228, 94, 101)
+        name: Offline
+      - value: "Torque"
+        color: rgb(228, 94, 101)
+        name: Torque
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Position"
+        color: rgb(228, 94, 101)
+        name: Position
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Power"
+        color: rgb(255, 255, 255)
+        name: Power
+      - operator: default
         color: rgb(228, 94, 101)
         name: Error
+        styles:
+          icon:
+            - animation: blink 1s infinite
     tap_action:
       action: fire-dom-event
       browser_mod:
@@ -1655,7 +1709,7 @@ alarm_panel_button:
     color_type: icon
     state:
       - value: "disarmed"
-        color: rgb(255, 255, 255)
+        color: rgb(101, 228, 94)
         name: Disarmed
         icon: mdi:shield-off
       - value: "armed_home"
@@ -1670,6 +1724,24 @@ alarm_panel_button:
         color: rgb(228, 94, 101)
         name: Away
         icon: mdi:shield-lock
+      - value: "armed_vacation"
+        color: rgb(228, 94, 101)
+        name: Away
+        icon: mdi:shield-lock
+      - value: "arming"
+        color: rgb(228, 221, 94)
+        name: Arming
+        icon: mdi:shield
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "pending"
+        color: rgb(228, 221, 94)
+        name: Pending
+        icon: mdi:shield-alert
+        styles:
+          icon:
+            - animation: blink 1s infinite
     tap_action:
       action: more-info
 
@@ -1881,7 +1953,7 @@ dryer_button:
         color: rgb(255, 255, 255)
         name: Done
       - value: "Door Open"
-        color: rgb(255, 200, 0)
+        color: rgb(228, 221, 94)
         name: Door
     tap_action:
       action: fire-dom-event
