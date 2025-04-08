@@ -1434,7 +1434,7 @@ litter_robot_button:
     icon: mdi:cat
     state:
       - value: "Ready"
-        color: rgb(94, 101, 228)
+        color: rgb(255, 255, 255)
         name: "[[[ return `Ready - ${states['sensor.litter_robot_drawer_level'].state}%` ]]]"
       - value: "Clean"
         color: rgb(228, 221, 94)
