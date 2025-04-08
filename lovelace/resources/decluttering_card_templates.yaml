@@ -1493,6 +1493,9 @@ litter_robot_button:
       - value: "Full"
         color: rgb(94, 101, 228)
         name: Full
+        styles:
+          icon:
+            - animation: blink 1s infinite
       - value: "Sleep"
         color: rgb(255, 255, 255)
         name: Sleep
