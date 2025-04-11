@@ -15,4 +15,4 @@ preload_cards:
 
 background: center / cover no-repeat url("/local/lovelace/background_19.png") fixed
 views:
-  - !include /config/lovelace/views/panels/kitchen.yaml
+  - !include /config/lovelace/views/panels/crestron/crestron-kitchen.yaml

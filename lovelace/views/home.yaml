@@ -577,75 +577,10 @@ cards:
               60: "#FFAD12"
               70: "#FFA40E"
               80: "#FF9C0B"
-              90: "#FF8C06"
+              90: "#FF8C06"   
 
-      #################################################################
-      #                                                               #
-      #                   Home - Temperature Card                     #
-      #                                                               #
-      #################################################################
-
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.acurite_ws_temperature
-        name: Outside
-        height: 46
-        line_width: 2
-        font_size: 65
-        hours_to_show: 168
-        points_per_hour: 1
-        show:
-          icon: false
-          extrema: true
-        color_thresholds:
-          - value: 90
-            color: "#e74c3c"
-          - value: 60
-            color: "#1db954"
-          - value: 32
-            color: "#3498db"
-
-      - type: horizontal-stack
-        cards:
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.den_climate_temperature
-            name: Den
-            height: 74
-            line_width: 2
-            font_size: 65
-            hours_to_show: 168
-            points_per_hour: 1
-            show:
-              icon: false
-              extrema: true
-            color_thresholds:
-              - value: 90
-                color: "#e74c3c"
-              - value: 60
-                color: "#1db954"
-              - value: 32
-                color: "#3498db"
-
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.server_room_climate_temperature
-            name: Server Closet
-            height: 74
-            line_width: 2
-            font_size: 65
-            hours_to_show: 168
-            points_per_hour: 1
-            show:
-              icon: false
-              extrema: true
-            color_thresholds:
-              - value: 90
-                color: "#e74c3c"
-              - value: 60
-                color: "#1db954"
-              - value: 32
-                color: "#3498db"
+      - type: custom:decluttering-card
+        template: iaq_card
 
   #################################################################
   #                                                               #
@@ -656,6 +591,10 @@ cards:
     cards:
       - type: horizontal-stack
         cards:
+          - type: "custom:decluttering-card"
+            template: alarm_panel_button
+          - type: "custom:decluttering-card"
+            template: garage_door_button
           - type: "custom:button-card"
             entity: cover.house_blinds
             color_type: icon
@@ -829,140 +768,6 @@ cards:
                               service_data:
                                 topic: habc/all/command/set/calibrate
 
-          - type: "custom:button-card"
-            entity: switch.manual_timer_lights
-            color_type: icon
-            icon: mdi:lamp
-            state:
-              - value: "on"
-                color: rgb(228, 94, 101)
-              - value: "off"
-                color: rgb(255, 255, 255)
-            name: All
-            hold_action:
-              action: more-info
-
-          - type: "custom:button-card"
-            entity: sensor.washer_status
-            color_type: icon
-            icon: mdi:washing-machine
-            state:
-              - value: "Washing"
-                color: rgb(228, 94, 101)
-                name: Washing
-              - value: "Idle"
-                color: rgb(255, 255, 255)
-                name: Idle
-              - value: "Done"
-                color: rgb(255, 255, 255)
-                name: Done
-            tap_action:
-              action: fire-dom-event
-              browser_mod:
-                service: browser_mod.popup
-                data:
-                  title: Washer Status
-                  content:
-                    type: entities
-                    entities:
-                      - entity: sensor.washer_state
-                      - entity: sensor.washer_energy_voltage
-                      - entity: sensor.washer_energy_power
-                      - entity: sensor.washer_energy_current
-                      - entity: sensor.washer_energy_today
-                        icon: "mdi:gauge"
-                      - entity: sensor.washer_energy_yesterday
-                        icon: "mdi:gauge"
-                      - entity: sensor.washer_signal
-                        icon: "mdi:wifi"
-            hold_action:
-              action: fire-dom-event
-              browser_mod:
-                service: browser_mod.popup
-                data:
-                  title: Washer Status
-                  content:
-                    type: entities
-                    entities:
-                      - entity: sensor.washer_state
-                      - entity: sensor.washer_energy_voltage
-                      - entity: sensor.washer_energy_power
-                      - entity: sensor.washer_energy_current
-                      - entity: sensor.washer_energy_today
-                        icon: "mdi:gauge"
-                      - entity: sensor.washer_energy_yesterday
-                        icon: "mdi:gauge"
-                      - entity: sensor.washer_signal
-                        icon: "mdi:wifi"
-            double_tap_action:
-              action: call-service
-              service: input_boolean.turn_off
-              service_data:
-                entity_id: input_boolean.washer_end
-
-          - type: "custom:button-card"
-            entity: sensor.dryer_status
-            color_type: icon
-            icon: mdi:tumble-dryer
-            state:
-              - value: "Drying"
-                color: rgb(228, 94, 101)
-                name: Drying
-              - value: "Idle"
-                color: rgb(255, 255, 255)
-                name: Idle
-              - value: "Done"
-                color: rgb(255, 255, 255)
-                name: Done
-              - value: "Door Open"
-                color: rgb(255, 200, 0)
-                name: Door
-            tap_action:
-              action: fire-dom-event
-              browser_mod:
-                service: browser_mod.popup
-                data:
-                  title: Dryer Status
-                  content:
-                    type: entities
-                    entities:
-                      - entity: sensor.dryer_state
-                      - entity: sensor.dryer_energy_voltage
-                      - entity: sensor.dryer_energy_power
-                      - entity: sensor.dryer_energy_current
-                      - entity: sensor.dryer_energy_today
-                        icon: "mdi:gauge"
-                      - entity: sensor.dryer_energy_yesterday
-                        icon: "mdi:gauge"
-                      - entity: sensor.dryer_signal
-                        icon: "mdi:wifi"
-            hold_action:
-              action: fire-dom-event
-              browser_mod:
-                service: browser_mod.popup
-                data:
-                  title: Dryer Status
-                  content:
-                    type: entities
-                    entities:
-                      - entity: sensor.dryer_state
-                      - entity: sensor.dryer_energy_voltage
-                      - entity: sensor.dryer_energy_power
-                      - entity: sensor.dryer_energy_current
-                      - entity: sensor.dryer_energy_today
-                        icon: "mdi:gauge"
-                      - entity: sensor.dryer_energy_yesterday
-                        icon: "mdi:gauge"
-                      - entity: sensor.dryer_signal
-                        icon: "mdi:wifi"
-            double_tap_action:
-              action: call-service
-              service: input_boolean.turn_off
-              service_data:
-                entity_id: input_boolean.dryer_end
-
-      - type: horizontal-stack
-        cards:
           - type: custom:button-card
             entity: vacuum.valetudo_crookshanks
             icon: mdi:robot-vacuum
@@ -1095,68 +900,145 @@ cards:
                                         show_state: false
                                         show_icon: false
 
+      - type: horizontal-stack
+        cards:
+          - type: "custom:decluttering-card"
+            template: front_lock_button
+
+          - type: "custom:decluttering-card"
+            template: garage_lock_button
+
+          - type: "custom:decluttering-card"
+            template: back_lock_button   
+
+          - type: "custom:decluttering-card"
+            template: shed_lock_button
+
+      - type: horizontal-stack
+        cards:
           - type: "custom:button-card"
-            entity: lock.front_door_lock
+            entity: switch.manual_timer_lights
             color_type: icon
+            icon: mdi:lamp
             state:
-              - value: "locked"
-                color: rgb(255, 255, 255)
-                icon: mdi:lock
-              - value: "unlocked"
+              - value: "on"
                 color: rgb(228, 94, 101)
-                icon: mdi:lock-open
-            name: Front
-            tap_action:
-              action: call-service
-              service: lock.lock
-              service_data:
-                entity_id: lock.front_door_lock
+              - value: "off"
+                color: rgb(255, 255, 255)
+            name: All
             hold_action:
               action: more-info
 
-          - type: "custom:button-card"
-            entity: lock.garage_entry_lock
-            color_type: icon
-            state:
-              - value: "locked"
-                color: rgb(255, 255, 255)
-                icon: mdi:lock
-              - value: "unlocked"
-                color: rgb(228, 94, 101)
-                icon: mdi:lock-open
-            name: Garage
-            tap_action:
-              action: call-service
-              service: lock.lock
-              service_data:
-                entity_id: lock.garage_entry_lock
-            hold_action:
-              action: more-info
+          - type: "custom:decluttering-card"
+            template: washer_button
 
-          - type: "custom:button-card"
-            entity: lock.back_door_lock
+          - type: "custom:decluttering-card"
+            template: dryer_button  
+            
+          - type: custom:button-card
+            entity: sensor.trash_bin_status
             color_type: icon
+            icon: mdi:trash-can
             state:
-              - value: "locked"
+              - value: In
                 color: rgb(255, 255, 255)
-                icon: mdi:lock
-              - value: "unlocked"
+                name: In
+              - value: Tomorrow In
+                color: rgb(228, 213, 94)
+                name: Tomorrow
+              - value: Today In
                 color: rgb(228, 94, 101)
-                icon: mdi:lock-open
-            name: Back
-            tap_action:
-              action: call-service
-              service: lock.lock
-              service_data:
-                entity_id: lock.back_door_lock
-            hold_action:
-              action: more-info
+                name: Today
+              - value: Tomorrow Out
+                color: rgb(94, 228, 101)
+                name: Tomorrow
+              - value: Today Out
+                color: rgb(94, 228, 101)
+                name: Today
+              - value: Empty
+                color: rgb(228, 213, 94)
+                name: Empty
+              - value: Empty Still Out
+                color: rgb(228, 94, 101)
+                name: Empty
+              - value: Out
+                color: rgb(228, 94, 101)
+                name: Out
 
-      #################################################################
-      #                                                               #
-      #                       Home - Cameras                          #
-      #                                                               #
-      #################################################################
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.acurite_ws_temperature
+        name: Outside
+        height: 46
+        line_width: 2
+        font_size: 65
+        hours_to_show: 168
+        points_per_hour: 1
+        show:
+          icon: false
+          extrema: true
+        color_thresholds:
+          - value: 90
+            color: "#e74c3c"
+          - value: 60
+            color: "#1db954"
+          - value: 32
+            color: "#3498db"
+
+
+  #################################################################
+  #                                                               #
+  #                          Home - Media                         #
+  #                                                               #
+  #################################################################
+  - type: vertical-stack
+    cards:
+      - type: custom:mm2-clock-card
+        timezone: America/Chicago
+        displaySeconds: false
+
+      - type: 'custom:mini-media-player'
+        entity: media_player.errol
+        icon: mdi:music-box-multiple-outline
+        artwork: cover
+        hide:
+          name: true
+          source: true
+          power: true
+          volume: true
+          icon: true
+          progress: true
+        tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Music Assistant
+                  content:
+                    type: custom:vertical-stack-in-card
+                    cards:
+                      - type: entities
+                        show_header_toggle: false
+                        title: Music Assistant
+                        entities:
+                          - entity: input_select.mass_playlist
+                          - entity: script.mass_change_playlist
+                            name: Change Playlist
+                          - type: 'custom:mini-media-player'
+                            entity: media_player.errol
+                            icon: mdi:music-box-multiple-outline
+                            artwork: cover
+                            hide:
+                              source: true
+                              progress: true
+                              name: true
+        card_mod:                  
+        style:
+          .: |
+            ha-card {
+              height: 100px;
+            }
+
       - type: glance
         columns: 4
         show_name: true
@@ -1371,59 +1253,3 @@ cards:
                     type: custom:frigate-card
                     cameras:
                       - camera_entity: camera.prusa_mk4
-
-  #################################################################
-  #                                                               #
-  #                          Home - Media                         #
-  #                                                               #
-  #################################################################
-  - type: vertical-stack
-    cards:
-      - type: 'custom:mini-media-player'
-        entity: media_player.errol
-        icon: mdi:music-box-multiple-outline
-        artwork: cover
-        hide:
-          name: true
-          source: true
-          power: true
-          volume: true
-          icon: true
-          progress: true
-        tap_action:
-              action: fire-dom-event
-              browser_mod:
-                service: browser_mod.popup
-                data:
-                  title: Music Assistant
-                  content:
-                    type: custom:vertical-stack-in-card
-                    cards:
-                      - type: entities
-                        show_header_toggle: false
-                        title: Music Assistant
-                        entities:
-                          - entity: input_select.mass_playlist
-                          - entity: script.mass_change_playlist
-                            name: Change Playlist
-                          - type: 'custom:mini-media-player'
-                            entity: media_player.errol
-                            icon: mdi:music-box-multiple-outline
-                            artwork: cover
-                            hide:
-                              source: true
-                              progress: true
-                              name: true
-
-      #################################################################
-      #                                                               #
-      #                      Home - Alarm                             #
-      #                                                               #
-      #################################################################
-      - type: alarm-panel
-        name: House Alarm
-        states:
-          - arm_home
-          - arm_away
-          - arm_night
-        entity: alarm_control_panel.house
