@@ -934,7 +934,7 @@ cards:
 
           - type: "custom:decluttering-card"
             template: dryer_button  
-            
+
           - type: custom:button-card
             entity: sensor.trash_bin_status
             color_type: icon
@@ -984,6 +984,48 @@ cards:
             color: "#1db954"
           - value: 32
             color: "#3498db"
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.den_climate_temperature
+            name: Den
+            height: 74
+            line_width: 2
+            font_size: 65
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              icon: false
+              extrema: true
+            color_thresholds:
+              - value: 90
+                color: "#e74c3c"
+              - value: 60
+                color: "#1db954"
+              - value: 32
+                color: "#3498db"
+
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.server_room_climate_temperature
+            name: Server Closet
+            height: 74
+            line_width: 2
+            font_size: 65
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              icon: false
+              extrema: true
+            color_thresholds:
+              - value: 90
+                color: "#e74c3c"
+              - value: 60
+                color: "#1db954"
+              - value: 32
+                color: "#3498db"
 
 
   #################################################################
