@@ -7,6 +7,9 @@ preload_cards:
   - picture-entity
   - conditional
 
+decluttering_templates:
+  !include /config/lovelace/resources/decluttering_card_templates.yaml
+
 #############################################################################################################################################
 #                                                                                                                                           #
 #                                                                BEGIN VIEWS                                                                #

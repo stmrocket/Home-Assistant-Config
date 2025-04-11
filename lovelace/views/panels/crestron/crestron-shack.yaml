@@ -53,8 +53,7 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:mm2-clock-card
-        timezone: UTC
-        timeFormat: 24
+        timezone: America/Chicago
         displaySeconds: false
       - type: horizontal-stack
         cards:
