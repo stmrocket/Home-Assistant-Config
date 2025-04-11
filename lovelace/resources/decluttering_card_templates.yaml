@@ -2204,228 +2204,228 @@ alarm_card_panel:
 iaq_card:
   card:
     type: custom:stack-in-card
-cards:
-  - type: custom:mod-card
-    card:
-      type: grid
-      square: false
-      columns: 2
-      title: Den Air Quality
-      cards:
-        - type: custom:mini-graph-card
-          animate: true
-          smoothing: true
-          hours_to_show: 168
-          points_per_hour: 0.25
-          line_width: 3
-          align_state: center
-          icon: mdi:cloud-outline
-          show:
-            labels: false
-            icon_adaptive_color: true
-            fill: false
-          color_thresholds:
-            - value: 0
-              color: "#6DD559"
-            - value: 800
-              color: "#F5B444"
-            - value: 1000
-              color: "#FF5B32"
-          entities:
-            - entity: sensor.view_plus_carbon_dioxide
-              name: CO2
-              show_state: true
-          style: |
-            ha-card .header.flex .name.flex {
-              font-size: 16px;
-            }
-            ha-card .states.flex .state .state__value.ellipsis {
-              font-size: 20px;
-              align-self: center;
-            }
-            ha-card .states.flex .state .state__uom.ellipsis {
-              font-size: 15px;
-              align-self: center;
-            }
-            ha-card .header.flex {
-              padding: 0px;
-            }
-            ha-card.flex {
-              max-height: 100px !important;
-              padding: 0px;
-            }
-            ha-card .states.flex {
-              padding: 0px;
-            }
-            ha-card .graph.flex {
-              margin: 0px;
-              padding: 0px;
-            }
-        - type: custom:mini-graph-card
-          animate: true
-          smoothing: true
-          hours_to_show: 168
-          points_per_hour: 0.25
-          line_width: 3
-          align_state: center
-          align_header: null
-          font_size_header: null
-          icon: mdi:weather-windy
-          show:
-            labels: false
-            name: true
-            icon: true
-            fill: false
-            icon_adaptive_color: true
-          color_thresholds:
-            - value: 0
-              color: "#6DD559"
-            - value: 250
-              color: "#F5B444"
-            - value: 2000
-              color: "#FF5B32"
-          entities:
-            - entity: sensor.view_plus_vocs
-              name: VOC
-              show_state: true
-          style: |
-            ha-card .header.flex .name.flex {
-              font-size: 16px;
-            }
-            ha-card .states.flex .state .state__value.ellipsis {
-              font-size: 20px;
-              align-self: center;
-            }
-            ha-card .states.flex .state .state__uom.ellipsis {
-              font-size: 15px;
-              align-self: center;
-            }
-            ha-card .header.flex {
-              padding: 0px;
-            }
-            ha-card.flex {
-              max-height: 100px !important;
-              padding: 0px;
-            }
-            ha-card .states.flex {
-              padding: 0px;
-            }
-            ha-card .graph.flex {
-              margin: 0px;
-              padding: 0px;
-            }
-        - type: custom:mini-graph-card
-          animate: true
-          smoothing: true
-          hours_to_show: 168
-          points_per_hour: 0.25
-          line_width: 3
-          align_state: center
-          align_header: null
-          font_size_header: null
-          icon: mdi:radioactive
-          show:
-            labels: false
-            name: true
-            icon: true
-            icon_adaptive_color: true
-            fill: false
-          color_thresholds:
-            - value: 0
-              color: "#6DD559"
-            - value: 100
-              color: "#F5B444"
-            - value: 150
-              color: "#FF5B32"
-          entities:
-            - entity: sensor.view_plus_radon
-              name: Radon
-              show_state: true
-          style: |
-            ha-card .header.flex .name.flex {
-              font-size: 16px;
-            }
-            ha-card .states.flex .state .state__value.ellipsis {
-              font-size: 20px;
-              align-self: center;
-            }
-            ha-card .states.flex .state .state__uom.ellipsis {
-              font-size: 15px;
-              align-self: center;
-            }
-            ha-card .header.flex {
-              padding: 0px;
-            }
-            ha-card.flex {
-              max-height: 100px !important;
-              padding: 0px;
-            }
-            ha-card .states.flex {
-              padding: 0px;
-            }
-            ha-card .graph.flex {
-              margin: 0px;
-              padding: 0px;
-            }
-        - type: custom:mini-graph-card
-          animate: true
-          smoothing: true
-          hours_to_show: 168
-          points_per_hour: 0.25
-          line_width: 3
-          align_state: center
-          align_header: null
-          font_size_header: null
-          icon: mdi:weather-dust
-          show:
-            labels: false
-            name: true
-            icon: true
-            fill: false
-            icon_adaptive_color: true
-          color_thresholds:
-            - value: 0
-              color: "#6DD559"
-            - value: 10
-              color: "#F5B444"
-            - value: 25
-              color: "#FF5B32"
-          entities:
-            - entity: sensor.view_plus_pm2_5
-              name: PM2.5
-              show_state: true
-          style: |
-            ha-card .header.flex .name.flex {
-              font-size: 16px;
-            }
-            ha-card .states.flex .state .state__value.ellipsis {
-              font-size: 20px;
-              align-self: center;
-            }
-            ha-card .states.flex .state .state__uom.ellipsis {
-              font-size: 15px;
-              align-self: center;
-            }
-            ha-card .header.flex {
-              padding: 0px;
-            }
-            ha-card.flex {
-              max-height: 100px !important;
-              padding: 0px;
-            }
-            ha-card .states.flex {
-              padding: 0px;
-            }
-            ha-card .graph.flex {
-              margin: 0px;
-              padding: 0px;
-            }
-    card_mod:
-      style:
-        hui-grid-card:
-          $: |
-            .card-header {
-              width: max-content;
-              margin: 0 auto;
-              padding: 1px !important;
-            }
+    cards:
+      - type: custom:mod-card
+        card:
+          type: grid
+          square: false
+          columns: 2
+          title: Den Air Quality
+          cards:
+            - type: custom:mini-graph-card
+              animate: true
+              smoothing: true
+              hours_to_show: 168
+              points_per_hour: 0.25
+              line_width: 3
+              align_state: center
+              icon: mdi:cloud-outline
+              show:
+                labels: false
+                icon_adaptive_color: true
+                fill: false
+              color_thresholds:
+                - value: 0
+                  color: "#6DD559"
+                - value: 800
+                  color: "#F5B444"
+                - value: 1000
+                  color: "#FF5B32"
+              entities:
+                - entity: sensor.view_plus_carbon_dioxide
+                  name: CO2
+                  show_state: true
+              style: |
+                ha-card .header.flex .name.flex {
+                  font-size: 16px;
+                }
+                ha-card .states.flex .state .state__value.ellipsis {
+                  font-size: 20px;
+                  align-self: center;
+                }
+                ha-card .states.flex .state .state__uom.ellipsis {
+                  font-size: 15px;
+                  align-self: center;
+                }
+                ha-card .header.flex {
+                  padding: 0px;
+                }
+                ha-card.flex {
+                  max-height: 100px !important;
+                  padding: 0px;
+                }
+                ha-card .states.flex {
+                  padding: 0px;
+                }
+                ha-card .graph.flex {
+                  margin: 0px;
+                  padding: 0px;
+                }
+            - type: custom:mini-graph-card
+              animate: true
+              smoothing: true
+              hours_to_show: 168
+              points_per_hour: 0.25
+              line_width: 3
+              align_state: center
+              align_header: null
+              font_size_header: null
+              icon: mdi:weather-windy
+              show:
+                labels: false
+                name: true
+                icon: true
+                fill: false
+                icon_adaptive_color: true
+              color_thresholds:
+                - value: 0
+                  color: "#6DD559"
+                - value: 250
+                  color: "#F5B444"
+                - value: 2000
+                  color: "#FF5B32"
+              entities:
+                - entity: sensor.view_plus_vocs
+                  name: VOC
+                  show_state: true
+              style: |
+                ha-card .header.flex .name.flex {
+                  font-size: 16px;
+                }
+                ha-card .states.flex .state .state__value.ellipsis {
+                  font-size: 20px;
+                  align-self: center;
+                }
+                ha-card .states.flex .state .state__uom.ellipsis {
+                  font-size: 15px;
+                  align-self: center;
+                }
+                ha-card .header.flex {
+                  padding: 0px;
+                }
+                ha-card.flex {
+                  max-height: 100px !important;
+                  padding: 0px;
+                }
+                ha-card .states.flex {
+                  padding: 0px;
+                }
+                ha-card .graph.flex {
+                  margin: 0px;
+                  padding: 0px;
+                }
+            - type: custom:mini-graph-card
+              animate: true
+              smoothing: true
+              hours_to_show: 168
+              points_per_hour: 0.25
+              line_width: 3
+              align_state: center
+              align_header: null
+              font_size_header: null
+              icon: mdi:radioactive
+              show:
+                labels: false
+                name: true
+                icon: true
+                icon_adaptive_color: true
+                fill: false
+              color_thresholds:
+                - value: 0
+                  color: "#6DD559"
+                - value: 100
+                  color: "#F5B444"
+                - value: 150
+                  color: "#FF5B32"
+              entities:
+                - entity: sensor.view_plus_radon
+                  name: Radon
+                  show_state: true
+              style: |
+                ha-card .header.flex .name.flex {
+                  font-size: 16px;
+                }
+                ha-card .states.flex .state .state__value.ellipsis {
+                  font-size: 20px;
+                  align-self: center;
+                }
+                ha-card .states.flex .state .state__uom.ellipsis {
+                  font-size: 15px;
+                  align-self: center;
+                }
+                ha-card .header.flex {
+                  padding: 0px;
+                }
+                ha-card.flex {
+                  max-height: 100px !important;
+                  padding: 0px;
+                }
+                ha-card .states.flex {
+                  padding: 0px;
+                }
+                ha-card .graph.flex {
+                  margin: 0px;
+                  padding: 0px;
+                }
+            - type: custom:mini-graph-card
+              animate: true
+              smoothing: true
+              hours_to_show: 168
+              points_per_hour: 0.25
+              line_width: 3
+              align_state: center
+              align_header: null
+              font_size_header: null
+              icon: mdi:weather-dust
+              show:
+                labels: false
+                name: true
+                icon: true
+                fill: false
+                icon_adaptive_color: true
+              color_thresholds:
+                - value: 0
+                  color: "#6DD559"
+                - value: 10
+                  color: "#F5B444"
+                - value: 25
+                  color: "#FF5B32"
+              entities:
+                - entity: sensor.view_plus_pm2_5
+                  name: PM2.5
+                  show_state: true
+              style: |
+                ha-card .header.flex .name.flex {
+                  font-size: 16px;
+                }
+                ha-card .states.flex .state .state__value.ellipsis {
+                  font-size: 20px;
+                  align-self: center;
+                }
+                ha-card .states.flex .state .state__uom.ellipsis {
+                  font-size: 15px;
+                  align-self: center;
+                }
+                ha-card .header.flex {
+                  padding: 0px;
+                }
+                ha-card.flex {
+                  max-height: 100px !important;
+                  padding: 0px;
+                }
+                ha-card .states.flex {
+                  padding: 0px;
+                }
+                ha-card .graph.flex {
+                  margin: 0px;
+                  padding: 0px;
+                }
+        card_mod:
+          style:
+            hui-grid-card:
+              $: |
+                .card-header {
+                  width: max-content;
+                  margin: 0 auto;
+                  padding: 1px !important;
+                }
