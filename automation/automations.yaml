@@ -81,7 +81,7 @@
       entity_id: input_boolean.hvac_geofence
       to: "on"
     - platform: state
-      entity_id: device_tracker.shawn_n6_wifi
+      entity_id: device_tracker.shawn_n30
       to: "home"
   condition:
     - condition: state
