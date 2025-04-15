@@ -132,9 +132,14 @@
       entity_id: input_boolean.returning_trigger
       to: "on"
   condition:
-    - condition: state
-      entity_id: person.shawn
-      state: home
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: person.karen
+          state: home
+        - condition: state
+          entity_id: person.shawn
+          state: home
     - condition: state
       entity_id: alarm_control_panel.house
       state: pending
@@ -159,11 +164,16 @@
       entity_id: input_boolean.returning_trigger
       to: "on"
   condition:
-    - condition: or
+    - condition: and
       conditions:
-        - condition: state
-          entity_id: person.shawn
-          state: not_home
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: person.karen
+              state: not_home
+            - condition: state
+              entity_id: person.shawn
+              state: not_home
         - condition: not
           conditions:
             - condition: state

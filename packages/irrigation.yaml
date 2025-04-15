@@ -1,0 +1,93 @@
+input_boolean:  
+  drip_irrigation_enabled:
+    name: Drip Irrigation Enabled
+    icon: mdi:timer-outline
+  lawn_irrigation_enabled:
+    name: Lawn Irrigation Enabled
+    icon: mdi:timer-outline
+
+input_number:
+  drip_irrigation_duration:
+    name: Drip Irrigation duration
+    min: 1
+    max: 60
+    step: 1
+    mode: box
+
+automation:
+  - alias: Run Lawn Irrigation
+    id: a85e7595-00cf-4fed-98ee-380544f75dee
+    trigger:
+      - platform: event
+        event_type: smart_irrigation_start_irrigation_all_zones
+    condition:
+      - condition: state
+        entity_id: input_boolean.lawn_irrigation_enabled
+        state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.smart_irrigation_east_front
+        attribute: bucket
+        below: -0.99
+      - condition: numeric_state
+        entity_id: sensor.rain_day
+        below: 0.25
+      - condition: numeric_state
+        entity_id: sensor.openweathermap_current_precip_forecast
+        below: 0.25
+      - condition: numeric_state
+        entity_id: sensor.openweathermap_day_1_precip_forecast
+        below: 0.5
+      - condition: numeric_state
+        entity_id: sensor.openweathermap_day_2_precip_forecast
+        below: 0.5
+    action:
+      - action: esphome.main_irrigation_controller_sprinkler_set_divider
+        data:
+          divider: 4
+      - action: number.set_value
+        data_template:
+          - entity_id: number.main_irrigation_controller_back_yard_duration
+            value: "{{ states('sensor.smart_irrigation_back_yard')| int }}"
+      - action: number.set_value
+        data_template:
+          - entity_id: number.main_irrigation_controller_east_front_duration
+            value: "{{ states('sensor.smart_irrigation_east_front')| int }}"
+      - action: number.set_value
+        data_template:
+          - entity_id: number.main_irrigation_controller_east_side_duration
+            value: "{{ states('sensor.smart_irrigation_east_side')| int }}"
+      - action: number.set_value
+        data_template:
+          - entity_id: number.main_irrigation_controller_west_front_duration
+            value: "{{ states('sensor.smart_irrigation_west_front')| int }}"
+      - action: number.set_value
+        data_template:
+          - entity_id: number.main_irrigation_controller_west_side_duration
+            value: "{{ states('sensor.smart_irrigation_west_side')| int }}"
+      - action: esphome.main_irrigation_controller_sprinkler_start_cycle
+      - action: smart_irrigation.reset_all_buckets
+
+  - alias: Run Back Drip Irrigation
+    id: 8fc4dd84-9231-4abc-a32b-4b6252ac7f89
+    trigger:
+      - platform: event
+        event_type: sunrise
+    condition:
+      - condition: state
+        entity_id: input_boolean.drip_irrigation_enabled
+        state: 'on'
+    action:
+      - service: switch.turn_on
+        entity_id: switch.back_drip_valve
+
+  - alias: Stop Back Drip Irrigation
+    id: 8a752a04-9c63-49af-9643-7a3ff9e32ef7
+    trigger:
+      - platform: state
+        entity_id: switch.back_drip_valve
+        to: "on"
+        for:
+          minutes: "{{ states('input_number.drip_irrigation_duration')|int }}"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.back_drip_valve
