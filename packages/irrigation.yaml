@@ -70,8 +70,8 @@ automation:
   - alias: Run Back Drip Irrigation
     id: 8fc4dd84-9231-4abc-a32b-4b6252ac7f89
     trigger:
-      - platform: event
-        event_type: sunrise
+      - platform: sun
+        event: sunrise
     condition:
       - condition: state
         entity_id: input_boolean.drip_irrigation_enabled
