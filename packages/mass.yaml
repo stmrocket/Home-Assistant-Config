@@ -76,7 +76,6 @@ script:
                   media_id: spotify:playlist:37i9dQZF1DWUileP28ODwg
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
                   
@@ -90,7 +89,6 @@ script:
                   media_id: spotify:playlist:50Yv0e9mTtNO2vJqwwNfbp
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
                   
@@ -160,7 +158,6 @@ script:
                   media_id: spotify:playlist:37i9dQZF1DWViXqZVTGO3Z
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
 
@@ -174,7 +171,6 @@ script:
                   media_id: spotify:playlist:7J8HlMdOq82WJAU6JmhR5d
                   media_type: playlist
                   enqueue: replace
-                  radio_mode: 'off'
                 target:
                   entity_id: media_player.errol
       
