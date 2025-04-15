@@ -46,24 +46,24 @@ automation:
           divider: 4
       - action: number.set_value
         data_template:
-          - entity_id: number.main_irrigation_controller_back_yard_duration
-            value: "{{ states('sensor.smart_irrigation_back_yard')| int }}"
+          entity_id: number.main_irrigation_controller_back_yard_duration
+          value: "{{ states('sensor.smart_irrigation_back_yard')| int }}"
       - action: number.set_value
         data_template:
-          - entity_id: number.main_irrigation_controller_east_front_duration
-            value: "{{ states('sensor.smart_irrigation_east_front')| int }}"
+          entity_id: number.main_irrigation_controller_east_front_duration
+          value: "{{ states('sensor.smart_irrigation_east_front')| int }}"
       - action: number.set_value
         data_template:
-          - entity_id: number.main_irrigation_controller_east_side_duration
-            value: "{{ states('sensor.smart_irrigation_east_side')| int }}"
+          entity_id: number.main_irrigation_controller_east_side_duration
+          value: "{{ states('sensor.smart_irrigation_east_side')| int }}"
       - action: number.set_value
         data_template:
-          - entity_id: number.main_irrigation_controller_west_front_duration
-            value: "{{ states('sensor.smart_irrigation_west_front')| int }}"
+          entity_id: number.main_irrigation_controller_west_front_duration
+          value: "{{ states('sensor.smart_irrigation_west_front')| int }}"
       - action: number.set_value
         data_template:
-          - entity_id: number.main_irrigation_controller_west_side_duration
-            value: "{{ states('sensor.smart_irrigation_west_side')| int }}"
+          entity_id: number.main_irrigation_controller_west_side_duration
+          value: "{{ states('sensor.smart_irrigation_west_side')| int }}"
       - action: esphome.main_irrigation_controller_sprinkler_start_cycle
       - action: smart_irrigation.reset_all_buckets
 
