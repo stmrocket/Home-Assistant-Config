@@ -3,7 +3,14 @@ input_text:
     name: Work Split Flap Text
     max: 12
 
-
+script:
+  update_work_flaps:
+    alias: Update Work Split Flap Display
+    sequence:
+      - action: mqtt.publish
+        data:
+          topic: flaps/office/set
+          payload: "{{ states('input_text.work_flaps_text') }}"
 
 automation:
   - alias: Send Clock to Den Split Flap
