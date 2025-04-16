@@ -22,10 +22,10 @@ sensor:
         unique_id: 3480e9ab-784f-4484-9179-9fa8aacbb115
         friendly_name: Irrigation Schedule Lawn Status
         value_template: >-
-          {% if is_state('input_boolean.lawn_irrigation_enabled', 'on') and is_state('switch.main_irrigation_controller_main_irrigation_controller_main_switch', 'off') -%}
-            enabled
-          {% elif  is_state('input_boolean.lawn_irrigation_enabled', 'on') and is_state('switch.main_irrigation_controller_main_irrigation_controller_main_switch', 'on') and is_state('number.main_irrigation_controller_main_irrigation_controller_multiplier', '0.25') -%}
+          {% if  is_state('input_boolean.lawn_irrigation_enabled', 'on') and is_state('switch.main_irrigation_controller_main_irrigation_controller_main_switch', 'on') and is_state('number.main_irrigation_controller_main_irrigation_controller_multiplier', '0.25') -%}
             running
+          {% elif is_state('input_boolean.lawn_irrigation_enabled', 'on')  -%}
+            enabled
           {% else -%}
             disabled
           {% endif -%}
