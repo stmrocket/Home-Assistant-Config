@@ -19,7 +19,7 @@ cards:
             elements:
               - entity: sensor.blank
                 hold-action: none
-                prefix: RainMachine
+                prefix: Irrigation
                 style:
                   bottom: -5%
                   font-size: 150%
@@ -32,29 +32,7 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: sensor.program_every_2_days_status
-                color_type: icon
-                state:
-                  - value: "enabled"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:alarm-check
-                  - value: "running"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:sprinkler
-                    styles:
-                      icon:
-                        - animation: blink 1s infinite
-                  - value: "disabled"
-                    color: rgb(255, 255, 255)
-                    icon: mdi:alarm-off
-                name: Every 2 Days
-                tap_action:
-                  action: call-service
-                  service: script.rainmachine_program_2_tap
-                hold_action:
-                  action: more-info
-              - type: "custom:button-card"
-                entity: sensor.program_every_3_days_status
+                entity: sensor.program_lawn_irrigation_status
                 color_type: icon
                 state:
                   - value: "enabled"
@@ -69,10 +47,12 @@ cards:
                   - value: "disabled"
                     color: rgb(255, 255, 255)
                     icon: mdi:alarm-off
-                name: Every 3 Days
+                name: Lawn
                 tap_action:
                   action: call-service
-                  service: script.rainmachine_program_1_tap
+                  service: input_boolean.turn_on
+                  service_data:
+                    entity_id: input_boolean.lawn_irrigation_enabled
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
@@ -94,13 +74,13 @@ cards:
                 name: Drip
                 tap_action:
                   action: call-service
-                  service: switch.toggle
+                  service: input_boolean.turn_on
                   service_data:
-                    entity_id: switch.program_drip_enabled
+                    entity_id: input_boolean.drip_irrigation_enabled
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.irrigation_run_program
+                entity: switch.main_irrigation_controller_main_irrigation_controller_main_switch
                 color_type: icon
                 icon: mdi:sprinkler-variant
                 state:
@@ -110,13 +90,16 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)              
                     name: Run Program
+                tap_action:
+                  action: call-service
+                  service: script.manual_water_all
                 hold_action:
                   action: more-info
 
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_1_watering
+                entity: switch.main_irrigation_controller_east_front
                 color_type: icon
                 icon: mdi:numeric-1-box
                 state:
@@ -127,13 +110,11 @@ cards:
                 name: E Front
                 tap_action:
                   action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.east_front
+                  service: script.manual_water_east_front
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_2_watering
+                entity: switch.main_irrigation_controller_east_side
                 color_type: icon
                 icon: mdi:numeric-2-box
                 state:
@@ -144,13 +125,11 @@ cards:
                 name: E Side
                 tap_action:
                   action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.east_side
+                  service: script.manual_water_east_side
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_3_watering
+                entity: switch.main_irrigation_controller_back_yard
                 color_type: icon
                 icon: mdi:numeric-3-box
                 state:
@@ -161,13 +140,11 @@ cards:
                 name: Back
                 tap_action:
                   action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.back_yard
+                  service: script.manual_water_back_yard
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_4_watering
+                entity: switch.main_irrigation_controller_west_side
                 color_type: icon
                 icon: mdi:numeric-4-box
                 state:
@@ -178,13 +155,11 @@ cards:
                 name: W Side
                 tap_action:
                   action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.west_side
+                  service: script.manual_water_west_side
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_5_watering
+                entity: switch.main_irrigation_controller_west_front
                 color_type: icon
                 icon: mdi:numeric-5-box
                 state:
@@ -195,13 +170,11 @@ cards:
                 name: W Front
                 tap_action:
                   action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.west_front
+                  service: script.manual_water_west_front
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_6_watering
+                entity: switch.back_drip_valve
                 color_type: icon
                 icon: mdi:numeric-6-box
                 state:
@@ -214,7 +187,7 @@ cards:
                   action: call-service
                   service: switch.toggle
                   service_data:
-                    entity_id: switch.back_drip
+                    entity_id: switch.back_drip_valve
                 hold_action:
                   action: more-info
 
