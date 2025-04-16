@@ -253,7 +253,7 @@ script:
       - choose:
           - conditions:
               - condition: state
-                entity_id: switch.main_irrigation_controller_west_side
+                entity_id: switch.main_irrigation_controller_main_irrigation_controller_main_switch
                 state: "off"
             sequence:              
               - action: esphome.main_irrigation_controller_sprinkler_set_divider
@@ -283,7 +283,7 @@ script:
               - action: smart_irrigation.reset_all_buckets
           - conditions:
               - condition: state
-                entity_id: switch.main_irrigation_controller_main
+                entity_id: switch.main_irrigation_controller_main_irrigation_controller_main_switch
                 state: "on"
             sequence:
               - action: switch.turn_off
