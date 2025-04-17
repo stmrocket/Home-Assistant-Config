@@ -374,6 +374,18 @@ automation:
       - service: switch.toggle
         entity_id: switch.bike_fan
 
+  - alias: Update Bike Stats After Ride
+    id: 4464195d-4185-415a-a497-6e378d5af014
+    trigger:
+      - platform: state
+        entity_id: switch.bike_fan
+        to: "off"        
+        for: "00:01:00"
+    action: 
+      - service: mqtt.publish
+        data:
+          topic: bike/cmd/poll
+
   - alias: Reset Daily Bike Data
     id: 14d91d22-b923-464f-9841-4a035a704f69
     trigger:
