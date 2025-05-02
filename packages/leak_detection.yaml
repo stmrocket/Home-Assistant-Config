@@ -601,7 +601,7 @@ automation:
         to: "on"
     action:
       - service: switch.turn_on
-        entity_id: switch.zone_7
+        entity_id: switch.elk_water_leak
 
   - alias: Turn Off Elk Alert When Leak Detection Cleared
     id: 74b00168-6991-4eb8-a43c-d470f7800fe8
@@ -663,4 +663,4 @@ automation:
         state: "off"
     action:
       - service: switch.turn_off
-        entity_id: switch.zone_7
+        entity_id: switch.elk_water_leak
