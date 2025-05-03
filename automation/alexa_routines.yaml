@@ -1,3 +1,46 @@
+- alias: Bed Sensor Bedtime
+  id: 55f07213-9303-49e5-99cf-026e7a7ee6fe
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.master_bed_presence_bed_occupied_either
+      to: "on"
+      for:
+        seconds: 15
+  condition:
+    - condition: time
+      after: "22:00:00"
+      before: "02:30:00"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_night
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: arming
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.bedtime_trigger
+
+- alias: Bed Sensor Good Night
+  id: fcefab94-2669-4030-b81d-464744b4f814
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.master_bed_presence_bed_occupied_either
+      to: "on"
+      for:
+        minutes: 3
+  condition:
+    - condition: time
+      after: "22:00:00"
+      before: "02:30:00"
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: armed_night
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.goodnight_trigger
+
 - alias: Alexa Good Night Armed Night
   id: 8e432e90-8f2c-459e-824a-6c8fa934bb19
   trigger:
