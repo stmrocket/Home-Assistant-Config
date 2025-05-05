@@ -671,12 +671,12 @@ cards:
                               action: call-service
                               service: vacuum.start
                               service_data:
-                                entity_id: vacuum.april_s_carnival_litter_box
+                                entity_id: vacuum.chamber_of_secrets_litter_box
 
                       - type: horizontal-stack
                         cards:
                           - type: "custom:button-card"
-                            entity: switch.april_s_carnival_panel_lockout
+                            entity: switch.chamber_of_secrets_panel_lockout
                             color_type: icon
                             state:
                               - value: "on"
@@ -688,7 +688,7 @@ cards:
                             name: Lock
 
                           - type: "custom:button-card"
-                            entity: switch.april_s_carnival_night_light_mode
+                            entity: switch.chamber_of_secrets_night_light_mode
                             color_type: icon
                             state:
                               - value: "on"
@@ -700,7 +700,7 @@ cards:
                             name: Light
 
                           - type: "custom:button-card"
-                            entity: binary_sensor.april_s_carnival_sleeping
+                            entity: binary_sensor.chamber_of_secrets_sleeping
                             color_type: icon
                             state:
                               - value: "on"
@@ -714,7 +714,7 @@ cards:
                       - type: horizontal-stack
                         cards:
                           - type: "custom:button-card"
-                            entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                            entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
                             color_type: icon
                             icon: mdi:timer-outline
                             state:
@@ -728,11 +728,11 @@ cards:
                               action: call-service
                               service: select.select_option
                               service_data:
-                                entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                                entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
                                 option: "3"
 
                           - type: "custom:button-card"
-                            entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                            entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
                             color_type: icon
                             icon: mdi:timer-outline
                             state:
@@ -746,11 +746,11 @@ cards:
                               action: call-service
                               service: select.select_option
                               service_data:
-                                entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                                entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
                                 option: "7"
 
                           - type: "custom:button-card"
-                            entity: select.april_s_carnival_clean_cycle_wait_time_minutes
+                            entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
                             color_type: icon
                             icon: mdi:timer-outline
                             state:
@@ -764,7 +764,7 @@ cards:
                               action: call-service
                               service: select.select_option
                               service_data:
-                                entity_id: select.april_s_carnival_clean_cycle_wait_time_minutes
+                                entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
                                 option: "15"   
 
           - type: "custom:button-card"

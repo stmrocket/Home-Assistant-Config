@@ -5,43 +5,43 @@ sensor:
         unique_id: 712ed244-df40-4cbf-8c4c-a34415cdbd76
         friendly_name: Short Litter Robot Status
         value_template: >-
-          {% if  is_state('binary_sensor.april_s_carnival_sleep_mode', 'on') -%}
+          {% if  is_state('binary_sensor.chamber_of_secrets_sleep_mode', 'on') -%}
             Sleep
-          {% elif is_state('sensor.april_s_carnival_status_code', 'rdy') -%}
+          {% elif is_state('sensor.chamber_of_secrets_status_code', 'rdy') -%}
             Ready
-          {% elif is_state('sensor.april_s_carnival_status_code', 'ccc') -%}
+          {% elif is_state('sensor.chamber_of_secrets_status_code', 'ccc') -%}
             Done
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'ccp') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'ccp') -%}
             Clean
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'df2') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'df2') -%}
             Drawer 2
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'df1') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'df1') -%}
             Drawer 1
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'csf') or is_state('sensor.april_s_carnival_status_code', 'csi') or is_state('sensor.april_s_carnival_status_code', 'scf') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'csf') or is_state('sensor.chamber_of_secrets_status_code', 'csi') or is_state('sensor.chamber_of_secrets_status_code', 'scf') -%}
             Sensor
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'cst') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'cst') -%}
             Timing
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'br') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'br') -%}
             Bonnet  
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'p') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'p') -%}
             Paused 
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'pd') or is_state('sensor.april_s_carnival_status_code', 'spf') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'pd') or is_state('sensor.chamber_of_secrets_status_code', 'spf') -%}
             Pinch
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'cd') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'cd') -%}
             Cat
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'ec') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'ec') -%}
             Empty
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'off') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'off') -%}
             Off 
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'offline') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'offline') -%}
             Offline
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'otf') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'otf') -%}
             Torque 
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'dfs') or is_state('sensor.april_s_carnival_status_code', 'sdf') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'dfs') or is_state('sensor.chamber_of_secrets_status_code', 'sdf') -%}
             Full
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'dhf') or is_state('sensor.april_s_carnival_status_code', 'dpf') or is_state('sensor.april_s_carnival_status_code', 'hpf') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'dhf') or is_state('sensor.chamber_of_secrets_status_code', 'dpf') or is_state('sensor.chamber_of_secrets_status_code', 'hpf') -%}
             Position
-          {% elif  is_state('sensor.april_s_carnival_status_code', 'pwrd') or is_state('sensor.april_s_carnival_status_code', 'pwru') -%}
+          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'pwrd') or is_state('sensor.chamber_of_secrets_status_code', 'pwru') -%}
             Power
           {% else -%}
             Error
@@ -86,13 +86,13 @@ switch:
     switches:
       litter_robot_power:
         unique_id: 1c69d41e-1d7a-4cba-82a8-d9f4230fa722
-        value_template: "{{ not is_state('sensor.april_s_carnival_status_code', 'on') }}"
+        value_template: "{{ not is_state('sensor.chamber_of_secrets_status_code', 'on') }}"
         turn_on:
           service: vacuum.start
-          entity_id: vacuum.april_s_carnival_litter_box
+          entity_id: vacuum.chamber_of_secrets_litter_box
         turn_off:
           service: vacuum.stop
-          entity_id: vacuum.april_s_carnival_litter_box
+          entity_id: vacuum.chamber_of_secrets_litter_box
 
 script:
   litter_robot_empty:
@@ -106,14 +106,14 @@ script:
       - service: counter.reset
         entity_id: counter.litter_robot_cycle_count
       - service: button.press
-        entity_id: button.april_s_carnival_reset_waste_drawer
+        entity_id: button.chamber_of_secrets_reset_waste_drawer
 
 automation:
   - alias: Update Litter Robot Cycle Count
     id: f656c603-f96b-4127-9059-a0fe410694a6
     trigger:
       - platform: state
-        entity_id: sensor.april_s_carnival_status_code
+        entity_id: sensor.chamber_of_secrets_status_code
         to: "ccc"
     action:
       - service: counter.increment
@@ -133,7 +133,7 @@ automation:
     id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
     trigger:
       - platform: state
-        entity_id: sensor.april_s_carnival_status_code
+        entity_id: sensor.chamber_of_secrets_status_code
         to: "cst"
     action:
       - service: camera.snapshot
