@@ -106,7 +106,7 @@ script:
       - service: counter.reset
         entity_id: counter.litter_robot_cycle_count
       - service: button.press
-        entity_id: button.chamber_of_secrets_reset_waste_drawer
+        entity_id: button.chamber_of_secrets_reset
 
 automation:
   - alias: Update Litter Robot Cycle Count
@@ -114,7 +114,8 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.chamber_of_secrets_status_code
-        to: "ccc"
+        from: "ccp"
+        to: "rdy"
     action:
       - service: counter.increment
         entity_id: counter.litter_robot_cycle_count
@@ -134,7 +135,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.chamber_of_secrets_status_code
-        to: "cst"
+        to: "cd"
     action:
       - service: camera.snapshot
         data:
