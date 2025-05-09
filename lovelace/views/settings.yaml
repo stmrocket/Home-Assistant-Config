@@ -32,6 +32,13 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
+                entity: sensor.lawn_bucket
+                color_type: icon
+                icon: mdi:bucket-outline
+                hold_action:
+                  action: more-info
+                name: "[[[return `Bucket: ${states['sensor.lawn_bucket'].state}in`]]]"
+              - type: "custom:button-card"
                 entity: sensor.program_lawn_irrigation_status
                 color_type: icon
                 state:

@@ -1547,6 +1547,9 @@ litter_robot_button:
                   - entity: select.chamber_of_secrets_panel_brightness
                     name: Panel Brightness
                     icon: mdi:lightbulb
+                  - entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
+                    name: Wait Time
+                    icon: mdi:clock-outline
 
               - type: horizontal-stack
                 cards:
@@ -1608,72 +1611,15 @@ litter_robot_button:
                     name: Light
 
                   - type: "custom:button-card"
-                    entity: binary_sensor.chamber_of_secrets_sleeping
                     color_type: icon
-                    state:
-                      - value: "on"
-                        color: rgb(228, 94, 101)
-                        icon: mdi:sleep
-                      - value: "off"
-                        color: rgb(255, 255, 255)
-                        icon: mdi:sleep-off
-                    name: Sleep
-
-              - type: horizontal-stack
-                cards:
-                  - type: "custom:button-card"
-                    entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                    color_type: icon
-                    icon: mdi:timer-outline
-                    state:
-                      - value: "3"
-                        color: rgb(228, 94, 101)
-                      - operator: "!="
-                        value: "3"
-                        color: rgb(255, 255, 255)
-                    name: 3 Min.
+                    color: rgb(255, 255, 255)
+                    icon: mdi:check
+                    name: Reset
                     tap_action:
                       action: call-service
-                      service: select.select_option
+                      service: button.press
                       service_data:
-                        entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                        option: "3"
-
-                  - type: "custom:button-card"
-                    entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                    color_type: icon
-                    icon: mdi:timer-outline
-                    state:
-                      - value: "7"
-                        color: rgb(228, 94, 101)
-                      - operator: "!="
-                        value: "7"
-                        color: rgb(255, 255, 255)
-                    name: 7 Min.
-                    tap_action:
-                      action: call-service
-                      service: select.select_option
-                      service_data:
-                        entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                        option: "7"
-
-                  - type: "custom:button-card"
-                    entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                    color_type: icon
-                    icon: mdi:timer-outline
-                    state:
-                      - value: "15"
-                        color: rgb(228, 94, 101)
-                      - operator: "!="
-                        value: "15"
-                        color: rgb(255, 255, 255)
-                    name: 15 Min.
-                    tap_action:
-                      action: call-service
-                      service: select.select_option
-                      service_data:
-                        entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                        option: "15"   
+                        entity_id: button.chamber_of_secrets_reset  
 
 cameras_tablet:
   card:
@@ -1879,7 +1825,7 @@ shed_lock_button:
       - value: "error"
         color: rgb(228, 94, 101)
         icon: mdi:alert-circle
-    name: Back
+    name: Shed
     tap_action:
       action: call-service
       service: lock.lock

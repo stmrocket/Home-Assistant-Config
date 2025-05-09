@@ -41,6 +41,12 @@ sensor:
           {% else -%}
             disabled
           {% endif -%}
+      
+      Lawn_bucket:
+        unique_id: 594f7d57-f86c-4f70-b79b-9909faf075a7
+        friendly_name: Lawn Irrigation Bucket
+        value_template: "{{ state_attr('sensor.smart_irrigation_east_front','bucket') | round (2,0)}}"
+        unit_of_measurement: "in"
 
 automation:
   - alias: Run Lawn Irrigation
@@ -55,7 +61,7 @@ automation:
       - condition: numeric_state
         entity_id: sensor.smart_irrigation_east_front
         attribute: bucket
-        below: -0.99
+        below: -0.74
       - condition: numeric_state
         entity_id: sensor.rain_day
         below: 0.25
@@ -72,28 +78,60 @@ automation:
       - action: esphome.main_irrigation_controller_sprinkler_set_divider
         data:
           divider: 4
-      - action: number.set_value
-        data_template:
-          entity_id: number.main_irrigation_controller_back_yard_duration
-          value: "{{ states('sensor.smart_irrigation_back_yard')| int }}"
-      - action: number.set_value
-        data_template:
-          entity_id: number.main_irrigation_controller_east_front_duration
-          value: "{{ states('sensor.smart_irrigation_east_front')| int }}"
-      - action: number.set_value
-        data_template:
-          entity_id: number.main_irrigation_controller_east_side_duration
-          value: "{{ states('sensor.smart_irrigation_east_side')| int }}"
-      - action: number.set_value
-        data_template:
-          entity_id: number.main_irrigation_controller_west_front_duration
-          value: "{{ states('sensor.smart_irrigation_west_front')| int }}"
-      - action: number.set_value
-        data_template:
-          entity_id: number.main_irrigation_controller_west_side_duration
-          value: "{{ states('sensor.smart_irrigation_west_side')| int }}"
-      - action: esphome.main_irrigation_controller_sprinkler_start_cycle
-      - action: smart_irrigation.reset_all_buckets
+      - choose:
+        - conditions:          
+          - condition: numeric_state
+            entity_id: sensor.smart_irrigation_east_front
+            attribute: bucket
+            below: -1.0
+          sequence:
+            - action: number.set_value
+              data_template:
+                entity_id: number.main_irrigation_controller_back_yard_duration
+                value: 2646
+            - action: number.set_value
+              data_template:
+                entity_id: number.main_irrigation_controller_east_front_duration
+                value: 2343
+            - action: number.set_value
+              data_template:
+                entity_id: number.main_irrigation_controller_east_side_duration
+                value: 3882
+            - action: number.set_value
+              data_template:
+                entity_id: number.main_irrigation_controller_west_front_duration
+                value: 1382
+            - action: number.set_value
+              data_template:
+                entity_id: number.main_irrigation_controller_west_side_duration
+                value: 1328
+            - action: esphome.main_irrigation_controller_sprinkler_start_cycle
+            - action: smart_irrigation.set_all_buckets
+              data:
+                new_bucket_value: "{{ (state_attr('sensor.smart_irrigation_back_yard','bucket') | round (2,0)) + 1}}"
+        default:
+          - action: number.set_value
+            data_template:
+              entity_id: number.main_irrigation_controller_back_yard_duration
+              value: "{{ states('sensor.smart_irrigation_back_yard')| int }}"
+          - action: number.set_value
+            data_template:
+              entity_id: number.main_irrigation_controller_east_front_duration
+              value: "{{ states('sensor.smart_irrigation_east_front')| int }}"
+          - action: number.set_value
+            data_template:
+              entity_id: number.main_irrigation_controller_east_side_duration
+              value: "{{ states('sensor.smart_irrigation_east_side')| int }}"
+          - action: number.set_value
+            data_template:
+              entity_id: number.main_irrigation_controller_west_front_duration
+              value: "{{ states('sensor.smart_irrigation_west_front')| int }}"
+          - action: number.set_value
+            data_template:
+              entity_id: number.main_irrigation_controller_west_side_duration
+              value: "{{ states('sensor.smart_irrigation_west_side')| int }}"
+          - action: esphome.main_irrigation_controller_sprinkler_start_cycle
+          - action: smart_irrigation.reset_all_buckets
 
   - alias: Run Back Drip Irrigation
     id: 8fc4dd84-9231-4abc-a32b-4b6252ac7f89
