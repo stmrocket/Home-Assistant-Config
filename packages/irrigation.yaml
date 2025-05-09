@@ -42,7 +42,7 @@ sensor:
             disabled
           {% endif -%}
       
-      Lawn_bucket:
+      lawn_bucket:
         unique_id: 594f7d57-f86c-4f70-b79b-9909faf075a7
         friendly_name: Lawn Irrigation Bucket
         value_template: "{{ state_attr('sensor.smart_irrigation_east_front','bucket') | round (2,0)}}"
