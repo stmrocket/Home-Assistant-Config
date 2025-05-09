@@ -462,17 +462,15 @@ cards:
                                 name: Light
 
                               - type: "custom:button-card"
-                                entity: binary_sensor.chamber_of_secrets_sleeping
                                 color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                    icon: mdi:sleep
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                    icon: mdi:sleep-off
-                                name: Sleep
-
+                                color: rgb(255, 255, 255)
+                                icon: mdi:check
+                                name: Reset
+                                tap_action:
+                                  action: call-service
+                                  service: button.press
+                                  service_data:
+                                    entity_id: button.chamber_of_secrets_reset
                           - type: horizontal-stack
                             cards:
                               - type: "custom:button-card"
