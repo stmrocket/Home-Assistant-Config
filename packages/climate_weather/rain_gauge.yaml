@@ -331,7 +331,7 @@ sensor:
              states('input_number.rain_minute_57') | float(none) +
              states('input_number.rain_minute_58') | float(none) +
              states('input_number.rain_minute_59') | float(none)) | round(2, default=none) }}
-        unit_of_measurement: "in/hr"
+        unit_of_measurement: "in/h"
         device_class: precipitation_intensity
 
 input_number:
