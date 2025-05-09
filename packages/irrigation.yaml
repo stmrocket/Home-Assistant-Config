@@ -41,6 +41,12 @@ sensor:
           {% else -%}
             disabled
           {% endif -%}
+      
+      Lawn_bucket:
+        unique_id: 594f7d57-f86c-4f70-b79b-9909faf075a7
+        friendly_name: Lawn Irrigation Bucket
+        value_template: "{{ state_attr('sensor.smart_irrigation_east_front','bucket') | round (2,0)}}"
+        unit_of_measurement: "in"
 
 automation:
   - alias: Run Lawn Irrigation
@@ -55,7 +61,7 @@ automation:
       - condition: numeric_state
         entity_id: sensor.smart_irrigation_east_front
         attribute: bucket
-        below: -0.99
+        below: -0.75
       - condition: numeric_state
         entity_id: sensor.rain_day
         below: 0.25
