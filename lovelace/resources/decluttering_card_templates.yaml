@@ -1879,7 +1879,7 @@ shed_lock_button:
       - value: "error"
         color: rgb(228, 94, 101)
         icon: mdi:alert-circle
-    name: Back
+    name: Shed
     tap_action:
       action: call-service
       service: lock.lock
