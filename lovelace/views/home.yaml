@@ -251,156 +251,9 @@ cards:
                               - entity: select.chamber_of_secrets_panel_brightness
                                 name: Panel Brightness
                                 icon: mdi:lightbulb
-
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:button-card"
-                                entity: switch.litter_robot_power
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                icon: mdi:power
-                                name: Power
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:trash-can
-                                name: Empty
-                                tap_action:
-                                  action: call-service
-                                  service: script.litter_robot_empty
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
-                                icon: mdi:reload
-                                name: Cycle
-                                tap_action:
-                                  action: call-service
-                                  service: vacuum.start
-                                  service_data:
-                                    entity_id: vacuum.chamber_of_secrets_litter_box
-
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:button-card"
-                                entity: switch.chamber_of_secrets_panel_lockout
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                    icon: mdi:lock
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                    icon: mdi:lock-open
-                                name: Lock
-
-                              - type: "custom:button-card"
-                                entity: switch.chamber_of_secrets_night_light_mode
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                    icon: mdi:lightbulb-on-outline
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                    icon: mdi:lightbulb-outline
-                                name: Light
-
-                              - type: "custom:button-card"
-                                entity: binary_sensor.chamber_of_secrets_sleeping
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                    icon: mdi:sleep
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                    icon: mdi:sleep-off
-                                name: Sleep
-
-                          - type: horizontal-stack
-                            cards:
-                              - type: "custom:button-card"
-                                entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                color_type: icon
-                                icon: mdi:timer-outline
-                                state:
-                                  - value: "3"
-                                    color: rgb(228, 94, 101)
-                                  - operator: "!="
-                                    value: "3"
-                                    color: rgb(255, 255, 255)
-                                name: 3 Min.
-                                tap_action:
-                                  action: call-service
-                                  service: select.select_option
-                                  service_data:
-                                    entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                    option: "3"
-
-                              - type: "custom:button-card"
-                                entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                color_type: icon
-                                icon: mdi:timer-outline
-                                state:
-                                  - value: "7"
-                                    color: rgb(228, 94, 101)
-                                  - operator: "!="
-                                    value: "7"
-                                    color: rgb(255, 255, 255)
-                                name: 7 Min.
-                                tap_action:
-                                  action: call-service
-                                  service: select.select_option
-                                  service_data:
-                                    entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                    option: "7"
-
-                              - type: "custom:button-card"
-                                entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                color_type: icon
-                                icon: mdi:timer-outline
-                                state:
-                                  - value: "15"
-                                    color: rgb(228, 94, 101)
-                                  - operator: "!="
-                                    value: "15"
-                                    color: rgb(255, 255, 255)
-                                name: 15 Min.
-                                tap_action:
-                                  action: call-service
-                                  service: select.select_option
-                                  service_data:
-                                    entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                    option: "15"    
-              - entity: sensor.litter_robot_status_short
-                attribute: state
-                decimals: 1
-                tap_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Litter Robot
-                      content:
-                        type: custom:vertical-stack-in-card
-                        cards:
-                          - type: entities
-                            entities:
-                              - entity: sensor.litter_robot_status_short
-                                name: Status
-                                icon: mdi:cat
-                              - entity: counter.litter_robot_cycle_count
-                                name: Cycle Count
-                                icon: mdi:toilet
-                              - entity: sensor.litter_robot_average_cycle_capacity
-                                name: Average Drawer Capacity
-                                icon: mdi:trash-can-outline
+                              - entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
+                                name: Wait Time
+                                icon: mdi:clock-outline
 
                           - type: horizontal-stack
                             cards:
@@ -471,61 +324,108 @@ cards:
                                   service: button.press
                                   service_data:
                                     entity_id: button.chamber_of_secrets_reset
+              - entity: sensor.litter_robot_status_short
+                attribute: state
+                decimals: 1
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Litter Robot
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: entities
+                            entities:
+                              - entity: sensor.litter_robot_status_short
+                                name: Status
+                                icon: mdi:cat
+                              - entity: counter.litter_robot_cycle_count
+                                name: Cycle Count
+                                icon: mdi:toilet
+                              - entity: sensor.litter_robot_average_cycle_capacity
+                                name: Average Drawer Capacity
+                                icon: mdi:trash-can-outline
+                              - entity: sensor.chamber_of_secrets_litter_level
+                                name: Litter Level
+                                icon: mdi:weather-dust
+                              - entity: select.chamber_of_secrets_panel_brightness
+                                name: Panel Brightness
+                                icon: mdi:lightbulb
+                              - entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
+                                name: Wait Time
+                                icon: mdi:clock-outline
+
                           - type: horizontal-stack
                             cards:
                               - type: "custom:button-card"
-                                entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
+                                entity: switch.litter_robot_power
                                 color_type: icon
-                                icon: mdi:timer-outline
                                 state:
-                                  - value: "3"
+                                  - value: "on"
                                     color: rgb(228, 94, 101)
-                                  - operator: "!="
-                                    value: "3"
+                                  - value: "off"
                                     color: rgb(255, 255, 255)
-                                name: 3 Min.
-                                tap_action:
-                                  action: call-service
-                                  service: select.select_option
-                                  service_data:
-                                    entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                    option: "3"
+                                icon: mdi:power
+                                name: Power
 
                               - type: "custom:button-card"
-                                entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
                                 color_type: icon
-                                icon: mdi:timer-outline
-                                state:
-                                  - value: "7"
-                                    color: rgb(228, 94, 101)
-                                  - operator: "!="
-                                    value: "7"
-                                    color: rgb(255, 255, 255)
-                                name: 7 Min.
+                                color: rgb(255, 255, 255)
+                                icon: mdi:trash-can
+                                name: Empty
                                 tap_action:
                                   action: call-service
-                                  service: select.select_option
-                                  service_data:
-                                    entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                    option: "7"
+                                  service: script.litter_robot_empty
 
                               - type: "custom:button-card"
-                                entity: select.chamber_of_secrets_clean_cycle_wait_time_minutes
                                 color_type: icon
-                                icon: mdi:timer-outline
-                                state:
-                                  - value: "15"
-                                    color: rgb(228, 94, 101)
-                                  - operator: "!="
-                                    value: "15"
-                                    color: rgb(255, 255, 255)
-                                name: 15 Min.
+                                color: rgb(255, 255, 255)
+                                icon: mdi:reload
+                                name: Cycle
                                 tap_action:
                                   action: call-service
-                                  service: select.select_option
+                                  service: vacuum.start
                                   service_data:
-                                    entity_id: select.chamber_of_secrets_clean_cycle_wait_time_minutes
-                                    option: "15"    
+                                    entity_id: vacuum.chamber_of_secrets_litter_box
+
+                          - type: horizontal-stack
+                            cards:
+                              - type: "custom:button-card"
+                                entity: switch.chamber_of_secrets_panel_lockout
+                                color_type: icon
+                                state:
+                                  - value: "on"
+                                    color: rgb(228, 94, 101)
+                                    icon: mdi:lock
+                                  - value: "off"
+                                    color: rgb(255, 255, 255)
+                                    icon: mdi:lock-open
+                                name: Lock
+
+                              - type: "custom:button-card"
+                                entity: switch.chamber_of_secrets_night_light_mode
+                                color_type: icon
+                                state:
+                                  - value: "on"
+                                    color: rgb(228, 94, 101)
+                                    icon: mdi:lightbulb-on-outline
+                                  - value: "off"
+                                    color: rgb(255, 255, 255)
+                                    icon: mdi:lightbulb-outline
+                                name: Light
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:check
+                                name: Reset
+                                tap_action:
+                                  action: call-service
+                                  service: button.press
+                                  service_data:
+                                    entity_id: button.chamber_of_secrets_reset   
 
             show:
               horseshoe_style: "lineargradient"
