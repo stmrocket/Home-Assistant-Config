@@ -85,7 +85,7 @@ midnight:
   slider-color: "var(--primary-color)"
   slider-secondary-color: "var(--light-primary-color)"
   state-icon-active-color: "#FDD835"
-  state-icon-color: "#44739e"
+  state-icon-color: "#ffffff" #WAS 44739e
   state-icon-unavailable-color: "var(--disabled-text-color)"
   switch-checked-color: "var(--paper-toggle-button-checked-button-color)"
   switch-unchecked-button-color: "var(--disabled-text-color)"
