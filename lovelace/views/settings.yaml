@@ -57,11 +57,24 @@ cards:
                 name: Lawn
                 tap_action:
                   action: call-service
-                  service: input_boolean.turn_on
+                  service: input_boolean.toggle
                   service_data:
                     entity_id: input_boolean.lawn_irrigation_enabled
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Lawn Irrigation
+                      content:
+                        type: entities
+                        entities:
+                          - entity: input_boolean.lawn_irrigation_manual
+                            name: Run Next Cycle
+                            icon: 'mdi:sprinkler'
+                          - entity: input_boolean.lawn_irrigation_snooze
+                            name: Snooze Cycle
+                            icon: 'mdi:alarm-snooze'
               - type: "custom:button-card"
                 entity: sensor.program_drip_status
                 color_type: icon
@@ -81,7 +94,7 @@ cards:
                 name: Drip
                 tap_action:
                   action: call-service
-                  service: input_boolean.turn_on
+                  service: input_boolean.toggle
                   service_data:
                     entity_id: input_boolean.drip_irrigation_enabled
                 hold_action:
