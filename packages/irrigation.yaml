@@ -297,6 +297,10 @@ script:
               - action: esphome.main_irrigation_controller_sprinkler_set_divider
                 data:
                   divider: 1
+              - action: number.set_value
+                data:
+                  entity_id: number.main_irrigation_controller_west_side_duration
+                  value: 600
               - action: switch.turn_on
                 entity_id: switch.main_irrigation_controller_west_side
           - conditions:
