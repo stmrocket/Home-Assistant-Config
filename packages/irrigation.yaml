@@ -53,6 +53,12 @@ sensor:
         friendly_name: Lawn Irrigation Bucket
         value_template: "{{ state_attr('sensor.smart_irrigation_east_front','bucket') | round (2,0)}}"
         unit_of_measurement: "in"
+      
+      lawn_et:
+        unique_id: b4132f9f-fb86-4fe6-afec-0632bad61d73
+        friendly_name: Lawn Irrigation Evapotranspiration
+        value_template: "{{ state_attr('sensor.smart_irrigation_east_front','et_value') | round (2,0)}}"
+        unit_of_measurement: "mm"
 
 automation:
   - alias: Run Lawn Irrigation
