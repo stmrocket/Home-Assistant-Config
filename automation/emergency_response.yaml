@@ -27,7 +27,7 @@
           - switch.shack_light
           - switch.back_porch_light
           - switch.outside_lights
-          - switch.garage_lights
+          - light.garage_lights
           - light.hallway_light
           - light.master_toilet_light
           - light.utility_room_light
@@ -81,7 +81,7 @@
         - switch.shack_light
         - switch.back_porch_light
         - switch.outside_lights
-        - switch.garage_lights
+        - light.garage_lights
         - switch.master_closet_light
     - service: mqtt.publish
       data:
@@ -132,7 +132,7 @@
           - switch.shack_light
           - switch.back_porch_light
           - switch.outside_lights
-          - switch.garage_lights
+          - light.garage_lights
           - light.hallway_light
           - light.master_toilet_light
           - light.utility_room_light
@@ -186,7 +186,7 @@
         - switch.shack_light
         - switch.back_porch_light
         - switch.outside_lights
-        - switch.garage_lights
+        - light.garage_lights
         - switch.master_closet_light
     - service: mqtt.publish
       data:
