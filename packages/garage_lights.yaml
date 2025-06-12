@@ -301,12 +301,12 @@ automation:
       - platform: event
         event_type: isy994_control
         event_data:
-          entity_id: switch.garage_light
+          entity_id: light.garage_light
           control: "DON"
       - platform: event
         event_type: isy994_control
         event_data:
-          entity_id: switch.garage_light
+          entity_id: light.garage_light
           control: "DFON"
     condition:
       - condition: state
@@ -324,12 +324,12 @@ automation:
       - platform: event
         event_type: isy994_control
         event_data:
-          entity_id: switch.garage_light
+          entity_id: light.garage_light
           control: "DON"
       - platform: event
         event_type: isy994_control
         event_data:
-          entity_id: switch.garage_light
+          entity_id: light.garage_light
           control: "DFON"
     condition:
       - condition: or
@@ -349,7 +349,7 @@ automation:
       - platform: event
         event_type: isy994_control
         event_data:
-          entity_id: switch.garage_light
+          entity_id: light.garage_light
           control: "DOF"
     action:
       - service: script.garage_lights_off
@@ -362,11 +362,11 @@ automation:
         to: "on"
     condition:
       - condition: state
-        entity_id: switch.garage_light
+        entity_id: light.garage_light
         state: "off"
     action:
       - service: switch.turn_on
-        entity_id: switch.garage_light
+        entity_id: light.garage_light
 
   - alias: Garage Light Keypad Off
     id: 8b9376f5-f6bd-417f-bfa9-cf06179b0f77
@@ -376,11 +376,11 @@ automation:
         to: "off"
     condition:
       - condition: state
-        entity_id: switch.garage_light
+        entity_id: light.garage_light
         state: "on"
     action:
       - service: switch.turn_off
-        entity_id: switch.garage_light
+        entity_id: light.garage_light
 
   - alias: Garage Fan Off When Trapdoor Open
     id: 706f69f6-22fc-4a54-9bab-bea53ab000ca

@@ -32,7 +32,7 @@ cards:
     cards:
       - type: "custom:gap-card"
       - type: "custom:button-card"
-        entity: light.garage_lights
+        entity: light.garage_light
         color_type: icon
         color: rgb(228, 94, 101)
         state:
