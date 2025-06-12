@@ -63,7 +63,7 @@
         - switch.office_fan
         - switch.server_room_fan
         - switch.back_porch_fan
-        - switch.garage_lights
+        - light.garage_lights
         - switch.garage_fan
         - switch.guest_closet_light
         - switch.server_closet_light
