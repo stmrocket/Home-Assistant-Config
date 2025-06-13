@@ -230,11 +230,7 @@ automation:
     - platform: state
       entity_id: alarm_control_panel.house
       from: arming
-      to: armed_away
-    condition:
-      - condition: state
-        entity_id: input_boolean.vacation_mode
-        state: "on"
+      to: armed_vacation
     action:
       service: notify.mobile_app_shawn_n30
       data:

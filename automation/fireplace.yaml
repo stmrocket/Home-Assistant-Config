@@ -72,7 +72,9 @@
           state: armed_night
         - condition: state
           entity_id: alarm_control_panel.house
-          state: armed_away
+          state: 
+            - armed_away
+            - armed_vacation
   action:
     - service: switch.turn_off
       entity_id: switch.fireplace

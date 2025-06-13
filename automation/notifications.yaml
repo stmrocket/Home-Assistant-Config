@@ -22,7 +22,9 @@
   condition:
     - condition: state
       entity_id: alarm_control_panel.house
-      state: armed_away
+      state: 
+        - armed_away
+        - armed_vacation
   action:
     - service: notify.mobile_app_shawn_n30
       data:

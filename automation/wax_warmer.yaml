@@ -65,14 +65,12 @@
       entity_id: switch.wax_warmer
       to: "on"
   condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_night
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_away
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: 
+        - armed_away
+        - armed_vacation
+        - armed_night
   action:
     - service: switch.turn_off
       entity_id: switch.wax_warmer

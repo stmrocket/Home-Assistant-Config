@@ -27,10 +27,10 @@
       conditions:
         - condition: state
           entity_id: alarm_control_panel.house
-          state: armed_away
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: arming
+          state: 
+            - armed_away
+            - armed_vacation
+            - arming
   action:
     - service: lock.unlock
       entity_id: lock.garage_entry_lock

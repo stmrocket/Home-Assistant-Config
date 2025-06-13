@@ -251,6 +251,9 @@
         - condition: state
           entity_id: alarm_control_panel.house
           state: armed_away
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_vacation
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.returning_door_unlocked

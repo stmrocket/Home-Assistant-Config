@@ -138,15 +138,15 @@ automation:
       - service: switch.turn_on
         entity_id: switch.houston_metar_map_power
 
-  - alias: Houston Map Off When Home and Awake
+  - alias: Houston Map Off When Not Home or Awake
     id: ceab912c-e825-4798-8fa0-ade314881bd5
     trigger:
       - platform: state
         entity_id: alarm_control_panel.house
-        to: armed_away
-      - platform: state
-        entity_id: alarm_control_panel.house
-        to: armed_night
+        to: 
+          - armed_away
+          - armed_vacation
+          - armed_night
     action:
       - service: switch.turn_off
         entity_id: switch.houston_metar_map_power

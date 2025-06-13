@@ -19,7 +19,9 @@
               state: "on"
         - condition: state
           entity_id: alarm_control_panel.house
-          state: armed_away
+          state: 
+            - armed_away
+            - armed_vacation
   action:
     - service: switch.turn_on
       continue_on_error: true
@@ -233,7 +235,9 @@
           state: "off"
         - condition: state
           entity_id: alarm_control_panel.house
-          state: armed_away
+          state: 
+            - armed_away
+            - armed_vacation
   action:
     - service: switch.turn_on
       entity_id: switch.guest_room_lamp
@@ -268,18 +272,14 @@
       event_type: automation_triggered
       event_data:
         entity_id: automation.timer_lights_on_main_weekend_holiday_am
-  condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: disarmed
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_away
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_home
+  condition:    
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: 
+        - disarmed
+        - armed_away
+        - armed_vacation
+        - armed_home
   action:
     - service: switch.turn_on
       continue_on_error: true
@@ -303,17 +303,13 @@
       event_data:
         entity_id: automation.timer_lights_off_main_night_mode
   condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: disarmed
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_away
-        - condition: state
-          entity_id: alarm_control_panel.house
-          state: armed_home
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: 
+        - disarmed
+        - armed_away
+        - armed_vacation
+        - armed_home
   action:
     - service: switch.turn_off
       continue_on_error: true
