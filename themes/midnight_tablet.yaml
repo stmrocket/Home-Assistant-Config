@@ -79,6 +79,7 @@ midnight-tablet:
   ha-card-background: "rgba(150, 150, 150, 0.1)"
   state-alarm_control_panel-disarmed-color: "#4CAF50"
   state-alarm_control_panel-armed_away-color: "#F44336"
+  state-alarm_control_panel-armed_vacation-color: "#F44336"
   state-alarm_control_panel-armed_home-color: "#F44336"
   state-alarm_control_panel-armed_night-color: "#F44336"
   state-lock-locked-color: "#ffffff"

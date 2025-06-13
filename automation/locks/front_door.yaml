@@ -15,13 +15,17 @@
     - platform: state
       entity_id: alarm_control_panel.house
       from: arming
-      to: armed_away
+      to: 
+        - armed_away
+        - armed_vacation
     - platform: state
       entity_id: alarm_control_panel.house
       from: 
         - disarmed
         - armed_home
-      to: armed_away
+      to: 
+        - armed_away
+        - armed_vacation
       for: "00:01:00"
   condition:
     - condition: state

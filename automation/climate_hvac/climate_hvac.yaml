@@ -7,7 +7,9 @@
   condition:
     - condition: state
       entity_id: alarm_control_panel.house
-      state: armed_away
+      state: 
+        - armed_away
+        - armed_vacation
   action:
     - service: climate.set_temperature
       data:
@@ -28,7 +30,9 @@
   condition:
     - condition: state
       entity_id: alarm_control_panel.house
-      state: armed_away
+      state: 
+        - armed_away
+        - armed_vacation
   action:
     - service: climate.set_temperature
       data:
@@ -58,7 +62,7 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.master_thermostat
-        target_temp_high: 75
+        target_temp_high: 74
         target_temp_low: 62
     - service: climate.set_temperature
       data:
@@ -89,7 +93,7 @@
         entity_id: 
           - climate.master_thermostat
           - climate.front_thermostat
-        target_temp_high: 75
+        target_temp_high: 74
         target_temp_low: 62
     - service: climate.set_temperature
       data:
@@ -114,6 +118,10 @@
       to: disarmed
     - platform: state
       entity_id: alarm_control_panel.house
+      from: armed_vacation
+      to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.house
       from: pending
       to: disarmed
   condition:
@@ -135,7 +143,9 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
-      to: armed_away
+      to: 
+        - armed_away
+        - armed_vacation
   action:
     - service: climate.set_temperature
       data:

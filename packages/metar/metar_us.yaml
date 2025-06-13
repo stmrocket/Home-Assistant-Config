@@ -137,15 +137,15 @@ automation:
       - service: switch.turn_on
         entity_id: switch.us_metar_map_power
 
-  - alias: US Map Off When Home and Awake
+  - alias: US Map Off When Not Home or Awake
     id: abfd17a1-651d-4f18-846c-8f0a9fb854e3
     trigger:
       - platform: state
         entity_id: alarm_control_panel.house
-        to: armed_away
-      - platform: state
-        entity_id: alarm_control_panel.house
-        to: armed_night
+        to: 
+          - armed_away
+          - armed_vacation
+          - armed_night
     action:
       - service: switch.turn_off
         entity_id: switch.us_metar_map_power
