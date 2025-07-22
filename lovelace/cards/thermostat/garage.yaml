@@ -31,3 +31,9 @@ layout:
     headings: false
 hide:
   state: true
+card_mod:
+  style: |
+    ha-card .mode-item {
+      border-radius: 8px;
+      background: rgba(000,000,000,0.0);
+    }
