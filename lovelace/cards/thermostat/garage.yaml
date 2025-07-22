@@ -1,33 +1,33 @@
-- type: custom:simple-thermostat
-  entity: climate.garage_air_conditioner
-  step_size: 1
-  decimals: 0
-  sensors:
-    - entity: sensor.atc_garage_humidity
-      name: Humidity
-      decimals: 0
-    - entity: sensor.garage_air_conditioner_power_usage_corrected
-      name: Power
-  header:
-    name: Garage
-  control:
-    hvac:
-      "off":
-        name: "Off"
-      heat:
-        name: Heat
-      cool:
-        name: Cool
-      heat_cool:
-        name: Auto
-      dry:
-        name: Dry
-      fan_only:
-        name: Fan
-  layout:
-    mode:
-      names: true
-      icons: true
-      headings: false
-  hide:
-    state: true
+type: custom:simple-thermostat
+entity: climate.garage_air_conditioner
+step_size: 1
+decimals: 0
+sensors:
+  - entity: sensor.atc_garage_humidity
+    name: Humidity
+    decimals: 0
+  - entity: sensor.garage_air_conditioner_power_usage_corrected
+    name: Power
+header:
+  name: Garage
+control:
+  hvac:
+    "off":
+      name: "Off"
+    heat:
+      name: Heat
+    cool:
+      name: Cool
+    heat_cool:
+      name: Auto
+    dry:
+      name: Dry
+    fan_only:
+      name: Fan
+layout:
+  mode:
+    names: true
+    icons: true
+    headings: false
+hide:
+  state: true
