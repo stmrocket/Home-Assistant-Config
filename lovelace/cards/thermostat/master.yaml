@@ -5,6 +5,8 @@ cards:
   - type: custom:simple-thermostat
     entity: climate.master_thermostat
     icon: mdi:thermostat-box
+    header:
+      name: Master Suite
     step_size: 1
     decimals: 0
     sensors:

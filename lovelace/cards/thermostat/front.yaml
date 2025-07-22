@@ -4,6 +4,8 @@ cards:
   - type: custom:simple-thermostat
     entity: climate.front_thermostat
     icon: mdi:thermostat-box
+    header:
+      name: Front Rooms
     step_size: 1
     decimals: 0
     sensors:

@@ -5,6 +5,8 @@ cards:
   - type: custom:simple-thermostat
     entity: climate.den_thermostat
     icon: mdi:thermostat-box
+    header:
+      name: Living Areas
     step_size: 1
     decimals: 0
     sensors:
