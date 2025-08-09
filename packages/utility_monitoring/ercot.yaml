@@ -223,7 +223,7 @@ template:
           {% if states('sensor.ercot_wind_percentage') | float > 30 and states('sensor.ercot_wind_percentage') | float <= 45 %}
             {{ states('sensor.energy_used') }}
           {% endif %}
-      - name: "Wind 45+ Energy Source"
+      - name: "Wind 45 Plus Energy Source"
         unit_of_measurement: "kWh"
         state: >
           {% if states('sensor.ercot_wind_percentage') | float > 45 %}
