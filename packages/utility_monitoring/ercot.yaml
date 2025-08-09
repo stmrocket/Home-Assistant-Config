@@ -1,0 +1,260 @@
+mqtt:
+  sensor:
+    - name: ERCOT Coal and Lignite Output
+      unique_id: e93146b4-f5e0-4fb1-a0ba-a2b79ec2784d
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Coal and Lignite'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:fire
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Hydro Output
+      unique_id: dfc79a91-16e2-436f-9021-274bacf73e5d
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Hydro'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:water
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Nuclear Output
+      unique_id: a485e8fa-cb2d-4435-a9fa-8760f12fbcdd
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Nuclear'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:radioactive
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Other Output
+      unique_id: 6f293d9b-1dbc-459f-a4b5-6b5d0525ce21
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Other'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:help
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Power Storage Output
+      unique_id: 5fc6556e-9312-4b8f-9002-526fb77bc1d4
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Power Storage'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:battery-arrow-down
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Solar Output
+      unique_id: b071e06f-3ed6-49d1-863d-c1defe0594c9
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Solar'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:solar-panel
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Wind Output
+      unique_id: acac4032-4d8a-4fea-89ca-830654994b08
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Wind'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:wind-power
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Natural Gas Output
+      unique_id: ff59a9c6-b975-4de1-ac8f-d6bb9bd61375
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Natural Gas'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:gas-burner
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Total Output
+      unique_id: 71f60f4c-11cd-42e3-a29e-983f5a83e812
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Total'].gen }}"
+      unit_of_measurement: MW
+      device_class: power
+      state_class: measurement
+      suggested_display_precision: 2
+      icon: mdi:transmission-tower
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+
+    - name: ERCOT Coal and Lignite Percentage
+      unique_id: 78113692-6934-416e-8fe1-ef0596c78954
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Coal and Lignite'].percentage }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:fire
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Hydro Percentage
+      unique_id: aa5c9509-711d-4c06-a7c2-292d86aa0379
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Hydro'].percentage }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:water
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Nuclear Percentage
+      unique_id: bc40e440-2c20-4371-8b7e-ee57a3623078
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Nuclear'].percentage }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:radioactive
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Other Percentage
+      unique_id: 25a0f012-17bd-4f0f-bcd8-7cc8dc886696
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Other'].percentage }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:help
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Power Storage Percentage
+      unique_id: eeddba20-51e0-447a-8b43-b38a45670fc4
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Power Storage'].percentage }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:battery-arrow-down
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Solar Percentage
+      unique_id: 3af2c718-3619-4a43-a056-3eea17884cd5
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Solar'].percentage }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:solar-panel
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Wind Percentage
+      unique_id: c35150f9-001d-45a8-baf9-0878b080dfc8
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Wind'].percentage }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:wind-power
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: ERCOT Natural Gas Percentage
+      unique_id: 76772c66-6eaf-4973-b20a-a0afc6084756
+      state_topic: ercot/fuel
+      value_template: "{{value_json['Natural Gas'].percentage }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:gas-burner
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+
+template:
+  - sensor:
+      - name: "Wind 30-45 Energy Source"
+        unit_of_measurement: "kWh"
+        state: >
+          {% if states('sensor.ercot_wind_percentage') | float > 30 and states('sensor.ercot_wind_percentage') | float <= 45 %}
+            {{ states('sensor.energy_used') }}
+          {% endif %}
+      - name: "Wind 45+ Energy Source"
+        unit_of_measurement: "kWh"
+        state: >
+          {% if states('sensor.ercot_wind_percentage') | float > 45 %}
+            {{ states('sensor.energy_used') }}
+          {% endif %}
+
+utility_meter:
+  wind_30_45_energy_daily:
+    source: sensor.wind_30_45_energy_source
+    cycle: daily
+  wind_30_45_energy_weekly:
+    source: sensor.wind_30_45_energy_source
+    cycle: weekly
+  wind_30_45_energy_monthly:
+    source: sensor.wind_30_45_energy_source
+    cycle: monthly
+  wind_30_45_energy_billing:
+    source: sensor.wind_30_45_energy_source
+    cycle: monthly
+    offset: 5 # Resets on the 6th of the month
+  
+  wind_45_plus_energy_daily:
+    source: sensor.wind_45_plus_energy_source
+    cycle: daily
+  wind_45_plus_energy_weekly:
+    source: sensor.wind_45_plus_energy_source
+    cycle: weekly
+  wind_45_plus_energy_monthly:
+    source: sensor.wind_45_plus_energy_source
+    cycle: monthly
+  wind_45_plus_energy_billing:
+    source: sensor.wind_45_plus_energy_source
+    cycle: monthly
+    offset: 5 # Resets on the 6th of the month
