@@ -215,6 +215,31 @@ mqtt:
         identifiers: 
           - ercot_fuel
 
+    - name: Octopus Wind Percentage
+      unique_id: e47ec4ce-6537-40f1-9208-76ce01b68627
+      state_topic: ercot/octopus
+      value_template: "{{value_json['windPercentage'] }}"
+      unit_of_measurement: '%'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:wind-power
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+    - name: Octopus Current Discount
+      unique_id: 2526cffa-0ea2-4efb-ba24-4c249b721e66
+      state_topic: ercot/octopus
+      value_template: "{{value_json['discountAmount'] }}"
+      unit_of_measurement: '$'
+      state_class: measurement
+      suggested_display_precision: 1
+      icon: mdi:currency-usd
+      device:
+        name: ERCOT Fuel Mix
+        identifiers: 
+          - ercot_fuel
+
 template:
   - sensor:
       - name: "Wind 30-45 Energy Source"
@@ -227,6 +252,18 @@ template:
         unit_of_measurement: "kWh"
         state: >
           {% if states('sensor.ercot_wind_percentage') | float > 45 %}
+            {{ states('sensor.energy_used') }}
+          {% endif %}
+      - name: "Wind 30-45 Energy Source Octopus"
+        unit_of_measurement: "kWh"
+        state: >
+          {% if states('sensor.octopus_wind_percentage') | float > 30 and states('sensor.octopus_wind_percentage') | float <= 45 %}
+            {{ states('sensor.energy_used') }}
+          {% endif %}
+      - name: "Wind 45 Plus Energy Source Octopus"
+        unit_of_measurement: "kWh"
+        state: >
+          {% if states('sensor.octopus_wind_percentage') | float > 45 %}
             {{ states('sensor.energy_used') }}
           {% endif %}
 
@@ -256,5 +293,33 @@ utility_meter:
     cycle: monthly
   wind_45_plus_energy_billing:
     source: sensor.wind_45_plus_energy_source
+    cycle: monthly
+    offset: 5 # Resets on the 6th of the month
+
+  wind_30_45_energy_daily_octopus:
+    source: sensor.wind_30_45_energy_source_octopus
+    cycle: daily
+  wind_30_45_energy_weekly_octopus:
+    source: sensor.wind_30_45_energy_source_octopus
+    cycle: weekly
+  wind_30_45_energy_monthly_octopus:
+    source: sensor.wind_30_45_energy_source_octopus
+    cycle: monthly
+  wind_30_45_energy_billing_octopus:
+    source: sensor.wind_30_45_energy_source_octopus
+    cycle: monthly
+    offset: 5 # Resets on the 6th of the month
+  
+  wind_45_plus_energy_daily_octopus:
+    source: sensor.wind_45_plus_energy_source_octopus
+    cycle: daily
+  wind_45_plus_energy_weekly_octopus:
+    source: sensor.wind_45_plus_energy_source_octopus
+    cycle: weekly
+  wind_45_plus_energy_monthly_octopus:
+    source: sensor.wind_45_plus_energy_source_octopus
+    cycle: monthly
+  wind_45_plus_energy_billing_octopus:
+    source: sensor.wind_45_plus_energy_source_octopus
     cycle: monthly
     offset: 5 # Resets on the 6th of the month
