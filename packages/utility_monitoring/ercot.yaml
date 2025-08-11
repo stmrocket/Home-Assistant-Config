@@ -277,9 +277,8 @@ input_number:
     mode: box
 
 automation:
-  - id: 'update_dual_wind_energy_delta'
-    alias: 'Update Dual Wind Energy Delta'
-    unique_id: af16ec5b-c387-4a7c-b399-4d3995c78a28
+  - alias: 'Update Dual Wind Energy Delta'
+    id: a6040103-1594-4ba3-b693-71595b0aea93
     trigger:
       - platform: state
         entity_id: sensor.energy_used
