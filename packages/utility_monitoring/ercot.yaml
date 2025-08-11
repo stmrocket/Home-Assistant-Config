@@ -240,86 +240,161 @@ mqtt:
         identifiers: 
           - ercot_fuel
 
-template:
-  - sensor:
-      - name: "Wind 30-45 Energy Source"
-        unit_of_measurement: "kWh"
-        state: >
-          {% if states('sensor.ercot_wind_percentage') | float > 30 and states('sensor.ercot_wind_percentage') | float <= 45 %}
-            {{ states('sensor.energy_used') }}
-          {% endif %}
-      - name: "Wind 45 Plus Energy Source"
-        unit_of_measurement: "kWh"
-        state: >
-          {% if states('sensor.ercot_wind_percentage') | float > 45 %}
-            {{ states('sensor.energy_used') }}
-          {% endif %}
-      - name: "Wind 30-45 Energy Source Octopus"
-        unit_of_measurement: "kWh"
-        state: >
-          {% if states('sensor.octopus_wind_percentage') | float > 30 and states('sensor.octopus_wind_percentage') | float <= 45 %}
-            {{ states('sensor.energy_used') }}
-          {% endif %}
-      - name: "Wind 45 Plus Energy Source Octopus"
-        unit_of_measurement: "kWh"
-        state: >
-          {% if states('sensor.octopus_wind_percentage') | float > 45 %}
-            {{ states('sensor.energy_used') }}
-          {% endif %}
+input_number:
+  wind_30_45_ercot_energy_running_total:
+    name: "ERCOT Wind 30-45% Running Energy Total"
+    min: 0
+    max: 1000000
+    step: 0.01
+    mode: box
+
+  wind_45_plus_ercot_energy_running_total:
+    name: "ERCOT Wind >45% Running Energy Total"
+    min: 0
+    max: 1000000
+    step: 0.01
+    mode: box
+
+  wind_30_45_octopus_energy_running_total:
+    name: "Octopus Wind 30-45% Running Energy Total"
+    min: 0
+    max: 1000000
+    step: 0.01
+    mode: box
+
+  wind_45_plus_octopus_energy_running_total:
+    name: "Octopus Wind >45% Running Energy Total"
+    min: 0
+    max: 1000000
+    step: 0.01
+    mode: box
+
+  energy_last_reading:
+    name: "Last Total Energy Reading"
+    min: 0
+    max: 1000000
+    step: 0.01
+    mode: box
+
+automation:
+  - id: 'update_dual_wind_energy_delta'
+    alias: 'Update Dual Wind Energy Delta'
+    unique_id: af16ec5b-c387-4a7c-b399-4d3995c78a28
+    trigger:
+      - platform: state
+        entity_id: sensor.energy_used
+    action:
+      - variables:
+          current_energy: "{{ states('sensor.energy_used') | float }}"
+          last_energy: "{{ states('input_number.energy_last_reading') | float }}"
+          energy_delta: "{{ current_energy - last_energy }}"
+          # Note: These variables are for use in the 'then' block, not the 'if' condition.
+          ercot_wind_percentage: "{{ states('sensor.ercot_wind_percentage') | float }}"
+          octopus_wind_percentage: "{{ states('sensor.octopus_wind_percentage') | float }}"
+      - if: "{{ energy_delta > 0 }}"
+        then:
+          # ERCOT Logic
+          - choose:
+            - conditions:
+                - condition: template
+                  value_template: "{{ states('sensor.ercot_wind_percentage') | float > 30 and states('sensor.ercot_wind_percentage') | float <= 45 }}"
+              sequence:
+                - service: input_number.set_value
+                  data:
+                    entity_id: input_number.wind_30_45_ercot_energy_running_total
+                    value: "{{ states('input_number.wind_30_45_ercot_energy_running_total') | float + energy_delta }}"
+            - conditions:
+                - condition: numeric_state
+                  entity_id: sensor.ercot_wind_percentage
+                  above: 45
+              sequence:
+                - service: input_number.set_value
+                  data:
+                    entity_id: input_number.wind_45_plus_ercot_energy_running_total
+                    value: "{{ states('input_number.wind_45_plus_ercot_energy_running_total') | float + energy_delta }}"
+          # Octopus Logic
+          - choose:
+            - conditions:
+                - condition: template
+                  value_template: "{{ states('sensor.octopus_wind_percentage') | float > 30 and states('sensor.octopus_wind_percentage') | float <= 45 }}"
+              sequence:
+                - service: input_number.set_value
+                  data:
+                    entity_id: input_number.wind_30_45_octopus_energy_running_total
+                    value: "{{ states('input_number.wind_30_45_octopus_energy_running_total') | float + energy_delta }}"
+            - conditions:
+                - condition: numeric_state
+                  entity_id: sensor.octopus_wind_percentage
+                  above: 45
+              sequence:
+                - service: input_number.set_value
+                  data:
+                    entity_id: input_number.wind_45_plus_octopus_energy_running_total
+                    value: "{{ states('input_number.wind_45_plus_octopus_energy_running_total') | float + energy_delta }}"
+      - service: input_number.set_value
+        data:
+          entity_id: input_number.energy_last_reading
+          value: "{{ current_energy }}"
 
 utility_meter:
+  # ERCOT Utility Meters
   wind_30_45_energy_daily:
-    source: sensor.wind_30_45_energy_source
+    source: input_number.wind_30_45_ercot_energy_running_total
     cycle: daily
   wind_30_45_energy_weekly:
-    source: sensor.wind_30_45_energy_source
+    source: input_number.wind_30_45_ercot_energy_running_total
     cycle: weekly
   wind_30_45_energy_monthly:
-    source: sensor.wind_30_45_energy_source
+    source: input_number.wind_30_45_ercot_energy_running_total
     cycle: monthly
   wind_30_45_energy_billing:
-    source: sensor.wind_30_45_energy_source
+    source: input_number.wind_30_45_ercot_energy_running_total
     cycle: monthly
-    offset: 5 # Resets on the 6th of the month
-  
+    offset:
+      days: 5
+
   wind_45_plus_energy_daily:
-    source: sensor.wind_45_plus_energy_source
+    source: input_number.wind_45_plus_ercot_energy_running_total
     cycle: daily
   wind_45_plus_energy_weekly:
-    source: sensor.wind_45_plus_energy_source
+    source: input_number.wind_45_plus_ercot_energy_running_total
     cycle: weekly
   wind_45_plus_energy_monthly:
-    source: sensor.wind_45_plus_energy_source
+    source: input_number.wind_45_plus_ercot_energy_running_total
     cycle: monthly
   wind_45_plus_energy_billing:
-    source: sensor.wind_45_plus_energy_source
+    source: input_number.wind_45_plus_ercot_energy_running_total
     cycle: monthly
-    offset: 5 # Resets on the 6th of the month
-
+    offset:
+      days: 5
+      
+  # Octopus Utility Meters
   wind_30_45_energy_daily_octopus:
-    source: sensor.wind_30_45_energy_source_octopus
+    source: input_number.wind_30_45_octopus_energy_running_total
     cycle: daily
   wind_30_45_energy_weekly_octopus:
-    source: sensor.wind_30_45_energy_source_octopus
+    source: input_number.wind_30_45_octopus_energy_running_total
     cycle: weekly
   wind_30_45_energy_monthly_octopus:
-    source: sensor.wind_30_45_energy_source_octopus
+    source: input_number.wind_30_45_octopus_energy_running_total
     cycle: monthly
   wind_30_45_energy_billing_octopus:
-    source: sensor.wind_30_45_energy_source_octopus
+    source: input_number.wind_30_45_octopus_energy_running_total
     cycle: monthly
-    offset: 5 # Resets on the 6th of the month
-  
+    offset:
+      days: 5
+
   wind_45_plus_energy_daily_octopus:
-    source: sensor.wind_45_plus_energy_source_octopus
+    source: input_number.wind_45_plus_octopus_energy_running_total
     cycle: daily
   wind_45_plus_energy_weekly_octopus:
-    source: sensor.wind_45_plus_energy_source_octopus
+    source: input_number.wind_45_plus_octopus_energy_running_total
     cycle: weekly
   wind_45_plus_energy_monthly_octopus:
-    source: sensor.wind_45_plus_energy_source_octopus
+    source: input_number.wind_45_plus_octopus_energy_running_total
     cycle: monthly
   wind_45_plus_energy_billing_octopus:
-    source: sensor.wind_45_plus_energy_source_octopus
+    source: input_number.wind_45_plus_octopus_energy_running_total
     cycle: monthly
-    offset: 5 # Resets on the 6th of the month
+    offset:
+      days: 5
