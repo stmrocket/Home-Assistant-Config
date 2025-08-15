@@ -2,204 +2,40 @@ input_boolean:
   vacation_mode:
     name: Vacation Mode
     icon: mdi:airplane
-
-sensor:
-  - platform: history_stats
-    name: Replay Back Porch Light
-    entity_id: switch.back_porch_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Office Light
-    entity_id: light.office_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Server Room Light
-    entity_id: light.server_room_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Hall Light
-    entity_id: light.hallway_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Kitchen Light
-    entity_id: light.kitchen_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Kitchen Sink Light
-    entity_id: light.kitchen_sink_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Dining Room Light
-    entity_id: light.dining_room_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Guest Bathroom Light
-    entity_id: light.guest_bathroom_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Entry Light
-    entity_id: light.entry_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Foyer Light
-    entity_id: light.foyer_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Den Light
-    entity_id: light.den_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Master Bedroom Light
-    entity_id: light.master_bedroom_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Shack Light
-    entity_id: switch.shack_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Guest Bedroom Light
-    entity_id: light.guest_bedroom_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Master Sink Light
-    entity_id: switch.master_bathroom_lights
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Master Shower Light
-    entity_id: light.master_shower_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Master Toilet Light
-    entity_id: light.master_toilet_light
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
-
-  - platform: history_stats
-    name: Replay Timer Lamps
-    entity_id: input_boolean.timer_lights
-    state: "on"
-    type: count
-    start: >
-      {{ as_timestamp(now(), none) - (7*86400) }}
-    duration: 00:00:30
+  timer_lights_trigger:
+    name: Timer Light trigger
+    icon: mdi:timer-alert
 
 automation:
-  - alias: Vacation Replay Lights Off in Morning
-    id: 8757403b-1145-471c-be4d-bc48a9bbb12d
+
+  - alias: Vacation Mode On
+    id: 196cf690-72dd-4494-bfbf-64027e27e44f
+    trigger:
+      - platform: template
+        value_template: "{{ is_state_attr('alarm_control_panel.house', 'armed_status', 'armed_to_vacation') }}"
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.vacation_mode
+
+  - alias: Vacation Mode Off
+    id: cf1edc36-5820-4cf3-8c4f-7db5ffb55245
     trigger:
       - platform: state
-        entity_id: input_boolean.outside_timer_lights
-        from: "on"
-        to: "off"
+        entity_id: input_boolean.hvac_geofence
+        to: "on"
+      - platform: state
+        entity_id: device_tracker.shawn_n30
+        to: "home"
     condition:
       - condition: state
         entity_id: input_boolean.vacation_mode
         state: "on"
     action:
-      - service: light.turn_off
-        entity_id:
-          - light.den_light
-          - light.dining_room_light
-          - light.entry_light
-          - light.foyer_light
-          - light.guest_bathroom_light
-          - light.guest_bedroom_light
-          - light.hallway_light
-          - light.kitchen_light
-          - light.kitchen_sink_light
-          - light.master_bedroom_light
-          - light.master_shower_light
-          - light.master_toilet_light
-          - light.office_light
-          - light.server_room_light
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.vacation_mode
       - service: switch.turn_off
         entity_id:
-          - switch.back_porch_light
-          - switch.master_bathroom_lights
-          - switch.shack_light
+          - switch.presence_simulation
 
   - alias: Notify Alarm Disarmed
     id: 47c99c56-602a-4695-9219-f8ecc9c3f0aa
@@ -254,10 +90,83 @@ automation:
         title: Notification Test
         message: Notification test -  {{now().strftime('%Y-%m-%d %H:%M:%S') }}
 
+  - alias: Vacation Replay Lights Off in Morning
+    id: 8757403b-1145-471c-be4d-bc48a9bbb12d
+    trigger:
+      - platform: state
+        entity_id: input_boolean.outside_timer_lights
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id:
+          - switch.presence_simulation
+      - service: light.turn_off
+        continue_on_error: true
+        entity_id:
+          - light.den_light
+          - light.dining_room_light
+          - light.entry_light
+          - light.foyer_light
+          - light.guest_bathroom_light
+          - light.guest_bedroom_light
+          - light.hallway_light
+          - light.kitchen_light
+          - light.kitchen_sink_light
+          - light.master_bedroom_light
+          - light.master_shower_light
+          - light.master_toilet_light
+          - light.office_light
+          - light.server_room_light
+      - service: switch.turn_off
+        continue_on_error: true
+        entity_id:
+          - switch.back_porch_light
+          - switch.master_bathroom_lights
+          - switch.shack_light
+      - service: script.turn_on
+        entity_id: script.timer_lights_off
+
+  - alias: Enable presence Simulation at Night
+    id: fd7e5115-06c6-416a-aa08-0de1ad988b22
+    trigger:
+      - platform: state
+        entity_id: input_boolean.outside_timer_lights
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "on"
+    action:
+      - service: switch.turn_on
+        entity_id:
+          - switch.presence_simulation
+
+  - alias: Trigger Timer Light Shutdown
+    id: 41bd9105-e59a-4f8e-81b6-807a7d786f2e
+    trigger:
+      - platform: state
+        entity_id: input_boolean.timer_lights_trigger
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "on"
+    action:
+      - service: script.turn_on
+        entity_id: script.timer_lights_off
+
 script:
   timer_lights_off:
     sequence:
       - service: switch.turn_off
+        continue_on_error: true
         entity_id:
           - switch.kitchen_lamp
           - switch.server_room_lamp
@@ -267,6 +176,7 @@ script:
           - switch.guest_room_lamp
           - switch.master_bedroom_lamps
       - service: light.turn_off
+        continue_on_error: true
         entity_id:
           - light.entry_lamp
           - light.house_leds
@@ -276,3 +186,4 @@ script:
         entity_id:
           - input_boolean.timer_lights
           - input_boolean.manual_timer_lights
+          - input_boolean.timer_lights_trigger

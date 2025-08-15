@@ -39,7 +39,9 @@
         - light.hall_lamp
         - light.den_window_leds
     - service: input_boolean.turn_on
-      entity_id: input_boolean.timer_lights
+      entity_id: 
+        - input_boolean.timer_lights
+        - input_boolean.timer_lights_trigger
 
 - alias: Timer Lights On Main Evenings
   id: 623a17d8-ac58-4228-8e24-0881028a822e
@@ -65,7 +67,9 @@
         - light.hall_lamp
         - light.den_window_leds
     - service: input_boolean.turn_on
-      entity_id: input_boolean.timer_lights
+      entity_id: 
+        - input_boolean.timer_lights
+        - input_boolean.timer_lights_trigger
 
 - alias: Timer Lights On Main Weekend Holiday AM
   id: 266d66d7-59d2-4d05-92a8-5be98a3d603b
@@ -120,7 +124,9 @@
         - light.hall_lamp
         - light.den_window_leds
     - service: input_boolean.turn_on
-      entity_id: input_boolean.timer_lights
+      entity_id: 
+        - input_boolean.timer_lights
+        - input_boolean.timer_lights_trigger
 
 - alias: Timer Lights Off Main Night Away
   id: 7b1b495b-7df2-4485-ac7e-826814a52022
@@ -157,6 +163,7 @@
       entity_id:
         - input_boolean.timer_lights
         - input_boolean.manual_timer_lights
+        - input_boolean.timer_lights_trigger
 
 - alias: Timer Lights Off Main Mornings
   id: 7bfd1c4d-1de6-4a4b-8243-9fd2da39fd9a
@@ -185,6 +192,7 @@
       entity_id:
         - input_boolean.timer_lights
         - input_boolean.manual_timer_lights
+        - input_boolean.timer_lights_trigger
 
 - alias: Timer Lights Off Main Night Mode
   id: aa6d3655-9af4-4b2c-a481-2ba631741cc0
