@@ -69,32 +69,6 @@
       continue_on_error: true
       entity_id: switch.nuvo_zone_5_power
 
-- alias: Vacation Mode On
-  id: 196cf690-72dd-4494-bfbf-64027e27e44f
-  trigger:
-    - platform: template
-      value_template: "{{ is_state_attr('alarm_control_panel.house', 'armed_status', 'armed_to_vacation') }}"
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.vacation_mode
-
-- alias: Vacation Mode Off
-  id: cf1edc36-5820-4cf3-8c4f-7db5ffb55245
-  trigger:
-    - platform: state
-      entity_id: input_boolean.hvac_geofence
-      to: "on"
-    - platform: state
-      entity_id: device_tracker.shawn_n30
-      to: "home"
-  condition:
-    - condition: state
-      entity_id: input_boolean.vacation_mode
-      state: "on"
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.vacation_mode
-
 - alias: Power State Sonoff on HA Start-Up
   id: 90c58c80-a7e1-4e06-acfb-b91432fabf0b
   trigger:
