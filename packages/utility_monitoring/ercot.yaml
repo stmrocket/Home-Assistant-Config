@@ -247,6 +247,7 @@ input_number:
     max: 1000000
     step: 0.01
     mode: box
+    unit_of_measurement: kWh
 
   wind_45_plus_ercot_energy_running_total:
     name: "ERCOT Wind >45% Running Energy Total"
@@ -254,6 +255,7 @@ input_number:
     max: 1000000
     step: 0.01
     mode: box
+    unit_of_measurement: kWh
 
   wind_30_45_octopus_energy_running_total:
     name: "Octopus Wind 30-45% Running Energy Total"
@@ -261,6 +263,7 @@ input_number:
     max: 1000000
     step: 0.01
     mode: box
+    unit_of_measurement: kWh
 
   wind_45_plus_octopus_energy_running_total:
     name: "Octopus Wind >45% Running Energy Total"
@@ -268,6 +271,7 @@ input_number:
     max: 1000000
     step: 0.01
     mode: box
+    unit_of_measurement: kWh
 
   energy_last_reading:
     name: "Last Total Energy Reading"
@@ -275,6 +279,7 @@ input_number:
     max: 1000000
     step: 0.01
     mode: box
+    unit_of_measurement: kWh
 
 automation:
   - alias: 'Update Dual Wind Energy Delta'

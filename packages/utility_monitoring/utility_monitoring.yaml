@@ -1,8 +1,9 @@
 sensor:
 
   - platform: integration
+    unique_id: ff20ae9e-02a0-488c-8e60-34b49c7fb24f
     source: sensor.energy_monitor_electric_consumption_w
-    name: energy_used
+    name: Energy Used
     unit_prefix: k
     round: 2
 
