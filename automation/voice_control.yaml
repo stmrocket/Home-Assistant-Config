@@ -44,6 +44,19 @@
     - action: ai_task.generate_data
       data:
         task_name: "good morning comment"
-        instructions: "In a whitty or funny way, tell me good morning.  It's likely that I have overslept and should be not-so-kindly motivated to get going.   This will be read using text to speech so format everything into sentences and don't make it too long (remember, I am still trying to wake up).  A couple sentences is great."
+        instructions: |
+          Based on the following conditions:
+          - Outdoor temperature: {{ states('sensor.acurite_ws_temperature') }}  
+          - Weather condition: {{ states('sensor.openweathermap_current_icon') }}
+          - Current Rainfall: {{ states('sensor.rain_day') }}
+          - Today's probablility of precipitation: {{ states('sensor.openweathermap_current_pop') }}
+          - Today's predicted rainfall: {{ states('sensor.openweathermap_current_precip_forecast') }}
+          - Today's high temperature: {{ states('sensor.openweathermap_current_maximum_temperature') }}
+          - Today's low temperature: {{ states('sensor.openweathermap_current_minimum_temperature') }}
+          In a whitty or funny way, tell me good morning.  It's likely that I have overslept and should 
+          be not-so-kindly motivated to get going.   This will be read using text to speech so format 
+          everything into sentences and don't make it too long (remember, I am still trying to wake up).  
+          Include the current weather and daily forecast (with the same tone and humor as the rest of the response).  
+          Units are in standard and rounding to whole numbers is best.  Please do not just list the current numbers in your response.  A paragraph or so is great.
       response_variable: generated_text
     - set_conversation_response: "{{ generated_text.data }}"
