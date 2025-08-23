@@ -272,7 +272,7 @@ automation:
         entity_id: input_boolean.alarm_clock_active
         state: "on"
     action:
-      - set_conversation_response: none
+      - set_conversation_response: ""
       - service: mqtt.publish
         data:
           topic: horn/command/set/clock
