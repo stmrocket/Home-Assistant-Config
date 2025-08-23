@@ -260,7 +260,10 @@ automation:
         to: "single"
       - platform: state
         entity_id: sensor.master_snooze_button_2_action
-        to: "single"
+        to: "single"      
+      - trigger: conversation
+        command:
+          - "Snooze"
     condition:
       - condition: state
         entity_id: input_boolean.alarm_clock_ringing
@@ -269,6 +272,7 @@ automation:
         entity_id: input_boolean.alarm_clock_active
         state: "on"
     action:
+      - set_conversation_response: none
       - service: mqtt.publish
         data:
           topic: horn/command/set/clock

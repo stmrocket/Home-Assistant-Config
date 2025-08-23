@@ -30,8 +30,6 @@
       response_variable: generated_text
     - set_conversation_response: "{{ generated_text.data }}"
 
-
-
 - alias: Voice Good Morning
   id: 98e64535-62d7-4571-b664-b93ca0f7c72b
   triggers:
@@ -58,5 +56,53 @@
           everything into sentences and don't make it too long (remember, I am still trying to wake up).  
           Include the current weather and daily forecast (with the same tone and humor as the rest of the response).  
           Units are in standard and rounding to whole numbers is best.  Please do not just list the current numbers in your response.  A paragraph or so is great.
+      response_variable: generated_text
+    - set_conversation_response: "{{ generated_text.data }}"
+
+- alias: Voice Leaving Home
+  id: 41feb6e2-e0ef-43e3-b509-861a4c95a15b
+  triggers:
+    - trigger: conversation
+      command:
+        - "I'm leaving"
+  action:
+    - action: input_boolean.turn_on
+      entity_id: input_boolean.leaving_trigger
+    - action: ai_task.generate_data
+      data:
+        task_name: "goodbye comment"
+        instructions: "In a whitty or funny way, tell me goodbye.  This will be spoken using TTS so keep it relatively short."
+      response_variable: generated_text
+    - set_conversation_response: "{{ generated_text.data }}"
+
+- alias: Voice Returning Home
+  id: e8355012-d128-4969-bc00-abb78dc219f5
+  triggers:
+    - trigger: conversation
+      command:
+        - "I'm home"
+  action:
+    - action: input_boolean.turn_on
+      entity_id: input_boolean.returning_trigger
+    - action: ai_task.generate_data
+      data:
+        task_name: "hello comment"
+        instructions: "In a whitty or funny way, welcome me back home.  This will be spoken using TTS so keep it relatively short."
+      response_variable: generated_text
+    - set_conversation_response: "{{ generated_text.data }}"
+
+- alias: Voice Snooze Alarm
+  id: 7a221f31-6408-4271-a167-c61b398b1bd1
+  triggers:
+    - trigger: conversation
+      command:
+        - "Snooze"
+  action:
+    - action: input_boolean.turn_on
+      entity_id: input_boolean.returning_trigger
+    - action: ai_task.generate_data
+      data:
+        task_name: "hello comment"
+        instructions: "In a whitty or funny way, welcome me back home.  This will be spoken using TTS so keep it relatively short."
       response_variable: generated_text
     - set_conversation_response: "{{ generated_text.data }}"
