@@ -1,0 +1,73 @@
+- alias: Voice Bedtime
+  id: 504af65a-1574-4698-a637-136f514a96f2
+  triggers:
+    - trigger: conversation
+      command:
+        - "it's bedtime"
+  action:
+    - action: ai_task.generate_data
+      data:
+        task_name: "house shutdown comment"
+        instructions: "In a whitty or funny way, tell me that you are preparing the house for bed.  This will be spoken using TTS so keep it relatively short (2 sentences or so)."
+      response_variable: generated_text
+
+    - action: tts.speak
+      target:
+        entity_id: tts.google_cloud
+      data:
+        cache: true
+        media_player_entity_id: media_player.home_assistant_voice_098d31_media_player
+        message: "{{ generated_text.data }}"
+
+    - action: input_boolean.turn_on
+      entity_id: input_boolean.bedtime_trigger
+
+- alias: Voice Good Night
+  id: 18d8962a-549f-4ff4-9e94-16f75bf0ca34
+  triggers:
+    - trigger: conversation
+      command:
+        - "good night"
+  action:
+    - action: ai_task.generate_data
+      data:
+        task_name: "good night comment"
+        instructions: "In a whitty or funny way, tell me good night.  This will be spoken using TTS so keep it relatively short."
+      response_variable: generated_text
+
+    - action: tts.speak
+      target:
+        entity_id: tts.google_cloud
+      data:
+        cache: true
+        media_player_entity_id: media_player.home_assistant_voice_098d31_media_player
+        message: "{{ generated_text.data }}"
+
+    - action: input_boolean.turn_on
+      entity_id: input_boolean.goodnight_trigger
+
+
+
+- alias: Voice Good Morning
+  id: 98e64535-62d7-4571-b664-b93ca0f7c72b
+  triggers:
+    - trigger: conversation
+      command:
+        - "good morning"
+  action:
+    - action: ai_task.generate_data
+      data:
+        task_name: "good morning comment"
+        instructions: "In a whitty or funny way, tell me good night.  It's likely that I have overslept and should be not-so-kindly motivated to get going.   This will be read using text to speech so format everything into sentences and don't make it too long (remember, I am still trying to wake up).  A paragraph is fine."
+      response_variable: generated_text
+
+    - action: tts.speak
+      target:
+        entity_id: tts.google_cloud
+      data:
+        cache: true
+        media_player_entity_id: media_player.home_assistant_voice_098d31_media_player
+        message: "{{ generated_text.data }}"
+
+    - action: input_boolean.turn_on
+      entity_id: input_boolean.morning_trigger
