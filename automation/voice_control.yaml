@@ -90,19 +90,3 @@
         instructions: "In a whitty or funny way, welcome me back home.  This will be spoken using TTS so keep it relatively short."
       response_variable: generated_text
     - set_conversation_response: "{{ generated_text.data }}"
-
-- alias: Voice Snooze Alarm
-  id: 7a221f31-6408-4271-a167-c61b398b1bd1
-  triggers:
-    - trigger: conversation
-      command:
-        - "Snooze"
-  action:
-    - action: input_boolean.turn_on
-      entity_id: input_boolean.returning_trigger
-    - action: ai_task.generate_data
-      data:
-        task_name: "hello comment"
-        instructions: "In a whitty or funny way, welcome me back home.  This will be spoken using TTS so keep it relatively short."
-      response_variable: generated_text
-    - set_conversation_response: "{{ generated_text.data }}"
