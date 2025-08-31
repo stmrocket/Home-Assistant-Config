@@ -154,6 +154,11 @@ automation:
         entity_id: input_boolean.timer_lights_trigger
         from: "on"
         to: "off"
+      #Remove next trigger once history is built for input_boolean.timer_lights_trigger.  This is a workaround for the short-term and will cause incorrect frontend indications if left on forever...
+      - platform: state 
+        entity_id: input_boolean.timer_lights
+        from: "on"
+        to: "off"
     condition:
       - condition: state
         entity_id: input_boolean.vacation_mode
