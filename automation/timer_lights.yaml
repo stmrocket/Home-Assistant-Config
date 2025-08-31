@@ -226,6 +226,7 @@
     - service: input_boolean.turn_off
       entity_id:
         - input_boolean.timer_lights
+        - input_boolean.timer_lights_trigger
         - input_boolean.manual_timer_lights
 
 - alias: Timer Lights On Guest
