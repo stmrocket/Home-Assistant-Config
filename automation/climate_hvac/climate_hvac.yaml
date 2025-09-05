@@ -175,6 +175,9 @@
     - condition: state
       entity_id: input_boolean.work_alarm_enabled
       state: "on"
+    - condition: state
+      entity_id: alarm_control_panel.house
+      state: armed_night
   action:
     - service: climate.set_temperature
       data:
