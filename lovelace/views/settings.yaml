@@ -32,14 +32,29 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: sensor.lawn_bucket
+                entity: sensor.program_every_2_days_status
                 color_type: icon
-                icon: mdi:bucket-outline
+                state:
+                  - value: "enabled"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:alarm-check
+                  - value: "running"
+                    color: rgb(228, 94, 101)
+                    icon: mdi:sprinkler
+                    styles:
+                      icon:
+                        - animation: blink 1s infinite
+                  - value: "disabled"
+                    color: rgb(255, 255, 255)
+                    icon: mdi:alarm-off
+                name: Every 2 Days
+                tap_action:
+                  action: call-service
+                  service: script.rainmachine_program_2_tap
                 hold_action:
                   action: more-info
-                name: "[[[return `Bucket: ${states['sensor.lawn_bucket'].state}in`]]]"
               - type: "custom:button-card"
-                entity: sensor.program_lawn_irrigation_status
+                entity: sensor.program_every_3_days_status
                 color_type: icon
                 state:
                   - value: "enabled"
@@ -54,27 +69,12 @@ cards:
                   - value: "disabled"
                     color: rgb(255, 255, 255)
                     icon: mdi:alarm-off
-                name: Lawn
+                name: Every 3 Days
                 tap_action:
                   action: call-service
-                  service: input_boolean.toggle
-                  service_data:
-                    entity_id: input_boolean.lawn_irrigation_enabled
+                  service: script.rainmachine_program_1_tap
                 hold_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Lawn Irrigation
-                      content:
-                        type: entities
-                        entities:
-                          - entity: input_boolean.lawn_irrigation_manual
-                            name: Run Next Cycle
-                            icon: 'mdi:sprinkler'
-                          - entity: input_boolean.lawn_irrigation_snooze
-                            name: Snooze Cycle
-                            icon: 'mdi:alarm-snooze'
+                  action: more-info
               - type: "custom:button-card"
                 entity: sensor.program_drip_status
                 color_type: icon
@@ -100,7 +100,7 @@ cards:
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.main_irrigation_controller_main_irrigation_controller_main_switch
+                entity: switch.irrigation_run_program
                 color_type: icon
                 icon: mdi:sprinkler-variant
                 state:
@@ -110,16 +110,13 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)              
                     name: Run Program
-                tap_action:
-                  action: call-service
-                  service: script.manual_water_all
                 hold_action:
                   action: more-info
 
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: switch.main_irrigation_controller_east_front
+                entity: binary_sensor.rm_zone_1_watering
                 color_type: icon
                 icon: mdi:numeric-1-box
                 state:
@@ -130,11 +127,13 @@ cards:
                 name: E Front
                 tap_action:
                   action: call-service
-                  service: script.manual_water_east_front
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.east_front
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.main_irrigation_controller_east_side
+                entity: binary_sensor.rm_zone_2_watering
                 color_type: icon
                 icon: mdi:numeric-2-box
                 state:
@@ -145,11 +144,13 @@ cards:
                 name: E Side
                 tap_action:
                   action: call-service
-                  service: script.manual_water_east_side
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.east_side
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.main_irrigation_controller_back_yard
+                entity: binary_sensor.rm_zone_3_watering
                 color_type: icon
                 icon: mdi:numeric-3-box
                 state:
@@ -160,11 +161,13 @@ cards:
                 name: Back
                 tap_action:
                   action: call-service
-                  service: script.manual_water_back_yard
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.back_yard
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.main_irrigation_controller_west_side
+                entity: binary_sensor.rm_zone_4_watering
                 color_type: icon
                 icon: mdi:numeric-4-box
                 state:
@@ -175,11 +178,13 @@ cards:
                 name: W Side
                 tap_action:
                   action: call-service
-                  service: script.manual_water_west_side
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.west_side
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: switch.main_irrigation_controller_west_front
+                entity: binary_sensor.rm_zone_5_watering
                 color_type: icon
                 icon: mdi:numeric-5-box
                 state:
@@ -190,7 +195,9 @@ cards:
                 name: W Front
                 tap_action:
                   action: call-service
-                  service: script.manual_water_west_front
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.west_front
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
