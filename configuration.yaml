@@ -144,6 +144,8 @@ lovelace:
     - url: /hacsfiles/lovelace-wallpanel/wallpanel.js
       type: module
 
+python_script:
+
 # Sensors
 sensor:
 

@@ -25,7 +25,6 @@ sensor:
           {% else -%}
             disabled
           {% endif -%}
-        unit_of_measurement: "mm"
 
 automation:
   - alias: Run Back Drip Irrigation
@@ -52,3 +51,15 @@ automation:
     action:
       - service: switch.turn_off
         entity_id: switch.back_drip_valve
+
+  - alias: B-hyve next watering & rain delay finishing updater
+    id: 20a14c8e-84aa-4782-91c9-2e09677c9184
+    trigger:
+      - platform: state
+        entity_id: switch.east_front_zone, switch.rain_delay_lawn
+      - platform: homeassistant
+        event: start
+    action:
+      - service: python_script.bhyve_next_watering
+        data:
+          entity_id: switch.lawn_rain_delay
