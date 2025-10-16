@@ -116,7 +116,7 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_1_watering
+                entity: switch.east_front_zone
                 color_type: icon
                 icon: mdi:numeric-1-box
                 state:
@@ -125,15 +125,10 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: E Front
-                tap_action:
-                  action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.east_front
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_2_watering
+                entity: switch.east_side_zone
                 color_type: icon
                 icon: mdi:numeric-2-box
                 state:
@@ -142,15 +137,10 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: E Side
-                tap_action:
-                  action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.east_side
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_3_watering
+                entity: switch.back_zone
                 color_type: icon
                 icon: mdi:numeric-3-box
                 state:
@@ -159,15 +149,10 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: Back
-                tap_action:
-                  action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.back_yard
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_4_watering
+                entity: switch.west_side_zone
                 color_type: icon
                 icon: mdi:numeric-4-box
                 state:
@@ -176,15 +161,10 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: W Side
-                tap_action:
-                  action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.west_side
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
-                entity: binary_sensor.rm_zone_5_watering
+                entity: switch.west_front_zone
                 color_type: icon
                 icon: mdi:numeric-5-box
                 state:
@@ -193,11 +173,6 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: W Front
-                tap_action:
-                  action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.west_front
                 hold_action:
                   action: more-info
               - type: "custom:button-card"
@@ -210,11 +185,6 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: Drip
-                tap_action:
-                  action: call-service
-                  service: switch.toggle
-                  service_data:
-                    entity_id: switch.back_drip_valve
                 hold_action:
                   action: more-info
 
