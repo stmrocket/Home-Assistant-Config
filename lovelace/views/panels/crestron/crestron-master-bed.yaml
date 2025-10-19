@@ -8,10 +8,10 @@ cards:
     cards:     
       - type: custom:decluttering-card
         template: weather_static   
-      - type: custom:decluttering-card
-        template: panel_temperature_graph
-        variables:
-          - entity: sensor.master_bedroom_climate_temperature
+      # - type: custom:decluttering-card
+      #   template: panel_temperature_graph
+      #   variables:
+      #     - entity: sensor.master_bedroom_climate_temperature
       - type: custom:decluttering-card
         template: cameras_tablet
 

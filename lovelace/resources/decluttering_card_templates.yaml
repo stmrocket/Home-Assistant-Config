@@ -1623,15 +1623,40 @@ litter_robot_button:
 
 cameras_tablet:
   card:
-    type: glance
-    columns: 4
-    show_name: true
-    show_state: false
-    entities:
-      - entity: camera.front_porch
-      - entity: camera.east_front
-      - entity: camera.west_front
-      - entity: camera.back_yard
+    type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        entity: camera.front_porch
+        color_type: icon
+        color: rgb(255, 255, 255)
+        icon: mdi:cctv
+        name: Front Porch
+      - type: "custom:button-card"
+        entity: camera.east_front
+        color_type: icon
+        color: rgb(255, 255, 255)
+        icon: mdi:cctv
+        name: East Front
+      - type: "custom:button-card"
+        entity: camera.west_front
+        color_type: icon
+        color: rgb(255, 255, 255)
+        icon: mdi:cctv
+        name: West Front
+      - type: "custom:button-card"
+        entity: camera.back_yard
+        color_type: icon
+        color: rgb(255, 255, 255)
+        icon: mdi:cctv
+        name: Back Yard
+    # columns: 4
+    # show_name: true
+    # show_state: false
+    # entities:
+    #   - entity: camera.front_porch
+    #   - entity: camera.east_front
+    #   - entity: camera.west_front
+    #   - entity: camera.back_yard
 
 panel_temperature_graph:
   card:    
