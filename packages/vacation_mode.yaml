@@ -17,7 +17,7 @@ automation:
       - service: input_boolean.turn_on
         entity_id: input_boolean.vacation_mode
       - service: button.press
-        entity_id: button.docker_vm_frigate_away
+        entity_id: button.fred_frigate_away
 
   - alias: Vacation Mode Off
     id: cf1edc36-5820-4cf3-8c4f-7db5ffb55245
@@ -39,7 +39,7 @@ automation:
         entity_id:
           - switch.presence_simulation
       - service: button.press
-        entity_id: button.docker_vm_frigate_home
+        entity_id: button.fred_frigate_home
 
   - alias: Notify Alarm Disarmed
     id: 47c99c56-602a-4695-9219-f8ecc9c3f0aa
