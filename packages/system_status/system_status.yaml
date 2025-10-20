@@ -677,13 +677,6 @@ group:
       - device_tracker.shack_r
       - device_tracker.server
 
-  docker:
-    name: Docker
-    all: true
-    entities:
-      - switch.frigate
-      - switch.tv_headend
-
 utility_meter:
   wan_in_monthly:
     source: sensor.wan_download_gb
