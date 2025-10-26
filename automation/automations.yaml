@@ -112,3 +112,40 @@
     service: homeassistant.update_entity
     target:
       entity_id: sensor.current_uv_index
+- alias: Picture Frames On When Home
+  id: d69e8310-1321-4f19-ab9b-7035310c7617
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: armed_home
+  action:
+    - service: switch.turn_on
+      entity_id: switch.kitchen_picture_frame
+
+- alias: Picture Frames Off When Away or Asleep
+  id: ee97937d-0f87-46bd-af5e-04985d8ab20f
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: arming
+      to: 
+        - armed_away
+        - armed_vacation
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: 
+        - disarmed
+        - armed_home
+      to: 
+        - armed_away
+        - armed_vacation
+      for: "00:01:00"
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: armed_night
+  action:
+    - service: switch.turn_off
+      entity_id: switch.kitchen_picture_frame
