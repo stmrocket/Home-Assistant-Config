@@ -112,45 +112,40 @@
     service: homeassistant.update_entity
     target:
       entity_id: sensor.current_uv_index
-
-- alias: Tvheadend Post Started
-  id: 93fad5bb-a083-485d-8b3a-7db1eb796d1e
+- alias: Picture Frames On When Home
+  id: d69e8310-1321-4f19-ab9b-7035310c7617
   trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_tvh_post
-      local_only: true
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: disarmed
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: armed_home
   action:
-    - service: notify.den_kodi
-      data_template:
-        title: "{{ trigger.query.title }}"
-        message: "Recording postprosser started."
-        data:
-          displaytime: 5000
-          icon: "info"
+    - service: switch.turn_on
+      entity_id: switch.kitchen_picture_frame
 
-- alias: Tvheadend Subtitles Done
-  id: 0fbc9091-292b-443f-8ebf-00f1b30312ae
+- alias: Picture Frames Off When Away or Asleep
+  id: ee97937d-0f87-46bd-af5e-04985d8ab20f
   trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_tvh_subs
-      local_only: true
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: arming
+      to: 
+        - armed_away
+        - armed_vacation
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: 
+        - disarmed
+        - armed_home
+      to: 
+        - armed_away
+        - armed_vacation
+      for: "00:01:00"
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to: armed_night
   action:
-    - service: notify.den_kodi
-      data_template:
-        title: "{{ trigger.query.title }}"
-        message: "Subtitle encoding complete."
-        data:
-          displaytime: 5000
-          icon: "info"
-
-- alias: Jellyfin Postprocessor Done
-  id: 05350930-668a-4122-86bd-3d075d8e3888
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_tvh_comm
-      local_only: true
-  action:
-    - service: esphome.elkspeak_dfplayer_play_folder
-      data:
-        folder: 4
-        file: 3
+    - service: switch.turn_off
+      entity_id: switch.kitchen_picture_frame

@@ -434,40 +434,6 @@
         title: Office UPS Replace Battery
         message: The office UPS battery has failed.  Replace immediately.
 
-- alias: Notify Docker Frigate Down
-  id: 99bcc0a1-beff-4ef4-9b58-023b14a9913a
-  trigger:
-    - platform: state
-      entity_id: switch.frigate
-      to: "off"
-      for:
-        minutes: 2
-  action:
-    - service: notify.mobile_app_shawn_n30
-      data:
-        title: Container Down
-        message: The Frigate Docker container is down.
-        data:
-          ttl: 0
-          priority: high
-
-- alias: Notify TV Headend Down
-  id: ffb23f60-307d-48aa-8234-60a85fb3cd6b
-  trigger:
-    - platform: state
-      entity_id: switch.tv_headend
-      to: "off"
-      for:
-        minutes: 2
-  action:
-    - service: notify.mobile_app_shawn_n30
-      data:
-        title: Container Down
-        message: The TV Headend Docker container is down.
-        data:
-          ttl: 0
-          priority: high
-
 - alias: Notify Clock Horn Offline
   id: fc3f2065-8cee-4298-a20a-a6629246c2ca
   trigger:
@@ -482,24 +448,6 @@
       data:
         title: Device Offline
         message: The clock horn has been offline for 5 minutes.
-        data:
-          ttl: 0
-          priority: high
-
-- alias: Notify RainMachine Offline
-  id: a7b451f4-96c5-4210-9dd7-9f60776ebc90
-  trigger:
-    - platform: state
-      entity_id: device_tracker.rainmachine
-      from: "home"
-      to: "not_home"
-      for:
-        minutes: 5
-  action:
-    - service: notify.mobile_app_shawn_n30
-      data:
-        title: Device Offline
-        message: The RainMachine has been offline for 5 minutes.
         data:
           ttl: 0
           priority: high

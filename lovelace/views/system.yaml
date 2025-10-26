@@ -944,17 +944,6 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: device_tracker.redlink
-                color_type: icon
-                icon: mdi:thermostat
-                state:
-                  - value: "home"
-                    color: rgb(94, 228, 101)
-                  - value: "not_home"
-                    color: rgb(228, 94, 101)
-                name: Honeywell
-
-              - type: "custom:button-card"
                 entity: device_tracker.hdhomerun
                 color_type: icon
                 icon: mdi:television-classic
@@ -1051,19 +1040,6 @@ cards:
                     color: rgb(228, 94, 101)
                 name: AdGuard
 
-              # - type: "custom:button-card"
-              #   entity: device_tracker.parrot
-              #   color_type: icon
-              #   icon: mdi:speaker
-              #   state:
-              #     - value: "home"
-              #       color: rgb(94, 228, 101)
-              #     - value: "not_home"
-              #       color: rgb(228, 94, 101)
-              #   name: Parrot
-
-          - type: horizontal-stack
-            cards:
               - type: "custom:button-card"
                 entity: device_tracker.horn
                 color_type: icon
@@ -1075,53 +1051,8 @@ cards:
                     color: rgb(228, 94, 101)
                 name: Master
 
-              - type: "custom:button-card"
-                entity: device_tracker.rainmachine
-                color_type: icon
-                icon: mdi:sprinkler
-                state:
-                  - value: "home"
-                    color: rgb(94, 228, 101)
-                  - value: "not_home"
-                    color: rgb(228, 94, 101)
-                name: RainMachine
-
-              - type: "custom:button-card"
-                entity: group.docker
-                color_type: icon
-                icon: mdi:docker
-                state:
-                  - value: "on"
-                    color: rgb(94, 228, 101)
-                  - value: "off"
-                    color: rgb(228, 94, 101)
-                name: Docker
-                tap_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Docker Container Status
-                      content:
-                        type: custom:vertical-stack-in-card
-                        cards:
-                          - type: "custom:hui-entities-card"
-                            entities:
-                              - type: "custom:restriction-card"
-                                row: true
-                                restrictions:
-                                  confirm: true
-                                  text: "Change container state?"
-                                card:
-                                  entity: switch.frigate
-                              - type: "custom:restriction-card"
-                                row: true
-                                restrictions:
-                                  confirm: true
-                                  text: "Change container state?"
-                                card:
-                                  entity: switch.tv_headend
-
+          - type: horizontal-stack
+            cards:
               - type: "custom:button-card"
                 entity: sensor.server_ups_status
                 color_type: icon
@@ -1225,9 +1156,6 @@ cards:
                             name: Input Frequency
                           - entity: sensor.office_ups_battery_temperature
                             name: Battery Temperature
-
-          - type: horizontal-stack
-            cards:
               - type: "custom:button-card"
                 entity: sensor.shack_ups_status
                 color_type: icon
@@ -1279,9 +1207,6 @@ cards:
                             name: Input Frequency
                           - entity: sensor.shack_ups_battery_temperature
                             name: Battery Temperature
-
-              - type: "custom:gap-card"
-              - type: "custom:gap-card"
               - type: "custom:gap-card"
               - type: "custom:gap-card"
 
