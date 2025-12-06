@@ -130,25 +130,96 @@ automation:
     action:
       - service: script.litter_robot_empty
 
-  - alias: Cat Box Entry Alert
+  - alias: Chamber of Secrets Entry Alert
     id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
     trigger:
       - platform: state
         entity_id: sensor.chamber_of_secrets_status_code
         to: "cd"
     action:
-      - service: camera.snapshot
+      - action: llmvision.image_analyzer
         data:
-          entity_id: camera.shack
-          filename: /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg
+          image_entity:
+            - camera.shack
+            - camera.chamber_of_secrets
+          message: >
+            Identify the cat in this image by name.  There are 4 options.  
+            If there is no cat in the image respond with none.  The response
+            should only include the name of the cat.  No other information.
+
+
+            1) April - A black and white tuxedo cat.  She is all black except for her
+            neck and legs.
+
+            2) Luna - A smaller tabby cat.  Linear stripes with a white vest and paws. 
+            She is brown with gray stripes.  She also wears a white collar.
+
+            3) Shelby - He is the largest cat, also a tabby, but with no white except
+            for his chin.  His stripes are swirled on both sides.  He is long, tall, and
+            large.
+
+            4) Junior - He is an orange tabby.  Similar in size to Luna, but varying
+            shades of orange.  On infrared images, he is lighter than everyone else.
+          include_filename: false
+          provider: 01KBS0H3DW6DAY4W5AHVBWAS8S
+          remember: false
+          expose_images: true
       - service: notify.cctv_email
         data_template:
-          title: "Litter Robot Activated - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-          message: "The litter robot was activated at {{now().strftime('%H:%M:%S') }}."
+          title: "Chamber of Secrets Activated by {{ llm_response.response_text }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.response_text }}."
           data:
             images:
               - /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg     
             html: >
-              The litter robot was activated at {{now().strftime('%H:%M:%S') }}.
+              The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.response_text }}.
               <br>
-              <img src="cid:shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg">   
+              <img src="cid:"{{ llm_response.key_frame.replace('/media/llmvision/snapshots/', '')) }}"">   
+
+
+
+  - alias: Forbidden Forest Entry Alert
+    id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
+    trigger:
+      - platform: state
+        entity_id: sensor.forbidden_forest_status_code
+        to: "cd"
+    action:
+      - action: llmvision.image_analyzer
+        data:
+          image_entity:
+            - camera.entry
+            - camera.forbidden_forest
+          message: >
+            Identify the cat in this image by name.  There are 4 options.  
+            If there is no cat in the image respond with none.  The response
+            should only include the name of the cat.  No other information.
+
+
+            1) April - A black and white tuxedo cat.  She is all black except for her
+            neck and legs.
+
+            2) Luna - A smaller tabby cat.  Linear stripes with a white vest and paws. 
+            She is brown with gray stripes.  She also wears a white collar.
+
+            3) Shelby - He is the largest cat, also a tabby, but with no white except
+            for his chin.  His stripes are swirled on both sides.  He is long, tall, and
+            large.
+
+            4) Junior - He is an orange tabby.  Similar in size to Luna, but varying
+            shades of orange.  On infrared images, he is lighter than everyone else.
+          include_filename: false
+          provider: 01KBS0H3DW6DAY4W5AHVBWAS8S
+          remember: false
+          expose_images: true
+      - service: notify.cctv_email
+        data_template:
+          title: "Forbidden Forest Activated by {{ llm_response.response_text }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.response_text }}."
+          data:
+            images:
+              - /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg     
+            html: >
+              The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.response_text }}.
+              <br>
+              <img src="cid:"{{ llm_response.key_frame.replace('/media/llmvision/snapshots/', '')) }}"">   
