@@ -179,7 +179,7 @@ automation:
 
 
   - alias: Forbidden Forest Entry Alert
-    id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
+    id: a0c3fec3-c2cc-4f3a-b190-fe19979642a3
     trigger:
       - platform: state
         entity_id: sensor.forbidden_forest_status_code
