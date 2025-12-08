@@ -136,17 +136,49 @@ automation:
       - platform: state
         entity_id: sensor.chamber_of_secrets_status_code
         to: "cd"
+    variables:
+      image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
     action:
-      - action: llmvision.image_analyzer
+      - action: camera.snapshot
         data:
-          image_entity:
-            - camera.shack
-            - camera.chamber_of_secrets
-          message: >
-            Identify the cat in this image by name.  There are 4 options.  
-            If there is no cat in the image respond with none.  The response
-            should only include the name of the cat.  No other information.
-
+          entity_id: camera.shack
+          filename: /config/www/cctv/tmp/shack_{{ image_time }}.jpg
+      - action: camera.snapshot
+        data:
+          entity_id: camera.chamber_of_secrets
+          filename: /config/www/cctv/tmp/chamber_of_secrets_{{ image_time }}.jpg
+      - action: ai_task.generate_data      
+        response_variable: llm_response
+        data:
+          attachments:
+            - media_content_id: media-source://camera/camera.shack
+              media_content_type: application/vnd.apple.mpegurl
+              metadata:
+                title: Shack
+                thumbnail: /api/camera_proxy/camera.shack
+                media_class: video
+                children_media_class: null
+                navigateIds:
+                  - {}
+                  - media_content_type: app
+                    media_content_id: media-source://camera
+            - media_content_id: media-source://camera/camera.shack
+              media_content_type: application/vnd.apple.mpegurl
+              metadata:
+                title: Chamber of Secrets
+                thumbnail: /api/camera_proxy/camera.chamber_of_secrets
+                media_class: video
+                children_media_class: null
+                navigateIds:
+                  - {}
+                  - media_content_type: app
+                    media_content_id: media-source://camera
+          task_name: Cat ID
+          instructions: >
+            Identify the cat in this images by name.  One image is a room overview 
+            and the other shows the inside of the Litter-Robot litterbox.  The cat 
+            may not appear in both images.  There are 4 options.  Respond with only 
+            that cat's name.  If there is no cat in the image respond with None.
 
             1) April - A black and white tuxedo cat.  She is all black except for her
             neck and legs.
@@ -160,21 +192,20 @@ automation:
 
             4) Junior - He is an orange tabby.  Similar in size to Luna, but varying
             shades of orange.  On infrared images, he is lighter than everyone else.
-          include_filename: false
-          provider: 01KBS0H3DW6DAY4W5AHVBWAS8S
-          remember: false
-          expose_images: true
-      - service: notify.cctv_email
+      - action: notify.cctv_email
         data_template:
-          title: "Chamber of Secrets Activated by {{ llm_response.response_text }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-          message: "The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.response_text }}."
+          title: "Chamber of Secrets Activated by {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}."
           data:
             images:
-              - /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg     
+              - /config/www/cctv/tmp/shack_{{ image_time }}.jpg    
+              - /config/www/cctv/tmp/chamber_of_secrets_{{ image_time }}.jpg     
             html: >
-              The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.response_text }}.
+              The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.
               <br>
-              <img src="cid:"{{ llm_response.key_frame.replace('/media/llmvision/snapshots/', '')) }}"">   
+              <img src="cid:shack_{{ image_time }}.jpg">   
+              <br>
+              <img src="cid:chamber_of_secrets_{{ image_time }}.jpg">   
 
 
 
@@ -184,17 +215,50 @@ automation:
       - platform: state
         entity_id: sensor.forbidden_forest_status_code
         to: "cd"
+    variables:
+      image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
     action:
-      - action: llmvision.image_analyzer
+      - service: camera.snapshot
         data:
-          image_entity:
-            - camera.entry
-            - camera.forbidden_forest
-          message: >
-            Identify the cat in this image by name.  There are 4 options.  
-            If there is no cat in the image respond with none.  The response
-            should only include the name of the cat.  No other information.
-
+          entity_id: camera.entry
+          filename: /config/www/cctv/tmp/entry_{{ image_time }}.jpg
+      - service: camera.snapshot
+        data:
+          entity_id: camera.forbidden_forest
+          filename: /config/www/cctv/tmp/forbidden_forest_{{ image_time }}.jpg
+    
+      - action: ai_task.generate_data      
+        response_variable: llm_response
+        data:
+          attachments:
+            - media_content_id: media-source://camera/camera.shack
+              media_content_type: application/vnd.apple.mpegurl
+              metadata:
+                title: Shack
+                thumbnail: /api/camera_proxy/camera.shack
+                media_class: video
+                children_media_class: null
+                navigateIds:
+                  - {}
+                  - media_content_type: app
+                    media_content_id: media-source://camera
+            - media_content_id: media-source://camera/camera.shack
+              media_content_type: application/vnd.apple.mpegurl
+              metadata:
+                title: Chamber of Secrets
+                thumbnail: /api/camera_proxy/camera.chamber_of_secrets
+                media_class: video
+                children_media_class: null
+                navigateIds:
+                  - {}
+                  - media_content_type: app
+                    media_content_id: media-source://camera
+          task_name: Cat ID
+          instructions: >
+            Identify the cat in this images by name.  One image is a room overview 
+            and the other shows the inside of the Litter-Robot litterbox.  The cat 
+            may not appear in both images.  There are 4 options.  Respond with only 
+            that cat's name.  If there is no cat in the image respond with None.
 
             1) April - A black and white tuxedo cat.  She is all black except for her
             neck and legs.
@@ -208,18 +272,18 @@ automation:
 
             4) Junior - He is an orange tabby.  Similar in size to Luna, but varying
             shades of orange.  On infrared images, he is lighter than everyone else.
-          include_filename: false
-          provider: 01KBS0H3DW6DAY4W5AHVBWAS8S
-          remember: false
-          expose_images: true
+
       - service: notify.cctv_email
         data_template:
-          title: "Forbidden Forest Activated by {{ llm_response.response_text }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
-          message: "The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.response_text }}."
+          title: "Forbidden Forest Activated by {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}."
           data:
             images:
-              - /config/www/cctv/tmp/shack_{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}.jpg     
+              - /config/www/cctv/tmp/entry_{{ image_time }}.jpg    
+              - /config/www/cctv/tmp/forbidden_forest_{{ image_time }}.jpg     
             html: >
-              The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.response_text }}.
+              The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.
               <br>
-              <img src="cid:"{{ llm_response.key_frame.replace('/media/llmvision/snapshots/', '')) }}"">   
+              <img src="cid:entry_{{ image_time }}.jpg">   
+              <br>
+              <img src="cid:forbidden_forest_{{ image_time }}.jpg">   
