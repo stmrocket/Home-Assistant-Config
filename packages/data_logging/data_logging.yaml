@@ -11,7 +11,7 @@
 #################################################################
 
 recorder:
-  db_url: !secret db_url
+  #db_url: !secret db_url
   exclude:
     domains:
       - automation
