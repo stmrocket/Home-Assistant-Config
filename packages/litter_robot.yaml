@@ -136,6 +136,10 @@ automation:
       - platform: state
         entity_id: sensor.chamber_of_secrets_status_code
         to: "cd"
+      - platform: state
+        entity_id: sensor.chamber_of_secrets_status_code
+        from: "RDY"
+        to: "CST"
     variables:
       image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
     action:
@@ -215,6 +219,10 @@ automation:
       - platform: state
         entity_id: sensor.forbidden_forest_status_code
         to: "cd"
+      - platform: state
+        entity_id: sensor.forbidden_forest_status_code
+        from: "RDY"
+        to: "CST"
     variables:
       image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
     action:
