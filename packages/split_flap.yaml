@@ -248,19 +248,19 @@ automation:
                   topic: denflaps/control
                   payload: >-
                     {% if now().weekday() in (0,) %} 
-                      MON {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
+                      MON {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
                     {% elif now().weekday() in (1,) %} 
-                      TUE {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
+                      TUE {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
                     {% elif now().weekday() in (2,) %} 
-                      WED {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
+                      WED {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
                     {% elif now().weekday() in (3,) %} 
-                      THU {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
+                      THU {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
                     {% elif now().weekday() in (4,) %} 
-                      FRI {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
+                      FRI {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
                     {% elif now().weekday() in (5,) %} 
-                      SAT {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
+                      SAT {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
                     {% elif now().weekday() in (6,) %} 
-                      SUN {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
+                      SUN {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F {{ states('sensor.rain_day') | round(2,default) }}IN
                     {% endif %}
         default:
           - service: mqtt.publish        
@@ -268,17 +268,17 @@ automation:
               topic: denflaps/control
               payload: >-
                 {% if now().weekday() in (0,) %} 
-                  MON {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                  MON {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F
                 {% elif now().weekday() in (1,) %} 
-                  TUE {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                  TUE {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F
                 {% elif now().weekday() in (2,) %} 
-                  WED {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                  WED {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F
                 {% elif now().weekday() in (3,) %} 
-                  THU {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                  THU {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F
                 {% elif now().weekday() in (4,) %} 
-                  FRI {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                  FRI {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F
                 {% elif now().weekday() in (5,) %} 
-                  SAT {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                  SAT {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F
                 {% elif now().weekday() in (6,) %} 
-                  SUN {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_ws_temperature') | round(0,default) }}F
+                  SUN {{ now().month }}-{{ now().day }}-{{ now().year }} {{ now().hour }}:{% if now().minute < 10 %}0{% endif %}{{ now().minute }} {{ states('sensor.acurite_outside_temperature') | round(0,default) }}F
                 {% endif %}

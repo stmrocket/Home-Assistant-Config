@@ -27,7 +27,7 @@ cards:
             name: Office
           - entity: sensor.server_room_climate_temperature
             name: Server
-          - entity: sensor.acurite_ws_temperature
+          - entity: sensor.acurite_outside_temperature
             name: Outside
           - entity: sensor.shed_temperature_ow
             name: Shed

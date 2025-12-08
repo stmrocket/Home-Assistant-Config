@@ -44,7 +44,7 @@
         task_name: "good morning comment"
         instructions: |
           Based on the following conditions:
-          - Outdoor temperature: {{ states('sensor.acurite_ws_temperature') }}  
+          - Outdoor temperature: {{ states('sensor.acurite_outside_temperature') }}  
           - Weather condition: {{ states('sensor.openweathermap_current_icon') }}
           - Current Rainfall: {{ states('sensor.rain_day') }}
           - Today's probablility of precipitation: {{ states('sensor.openweathermap_current_pop') }}

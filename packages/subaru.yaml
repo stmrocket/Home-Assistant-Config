@@ -232,7 +232,7 @@ automation:
               - thu
               - fri
           - condition: numeric_state
-            entity_id: sensor.acurite_ws_temperature
+            entity_id: sensor.acurite_outside_temperature
             below: 45
           - condition: or
             conditions:
@@ -245,13 +245,13 @@ automation:
     action:
       - service: script.activate_alexa_actionable_notification
         data_template:
-          text: "The temperature is {{states('sensor.acurite_ws_temperature') | float(none) | round(1, default) }} degrees.  Would you like to start your car?"
+          text: "The temperature is {{states('sensor.acurite_outside_temperature') | float(none) | round(1, default) }} degrees.  Would you like to start your car?"
           event_id: "actionable_notification_start_suv"
           alexa_device: "media_player.alexa_den"
       - service: notify.mobile_app_shawn_n30
         data_template:
           title: Heading Home
-          message: "The temperature is {{states('sensor.acurite_ws_temperature') | float(none) | round(1, default) }} degrees.  Would you like to start your car?"
+          message: "The temperature is {{states('sensor.acurite_outside_temperature') | float(none) | round(1, default) }} degrees.  Would you like to start your car?"
           data:
             ttl: 0
             priority: high
