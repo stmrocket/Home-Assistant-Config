@@ -222,7 +222,7 @@ automation:
         response_variable: llm_response
         data:
           attachments:
-            - media_content_id: media-source://media_source/media/snapshots/entyr_{{ image_time }}.jpg
+            - media_content_id: media-source://media_source/media/snapshots/entry_{{ image_time }}.jpg
               media_content_type: image/jpeg
             - media_content_id: media-source://media_source/media/snapshots/forbidden_forest_{{ image_time }}.jpg
               media_content_type: image/jpeg
@@ -285,7 +285,8 @@ automation:
           task_name: Cat ID
           instructions: >
             The image shows the inside of a litter robot cat box that has been used and is about to cycle.  
-            Based on the image, identify if the previous use was urine, feces, or both.  Just return the 1-word answer.
+            Based on the image, identify if the previous use was urine, feces, or both.  If the litter has 
+            not been used, respond with Nonne.Just return the 1-word answer.
 
       - service: notify.cctv_email
         data_template:
@@ -322,7 +323,8 @@ automation:
           task_name: Cat ID
           instructions: >
             The image shows the inside of a litter robot cat box that has been used and is about to cycle.  
-            Based on the image, identify if the previous use was urine, feces, or both.  Just return the 1-word answer.
+            Based on the image, identify if the previous use was urine, feces, or both.  If the litter has 
+            not been used, respond with Nonne.Just return the 1-word answer.
 
       - service: notify.cctv_email
         data_template:
