@@ -146,37 +146,19 @@ automation:
       - action: camera.snapshot
         data:
           entity_id: camera.shack
-          filename: /config/www/cctv/tmp/shack_{{ image_time }}.jpg
+          filename: /config/media/snapshots/shack_{{ image_time }}.jpg
       - action: camera.snapshot
         data:
           entity_id: camera.chamber_of_secrets
-          filename: /config/www/cctv/tmp/chamber_of_secrets_{{ image_time }}.jpg
+          filename: /config/media/snapshots/chamber_of_secrets_{{ image_time }}.jpg
       - action: ai_task.generate_data      
         response_variable: llm_response
         data:
           attachments:
-            - media_content_id: media-source://camera/camera.shack
-              media_content_type: application/vnd.apple.mpegurl
-              metadata:
-                title: Shack
-                thumbnail: /api/camera_proxy/camera.shack
-                media_class: video
-                children_media_class: null
-                navigateIds:
-                  - {}
-                  - media_content_type: app
-                    media_content_id: media-source://camera
-            - media_content_id: media-source://camera/camera.shack
-              media_content_type: application/vnd.apple.mpegurl
-              metadata:
-                title: Chamber of Secrets
-                thumbnail: /api/camera_proxy/camera.chamber_of_secrets
-                media_class: video
-                children_media_class: null
-                navigateIds:
-                  - {}
-                  - media_content_type: app
-                    media_content_id: media-source://camera
+            - media_content_id: media-source://media_source/media/snapshots/shack_{{ image_time }}.jpg
+              media_content_type: image/jpeg
+            - media_content_id: media-source://media_source/media/snapshots/chamber_of_secrets_{{ image_time }}.jpg
+              media_content_type: image/jpeg
           task_name: Cat ID
           instructions: >
             Identify the cat in this images by name.  One image is a room overview 
@@ -203,8 +185,8 @@ automation:
           message: "The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}."
           data:
             images:
-              - /config/www/cctv/tmp/shack_{{ image_time }}.jpg    
-              - /config/www/cctv/tmp/chamber_of_secrets_{{ image_time }}.jpg     
+              - /config/media/snapshots/shack_{{ image_time }}.jpg    
+              - /config/media/snapshots/chamber_of_secrets_{{ image_time }}.jpg     
             html: >
               The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.
               <br>
@@ -230,38 +212,20 @@ automation:
       - service: camera.snapshot
         data:
           entity_id: camera.entry
-          filename: /config/www/cctv/tmp/entry_{{ image_time }}.jpg
+          filename: /config/media/snapshots/entry_{{ image_time }}.jpg
       - service: camera.snapshot
         data:
           entity_id: camera.forbidden_forest
-          filename: /config/www/cctv/tmp/forbidden_forest_{{ image_time }}.jpg
+          filename: /config/media/snapshots/forbidden_forest_{{ image_time }}.jpg
     
       - action: ai_task.generate_data      
         response_variable: llm_response
         data:
           attachments:
-            - media_content_id: media-source://camera/camera.shack
-              media_content_type: application/vnd.apple.mpegurl
-              metadata:
-                title: Shack
-                thumbnail: /api/camera_proxy/camera.shack
-                media_class: video
-                children_media_class: null
-                navigateIds:
-                  - {}
-                  - media_content_type: app
-                    media_content_id: media-source://camera
-            - media_content_id: media-source://camera/camera.shack
-              media_content_type: application/vnd.apple.mpegurl
-              metadata:
-                title: Chamber of Secrets
-                thumbnail: /api/camera_proxy/camera.chamber_of_secrets
-                media_class: video
-                children_media_class: null
-                navigateIds:
-                  - {}
-                  - media_content_type: app
-                    media_content_id: media-source://camera
+            - media_content_id: media-source://media_source/media/snapshots/entyr_{{ image_time }}.jpg
+              media_content_type: image/jpeg
+            - media_content_id: media-source://media_source/media/snapshots/forbidden_forest_{{ image_time }}.jpg
+              media_content_type: image/jpeg
           task_name: Cat ID
           instructions: >
             Identify the cat in this images by name.  One image is a room overview 
@@ -289,11 +253,85 @@ automation:
           message: "The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}."
           data:
             images:
-              - /config/www/cctv/tmp/entry_{{ image_time }}.jpg    
-              - /config/www/cctv/tmp/forbidden_forest_{{ image_time }}.jpg     
+              - /config/media/snapshots/entry_{{ image_time }}.jpg    
+              - /config/media/snapshots/forbidden_forest_{{ image_time }}.jpg     
             html: >
               The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.
               <br>
               <img style='width: 100%; object-fit: contain' src="cid:entry_{{ image_time }}.jpg">   
               <br>
               <img style='width: 100%; object-fit: contain' src="cid:forbidden_forest_{{ image_time }}.jpg">   
+
+  - alias: Forbidden Forest Contents Detection
+    id: 23adbc11-41bb-498d-a95b-b2e022138db7
+    trigger:
+      - platform: state
+        entity_id: sensor.forbidden_forest_status_code
+        to: "ccp"
+    variables:
+      image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.forbidden_forest
+          filename: /config/media/snapshots/forbidden_forest_waste_{{ image_time }}.jpg
+    
+      - action: ai_task.generate_data      
+        response_variable: llm_response
+        data:
+          attachments:
+            - media_content_id: media-source://media_source/media/snapshots/forbidden_forest_waste_{{ image_time }}.jpg
+              media_content_type: image/jpeg
+          task_name: Cat ID
+          instructions: >
+            The image shows the inside of a litter robot cat box that has been used and is about to cycle.  
+            Based on the image, identify if the previous use was urine, feces, or both.  Just return the 1-word answer.
+
+      - service: notify.cctv_email
+        data_template:
+          title: "Forbidden Forest Activated Cycling for {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "The Forbidden Forest is cycling.  The last deposit was {{ llm_response.data }}."
+          data:
+            images:  
+              - /config/media/snapshots/forbidden_forest_waste{{ image_time }}.jpg     
+            html: >
+              The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.  
+              <br>
+              <img style='width: 100%; object-fit: contain' src="cid:forbidden_forest_waste_{{ image_time }}.jpg">   
+
+  - alias: Chamber of Secrets Contents Detection
+    id: d5c56011-7b5c-4725-9953-83321031754f
+    trigger:
+      - platform: state
+        entity_id: sensor.chamber_of_secrets_status_code
+        to: "ccp"
+    variables:
+      image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
+    action:
+      - service: camera.snapshot
+        data:
+          entity_id: camera.chamber_of_secrets
+          filename: /config/media/snapshots/chamber_of_secrets_waste_{{ image_time }}.jpg
+    
+      - action: ai_task.generate_data      
+        response_variable: llm_response
+        data:
+          attachments:
+            - media_content_id: media-source://media_source/media/snapshots/chamber_of_secrets_waste_{{ image_time }}.jpg
+              media_content_type: image/jpeg
+          task_name: Cat ID
+          instructions: >
+            The image shows the inside of a litter robot cat box that has been used and is about to cycle.  
+            Based on the image, identify if the previous use was urine, feces, or both.  Just return the 1-word answer.
+
+      - service: notify.cctv_email
+        data_template:
+          title: "Chamber of Secrets Activated Cycling for {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          message: "The Chamber of Secrets is cycling.  The last deposit was {{ llm_response.data }}."
+          data:
+            images:  
+              - /config/media/snapshots/chamber_of_secrets_waste{{ image_time }}.jpg     
+            html: >
+              The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.  
+              <br>
+              <img style='width: 100%; object-fit: contain' src="cid:chamber_of_secrets_waste_{{ image_time }}.jpg">   
