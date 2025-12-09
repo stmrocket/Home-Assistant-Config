@@ -286,11 +286,11 @@ automation:
           instructions: >
             The image shows the inside of a litter robot cat box that has been used and is about to cycle.  
             Based on the image, identify if the previous use was urine, feces, or both.  If the litter has 
-            not been used, respond with Nonne.Just return the 1-word answer.
+            not been used, respond with None.  Do not look at residue on the plastic.  Just return the 1-word answer.
 
       - service: notify.cctv_email
         data_template:
-          title: "Forbidden Forest Activated Cycling for {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          title: "Forbidden Forest Cycling for {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
           message: "The Forbidden Forest is cycling.  The last deposit was {{ llm_response.data }}."
           data:
             images:  
@@ -324,11 +324,11 @@ automation:
           instructions: >
             The image shows the inside of a litter robot cat box that has been used and is about to cycle.  
             Based on the image, identify if the previous use was urine, feces, or both.  If the litter has 
-            not been used, respond with Nonne.Just return the 1-word answer.
+            not been used, respond with None.  Do not look at residue on the plastic.  Just return the 1-word answer.
 
       - service: notify.cctv_email
         data_template:
-          title: "Chamber of Secrets Activated Cycling for {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
+          title: "Chamber of Secrets Cycling for {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
           message: "The Chamber of Secrets is cycling.  The last deposit was {{ llm_response.data }}."
           data:
             images:  
