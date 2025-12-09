@@ -138,8 +138,8 @@ automation:
         to: "cd"
       - platform: state
         entity_id: sensor.chamber_of_secrets_status_code
-        from: "RDY"
-        to: "CST"
+        from: "rdy"
+        to: "cst"
     variables:
       image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
     action:
@@ -195,7 +195,8 @@ automation:
             large.
 
             4) Junior - He is an orange tabby.  Similar in size to Luna, but varying
-            shades of orange.  On infrared images, he is lighter than everyone else.
+            shades of orange.  On infrared images, he appears nearly white while the 
+            others will have more variation.
       - action: notify.cctv_email
         data_template:
           title: "Chamber of Secrets Activated by {{ llm_response.data }} - {{now().strftime('%Y-%m-%d %H:%M:%S') }}"
@@ -207,9 +208,9 @@ automation:
             html: >
               The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.
               <br>
-              <img src="cid:shack_{{ image_time }}.jpg">   
+              <img style='width: 100%; object-fit: contain' src="cid:shack_{{ image_time }}.jpg">   
               <br>
-              <img src="cid:chamber_of_secrets_{{ image_time }}.jpg">   
+              <img style='width: 100%; object-fit: contain' src="cid:chamber_of_secrets_{{ image_time }}.jpg">   
 
 
 
@@ -221,8 +222,8 @@ automation:
         to: "cd"
       - platform: state
         entity_id: sensor.forbidden_forest_status_code
-        from: "RDY"
-        to: "CST"
+        from: "rdy"
+        to: "cst"
     variables:
       image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
     action:
@@ -279,7 +280,8 @@ automation:
             large.
 
             4) Junior - He is an orange tabby.  Similar in size to Luna, but varying
-            shades of orange.  On infrared images, he is lighter than everyone else.
+            shades of orange.  On infrared images, he appears nearly white while the 
+            others will have more variation.
 
       - service: notify.cctv_email
         data_template:
@@ -292,6 +294,6 @@ automation:
             html: >
               The Forbidden Forest was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.
               <br>
-              <img src="cid:entry_{{ image_time }}.jpg">   
+              <img style='width: 100%; object-fit: contain' src="cid:entry_{{ image_time }}.jpg">   
               <br>
-              <img src="cid:forbidden_forest_{{ image_time }}.jpg">   
+              <img style='width: 100%; object-fit: contain' src="cid:forbidden_forest_{{ image_time }}.jpg">   
