@@ -26,7 +26,7 @@ jobs:
       - name: Copy Stubs to Proper Directory
         run: cp -R ./.stubs/* ./
       - name: Comment out media folder config
-        run: sed -i '2,4 s/^/#/' config.yaml
+        run: sed -i '2,4 s/^/#/' configuration.yaml
       - name: Show Build Running
         uses: wei/curl@v1.1.1
         with:
