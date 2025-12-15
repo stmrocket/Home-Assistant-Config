@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v4.1.7
       - name: Copy Stubs to Proper Directory
         run: cp -R ./.stubs/* ./
+      # COmment out the media folder config.  Build fails if this is left in (even with stubs).
       - name: Comment out media folder config.
         run: sed -i '5,8 s/^/#/' configuration.yaml
       # - name: Show Build Running
