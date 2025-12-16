@@ -90,6 +90,8 @@ cards:
                   entity_index: 0
                   xpos: 50
                   ypos: 95
+                  styles:
+                    - font-size: 1.35em;
 
             # Scale set to -10 to +40 degrees celcius
             horseshoe_scale:
@@ -315,6 +317,8 @@ cards:
                   entity_index: 0
                   xpos: 50
                   ypos: 95
+                  styles:
+                    - font-size: 1.35em;
 
             # Scale set to -10 to +40 degrees celcius
             horseshoe_scale:
@@ -540,6 +544,8 @@ cards:
                   entity_index: 0
                   xpos: 50
                   ypos: 95
+                  styles:
+                    - font-size: 1.35em;
 
             # Scale set to -10 to +40 degrees celcius
             horseshoe_scale:
