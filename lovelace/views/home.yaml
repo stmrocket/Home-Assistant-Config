@@ -223,31 +223,34 @@ cards:
               - entity: sensor.chamber_of_secrets_waste_drawer
                 attribute: state
                 decimals: 0
-                name: "Pooper"
+                name: "Chamber of Secrets"
                 unit: "%"
                 tap_action:
                   action: fire-dom-event
                   browser_mod:
                     service: browser_mod.popup
                     data:
-                      title: Litter Robot
+                      title: Chamber of Secrets
                       content:
                         type: custom:vertical-stack-in-card
                         cards:
                           - type: entities
                             entities:
-                              - entity: sensor.litter_robot_status_short
+                              - entity: sensor.chamber_of_secrets_status_short
                                 name: Status
                                 icon: mdi:cat
-                              - entity: counter.litter_robot_cycle_count
-                                name: Cycle Count
+                              - entity: sensor.chamber_of_secrets_total_cycles
+                                name: Scoops Saved
                                 icon: mdi:toilet
-                              - entity: sensor.litter_robot_average_cycle_capacity
-                                name: Average Drawer Capacity
-                                icon: mdi:trash-can-outline
                               - entity: sensor.chamber_of_secrets_litter_level
                                 name: Litter Level
                                 icon: mdi:weather-dust
+                              - entity: select.chamber_of_secrets_globe_light
+                                name: Globe Light
+                                icon: mdi:lightbulb
+                              - entity: select.chamber_of_secrets_globe_brightness
+                                name: Globe Brightness
+                                icon: mdi:lightbulb
                               - entity: select.chamber_of_secrets_panel_brightness
                                 name: Panel Brightness
                                 icon: mdi:lightbulb
@@ -258,7 +261,7 @@ cards:
                           - type: horizontal-stack
                             cards:
                               - type: "custom:button-card"
-                                entity: switch.litter_robot_power
+                                entity: switch.chamber_of_secrets_power
                                 color_type: icon
                                 state:
                                   - value: "on"
@@ -271,15 +274,6 @@ cards:
                               - type: "custom:button-card"
                                 color_type: icon
                                 color: rgb(255, 255, 255)
-                                icon: mdi:trash-can
-                                name: Empty
-                                tap_action:
-                                  action: call-service
-                                  service: script.litter_robot_empty
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
                                 icon: mdi:reload
                                 name: Cycle
                                 tap_action:
@@ -288,8 +282,6 @@ cards:
                                   service_data:
                                     entity_id: vacuum.chamber_of_secrets_litter_box
 
-                          - type: horizontal-stack
-                            cards:
                               - type: "custom:button-card"
                                 entity: switch.chamber_of_secrets_panel_lockout
                                 color_type: icon
@@ -301,18 +293,6 @@ cards:
                                     color: rgb(255, 255, 255)
                                     icon: mdi:lock-open
                                 name: Lock
-
-                              - type: "custom:button-card"
-                                entity: switch.chamber_of_secrets_night_light_mode
-                                color_type: icon
-                                state:
-                                  - value: "on"
-                                    color: rgb(228, 94, 101)
-                                    icon: mdi:lightbulb-on-outline
-                                  - value: "off"
-                                    color: rgb(255, 255, 255)
-                                    icon: mdi:lightbulb-outline
-                                name: Light
 
                               - type: "custom:button-card"
                                 color_type: icon
@@ -324,7 +304,7 @@ cards:
                                   service: button.press
                                   service_data:
                                     entity_id: button.chamber_of_secrets_reset
-              - entity: sensor.litter_robot_status_short
+              - entity: sensor.chamber_of_secrets_status_short
                 attribute: state
                 decimals: 1
                 tap_action:
@@ -332,24 +312,27 @@ cards:
                   browser_mod:
                     service: browser_mod.popup
                     data:
-                      title: Litter Robot
+                      title: Chamber of Secrets
                       content:
                         type: custom:vertical-stack-in-card
                         cards:
                           - type: entities
                             entities:
-                              - entity: sensor.litter_robot_status_short
+                              - entity: sensor.chamber_of_secrets_status_short
                                 name: Status
                                 icon: mdi:cat
-                              - entity: counter.litter_robot_cycle_count
-                                name: Cycle Count
+                              - entity: sensor.chamber_of_secrets_total_cycles
+                                name: Scoops Saved
                                 icon: mdi:toilet
-                              - entity: sensor.litter_robot_average_cycle_capacity
-                                name: Average Drawer Capacity
-                                icon: mdi:trash-can-outline
                               - entity: sensor.chamber_of_secrets_litter_level
                                 name: Litter Level
                                 icon: mdi:weather-dust
+                              - entity: select.chamber_of_secrets_globe_light
+                                name: Globe Light
+                                icon: mdi:lightbulb
+                              - entity: select.chamber_of_secrets_globe_brightness
+                                name: Globe Brightness
+                                icon: mdi:lightbulb
                               - entity: select.chamber_of_secrets_panel_brightness
                                 name: Panel Brightness
                                 icon: mdi:lightbulb
@@ -360,7 +343,7 @@ cards:
                           - type: horizontal-stack
                             cards:
                               - type: "custom:button-card"
-                                entity: switch.litter_robot_power
+                                entity: switch.chamber_of_secrets_power
                                 color_type: icon
                                 state:
                                   - value: "on"
@@ -373,15 +356,6 @@ cards:
                               - type: "custom:button-card"
                                 color_type: icon
                                 color: rgb(255, 255, 255)
-                                icon: mdi:trash-can
-                                name: Empty
-                                tap_action:
-                                  action: call-service
-                                  service: script.litter_robot_empty
-
-                              - type: "custom:button-card"
-                                color_type: icon
-                                color: rgb(255, 255, 255)
                                 icon: mdi:reload
                                 name: Cycle
                                 tap_action:
@@ -389,9 +363,7 @@ cards:
                                   service: vacuum.start
                                   service_data:
                                     entity_id: vacuum.chamber_of_secrets_litter_box
-
-                          - type: horizontal-stack
-                            cards:
+                                    
                               - type: "custom:button-card"
                                 entity: switch.chamber_of_secrets_panel_lockout
                                 color_type: icon
@@ -405,16 +377,147 @@ cards:
                                 name: Lock
 
                               - type: "custom:button-card"
-                                entity: switch.chamber_of_secrets_night_light_mode
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:check
+                                name: Reset
+                                tap_action:
+                                  action: call-service
+                                  service: button.press
+                                  service_data:
+                                    entity_id: button.chamber_of_secrets_reset
+
+            show:
+              horseshoe_style: "lineargradient"
+            layout:
+              hlines:
+                # A horizontal line. Not connected to an entity
+                - id: 0
+                  xpos: 50
+                  ypos: 52
+                  length: 40
+                  styles:
+                    - stroke: var(--primary-text-color);
+                    - stroke-width: 5;
+                    - stroke-linecap: round;
+                    - opacity: 0.7;
+              states:
+                # States 0 refers to the first entity in the list, ie index 0
+                - id: 0
+                  entity_index: 0
+                  xpos: 50
+                  ypos: 44
+                  styles:
+                    - font-size: 3em;
+                # States 1 refers to the second entity in the list, ie index 1
+                - id: 1
+                  entity_index: 1
+                  xpos: 50
+                  ypos: 70
+                  styles:
+                    - text-anchor: middle;
+                    - font-size: 2.0em;
+
+              names:
+                # Names 0 refers to the first entity in the list, ie index 0
+                - id: 0
+                  entity_index: 0
+                  xpos: 50
+                  ypos: 95
+
+            # Scale set to -10 to +40 degrees celcius
+            horseshoe_scale:
+              min: 0
+              max: 100
+            # color stop list with 10 colors defined in the theme. With the `lineargradient` fill style, only the
+            # first (16:) and last (25:) colors are used. The thresholds are ignored with this setting.
+            color_stops:
+              0: "#FFF6E3"
+              10: "#FFE9B9"
+              20: "#FFDA8A"
+              30: "#FFCB5B"
+              40: "#FFBF37"
+              50: "#ffb414"
+              60: "#FFAD12"
+              70: "#FFA40E"
+              80: "#FF9C0B"
+              90: "#FF8C06"   
+
+          - type: "custom:flex-horseshoe-card"
+            entities:
+              - entity: sensor.forbidden_forest_waste_drawer
+                attribute: state
+                decimals: 0
+                name: "Forbidden Forest"
+                unit: "%"
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Chamber of Secrets
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: entities
+                            entities:
+                              - entity: sensor.forbidden_forest_status_short
+                                name: Status
+                                icon: mdi:cat
+                              - entity: sensor.forbidden_forest_total_cycles
+                                name: Scoops Saved
+                                icon: mdi:toilet
+                              - entity: sensor.forbidden_forest_litter_level
+                                name: Litter Level
+                                icon: mdi:weather-dust
+                              - entity: select.forbidden_forest_globe_light
+                                name: Globe Light
+                                icon: mdi:lightbulb
+                              - entity: select.forbidden_forest_globe_brightness
+                                name: Globe Brightness
+                                icon: mdi:lightbulb
+                              - entity: select.forbidden_forest_panel_brightness
+                                name: Panel Brightness
+                                icon: mdi:lightbulb
+                              - entity: select.forbidden_forest_clean_cycle_wait_time_minutes
+                                name: Wait Time
+                                icon: mdi:clock-outline
+
+                          - type: horizontal-stack
+                            cards:
+                              - type: "custom:button-card"
+                                entity: switch.forbidden_forest_power
                                 color_type: icon
                                 state:
                                   - value: "on"
                                     color: rgb(228, 94, 101)
-                                    icon: mdi:lightbulb-on-outline
                                   - value: "off"
                                     color: rgb(255, 255, 255)
-                                    icon: mdi:lightbulb-outline
-                                name: Light
+                                icon: mdi:power
+                                name: Power
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:reload
+                                name: Cycle
+                                tap_action:
+                                  action: call-service
+                                  service: vacuum.start
+                                  service_data:
+                                    entity_id: vacuum.forbidden_forest_litter_box
+
+                              - type: "custom:button-card"
+                                entity: switch.forbidden_forest_panel_lockout
+                                color_type: icon
+                                state:
+                                  - value: "on"
+                                    color: rgb(228, 94, 101)
+                                    icon: mdi:lock
+                                  - value: "off"
+                                    color: rgb(255, 255, 255)
+                                    icon: mdi:lock-open
+                                name: Lock
 
                               - type: "custom:button-card"
                                 color_type: icon
@@ -425,7 +528,89 @@ cards:
                                   action: call-service
                                   service: button.press
                                   service_data:
-                                    entity_id: button.chamber_of_secrets_reset   
+                                    entity_id: button.forbidden_forest_reset
+              - entity: sensor.forbidden_forest_status_short
+                attribute: state
+                decimals: 1
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Chamber of Secrets
+                      content:
+                        type: custom:vertical-stack-in-card
+                        cards:
+                          - type: entities
+                            entities:
+                              - entity: sensor.forbidden_forest_status_short
+                                name: Status
+                                icon: mdi:cat
+                              - entity: sensor.forbidden_forest_total_cycles
+                                name: Scoops Saved
+                                icon: mdi:toilet
+                              - entity: sensor.forbidden_forest_litter_level
+                                name: Litter Level
+                                icon: mdi:weather-dust
+                              - entity: select.forbidden_forest_globe_light
+                                name: Globe Light
+                                icon: mdi:lightbulb
+                              - entity: select.forbidden_forest_globe_brightness
+                                name: Globe Brightness
+                                icon: mdi:lightbulb
+                              - entity: select.forbidden_forest_panel_brightness
+                                name: Panel Brightness
+                                icon: mdi:lightbulb
+                              - entity: select.forbidden_forest_clean_cycle_wait_time_minutes
+                                name: Wait Time
+                                icon: mdi:clock-outline
+
+                          - type: horizontal-stack
+                            cards:
+                              - type: "custom:button-card"
+                                entity: switch.forbidden_forest_power
+                                color_type: icon
+                                state:
+                                  - value: "on"
+                                    color: rgb(228, 94, 101)
+                                  - value: "off"
+                                    color: rgb(255, 255, 255)
+                                icon: mdi:power
+                                name: Power
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:reload
+                                name: Cycle
+                                tap_action:
+                                  action: call-service
+                                  service: vacuum.start
+                                  service_data:
+                                    entity_id: vacuum.forbidden_forest_litter_box
+                                    
+                              - type: "custom:button-card"
+                                entity: switch.forbidden_forest_panel_lockout
+                                color_type: icon
+                                state:
+                                  - value: "on"
+                                    color: rgb(228, 94, 101)
+                                    icon: mdi:lock
+                                  - value: "off"
+                                    color: rgb(255, 255, 255)
+                                    icon: mdi:lock-open
+                                name: Lock
+
+                              - type: "custom:button-card"
+                                color_type: icon
+                                color: rgb(255, 255, 255)
+                                icon: mdi:check
+                                name: Reset
+                                tap_action:
+                                  action: call-service
+                                  service: button.press
+                                  service_data:
+                                    entity_id: button.forbidden_forest_reset
 
             show:
               horseshoe_style: "lineargradient"
