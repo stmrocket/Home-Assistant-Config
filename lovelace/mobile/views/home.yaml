@@ -244,7 +244,7 @@ cards:
                 unit: "%"
                 tap_action:
                   action: more-info
-              - entity: sensor.litter_robot_status_short
+              - entity: sensor.chamber_of_secrets_status_short
                 attribute: state
                 decimals: 1
                 tap_action:

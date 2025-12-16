@@ -582,7 +582,7 @@ cards:
       - type: horizontal-stack
         cards:
           - type: "custom:button-card"
-            entity: sensor.litter_robot_status_short
+            entity: sensor.chamber_of_secrets_status_short
             color_type: icon
             icon: mdi:cat
             state:
@@ -630,7 +630,7 @@ cards:
                     cards:
                       - type: entities
                         entities:
-                          - entity: sensor.litter_robot_status_short
+                          - entity: sensor.chamber_of_secrets_status_short
                             name: Status
                             icon: mdi:cat
                           - entity: counter.litter_robot_cycle_count
@@ -643,7 +643,7 @@ cards:
                       - type: horizontal-stack
                         cards:
                           - type: "custom:button-card"
-                            entity: switch.litter_robot_power
+                            entity: switch.chamber_of_secrets_power
                             color_type: icon
                             state:
                               - value: "on"

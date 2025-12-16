@@ -1,142 +1,87 @@
-#################################################################
-#                                                               #
-#                    Packages/climate_hvac                      #
-#                                                               #
-#################################################################
-
-#################################################################
-#                                                               #
-#                       Binary Sensors                          #
-#                                                               #
-#################################################################
-
-binary_sensor:
-  ####################################################
-  #                                                  #
-  #            Binary Sensor - Template              #
-  #                                                  #
-  ####################################################
-
-  - platform: template
-    sensors:
-      hvac_system_fan:
-        unique_id: bd0c93ae-4b60-4850-885e-7ab09c0b9437
-        friendly_name: "HVAC System Fan Call"
-        value_template: "{{ is_state('sensor.hvac_system_state', 'Fan') }}"
-
-      hvac_system_heat:
-        friendly_name: "HVAC System Heat Call"
-        unique_id: f3b86e5f-be73-4ee8-b9e7-f8538a9d2c4e
-        value_template: "{{ is_state('sensor.hvac_system_state', 'Heat') }}"
-
-      hvac_system_cool:
-        unique_id: 5ca3444e-3059-4dc5-bb78-50e82eac14e0
-        friendly_name: "HVAC System Cool Call"
-        value_template: "{{ is_state('sensor.hvac_system_state', 'Cool') }}"
-
-      hvac_zone_1_fan:
-        unique_id: 5cfdcda3-541f-42db-9f42-f34ac41a2d3d
-        friendly_name: "HVAC Zone 1 Fan Call"
-        value_template: "{{ is_state('sensor.hvac_zone_1_state', 'Fan') }}"
-
-      hvac_zone_1_heat:
-        unique_id: ac099d31-5393-45e4-888f-503fcf5d4f60
-        friendly_name: "HVAC Zone 1 Heat Call"
-        value_template: "{{ is_state('sensor.hvac_zone_1_state', 'Heat') }}"
-
-      hvac_zone_1_cool:
-        unique_id: acc95a67-3ca6-484f-8d6f-cb52e8c714fd
-        friendly_name: "HVAC Zone 1 Cool Call"
-        value_template: "{{ is_state('sensor.hvac_zone_1_state', 'Cool') }}"
-
-      hvac_zone_2_fan:
-        unique_id: 34300d77-3a3d-4243-9c51-93aedf7db828
-        friendly_name: "HVAC Zone 2 Fan Call"
-        value_template: "{{ is_state('sensor.hvac_zone_2_state', 'Fan') }}"
-
-      hvac_zone_2_heat:
-        unique_id: 19b125b0-eda4-4b7a-b8d5-1402de242ff6
-        friendly_name: "HVAC Zone 2 Heat Call"
-        value_template: "{{ is_state('sensor.hvac_zone_2_state', 'Heat') }}"
-
-      hvac_zone_2_cool:
-        unique_id: 79f52af0-6cff-45d5-a9b3-d27ef2079017
-        friendly_name: "HVAC Zone 2 Cool Call"
-        value_template: "{{ is_state('sensor.hvac_zone_2_state', 'Cool') }}"
-
-      hvac_zone_3_fan:
-        unique_id: 37ca2772-5eca-4f83-adb2-155a2931bdbc
-        friendly_name: "HVAC Zone 3 Fan Call"
-        value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Fan') }}"
-
-      hvac_zone_3_heat:
-        unique_id: c679be1a-12f4-4352-af6e-bccdd8936659
-        friendly_name: "HVAC Zone 3 Heat Call"
-        value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Heat') }}"
-
-      hvac_zone_3_cool:
-        unique_id: 502db261-6358-4af6-b1e6-e3750861052e
-        friendly_name: "HVAC Zone 3 Cool Call"
-        value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Cool') }}"
-
-#################################################################
-#                                                               #
-#                            Sensors                            #
-#                                                               #
-#################################################################
-
-sensor:
-  ####################################################
-  #                                                  #
-  #                Sensor - Template                 #
-  #                                                  #
-  ####################################################
-
-  - platform: template
-    sensors:
-      
-      hvac_system_runtime:
+template:
+  - sensor:      
+      - name: HVAC System Runtime
         unique_id: 06f0687c-ece6-4350-bcbc-555f7f2b9529
-        friendly_name: "HVAC Total System Runtime"
         unit_of_measurement: "h"
-        value_template: >-
+        state: >-
           {{ ((states('sensor.hvac_system_fan_runtime') | float(none)) +
           (states('sensor.hvac_system_heat_runtime') | float(none)) +
           (states('sensor.hvac_system_cool_runtime') | float(none))) | round(2, default=none) }}
 
-      hvac_zone_1_runtime:
+      - name: HVAC Zone 1 Runtime
         unique_id: 0ac6aa07-d7bb-4ae8-93fb-3f991e012977
-        friendly_name: "HVAC Zone 1 Total Runtime"
         unit_of_measurement: "h"
-        value_template: >-
+        state: >-
           {{ ((states('sensor.hvac_zone_1_fan_runtime') | float(none)) +
           (states('sensor.hvac_zone_1_heat_runtime') | float(none)) +
           (states('sensor.hvac_zone_1_cool_runtime') | float(none))) | round(2, default=none) }}
 
-      hvac_zone_2_runtime:
+      - name: HVAC Zone 2 Runtime
         unique_id: 7e9a6c2b-c259-4733-97dc-b54312245404
-        friendly_name: "HVAC Zone 2 Total Runtime"
         unit_of_measurement: "h"
-        value_template: >-
+        state: >-
           {{ ((states('sensor.hvac_zone_2_fan_runtime') | float(none)) +
           (states('sensor.hvac_zone_2_heat_runtime') | float(none)) +
           (states('sensor.hvac_zone_2_cool_runtime') | float(none))) | round(2, default=none) }}
 
-      hvac_zone_3_runtime:
+      - name: HVAC ZOne 3 Runtime
         unique_id: 69e9628f-caba-404f-b28a-f1a3344e37e5
-        friendly_name: "HVAC Zone 3 Total Runtime"
         unit_of_measurement: "h"
-        value_template: >-
+        state: >-
           {{ ((states('sensor.hvac_zone_3_fan_runtime') | float(none)) +
           (states('sensor.hvac_zone_3_heat_runtime') | float(none)) +
           (states('sensor.hvac_zone_3_cool_runtime') | float(none))) | round(2, default=none) }}
 
-  ####################################################
-  #                                                  #
-  #                Sensor - History                  #
-  #                                                  #
-  ####################################################
+  - binary_sensor:
+      - name: HVAC System Fan
+        unique_id: bd0c93ae-4b60-4850-885e-7ab09c0b9437
+        state: "{{ is_state('sensor.hvac_system_state', 'Fan') }}"
 
+      - name: HVAC System Heat
+        unique_id: f3b86e5f-be73-4ee8-b9e7-f8538a9d2c4e
+        state: "{{ is_state('sensor.hvac_system_state', 'Heat') }}"
+
+      - name: HVAC System Cool
+        unique_id: 5ca3444e-3059-4dc5-bb78-50e82eac14e0
+        state: "{{ is_state('sensor.hvac_system_state', 'Cool') }}"
+
+      - name: HVAC Zone 1 Fan
+        unique_id: 5cfdcda3-541f-42db-9f42-f34ac41a2d3d
+        state: "{{ is_state('sensor.hvac_zone_1_state', 'Fan') }}"
+
+      - name: HVAC Zone 1 Heat
+        unique_id: ac099d31-5393-45e4-888f-503fcf5d4f60
+        state: "{{ is_state('sensor.hvac_zone_1_state', 'Heat') }}"
+
+      - name: HVAC Zone 1 Cool
+        unique_id: acc95a67-3ca6-484f-8d6f-cb52e8c714fd
+        state: "{{ is_state('sensor.hvac_zone_1_state', 'Cool') }}"
+
+      - name: HVAC Zone 2 Fan
+        unique_id: 34300d77-3a3d-4243-9c51-93aedf7db828
+        state: "{{ is_state('sensor.hvac_zone_2_state', 'Fan') }}"
+
+      - name: HVAC Zone 2 Heat
+        unique_id: 19b125b0-eda4-4b7a-b8d5-1402de242ff6
+        state: "{{ is_state('sensor.hvac_zone_2_state', 'Heat') }}"
+
+      - name: HVAC Zone 2 Cool
+        unique_id: 79f52af0-6cff-45d5-a9b3-d27ef2079017
+        state: "{{ is_state('sensor.hvac_zone_2_state', 'Cool') }}"
+
+      - name: HVAC Zone 2 Fan
+        unique_id: 37ca2772-5eca-4f83-adb2-155a2931bdbc
+        state: "{{ is_state('sensor.hvac_zone_3_state', 'Fan') }}"
+
+      - name: HVAC Zone 3 Heat
+        unique_id: c679be1a-12f4-4352-af6e-bccdd8936659
+        value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Heat') }}"
+
+      - name: HVAC Zone 3 Cool
+        unique_id: 502db261-6358-4af6-b1e6-e3750861052e
+        state: "{{ is_state('sensor.hvac_zone_3_state', 'Cool') }}"
+
+sensor:
   - platform: history_stats
     name: HVAC System Fan Runtime
     entity_id: binary_sensor.hvac_system_fan
@@ -374,12 +319,6 @@ mqtt:
       payload_available: "Online"
       payload_not_available: "Offline"
       device_class: moisture
-
-#################################################################
-#                                                               #
-#                         Input_Boolean                         #
-#                                                               #
-#################################################################
 
 input_boolean:
   hvac_geofence:

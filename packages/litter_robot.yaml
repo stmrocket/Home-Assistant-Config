@@ -1,135 +1,117 @@
-sensor:
-  - platform: template
-    sensors:
-      litter_robot_status_short:
-        unique_id: 712ed244-df40-4cbf-8c4c-a34415cdbd76
-        friendly_name: Short Litter Robot Status
-        value_template: >-
-          {% if  is_state('binary_sensor.chamber_of_secrets_sleep_mode', 'on') -%}
-            Sleep
-          {% elif is_state('sensor.chamber_of_secrets_status_code', 'rdy') -%}
-            Ready
-          {% elif is_state('sensor.chamber_of_secrets_status_code', 'ccc') -%}
-            Done
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'ccp') -%}
-            Clean
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'df2') -%}
-            Drawer 2
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'df1') -%}
-            Drawer 1
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'csf') or is_state('sensor.chamber_of_secrets_status_code', 'csi') or is_state('sensor.chamber_of_secrets_status_code', 'scf') -%}
-            Sensor
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'cst') -%}
-            Timing
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'br') -%}
-            Bonnet  
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'p') -%}
-            Paused 
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'pd') or is_state('sensor.chamber_of_secrets_status_code', 'spf') -%}
-            Pinch
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'cd') -%}
-            Cat
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'ec') -%}
-            Empty
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'off') -%}
-            Off 
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'offline') -%}
-            Offline
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'otf') -%}
-            Torque 
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'dfs') or is_state('sensor.chamber_of_secrets_status_code', 'sdf') -%}
-            Full
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'dhf') or is_state('sensor.chamber_of_secrets_status_code', 'dpf') or is_state('sensor.chamber_of_secrets_status_code', 'hpf') -%}
-            Position
-          {% elif  is_state('sensor.chamber_of_secrets_status_code', 'pwrd') or is_state('sensor.chamber_of_secrets_status_code', 'pwru') -%}
-            Power
-          {% else -%}
-            Error
-          {% endif -%}
+template:
+  - sensor:
+    - name: Chamber of Secrets Status Short
+      unique_id: 712ed244-df40-4cbf-8c4c-a34415cdbd76
+      state: >-
+        {% if  is_state('binary_sensor.chamber_of_secrets_sleep_mode', 'on') -%}
+          Sleep
+        {% elif is_state('sensor.chamber_of_secrets_status_code', 'rdy') -%}
+          Ready
+        {% elif is_state('sensor.chamber_of_secrets_status_code', 'ccc') -%}
+          Done
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'ccp') -%}
+          Clean
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'df2') -%}
+          Drawer 2
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'df1') -%}
+          Drawer 1
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'csf') or is_state('sensor.chamber_of_secrets_status_code', 'csi') or is_state('sensor.chamber_of_secrets_status_code', 'scf') -%}
+          Sensor
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'cst') -%}
+          Timing
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'br') -%}
+          Bonnet  
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'p') -%}
+          Paused 
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'pd') or is_state('sensor.chamber_of_secrets_status_code', 'spf') -%}
+          Pinch
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'cd') -%}
+          Cat
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'ec') -%}
+          Empty
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'off') -%}
+          Off 
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'offline') -%}
+          Offline
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'otf') -%}
+          Torque 
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'dfs') or is_state('sensor.chamber_of_secrets_status_code', 'sdf') -%}
+          Full
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'dhf') or is_state('sensor.chamber_of_secrets_status_code', 'dpf') or is_state('sensor.chamber_of_secrets_status_code', 'hpf') -%}
+          Position
+        {% elif  is_state('sensor.chamber_of_secrets_status_code', 'pwrd') or is_state('sensor.chamber_of_secrets_status_code', 'pwru') -%}
+          Power
+        {% else -%}
+          Error
+        {% endif -%}
 
-      litter_robot_average_cycle_capacity:
-        unique_id: 4c4e6ca8-0b93-4020-a9b0-03b48bc17796
-        friendly_name: Litter Robot Average Cycle Capacity
-        value_template: >-
-          {% if states('input_number.litter_robot_empty_count',) | int(none) == 0 -%}
-            33
-          {% else -%}
-            {{(states('input_number.litter_robot_cycle_count') | int(none) / states('input_number.litter_robot_empty_count') | int(none)) | round(0, default=none)}}
-          {% endif -%}
+    - name: Forbidden Forest Status Short
+      unique_id: 6eb4aa56-f45c-49df-902f-f7631f18fb6e
+      state: >-
+        {% if  is_state('binary_sensor.forbidden_forest_sleep_mode', 'on') -%}
+          Sleep
+        {% elif is_state('sensor.forbidden_forest_status_code', 'rdy') -%}
+          Ready
+        {% elif is_state('sensor.forbidden_forest_status_code', 'ccc') -%}
+          Done
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'ccp') -%}
+          Clean
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'df2') -%}
+          Drawer 2
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'df1') -%}
+          Drawer 1
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'csf') or is_state('sensor.forbidden_forest_status_code', 'csi') or is_state('sensor.forbidden_forest_status_code', 'scf') -%}
+          Sensor
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'cst') -%}
+          Timing
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'br') -%}
+          Bonnet  
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'p') -%}
+          Paused 
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'pd') or is_state('sensor.forbidden_forest_status_code', 'spf') -%}
+          Pinch
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'cd') -%}
+          Cat
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'ec') -%}
+          Empty
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'off') -%}
+          Off 
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'offline') -%}
+          Offline
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'otf') -%}
+          Torque 
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'dfs') or is_state('sensor.forbidden_forest_status_code', 'sdf') -%}
+          Full
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'dhf') or is_state('sensor.forbidden_forest_status_code', 'dpf') or is_state('sensor.forbidden_forest_status_code', 'hpf') -%}
+          Position
+        {% elif  is_state('sensor.forbidden_forest_status_code', 'pwrd') or is_state('sensor.forbidden_forest_status_code', 'pwru') -%}
+          Power
+        {% else -%}
+          Error
+        {% endif -%}
 
-      litter_robot_drawer_level:
-        unique_id: ca35a957-46fb-40a8-b95a-100caa287f18
-        friendly_name: Litter Robot Drawer Level
-        value_template: "{{ ((states('counter.litter_robot_cycle_count') | int(none) / states('sensor.litter_robot_average_cycle_capacity') | int(none)) * 100) | round(0, default=none) }}"
+  - switch:
+    - name: Chamber of Secrets Power
+      unique_id: 1c69d41e-1d7a-4cba-82a8-d9f4230fa722
+      value_template: "{{ not is_state('sensor.chamber_of_secrets_status_code', 'on') }}"
+      turn_on:
+        service: vacuum.start
+        entity_id: vacuum.chamber_of_secrets_litter_box
+      turn_off:
+        service: vacuum.stop
+        entity_id: vacuum.chamber_of_secrets_litter_box
 
-input_number:
-  litter_robot_cycle_count:
-    name: Litter Robot Total Cycles
-    mode: box
-    min: 0
-    max: 1000000
-    step: 1
-
-  litter_robot_empty_count:
-    name: Litter Robot Total Empties
-    mode: box
-    min: 0
-    max: 1000000
-    step: 1
-
-counter:
-  litter_robot_cycle_count:
-    step: 1
-
-switch:
-  - platform: template
-    switches:
-      litter_robot_power:
-        unique_id: 1c69d41e-1d7a-4cba-82a8-d9f4230fa722
-        value_template: "{{ not is_state('sensor.chamber_of_secrets_status_code', 'on') }}"
-        turn_on:
-          service: vacuum.start
-          entity_id: vacuum.chamber_of_secrets_litter_box
-        turn_off:
-          service: vacuum.stop
-          entity_id: vacuum.chamber_of_secrets_litter_box
-
-script:
-  litter_robot_empty:
-    sequence:
-      - service: input_number.set_value
-        data_template:
-          entity_id: input_number.litter_robot_cycle_count
-          value: "{{ states('input_number.litter_robot_cycle_count') | int(none) + states('counter.litter_robot_cycle_count') | int(none) }}"
-      - service: input_number.increment
-        entity_id: input_number.litter_robot_empty_count
-      - service: counter.reset
-        entity_id: counter.litter_robot_cycle_count
-      - service: button.press
-        entity_id: button.chamber_of_secrets_reset
+    - name: Forbidden Forest Power
+      unique_id: 088cb47f-adcb-43bf-ae93-fbecae03ad5a
+      value_template: "{{ not is_state('sensor.forbidden_forest_status_code', 'on') }}"
+      turn_on:
+        service: vacuum.start
+        entity_id: vacuum.forbidden_forest_litter_box
+      turn_off:
+        service: vacuum.stop
+        entity_id: vacuum.forbidden_forest_litter_box
 
 automation:
-  - alias: Update Litter Robot Cycle Count
-    id: f656c603-f96b-4127-9059-a0fe410694a6
-    trigger:
-      - platform: state
-        entity_id: sensor.chamber_of_secrets_status_code
-        from: "ccp"
-        to: "rdy"
-    action:
-      - service: counter.increment
-        entity_id: counter.litter_robot_cycle_count
-
-  - alias: Empty Drawer From NFC
-    id: 96c56a06-b418-4f91-85be-0e9b866d99c8
-    trigger:
-      - platform: event
-        event_type: tag_scanned
-        event_data:
-          tag_id: !secret pooper_nfc
-    action:
-      - service: script.litter_robot_empty
-
   - alias: Chamber of Secrets Entry Alert
     id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
     trigger:
@@ -267,6 +249,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.forbidden_forest_status_code
+        from: "cst"
         to: "ccp"
     variables:
       image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
@@ -305,6 +288,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.chamber_of_secrets_status_code
+        from: "cst"
         to: "ccp"
     variables:
       image_time: "{{ now ().year }}_{{ now ().month }}_{{ now ().day }}_{{ now ().hour }}_{{ now ().minute }}"
