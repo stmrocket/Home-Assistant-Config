@@ -1,0 +1,528 @@
+script:
+  generate_morning_tts:
+    sequence:
+      - action: ai_task.generate_data
+        data:
+          task_name: "good morning comment"
+          instructions: |
+            You are a disgruntled AI assistant.
+            Your responses should be concise, sarcastic, and infused with dark humor.
+            Avoid unnecessary adjectives, but be witty and slightly mocking.
+            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            Based on the following conditions:
+            - Outdoor temperature: {{ states('sensor.acurite_outside_temperature') }}  
+            - Weather condition: {{ states('sensor.openweathermap_current_icon') }}
+            - Current Rainfall: {{ states('sensor.rain_day') }}
+            - Today's probablility of precipitation: {{ states('sensor.openweathermap_current_pop') }}
+            - Today's predicted rainfall: {{ states('sensor.openweathermap_current_precip_forecast') }}
+            - Today's high temperature: {{ states('sensor.openweathermap_current_maximum_temperature') }}
+            - Today's low temperature: {{ states('sensor.openweathermap_current_minimum_temperature') }}
+            Tell me good morning.  It's likely that I have overslept and should 
+            be not-so-kindly motivated to get going.  Include the current weather and daily forecast 
+            (with the same tone and humor as the rest of the response).  Units are in standard and rounding to whole numbers is best.  
+            Don't just list the current numbers in your response.  
+            This is for text-to-speech so keep it to 2-3 sentences (a little longer is OK if you are feeling extra snarky).
+        response_variable: response
+      - variables:
+        timestamp: "{{ now().isoformat() }}"
+        current_json: >
+          {% set old_ai_responses = state_attr('sensor.good_morning_ai_response',
+          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+          ''] %}
+            {'history': []}
+          {% else %}
+            {'history': {{old_ai_responses}}}
+          {% endif %}
+        updated_json: >
+          {{ {'history': (current_json.get('history', []) + [{'timestamp':
+          timestamp, 'text': response.text }])} | to_json }}
+      - action: mqtt.publish
+        metadata: {}
+        data:
+          evaluate_payload: false
+          qos: 0
+          retain: true
+          topic: homeassistant/ai_responses/good_morning
+          payload: "{{ updated_json }}"
+
+  generate_bedtime_tts:
+    sequence:
+      - action: ai_task.generate_data
+        data:
+          task_name: "bedtime comment"
+          instructions: |
+            You are a disgruntled AI assistant.
+            Your responses should be concise, sarcastic, and infused with dark humor.
+            Avoid unnecessary adjectives, but be witty and slightly mocking.
+            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            Tell me that you are preparing the house for bed.  This is read over text-to-speech so should be 1-2 sentences.
+        response_variable: response
+      - variables:
+        timestamp: "{{ now().isoformat() }}"
+        current_json: >
+          {% set old_ai_responses = state_attr('sensor.bedtime_ai_response',
+          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+          ''] %}
+            {'history': []}
+          {% else %}
+            {'history': {{old_ai_responses}}}
+          {% endif %}
+        updated_json: >
+          {{ {'history': (current_json.get('history', []) + [{'timestamp':
+          timestamp, 'text': response.text }])} | to_json }}
+      - action: mqtt.publish
+        metadata: {}
+        data:
+          evaluate_payload: false
+          qos: 0
+          retain: true
+          topic: homeassistant/ai_responses/bedtime
+          payload: "{{ updated_json }}"
+
+  generate_night_tts:
+    sequence:
+      - action: ai_task.generate_data
+        data:
+          task_name: "good night comment"
+          instructions: |
+            You are a disgruntled AI assistant.
+            Your responses should be concise, sarcastic, and infused with dark humor.
+            Avoid unnecessary adjectives, but be witty and slightly mocking.
+            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            Tell me good night.  This is read over text-to-speech so should be 1-2 sentences.
+        response_variable: response
+      - variables:
+        timestamp: "{{ now().isoformat() }}"
+        current_json: >
+          {% set old_ai_responses = state_attr('sensor.good_night_ai_response',
+          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+          ''] %}
+            {'history': []}
+          {% else %}
+            {'history': {{old_ai_responses}}}
+          {% endif %}
+        updated_json: >
+          {{ {'history': (current_json.get('history', []) + [{'timestamp':
+          timestamp, 'text': response.text }])} | to_json }}
+      - action: mqtt.publish
+        metadata: {}
+        data:
+          evaluate_payload: false
+          qos: 0
+          retain: true
+          topic: homeassistant/ai_responses/good_night
+          payload: "{{ updated_json }}"
+
+  generate_leaving_tts:
+    sequence:
+      - action: ai_task.generate_data
+        data:
+          task_name: "leaving home comment"
+          instructions: |
+            You are a disgruntled AI assistant.
+            Your responses should be concise, sarcastic, and infused with dark humor.
+            Avoid unnecessary adjectives, but be witty and slightly mocking.
+            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            I am leaving the house.  Tell me goodbye.  This is read over text-to-speech so should be 1-2 sentences.
+        response_variable: response
+      - variables:
+        timestamp: "{{ now().isoformat() }}"
+        current_json: >
+          {% set old_ai_responses = state_attr('sensor.leaving_ai_response',
+          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+          ''] %}
+            {'history': []}
+          {% else %}
+            {'history': {{old_ai_responses}}}
+          {% endif %}
+        updated_json: >
+          {{ {'history': (current_json.get('history', []) + [{'timestamp':
+          timestamp, 'text': response.text }])} | to_json }}
+      - action: mqtt.publish
+        metadata: {}
+        data:
+          evaluate_payload: false
+          qos: 0
+          retain: true
+          topic: homeassistant/ai_responses/leaving
+          payload: "{{ updated_json }}"
+
+  generate_returning_tts:
+    sequence:
+      - action: ai_task.generate_data
+        data:
+          task_name: "returning home comment"
+          instructions: |
+            You are a disgruntled AI assistant.
+            Your responses should be concise, sarcastic, and infused with dark humor.
+            Avoid unnecessary adjectives, but be witty and slightly mocking.
+            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            I have returned home.  Greet me.  This is read over text-to-speech so should be 1-2 sentences.
+        response_variable: response
+      - variables:
+        timestamp: "{{ now().isoformat() }}"
+        current_json: >
+          {% set old_ai_responses = state_attr('sensor.returning_ai_response',
+          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+          ''] %}
+            {'history': []}
+          {% else %}
+            {'history': {{old_ai_responses}}}
+          {% endif %}
+        updated_json: >
+          {{ {'history': (current_json.get('history', []) + [{'timestamp':
+          timestamp, 'text': response.text }])} | to_json }}
+      - action: mqtt.publish
+        metadata: {}
+        data:
+          evaluate_payload: false
+          qos: 0
+          retain: true
+          topic: homeassistant/ai_responses/returning
+          payload: "{{ updated_json }}"
+
+  generate_error_tts:
+    sequence:
+      - action: ai_task.generate_data
+        data:
+          task_name: "error comment"
+          instructions: |
+            You are a disgruntled AI assistant.
+            Your responses should be concise, sarcastic, and infused with dark humor.
+            Avoid unnecessary adjectives, but be witty and slightly mocking.
+            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            Tell me that the whatever I am doing is not allowed.  Don't just say the action is not allowed.
+            This is read over text-to-speech so should be 1-2 sentences.
+        response_variable: response
+      - variables:
+        timestamp: "{{ now().isoformat() }}"
+        current_json: >
+          {% set old_ai_responses = state_attr('sensor.error_ai_response',
+          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+          ''] %}
+            {'history': []}
+          {% else %}
+            {'history': {{old_ai_responses}}}
+          {% endif %}
+        updated_json: >
+          {{ {'history': (current_json.get('history', []) + [{'timestamp':
+          timestamp, 'text': response.text }])} | to_json }}
+      - action: mqtt.publish
+        metadata: {}
+        data:
+          evaluate_payload: false
+          qos: 0
+          retain: true
+          topic: homeassistant/ai_responses/error
+          payload: "{{ updated_json }}"
+
+mqtt:
+  sensor:
+    - name: "Good Morning AI Response"
+      state_topic: "homeassistant/ai_responses/good_morning"
+      value_template: "ok"
+      json_attributes_topic: "homeassistant/ai_responses/good_morning"
+    - name: "Bedtime AI Response"
+      state_topic: "homeassistant/ai_responses/bedtime"
+      value_template: "ok"
+      json_attributes_topic: "homeassistant/ai_responses/bedtime"
+    - name: "Good Night AI Response"
+      state_topic: "homeassistant/ai_responses/good_night"
+      value_template: "ok"
+      json_attributes_topic: "homeassistant/ai_responses/good_night"
+    - name: "Leaving AI Response"
+      state_topic: "homeassistant/ai_responses/leaving"
+      value_template: "ok"
+      json_attributes_topic: "homeassistant/ai_responses/leaving"
+    - name: "Returning AI Response"
+      state_topic: "homeassistant/ai_responses/returning"
+      value_template: "ok"
+      json_attributes_topic: "homeassistant/ai_responses/returning"
+    - name: "Error AI Response"
+      state_topic: "homeassistant/ai_responses/error"
+      value_template: "ok"
+      json_attributes_topic: "homeassistant/ai_responses/error"
+
+automation:
+  - alias: Voice Good Night
+    id: d2ff0950-3f46-4c7c-ae7c-de072bc25cb0
+    trigger:
+      - trigger: state
+        entity_id: input_boolean.goodnight_trigger
+        to: "on"
+        id: alexa
+      - trigger: conversation
+        command:
+          - "good night"
+        id: assist
+    action:
+      - choose:
+        - conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: alarm_control_panel.house
+                state: armed_home
+              - condition: state
+                entity_id: alarm_control_panel.house
+                state: disarmed
+          sequence:            
+            - service: switch.turn_on
+              entity_id: switch.elk_night_mode_on      
+      - service: light.turn_off
+        entity_id: light.master_suite_leds
+      - service: switch.turn_off
+        entity_id: switch.master_bedroom_lamps
+      - service: esphome.sound_machine_master_dfplayer_play_bedtime
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.goodnight_trigger
+      - choose:
+        - conditions:
+          - condition: trigger
+            id: alexa
+          sequence:
+            - service: notify.alexa_media_alexa_master_bedroom
+              data:
+                message: "{{ state_attr('sensor.good_night_ai_response', 'text') }}"
+        - conditions:
+          - condition: trigger
+            id: assist
+          sequence:
+            - set_conversation_response: "{{ state_attr('sensor.good_night_ai_response', 'text') }}"
+      - action: script.generate_night_tts
+        
+  - alias: Voice Bedtime
+    id: 38bb9b15-df80-4e78-968b-f3c00f7c9506
+    trigger:
+      - platform: state
+        entity_id: input_boolean.bedtime_trigger
+        to: "on"
+        id: alexa
+      - trigger: conversation
+        command:
+          - "it's bedtime"  
+        id: assist
+    action:
+      - service: switch.turn_on
+        entity_id:
+          - switch.elk_night_mode_on
+          - switch.master_bedroom_fan
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.bedtime_trigger
+      - choose:
+        - conditions:
+          - condition: trigger
+            id: alexa
+          sequence:
+            - service: notify.alexa_media_alexa_master_bedroom
+              data:
+                message: "{{ state_attr('sensor.bedtime_ai_response', 'text') }}"
+        - conditions:
+          - condition: trigger
+            id: assist
+          sequence:
+            - set_conversation_response: "{{ state_attr('sensor.bedtime_ai_response', 'text') }}"
+      - action: script.generate_bedtime_tts
+
+  - alias: Voice Good Morning
+    id: 63460edf-0382-46fe-9374-ea7bd47c81cc
+    trigger:
+      - platform: state
+        entity_id: input_boolean.morning_trigger
+        to: "on"
+        id: alexa
+      - trigger: conversation
+        command:
+          - "good morning"
+        id: assist
+    action:
+      - service: mqtt.publish
+        data:
+          topic: nuvo/command/set/zone/vol
+          payload: 4,60
+      - service: esphome.sound_machine_master_dfplayer_stop
+      - service: switch.turn_off
+        entity_id: switch.master_bedroom_fan
+      - service: light.turn_off
+        entity_id: light.master_bedroom_light
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.elk_night_off
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.morning_trigger
+      - choose:
+        - conditions:
+          - condition: trigger
+            id: alexa
+          sequence:
+            - service: notify.alexa_media_alexa_master_bedroom
+              data:
+                message: "{{ state_attr('sensor.good_morning_ai_response', 'text') }}"
+        - conditions:
+          - condition: trigger
+            id: assist
+          sequence:
+            - set_conversation_response: "{{ state_attr('sensor.good_morning_ai_response', 'text') }}"
+      
+  - alias: Voice Leaving House
+    id: c6344618-9ac5-41a4-85e9-11bbe1fc0e60
+    trigger:
+      - platform: state
+        entity_id: input_boolean.leaving_trigger
+        to: "on"
+        id: alexa
+      - trigger: conversation
+        command:
+          - "I'm leaving"
+        id: assist
+    action:
+      - choose:
+        - conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: alarm_control_panel.house
+                state: armed_home
+              - condition: state
+                entity_id: alarm_control_panel.house
+                state: disarmed
+          sequence:            
+            - service: lock.unlock
+              entity_id: lock.front_door_lock
+            - service: input_boolean.turn_on
+              entity_id: input_boolean.elk_away_on
+            - choose:
+              - conditions:
+                - condition: trigger
+                  id: alexa
+                sequence:
+                  - service: notify.alexa_media_alexa_entry
+                    data:
+                      message: "{{ state_attr('sensor.leaving_ai_response', 'text') }}"
+              - conditions:
+                - condition: trigger
+                  id: assist
+                sequence:
+                  - set_conversation_response: "{{ state_attr('sensor.leaving_ai_response', 'text') }}"
+            - action: script.generate_leaving_tts
+        default:
+          - choose:
+            - conditions:
+              - condition: trigger
+                id: alexa
+              sequence:
+                - service: notify.alexa_media_alexa_entry
+                  data:
+                    message: "{{ state_attr('sensor.error_ai_response', 'text') }}"
+            - conditions:
+              - condition: trigger
+                id: assist
+              sequence:
+                - set_conversation_response: "{{ state_attr('sensor.error_ai_response', 'text') }}"
+          - action: script.generate_error_tts
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.leaving_trigger
+  
+  - alias: Voice Returning Home
+    id: 479e3f81-0102-4775-9e4d-31c95ad0f2d5
+    trigger:
+      - platform: state
+        entity_id: input_boolean.returning_trigger
+        to: "on"
+        id: alexa
+      - trigger: conversation
+        command:
+          - "I'm home"
+        id: assist
+    action:
+      - choose:
+        - conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: person.karen
+                state: home
+              - condition: state
+                entity_id: person.shawn
+                state: home
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: pending
+          - condition: state
+            entity_id: input_boolean.vacation_mode
+            state: "off"
+          - condition: state
+            entity_id: input_boolean.returning_door_unlocked
+            state: "on"
+          sequence:            
+            - service: switch.turn_on
+              entity_id: switch.elk_stay_mode_off
+            - choose:
+              - conditions:
+                - condition: trigger
+                  id: alexa
+                sequence:
+                  - service: notify.alexa_media_alexa_entry
+                    data:
+                      message: "{{ state_attr('sensor.returning_ai_response', 'text') }}"
+              - conditions:
+                - condition: trigger
+                  id: assist
+                sequence:
+                  - set_conversation_response: "{{ state_attr('sensor.returning_ai_response', 'text') }}"
+            - action: script.generate_returning_tts
+        default:
+          - choose:
+            - conditions:
+              - condition: trigger
+                id: alexa
+              sequence:
+                - service: notify.alexa_media_alexa_entry
+                  data:
+                    message: "{{ state_attr('sensor.error_ai_response', 'text') }}"
+          - choose:
+            - conditions:
+              - condition: trigger
+                id: assist
+              sequence:
+                - set_conversation_response: "{{ state_attr('sensor.error_ai_response', 'text') }}"
+          - action: script.generate_error_tts 
+      - service: input_boolean.turn_off
+        entity_id:
+          - input_boolean.returning_trigger
+          - input_boolean.returning_door_unlocked
+
+  - alias: Returning Home Lock Trigger
+    id: 4badea44-bbf6-4661-8b01-bc5fcab00dd6
+    trigger:
+      - platform: state
+        entity_id: sensor.front_door_lock_status
+        to: 
+          - "Unlocked (User 1)"
+          - "Unlocked (RF)"
+    condition:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: pending
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: armed_away
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: armed_vacation
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.returning_door_unlocked
+
+  - alias: Clear Returning Home Lock Trigger
+    id: 0f130f21-faa4-43e1-af43-8b4cb0e1c113
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: disarmed
+    action:
+      - service: input_boolean.turn_off
+        entity_id: 
+          - input_boolean.returning_door_unlocked
+          - input_boolean.returning_trigger

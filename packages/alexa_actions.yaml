@@ -1,10 +1,9 @@
-sensor:
-  - platform: template
-    sensors:
-      last_alexa:
-        unique_id: ef96b24d-033c-4bf4-835c-568687da402b
-        value_template: >
-          {{ states.media_player | selectattr('attributes.last_called', 'eq', True) | map(attribute='entity_id') | first }}
+template:
+  - sensors:
+    - name: Last Alexa
+      unique_id: ef96b24d-033c-4bf4-835c-568687da402b
+      state: >
+        {{ states.media_player | selectattr('attributes.last_called', 'eq', True) | map(attribute='entity_id') | first }}
 
 input_text:
   alexa_actionable_notification:
