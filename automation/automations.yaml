@@ -112,6 +112,7 @@
     service: homeassistant.update_entity
     target:
       entity_id: sensor.current_uv_index
+    
 - alias: Picture Frames On When Home
   id: d69e8310-1321-4f19-ab9b-7035310c7617
   trigger:

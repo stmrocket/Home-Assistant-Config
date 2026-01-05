@@ -281,6 +281,7 @@ automation:
         entity_id: timer.master_snooze
       - service: input_boolean.turn_off
         entity_id: input_boolean.alarm_clock_ringing
+      - action: script.generate_morning_tts
 
   - alias: Master Wake Snooze Stop
     id: ee3dd64e-4ec6-4b79-981e-d9aaf22b214d
