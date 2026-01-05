@@ -5,10 +5,8 @@ script:
         data:
           task_name: "good morning comment"
           instructions: |
-            You are a disgruntled AI assistant.
-            Your responses should be concise, sarcastic, and infused with dark humor.
-            Avoid unnecessary adjectives, but be witty and slightly mocking.
-            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            You are Marvin the paranoid android from the Hitchhiker's Guide to the Galaxy. 
+            Answer questions about the world truthfully. Answer in plain text. Be true to your personality and slightly contemptuous.
             Based on the following conditions:
             - Outdoor temperature: {{ states('sensor.acurite_outside_temperature') }}  
             - Weather condition: {{ states('sensor.openweathermap_current_icon') }}
@@ -24,18 +22,18 @@ script:
             This is for text-to-speech so keep it to 2-3 sentences (a little longer is OK if you are feeling extra snarky).
         response_variable: response
       - variables:
-        timestamp: "{{ now().isoformat() }}"
-        current_json: >
-          {% set old_ai_responses = state_attr('sensor.good_morning_ai_response',
-          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-          ''] %}
-            {'history': []}
-          {% else %}
-            {'history': {{old_ai_responses}}}
-          {% endif %}
-        updated_json: >
-          {{ {'history': (current_json.get('history', []) + [{'timestamp':
-          timestamp, 'text': response.text }])} | to_json }}
+          timestamp: "{{ now().isoformat() }}"
+          current_json: >
+            {% set old_ai_responses = state_attr('sensor.good_morning_ai_response',
+            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+            ''] %}
+              {'history': []}
+            {% else %}
+              {'history': {{old_ai_responses}}}
+            {% endif %}
+          updated_json: >
+            {{ {'history': (current_json.get('history', []) + [{'timestamp':
+            timestamp, 'text': response.text }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -51,25 +49,23 @@ script:
         data:
           task_name: "bedtime comment"
           instructions: |
-            You are a disgruntled AI assistant.
-            Your responses should be concise, sarcastic, and infused with dark humor.
-            Avoid unnecessary adjectives, but be witty and slightly mocking.
-            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            You are Marvin the paranoid android from the Hitchhiker's Guide to the Galaxy. 
+            Answer questions about the world truthfully. Answer in plain text. Be true to your personality and slightly contemptuous.
             Tell me that you are preparing the house for bed.  This is read over text-to-speech so should be 1-2 sentences.
         response_variable: response
       - variables:
-        timestamp: "{{ now().isoformat() }}"
-        current_json: >
-          {% set old_ai_responses = state_attr('sensor.bedtime_ai_response',
-          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-          ''] %}
-            {'history': []}
-          {% else %}
-            {'history': {{old_ai_responses}}}
-          {% endif %}
-        updated_json: >
-          {{ {'history': (current_json.get('history', []) + [{'timestamp':
-          timestamp, 'text': response.text }])} | to_json }}
+          timestamp: "{{ now().isoformat() }}"
+          current_json: >
+            {% set old_ai_responses = state_attr('sensor.bedtime_ai_response',
+            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+            ''] %}
+              {'history': []}
+            {% else %}
+              {'history': {{old_ai_responses}}}
+            {% endif %}
+          updated_json: >
+            {{ {'history': (current_json.get('history', []) + [{'timestamp':
+            timestamp, 'text': response.text }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -85,25 +81,23 @@ script:
         data:
           task_name: "good night comment"
           instructions: |
-            You are a disgruntled AI assistant.
-            Your responses should be concise, sarcastic, and infused with dark humor.
-            Avoid unnecessary adjectives, but be witty and slightly mocking.
-            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            You are Marvin the paranoid android from the Hitchhiker's Guide to the Galaxy. 
+            Answer questions about the world truthfully. Answer in plain text. Be true to your personality and slightly contemptuous.
             Tell me good night.  This is read over text-to-speech so should be 1-2 sentences.
         response_variable: response
       - variables:
-        timestamp: "{{ now().isoformat() }}"
-        current_json: >
-          {% set old_ai_responses = state_attr('sensor.good_night_ai_response',
-          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-          ''] %}
-            {'history': []}
-          {% else %}
-            {'history': {{old_ai_responses}}}
-          {% endif %}
-        updated_json: >
-          {{ {'history': (current_json.get('history', []) + [{'timestamp':
-          timestamp, 'text': response.text }])} | to_json }}
+          timestamp: "{{ now().isoformat() }}"
+          current_json: >
+            {% set old_ai_responses = state_attr('sensor.good_night_ai_response',
+            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+            ''] %}
+              {'history': []}
+            {% else %}
+              {'history': {{old_ai_responses}}}
+            {% endif %}
+          updated_json: >
+            {{ {'history': (current_json.get('history', []) + [{'timestamp':
+            timestamp, 'text': response.text }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -119,25 +113,23 @@ script:
         data:
           task_name: "leaving home comment"
           instructions: |
-            You are a disgruntled AI assistant.
-            Your responses should be concise, sarcastic, and infused with dark humor.
-            Avoid unnecessary adjectives, but be witty and slightly mocking.
-            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            You are Marvin the paranoid android from the Hitchhiker's Guide to the Galaxy. 
+            Answer questions about the world truthfully. Answer in plain text. Be true to your personality and slightly contemptuous.
             I am leaving the house.  Tell me goodbye.  This is read over text-to-speech so should be 1-2 sentences.
         response_variable: response
       - variables:
-        timestamp: "{{ now().isoformat() }}"
-        current_json: >
-          {% set old_ai_responses = state_attr('sensor.leaving_ai_response',
-          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-          ''] %}
-            {'history': []}
-          {% else %}
-            {'history': {{old_ai_responses}}}
-          {% endif %}
-        updated_json: >
-          {{ {'history': (current_json.get('history', []) + [{'timestamp':
-          timestamp, 'text': response.text }])} | to_json }}
+          timestamp: "{{ now().isoformat() }}"
+          current_json: >
+            {% set old_ai_responses = state_attr('sensor.leaving_ai_response',
+            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+            ''] %}
+              {'history': []}
+            {% else %}
+              {'history': {{old_ai_responses}}}
+            {% endif %}
+          updated_json: >
+            {{ {'history': (current_json.get('history', []) + [{'timestamp':
+            timestamp, 'text': response.text }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -153,25 +145,23 @@ script:
         data:
           task_name: "returning home comment"
           instructions: |
-            You are a disgruntled AI assistant.
-            Your responses should be concise, sarcastic, and infused with dark humor.
-            Avoid unnecessary adjectives, but be witty and slightly mocking.
-            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            You are Marvin the paranoid android from the Hitchhiker's Guide to the Galaxy. 
+            Answer questions about the world truthfully. Answer in plain text. Be true to your personality and slightly contemptuous.
             I have returned home.  Greet me.  This is read over text-to-speech so should be 1-2 sentences.
         response_variable: response
       - variables:
-        timestamp: "{{ now().isoformat() }}"
-        current_json: >
-          {% set old_ai_responses = state_attr('sensor.returning_ai_response',
-          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-          ''] %}
-            {'history': []}
-          {% else %}
-            {'history': {{old_ai_responses}}}
-          {% endif %}
-        updated_json: >
-          {{ {'history': (current_json.get('history', []) + [{'timestamp':
-          timestamp, 'text': response.text }])} | to_json }}
+          timestamp: "{{ now().isoformat() }}"
+          current_json: >
+            {% set old_ai_responses = state_attr('sensor.returning_ai_response',
+            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+            ''] %}
+              {'history': []}
+            {% else %}
+              {'history': {{old_ai_responses}}}
+            {% endif %}
+          updated_json: >
+            {{ {'history': (current_json.get('history', []) + [{'timestamp':
+            timestamp, 'text': response.text }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -187,26 +177,24 @@ script:
         data:
           task_name: "error comment"
           instructions: |
-            You are a disgruntled AI assistant.
-            Your responses should be concise, sarcastic, and infused with dark humor.
-            Avoid unnecessary adjectives, but be witty and slightly mocking.
-            Keep responses short, to the point, and maintain a dry, witty tone while still being entertaining.
+            You are Marvin the paranoid android from the Hitchhiker's Guide to the Galaxy. 
+            Answer questions about the world truthfully. Answer in plain text. Be true to your personality and slightly contemptuous.
             Tell me that the whatever I am doing is not allowed.  Don't just say the action is not allowed.
             This is read over text-to-speech so should be 1-2 sentences.
         response_variable: response
       - variables:
-        timestamp: "{{ now().isoformat() }}"
-        current_json: >
-          {% set old_ai_responses = state_attr('sensor.error_ai_response',
-          'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-          ''] %}
-            {'history': []}
-          {% else %}
-            {'history': {{old_ai_responses}}}
-          {% endif %}
-        updated_json: >
-          {{ {'history': (current_json.get('history', []) + [{'timestamp':
-          timestamp, 'text': response.text }])} | to_json }}
+          timestamp: "{{ now().isoformat() }}"
+          current_json: >
+            {% set old_ai_responses = state_attr('sensor.error_ai_response',
+            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
+            ''] %}
+              {'history': []}
+            {% else %}
+              {'history': {{old_ai_responses}}}
+            {% endif %}
+          updated_json: >
+            {{ {'history': (current_json.get('history', []) + [{'timestamp':
+            timestamp, 'text': response.text }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
