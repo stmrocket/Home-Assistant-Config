@@ -33,7 +33,7 @@ script:
             {% endif %}
           updated_json: >
             {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.text }])} | to_json }}
+            timestamp, 'text': response.data }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -65,7 +65,7 @@ script:
             {% endif %}
           updated_json: >
             {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.text }])} | to_json }}
+            timestamp, 'text': response.data }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -97,7 +97,7 @@ script:
             {% endif %}
           updated_json: >
             {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.text }])} | to_json }}
+            timestamp, 'text': response.data }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -129,7 +129,7 @@ script:
             {% endif %}
           updated_json: >
             {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.text }])} | to_json }}
+            timestamp, 'text': response.data }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -161,7 +161,7 @@ script:
             {% endif %}
           updated_json: >
             {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.text }])} | to_json }}
+            timestamp, 'text': response.data }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -194,7 +194,7 @@ script:
             {% endif %}
           updated_json: >
             {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.text }])} | to_json }}
+            timestamp, 'text': response.data }])} | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
