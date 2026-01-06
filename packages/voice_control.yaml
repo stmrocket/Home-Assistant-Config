@@ -23,17 +23,8 @@ script:
         response_variable: response
       - variables:
           timestamp: "{{ now().isoformat() }}"
-          current_json: >
-            {% set old_ai_responses = state_attr('sensor.good_morning_ai_response',
-            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-            ''] %}
-              {'history': []}
-            {% else %}
-              {'history': {{old_ai_responses}}}
-            {% endif %}
           updated_json: >
-            {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.data }])} | to_json }}
+            {{ {'timestamp': timestamp, 'text': response.data } | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -55,17 +46,8 @@ script:
         response_variable: response
       - variables:
           timestamp: "{{ now().isoformat() }}"
-          current_json: >
-            {% set old_ai_responses = state_attr('sensor.bedtime_ai_response',
-            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-            ''] %}
-              {'history': []}
-            {% else %}
-              {'history': {{old_ai_responses}}}
-            {% endif %}
           updated_json: >
-            {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.data }])} | to_json }}
+            {{ {'timestamp': timestamp, 'text': response.data } | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -87,17 +69,8 @@ script:
         response_variable: response
       - variables:
           timestamp: "{{ now().isoformat() }}"
-          current_json: >
-            {% set old_ai_responses = state_attr('sensor.good_night_ai_response',
-            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-            ''] %}
-              {'history': []}
-            {% else %}
-              {'history': {{old_ai_responses}}}
-            {% endif %}
           updated_json: >
-            {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.data }])} | to_json }}
+            {{ {'timestamp': timestamp, 'text': response.data } | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -119,17 +92,8 @@ script:
         response_variable: response
       - variables:
           timestamp: "{{ now().isoformat() }}"
-          current_json: >
-            {% set old_ai_responses = state_attr('sensor.leaving_ai_response',
-            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-            ''] %}
-              {'history': []}
-            {% else %}
-              {'history': {{old_ai_responses}}}
-            {% endif %}
           updated_json: >
-            {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.data }])} | to_json }}
+            {{ {'timestamp': timestamp, 'text': response.data } | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -151,17 +115,8 @@ script:
         response_variable: response
       - variables:
           timestamp: "{{ now().isoformat() }}"
-          current_json: >
-            {% set old_ai_responses = state_attr('sensor.returning_ai_response',
-            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-            ''] %}
-              {'history': []}
-            {% else %}
-              {'history': {{old_ai_responses}}}
-            {% endif %}
           updated_json: >
-            {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.data }])} | to_json }}
+            {{ {'timestamp': timestamp, 'text': response.data } | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
@@ -184,17 +139,8 @@ script:
         response_variable: response
       - variables:
           timestamp: "{{ now().isoformat() }}"
-          current_json: >
-            {% set old_ai_responses = state_attr('sensor.error_ai_response',
-            'history') %} {% if old_ai_responses in [None, 'unknown', 'unavailable',
-            ''] %}
-              {'history': []}
-            {% else %}
-              {'history': {{old_ai_responses}}}
-            {% endif %}
           updated_json: >
-            {{ {'history': (current_json.get('history', []) + [{'timestamp':
-            timestamp, 'text': response.data }])} | to_json }}
+            {{ {'timestamp': timestamp, 'text': response.data } | to_json }}
       - action: mqtt.publish
         metadata: {}
         data:
