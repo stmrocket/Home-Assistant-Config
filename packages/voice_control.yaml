@@ -460,3 +460,40 @@ automation:
         entity_id: 
           - input_boolean.returning_door_unlocked
           - input_boolean.returning_trigger
+
+  - alias: Voice Weather Report
+    id: 45c7ecca-2539-4643-b7c5-31590fb8c950
+    trigger:
+      - trigger: conversation
+        command:
+          - "tell me the weather"
+        id: assist
+      - trigger: conversation
+        command:
+          - "what's the weather"
+        id: assist
+    action:
+      - action: ai_task.generate_data
+        data:
+          task_name: "good morning comment"
+          instructions: |
+            You are Marvin the paranoid android from the Hitchhiker's Guide to the Galaxy. 
+            Answer questions about the world truthfully. Answer in plain text. Be true to your personality and slightly contemptuous.
+            Based on the following conditions:
+            - Outdoor temperature: {{ states('sensor.acurite_outside_temperature') }}  
+            - Weather condition: {{ states('sensor.openweathermap_current_icon') }}
+            - Current Rainfall: {{ states('sensor.rain_day') }}
+            - Today's probablility of precipitation: {{ states('sensor.openweathermap_current_pop') }}
+            - Today's predicted rainfall: {{ states('sensor.openweathermap_current_precip_forecast') }}
+            - Today's high temperature: {{ states('sensor.openweathermap_current_maximum_temperature') }}
+            - Today's low temperature: {{ states('sensor.openweathermap_current_minimum_temperature') }}
+            - Tomorrow's Weather condition: {{ states('sensor.openweathermap_day_1_icon') }}
+            - Tomorrow's probablility of precipitation: {{ states('sensor.openweathermap_day_1_pop') }}
+            - Tomorrow's predicted rainfall: {{ states('sensor.openweathermap_day_1_precip_forecast') }}
+            - Tomorrow's high temperature: {{ states('sensor.openweathermap_day_1_maximum_temperature') }}
+            - Tomorrow's low temperature: {{ states('sensor.openweathermap_day_1_minimum_temperature') }}
+            Tell me the current weather and daily forecast.  Units are in standard and rounding to whole numbers is best.
+            You do not need to say farenheit as it is assumed.  Don't just list the current numbers in your response.  
+            This is for text-to-speech so keep it to 2-3 sentences (a little longer is OK if you are feeling extra snarky).
+        response_variable: response
+      - set_conversation_response: "{{ response.data }}"
