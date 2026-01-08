@@ -497,3 +497,58 @@ automation:
             This is for text-to-speech so keep it to 2-3 sentences (a little longer is OK if you are feeling extra snarky).
         response_variable: response
       - set_conversation_response: "{{ response.data }}"
+
+  - alias: Voice Turn On Stay Mode
+    id: 6eebadaa-dab2-4b90-80f8-09afe5fdb219
+    trigger:
+      - trigger: conversation
+        command:
+          - "turn on stay mode"
+        id: assist
+    action:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.elk_stay_on
+
+  - alias: Voice Turn Off Stay Mode
+    id: 7fbe4e24-98d7-4e65-a498-ee42559e57ff
+    trigger:
+      - trigger: conversation
+        command:
+          - "turn off stay mode"
+        id: assist
+    action:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.elk_stay_off
+
+  - alias: Voice Turn On Night Mode
+    id: 0e0f68e2-8cba-4342-a7fb-df67838a2e87
+    trigger:
+      - trigger: conversation
+        command:
+          - "turn on night mode"
+        id: assist
+    action:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.elk_night_on
+
+  - alias: Voice Turn Off Night Mode
+    id: c1c7a70c-3716-42b2-b357-2c37e37d55e5
+    trigger:
+      - trigger: conversation
+        command:
+          - "turn off night mode"
+        id: assist
+    action:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.elk_night_off
+
+  - alias: Voice Turn On Away Mode
+    id: 2dfab325-9074-4504-8d0e-e5097b229b91
+    trigger:
+      - trigger: conversation
+        command:
+          - "turn on away mode"
+        id: assist
+    action:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.elk_away_on
