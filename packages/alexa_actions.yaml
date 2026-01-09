@@ -1,5 +1,5 @@
 template:
-  - sensors:
+  - sensor:
     - name: Last Alexa
       unique_id: ef96b24d-033c-4bf4-835c-568687da402b
       state: >

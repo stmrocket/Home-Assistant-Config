@@ -161,7 +161,7 @@ template:
   - binary_sensor:
     - name: is is_dst
       unique_id: 215e3ce8-25a1-429e-a4b6-bad9817a2e3c
-      value_template: "{{ now().timetuple().tm_isdst > 0 }}"
+      state: "{{ now().timetuple().tm_isdst > 0 }}"
 
 input_boolean:
   timer_lights:

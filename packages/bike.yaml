@@ -233,7 +233,7 @@ template:
 
       - name: Monthly Bike Duration Calculated
         unique_id: c5ab639e-b5a4-4436-a5e1-e02a5535324d
-        value_template: >-
+        state: >-
           {% set time = states('sensor.monthly_bike_duration') | int(none) %}
             {% set minutes = ((time % 3600) / 60) | int(none)%}
             {% set hours = ((time % 86400) / 3600) | int(none) %}
@@ -275,8 +275,7 @@ template:
 
       - name: Yearly Bike Duration Calculated
         unique_id: 8c978c58-1063-42b0-af33-b2861495fea9
-        friendly_name: Yearly Bike Duration Calculated
-        value_template: >-
+        state: >-
           {% set time = states('sensor.yearly_bike_duration') | int(none) %}
             {% set minutes = ((time % 3600) / 60) | int(none)%}
             {% set hours = ((time % 86400) / 3600) | int(none) %}
@@ -318,7 +317,7 @@ template:
 
       - name: Career Bike Duration Calculated
         unique_id: 218a01d9-d884-45ff-a0b2-2191739ffb01
-        value_template: >-
+        state: >-
           {% set time = states('sensor.career_bike_duration') | int(none) %}
             {% set minutes = ((time % 3600) / 60) | int(none)%}
             {% set hours = ((time % 86400) / 3600) | int(none) %}
