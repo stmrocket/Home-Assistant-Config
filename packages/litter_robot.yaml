@@ -93,7 +93,7 @@ template:
   - switch:
     - name: Chamber of Secrets Power
       unique_id: 1c69d41e-1d7a-4cba-82a8-d9f4230fa722
-      value_template: "{{ not is_state('sensor.chamber_of_secrets_status_code', 'on') }}"
+      state: "{{ not is_state('sensor.chamber_of_secrets_status_code', 'on') }}"
       turn_on:
         service: vacuum.start
         entity_id: vacuum.chamber_of_secrets_litter_box
@@ -103,7 +103,7 @@ template:
 
     - name: Forbidden Forest Power
       unique_id: 088cb47f-adcb-43bf-ae93-fbecae03ad5a
-      value_template: "{{ not is_state('sensor.forbidden_forest_status_code', 'on') }}"
+      state: "{{ not is_state('sensor.forbidden_forest_status_code', 'on') }}"
       turn_on:
         service: vacuum.start
         entity_id: vacuum.forbidden_forest_litter_box

@@ -75,7 +75,7 @@ template:
 
       - name: HVAC Zone 3 Heat
         unique_id: c679be1a-12f4-4352-af6e-bccdd8936659
-        value_template: "{{ is_state('sensor.hvac_zone_3_state', 'Heat') }}"
+        state: "{{ is_state('sensor.hvac_zone_3_state', 'Heat') }}"
 
       - name: HVAC Zone 3 Cool
         unique_id: 502db261-6358-4af6-b1e6-e3750861052e
