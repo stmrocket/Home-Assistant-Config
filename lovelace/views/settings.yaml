@@ -486,32 +486,6 @@ cards:
   #################################################################
   - type: vertical-stack
     cards:
-      - type: custom:stack-in-card
-        cards:
-          - type: picture-elements
-            image: /local/lovelace/room_sm.png
-            elements:
-              - entity: sensor.blank
-                hold-action: none
-                prefix: Frigate
-                style:
-                  bottom: -5%
-                  font-size: 150%
-                  left: 5%
-                  transform: initial
-                tap_action: none
-                hold_action: none
-                type: state-label
-          - type: entities
-            show_header_toggle: false
-            entities:
-              - entity: sensor.frigate_status
-                icon: mdi:cctv
-              - input_boolean.frigate_enabled
-              - entity: input_number.frigate_disable_time
-                name: Delay
-              - entity: timer.frigate_disable
-                name: Time Remaining
       - !include /config/lovelace/cards/rooms/work.yaml
       - type: 'custom:stack-in-card'
         cards:
@@ -544,7 +518,7 @@ cards:
                           - entity: sensor.daily_bike_distance
                             name: Distance
                             icon: 'mdi:map-marker-distance'
-                          - entity: sensor.daily_bike_duration_calc
+                          - entity: sensor.daily_bike_duration_calculated
                             name: Duration
                             icon: 'mdi:timer'
                           - entity: sensor.daily_bike_calories
@@ -570,7 +544,7 @@ cards:
                           - entity: sensor.weekly_bike_distance
                             name: Distance
                             icon: 'mdi:map-marker-distance'
-                          - entity: sensor.weekly_bike_duration_calc
+                          - entity: sensor.weekly_bike_duration_calculated
                             name: Duration
                             icon: 'mdi:timer'
                           - entity: sensor.weekly_bike_calories
@@ -596,7 +570,7 @@ cards:
                           - entity: sensor.monthly_bike_distance
                             name: Distance
                             icon: 'mdi:map-marker-distance'
-                          - entity: sensor.monthly_bike_duration_calc
+                          - entity: sensor.monthly_bike_duration_calculated
                             name: Duration
                             icon: 'mdi:timer'
                           - entity: sensor.monthly_bike_calories
@@ -622,7 +596,7 @@ cards:
                           - entity: sensor.yearly_bike_distance
                             name: Distance
                             icon: 'mdi:map-marker-distance'
-                          - entity: sensor.yearly_bike_duration_calc
+                          - entity: sensor.yearly_bike_duration_calculated
                             name: Duration
                             icon: 'mdi:timer'
                           - entity: sensor.yearly_bike_calories
@@ -648,7 +622,7 @@ cards:
                           - entity: sensor.career_bike_distance
                             name: Distance
                             icon: 'mdi:map-marker-distance'
-                          - entity: sensor.career_bike_duration_calc
+                          - entity: sensor.career_bike_duration_calculated
                             name: Duration
                             icon: 'mdi:timer'
                           - entity: sensor.career_bike_calories

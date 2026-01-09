@@ -137,8 +137,6 @@ automation:
           - group.landscape_lights
       - service: cover.close_cover
         entity_id: cover.office_blinds
-      - service: input_boolean.turn_off
-        entity_id: input_boolean.frigate_enabled_front
 
   - alias: House On After Christmas Show
     id: 13cff086-4ed0-45a9-bdb9-79c77cca00a3
@@ -152,8 +150,6 @@ automation:
           - switch.outside_lights
           - switch.shed_outside_light
           - group.landscape_lights
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.frigate_enabled_front
 
   - alias: Candles On at Dark When Home
     id: 43d4c5d9-071d-4604-9297-715e0251f132

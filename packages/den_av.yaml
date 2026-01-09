@@ -12,16 +12,15 @@ media_player:
       media_duration: sensor.den_media_duration
       media_position: sensor.den_media_position
 
-sensor:
-  - platform: template
-    sensors:
-      den_avr_url:
+template:
+  - sensor:
+      - name: Den AVR URL
         unique_id: 49d3be12-2784-46ed-b844-b4080dda11b3
-        value_template: !secret den_avr_url
+        state: !secret den_avr_url
 
-      den_media_cover:
+      - name: Den Media Cover
         unique_id: 1606a2f0-f6fe-49ca-ab06-d0c430a6ea60
-        value_template: >-
+        state: >-
           {% if is_state_attr('media_player.den_tv_android', 'app_id', 'com.espn.score_center') -%}
             /local/remote_icons/channels/espn.webp
           {% elif is_state_attr('media_player.den_tv_android', 'app_id', 'com.wbd.stream') -%}
@@ -46,18 +45,18 @@ sensor:
             /local/remote_icons/channels/googletv.webp
           {% endif -%}
 
-      den_media_duration:
+      - name: Den Media Duration
         unique_id: 6d75e32c-4904-440b-9949-844a6812516e
-        value_template: >-
+        state: >-
           {% if is_state_attr('media_player.den_tv_android', 'app_id', 'org.jellyfin.androidtv') and (is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing')) -%}
             {{ state_attr('media_player.den_tv_jellyfin', 'media_duration') }}
           {% else -%}
             
           {% endif -%}
 
-      den_media_position:
+      - name: Den Media Position
         unique_id: 909a55b3-104e-4322-a3c2-463ea178fbc9
-        value_template: >-
+        state: >-
           {% if is_state_attr('media_player.den_tv_android', 'app_id', 'org.jellyfin.androidtv') and (is_state('media_player.den_tv_jellyfin', 'paused') or is_state('media_player.den_tv_jellyfin', 'playing')) -%}
             {{ state_attr('media_player.den_tv_jellyfin', 'media_position') }}
           {% else -%}
