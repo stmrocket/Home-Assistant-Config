@@ -82,7 +82,6 @@ smart_home:
       - input_boolean.elk_away_on
       - input_boolean.leaving_trigger
       - input_boolean.returning_trigger
-      - input_boolean.frigate_enabled
       - input_boolean.hou_metar_mode
       - input_boolean.tx_metar_mode
       - input_boolean.us_metar_mode

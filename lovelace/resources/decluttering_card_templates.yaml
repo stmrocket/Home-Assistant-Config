@@ -2002,7 +2002,7 @@ bike_stats:
                   - entity: sensor.daily_bike_distance
                     name: Distance
                     icon: 'mdi:map-marker-distance'
-                  - entity: sensor.daily_bike_duration_calc
+                  - entity: sensor.daily_bike_duration_calculated
                     name: Duration
                     icon: 'mdi:timer'
                   - entity: sensor.daily_bike_calories
@@ -2028,7 +2028,7 @@ bike_stats:
                   - entity: sensor.weekly_bike_distance
                     name: Distance
                     icon: 'mdi:map-marker-distance'
-                  - entity: sensor.weekly_bike_duration_calc
+                  - entity: sensor.weekly_bike_duration_calculated
                     name: Duration
                     icon: 'mdi:timer'
                   - entity: sensor.weekly_bike_calories
@@ -2054,7 +2054,7 @@ bike_stats:
                   - entity: sensor.monthly_bike_distance
                     name: Distance
                     icon: 'mdi:map-marker-distance'
-                  - entity: sensor.monthly_bike_duration_calc
+                  - entity: sensor.monthly_bike_duration_calculated
                     name: Duration
                     icon: 'mdi:timer'
                   - entity: sensor.monthly_bike_calories
@@ -2080,7 +2080,7 @@ bike_stats:
                   - entity: sensor.yearly_bike_distance
                     name: Distance
                     icon: 'mdi:map-marker-distance'
-                  - entity: sensor.yearly_bike_duration_calc
+                  - entity: sensor.yearly_bike_duration_calculated
                     name: Duration
                     icon: 'mdi:timer'
                   - entity: sensor.yearly_bike_calories
@@ -2106,7 +2106,7 @@ bike_stats:
                   - entity: sensor.career_bike_distance
                     name: Distance
                     icon: 'mdi:map-marker-distance'
-                  - entity: sensor.career_bike_duration_calc
+                  - entity: sensor.career_bike_duration_calculated
                     name: Duration
                     icon: 'mdi:timer'
                   - entity: sensor.career_bike_calories

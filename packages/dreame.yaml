@@ -10,13 +10,11 @@ mqtt:
       unique_id: 1307f0bc-74e2-46d6-8e75-7d415d930669
       state_topic: vacschedule/week2
 
-sensor:
-  - platform: template
-    sensors:
-      next_vacuum_cycle:
+template:
+  - sensor:
+      - name: Next Vacuum Cycle
         unique_id: cac0280c-9d37-49b4-92e0-acf90dc014e3
-        friendly_name: Next Vacuum Cycle
-        value_template: >-
+        state: >-
           {% if is_state("input_boolean.vacuum_weekday_select", "on") -%}
             Day 2
           {%- else -%}

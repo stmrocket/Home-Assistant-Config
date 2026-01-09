@@ -1,17 +1,13 @@
-sensor:
-  - platform: template
-    sensors:
-      adguard_dummy:
-        unique_id: 465658c5-2a9f-423e-81ad-11010235acba
-        value_template: ""
-        friendly_name: ""
+template:
+  - sensor:
+    - name: Adguard Dummy
+      unique_id: 465658c5-2a9f-423e-81ad-11010235acba
+      state: ""
 
-      candle_dummy:
-        unique_id: 03a3df5b-39f8-4707-879f-afee21eef3a6
-        value_template: ""
-        friendly_name: ""
+    - name: Candle Dummy
+      unique_id: 03a3df5b-39f8-4707-879f-afee21eef3a6
+      state: ""
 
-      truck_dummy:
-        unique_id: 0d8c5aa9-23df-480a-8e2b-d1e5d10bbf5f
-        value_template: ""
-        friendly_name: ""
+    - name: Truck Dummy
+      unique_id: 0d8c5aa9-23df-480a-8e2b-d1e5d10bbf5f
+      state: ""
