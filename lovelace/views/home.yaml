@@ -1292,3 +1292,47 @@ cards:
                     type: custom:frigate-card
                     cameras:
                       - camera_entity: camera.prusa_mk4
+          - entity: camera.junior
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Junior
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.junior
+          - entity: camera.spybox
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Spybox
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.spybox
+          - entity: camera.chamber_of_secrets
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Chamber of Secrets
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.chamber_of_secrets
+          - entity: camera.forbidden_forest
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Forbidden Forest
+                  content:
+                    type: custom:frigate-card
+                    cameras:
+                      - camera_entity: camera.forbidden_forest
