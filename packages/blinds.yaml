@@ -1,0 +1,702 @@
+sensor:
+  - platform: average
+    name: Den Blinds Average Light Level
+    entities:
+      - sensor.left_den_blind_light_level
+      - sensor.center_den_blind_light_level
+      - sensor.right_den_blind_light_level
+
+  - platform: average
+    name: Kitchen Blinds Average Light Level
+    entities:
+      - sensor.left_kitchen_blind_light_level
+      - sensor.east_kitchen_blind_light_level
+      - sensor.right_kitchen_blind_light_level
+      
+  - platform: average
+    name: Master Blinds Average Light Level
+    entities:
+      - sensor.left_master_blind_light_level
+      - sensor.center_master_blind_light_level
+      - sensor.right_master_blind_light_level
+      - sensor.west_master_blind_light_level
+      
+  - platform: average
+    name: Office Blinds Average Light Level
+    entities:
+      - sensor.left_office_blind_light_level
+      - sensor.center_office_blind_light_level
+      - sensor.right_office_blind_light_level
+      
+  - platform: average
+    name: Shack Blinds Average Light Level
+    entities:
+      - sensor.left_shack_blind_light_level
+      - sensor.center_shack_blind_light_level
+      - sensor.right_shack_blind_light_level
+      
+  - platform: average
+    name: House Blinds Average Light Level
+    entities:
+      - sensor.left_den_blind_light_level
+      - sensor.center_den_blind_light_level
+      - sensor.right_den_blind_light_level
+      - sensor.left_kitchen_blind_light_level
+      - sensor.east_kitchen_blind_light_level
+      - sensor.right_kitchen_blind_light_level
+      - sensor.left_master_blind_light_level
+      - sensor.center_master_blind_light_level
+      - sensor.right_master_blind_light_level
+      - sensor.west_master_blind_light_level
+      - sensor.left_office_blind_light_level
+      - sensor.center_office_blind_light_level
+      - sensor.right_office_blind_light_level
+      - sensor.left_shack_blind_light_level
+      - sensor.center_shack_blind_light_level
+      - sensor.right_shack_blind_light_level
+      - sensor.guest_blind_light_level
+      - sensor.server_room_blind_light_level
+
+automation:
+  - alias: Close Blinds When Away, Going to Bed, or at Dusk
+    id: d569ad60-eb9e-413c-b39b-f2e84f15ec36
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: arming
+        to: armed_night
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: 
+          - disarmed
+          - armed_home
+        to: armed_night
+        for: "00:01:00"
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: arming
+        to: 
+          - armed_away
+          - armed_vacation
+      - platform: state
+        entity_id: alarm_control_panel.house
+        from: 
+          - disarmed
+          - armed_home
+        to: 
+          - armed_away
+          - armed_vacation
+        for: "00:01:00"
+      - platform: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state.attributes.elevation }}"
+        below: -2.5
+    action:
+      - service: cover.close_cover
+        entity_id: cover.house_blinds
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.blinds_manual
+
+  - alias: Open Blinds When Awake and Sun Up
+    id: c2acc359-cb48-461a-bc5b-a5c6cdcd1a75
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: disarmed
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: armed_home
+      - platform: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state.attributes.elevation }}"
+        above: 0
+    condition:
+      - condition: state
+        entity_id: switch.shower_light_and_fan
+        state: "off"
+      - condition: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state.attributes.elevation }}"
+        above: 0
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "off"
+      - condition: state
+        entity_id: input_boolean.blinds_manual
+        state: "off"
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: disarmed
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: armed_home
+    action:
+      - service: cover.open_cover
+        entity_id: cover.house_blinds
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.blinds_manual
+
+  - alias: Open Blinds When Awake and Sun Up Taking Shower
+    id: b8e38b8e-542b-4814-af4f-dbe145d903d2
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: disarmed
+      - platform: state
+        entity_id: alarm_control_panel.house
+        to: armed_home
+      - platform: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state.attributes.elevation }}"
+        above: 0
+    condition:
+      - condition: state
+        entity_id: switch.shower_light_and_fan
+        state: "on"
+      - condition: numeric_state
+        entity_id: sun.sun
+        value_template: "{{ state.attributes.elevation }}"
+        above: 0
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: "off"
+      - condition: state
+        entity_id: input_boolean.blinds_manual
+        state: "off"
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: disarmed
+          - condition: state
+            entity_id: alarm_control_panel.house
+            state: armed_home
+    action:
+      - service: cover.open_cover
+        entity_id:
+          - cover.office_blinds
+          - cover.guest_blind
+          - cover.server_room_blind
+          - cover.den_blinds
+          - cover.kitchen_blinds
+          - cover.shack_blinds
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.blinds_manual
+
+  - alias: Open House Blinds
+    id: 6be62fc0-7975-40d9-812f-3b989e7e3abf
+    trigger:
+      - platform: state
+        entity_id: switch.house_blinds
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: cover.house_blinds
+        state: "closed"
+    action:
+      - service: cover.open_cover
+        entity_id: cover.house_blinds
+
+  - alias: Close House Blinds
+    id: 9d284723-232b-4cbd-b6e2-075499825dff
+    trigger:
+      - platform: state
+        entity_id: switch.house_blinds
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: cover.house_blinds
+        state: "open"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.house_blinds
+
+  - alias: House Blinds Keypad on if any Open
+    id: ea85574a-7031-4e89-b9cd-c8d36df50ad6
+    trigger:
+      - platform: state
+        entity_id: cover.house_blinds
+        from: "closed"
+        to: "open"
+    condition:
+      - condition: state
+        entity_id: switch.house_blinds
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.house_blinds
+
+  - alias: House Blinds Keypad off if all Closed
+    id: 4bf53edf-1ced-49ef-ada8-f10b3c6d0139
+    trigger:
+      - platform: state
+        entity_id: cover.house_blinds
+        from: "open"
+        to: "closed"
+    condition:
+      - condition: state
+        entity_id: switch.house_blinds
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.house_blinds
+
+  - alias: Open Den Blinds
+    id: 4fe747fe-d220-40c9-9c7d-aaa48765f747
+    trigger:
+      - platform: state
+        entity_id: switch.den_blinds
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: cover.den_blinds
+        state: "closed"
+    action:
+      - service: cover.open_cover
+        entity_id: cover.den_blinds
+
+  - alias: Close Den Blinds
+    id: 98371aed-2ea1-4288-b01c-9e01cf0aad38
+    trigger:
+      - platform: state
+        entity_id: switch.den_blinds
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: cover.den_blinds
+        state: "open"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.den_blinds
+
+  - alias: Den Blind Keypad on if any Open
+    id: da9cc3ea-0532-4e80-9e87-4354483a7ef9
+    trigger:
+      - platform: state
+        entity_id: cover.den_blinds
+        from: "closed"
+        to: "open"
+    condition:
+      - condition: state
+        entity_id: switch.den_blinds
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.den_blinds
+
+  - alias: Den Blind Keypad off if all Closed
+    id: 5d5623e7-b4d1-44ea-ab6b-8aa34edcc96d
+    trigger:
+      - platform: state
+        entity_id: cover.den_blinds
+        from: "open"
+        to: "closed"
+    condition:
+      - condition: state
+        entity_id: switch.den_blinds
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.den_blinds
+
+  - alias: Open Guest Blinds
+    id: a07de380-2a55-413d-ae75-f245f3868548
+    trigger:
+      - platform: state
+        entity_id: switch.guest_blinds
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: cover.guest_blind
+        state: "closed"
+    action:
+      - service: cover.open_cover
+        entity_id: cover.guest_blind
+
+  - alias: Close Guest Blinds
+    id: 7853e322-9f87-42bb-a0d4-deaa557782fd
+    trigger:
+      - platform: state
+        entity_id: switch.guest_blinds
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: cover.guest_blind
+        state: "open"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.guest_blind
+
+  - alias: Guest Blind Keypad on if any Open
+    id: 2c2e9135-c29d-42a4-a2b0-ce410517a1bd
+    trigger:
+      - platform: state
+        entity_id: cover.guest_blind
+        from: "closed"
+        to: "open"
+    condition:
+      - condition: state
+        entity_id: switch.guest_blinds
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.guest_blinds
+
+  - alias: Guest Blind Keypad off if all Closed
+    id: 7a5aaa66-f8c9-448f-9045-945900968a05
+    trigger:
+      - platform: state
+        entity_id: cover.guest_blind
+        from: "open"
+        to: "closed"
+    condition:
+      - condition: state
+        entity_id: switch.guest_blinds
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.guest_blinds
+
+  - alias: Open Kitchen Blinds
+    id: 16eda4ed-8827-42cf-bbd5-96882d53aebb
+    trigger:
+      - platform: state
+        entity_id:
+          - switch.kitchen_blinds
+          - switch.dining_room_blinds
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: cover.kitchen_blinds
+        state: "closed"
+    action:
+      - service: cover.open_cover
+        entity_id: cover.kitchen_blinds
+
+  - alias: Close Kitchen Blinds
+    id: 7feb5816-0fb0-4766-b887-041477d7a4fc
+    trigger:
+      - platform: state
+        entity_id:
+          - switch.kitchen_blinds
+          - switch.dining_room_blinds
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: cover.kitchen_blinds
+        state: "open"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.kitchen_blinds
+
+  - alias: Kitchen Blind Keypad on if any Open
+    id: 7c2bc1f0-d7c6-4d24-9041-cf96ff29adc0
+    trigger:
+      - platform: state
+        entity_id: cover.kitchen_blinds
+        from: "closed"
+        to: "open"
+    condition:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: switch.kitchen_blinds
+            state: "off"
+          - condition: state
+            entity_id: switch.dining_room_blinds
+            state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id:
+          - switch.kitchen_blinds
+          - switch.dining_room_blinds
+
+  - alias: Kitchen Blind Keypad off if all Closed
+    id: aa78f13f-4081-47db-853d-6d9c49f3a018
+    trigger:
+      - platform: state
+        entity_id: cover.kitchen_blinds
+        from: "open"
+        to: "closed"
+    condition:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: switch.kitchen_blinds
+            state: "on"
+          - condition: state
+            entity_id: switch.dining_room_blinds
+            state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id:
+          - switch.kitchen_blinds
+          - switch.dining_room_blinds
+
+  - alias: Open Master Blinds
+    id: 57a76b35-6f15-422d-ae5c-579cc7f11f00
+    trigger:
+      - platform: state
+        entity_id:
+          - switch.master_bedroom_blinds
+          - switch.master_bathroom_blinds
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: cover.master_blinds
+        state: "closed"
+    action:
+      - service: cover.open_cover
+        entity_id: cover.master_blinds
+
+  - alias: Close Master Blinds
+    id: ee7d0a6d-da1f-4c03-b386-1b8da877ebcd
+    trigger:
+      - platform: state
+        entity_id:
+          - switch.master_bedroom_blinds
+          - switch.master_bathroom_blinds
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: cover.master_blinds
+        state: "open"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.master_blinds
+
+  - alias: Master Blind Keypad on if any Open
+    id: 58584819-069c-48a6-ad44-19f0f855acfd
+    trigger:
+      - platform: state
+        entity_id: cover.master_blinds
+        from: "closed"
+        to: "open"
+    condition:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: switch.master_bedroom_blinds
+            state: "off"
+          - condition: state
+            entity_id: switch.master_bathroom_blinds
+            state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id:
+          - switch.master_bedroom_blinds
+          - switch.master_bathroom_blinds
+
+  - alias: Master Blind Keypad off if all Closed
+    id: 4d44b764-0065-4212-a2b6-8841584f9715
+    trigger:
+      - platform: state
+        entity_id: cover.master_blinds
+        from: "open"
+        to: "closed"
+    condition:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: switch.master_bedroom_blinds
+            state: "on"
+          - condition: state
+            entity_id: switch.master_bathroom_blinds
+            state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id:
+          - switch.master_bedroom_blinds
+          - switch.master_bathroom_blinds
+
+  - alias: Open Office Blinds
+    id: 71ef2867-1c93-4520-b9b3-dd69b35a8953
+    trigger:
+      - platform: state
+        entity_id: switch.office_blinds
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: cover.office_blinds
+        state: "closed"
+    action:
+      - service: cover.open_cover
+        entity_id: cover.office_blinds
+
+  - alias: Close Office Blinds
+    id: c882c099-13b4-42fa-b75c-281c2d16d37c
+    trigger:
+      - platform: state
+        entity_id: switch.office_blinds
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: cover.office_blinds
+        state: "open"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.office_blinds
+
+  - alias: Office Blind Keypad on if any Open
+    id: a8c85d57-a27b-4344-86b1-b1c2a7715ccc
+    trigger:
+      - platform: state
+        entity_id: cover.office_blinds
+        from: "closed"
+        to: "open"
+    condition:
+      - condition: state
+        entity_id: switch.office_blinds
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.office_blinds
+
+  - alias: Office Blind Keypad off if all Closed
+    id: 3b53e4ae-22ea-4a44-bb9f-5c2d6b0143b4
+    trigger:
+      - platform: state
+        entity_id: cover.office_blinds
+        from: "open"
+        to: "closed"
+    condition:
+      - condition: state
+        entity_id: switch.office_blinds
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.office_blinds
+
+  - alias: Open Server Blinds
+    id: a0221682-6fd2-45bb-98e4-25a8cd24d96e
+    trigger:
+      - platform: state
+        entity_id: switch.server_blinds
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: cover.server_room_blind
+        state: "closed"
+    action:
+      - service: cover.open_cover
+        entity_id: cover.server_room_blind
+
+  - alias: Close Server Blinds
+    id: 1cf36418-aa86-4e84-9115-fec35478bf1d
+    trigger:
+      - platform: state
+        entity_id: switch.server_blinds
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: cover.server_room_blind
+        state: "open"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.server_room_blind
+
+  - alias: Server Blind Keypad on if any Open
+    id: c9986927-13a4-467a-9fc2-5ced6642ef03
+    trigger:
+      - platform: state
+        entity_id: cover.server_room_blind
+        from: "closed"
+        to: "open"
+    condition:
+      - condition: state
+        entity_id: switch.server_blinds
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.server_blinds
+
+  - alias: Server Blind Keypad off if all Closed
+    id: b211d035-1cc2-4fd1-a6a1-c6c74208c1f6
+    trigger:
+      - platform: state
+        entity_id: cover.server_room_blind
+        from: "open"
+        to: "closed"
+    condition:
+      - condition: state
+        entity_id: switch.server_blinds
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.server_blinds
+
+  - alias: Open Shack Blinds
+    id: 56f11665-d3ef-4b05-b84f-cffd21179fab
+    trigger:
+      - platform: state
+        entity_id: switch.shack_blinds
+        from: "off"
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: cover.shack_blinds
+        state: "closed"
+    action:
+      - service: cover.open_cover
+        entity_id: cover.shack_blinds
+
+  - alias: Close Shack Blinds
+    id: 7aeb2fcf-7486-4c8e-89be-79e974609d61
+    trigger:
+      - platform: state
+        entity_id: switch.shack_blinds
+        from: "on"
+        to: "off"
+    condition:
+      - condition: state
+        entity_id: cover.shack_blinds
+        state: "open"
+    action:
+      - service: cover.close_cover
+        entity_id: cover.shack_blinds
+
+  - alias: Shack Blind Keypad on if any Open
+    id: acd1edc7-914d-488c-b477-80b588ef6d5e
+    trigger:
+      - platform: state
+        entity_id: cover.shack_blinds
+        from: "closed"
+        to: "open"
+    condition:
+      - condition: state
+        entity_id: switch.shack_blinds
+        state: "off"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.shack_blinds
+
+  - alias: Shack Blind Keypad off if all Closed
+    id: ad298385-90a6-42ad-8093-af1c5347e926
+    trigger:
+      - platform: state
+        entity_id: cover.shack_blinds
+        from: "open"
+        to: "closed"
+    condition:
+      - condition: state
+        entity_id: switch.shack_blinds
+        state: "on"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.shack_blinds
