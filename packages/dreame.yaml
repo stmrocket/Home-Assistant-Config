@@ -15,7 +15,9 @@ template:
       - name: Next Vacuum Cycle
         unique_id: cac0280c-9d37-49b4-92e0-acf90dc014e3
         state: >-
-          {% if is_state("input_boolean.vacuum_weekday_select", "on") -%}
+          {% if is_state("input_boolean.vacuum_all", "on") -%}
+            Whole House
+          {% elif is_state("input_boolean.vacuum_weekday_select", "on") -%}
             Day 2
           {%- else -%}
             Day 1
@@ -26,7 +28,7 @@ input_boolean:
     name: Schedule Enabled
     icon: mdi:timer-outline
   vacuum_all:
-    name: Vacuum Full House
+    name: Vacuum Whole House
     icon: mdi:timer-outline
   vacuum_weekday_select:
     name: Vacuum Weekday Program Select
