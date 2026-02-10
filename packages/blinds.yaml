@@ -65,6 +65,7 @@ automation:
         entity_id: alarm_control_panel.house
         from: arming
         to: armed_night
+        id: night
       - platform: state
         entity_id: alarm_control_panel.house
         from: 
@@ -72,12 +73,14 @@ automation:
           - armed_home
         to: armed_night
         for: "00:01:00"
+        id: night
       - platform: state
         entity_id: alarm_control_panel.house
         from: arming
         to: 
           - armed_away
           - armed_vacation
+        id: away
       - platform: state
         entity_id: alarm_control_panel.house
         from: 
@@ -87,15 +90,27 @@ automation:
           - armed_away
           - armed_vacation
         for: "00:01:00"
+        id: away
       - platform: numeric_state
         entity_id: sun.sun
-        value_template: "{{ state.attributes.elevation }}"
+        attribute: elevation
         below: -2.5
+        id: night
     action:
-      - service: cover.close_cover
-        entity_id: cover.house_blinds
-      - service: input_boolean.turn_off
-        entity_id: input_boolean.blinds_manual
+      - choose:
+        - conditions:
+          - condition: trigger
+            id: night
+        sequence:
+          - service: cover.close_cover
+            entity_id: cover.house_blinds
+      - choose:
+        - conditions:
+          - condition: trigger
+            id: away
+        sequence:
+          - service: cover.close_cover
+            entity_id: cover.cat_blinds
 
   - alias: Open Blinds When Awake and Sun Up
     id: c2acc359-cb48-461a-bc5b-a5c6cdcd1a75
@@ -108,82 +123,42 @@ automation:
         to: armed_home
       - platform: numeric_state
         entity_id: sun.sun
-        value_template: "{{ state.attributes.elevation }}"
+        attribute: elevation
         above: 0
     condition:
-      - condition: state
-        entity_id: switch.shower_light_and_fan
-        state: "off"
       - condition: numeric_state
         entity_id: sun.sun
-        value_template: "{{ state.attributes.elevation }}"
+        attribute: elevation
         above: 0
-      - condition: state
-        entity_id: input_boolean.vacation_mode
-        state: "off"
-      - condition: state
-        entity_id: input_boolean.blinds_manual
-        state: "off"
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: alarm_control_panel.house
-            state: disarmed
-          - condition: state
-            entity_id: alarm_control_panel.house
-            state: armed_home
     action:
-      - service: cover.open_cover
-        entity_id: cover.house_blinds
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.blinds_manual
-
-  - alias: Open Blinds When Awake and Sun Up Taking Shower
-    id: b8e38b8e-542b-4814-af4f-dbe145d903d2
-    trigger:
-      - platform: state
-        entity_id: alarm_control_panel.house
-        to: disarmed
-      - platform: state
-        entity_id: alarm_control_panel.house
-        to: armed_home
-      - platform: numeric_state
-        entity_id: sun.sun
-        value_template: "{{ state.attributes.elevation }}"
-        above: 0
-    condition:
-      - condition: state
-        entity_id: switch.shower_light_and_fan
-        state: "on"
-      - condition: numeric_state
-        entity_id: sun.sun
-        value_template: "{{ state.attributes.elevation }}"
-        above: 0
-      - condition: state
-        entity_id: input_boolean.vacation_mode
-        state: "off"
-      - condition: state
-        entity_id: input_boolean.blinds_manual
-        state: "off"
-      - condition: or
-        conditions:
+      - choose:
+        - conditions:
           - condition: state
-            entity_id: alarm_control_panel.house
-            state: disarmed
-          - condition: state
-            entity_id: alarm_control_panel.house
-            state: armed_home
-    action:
-      - service: cover.open_cover
-        entity_id:
-          - cover.office_blinds
-          - cover.guest_blind
-          - cover.server_room_blind
-          - cover.den_blinds
-          - cover.kitchen_blinds
-          - cover.shack_blinds
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.blinds_manual
+            entity_id: input_boolean.vacation_mode
+            state: "off"      
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: alarm_control_panel.house
+                state: disarmed
+              - condition: state
+                entity_id: alarm_control_panel.house
+                state: armed_home
+          sequence:
+            - choose:
+              - conditions:
+                - condition: state
+                  entity_id: switch.shower_light_and_fan
+                  state: "off"
+                sequence:              
+                  - service: cover.open_cover
+                    entity_id: cover.house_blinds
+              default:              
+                - service: cover.open_cover
+                  entity_id: cover.shower_blinds
+        default:                        
+          - service: cover.open_cover
+            entity_id: cover.left_office_blind
 
   - alias: Open House Blinds
     id: 6be62fc0-7975-40d9-812f-3b989e7e3abf
