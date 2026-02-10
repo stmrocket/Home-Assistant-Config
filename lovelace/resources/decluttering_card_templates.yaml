@@ -1337,6 +1337,7 @@ vacuum_button_simple:
                 show_header_toggle: false
                 entities:
                   - entity: input_boolean.vacuum_auto
+                  - entity: input_boolean.vacuum_all
                   - entity: sensor.next_vacuum_cycle
                     name: Next Schedule
                     icon: mdi:clock-outline

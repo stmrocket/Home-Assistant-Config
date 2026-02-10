@@ -25,6 +25,9 @@ input_boolean:
   vacuum_auto:
     name: Schedule Enabled
     icon: mdi:timer-outline
+  vacuum_all:
+    name: Vacuum Full House
+    icon: mdi:timer-outline
   vacuum_weekday_select:
     name: Vacuum Weekday Program Select
     icon: mdi:calendar-week
@@ -212,6 +215,13 @@ script:
       - choose:
           - conditions:
             - condition: state
+              entity_id: input_boolean.vacuum_all
+              state: "off"
+            sequence:
+              - service: vacuum.start
+                entity_id: vacuum.valetudo_crookshanks
+          - conditions:
+            - condition: state
               entity_id: input_boolean.vacuum_weekday_select
               state: "off"
             sequence:
@@ -261,31 +271,7 @@ automation:
         entity_id: input_boolean.vacuum_cycle_initiated
         state: "off"
     action:
-      - choose:
-        - conditions:
-          - condition: state
-            entity_id: input_boolean.vacuum_weekday_select
-            state: "off"
-          sequence:
-            - service: mqtt.publish
-              data:
-                topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
-                payload: '{"segment_ids": {{ states("sensor.weekday_1_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
-            - service: input_boolean.turn_on
-              entity_id: input_boolean.vacuum_weekday_select
-        - conditions:
-          - condition: state
-            entity_id: input_boolean.vacuum_weekday_select
-            state: "on"
-          sequence:
-            - service: mqtt.publish
-              data:
-                topic: valetudo/crookshanks/MapSegmentationCapability/clean/set
-                payload: '{"segment_ids": {{ states("sensor.weekday_2_vacuum_sequence")}}, "iterations": 1, "customOrder": true}'
-            - service: input_boolean.turn_off
-              entity_id: input_boolean.vacuum_weekday_select
-      - service: input_boolean.turn_on
-        entity_id: input_boolean.vacuum_cycle_initiated
+      - script.vacuum_run_daily_clean
   
   - alias: Clear Daily Vacuum Run Indicator
     id: c1d1bed4-0cfb-40be-9222-ea6c0a9d52ca
