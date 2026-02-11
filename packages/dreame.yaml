@@ -273,7 +273,7 @@ automation:
         entity_id: input_boolean.vacuum_cycle_initiated
         state: "off"
     action:
-      - script.vacuum_run_daily_clean
+      - service: script.vacuum_run_daily_clean
   
   - alias: Clear Daily Vacuum Run Indicator
     id: c1d1bed4-0cfb-40be-9222-ea6c0a9d52ca
