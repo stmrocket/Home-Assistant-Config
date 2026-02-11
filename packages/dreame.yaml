@@ -218,7 +218,7 @@ script:
           - conditions:
             - condition: state
               entity_id: input_boolean.vacuum_all
-              state: "off"
+              state: "on"
             sequence:
               - service: vacuum.start
                 entity_id: vacuum.valetudo_crookshanks
