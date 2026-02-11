@@ -101,16 +101,15 @@ automation:
         - conditions:
           - condition: trigger
             id: night
-        sequence:
-          - service: cover.close_cover
-            entity_id: cover.house_blinds
-      - choose:
+          sequence:
+            - service: cover.close_cover
+              entity_id: cover.house_blinds
         - conditions:
           - condition: trigger
             id: away
-        sequence:
-          - service: cover.close_cover
-            entity_id: cover.cat_blinds
+          sequence:
+            - service: cover.close_cover
+              entity_id: cover.cat_blinds 
 
   - alias: Open Blinds When Awake and Sun Up
     id: c2acc359-cb48-461a-bc5b-a5c6cdcd1a75
