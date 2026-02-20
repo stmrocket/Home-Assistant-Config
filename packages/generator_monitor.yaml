@@ -1,116 +1,105 @@
-sensor:
-  - platform: template
-    sensors:
-      generator_status:
-        friendly_name: Generator Status
-        unique_id: 76dd23fc-85de-4728-9395-6458e2dd32d8
-        value_template: >-
-          {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
-            Offline
-          {% elif  is_state('sensor.genset_auto_run', 'Off') -%}
-            Not in Auto
-          {% elif  is_state('sensor.genset_engine_state', 'Standby') -%}
-            Standby
-          {% elif  is_state('sensor.genset_engine_state', 'Running') -%}
-            Running
-          {% elif  is_state('sensor.genset_engine_state', 'Stopping') -%}
-            Stopping
-          {% elif  is_state('sensor.genset_engine_state', 'CrankOn') -%}
-            Cranking
-          {% elif  is_state('sensor.genset_engine_state', 'Off') -%}
-            Lockout
-          {% elif  is_state('ssensor.genset_engine_state', 'PerformingVariableSpeedExercise') -%}
-            Vairable Speed Exercise
-          {% elif  is_state('sensor.genset_engine_state', 'PerformingUnloadedFullSpeedExercise') -%}
-            Unloaded Exercise
-          {% elif  is_state('sensor.genset_engine_state', 'PerformingFullSpeedDiagnostics') -%}
-            Full Speed Diagnostics
-          {% else -%}
-            Error
-          {% endif -%}
+template:
+  - sensor:
+    - name: Generator Status
+      unique_id: 76dd23fc-85de-4728-9395-6458e2dd32d8
+      state: >-
+        {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
+          Offline
+        {% elif  is_state('sensor.genset_auto_run', 'Off') -%}
+          Not in Auto
+        {% elif  is_state('sensor.genset_engine_state', 'Standby') -%}
+          Standby
+        {% elif  is_state('sensor.genset_engine_state', 'Running') -%}
+          Running
+        {% elif  is_state('sensor.genset_engine_state', 'Stopping') -%}
+          Stopping
+        {% elif  is_state('sensor.genset_engine_state', 'CrankOn') -%}
+          Cranking
+        {% elif  is_state('sensor.genset_engine_state', 'Off') -%}
+          Lockout
+        {% elif  is_state('ssensor.genset_engine_state', 'PerformingVariableSpeedExercise') -%}
+          Vairable Speed Exercise
+        {% elif  is_state('sensor.genset_engine_state', 'PerformingUnloadedFullSpeedExercise') -%}
+          Unloaded Exercise
+        {% elif  is_state('sensor.genset_engine_state', 'PerformingFullSpeedDiagnostics') -%}
+          Full Speed Diagnostics
+        {% else -%}
+          Error
+        {% endif -%}
 
-      generator_icon:
-        unique_id: 8accf35e-a04b-4885-baad-30ac538c39f8
-        friendly_name: Generator Status Icon
-        value_template: >-
-          {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
-            Offline
-          {% elif  (states('sensor.genset_voltage') | int < 230) and is_state('sensor.genset_engine_state', 'Running') -%}
-            Unavailable Running
-          {% elif  is_state('sensor.generator_state', 'Standby') -%}
-            Unavailable
-          {% elif  states('sensor.genset_voltage') | int > 230 -%}
-            Available
-          {% else -%}
-            Unavailable Alert
-          {% endif -%}
+    - name: Generator Icon
+      unique_id: 8accf35e-a04b-4885-baad-30ac538c39f8
+      state: >-
+        {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
+          Offline
+        {% elif  (states('sensor.genset_voltage') | int < 230) and is_state('sensor.genset_engine_state', 'Running') -%}
+          Unavailable Running
+        {% elif  is_state('sensor.generator_state', 'Standby') -%}
+          Unavailable
+        {% elif  states('sensor.genset_voltage') | int > 230 -%}
+          Available
+        {% else -%}
+          Unavailable Alert
+        {% endif -%}
 
-      generator_load_icon:
-        unique_id: 5391d9f3-8f32-42e6-8e38-48cacd7da3a3
-        friendly_name: Generator Load Icon
-        value_template: >-
-          {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
-            Offline
-          {% else -%}
-            Good
-          {% endif -%}
+    - name: Generator Load Icon
+      unique_id: 5391d9f3-8f32-42e6-8e38-48cacd7da3a3
+      state: >-
+        {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
+          Offline
+        {% else -%}
+          Good
+        {% endif -%}
 
-      generator_utility_icon:
-        unique_id: 580fbaf1-98d2-4ab4-a758-59632dc8d718
-        friendly_name: Generator Utility Icon
-        value_template: >-
-          {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
-            Offline
-          {% elif  states('sensor.genset_utility_voltage') | int > 230 -%}
-            Available
-          {% else -%}
-            Unavailable
-          {% endif -%}
+    - name: Generator Utility Icon
+      unique_id: 580fbaf1-98d2-4ab4-a758-59632dc8d718
+      state: >-
+        {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
+          Offline
+        {% elif  states('sensor.genset_utility_voltage') | int > 230 -%}
+          Available
+        {% else -%}
+          Unavailable
+        {% endif -%}
 
-      generator_ats_icon:
-        unique_id: b3db8278-d2ca-401d-bb90-e5136f6d4ee2
-        friendly_name: Generator ATS Icon
-        value_template: >-
-          {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
-            Offline
-          {% elif  is_state('sensor.genset_power_source', 'Utility') -%}
-            Utility
-          {% elif  is_state('sensor.genset_power_source', 'Generator') -%}
-            Generator
-          {% else -%}
-            Fault
-          {% endif -%}
+    - name: Generator ATS Icon
+      unique_id: b3db8278-d2ca-401d-bb90-e5136f6d4ee2
+      state: >-
+        {% if is_state('binary_sensor.genset_connectivity', 'off') -%}
+          Offline
+        {% elif  is_state('sensor.genset_power_source', 'Utility') -%}
+          Utility
+        {% elif  is_state('sensor.genset_power_source', 'Generator') -%}
+          Generator
+        {% else -%}
+          Fault
+        {% endif -%}
 
-      generator_ats_sources:
-        unique_id: 4fdb3baf-0d14-489e-9584-3778999b5d25
-        friendly_name: Generator ATS Sources Available
-        value_template: >-
-          {% if (states('sensor.genset_utility_voltage') | int > 230) and (states('sensor.genset_voltage') | int < 230) -%}
-            Utility
-          {% (states('sensor.genset_utility_voltage') | int < 230) and (states('sensor.genset_voltage') | int > 230) -%}
-            Generator
-          {% (states('sensor.genset_utility_voltage') | int > 230) and (states('sensor.genset_voltage') | int > 230) -%}
-            Both
-          {% else -%}
-            None
-          {% endif -%}
+    - name: Generator ATS Sources
+      state: >-
+        {% if (states('sensor.genset_utility_voltage') | int > 230) and (states('sensor.genset_voltage') | int < 230) -%}
+          Utility
+        {% (states('sensor.genset_utility_voltage') | int < 230) and (states('sensor.genset_voltage') | int > 230) -%}
+          Generator
+        {% (states('sensor.genset_utility_voltage') | int > 230) and (states('sensor.genset_voltage') | int > 230) -%}
+          Both
+        {% else -%}
+          None
+        {% endif -%}
 
-      generator_network_connected:
-        unique_id: 4509b6f1-7b1e-4d68-b665-0e6696a8a18f
-        friendly_name: Generator Exercise Active
-        value_template: >-
-          {% if is_state('binary_sensor.genset_connectivity', 'on') -%}
-            Yes
-          {% else -%}
-            No
-          {% endif -%}
+    - name: Generator Network COnnected
+      unique_id: 4509b6f1-7b1e-4d68-b665-0e6696a8a18f
+      state: >-
+        {% if is_state('binary_sensor.genset_connectivity', 'on') -%}
+          Yes
+        {% else -%}
+          No
+        {% endif -%}
 
-binary_sensor:
-  - platform: template
-    sensors:
-      generator_running:
-        friendly_name: Generator Running
-        value_template: "{{ is_state('sensor.genset_engine_state', 'Running') }}"
+  - binary_sensor:
+    - name: Generator Running
+      unique_id: 2386ca9d-8fac-40f0-b4c4-dc9bc27c1f24
+      state: "{{ is_state('sensor.genset_engine_state', 'Running') }}"
 
 automation:
   - alias: Refresh Generator Status
