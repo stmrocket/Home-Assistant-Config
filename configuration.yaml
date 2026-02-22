@@ -238,6 +238,9 @@ elkm1:
 api:
 alexa: !include alexa.yaml
 
+remote_homeassistant:
+  instances:
+
 input_select:
   doorbell_tone:
     name: Doorbell Sound
