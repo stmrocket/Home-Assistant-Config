@@ -79,9 +79,9 @@ template:
       state: >-
         {% if (states('sensor.genset_utility_voltage') | int > 230) and (states('sensor.genset_voltage') | int < 230) -%}
           Utility
-        {% (states('sensor.genset_utility_voltage') | int < 230) and (states('sensor.genset_voltage') | int > 230) -%}
+        {% elif (states('sensor.genset_utility_voltage') | int < 230) and (states('sensor.genset_voltage') | int > 230) -%}
           Generator
-        {% (states('sensor.genset_utility_voltage') | int > 230) and (states('sensor.genset_voltage') | int > 230) -%}
+        {% elif (states('sensor.genset_utility_voltage') | int > 230) and (states('sensor.genset_voltage') | int > 230) -%}
           Both
         {% else -%}
           None
