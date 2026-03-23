@@ -153,7 +153,7 @@ template:
 
     - name: HVAC Needs Bleach
       unique_id: 223828fe-62fa-4082-b807-4bd25008671e
-      value_template: >
+      state: >
         {% set x = states('sensor.time') %}
         {{ ((((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_bleach.state, none))) | int(none) /60/1440) | round(0, default=none)) > 30) and ( (((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_last_cool.state, none))) | int(none) /60/1440) | round(0, default=none)) <= 30 )}}
 
