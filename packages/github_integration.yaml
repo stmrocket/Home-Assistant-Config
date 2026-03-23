@@ -4,12 +4,11 @@ input_text:
   prev_git_version:
     name: Previous Git Version
 
-binary_sensor:
-  - platform: template
-    sensors:
-      git_update_ready:
-        friendly_name: "Update Ready"
-        value_template: "{{ not states('input_text.prev_git_version') == states('sensor.home_assistant_config') }}"
+template:
+  - binary_sensor:
+    - name: Git Update Ready
+      unique_id: ec3d8538-0f08-40f9-a90f-9885c0d9f756
+      state: "{{ not states('input_text.prev_git_version') == states('sensor.home_assistant_config') }}"
 
 shell_command:
   get_latest_config: bash /config/bin/update_config_from_github.sh

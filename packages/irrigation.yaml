@@ -11,20 +11,18 @@ input_number:
     step: 1
     mode: box
 
-sensor:
-  - platform: template
-    sensors:
-      program_drip_status:
-        unique_id: 697a92e1-35f7-4788-a643-d6c8f43e5568
-        friendly_name: Irrigation Schedule Drip Status
-        value_template: >-
-          {% if is_state('input_boolean.drip_irrigation_enabled', 'on') and is_state('switch.back_drip_valve', 'off') -%}
-            enabled
-          {% elif  is_state('input_boolean.drip_irrigation_enabled', 'on') and is_state('switch.back_drip_valve', 'on') -%}
-            running
-          {% else -%}
-            disabled
-          {% endif -%}
+template:
+  - sensor:
+    - name: Program Drip Status
+      unique_id: 697a92e1-35f7-4788-a643-d6c8f43e5568
+      state: >-
+        {% if is_state('input_boolean.drip_irrigation_enabled', 'on') and is_state('switch.back_drip_valve', 'off') -%}
+          enabled
+        {% elif  is_state('input_boolean.drip_irrigation_enabled', 'on') and is_state('switch.back_drip_valve', 'on') -%}
+          running
+        {% else -%}
+          disabled
+        {% endif -%}
 
 automation:
   - alias: Run Back Drip Irrigation
