@@ -1,19 +1,4 @@
 sensor:
-  - platform: template
-    sensors:
-      water_heater_status:
-        unique_id: 27a058f0-d528-4fc7-b58d-d92d90c8b96c
-        friendly_name: "Water Heater Status"
-        value_template: >-
-          {% if states('sensor.thermopile_voltage') | float(none) > 0.13-%} 
-            Idle
-          {% elif states('sensor.thermopile_voltage') | float(none) > 0.10-%}
-            Heating
-          {% elif  states('sensor.thermopile_voltage') | float(none) < 0.10-%}
-            Pilot Fail
-          {% else -%}
-            Error
-          {% endif -%}
   - platform: history_stats
     name: Water Heater Runtime
     entity_id: sensor.water_heater_status
@@ -22,6 +7,21 @@ sensor:
     start: "{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}"
     end: "{{ now() }}"
 
+template:
+  - sensor:
+    - name: Water Heater Status
+      unique_id: 27a058f0-d528-4fc7-b58d-d92d90c8b96c
+      state: >-
+        {% if states('sensor.thermopile_voltage') | float(none) > 0.13-%} 
+          Idle
+        {% elif states('sensor.thermopile_voltage') | float(none) > 0.10-%}
+          Heating
+        {% elif  states('sensor.thermopile_voltage') | float(none) < 0.10-%}
+          Pilot Fail
+        {% else -%}
+          Error
+        {% endif -%}
+        
 alert:
   water_heater_pilot_fail:
     name: Water Heater Fault
