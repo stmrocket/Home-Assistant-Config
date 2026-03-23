@@ -1,200 +1,199 @@
-sensor:
-  - platform: template
-    sensors:
-      mk3_nozzle_temp_actual:
-        unique_id: 0a289593-c8fa-4754-9835-492eda4e8237
-        value_template: "{{ (((states('sensor.prusamk3_5_nozzle_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
+template:
+  - sensor:
+    - name: MK3 Nozzle Temp Actual
+      unique_id: 0a289593-c8fa-4754-9835-492eda4e8237
+      state: "{{ (((states('sensor.prusamk3_5_nozzle_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
-      mk3_nozzle_temp_target:
-        unique_id: add18470-4f37-436f-a4a5-5932b6d262ea
-        value_template: "{{ (((states('sensor.prusamk3_5_nozzle_target_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
+    - name: MK3 Nozzle Temp Target
+      unique_id: add18470-4f37-436f-a4a5-5932b6d262ea
+      state: "{{ (((states('sensor.prusamk3_5_nozzle_target_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
-      mk3_bed_temp_actual:
-        unique_id: cfb3cde0-4404-4c21-8d2b-8d1cd4ec4333
-        value_template: "{{ (((states('sensor.prusamk3_5_heatbed_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
+    - name: MK3 Bed Temp Actual
+      unique_id: cfb3cde0-4404-4c21-8d2b-8d1cd4ec4333
+      state: "{{ (((states('sensor.prusamk3_5_heatbed_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
-      mk3_bed_temp_target:
-        unique_id: 5f4f6c06-5d5e-4902-9b32-7aca6df361fe
-        value_template: "{{ (((states('sensor.prusamk3_5_heatbed_target_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
+    - name: MK3 Bed Temp Target
+      unique_id: 5f4f6c06-5d5e-4902-9b32-7aca6df361fe
+      state: "{{ (((states('sensor.prusamk3_5_heatbed_target_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
 
-      mk3_elapsed_print_time:
-        unique_id: 98530297-8fa7-4acc-9415-9591ce81dd56
-        value_template: >-
-          {%- if not is_state('sensor.prusamk3_5_print_start','unavailable') %}
-            {% set time = as_timestamp(now(),0) - as_timestamp(states('sensor.prusamk3_5_print_start'),0) %}
-              {% set minutes = ((time / 60) % 60) | int(none)%}
-              {% set hours = (time / 3600) | int(none) %}
-                {%- if time < 60-%}
-                  00:00
+    - name: MK3 Elapsed Print Time
+      unique_id: 98530297-8fa7-4acc-9415-9591ce81dd56
+      state: >-
+        {%- if not is_state('sensor.prusamk3_5_print_start','unavailable') %}
+          {% set time = as_timestamp(now(),0) - as_timestamp(states('sensor.prusamk3_5_print_start'),0) %}
+            {% set minutes = ((time / 60) % 60) | int(none)%}
+            {% set hours = (time / 3600) | int(none) %}
+              {%- if time < 60-%}
+                00:00
+              {%- else -%}
+              {%- if hours == 0 -%}
+                00
+              {%- endif -%}
+              {%- if hours > 0 -%}
+            
+                {%- if hours < 10 -%}
+                  0{{ hours }}
                 {%- else -%}
-                {%- if hours == 0 -%}
-                  00
+                  {{ hours }}
                 {%- endif -%}
-                {%- if hours > 0 -%}
-              
-                  {%- if hours < 10 -%}
-                    0{{ hours }}
-                  {%- else -%}
-                    {{ hours }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- if minutes == 0 -%}
-                  :00
-                {%- endif -%}
-                {%- if minutes > 0 -%}
-                  {%- if minutes < 10 -%}
-                    :0{{ minutes }}
-                  {%- else -%}
-                    :{{ minutes }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- endif -%}
-          {%- else %}
-            0:00
-          {%- endif -%}
-
-      mk3_remaining_print_time:
-        unique_id: 1e4cf7bf-9d70-41e4-9acb-8d0fa0648b19
-        value_template: >-
-          {%- if not is_state('sensor.prusamk3_5_print_finish','unavailable') %}
-            {% set time = as_timestamp(states('sensor.prusamk3_5_print_finish'),0) - as_timestamp(now(),0) %}
-              {% set minutes = ((time / 60) % 60) | int(none)%}
-              {% set hours = (time / 3600) | int(none) %}
-                {%- if time < 60-%}
-                  00:00
+              {%- endif -%}
+              {%- if minutes == 0 -%}
+                :00
+              {%- endif -%}
+              {%- if minutes > 0 -%}
+                {%- if minutes < 10 -%}
+                  :0{{ minutes }}
                 {%- else -%}
-                {%- if hours == 0 -%}
-                  00
+                  :{{ minutes }}
                 {%- endif -%}
-                {%- if hours > 0 -%}
-              
-                  {%- if hours < 10 -%}
-                    0{{ hours }}
-                  {%- else -%}
-                    {{ hours }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- if minutes == 0 -%}
-                  :00
-                {%- endif -%}
-                {%- if minutes > 0 -%}
-                  {%- if minutes < 10 -%}
-                    :0{{ minutes }}
-                  {%- else -%}
-                    :{{ minutes }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- endif -%}
-          {%- else %}
-            0:00
-          {%- endif -%}
+              {%- endif -%}
+              {%- endif -%}
+        {%- else %}
+          0:00
+        {%- endif -%}
 
-      mk3_progress:
-        unique_id: 5bc8d179-2ca5-4f3f-a156-3c85f42ecf50
-        value_template: >-
-          {%- if is_state('sensor.prusamk3_5','printing') %}
-            {{ states('sensor.prusamk3_5_progress') }}
-          {%- elif is_state('sensor.prusamk3_5','finished') %}
-            100
-          {%- else %}
-            0
-          {%- endif -%}
-
-      mk4_nozzle_temp_actual:
-        unique_id: 80879247-1cbb-4f1c-956a-a8171af26a66
-        value_template: "{{ (((states('sensor.prusamk4_nozzle_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
-
-      mk4_nozzle_temp_target:
-        unique_id: 34503681-68e8-43c0-a04b-e394002d8b60
-        value_template: "{{ (((states('sensor.prusamk4_nozzle_target_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
-
-      mk4_bed_temp_actual:
-        unique_id: 5920b9c3-04e6-448c-a1b8-1f867f192136
-        value_template: "{{ (((states('sensor.prusamk4_heatbed_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
-
-      mk4_bed_temp_target:
-        unique_id: 3fa9cab5-8aea-4dfe-9a63-a6ae6f12b05b
-        value_template: "{{ (((states('sensor.prusamk4_heatbed_target_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
-
-      mk4_elapsed_print_time:
-        unique_id: fe93e2d9-8c12-4b3a-ae4c-211e37d12ae6
-        value_template: >-
-          {%- if not is_state('sensor.prusamk4_print_start','unavailable') %}
-            {% set time = as_timestamp(now(),0) - as_timestamp(states('sensor.prusamk4_print_start'),0) %}
-              {% set minutes = ((time / 60) % 60) | int(none)%}
-              {% set hours = (time / 3600) | int(none) %}
-                {%- if time < 60-%}
-                  00:00
+    - name: MK3 Remaining Print Time
+      unique_id: 1e4cf7bf-9d70-41e4-9acb-8d0fa0648b19
+      state: >-
+        {%- if not is_state('sensor.prusamk3_5_print_finish','unavailable') %}
+          {% set time = as_timestamp(states('sensor.prusamk3_5_print_finish'),0) - as_timestamp(now(),0) %}
+            {% set minutes = ((time / 60) % 60) | int(none)%}
+            {% set hours = (time / 3600) | int(none) %}
+              {%- if time < 60-%}
+                00:00
+              {%- else -%}
+              {%- if hours == 0 -%}
+                00
+              {%- endif -%}
+              {%- if hours > 0 -%}
+            
+                {%- if hours < 10 -%}
+                  0{{ hours }}
                 {%- else -%}
-                {%- if hours == 0 -%}
-                  00
+                  {{ hours }}
                 {%- endif -%}
-                {%- if hours > 0 -%}
-              
-                  {%- if hours < 10 -%}
-                    0{{ hours }}
-                  {%- else -%}
-                    {{ hours }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- if minutes == 0 -%}
-                  :00
-                {%- endif -%}
-                {%- if minutes > 0 -%}
-                  {%- if minutes < 10 -%}
-                    :0{{ minutes }}
-                  {%- else -%}
-                    :{{ minutes }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- endif -%}
-          {%- else %}
-            0:00
-          {%- endif -%}
-
-      mk4_remaining_print_time:
-        unique_id: 11065be8-d111-468c-970f-f6a15fb9e85c
-        value_template: >-
-          {%- if not is_state('sensor.prusamk4_print_finish','unavailable') %}
-            {% set time = as_timestamp(states('sensor.prusamk4_print_finish'),0) - as_timestamp(now(),0) %}
-              {% set minutes = ((time / 60) % 60) | int(none)%}
-              {% set hours = (time / 3600) | int(none) %}
-                {%- if time < 60-%}
-                  00:00
+              {%- endif -%}
+              {%- if minutes == 0 -%}
+                :00
+              {%- endif -%}
+              {%- if minutes > 0 -%}
+                {%- if minutes < 10 -%}
+                  :0{{ minutes }}
                 {%- else -%}
-                {%- if hours == 0 -%}
-                  00
+                  :{{ minutes }}
                 {%- endif -%}
-                {%- if hours > 0 -%}
-              
-                  {%- if hours < 10 -%}
-                    0{{ hours }}
-                  {%- else -%}
-                    {{ hours }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- if minutes == 0 -%}
-                  :00
-                {%- endif -%}
-                {%- if minutes > 0 -%}
-                  {%- if minutes < 10 -%}
-                    :0{{ minutes }}
-                  {%- else -%}
-                    :{{ minutes }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- endif -%}
-          {%- else %}
-            0:00
-          {%- endif -%}
+              {%- endif -%}
+              {%- endif -%}
+        {%- else %}
+          0:00
+        {%- endif -%}
 
-      mk4_progress:
-        unique_id: 9c642021-4f27-4ea6-9d62-35ba8b8db6ef
-        value_template: >-
-          {%- if is_state('sensor.prusamk4','printing') %}
-            {{ states('sensor.prusamk4_progress') }}
-          {%- elif is_state('sensor.prusamk4','finished') %}
-            100
-          {%- else %}
-            0
-          {%- endif -%}
+    - name: MK3 Progress
+      unique_id: 5bc8d179-2ca5-4f3f-a156-3c85f42ecf50
+      state: >-
+        {%- if is_state('sensor.prusamk3_5','printing') %}
+          {{ states('sensor.prusamk3_5_progress') }}
+        {%- elif is_state('sensor.prusamk3_5','finished') %}
+          100
+        {%- else %}
+          0
+        {%- endif -%}
+
+    - name: MK4 Nozzle Temp Actual
+      unique_id: 80879247-1cbb-4f1c-956a-a8171af26a66
+      state: "{{ (((states('sensor.prusamk4_nozzle_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
+
+    - name: MK4 Nozzle Temp Target
+      unique_id: 34503681-68e8-43c0-a04b-e394002d8b60
+      state: "{{ (((states('sensor.prusamk4_nozzle_target_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
+
+    - name: MK4 Bed Temp Actual
+      unique_id: 5920b9c3-04e6-448c-a1b8-1f867f192136
+      state: "{{ (((states('sensor.prusamk4_heatbed_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
+
+    - name: MK4 Bed Temp Target
+      unique_id: 3fa9cab5-8aea-4dfe-9a63-a6ae6f12b05b
+      state: "{{ (((states('sensor.prusamk4_heatbed_target_temperature') | float(none)) - 32) * 5/9) | round(1, default=none) }}"
+
+    - name: MK4 Elapsed Print Time
+      unique_id: fe93e2d9-8c12-4b3a-ae4c-211e37d12ae6
+      state: >-
+        {%- if not is_state('sensor.prusamk4_print_start','unavailable') %}
+          {% set time = as_timestamp(now(),0) - as_timestamp(states('sensor.prusamk4_print_start'),0) %}
+            {% set minutes = ((time / 60) % 60) | int(none)%}
+            {% set hours = (time / 3600) | int(none) %}
+              {%- if time < 60-%}
+                00:00
+              {%- else -%}
+              {%- if hours == 0 -%}
+                00
+              {%- endif -%}
+              {%- if hours > 0 -%}
+            
+                {%- if hours < 10 -%}
+                  0{{ hours }}
+                {%- else -%}
+                  {{ hours }}
+                {%- endif -%}
+              {%- endif -%}
+              {%- if minutes == 0 -%}
+                :00
+              {%- endif -%}
+              {%- if minutes > 0 -%}
+                {%- if minutes < 10 -%}
+                  :0{{ minutes }}
+                {%- else -%}
+                  :{{ minutes }}
+                {%- endif -%}
+              {%- endif -%}
+              {%- endif -%}
+        {%- else %}
+          0:00
+        {%- endif -%}
+
+    - name: MK4 Remaining Print Time
+      unique_id: 11065be8-d111-468c-970f-f6a15fb9e85c
+      state: >-
+        {%- if not is_state('sensor.prusamk4_print_finish','unavailable') %}
+          {% set time = as_timestamp(states('sensor.prusamk4_print_finish'),0) - as_timestamp(now(),0) %}
+            {% set minutes = ((time / 60) % 60) | int(none)%}
+            {% set hours = (time / 3600) | int(none) %}
+              {%- if time < 60-%}
+                00:00
+              {%- else -%}
+              {%- if hours == 0 -%}
+                00
+              {%- endif -%}
+              {%- if hours > 0 -%}
+            
+                {%- if hours < 10 -%}
+                  0{{ hours }}
+                {%- else -%}
+                  {{ hours }}
+                {%- endif -%}
+              {%- endif -%}
+              {%- if minutes == 0 -%}
+                :00
+              {%- endif -%}
+              {%- if minutes > 0 -%}
+                {%- if minutes < 10 -%}
+                  :0{{ minutes }}
+                {%- else -%}
+                  :{{ minutes }}
+                {%- endif -%}
+              {%- endif -%}
+              {%- endif -%}
+        {%- else %}
+          0:00
+        {%- endif -%}
+
+    - name: MK4 Progress
+      unique_id: 9c642021-4f27-4ea6-9d62-35ba8b8db6ef
+      state: >-
+        {%- if is_state('sensor.prusamk4','printing') %}
+          {{ states('sensor.prusamk4_progress') }}
+        {%- elif is_state('sensor.prusamk4','finished') %}
+          100
+        {%- else %}
+          0
+        {%- endif -%}

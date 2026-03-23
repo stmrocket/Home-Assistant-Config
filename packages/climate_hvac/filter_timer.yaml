@@ -76,22 +76,86 @@ automation:
         data_template:
           value: "{{ states('sensor.hvac_filter_differential_pressure') }}"
 
-binary_sensor:
-  - platform: template
-    sensors:
-      hvac_running:
-        friendly_name: HVAC Running
-        value_template: "{{ not is_state('sensor.hvac_system_state', 'Idle') }}"
+template:
+  - sensor:
+    - name: Furnace Filter Life
+      unique_id: bb7cb67d-a020-43d9-b708-d4b30dd837a5
+      state: >
+        {% set active = states('sensor.hvac_runtime_today') | float(none) %}
+        {% set runtime = states('input_number.hvac_runtime') | float(none) %}
+        {{ (runtime + active) | round(1, default=none) }}
+      unit_of_measurement: "h"
 
-      hvac_filter_needs_replacement:
-        friendly_name: HVAC Filter Needs Replacement
-        value_template: "{{ states('sensor.furnace_filter_life') | int(none) > states('input_number.replacement_threshold') | int(none) }}"
+    - name: Average Total Runtime Week
+      unique_id: f6ace7ea-4f83-4acd-920f-86d517780c9d
+      state: "{{ ((states('sensor.hvac_runtime_last_7_days') | float(none)) / 7) | round(2, default=none) }}"
+      unit_of_measurement: "h"
 
-      hvac_needs_bleach:
-        friendly_name: HVAC Needs Bleach
-        value_template: >
-          {% set x = states('sensor.time') %}
-          {{ ((((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_bleach.state, none))) | int(none) /60/1440) | round(0, default=none)) > 30) and ( (((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_last_cool.state, none))) | int(none) /60/1440) | round(0, default=none)) <= 30 )}}
+    - name: Furnace Filter Days Remaining
+      unique_id: 458b5f3a-0be7-4fe2-b638-1497848d0cbb
+      state: >
+        {% if (states('sensor.average_total_runtime_week') | float(none)) == 0 %}
+          > 30
+        {% elif ((((states('input_number.replacement_threshold') | float(none)) - (states('sensor.furnace_filter_life') | float(none))) / (states('sensor.average_total_runtime_week') | float(none))) | round(0, default=none)) > 30 %}
+          > 30
+        {% else %}
+          {{ (((states('input_number.replacement_threshold') | float(none)) - (states('sensor.furnace_filter_life') | float(none))) / (states('sensor.average_total_runtime_week') | float(none))) | round(0, default=none) }}
+        {% endif %}
+      unit_of_measurement: "d"
+
+    - name: Furnace Filter Last Replaced
+      unique_id: 4ff43697-1dfc-4003-9ad8-a3710b04d37b
+      state: "{{ states('input_text.furnace_filter')[:10] }}"
+
+    - name: Furnace Last Bleached
+      unique_id: b85843ea-49af-41d5-b6c0-302ad80c25a0
+      state: "{{ states('input_text.furnace_bleach')[:10] }}"
+
+    - name: Furnace Service Required
+      unique_id: 57f0279c-3677-4e4c-b892-a4e42c224820
+      state: >-
+        {% if is_state('binary_sensor.hvac_needs_bleach', 'on') -%}
+          Bleach
+        {% elif is_state('binary_sensor.hvac_filter_needs_replacement', 'on') -%}
+          Filter
+        {% else -%}
+          OK
+        {% endif -%}
+
+    - name: Beginning Filter DP
+      unique_id: bd87489a-7ebb-4518-9a4d-5315976416a3
+      state: "{{ states('input_number.beginning_filter_dp') }}"
+      unit_of_measurement: "Pa"
+
+    - name: Maximum Filter DP
+      unique_id: 63bde6c1-9b76-40df-a509-543ba8e8449d
+      state: "{{ states('input_number.maximum_filter_dp') }}"
+      unit_of_measurement: "Pa"
+
+    - name: Filter DP Increase
+      unique_id: 0beb9f43-fc30-4fdc-8503-0035e8be762a
+      state: >-
+        {% if (states('sensor.beginning_filter_dp') | float(none)) > 0 %}
+          {{ (((states('sensor.maximum_filter_dp') | float(none) - states('sensor.beginning_filter_dp') | float(none)) / states('sensor.beginning_filter_dp') | float(none)) * 100) | round(2, default=none) }}
+        {% else -%}
+          0
+        {% endif -%}
+      unit_of_measurement: "%"
+
+  - binary_sensor:
+    - name: HVAC Running
+      unique_id: 3f2e8fd2-0bf9-4d14-a0cd-82943c1a02db
+      state: "{{ not is_state('sensor.hvac_system_state', 'Idle') }}"
+
+    - name: HVAC Filter Needs Replacement
+      unique_id: 248b7463-a285-4cd2-b02a-183fb76f3ff7
+      state: "{{ states('sensor.furnace_filter_life') | int(none) > states('input_number.replacement_threshold') | int(none) }}"
+
+    - name: HVAC Needs Bleach
+      unique_id: 223828fe-62fa-4082-b807-4bd25008671e
+      value_template: >
+        {% set x = states('sensor.time') %}
+        {{ ((((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_bleach.state, none))) | int(none) /60/1440) | round(0, default=none)) > 30) and ( (((as_timestamp(now(), none) - (as_timestamp(states.input_text.furnace_last_cool.state, none))) | int(none) /60/1440) | round(0, default=none)) <= 30 )}}
 
 sensor:
   # Runtime yesterday (for use in storing runtime each night)
@@ -131,84 +195,6 @@ sensor:
     end: "{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}"
     duration:
       days: 7
-
-  - platform: template
-    sensors:
-      # Used to display current total runtime in frontend
-      furnace_filter_life:
-        unique_id: bb7cb67d-a020-43d9-b708-d4b30dd837a5
-        friendly_name: "Filter runtime"
-        value_template: >
-          {% set active = states('sensor.hvac_runtime_today') | float(none) %}
-          {% set runtime = states('input_number.hvac_runtime') | float(none) %}
-          {{ (runtime + active) | round(1, default=none) }}
-        unit_of_measurement: "h"
-
-      # Calculate average runtime in the last 7 days
-      average_total_runtime_week:
-        unique_id: f6ace7ea-4f83-4acd-920f-86d517780c9d
-        friendly_name: "Average total runtime last 7 days"
-        value_template: "{{ ((states('sensor.hvac_runtime_last_7_days') | float(none)) / 7) | round(2, default=none) }}"
-        unit_of_measurement: "h"
-
-      # Calculate number of days until filter will need to be changed based on replacement threshold and rolling average
-      furnace_filter_days_remaining:
-        unique_id: 458b5f3a-0be7-4fe2-b638-1497848d0cbb
-        friendly_name: "Furnace filter days remaining"
-        value_template: >
-          {% if (states('sensor.average_total_runtime_week') | float(none)) == 0 %}
-            > 30
-          {% elif ((((states('input_number.replacement_threshold') | float(none)) - (states('sensor.furnace_filter_life') | float(none))) / (states('sensor.average_total_runtime_week') | float(none))) | round(0, default=none)) > 30 %}
-            > 30
-          {% else %}
-            {{ (((states('input_number.replacement_threshold') | float(none)) - (states('sensor.furnace_filter_life') | float(none))) / (states('sensor.average_total_runtime_week') | float(none))) | round(0, default=none) }}
-          {% endif %}
-        unit_of_measurement: "d"
-
-      furnace_filter_last_replaced:
-        unique_id: 4ff43697-1dfc-4003-9ad8-a3710b04d37b
-        friendly_name: Last Replaced
-        value_template: "{{ states('input_text.furnace_filter')[:10] }}"
-
-      furnace_last_bleached:
-        unique_id: b85843ea-49af-41d5-b6c0-302ad80c25a0
-        friendly_name: Last Bleached
-        value_template: "{{ states('input_text.furnace_bleach')[:10] }}"
-
-      furnace_service_required:
-        unique_id: 57f0279c-3677-4e4c-b892-a4e42c224820
-        friendly_name: HVAC Service Required
-        value_template: >-
-          {% if is_state('binary_sensor.hvac_needs_bleach', 'on') -%}
-            Bleach
-          {% elif is_state('binary_sensor.hvac_filter_needs_replacement', 'on') -%}
-            Filter
-          {% else -%}
-            OK
-          {% endif -%}
-
-      beginning_filter_dp:
-        unique_id: bd87489a-7ebb-4518-9a4d-5315976416a3
-        friendly_name: Beginning Filter Differential Pressure
-        value_template: "{{ states('input_number.beginning_filter_dp') }}"
-        unit_of_measurement: "Pa"
-
-      maximum_filter_dp:
-        unique_id: 63bde6c1-9b76-40df-a509-543ba8e8449d
-        friendly_name: Maximum Filter Differential Pressure
-        value_template: "{{ states('input_number.maximum_filter_dp') }}"
-        unit_of_measurement: "Pa"
-
-      filter_dp_increase:
-        unique_id: 0beb9f43-fc30-4fdc-8503-0035e8be762a
-        friendly_name: Filter Differential Pressure Increase
-        value_template: >-
-          {% if (states('sensor.beginning_filter_dp') | float(none)) > 0 %}
-            {{ (((states('sensor.maximum_filter_dp') | float(none) - states('sensor.beginning_filter_dp') | float(none)) / states('sensor.beginning_filter_dp') | float(none)) * 100) | round(2, default=none) }}
-          {% else -%}
-            0
-          {% endif -%}
-        unit_of_measurement: "%"
 
 script:
   # Reset filter change date and set total runtime to zero
