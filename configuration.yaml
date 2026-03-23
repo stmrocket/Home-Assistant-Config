@@ -147,6 +147,8 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-wallpanel/wallpanel.js
       type: module
+    - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+      type: module
 
 python_script:
 
