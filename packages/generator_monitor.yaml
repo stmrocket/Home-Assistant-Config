@@ -34,7 +34,7 @@ template:
           Offline
         {% elif  (states('sensor.genset_voltage') | int < 230) and is_state('sensor.genset_engine_state', 'Running') -%}
           Unavailable Running
-        {% elif  is_state('sensor.generator_state', 'Standby') -%}
+        {% elif  is_state('sensor.generator_status', 'Standby') -%}
           Unavailable
         {% elif  states('sensor.genset_voltage') | int > 230 -%}
           Available
