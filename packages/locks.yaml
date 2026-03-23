@@ -1,55 +1,103 @@
-binary_sensor:
-  - platform: template
-    sensors:
-      front_door_lock_battery_low:
-        unique_id: e1d0313f-1620-4204-8b2a-2a795626dc30
-        value_template: "{{ states('sensor.front_door_lock_battery_level') | int(none) < 40 }}"
-        friendly_name: "Front Door Lock Battery Low"
-        delay_on:
-          minutes: 5
-
-      back_door_lock_battery_low:
-        unique_id: 7e8da13e-ffe7-45a1-ac7d-45e0d7b1bb6e
-        value_template: "{{ states('sensor.back_door_lock_battery_level') | int(none) < 40 }}"
-        friendly_name: "Back Door Lock Battery Low"
-        delay_on:
-          minutes: 5
-
-      garage_entry_lock_battery_low:
-        unique_id: b216b903-9a51-40a5-a06c-752957623191
-        value_template: "{{ states('sensor.garage_entry_lock_battery_level') | int(none) < 40 }}"
-        friendly_name: "Garage Entry Lock Battery Low"
-        delay_on:
-          minutes: 5
-
-      shed_door_lock_battery_low:
-        unique_id: 8a835794-d8b2-4da1-bc6e-6d2090601b8b
-        value_template: "{{ states('sensor.shed_door_lock_battery_level') | int(none) < 40 }}"
-        friendly_name: "Shed Door Lock Battery Low"
-        delay_on:
-          minutes: 5
-
 template:
+  - sensor:
+    - name: Front Door Lock Status
+      unique_id: caabf583-c19a-4b69-9be7-cdd6f80a4978
+      state: "{{ states('input_text.front_door_lock_status') }}"
+    - name: Back Door Lock Status
+      unique_id: e8c94281-d630-4f84-acc2-79bc0678fd25
+      state: "{{ states('input_text.back_door_lock_status') }}"
+    - name: Garage Entry Lock Status
+      unique_id: 2c529f4f-f694-4be7-93bf-ef7a52ab05bc
+      state: "{{ states('input_text.garage_entry_lock_status') }}"
+    - name: Shed Door Lock Status
+      unique_id: d9d31320-28a8-4494-a573-026a04c41a8a
+      state: "{{ states('input_text.shed_door_lock_status') }}"
+    - name: Front Door Status
+      unique_id: d1e82baf-e948-46ba-958b-59b7f797b19c
+      state: >-
+        {% if is_state('binary_sensor.front_door_status', 'on') -%}
+          open
+        {% elif  is_state('lock.front_door_lock', 'locked') -%}
+          locked
+        {% elif is_state('lock.front_door_lock', 'unlocked') -%}
+          unlocked
+        {% else -%}
+          error
+        {% endif -%}
+    - name: Back Door Status
+      unique_id: 2957980c-5c66-4bec-a995-1317223ba61e
+      state: >-
+        {% if is_state('binary_sensor.back_door_status', 'on') -%}
+          open
+        {% elif  is_state('lock.back_door_lock', 'locked') -%}
+          locked
+        {% elif is_state('lock.back_door_lock', 'unlocked') -%}
+          unlocked
+        {% else -%}
+          error
+        {% endif -%}
+    - name: Garage Entry Status
+      unique_id: 494d27d7-8755-4e12-9dfb-9faaa4ff70a1
+      state: >-
+        {% if is_state('binary_sensor.garage_entry_status', 'on') -%}
+          open
+        {% elif  is_state('lock.garage_entry_lock', 'locked') -%}
+          locked
+        {% elif is_state('lock.garage_entry_lock', 'unlocked') -%}
+          unlocked
+        {% else -%}
+          error
+        {% endif -%}
+    - name: Shed Door Status
+      unique_id: 398b10a6-34ff-4216-931f-ae013b1f5e1e
+      state: >-
+        {% if is_state('binary_sensor.shed_door_status', 'on') -%}
+          open
+        {% elif  is_state('lock.shed_door', 'locked') -%}
+          locked
+        {% elif is_state('lock.shed_door', 'unlocked') -%}
+          unlocked
+        {% else -%}
+          error
+        {% endif -%}
+
   - binary_sensor:
     - name: Front Door Status
       unique_id: 7c0b248c-2dc9-42f6-8e6b-6d1b53dac595
       state: "{{ not is_state('sensor.elk_front_door', 'Normal') }}"
-      device_class: door
-    
+      device_class: door    
     - name: Back Door Status
       unique_id: c35b578c-26c7-44af-9a22-4e58cfadef5d
       state: "{{ not is_state('sensor.elk_back_door', 'Normal') }}"
-      device_class: door
-    
+      device_class: door    
     - name: Garage Entry Status
       unique_id: caf86bcd-12c1-4dd3-9b9d-29e25bd81ed8
       state: "{{ not is_state('sensor.elk_garage_entry', 'Normal') and not is_state('sensor.elk_garage_entry', 'Bypassed') }}"
-      device_class: door
-    
+      device_class: door    
     - name: Shed Door Status
       unique_id: 60a6e39b-cd8a-4b19-8a0b-4e12b9ab4cf7
       state: "{{ not is_state('sensor.elk_shed_door', 'Normal') }}"
       device_class: door
+    - name: Front Door Lock Battery Low
+      unique_id: e1d0313f-1620-4204-8b2a-2a795626dc30
+      state: "{{ states('sensor.front_door_lock_battery_level') | int(none) < 40 }}"
+      delay_on:
+        minutes: 5
+    - name: Back Door Lock Battery Low
+      unique_id: 7e8da13e-ffe7-45a1-ac7d-45e0d7b1bb6e
+      state: "{{ states('sensor.back_door_lock_battery_level') | int(none) < 40 }}"
+      delay_on:
+        minutes: 5
+    - name: Garage Entry Lock Battery Low
+      unique_id: b216b903-9a51-40a5-a06c-752957623191
+      state: "{{ states('sensor.garage_entry_lock_battery_level') | int(none) < 40 }}"
+      delay_on:
+        minutes: 5
+    - name: Shed Door Lock Battery Low
+      unique_id: 8a835794-d8b2-4da1-bc6e-6d2090601b8b
+      state: "{{ states('sensor.shed_door_lock_battery_level') | int(none) < 40 }}"
+      delay_on:
+        minutes: 5
 
 alert:
   front_door_lock_battery_low:
@@ -109,85 +157,6 @@ input_text:
     name: Garage Entry Lock Status
   shed_door_lock_status:
     name: Shed Door Lock Status
-
-sensor:
-  - platform: template
-    sensors:
-      front_door_lock_status:
-        unique_id: caabf583-c19a-4b69-9be7-cdd6f80a4978
-        friendly_name: Front Door Lock Status
-        value_template: "{{ states('input_text.front_door_lock_status') }}"
-
-      back_door_lock_status:
-        unique_id: e8c94281-d630-4f84-acc2-79bc0678fd25
-        friendly_name: Back Door Lock Status
-        value_template: "{{ states('input_text.back_door_lock_status') }}"
-
-      garage_entry_lock_status:
-        unique_id: 2c529f4f-f694-4be7-93bf-ef7a52ab05bc
-        friendly_name: Garage Entry Lock Status
-        value_template: "{{ states('input_text.garage_entry_lock_status') }}"
-
-      shed_door_lock_status:
-        unique_id: d9d31320-28a8-4494-a573-026a04c41a8a
-        friendly_name: Shed Door Lock Status
-        value_template: "{{ states('input_text.shed_door_lock_status') }}"
-        
-      front_door_status:
-        unique_id: d1e82baf-e948-46ba-958b-59b7f797b19c
-        friendly_name: Front Door Status
-        value_template: >-
-          {% if is_state('binary_sensor.front_door_status', 'on') -%}
-            open
-          {% elif  is_state('lock.front_door_lock', 'locked') -%}
-            locked
-          {% elif is_state('lock.front_door_lock', 'unlocked') -%}
-            unlocked
-          {% else -%}
-            error
-          {% endif -%}
-
-      back_door_status:
-        unique_id: 2957980c-5c66-4bec-a995-1317223ba61e
-        friendly_name: Back Door Status
-        value_template: >-
-          {% if is_state('binary_sensor.back_door_status', 'on') -%}
-            open
-          {% elif  is_state('lock.back_door_lock', 'locked') -%}
-            locked
-          {% elif is_state('lock.back_door_lock', 'unlocked') -%}
-            unlocked
-          {% else -%}
-            error
-          {% endif -%}
-
-      garage_entry_status:
-        unique_id: 494d27d7-8755-4e12-9dfb-9faaa4ff70a1
-        friendly_name: Garage Entry Status
-        value_template: >-
-          {% if is_state('binary_sensor.garage_entry_status', 'on') -%}
-            open
-          {% elif  is_state('lock.garage_entry_lock', 'locked') -%}
-            locked
-          {% elif is_state('lock.garage_entry_lock', 'unlocked') -%}
-            unlocked
-          {% else -%}
-            error
-          {% endif -%}
-
-      shed_door_status:
-        unique_id: 398b10a6-34ff-4216-931f-ae013b1f5e1e
-        friendly_name: Garage Entry Status
-        value_template: >-
-          {% if is_state('binary_sensor.shed_door_status', 'on') -%}
-            open
-          {% elif  is_state('lock.shed_door', 'locked') -%}
-            locked
-          {% elif is_state('lock.shed_door', 'unlocked') -%}
-            unlocked
-          {% else -%}
-            error
-          {% endif -%}
 
 timer:
   front_door:
