@@ -210,7 +210,7 @@ cards:
                 hold_action: none
 
               - type: state-label
-                entity: sensor.generator_state
+                entity: sensor.generator_status
                 style:
                   left: 50%
                   top: 9%
