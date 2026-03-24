@@ -19,7 +19,7 @@ mqtt:
     - name: "Houston METAR Map Version"
       unique_id: 6fd1946b-0dbd-48bc-a89f-7c7c0d0a3ca5
       state_topic: "metar/hou/tele/status"
-      value_template: "{{value_json['espVersion']}}"
+      state: "{{value_json['espVersion']}}"
       availability_topic: "metar/hou/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
@@ -27,7 +27,7 @@ mqtt:
     - name: "Houston METAR Map Uptime"
       unique_id: 9ced0f61-1fcc-4e23-a115-3176109e6e53
       state_topic: "metar/hou/tele/status"
-      value_template: "{{value_json['espUptime']}}"
+      state: "{{value_json['espUptime']}}"
       availability_topic: "metar/hou/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
@@ -35,7 +35,7 @@ mqtt:
     - name: "Houston METAR Map RSSI"
       unique_id: 686e2bdc-0314-433f-818b-623fa096a6c0
       state_topic: "metar/hou/tele/status"
-      value_template: "{{value_json['signalStrength']}}"
+      state: "{{value_json['signalStrength']}}"
       availability_topic: "metar/hou/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
@@ -43,7 +43,7 @@ mqtt:
     - name: "Houston METAR Map IP"
       unique_id: f41a0ce8-bf2d-412b-bee8-cb78328fc55f
       state_topic: "metar/hou/tele/status"
-      value_template: "{{value_json['mapIP']}}"
+      state: "{{value_json['mapIP']}}"
       availability_topic: "metar/hou/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
@@ -51,7 +51,7 @@ mqtt:
     - name: "Houston METAR Map Free Heap"
       unique_id: f2aadb13-84bb-419e-bc84-3b0ed63bf686
       state_topic: "metar/hou/tele/status"
-      value_template: "{{value_json['heapFree']}}"
+      state: "{{value_json['heapFree']}}"
       availability_topic: "metar/hou/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
@@ -59,7 +59,7 @@ mqtt:
     - name: "Houston METAR Map Heap Fragmentation"
       unique_id: 40f5ad64-6ebe-4297-8719-59e996a0c94a
       state_topic: "metar/hou/tele/status"
-      value_template: "{{value_json['heapFragmentation']}}"
+      state: "{{value_json['heapFragmentation']}}"
       availability_topic: "metar/hou/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
@@ -67,7 +67,7 @@ mqtt:
     - name: "Houston METAR Map Core Version"
       unique_id: c353cbcf-eabc-4508-8625-3fa3fe1b90c8
       state_topic: "metar/hou/tele/status"
-      value_template: "{{value_json['espCore']}}"
+      state: "{{value_json['espCore']}}"
       availability_topic: "metar/hou/tele/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
@@ -83,18 +83,16 @@ input_boolean:
   hou_metar_mode: #Off is METAR and on is temperature...
     name: Houston METAR Map Display Mode
 
-sensor:
-  - platform: template
-    sensors:
-      hou_metar_mode_clean:
-        unique_id: c6d01a93-7a94-44b1-930c-428886df1858
-        friendly_name: HOU METAR Mode Clean Name
-        value_template: >-
-          {% if is_state('sensor.hou_metar_mode', 'TEMP') -%}
-            Temperature
-          {% elif is_state('sensor.hou_metar_mode', 'METAR') -%}
-            METAR
-          {% endif -%}
+template:
+  - sensor:
+    - name: HOU METAR Mode Clean
+      unique_id: c6d01a93-7a94-44b1-930c-428886df1858
+      state: >-
+        {% if is_state('sensor.hou_metar_mode', 'TEMP') -%}
+          Temperature
+        {% elif is_state('sensor.hou_metar_mode', 'METAR') -%}
+          METAR
+        {% endif -%}
 
 automation:
   - alias: Update Houston METAR Map Display Mode

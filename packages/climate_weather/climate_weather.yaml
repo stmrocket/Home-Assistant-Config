@@ -1,254 +1,271 @@
-sensor:
-  - platform: template
-    sensors:
-      pws_url:
-        unique_id: 9b310612-c75f-4b73-8ab9-dadd0e78a176
-        value_template: !secret pws_url
+template:
+  - sensor:
+    - name: PWS URL
+      unique_id: 9b310612-c75f-4b73-8ab9-dadd0e78a176
+      state: !secret pws_url
 
-      weather_description:
-        unique_id: 000cea9f-418c-43cc-9c1d-1635e560fd07
-        value_template: >-
-          {% if is_state('input_boolean.is_raining','on') -%}
-            {{ states('sensor.openweathermap_current_weather_alerts') }}  Rain now.  {{ states('sensor.openweathermap_weekly_summary') }}
-          {% else -%}
-          {{ states('sensor.openweathermap_current_weather_alerts') }}  {{ states('sensor.openweathermap_weekly_summary') }}
-          {% endif -%}
+    - name: Weather Description
+      unique_id: 000cea9f-418c-43cc-9c1d-1635e560fd07
+      state: >-
+        {% if is_state('input_boolean.is_raining','on') -%}
+          {{ states('sensor.openweathermap_current_weather_alerts') }}  Rain now.  {{ states('sensor.openweathermap_weekly_summary') }}
+        {% else -%}
+        {{ states('sensor.openweathermap_current_weather_alerts') }}  {{ states('sensor.openweathermap_weekly_summary') }}
+        {% endif -%}
       
-      local_apparent_temperature:
-        unique_id: ea5a7b4f-9cb5-4774-9360-5d92d52cd7c6
-        value_template: >-
-          {% set temp = (states('sensor.acurite_outside_temperature') | float(0) - 32) * (5/9) %}
-          {% set ws = states('sensor.acurite_atlas_wind_speed') | float(0) / 2.237 %}
-          {% set p = (states('sensor.acurite_outside_humidity') | float(0) / 100) * 6.105 * e**((17.27 * temp) / (237.7 + temp)) %}
-          {% set atc = temp + (0.33 * p) - (0.70 * ws) - 4 %}
-          {% set at = (atc * (9/5)) + 32 %}
-          {{ at }}
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Local Apparent Temperature
+      unique_id: ea5a7b4f-9cb5-4774-9360-5d92d52cd7c6
+      state: >-
+        {% set temp = (states('sensor.acurite_outside_temperature') | float(0) - 32) * (5/9) %}
+        {% set ws = states('sensor.acurite_atlas_wind_speed') | float(0) / 2.237 %}
+        {% set p = (states('sensor.acurite_outside_humidity') | float(0) / 100) * 6.105 * e**((17.27 * temp) / (237.7 + temp)) %}
+        {% set atc = temp + (0.33 * p) - (0.70 * ws) - 4 %}
+        {% set at = (atc * (9/5)) + 32 %}
+        {{ at }}
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      local_uv_risk:
-        unique_id: 5b4f6c6c-95ba-4161-b7ee-4a09e8376035
-        value_template: >-
-          {% if states("sensor.acurite_atlas_uv_index") | int(0) >= 0 and states("sensor.acurite_atlas_uv_index") | int(0) <= 2 -%}
-            Low
-          {%- elif states("sensor.acurite_atlas_uv_index") | int(0) > 2 and states("sensor.acurite_atlas_uv_index") | int(0) <= 5 -%}
-            Moderate
-          {%- elif states("sensor.acurite_atlas_uv_index") | int(0) > 5 and states("sensor.acurite_atlas_uv_index") | int(0) <= 7 -%}
-            High
-          {%- elif states("sensor.acurite_atlas_uv_index") | int(0) > 7 and states("sensor.acurite_atlas_uv_index") | int(0) <= 10 -%}
-            Very High
-          {%- elif states("sensor.acurite_atlas_uv_index") | int(0) > 10 -%}
-            Extreme
-          {%- endif %}  
+    - name: Local UV Risk
+      unique_id: 5b4f6c6c-95ba-4161-b7ee-4a09e8376035
+      state: >-
+        {% if states("sensor.acurite_atlas_uv_index") | int(0) >= 0 and states("sensor.acurite_atlas_uv_index") | int(0) <= 2 -%}
+          Low
+        {%- elif states("sensor.acurite_atlas_uv_index") | int(0) > 2 and states("sensor.acurite_atlas_uv_index") | int(0) <= 5 -%}
+          Moderate
+        {%- elif states("sensor.acurite_atlas_uv_index") | int(0) > 5 and states("sensor.acurite_atlas_uv_index") | int(0) <= 7 -%}
+          High
+        {%- elif states("sensor.acurite_atlas_uv_index") | int(0) > 7 and states("sensor.acurite_atlas_uv_index") | int(0) <= 10 -%}
+          Very High
+        {%- elif states("sensor.acurite_atlas_uv_index") | int(0) > 10 -%}
+          Extreme
+        {%- endif %}  
 
-      local_uv_combined:
-        unique_id:  66433b12-f157-4564-b5eb-37143851387d
-        value_template: '{{ states("sensor.local_uv_risk") }} - {{ states("sensor.acurite_atlas_uv_index") }}'
+    - name: Local UV Combined
+      unique_id:  66433b12-f157-4564-b5eb-37143851387d
+      state: '{{ states("sensor.local_uv_risk") }} - {{ states("sensor.acurite_atlas_uv_index") }}'
 
-      temp_high_overall:
-        unique_id: a4fbbd9b-6fcb-49f1-a436-c5bceaeedd25
-        value_template: "{{ states('input_number.temp_high_overall') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Overall
+      unique_id: a4fbbd9b-6fcb-49f1-a436-c5bceaeedd25
+      state: "{{ states('input_number.temp_high_overall') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_overall:
-        unique_id: 7f85a7fc-99a8-48e3-92c2-499160abb95d
-        value_template: "{{ states('input_number.temp_low_overall') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Overall
+      unique_id: 7f85a7fc-99a8-48e3-92c2-499160abb95d
+      state: "{{ states('input_number.temp_low_overall') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_day:
-        unique_id: 9f0d2fc8-d601-4d48-8dff-ded2d97e4749
-        value_template: "{{ states('input_number.temp_high_day') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Day
+      unique_id: 9f0d2fc8-d601-4d48-8dff-ded2d97e4749
+      state: "{{ states('input_number.temp_high_day') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_day:
-        unique_id: fdeebfac-5529-452f-b722-25d88e2b0d5c
-        value_template: "{{ states('input_number.temp_low_day') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Day
+      unique_id: fdeebfac-5529-452f-b722-25d88e2b0d5c
+      state: "{{ states('input_number.temp_low_day') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_week:
-        unique_id: 938ad2bf-4ad5-44d4-af70-3f4d1509cf72
-        value_template: "{{ states('input_number.temp_high_week') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Week
+      unique_id: 938ad2bf-4ad5-44d4-af70-3f4d1509cf72
+      state: "{{ states('input_number.temp_high_week') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_week:
-        unique_id: d769b528-60e3-4d53-bc9e-3218b28767a5
-        value_template: "{{ states('input_number.temp_low_week') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Week
+      unique_id: d769b528-60e3-4d53-bc9e-3218b28767a5
+      state: "{{ states('input_number.temp_low_week') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month:
-        unique_id: fbb7ee84-b101-4027-973f-0433e16d8285
-        value_template: "{{ states('input_number.temp_high_month') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month
+      unique_id: fbb7ee84-b101-4027-973f-0433e16d8285
+      state: "{{ states('input_number.temp_high_month') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month:
-        unique_id: 6d078100-57fe-42bc-b0e9-2d7324029b0c
-        value_template: "{{ states('input_number.temp_low_month') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month
+      unique_id: 6d078100-57fe-42bc-b0e9-2d7324029b0c
+      state: "{{ states('input_number.temp_low_month') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_year:
-        unique_id: 56f83d4e-a60f-4d2f-9e43-d6209231f971
-        value_template: "{{ states('input_number.temp_high_year') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Year
+      unique_id: 56f83d4e-a60f-4d2f-9e43-d6209231f971
+      state: "{{ states('input_number.temp_high_year') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_year:
-        unique_id: c5f83210-0131-4560-9853-030bab5a6bde
-        value_template: "{{ states('input_number.temp_low_year') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Year
+      unique_id: c5f83210-0131-4560-9853-030bab5a6bde
+      state: "{{ states('input_number.temp_low_year') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_1:
-        unique_id: fd015f9a-9b74-4ffc-a65c-6e63580e3578
-        value_template: "{{ states('input_number.temp_high_month_1') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 1
+      unique_id: fd015f9a-9b74-4ffc-a65c-6e63580e3578
+      state: "{{ states('input_number.temp_high_month_1') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_1:
-        unique_id: 4eec2945-9c28-40ff-92d6-9b4385225953
-        value_template: "{{ states('input_number.temp_low_month_1') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 1
+      unique_id: 4eec2945-9c28-40ff-92d6-9b4385225953
+      state: "{{ states('input_number.temp_low_month_1') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_2:
-        unique_id: a8cb2f31-138f-4801-a4b5-6b1345125d50
-        value_template: "{{ states('input_number.temp_high_month_2') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 2
+      unique_id: a8cb2f31-138f-4801-a4b5-6b1345125d50
+      state: "{{ states('input_number.temp_high_month_2') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_2:
-        unique_id: 4fe1ddbd-8bea-412d-9f67-44853677db41
-        value_template: "{{ states('input_number.temp_low_month_2') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 2
+      unique_id: 4fe1ddbd-8bea-412d-9f67-44853677db41
+      state: "{{ states('input_number.temp_low_month_2') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_3:
-        unique_id: 3fb64b48-3b80-4a5a-9bd8-f6b13039f848
-        value_template: "{{ states('input_number.temp_high_month_3') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 3
+      unique_id: 3fb64b48-3b80-4a5a-9bd8-f6b13039f848
+      state: "{{ states('input_number.temp_high_month_3') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_3:
-        unique_id: 2c0ac36e-937c-4a1b-acf0-8a83910073d4
-        value_template: "{{ states('input_number.temp_low_month_3') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 3
+      unique_id: 2c0ac36e-937c-4a1b-acf0-8a83910073d4
+      state: "{{ states('input_number.temp_low_month_3') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_4:
-        unique_id: 8713b630-085d-4e10-9bc7-224cb0914d97
-        value_template: "{{ states('input_number.temp_high_month_4') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 4
+      unique_id: 8713b630-085d-4e10-9bc7-224cb0914d97
+      state: "{{ states('input_number.temp_high_month_4') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_4:
-        unique_id: a55dc4d4-97d5-4fd9-b043-3a1bf1e21bc0
-        value_template: "{{ states('input_number.temp_low_month_4') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 4
+      unique_id: a55dc4d4-97d5-4fd9-b043-3a1bf1e21bc0
+      state: "{{ states('input_number.temp_low_month_4') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_5:
-        unique_id: 47a55b83-812d-4795-89b1-6a8a6dea56cc
-        value_template: "{{ states('input_number.temp_high_month_5') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 5
+      unique_id: 47a55b83-812d-4795-89b1-6a8a6dea56cc
+      state: "{{ states('input_number.temp_high_month_5') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_5:
-        unique_id: 58bd06a4-4c98-4a6a-8b42-0646baca3046
-        value_template: "{{ states('input_number.temp_low_month_5') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 5
+      unique_id: 58bd06a4-4c98-4a6a-8b42-0646baca3046
+      state: "{{ states('input_number.temp_low_month_5') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_6:
-        unique_id: 8f7712d4-2e63-445e-a0cb-0d3c2f6e7f11
-        value_template: "{{ states('input_number.temp_high_month_6') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 6
+      unique_id: 8f7712d4-2e63-445e-a0cb-0d3c2f6e7f11
+      state: "{{ states('input_number.temp_high_month_6') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_6:
-        unique_id: 520698f2-be05-4a5b-9feb-804e1e4d1610
-        value_template: "{{ states('input_number.temp_low_month_6') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 6
+      unique_id: 520698f2-be05-4a5b-9feb-804e1e4d1610
+      state: "{{ states('input_number.temp_low_month_6') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_7:
-        unique_id: a9a9360a-3a2b-49e9-b066-eda4f7ee61dc
-        value_template: "{{ states('input_number.temp_high_month_7') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 7
+      unique_id: a9a9360a-3a2b-49e9-b066-eda4f7ee61dc
+      state: "{{ states('input_number.temp_high_month_7') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_7:
-        unique_id: 335316a3-4a7c-47c5-b01e-b6636a7604ff
-        value_template: "{{ states('input_number.temp_low_month_7') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 7
+      unique_id: 335316a3-4a7c-47c5-b01e-b6636a7604ff
+      state: "{{ states('input_number.temp_low_month_7') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_8:
-        unique_id: 252b8c2e-9a11-4058-9d23-76154a23764e
-        value_template: "{{ states('input_number.temp_high_month_8') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 8
+      unique_id: 252b8c2e-9a11-4058-9d23-76154a23764e
+      state: "{{ states('input_number.temp_high_month_8') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_8:
-        unique_id: 867b44cd-8a3e-45a4-b0ef-63d0bdabc869
-        value_template: "{{ states('input_number.temp_low_month_8') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 8
+      unique_id: 867b44cd-8a3e-45a4-b0ef-63d0bdabc869
+      state: "{{ states('input_number.temp_low_month_8') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_9:
-        unique_id: 4019589e-f6fd-4928-b1d6-200df2a6ac1a
-        value_template: "{{ states('input_number.temp_high_month_9') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 9
+      unique_id: 4019589e-f6fd-4928-b1d6-200df2a6ac1a
+      state: "{{ states('input_number.temp_high_month_9') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_9:
-        unique_id: d19a9935-0553-4f06-88c2-249c3212d548
-        value_template: "{{ states('input_number.temp_low_month_9') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 9
+      unique_id: d19a9935-0553-4f06-88c2-249c3212d548
+      state: "{{ states('input_number.temp_low_month_9') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_10:
-        unique_id: b54868d1-a8cd-418f-b6ae-1023ee51e1f1
-        value_template: "{{ states('input_number.temp_high_month_10') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 10
+      unique_id: b54868d1-a8cd-418f-b6ae-1023ee51e1f1
+      state: "{{ states('input_number.temp_high_month_10') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_10:
-        unique_id: 69c76273-3769-4f1b-8bcd-d84efceaec95
-        value_template: "{{ states('input_number.temp_low_month_10') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 10
+      unique_id: 69c76273-3769-4f1b-8bcd-d84efceaec95
+      state: "{{ states('input_number.temp_low_month_10') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_11:
-        unique_id: e7a80443-5ead-4110-89a8-c90ec777662d
-        value_template: "{{ states('input_number.temp_high_month_11') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 11
+      unique_id: e7a80443-5ead-4110-89a8-c90ec777662d
+      state: "{{ states('input_number.temp_high_month_11') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_11:
-        unique_id: ec74d6fc-5c90-4928-bcbd-05a5125c6202
-        value_template: "{{ states('input_number.temp_low_month_11') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 11
+      unique_id: ec74d6fc-5c90-4928-bcbd-05a5125c6202
+      state: "{{ states('input_number.temp_low_month_11') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_high_month_12:
-        unique_id: ba70cc0e-f565-4aee-8ae2-062d3315ec02
-        value_template: "{{ states('input_number.temp_high_month_12') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp High Month 12
+      unique_id: ba70cc0e-f565-4aee-8ae2-062d3315ec02
+      state: "{{ states('input_number.temp_high_month_12') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature
 
-      temp_low_month_12:
-        unique_id: 1650eed3-7762-498d-8bc4-81f66b8da975
-        value_template: "{{ states('input_number.temp_low_month_12') | float(none) | round(1, default=none) }}"
-        unit_of_measurement: "°F"
-        device_class: temperature
+    - name: Temp Low Month 12
+      unique_id: 1650eed3-7762-498d-8bc4-81f66b8da975
+      state: "{{ states('input_number.temp_low_month_12') | float(none) | round(1, default=none) }}"
+      unit_of_measurement: "°F"
+      device_class: temperature    
+    
+    - name: AcuRite WS Wind Speed Buffered
+      unique_id: bb04804b-cad8-4bda-9124-e249215761aa
+      unit_of_measurement: "mph"
+      device_class: wind_speed
+      state_class: measurement
+      state: "{{ states('sensor.acurite_atlas_wind_speed') }}"
+      attributes:
+          minute_counter: "{{ now().minute }}"
+    
+    - name: AcuRite WS Wind Direction Buffered
+      unique_id: f220269c-ee0b-4024-bc93-d74b4ed7cdf7
+      unit_of_measurement: "°"
+      state_class: measurement
+      state: "{{ states('sensor.acurite_atlas_wind_direction') }}"
+      attributes:
+          minute_counter: "{{ now().minute }}"
 
+sensor:
   - platform: statistics
     name: Local Wind Gust 2 Minute
     unique_id: 82ac1f0c-2e2b-4fa3-a76b-68ed87f39833
@@ -280,27 +297,6 @@ sensor:
     state_characteristic: mean
     max_age:
       minutes: 2
-
-template:
-  - sensor:
-    - name: AcuRite WS Wind Speed Buffered
-      unique_id: bb04804b-cad8-4bda-9124-e249215761aa
-      unit_of_measurement: "mph"
-      device_class: wind_speed
-      state_class: measurement
-      state: "{{ states('sensor.acurite_atlas_wind_speed') }}"
-      attributes:
-          minute_counter: "{{ now().minute }}"
-    
-    - name: AcuRite WS Wind Direction Buffered
-      unique_id: f220269c-ee0b-4024-bc93-d74b4ed7cdf7
-      unit_of_measurement: "°"
-      state_class: measurement
-      state: "{{ states('sensor.acurite_atlas_wind_direction') }}"
-      attributes:
-          minute_counter: "{{ now().minute }}"
-
-
 
 mqtt:
   sensor:

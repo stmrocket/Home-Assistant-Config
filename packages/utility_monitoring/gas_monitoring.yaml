@@ -98,93 +98,93 @@ mqtt:
       unit_of_measurement: "CCF"
       device_class: gas
 
-sensor:
-  - platform: template
-    sensors:
-      gas_last_hour:
-        unique_id: 569e3210-703a-41ef-863e-620140c50365
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.gas_hourly','last_period') }}"
-        device_class: gas
+template:
+  - sensor:
+    - name: Gas Last Hour
+      unique_id: 569e3210-703a-41ef-863e-620140c50365
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.gas_hourly','last_period') }}"
+      device_class: gas
 
-      n1_gas_last_hour:
-        unique_id: 664569af-d58c-4a41-9149-e9ffc2bfeec3
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n1_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N1 Gas Last Hour
+      unique_id: 664569af-d58c-4a41-9149-e9ffc2bfeec3
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n1_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n2_gas_last_hour:
-        unique_id: bc9ee464-a1a3-4b27-9c56-a86c3db3ada0
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n2_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N2 Gas Last Hour
+      unique_id: bc9ee464-a1a3-4b27-9c56-a86c3db3ada0
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n2_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n3_gas_last_hour:
-        unique_id: 25911898-453f-45cc-a059-8e848ea6f21b
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n3_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N3 Gas Last Hour
+      unique_id: 25911898-453f-45cc-a059-8e848ea6f21b
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n3_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n4_gas_last_hour:
-        unique_id: 2d50702d-34f1-42ef-b570-71f7d3c5cc9e
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n4_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N4 Gas Last Hour
+      unique_id: 2d50702d-34f1-42ef-b570-71f7d3c5cc9e
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n4_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n5_gas_last_hour:
-        unique_id: 5659eda7-a7c2-4c76-bdcd-a5d3377444a5
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n5_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N5 Gas Last Hour
+      unique_id: 5659eda7-a7c2-4c76-bdcd-a5d3377444a5
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n5_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n6_gas_last_hour:
-        unique_id: ada67fe4-8a28-4199-8ef1-33336e747ca5
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n6_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N6 Gas Last Hour
+      unique_id: ada67fe4-8a28-4199-8ef1-33336e747ca5
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n6_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n7_gas_last_hour:
-        unique_id: cdb6ef09-2aba-4e6b-ba02-45982c38a648
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n7_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N7 Gas Last Hour
+      unique_id: cdb6ef09-2aba-4e6b-ba02-45982c38a648
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n7_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n8_gas_last_hour:
-        unique_id: a9b1be26-9c0f-45f6-8bf1-764518221a34
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n8_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N8 Gas LastHour 
+      unique_id: a9b1be26-9c0f-45f6-8bf1-764518221a34
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n8_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n9_gas_last_hour:
-        unique_id: bbeeccbb-28cd-41ad-b639-b0eb38ddb6a7
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n9_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N9 Gas Last Hour
+      unique_id: bbeeccbb-28cd-41ad-b639-b0eb38ddb6a7
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n9_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n10_gas_last_hour:
-        unique_id: 6a2d662a-d253-4c49-8230-cd21f16afc6a
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n10_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N10 Gas Last Hour
+      unique_id: 6a2d662a-d253-4c49-8230-cd21f16afc6a
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n10_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n11_gas_last_hour:
-        unique_id: a06727ee-92de-4716-b4fb-de73b1e5dbc8
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n11_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N11 Gas Last Hour
+      unique_id: a06727ee-92de-4716-b4fb-de73b1e5dbc8
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n11_gas_hourly','last_period') }}"
+      device_class: gas
 
-      n12_gas_last_hour:
-        unique_id: 2b8e7970-67bc-48b3-af01-1c2458490cb7
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n12_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N12 Gas Last Hour
+      unique_id: 2b8e7970-67bc-48b3-af01-1c2458490cb7
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n12_gas_hourly','last_period') }}"
+      device_class: gas
         
-      n13_gas_last_hour:
-        unique_id: 65ea5e36-3bbd-4137-9740-2bd5a26c787c
-        unit_of_measurement: "CCF"
-        value_template: "{{ state_attr('sensor.n13_gas_hourly','last_period') }}"
-        device_class: gas
+    - name: N13 Gas Last Hour
+      unique_id: 65ea5e36-3bbd-4137-9740-2bd5a26c787c
+      unit_of_measurement: "CCF"
+      state: "{{ state_attr('sensor.n13_gas_hourly','last_period') }}"
+      device_class: gas
 
+sensor:
   - platform: average
     name: Average Neighborhood Gas Use This Hour
     entities:
