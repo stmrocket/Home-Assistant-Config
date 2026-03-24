@@ -1527,7 +1527,7 @@ litter_robot_button:
       browser_mod:
         service: browser_mod.popup
         data:
-          title: Litter Robot
+          title: Chamber of Secrets
           content:
             type: custom:vertical-stack-in-card
             cards:
@@ -1536,15 +1536,18 @@ litter_robot_button:
                   - entity: sensor.chamber_of_secrets_status_short
                     name: Status
                     icon: mdi:cat
-                  - entity: counter.litter_robot_cycle_count
-                    name: Cycle Count
+                  - entity: sensor.chamber_of_secrets_total_cycles
+                    name: Scoops Saved
                     icon: mdi:toilet
-                  - entity: sensor.litter_robot_average_cycle_capacity
-                    name: Average Drawer Capacity
-                    icon: mdi:trash-can-outline
                   - entity: sensor.chamber_of_secrets_litter_level
                     name: Litter Level
                     icon: mdi:weather-dust
+                  - entity: select.chamber_of_secrets_globe_light
+                    name: Globe Light
+                    icon: mdi:lightbulb
+                  - entity: select.chamber_of_secrets_globe_brightness
+                    name: Globe Brightness
+                    icon: mdi:lightbulb
                   - entity: select.chamber_of_secrets_panel_brightness
                     name: Panel Brightness
                     icon: mdi:lightbulb
@@ -1568,15 +1571,6 @@ litter_robot_button:
                   - type: "custom:button-card"
                     color_type: icon
                     color: rgb(255, 255, 255)
-                    icon: mdi:trash-can
-                    name: Empty
-                    tap_action:
-                      action: call-service
-                      service: script.litter_robot_empty
-
-                  - type: "custom:button-card"
-                    color_type: icon
-                    color: rgb(255, 255, 255)
                     icon: mdi:reload
                     name: Cycle
                     tap_action:
@@ -1584,9 +1578,7 @@ litter_robot_button:
                       service: vacuum.start
                       service_data:
                         entity_id: vacuum.chamber_of_secrets_litter_box
-
-              - type: horizontal-stack
-                cards:
+                        
                   - type: "custom:button-card"
                     entity: switch.chamber_of_secrets_panel_lockout
                     color_type: icon
@@ -1600,18 +1592,6 @@ litter_robot_button:
                     name: Lock
 
                   - type: "custom:button-card"
-                    entity: switch.chamber_of_secrets_night_light_mode
-                    color_type: icon
-                    state:
-                      - value: "on"
-                        color: rgb(228, 94, 101)
-                        icon: mdi:lightbulb-on-outline
-                      - value: "off"
-                        color: rgb(255, 255, 255)
-                        icon: mdi:lightbulb-outline
-                    name: Light
-
-                  - type: "custom:button-card"
                     color_type: icon
                     color: rgb(255, 255, 255)
                     icon: mdi:check
@@ -1620,7 +1600,7 @@ litter_robot_button:
                       action: call-service
                       service: button.press
                       service_data:
-                        entity_id: button.chamber_of_secrets_reset  
+                        entity_id: button.chamber_of_secrets_reset
 
 cameras_tablet:
   card:
