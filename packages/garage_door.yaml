@@ -3,7 +3,7 @@ template:
     - name: Garage Door
       unique_id: 87539381-f98e-4401-bae8-f95d72c4d3b0
       device_class: garage
-      value_template: "{{ not is_state('sensor.elk_garage_door', 'Normal') }}"
+      state: "{{ not is_state('sensor.elk_garage_door', 'Normal') }}"
       open_cover:
         service: script.garage_door_actuate
       close_cover:
