@@ -639,12 +639,6 @@ automation:
                 state: "off"
                 alias: Only send this alert if it's not a recycling day
             sequence:
-              - service: shell_command.west_front_latest
-              - delay:
-                  hours: 0
-                  minutes: 0
-                  seconds: 1
-                  milliseconds: 0
               - service: notify.mobile_app_shawn_n30
                 data:
                   title: 🗑️ Trash picked up
@@ -683,12 +677,6 @@ automation:
                     state: "on"
                 alias: Trash has been picked up, or taken inside
             sequence:
-              - service: shell_command.west_front_latest
-              - delay:
-                  hours: 0
-                  minutes: 0
-                  seconds: 1
-                  milliseconds: 0
               - service: notify.mobile_app_shawn_n30
                 data:
                   title: ♻️🗑️ Recycling & trash picked up
@@ -717,12 +705,6 @@ automation:
                     entity_id: input_boolean.trash_picked_up
                     state: "on"
             sequence:
-              - service: shell_command.west_front_latest
-              - delay:
-                  hours: 0
-                  minutes: 0
-                  seconds: 1
-                  milliseconds: 0
               - service: notify.mobile_app_shawn_n30
                 data:
                   title: ♻️🗑️ Recycling or trash picked up

@@ -20,23 +20,21 @@ mqtt:
       unique_id: b4bee69e-3dc9-4165-aa5d-0c6d36fe2be1
       name: "FPP Master Status"
       
-switch:
-  - platform: template
-    switches:
-      indoor_christmas:
-        unique_id: e330407a-7352-43da-9316-338863d7870a
-        friendly_name: "Indoor Christmas Decor"
-        value_template: "{{ is_state('switch.christmas_1', 'on') or is_state('switch.christmas_2', 'on') or is_state('switch.christmas_3', 'on') or is_state('switch.christmas_4', 'on') or is_state('switch.christmas_5', 'on') or is_state('switch.christmas_6', 'on') or is_state('switch.christmas_7', 'on') or is_state('switch.christmas_8', 'on')  or is_state('switch.christmas_9', 'on') or is_state('switch.christmas_10', 'on') or is_state('switch.christmas_11', 'on') or is_state('switch.christmas_12', 'on') or is_state('switch.christmas_13', 'on') or is_state('switch.christmas_14', 'on') or is_state('switch.christmas_15', 'on') or is_state('switch.christmas_16', 'on') or is_state('switch.christmas_17', 'on') }}"
-        turn_on:
-          service: mqtt.publish
-          data:
-            topic: cmnd/decorations/power
-            payload: "ON"
-        turn_off:
-          service: mqtt.publish
-          data:
-            topic: cmnd/decorations/power
-            payload: "OFF"
+template:
+  - switch:
+    - name: Indoor Christmas
+      unique_id: e330407a-7352-43da-9316-338863d7870a
+      value_template: "{{ is_state('switch.christmas_1', 'on') or is_state('switch.christmas_2', 'on') or is_state('switch.christmas_3', 'on') or is_state('switch.christmas_4', 'on') or is_state('switch.christmas_5', 'on') or is_state('switch.christmas_6', 'on') or is_state('switch.christmas_7', 'on') or is_state('switch.christmas_8', 'on')  or is_state('switch.christmas_9', 'on') or is_state('switch.christmas_10', 'on') or is_state('switch.christmas_11', 'on') or is_state('switch.christmas_12', 'on') or is_state('switch.christmas_13', 'on') or is_state('switch.christmas_14', 'on') or is_state('switch.christmas_15', 'on') or is_state('switch.christmas_16', 'on') or is_state('switch.christmas_17', 'on') }}"
+      turn_on:
+        service: mqtt.publish
+        data:
+          topic: cmnd/decorations/power
+          payload: "ON"
+      turn_off:
+        service: mqtt.publish
+        data:
+          topic: cmnd/decorations/power
+          payload: "OFF"
 
 input_boolean:
   christmas_show:
