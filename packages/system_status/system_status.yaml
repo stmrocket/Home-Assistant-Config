@@ -424,196 +424,183 @@ sensor:
   #                                                               #
   #################################################################
 
-  - platform: template
-    sensors:
-      wan_in_mbps:
-        unique_id: 6728fa46-ed71-4016-a7a8-d95e77235fdc
-        value_template:  "{{ [((states('sensor.erl_wan_in_derivative')|float(none)*8)/1000000)|round(2, default=none),0]|max }}"
-        unit_of_measurement: 'Mbps'
-        friendly_name: WAN In
+template:
+  - sensor:
+    - name: WAN In Mbps
+      unique_id: 6728fa46-ed71-4016-a7a8-d95e77235fdc
+      state:  "{{ [((states('sensor.erl_wan_in_derivative')|float(none)*8)/1000000)|round(2, default=none),0]|max }}"
+      unit_of_measurement: 'Mbps'
     
-      wan_out_mbps:
-        unique_id: 14134f47-7e71-4321-bec3-3526a450fa04
-        value_template:  "{{ [((states('sensor.erl_wan_out_derivative')|float(none)*8)/1000000)|round(2, default=none),0]|max }}"
-        unit_of_measurement: 'Mbps'
-        friendly_name: WAN Out
+    - name: WAN Out Mbps
+      unique_id: 14134f47-7e71-4321-bec3-3526a450fa04
+      state:  "{{ [((states('sensor.erl_wan_out_derivative')|float(none)*8)/1000000)|round(2, default=none),0]|max }}"
+      unit_of_measurement: 'Mbps'
 
-      wan_download_gb:
-        unique_id: 059b60a4-b193-469b-880e-e4b2d03ac327
-        value_template:  "{{ (states('sensor.erl_wan_in')|float(none)/1000000000)|round(2, default=none) }}"
-        unit_of_measurement: 'GB'
-        friendly_name: WAN Download
+    - name: WAN Download GB
+      unique_id: 059b60a4-b193-469b-880e-e4b2d03ac327
+      state:  "{{ (states('sensor.erl_wan_in')|float(none)/1000000000)|round(2, default=none) }}"
+      unit_of_measurement: 'GB'
     
-      wan_upload_gb:
-        unique_id: 69285b44-7008-4ded-b4ef-dd29de3dd1f5
-        value_template:  "{{ (states('sensor.erl_wan_out')|float(none)/1000000000)|round(2, default=none) }}"
-        unit_of_measurement: 'GB'
-        friendly_name: WAN Upload
+    - name: WAN Upload GB
+      unique_id: 69285b44-7008-4ded-b4ef-dd29de3dd1f5
+      state:  "{{ (states('sensor.erl_wan_out')|float(none)/1000000000)|round(2, default=none) }}"
+      unit_of_measurement: 'GB'
 
-      wan_ping:
-        unique_id: cac7f6bc-4985-4e47-a03a-31f4997286f9
-        friendly_name: "WAN Ping"
-        value_template: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2, default=none) }}"
-        unit_of_measurement: "ms"
+    - name: WAN Ping
+      unique_id: cac7f6bc-4985-4e47-a03a-31f4997286f9
+      state: "{{ state_attr('binary_sensor.wan_ping', 'round_trip_time_avg') | round(2, default=none) }}"
+      unit_of_measurement: "ms"
 
-      hass_uptime:
-        unique_id: c299fdc7-0364-4d72-aa9d-8b2361880f9a
-        friendly_name: Home Assistant Uptime
-        value_template: >-
-          {% set time = (as_timestamp(now(), none) - as_timestamp(states('sensor.time_online'), none)) / 60 | int(default=0) %}
-            {% set minutes = ((time % 60) ) | int(none)%}
-            {% set hours = ((time % 1440) / 60) | int(none) %}
-            {% set days = (time / 1440) | int(none) %}
-              {%- if time == 0 -%}
-                00:00:00
-              {%- else -%}
-                {%- if days == 0 -%}
-                  00
-                {%- endif -%}
-                {%- if days > 0 -%}        
-                  {%- if days < 10 -%}
-                    0{{ days }}
-                  {%- else -%}
-                    {{ days }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- if hours == 0 -%}
-                  :00
-                {%- endif -%}
-                {%- if hours > 0 -%}        
-                  {%- if hours < 10 -%}
-                    :0{{ hours }}
-                  {%- else -%}
-                    :{{ hours }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- if minutes == 0 -%}
-                  :00
-                {%- endif -%}
-                {%- if minutes > 0 -%}
-                  {%- if minutes < 10 -%}
-                    :0{{ minutes }}
-                  {%- else -%}
-                    :{{ minutes }}
-                  {%- endif -%}
+    - name: HASS Uptime
+      unique_id: c299fdc7-0364-4d72-aa9d-8b2361880f9a
+      state: >-
+        {% set time = (as_timestamp(now(), none) - as_timestamp(states('sensor.time_online'), none)) / 60 | int(default=0) %}
+          {% set minutes = ((time % 60) ) | int(none)%}
+          {% set hours = ((time % 1440) / 60) | int(none) %}
+          {% set days = (time / 1440) | int(none) %}
+            {%- if time == 0 -%}
+              00:00:00
+            {%- else -%}
+              {%- if days == 0 -%}
+                00
+              {%- endif -%}
+              {%- if days > 0 -%}        
+                {%- if days < 10 -%}
+                  0{{ days }}
+                {%- else -%}
+                  {{ days }}
                 {%- endif -%}
               {%- endif -%}
-
-      hass_restart:
-        unique_id: 65c28a38-c606-40c9-961c-5232f9b1ffea
-        friendly_name: Home Assistant Restart Time
-        value_template: >-
-          {% set time = (as_timestamp(states('sensor.time_online'), none)) - (as_timestamp(states('sensor.ha_shutdown'), none)) | int(default=0) %}
-            {% set seconds = ((time % 60) ) | int(none)%}
-            {% set minutes = (time / 60) | int(none) %}
-              {%- if time == 0 -%}
-                00:00
-              {%- else -%}
-                {%- if minutes == 0 -%}
-                  00
-                {%- endif -%}
-                {%- if minutes > 0 -%}        
-                  {%- if minutes < 10 -%}
-                    0{{ minutes }}
-                  {%- else -%}
-                    {{ minutes }}
-                  {%- endif -%}
-                {%- endif -%}
-                {%- if seconds == 0 -%}
-                  :00
-                {%- endif -%}
-                {%- if seconds > 0 -%}
-                  {%- if seconds < 10 -%}
-                    :0{{ seconds }}
-                  {%- else -%}
-                    :{{ seconds }}
-                  {%- endif -%}
+              {%- if hours == 0 -%}
+                :00
+              {%- endif -%}
+              {%- if hours > 0 -%}        
+                {%- if hours < 10 -%}
+                  :0{{ hours }}
+                {%- else -%}
+                  :{{ hours }}
                 {%- endif -%}
               {%- endif -%}
+              {%- if minutes == 0 -%}
+                :00
+              {%- endif -%}
+              {%- if minutes > 0 -%}
+                {%- if minutes < 10 -%}
+                  :0{{ minutes }}
+                {%- else -%}
+                  :{{ minutes }}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endif -%}
 
-      office_ups_battery_health:
-        unique_id: 61b76332-9f37-48f4-ba1d-dcf3fd66fb65
-        friendly_name: Office UPS Battery Status
-        value_template: >
-          {% if is_state('sensor.office_ups_battery_status', '1') -%}
-            Good
-          {% elif  is_state('sensor.office_ups_battery_status', '2') -%}
-            Replace
-          {% else -%}
-            Error
-          {% endif -%}
+    - name: HASS Restart
+      unique_id: 65c28a38-c606-40c9-961c-5232f9b1ffea
+      state: >-
+        {% set time = (as_timestamp(states('sensor.time_online'), none)) - (as_timestamp(states('sensor.ha_shutdown'), none)) | int(default=0) %}
+          {% set seconds = ((time % 60) ) | int(none)%}
+          {% set minutes = (time / 60) | int(none) %}
+            {%- if time == 0 -%}
+              00:00
+            {%- else -%}
+              {%- if minutes == 0 -%}
+                00
+              {%- endif -%}
+              {%- if minutes > 0 -%}        
+                {%- if minutes < 10 -%}
+                  0{{ minutes }}
+                {%- else -%}
+                  {{ minutes }}
+                {%- endif -%}
+              {%- endif -%}
+              {%- if seconds == 0 -%}
+                :00
+              {%- endif -%}
+              {%- if seconds > 0 -%}
+                {%- if seconds < 10 -%}
+                  :0{{ seconds }}
+                {%- else -%}
+                  :{{ seconds }}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endif -%}
 
-      server_ups_battery_health:
-        unique_id: 03e166ee-f39b-4668-83e2-913352c029a7
-        friendly_name: Server UPS Battery Status
-        value_template: >
-          {% if is_state('sensor.server_ups_battery_status', '1') -%}
-            Good
-          {% elif  is_state('sensor.server_ups_battery_status', '2') -%}
-            Replace
-          {% else -%}
-            Error
-          {% endif -%}
+    - name: Office UPS Battery Health
+      unique_id: 61b76332-9f37-48f4-ba1d-dcf3fd66fb65
+      state: >
+        {% if is_state('sensor.office_ups_battery_status', '1') -%}
+          Good
+        {% elif  is_state('sensor.office_ups_battery_status', '2') -%}
+          Replace
+        {% else -%}
+          Error
+        {% endif -%}
 
-      shack_ups_battery_health:
-        unique_id: 897b0ca8-5ec6-4b1f-8e82-fed4379460b1
-        friendly_name: Shack UPS Battery Status
-        value_template: >
-          {% if is_state('sensor.shack_ups_battery_status', '1') -%}
-            Good
-          {% elif  is_state('sensor.shack_ups_battery_status', '2') -%}
-            Replace
-          {% else -%}
-            Error
-          {% endif -%}
+    - name: Server UPS Battery Health
+      unique_id: 03e166ee-f39b-4668-83e2-913352c029a7
+      state: >
+        {% if is_state('sensor.server_ups_battery_status', '1') -%}
+          Good
+        {% elif  is_state('sensor.server_ups_battery_status', '2') -%}
+          Replace
+        {% else -%}
+          Error
+        {% endif -%}
 
-      office_ups_status:
-        unique_id: 89310f89-0b95-4709-845d-8e1f4824d200
-        friendly_name: Office UPS Operating Status
-        value_template: >
-          {% if is_state('device_tracker.office_ups', 'not_home') -%}
-            Offline
-          {% elif is_state('sensor.office_ups_battery_status', '2') -%}
-            Battery Fail
-          {% elif  states('sensor.office_ups_input_voltage') | int(none) > 100 -%}
-            Utility
-          {% elif  states('sensor.office_ups_input_voltage') | int(none) < 100 and states('sensor.office_ups_output_voltage') | int(none) > 100 -%}
-            Battery
-          {% else -%}
-            Error
-          {% endif -%}
+    - name: Shack UPS Battery Health
+      unique_id: 897b0ca8-5ec6-4b1f-8e82-fed4379460b1
+      state: >
+        {% if is_state('sensor.shack_ups_battery_status', '1') -%}
+          Good
+        {% elif  is_state('sensor.shack_ups_battery_status', '2') -%}
+          Replace
+        {% else -%}
+          Error
+        {% endif -%}
 
-      server_ups_status:
-        unique_id: 375dd8a2-d38e-4662-9664-698a1003895b
-        friendly_name: Server UPS Operating Status
-        value_template: >
-          {% if is_state('device_tracker.server_ups', 'not_home') -%}
-            Offline
-          {% elif is_state('sensor.server_ups_battery_status', '2') -%}
-            Battery Fail
-          {% elif  states('sensor.server_ups_input_voltage') | int(none) > 100 -%}
-            Utility
-          {% elif  states('sensor.server_ups_input_voltage') | int(none) < 100 and states('sensor.server_ups_output_voltage') | int(none) > 100 -%}
-            Battery
-          {% else -%}
-            Error
-          {% endif -%}
+    - name: Office UPS Status
+      unique_id: 89310f89-0b95-4709-845d-8e1f4824d200
+      state: >
+        {% if is_state('device_tracker.office_ups', 'not_home') -%}
+          Offline
+        {% elif is_state('sensor.office_ups_battery_status', '2') -%}
+          Battery Fail
+        {% elif  states('sensor.office_ups_input_voltage') | int(none) > 100 -%}
+          Utility
+        {% elif  states('sensor.office_ups_input_voltage') | int(none) < 100 and states('sensor.office_ups_output_voltage') | int(none) > 100 -%}
+          Battery
+        {% else -%}
+          Error
+        {% endif -%}
 
-      shack_ups_status:
-        unique_id: 9d1e4c97-a524-4978-955d-602d2a678737
-        friendly_name: Shack UPS Operating Status
-        value_template: >
-          {% if is_state('device_tracker.shack_ups', 'not_home') -%}
-            Offline
-          {% elif is_state('sensor.shack_ups_battery_status', '2') -%}
-            Battery Fail
-          {% elif  states('sensor.shack_ups_input_voltage') | int(none) > 100 -%}
-            Utility
-          {% elif  states('sensor.shack_ups_input_voltage') | int(none) < 100 and states('sensor.server_ups_output_voltage') | int(none) > 100 -%}
-            Battery
-          {% else -%}
-            Error
-          {% endif -%}
+    - name: Server UPS Status
+      unique_id: 375dd8a2-d38e-4662-9664-698a1003895b
+      state: >
+        {% if is_state('device_tracker.server_ups', 'not_home') -%}
+          Offline
+        {% elif is_state('sensor.server_ups_battery_status', '2') -%}
+          Battery Fail
+        {% elif  states('sensor.server_ups_input_voltage') | int(none) > 100 -%}
+          Utility
+        {% elif  states('sensor.server_ups_input_voltage') | int(none) < 100 and states('sensor.server_ups_output_voltage') | int(none) > 100 -%}
+          Battery
+        {% else -%}
+          Error
+        {% endif -%}
+
+    - name: Shack UPS Status
+      unique_id: 9d1e4c97-a524-4978-955d-602d2a678737
+      state: >
+        {% if is_state('device_tracker.shack_ups', 'not_home') -%}
+          Offline
+        {% elif is_state('sensor.shack_ups_battery_status', '2') -%}
+          Battery Fail
+        {% elif  states('sensor.shack_ups_input_voltage') | int(none) > 100 -%}
+          Utility
+        {% elif  states('sensor.shack_ups_input_voltage') | int(none) < 100 and states('sensor.server_ups_output_voltage') | int(none) > 100 -%}
+          Battery
+        {% else -%}
+          Error
+        {% endif -%}
 
 mqtt:
   sensor:

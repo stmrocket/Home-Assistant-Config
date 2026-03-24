@@ -83,18 +83,16 @@ input_boolean:
   tx_metar_mode: #Off is METAR and on is temperature...
     name: Texas METAR Map Display Mode
 
-sensor:
-  - platform: template
-    sensors:
-      tx_metar_mode_clean:
-        unique_id: 335d7436-7ddc-45d7-b487-edc665996853
-        friendly_name: TX METAR Mode Clean Name
-        value_template: >-
-          {% if is_state('sensor.tx_metar_mode', 'TEMP') -%}
-            Temperature
-          {% elif is_state('sensor.tx_metar_mode', 'METAR') -%}
-            METAR
-          {% endif -%}
+template:
+  - sensor:
+    - name: TX METAR Mode Clean
+      unique_id: 335d7436-7ddc-45d7-b487-edc665996853
+      state: >-
+        {% if is_state('sensor.tx_metar_mode', 'TEMP') -%}
+          Temperature
+        {% elif is_state('sensor.tx_metar_mode', 'METAR') -%}
+          METAR
+        {% endif -%}
 
 automation:
   - alias: Update Texas METAR Map Display Mode

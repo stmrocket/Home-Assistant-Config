@@ -82,18 +82,16 @@ input_boolean:
   us_metar_mode: #Off is METAR and on is temperature...
     name: US METAR Map Display Mode
 
-sensor:
-  - platform: template
-    sensors:
-      us_metar_mode_clean:
-        unique_id: e7af2d96-70a4-46ff-928b-f62316bb7ca9
-        friendly_name: US METAR Mode Clean Name
-        value_template: >-
-          {% if is_state('sensor.us_metar_mode', 'TEMP') -%}
-            Temperature
-          {% elif is_state('sensor.us_metar_mode', 'METAR') -%}
-            METAR
-          {% endif -%}
+template:
+  - sensor:
+    - name: US METAR Mode Clean
+      unique_id: e7af2d96-70a4-46ff-928b-f62316bb7ca9
+      state: >-
+        {% if is_state('sensor.us_metar_mode', 'TEMP') -%}
+          Temperature
+        {% elif is_state('sensor.us_metar_mode', 'METAR') -%}
+          METAR
+        {% endif -%}
 
 automation:
   - alias: Update US METAR Map Display Mode

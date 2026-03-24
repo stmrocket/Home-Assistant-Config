@@ -154,14 +154,14 @@ python_script:
 
 template:
   - sensor:
-    - name: blank
+    - name: Blank
       unique_id: 73e72478-0522-4325-88d8-7b1d96832919
       state: ""
-    - name: external url
+    - name: External URL
       unique_id: a0227421-19d4-43ba-b788-db5b8b78053b
       state: !secret ext_url
   - binary_sensor:
-    - name: is is_dst
+    - name: Is DST
       unique_id: 215e3ce8-25a1-429e-a4b6-bad9817a2e3c
       state: "{{ now().timetuple().tm_isdst > 0 }}"
 
