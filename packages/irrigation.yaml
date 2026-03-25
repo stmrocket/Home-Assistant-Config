@@ -393,25 +393,25 @@ script:
                 data:
                   divider: 2
               - action: number.set_value
-                data:
+                data_template:
                   entity_id: number.main_irrigation_controller_back_yard_duration
-                  value: 840
+                  value: "{{ (states('input_number.back_yard_base_runtime') | int) * 30) | round(0,ceil) }}"
               - action: number.set_value
-                data:
+                data_template:
                   entity_id: number.main_irrigation_controller_east_front_duration
-                  value: 960
+                  value: "{{ (states('input_number.east_front_base_runtime') | int) * 30) | round(0,ceil) }}"
               - action: number.set_value
-                data:
+                data_template:
                   entity_id: number.main_irrigation_controller_east_side_duration
-                  value: 2700
+                  value: "{{ (states('input_number.east_side_base_runtime') | int) * 30) | round(0,ceil) }}"
               - action: number.set_value
-                data:
+                data_template:
                   entity_id: number.main_irrigation_controller_west_front_duration
-                  value: 960
+                  value: "{{ (states('input_number.west_front_base_runtime') | int) * 30) | round(0,ceil) }}"
               - action: number.set_value
-                data:
+                data_template:
                   entity_id: number.main_irrigation_controller_west_side_duration
-                  value: 840
+                  value: "{{ (states('input_number.west_side_base_runtime') | int) * 30) | round(0,ceil) }}"
               - action: esphome.main_irrigation_controller_sprinkler_start_cycle
               - action: smart_irrigation.set_all_buckets
                 data:
