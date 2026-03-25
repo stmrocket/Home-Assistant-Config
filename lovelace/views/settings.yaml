@@ -32,29 +32,14 @@ cards:
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: sensor.program_every_2_days_status
+                entity: sensor.lawn_bucket
                 color_type: icon
-                state:
-                  - value: "enabled"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:alarm-check
-                  - value: "running"
-                    color: rgb(228, 94, 101)
-                    icon: mdi:sprinkler
-                    styles:
-                      icon:
-                        - animation: blink 1s infinite
-                  - value: "disabled"
-                    color: rgb(255, 255, 255)
-                    icon: mdi:alarm-off
-                name: Every 2 Days
-                tap_action:
-                  action: call-service
-                  service: script.rainmachine_program_2_tap
+                icon: mdi:bucket-outline
                 hold_action:
                   action: more-info
+                name: "[[[return `Bucket: ${states['sensor.lawn_bucket'].state}in`]]]"
               - type: "custom:button-card"
-                entity: sensor.program_every_3_days_status
+                entity: sensor.program_lawn_irrigation_status
                 color_type: icon
                 state:
                   - value: "enabled"
@@ -69,12 +54,44 @@ cards:
                   - value: "disabled"
                     color: rgb(255, 255, 255)
                     icon: mdi:alarm-off
-                name: Every 3 Days
+                name: Lawn
                 tap_action:
                   action: call-service
-                  service: script.rainmachine_program_1_tap
+                  service: input_boolean.toggle
+                  service_data:
+                    entity_id: input_boolean.lawn_irrigation_enabled
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Lawn Irrigation
+                      content:
+                        type: entities
+                        entities:
+                          - entity: input_boolean.lawn_irrigation_manual
+                            name: Run Next Cycle
+                            icon: 'mdi:sprinkler'
+                          - entity: input_boolean.lawn_irrigation_snooze
+                            name: Snooze Cycle
+                            icon: 'mdi:alarm-snooze'
+                          - type: "custom:time-picker-card"
+                            entity: input_datetime.irrigation_start
+                            name: Start Time
+                            hour_mode: 12
+                            layout:
+                              name: inside
+                              align_controls: right
+                              hour_mode: single
+                          - entity: input_number.irrigation_depletion_trigger
+                            name: Irrigation Threshold
+                            icon: mdi:water-outline
+                          - entity: input_number.irrigation_delay_precip
+                            name: Irrigation Rain Delay
+                            icon: mdi:weather-rainy
+                          - entity: input_number.irrigation_delay_pop
+                            name: Irrigation PoP Delay
+                            icon: mdi:cloud-percent-outline
               - type: "custom:button-card"
                 entity: sensor.program_drip_status
                 color_type: icon
@@ -98,9 +115,19 @@ cards:
                   service_data:
                     entity_id: input_boolean.drip_irrigation_enabled
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Drip Irrigation
+                      content:
+                        type: entities
+                        entities:
+                          - entity: input_number.drip_irrigation_duration
+                            name: Cycle Duration
+                            icon: mdi:sprinkler
               - type: "custom:button-card"
-                entity: switch.irrigation_run_program
+                entity: switch.main_irrigation_controller_main_irrigation_controller_main_switch
                 color_type: icon
                 icon: mdi:sprinkler-variant
                 state:
@@ -110,13 +137,16 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)              
                     name: Run Program
+                tap_action:
+                  action: call-service
+                  service: script.manual_water_all
                 hold_action:
                   action: more-info
 
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
-                entity: switch.east_front_zone
+                entity: switch.main_irrigation_controller_east_front
                 color_type: icon
                 icon: mdi:numeric-1-box
                 state:
@@ -125,10 +155,23 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: E Front
+                tap_action:
+                  action: call-service
+                  service: script.manual_water_east_front
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: East Front
+                      content:
+                        type: entities
+                        entities:
+                          - entity: input_number.east_front_base_runtime
+                            name: 1in Runtime
+                            icon: mdi:sprinkler
               - type: "custom:button-card"
-                entity: switch.east_side_zone
+                entity: switch.main_irrigation_controller_east_side
                 color_type: icon
                 icon: mdi:numeric-2-box
                 state:
@@ -137,10 +180,23 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: E Side
+                tap_action:
+                  action: call-service
+                  service: script.manual_water_east_side
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: East Side
+                      content:
+                        type: entities
+                        entities:
+                          - entity: input_number.east_side_base_runtime
+                            name: 1in Runtime
+                            icon: mdi:sprinkler
               - type: "custom:button-card"
-                entity: switch.back_zone
+                entity: switch.main_irrigation_controller_back_yard
                 color_type: icon
                 icon: mdi:numeric-3-box
                 state:
@@ -149,10 +205,23 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: Back
+                tap_action:
+                  action: call-service
+                  service: script.manual_water_back_yard
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: Back Yard
+                      content:
+                        type: entities
+                        entities:
+                          - entity: input_number.back_yard_base_runtime
+                            name: 1in Runtime
+                            icon: mdi:sprinkler
               - type: "custom:button-card"
-                entity: switch.west_side_zone
+                entity: switch.main_irrigation_controller_west_side
                 color_type: icon
                 icon: mdi:numeric-4-box
                 state:
@@ -161,10 +230,23 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: W Side
+                tap_action:
+                  action: call-service
+                  service: script.manual_water_west_side
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: West Side
+                      content:
+                        type: entities
+                        entities:
+                          - entity: input_number.west_side_base_runtime
+                            name: 1in Runtime
+                            icon: mdi:sprinkler
               - type: "custom:button-card"
-                entity: switch.west_front_zone
+                entity: switch.main_irrigation_controller_west_front
                 color_type: icon
                 icon: mdi:numeric-5-box
                 state:
@@ -173,8 +255,21 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: W Front
+                tap_action:
+                  action: call-service
+                  service: script.manual_water_west_front
                 hold_action:
-                  action: more-info
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      title: West Front
+                      content:
+                        type: entities
+                        entities:
+                          - entity: input_number.west_front_base_runtime
+                            name: 1in Runtime
+                            icon: mdi:sprinkler
               - type: "custom:button-card"
                 entity: switch.back_drip_valve
                 color_type: icon
@@ -185,8 +280,14 @@ cards:
                   - value: "off"
                     color: rgb(255, 255, 255)
                 name: Drip
+                tap_action:
+                  action: call-service
+                  service: switch.toggle
+                  service_data:
+                    entity_id: switch.back_drip_valve
                 hold_action:
                   action: more-info
+
 
       - type: 'custom:stack-in-card'
         cards:
