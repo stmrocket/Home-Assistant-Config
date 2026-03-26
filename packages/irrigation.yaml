@@ -200,23 +200,23 @@ automation:
                 - action: number.set_value
                   data_template:
                     entity_id: number.main_irrigation_controller_back_yard_duration
-                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float) * (states('input_number.back_yard_base_runtime') | int) * 60) | round(0,ceil) }}"
+                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float | abs) * (states('input_number.back_yard_base_runtime') | int) * 60) | round(0,ceil) }}"
                 - action: number.set_value
                   data_template:
                     entity_id: number.main_irrigation_controller_east_front_duration
-                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float) * (states('input_number.east_front_base_runtime') | int) * 60) | round(0,ceil) }}"
+                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float | abs) * (states('input_number.east_front_base_runtime') | int) * 60) | round(0,ceil) }}"
                 - action: number.set_value
                   data_template:
                     entity_id: number.main_irrigation_controller_east_side_duration
-                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float) * (states('input_number.east_side_base_runtime') | int) * 60) | round(0,ceil) }}"
+                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float | abs) * (states('input_number.east_side_base_runtime') | int) * 60) | round(0,ceil) }}"
                 - action: number.set_value
                   data_template:
                     entity_id: number.main_irrigation_controller_west_front_duration
-                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float) * (states('input_number.west_front_base_runtime') | int) * 60) | round(0,ceil) }}"
+                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float | abs) * (states('input_number.west_front_base_runtime') | int) * 60) | round(0,ceil) }}"
                 - action: number.set_value
                   data_template:
                     entity_id: number.main_irrigation_controller_west_side_duration
-                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float) * (states('input_number.west_side_base_runtime') | int) * 60) | round(0,ceil) }}"
+                    value: "{{ ((state_attr('sensor.smart_irrigation_lawn','bucket') | float | abs) * (states('input_number.west_side_base_runtime') | int) * 60) | round(0,ceil) }}"
                 - action: esphome.main_irrigation_controller_sprinkler_start_cycle
                 - action: smart_irrigation.reset_all_buckets
       - action: input_boolean.turn_off
