@@ -26,7 +26,7 @@ automation:
         entity_id: input_boolean.hvac_geofence
         to: "on"
       - platform: state
-        entity_id: device_tracker.shawn_n30
+        entity_id: device_tracker.shawn_pixel_10
         to: "home"
     condition:
       - condition: state
@@ -59,7 +59,7 @@ automation:
             attribute: changed_by
             state: "Gary"
     action:
-      service: notify.mobile_app_shawn_n30
+      service: notify.mobile_app_shawn_pixel_10
       data:
         title: Alarm Disarmed
         message: The alarm has been disarmed.
@@ -72,7 +72,7 @@ automation:
       from: arming
       to: armed_vacation
     action:
-      service: notify.mobile_app_shawn_n30
+      service: notify.mobile_app_shawn_pixel_10
       data:
         title: Alarm Armed
         message: The alarm has been armed.
@@ -89,7 +89,7 @@ automation:
         entity_id: input_boolean.vacation_mode
         state: "on"
     action:
-      service: notify.mobile_app_shawn_n30
+      service: notify.mobile_app_shawn_pixel_10
       data:
         title: Notification Test
         message: Notification test -  {{now().strftime('%Y-%m-%d %H:%M:%S') }}
