@@ -139,8 +139,7 @@ automation:
               - condition: and
                 conditions: 
                   - condition: numeric_state
-                    entity_id: sensor.smart_irrigation_lawn
-                    attribute: bucket
+                    entity_id: sensor.lawn_bucket
                     below: input_number.irrigation_depletion_trigger
                   - condition: numeric_state
                     entity_id: sensor.rain_day
