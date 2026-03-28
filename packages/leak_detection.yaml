@@ -26,7 +26,7 @@ alert:
     message: "A leak has been detected in the dishwasher."
     done_message: "The dishwasher leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   dishwasher_leak_error:
     name: Leak Detector Error!
@@ -38,7 +38,7 @@ alert:
     message: "The dishwasher leak detector is not reporting."
     done_message: "The dishwasher leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   guest_sink_leak_detected:
     name: Leak Detected!
@@ -50,7 +50,7 @@ alert:
     message: "A leak has been detected in the guest bathroom sink."
     done_message: "The guest bathroom sink leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   guest_sink_leak_error:
     name: Leak Detector Error!
@@ -62,7 +62,7 @@ alert:
     message: "The guest bathroom sink leak detector is not reporting."
     done_message: "The guest bathroom sink leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   guest_toilet_leak_detected:
     name: Leak Detected!
@@ -74,7 +74,7 @@ alert:
     message: "A leak has been detected in the guest toilet."
     done_message: "The guest toilet leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   guest_toilet_leak_error:
     name: Leak Detector Error!
@@ -86,7 +86,7 @@ alert:
     message: "The guest toilet leak detector is not reporting."
     done_message: "The guest toilet leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   kitchen_sink_leak_detected:
     name: Leak Detected!
@@ -98,7 +98,7 @@ alert:
     message: "A leak has been detected in the kitchen sink."
     done_message: "The kitchen sink leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   kitchen_sink_leak_error:
     name: Leak Detector Error!
@@ -110,7 +110,7 @@ alert:
     message: "The kitchen sink leak detector is not reporting."
     done_message: "The kitchen dink leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   left_master_sink_leak_detected:
     name: Leak Detected!
@@ -122,7 +122,7 @@ alert:
     message: "A leak has been detected in the left master bathroom sink."
     done_message: "The left master bathroom sink leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   left_master_sink_leak_error:
     name: Leak Detector Error!
@@ -134,7 +134,7 @@ alert:
     message: "The left master bathroom sink leak detector is not reporting."
     done_message: "The left master bathroom sink leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   master_toilet_leak_detected:
     name: Leak Detected!
@@ -146,7 +146,7 @@ alert:
     message: "A leak has been detected in the master toilet."
     done_message: "The master toilet leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   master_toilet_leak_error:
     name: Leak Detector Error!
@@ -158,7 +158,7 @@ alert:
     message: "The master toilet leak detector is not reporting."
     done_message: "The toilet leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   refrigerator_sink_leak_detected:
     name: Leak Detected!
@@ -170,7 +170,7 @@ alert:
     message: "A leak has been detected in the refrigerator."
     done_message: "The refrigerator leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   refrigerator_leak_error:
     name: Leak Detector Error!
@@ -182,7 +182,7 @@ alert:
     message: "The refrigerator leak detector is not reporting."
     done_message: "The refrigerator leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   right_master_sink_leak_detected:
     name: Leak Detected!
@@ -194,7 +194,7 @@ alert:
     message: "A leak has been detected in the right master bathroom sink."
     done_message: "The right master bathroom sink leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   right_master_sink_leak_error:
     name: Leak Detector Error!
@@ -206,7 +206,7 @@ alert:
     message: "The right master bathroom sink leak detector is not reporting."
     done_message: "The right master bathroom sink leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   utility_leak_detected:
     name: Leak Detected!
@@ -218,7 +218,7 @@ alert:
     message: "A leak has been detected in the utility room."
     done_message: "The utility room leak has been cleared."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
   utility_leak_error:
     name: Leak Detector Error!
@@ -230,7 +230,7 @@ alert:
     message: "The utility room leak detector is not reporting."
     done_message: "The utility room leak detector is restored."
     notifiers:
-      - mobile_app_shawn_n30
+      - mobile_app_shawn_pixel_10
 
 automation:
   - alias: Dishwasher Leak Detected
@@ -241,7 +241,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the dishwasher.
@@ -277,7 +277,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the guest bathroom sink.
@@ -313,7 +313,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the guest bathroom toilet.
@@ -349,7 +349,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the guest kitchen sink.
@@ -385,7 +385,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the left master bathroom sink.
@@ -408,7 +408,7 @@ automation:
         to: "unknown"
         for: "30:00:00"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the Right master bathroom sink.
@@ -428,7 +428,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the master bathroom toilet.
@@ -464,7 +464,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the refrigerator.
@@ -500,7 +500,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the right master bathroom sink.
@@ -536,7 +536,7 @@ automation:
         from: "off"
         to: "on"
     action:
-      - service: notify.mobile_app_shawn_n30
+      - service: notify.mobile_app_shawn_pixel_10
         data:
           title: Leak Detected!
           message: A leak has been detected in the utility room.
