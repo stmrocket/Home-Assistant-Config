@@ -122,3 +122,5 @@ midnight:
   popup-padding-y: 0px
 
   mini-media-player-mmp: rgba(0, 0, 0, 0.6)
+
+  ha-color-form-background: "rgba(150, 150, 150, 0.1)"
