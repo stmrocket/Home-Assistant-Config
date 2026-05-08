@@ -1425,7 +1425,7 @@ vacuum_button_simple:
                                 show_state: false
                                 show_icon: false
 
-chasmber_of_secrets_button:
+chamber_of_secrets_button:
   card:
     type: "custom:button-card"
     entity: sensor.chamber_of_secrets_status_short
