@@ -11,14 +11,7 @@
       to: armed_night
   action:
     - service: switch.turn_off
-      entity_id:
-        - switch.den_tablet_screen
-        - switch.kitchen_tablet_screen
-        - switch.master_bedroom_tablet_screen
-        - switch.office_tablet_screen
-        - switch.shack_tablet_screen
-        - switch.entry_tablet_screen
-        - switch.server_tablet_screen
+      entity_id: switch.tablet_screens
     - service: script.crestron_standby
 
 - alias: Tablet When Home
@@ -33,14 +26,7 @@
       to: armed_home
   action:
     - service: switch.turn_on
-      entity_id:
-        - switch.den_tablet_screen
-        - switch.kitchen_tablet_screen
-        - switch.master_bedroom_tablet_screen
-        - switch.office_tablet_screen
-        - switch.shack_tablet_screen
-        - switch.entry_tablet_screen
-        - switch.server_tablet_screen
+      entity_id: switch.tablet_screens
     - service: script.crestron_wake
 
 - alias: Tablet when Away
@@ -53,14 +39,7 @@
         - armed_vacation
   action:
     - service: switch.turn_off
-      entity_id:
-        - switch.den_tablet_screen
-        - switch.kitchen_tablet_screen
-        - switch.master_bedroom_tablet_screen
-        - switch.office_tablet_screen
-        - switch.shack_tablet_screen
-        - switch.entry_tablet_screen
-        - switch.server_tablet_screen
+      entity_id: switch.tablet_screens
     - service: script.crestron_standby
 
 - alias: Reload Tablets When HA Starts
