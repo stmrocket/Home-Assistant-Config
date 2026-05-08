@@ -22,33 +22,8 @@ cards:
         variables:
           - entity: server_room_stereo
           - zone: 3
-
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: litter_robot_button
-          - type: custom:decluttering-card
-            template: alarm_panel_button
-          - type: custom:decluttering-card
-            template: garage_door_button
-
-      - type: horizontal-stack
-        cards:          
-          - type: custom:decluttering-card
-            template: front_lock_button
-          - type: custom:decluttering-card
-            template: garage_lock_button
-          - type: custom:decluttering-card
-            template: back_lock_button
-
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: shed_lock_button    
-          - type: custom:decluttering-card
-            template: washer_button      
-          - type: custom:decluttering-card
-            template: dryer_button        
+      - type: custom:decluttering-card
+        template: tablet_common_buttons       
 
   - type: vertical-stack
     cards:
@@ -171,6 +146,7 @@ cards:
               action: more-info
       - type: horizontal-stack
         cards:
+          - type: custom:gap-card
           - type: "custom:button-card"
             entity: switch.server_closet_fan
             color_type: icon
@@ -183,7 +159,4 @@ cards:
             name: Closet
             hold_action:
               action: more-info
-
-          - type: custom:decluttering-card
-            template: vacuum_button_simple
           - type: "custom:gap-card"   
