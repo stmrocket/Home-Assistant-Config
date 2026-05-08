@@ -2383,3 +2383,34 @@ iaq_card:
                   margin: 0 auto;
                   padding: 1px !important;
                 }
+
+tablet_common_buttons:
+  card:
+    type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: litter_robot_button
+          - type: custom:decluttering-card
+            template: alarm_panel_button
+          - type: custom:decluttering-card
+            template: garage_door_button
+
+      - type: horizontal-stack
+        cards:          
+          - type: custom:decluttering-card
+            template: front_lock_button
+          - type: custom:decluttering-card
+            template: garage_lock_button
+          - type: custom:decluttering-card
+            template: back_lock_button
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: shed_lock_button    
+          - type: custom:decluttering-card
+            template: washer_button      
+          - type: custom:decluttering-card
+            template: dryer_button        
