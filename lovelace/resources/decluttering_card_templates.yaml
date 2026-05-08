@@ -1425,7 +1425,7 @@ vacuum_button_simple:
                                 show_state: false
                                 show_icon: false
 
-litter_robot_button:
+chasmber_of_secrets_button:
   card:
     type: "custom:button-card"
     entity: sensor.chamber_of_secrets_status_short
@@ -1601,6 +1601,183 @@ litter_robot_button:
                       service: button.press
                       service_data:
                         entity_id: button.chamber_of_secrets_reset
+
+forbidden_forest_button:
+  card:
+    type: "custom:button-card"
+    entity: sensor.forbidden_forest_status_short
+    color_type: icon
+    icon: mdi:cat
+    state:
+      - value: "Ready"
+        color: rgb(255, 255, 255)
+        name: "[[[ return `Ready - ${states['sensor.forbidden_forest_waste_drawer'].state}%` ]]]"
+      - value: "Clean"
+        color: rgb(228, 221, 94)
+        name: Clean
+      - value: "Done"
+        color: rgb(228, 221, 94)
+        name: Done
+      - value: "Drawer 2"
+        color: rgb(94, 101, 228)
+        name: Drawer 2
+        styles:
+          icon:
+            - animation: blink 2s infinite
+      - value: "Drawer 1"
+        color: rgb(94, 101, 228)
+        name: Drawer 1
+        styles:
+          icon:
+            - animation: blink 2s infinite
+      - value: "Sensor"
+        color: rgb(228, 94, 101)
+        name: Sensor
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Timing"
+        color: rgb(228, 94, 101)
+        name: Timing
+      - value: "Cat"
+        color: rgb(228, 94, 101)
+        name: Cat
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Bonnet"
+        color: rgb(228, 221, 94)
+        name: Bonnet
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Pinch"
+        color: rgb(228, 221, 94)
+        name: Pinch
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Empty"
+        color: rgb(228, 221, 94)
+        name: Empty
+      - value: "Paused"
+        color: rgb(228, 94, 101)
+        name: Paused
+      - value: "Off"
+        color: rgb(255, 255, 255)
+        name: "Off"
+      - value: "Full"
+        color: rgb(94, 101, 228)
+        name: Full
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Sleep"
+        color: rgb(255, 255, 255)
+        name: Sleep
+      - value: "Offline"
+        color: rgb(228, 94, 101)
+        name: Offline
+      - value: "Torque"
+        color: rgb(228, 94, 101)
+        name: Torque
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Position"
+        color: rgb(228, 94, 101)
+        name: Position
+        styles:
+          icon:
+            - animation: blink 1s infinite
+      - value: "Power"
+        color: rgb(255, 255, 255)
+        name: Power
+      - operator: default
+        color: rgb(228, 94, 101)
+        name: Error
+        styles:
+          icon:
+            - animation: blink 1s infinite
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Chamber of Secrets
+          content:
+            type: custom:vertical-stack-in-card
+            cards:
+              - type: entities
+                entities:
+                  - entity: sensor.forbidden_forest_status_short
+                    name: Status
+                    icon: mdi:cat
+                  - entity: sensor.forbidden_forest_total_cycles
+                    name: Scoops Saved
+                    icon: mdi:toilet
+                  - entity: sensor.forbidden_forest_litter_level
+                    name: Litter Level
+                    icon: mdi:weather-dust
+                  - entity: select.forbidden_forest_globe_light
+                    name: Globe Light
+                    icon: mdi:lightbulb
+                  - entity: select.forbidden_forest_globe_brightness
+                    name: Globe Brightness
+                    icon: mdi:lightbulb
+                  - entity: select.forbidden_forest_panel_brightness
+                    name: Panel Brightness
+                    icon: mdi:lightbulb
+                  - entity: select.forbidden_forest_clean_cycle_wait_time_minutes
+                    name: Wait Time
+                    icon: mdi:clock-outline
+
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    entity: switch.forbidden_forest_power
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                    icon: mdi:power
+                    name: Power
+
+                  - type: "custom:button-card"
+                    color_type: icon
+                    color: rgb(255, 255, 255)
+                    icon: mdi:reload
+                    name: Cycle
+                    tap_action:
+                      action: call-service
+                      service: vacuum.start
+                      service_data:
+                        entity_id: vacuum.forbidden_forest_litter_box
+                        
+                  - type: "custom:button-card"
+                    entity: switch.forbidden_forest_panel_lockout
+                    color_type: icon
+                    state:
+                      - value: "on"
+                        color: rgb(228, 94, 101)
+                        icon: mdi:lock
+                      - value: "off"
+                        color: rgb(255, 255, 255)
+                        icon: mdi:lock-open
+                    name: Lock
+
+                  - type: "custom:button-card"
+                    color_type: icon
+                    color: rgb(255, 255, 255)
+                    icon: mdi:check
+                    name: Reset
+                    tap_action:
+                      action: call-service
+                      service: button.press
+                      service_data:
+                        entity_id: button.forbidden_forest_reset
 
 cameras_tablet:
   card:
@@ -2391,11 +2568,13 @@ tablet_common_buttons:
       - type: horizontal-stack
         cards:
           - type: custom:decluttering-card
-            template: litter_robot_button
-          - type: custom:decluttering-card
             template: alarm_panel_button
           - type: custom:decluttering-card
             template: garage_door_button
+          - type: custom:decluttering-card
+            template: chamber_of_secrets_button
+          - type: custom:decluttering-card
+            template: forbidden_forest_button
 
       - type: horizontal-stack
         cards:          
@@ -2405,12 +2584,15 @@ tablet_common_buttons:
             template: garage_lock_button
           - type: custom:decluttering-card
             template: back_lock_button
+          - type: custom:decluttering-card
+            template: shed_lock_button 
 
       - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: shed_lock_button    
+        cards:   
           - type: custom:decluttering-card
             template: washer_button      
           - type: custom:decluttering-card
-            template: dryer_button        
+            template: dryer_button 
+          - type: custom:decluttering-card
+            template: vacuum_button_simple
+          - type: custom:gap-card       

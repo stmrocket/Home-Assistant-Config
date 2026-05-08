@@ -19,8 +19,6 @@ cards:
     cards:   
       - type: custom:decluttering-card
         template: alarm_card_panel
-      - type: custom:decluttering-card
-        template: cameras_tablet
 
 
   - type: vertical-stack
@@ -95,5 +93,7 @@ cards:
             name: All
             hold_action:
               action: more-info
-          - type: custom:decluttering-card
-            template: vacuum_button_simple
+          - type: custom:gap-card
+          
+      - type: custom:decluttering-card
+        template: cameras_tablet
