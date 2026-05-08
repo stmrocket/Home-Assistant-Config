@@ -2314,8 +2314,8 @@ alarm_card_panel:
             color: #0d9af2;
             }
           .keypad {
-            padding: 15px !important;
-            gap: 30px !important;
+            padding: 10px !important;
+            gap: 10px !important;
             background: none;
                 }
           ha-svg-icon {
@@ -2323,8 +2323,8 @@ alarm_card_panel:
                   }
           ha-control-button {
             font-size: 80px !important;
-            height: 120px !important;
-            width: 140px !important;
+            height: 80px !important;
+            width: 100px !important;
                   }
           ha-textfield {
             max-width: 300px !important;
