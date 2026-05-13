@@ -62,7 +62,7 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.master_thermostat
-        target_temp_high: 74
+        target_temp_high: 73
         target_temp_low: 62
     - service: climate.set_temperature
       data:
@@ -93,7 +93,7 @@
         entity_id: 
           - climate.master_thermostat
           - climate.front_thermostat
-        target_temp_high: 74
+        target_temp_high: 73
         target_temp_low: 62
     - service: climate.set_temperature
       data:
