@@ -79,7 +79,7 @@
           entity_id: alarm_control_panel.house
           state: armed_vacation
   action:
-    - action: switch.turn_off
+    - action: switch.turn_on
       entity_id: switch.tablet_screens
     - action: light.turn_on
       data:
