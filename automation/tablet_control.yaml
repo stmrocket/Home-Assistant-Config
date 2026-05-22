@@ -34,6 +34,7 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
+      from: arming
       to: 
         - armed_away
         - armed_vacation
@@ -57,3 +58,70 @@
         - button.shack_tablet_load_start_url
         - button.entry_tablet_load_start_url
         - button.server_tablet_load_start_url
+
+- alias: Tablets On When Front Door Unlocked
+  id: a2ab1923-ff57-440c-8e18-f65e9fe5c3f9
+  trigger:
+    - platform: state
+      entity_id: lock.front_door_lock
+      to: 
+        - Unlocked
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: pending
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_away
+        - condition: state
+          entity_id: alarm_control_panel.house
+          state: armed_vacation
+  action:
+    - action: switch.turn_off
+      entity_id: switch.tablet_screens
+    - action: light.turn_on
+      data:
+        entity_id: light.wall_panel_leds  
+        rgb_color:
+          - 255
+          - 0
+          - 0
+        brightness_pct: 40
+
+- alias: Tablet Backlight Show Alarmed Armed
+  id: 1e7c97ce-a4af-4ee5-b0d1-6bd5253c82c1
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to:
+        - armed_away
+        - armed_night
+        - armed_home
+  action:
+    - action: light.turn_on
+      data:
+        entity_id: light.wall_panel_leds  
+        rgb_color:
+          - 255
+          - 0
+          - 0
+        brightness_pct: 40
+
+- alias: Tablet Backlight Show Alarm Armed
+  id: 02f9a079-9075-42ce-87f6-2fd4bd713980
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.house
+      to:
+        - disarmed
+  action:
+    - action: light.turn_on
+      data:
+        entity_id: light.wall_panel_leds  
+        rgb_color:
+          - 0
+          - 255
+          - 0
+        brightness_pct: 40

@@ -62,6 +62,7 @@
         - light.den_light
         - light.shackled_light
         - light.officeled_light
+        - light.wall_panel_leds
     - service: switch.turn_off
       continue_on_error: true
       entity_id:
