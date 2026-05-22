@@ -95,10 +95,17 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.house
+      from:
+        - disarmed
+        - armed_night
+        - armed_home
+        - armed_away
+        - armed_vacation
       to:
         - armed_away
         - armed_night
         - armed_home
+        - armed_vacation
   action:
     - action: light.turn_on
       data:
@@ -109,7 +116,7 @@
           - 0
         brightness_pct: 40
 
-- alias: Tablet Backlight Show Alarm Armed
+- alias: Tablet Backlight Show Alarm Disarmed
   id: 02f9a079-9075-42ce-87f6-2fd4bd713980
   trigger:
     - platform: state
