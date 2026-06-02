@@ -103,7 +103,6 @@
         - armed_vacation
       to:
         - armed_away
-        - armed_night
         - armed_home
         - armed_vacation
   action:
