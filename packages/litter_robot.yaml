@@ -156,28 +156,28 @@ automation:
       - choose:
         - conditions:
           - condition: template
-            value_template: "{{ ('april' or 'April') in states('sensor.shawn_pixel_10_last_notification')  }}"
+            value_template: "{{ 'April' in states('sensor.shawn_pixel_10_last_notification')  }}"
           sequence:
             - action: counter.increment
               entity_id: counter.april_visits
       - choose:
         - conditions:
           - condition: template
-            value_template: "{{ ('luna' or 'Luna') in states('sensor.shawn_pixel_10_last_notification')  }}"
+            value_template: "{{ 'Luna' in states('sensor.shawn_pixel_10_last_notification')  }}"
           sequence:
             - action: counter.increment
               entity_id: counter.luna_visits
       - choose:
         - conditions:
           - condition: template
-            value_template: "{{ ('shelby' or 'Shelby') in states('sensor.shawn_pixel_10_last_notification')  }}"
+            value_template: "{{ 'Shelby' in states('sensor.shawn_pixel_10_last_notification')  }}"
           sequence:
             - action: counter.increment
               entity_id: counter.shelby_visits
       - choose:
         - conditions:
           - condition: template
-            value_template: "{{ ('junior' or 'Junior') in states('sensor.shawn_pixel_10_last_notification')  }}"
+            value_template: "{{ 'Junior' in states('sensor.shawn_pixel_10_last_notification')  }}"
           sequence:
             - action: counter.increment
               entity_id: counter.junior_visits
