@@ -90,6 +90,30 @@ template:
           Error
         {% endif -%}
 
+    - name: April Litter Box Visits
+      unique_id: 2cd28472-216a-4ae9-ad68-7f66becb771e
+      state: "{{ states('counter.april_visits') | int(none) }}"
+      unit_of_measurement: "Visits"
+      state_class: total 
+
+    - name: Luna Litter Box Visits
+      unique_id: 4e68c0f1-9de0-416f-aa59-aed5c56c831e
+      state: "{{ states('counter.luna_visits') | int(none) }}"
+      unit_of_measurement: "Visits"
+      state_class: total 
+
+    - name: Shelby Litter Box Visits
+      unique_id: d27b4426-cfef-49c5-b475-4561eda7b68e
+      state: "{{ states('counter.shelby_visits') | int(none) }}"
+      unit_of_measurement: "Visits"
+      state_class: total 
+
+    - name: Junior Litter Box Visits
+      unique_id: 9a1e5bcd-7873-4175-a643-c8a911ef3a51
+      state: "{{ states('counter.junior_visits') | int(none) }}"
+      unit_of_measurement: "Visits"
+      state_class: total 
+
   - switch:
     - name: Chamber of Secrets Power
       unique_id: 1c69d41e-1d7a-4cba-82a8-d9f4230fa722
@@ -111,7 +135,53 @@ template:
         service: vacuum.stop
         entity_id: vacuum.forbidden_forest_litter_box
 
+counter:  
+  april_visits:
+    step: 1
+  luna_visits:
+    step: 1
+  shelby_visits:
+    step: 1
+  junior_visits:
+    step: 1
+
 automation:
+  - alias: Count Litter Box Visit
+    id: 02a45d24-6299-4bc3-8300-1ba10a075692
+    trigger:
+      - platform: state
+        entity_id: sensor.shawn_pixel_10_last_notification
+        attribute: post_time
+    action:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ ('april' or 'April') in states('sensor.shawn_pixel_10_last_notification')  }}"
+          sequence:
+            - action: counter.increment
+              entity_id: counter.april_visits
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ ('luna' or 'Luna') in states('sensor.shawn_pixel_10_last_notification')  }}"
+          sequence:
+            - action: counter.increment
+              entity_id: counter.luna_visits
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ ('shelby' or 'Shelby') in states('sensor.shawn_pixel_10_last_notification')  }}"
+          sequence:
+            - action: counter.increment
+              entity_id: counter.shelby_visits
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ ('junior' or 'Jumior') in states('sensor.shawn_pixel_10_last_notification')  }}"
+          sequence:
+            - action: counter.increment
+              entity_id: counter.junior_visits
+
   - alias: Chamber of Secrets Entry Alert
     id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
     trigger:
