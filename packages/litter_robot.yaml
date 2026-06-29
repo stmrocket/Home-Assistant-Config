@@ -177,7 +177,7 @@ automation:
       - choose:
         - conditions:
           - condition: template
-            value_template: "{{ ('junior' or 'Jumior') in states('sensor.shawn_pixel_10_last_notification')  }}"
+            value_template: "{{ ('junior' or 'Junior') in states('sensor.shawn_pixel_10_last_notification')  }}"
           sequence:
             - action: counter.increment
               entity_id: counter.junior_visits
