@@ -145,6 +145,20 @@ counter:
   junior_visits:
     step: 1
 
+utility_meter:
+  april_litter_box_visits_today:
+    source: sensor.april_litter_box_visits
+    cycle: daily
+  luna_litter_box_visits_today:
+    source: sensor.luna_litter_box_visits
+    cycle: daily
+  shelby_litter_box_visits_today:
+    source: sensor.shelby_litter_box_visits
+    cycle: daily
+  junior_litter_box_visits_today:
+    source: sensor.junior_litter_box_visits
+    cycle: daily
+
 automation:
   - alias: Count Litter Box Visit
     id: 02a45d24-6299-4bc3-8300-1ba10a075692
