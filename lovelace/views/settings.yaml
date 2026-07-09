@@ -735,6 +735,109 @@ cards:
                           - entity: sensor.career_bike_rides
                             name: Rides
                             icon: 'mdi:bicycle'
+      - type: 'custom:stack-in-card'
+        cards:
+          # 1. HEADER & ACTIVE STATE PANEL
+          - type: markdown
+            content: >
+              ### 🐈 SiiPet AI Correction Panel
+
+              The AI believes **{{ states('input_text.siipet_last_processed_cat') }}** last used the box ({{ states('input_number.siipet_last_processed_duration') | int }}s ago). 
+
+              *If this is a mistake, tap a cat's icon or the False Trigger button below to adjust the daily statistics:*
+
+          # 2. THE CAT COMPACT ROW GRID
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+              # --- ROW 1: APRIL ---
+              - type: horizontal-stack
+                cards:
+                  - type: sensor
+                    entity: sensor.april_elimination_visits_today
+                    name: "April"
+                    icon: mdi:cat
+                  - type: sensor
+                    entity: input_number.april_last_duration
+                    name: "Last"
+                  - type: button
+                    name: "It was April"
+                    icon: mdi:account-check
+                    tap_action:
+                      action: call-service
+                      service: script.siipet_reassign_last_visit
+                      data:
+                        correct_cat: "April"
+
+              # --- ROW 2: SHELBY ---
+              - type: horizontal-stack
+                cards:
+                  - type: sensor
+                    entity: sensor.shelby_elimination_visits_today
+                    name: "Shelby"
+                    icon: mdi:cat
+                  - type: sensor
+                    entity: input_number.shelby_last_duration
+                    name: "Last"
+                  - type: button
+                    name: "It was Shelby"
+                    icon: mdi:account-check
+                    tap_action:
+                      action: call-service
+                      service: script.siipet_reassign_last_visit
+                      data:
+                        correct_cat: "Shelby"
+
+              # --- ROW 3: LUNA ---
+              - type: horizontal-stack
+                cards:
+                  - type: sensor
+                    entity: sensor.luna_elimination_visits_today
+                    name: "Luna"
+                    icon: mdi:cat
+                  - type: sensor
+                    entity: input_number.luna_last_duration
+                    name: "Last"
+                  - type: button
+                    name: "It was Luna"
+                    icon: mdi:account-check
+                    tap_action:
+                      action: call-service
+                      service: script.siipet_reassign_last_visit
+                      data:
+                        correct_cat: "Luna"
+
+              # --- ROW 4: JUNIOR ---
+              - type: horizontal-stack
+                cards:
+                  - type: sensor
+                    entity: sensor.junior_elimination_visits_today
+                    name: "Junior"
+                    icon: mdi:cat
+                  - type: sensor
+                    entity: input_number.junior_last_duration
+                    name: "Last"
+                  - type: button
+                    name: "It was Junior"
+                    icon: mdi:account-check
+                    tap_action:
+                      action: call-service
+                      service: script.siipet_reassign_last_visit
+                      data:
+                        correct_cat: "Junior"
+
+          # 3. GLOBAL FALSE TRIGGER WIPE BUTTON
+          - type: button
+            name: "Wipe Event (False Trigger / Nobody)"
+            icon: mdi:delete-sweep
+            show_name: true
+            show_icon: true
+            tap_action:
+              action: call-service
+              service: script.siipet_reassign_last_visit
+              data:
+                correct_cat: "Nobody"
 
   - type: vertical-stack
     cards:
