@@ -191,7 +191,7 @@ utility_meter:
 
 automation:
   - alias: "SiiPet - Inbound Event Router"
-    unique_id: 010e32a7-b9cf-4202-94b2-3baa753b53b0
+    id: 010e32a7-b9cf-4202-94b2-3baa753b53b0
     description: "Routes inbound elimination events to the correct cat trackers"
     trigger:
       - platform: event
