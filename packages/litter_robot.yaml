@@ -179,15 +179,19 @@ utility_meter:
   april_elimination_visits_today:
     source: sensor.april_total_elimination_visits
     cycle: daily
+    net_consumption: true
   luna_elimination_visits_today:
     source: sensor.luna_total_elimination_visits
     cycle: daily
+    net_consumption: true
   shelby_elimination_visits_today:
     source: sensor.shelby_total_elimination_visits
     cycle: daily
+    net_consumption: true
   junior_elimination_visits_today:
     source: sensor.junior_total_elimination_visits
     cycle: daily
+    net_consumption: true
 
 automation:
   - alias: "SiiPet - Inbound Event Router"
