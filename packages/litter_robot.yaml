@@ -470,7 +470,7 @@ automation:
               <img style='width: 100%; object-fit: contain' src="cid:chamber_of_secrets_waste_{{ image_time }}.jpg">   
 
 script:
-  - siipet_reassign_last_visit:
+  siipet_reassign_last_visit:
     alias: "SiiPet - Reassign Last Visit"
     description: "Corrects an AI misidentification by shifting data between counters"
     fields:
