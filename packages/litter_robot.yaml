@@ -90,29 +90,22 @@ template:
           Error
         {% endif -%}
 
-    - name: April Litter Box Visits
-      unique_id: 2cd28472-216a-4ae9-ad68-7f66becb771e
-      state: "{{ states('counter.april_visits') | int(none) }}"
-      unit_of_measurement: "Visits"
-      state_class: total 
-
-    - name: Luna Litter Box Visits
-      unique_id: 4e68c0f1-9de0-416f-aa59-aed5c56c831e
-      state: "{{ states('counter.luna_visits') | int(none) }}"
-      unit_of_measurement: "Visits"
-      state_class: total 
-
-    - name: Shelby Litter Box Visits
-      unique_id: d27b4426-cfef-49c5-b475-4561eda7b68e
-      state: "{{ states('counter.shelby_visits') | int(none) }}"
-      unit_of_measurement: "Visits"
-      state_class: total 
-
-    - name: Junior Litter Box Visits
-      unique_id: 9a1e5bcd-7873-4175-a643-c8a911ef3a51
-      state: "{{ states('counter.junior_visits') | int(none) }}"
-      unit_of_measurement: "Visits"
-      state_class: total 
+    - name: "April Total Elimination Visits"
+      state: "{{ states('counter.april_visits') }}"
+      state_class: total_increasing
+      icon: mdi:cat
+    - name: "Shelby Total Elimination Visits"
+      state: "{{ states('counter.shelby_visits') }}"
+      state_class: total_increasing
+      icon: mdi:cat
+    - name: "Luna Total Elimination Visits"
+      state: "{{ states('counter.luna_visits') }}"
+      state_class: total_increasing
+      icon: mdi:cat
+    - name: "Junior Total Elimination Visits"
+      state: "{{ states('counter.junior_visits') }}"
+      state_class: total_increasing
+      icon: mdi:cat
 
   - switch:
     - name: Chamber of Secrets Power
@@ -145,56 +138,126 @@ counter:
   junior_visits:
     step: 1
 
+input_number:
+  april_last_duration:    
+    mode: box
+    min: 0
+    max: 3600
+    step: 1
+    unit_of_measurement: "s"
+  shelby_last_duration:    
+    mode: box
+    min: 0
+    max: 3600
+    step: 1
+    unit_of_measurement: "s"
+  luna_last_duration:    
+    mode: box
+    min: 0
+    max: 3600
+    step: 1
+    unit_of_measurement: "s"
+  junior_last_duration:    
+    mode: box
+    min: 0
+    max: 3600
+    step: 1
+    unit_of_measurement: "s"
+  siipet_last_processed_duration:    
+    mode: box
+    min: 0
+    max: 3600
+    step: 1
+    unit_of_measurement: "s"
+
+input_text:
+  siipet_last_processed_cat:
+    name: Last Processed Cat
+    max: 20
+
 utility_meter:
-  april_litter_box_visits_today:
-    source: sensor.april_litter_box_visits
+  april_elimination_visits_today:
+    source: sensor.april_total_elimination_visits
     cycle: daily
-  luna_litter_box_visits_today:
-    source: sensor.luna_litter_box_visits
+  luna_elimination_visits_today:
+    source: sensor.luna_total_elimination_visits
     cycle: daily
-  shelby_litter_box_visits_today:
-    source: sensor.shelby_litter_box_visits
+  shelby_elimination_visits_today:
+    source: sensor.shelby_total_elimination_visits
     cycle: daily
-  junior_litter_box_visits_today:
-    source: sensor.junior_litter_box_visits
+  junior_elimination_visits_today:
+    source: sensor.junior_total_elimination_visits
     cycle: daily
 
 automation:
-  - alias: Count Litter Box Visit
-    id: 02a45d24-6299-4bc3-8300-1ba10a075692
+  - alias: "SiiPet - Inbound Event Router"
+    unique_id: 010e32a7-b9cf-4202-94b2-3baa753b53b0
+    description: "Routes inbound elimination events to the correct cat trackers"
     trigger:
-      - platform: state
-        entity_id: sensor.shawn_pixel_10_last_notification
-        attribute: post_time
+      - platform: event
+        event_type: "siipet_toilet_event"
+    condition:
+      # Only track true elimination events (Type 2)
+      - condition: template
+        value_template: "{{ trigger.event.data.Payload.Type == 2 }}"
     action:
+      # 1. Back up the raw data to global helpers for frontend correction buttons
+      - action: input_text.set_value
+        target:
+          entity_id: input_text.siipet_last_processed_cat
+        data:
+          value: "{{ trigger.event.data.Payload.PetName }}"
+      - action: input_number.set_value
+        target:
+          entity_id: input_number.siipet_last_processed_duration
+        data:
+          value: "{{ trigger.event.data.Payload.Duration / 1000 }}"
+
+      # 2. Route data to the specific cat's counters/helpers
       - choose:
-        - conditions:
-          - condition: template
-            value_template: "{{ 'April' in states('sensor.shawn_pixel_10_last_notification')  }}"
-          sequence:
-            - action: counter.increment
-              entity_id: counter.april_visits
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: "{{ 'Luna' in states('sensor.shawn_pixel_10_last_notification')  }}"
-          sequence:
-            - action: counter.increment
-              entity_id: counter.luna_visits
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: "{{ 'Shelby' in states('sensor.shawn_pixel_10_last_notification')  }}"
-          sequence:
-            - action: counter.increment
-              entity_id: counter.shelby_visits
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: "{{ 'Junior' in states('sensor.shawn_pixel_10_last_notification')  }}"
-          sequence:
-            - action: counter.increment
-              entity_id: counter.junior_visits
+          - conditions: "{{ trigger.event.data.Payload.PetName == 'April' }}"
+            sequence:
+              - action: counter.increment
+                target:
+                  entity_id: counter.april_visits
+              - action: input_number.set_value
+                target:
+                  entity_id: input_number.april_last_duration
+                data:
+                  value: "{{ trigger.event.data.Payload.Duration / 1000 }}"
+
+          - conditions: "{{ trigger.event.data.Payload.PetName == 'Shelby' }}"
+            sequence:
+              - action: counter.increment
+                target:
+                  entity_id: counter.shelby_visits
+              - action: input_number.set_value
+                target:
+                  entity_id: input_number.shelby_last_duration
+                data:
+                  value: "{{ trigger.event.data.Payload.Duration / 1000 }}"
+
+          - conditions: "{{ trigger.event.data.Payload.PetName == 'Luna' }}"
+            sequence:
+              - action: counter.increment
+                target:
+                  entity_id: counter.luna_visits
+              - action: input_number.set_value
+                target:
+                  entity_id: input_number.luna_last_duration
+                data:
+                  value: "{{ trigger.event.data.Payload.Duration / 1000 }}"
+
+          - conditions: "{{ trigger.event.data.Payload.PetName == 'Junior' }}"
+            sequence:
+              - action: counter.increment
+                target:
+                  entity_id: counter.junior_visits
+              - action: input_number.set_value
+                target:
+                  entity_id: input_number.junior_last_duration
+                data:
+                  value: "{{ trigger.event.data.Payload.Duration / 1000 }}"
 
   - alias: Chamber of Secrets Entry Alert
     id: e5cef912-167b-4bf4-ad6a-6d4c0cffa475
@@ -405,3 +468,46 @@ automation:
               The Chamber of Secrets was activated at {{now().strftime('%H:%M:%S') }}.  It was activated by {{ llm_response.data }}.  
               <br>
               <img style='width: 100%; object-fit: contain' src="cid:chamber_of_secrets_waste_{{ image_time }}.jpg">   
+
+script:
+  - siipet_reassign_last_visit:
+    alias: "SiiPet - Reassign Last Visit"
+    description: "Corrects an AI misidentification by shifting data between counters"
+    fields:
+      correct_cat:
+        description: "The name of the cat who actually used the box"
+        example: "Luna"
+    sequence:
+      # 1. Stop if the correct cat is already marked as the last processed cat
+      - condition: template
+        value_template: "{{ states('input_text.siipet_last_processed_cat') != correct_cat }}"
+        
+      # 2. Store variables locally for easier processing
+      - variables:
+          wrong_cat: "{{ states('input_text.siipet_last_processed_cat') | lower }}"
+          right_cat: "{{ correct_cat | lower }}"
+          duration: "{{ states('input_number.siipet_last_processed_duration') | float }}"
+
+      # 3. Deduct the visit from the falsely accused cat
+      - action: "counter.decrement"
+        target:
+          entity_id: "counter.{{ wrong_cat }}_visits"
+
+      # 4. Give the visit to the correct cat
+      - action: "counter.increment"
+        target:
+          entity_id: "counter.{{ right_cat }}_visits"
+          
+      # 5. Move the last duration metric to the correct cat
+      - action: input_number.set_value
+        target:
+          entity_id: "input_number.{{ right_cat }}_last_duration"
+        data:
+          value: "{{ duration }}"
+
+      # 6. Update the master tracker so you can't accidentally press it twice for the same event
+      - action: input_text.set_value
+        target:
+          entity_id: input_text.siipet_last_processed_cat
+        data:
+          value: "{{ correct_cat }}"              
