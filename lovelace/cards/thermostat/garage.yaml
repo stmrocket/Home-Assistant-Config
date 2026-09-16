@@ -25,12 +25,14 @@ control:
     fan_only:
       name: Fan
 layout:
+  step: column
   mode:
     names: true
     icons: true
     headings: false
 hide:
   state: true
+  setpoint_label: true
 card_mod:
   style: |
     ha-card .mode-item {

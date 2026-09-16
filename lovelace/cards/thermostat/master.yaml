@@ -17,6 +17,7 @@ cards:
         name: State
     hide:
       state: true
+      setpoint_label: true
     control:
       - hvac:
         mode: none
